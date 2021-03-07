@@ -51,14 +51,6 @@ vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', {
       silent = true
   })
 
---  [[ 
-vim.api.nvim_set_keymap('n', '<C-i>', ':NvimTreeRefresh<CR>', {
-      noremap = true,
-      silent = true
-    })
-  
- --  ]]
- 
 vim.g.nvim_tree_bindings = {
   ["<CR>"]           = get_lua_cb("edit"),
   ["o"]              = get_lua_cb("edit"),
