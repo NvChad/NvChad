@@ -7,3 +7,4 @@ end
 -- keybind list 
 
 map('', '<leader>c', '"+y') 
+--map('' , '<C-a>' , '%y+')

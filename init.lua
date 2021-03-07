@@ -3,6 +3,7 @@ require('pluginsList.lua')
 
 require('utils.lua')
 require('nvimTree.lua')
+require('gitsigns.lua')
 require('lsp_config.lua')
 
 require'colorizer'.setup()

@@ -54,6 +54,7 @@ end
 local servers = { "html" , "cssls"  , "tsserver"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
+  require"completion".on_attach(client)
 end
 
 -- keybinds 
