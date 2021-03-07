@@ -18,4 +18,5 @@ return require('packer').startup(function()
    use { 'norcalli/nvim-colorizer.lua'}
    use { 'Yggdroot/indentLine'}
    use { 'ryanoasis/vim-devicons'}
+   use { 'sbdchd/neoformat'}
 end)

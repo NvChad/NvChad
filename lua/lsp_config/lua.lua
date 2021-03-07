@@ -7,6 +7,7 @@ local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  require"completion".on_attach(client)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -54,7 +55,6 @@ end
 local servers = { "html" , "cssls"  , "tsserver"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
-  require"completion".on_attach(client)
 end
 
 -- keybinds 
