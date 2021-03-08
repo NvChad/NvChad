@@ -3,8 +3,11 @@ local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 
 return require('packer').startup(function()
    use { 'kyazdani42/nvim-web-devicons'}
+   use { 'kyazdani42/nvim-tree.lua'}
    use {'neovim/nvim-lspconfig'}
    use {'nvim-lua/completion-nvim'}
+   use {'SirVer/ultisnips'}
+   use {'hrsh7th/nvim-compe'}
    use {'wbthomason/packer.nvim', opt = true}
    use { 'nvim-lua/plenary.nvim'}
    use { 'lewis6991/gitsigns.nvim'}
@@ -12,7 +15,6 @@ return require('packer').startup(function()
    use { 'tweekmonster/startuptime.vim'}
    use { 'akinsho/nvim-bufferline.lua'}
    use { '907th/vim-auto-save'}
-   use { 'kyazdani42/nvim-tree.lua'}
    use { 'nvim-treesitter/nvim-treesitter'}
    use { 'chriskempson/base16-vim'}
    use { 'norcalli/nvim-colorizer.lua'}

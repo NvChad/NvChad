@@ -1,8 +1,12 @@
 -- load plugins
 require('pluginsList.lua')
+require('web-devicons.lua')
 
 require('utils.lua')
 require('nvimTree.lua')
+require('bufferline.lua')
+require('statusline.lua')
+
 require('gitsigns.lua')
 require('lsp_config.lua')
 
@@ -22,10 +26,7 @@ g.indentLine_enabled = 1
 g.indentLine_char_list = {'▏'}
 
 require('treesitter.lua')
-require('statusline.lua')
-require('bufferline.lua')
 require('mappings.lua')
-require('web-devicons.lua')
 
 -- highlights 
 cmd("hi LineNr guibg=NONE")
