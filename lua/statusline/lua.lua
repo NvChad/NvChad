@@ -22,10 +22,17 @@ local colors = {
   nordYel = '#EBCB8B'
 }
 
+gls.left[1] = {
+  FirstElement = {
+    provider = function() return '' end,
+    highlight = { colors.nord, colors.bg }
+  },
+}
+
 gls.left[2] = {
   ViMode = {
     provider = function()
-      return '  󰀘  '
+      return ' 󰀘  '
     end,
     highlight = {colors.bg,colors.nord},
      separator = ' ',
@@ -52,6 +59,14 @@ gls.left[4] = {
 }
 
 gls.left[5] = {
+  rightRounded = {
+    provider = function() return '' end,
+    highlight = { colors.lightbg, colors.bg }
+  },
+}
+
+
+gls.left[6] = {
   GitIcon = {
     provider = function() return '   ' end,
     condition = require('galaxyline.provider_vcs').check_git_workspace,
@@ -59,7 +74,7 @@ gls.left[5] = {
   }
 }
 
-gls.left[6] = {
+gls.left[7] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = require('galaxyline.provider_vcs').check_git_workspace,
@@ -134,11 +149,18 @@ gls.left[13] = {
   }
 }
 
-gls.right[1]= {
+
+
+gls.right[1] = {
+  uwu = {
+    provider = function() return '' end,
+    highlight = { colors.firored, colors.bg }
+  },
+}
+
+gls.right[2]= {
   FileFormat = {
     provider = 'FileFormat',
-    separator = ' ',
-    separator_highlight = {colors.firored,colors.firored},
     highlight = {colors.bg,colors.firored},
   }
 }
@@ -149,22 +171,5 @@ gls.right[3] = {
     separator = ' ',
     separator_highlight = {colors.firored,colors.firored},
     highlight = {colors.bg,colors.fg},
-  }
-}
-gls.short_line_left[1] = {
-  BufferType = {
-    provider = 'FileTypeName',
-    separator = ' ',
-    separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.fg,colors.purple}
-  }
-}
-
-gls.short_line_right[1] = {
-  BufferIcon = {
-    provider= 'BufferIcon',
-    separator = ' ',
-    separator_highlight = {colors.purple,colors.bg},
-    highlight = {colors.fg,colors.purple}
   }
 }

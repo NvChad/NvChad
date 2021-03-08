@@ -8,7 +8,6 @@ require('bufferline.lua')
 require('statusline.lua')
 
 require('gitsigns.lua')
-require('lsp_config.lua')
 
 require'colorizer'.setup()
 
