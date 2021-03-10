@@ -1,7 +1,7 @@
 # neovim-dots
 my neovim dotfiles 
 
-slowly migrating to init.lua , so still WIP!
+slowly migrating to init.lua and still WIP! so use config from neovim_vimscriptonly/nvim folder only for now.
 
 # screenshots
 
