@@ -31,7 +31,7 @@ gls.left[1] = {
 gls.left[2] = {
   ViMode = {
     provider = function()
-      return ' 󰀘  '
+      return '   '
     end,
     highlight = {colors.bg,colors.nord},
      separator = ' ',

@@ -5,7 +5,6 @@ return require('packer').startup(function()
    use {'wbthomason/packer.nvim', opt = true}
    use { 'kyazdani42/nvim-web-devicons'}
    use { 'kyazdani42/nvim-tree.lua'}
-   use { 'hoob3rt/lualine.nvim'}
    use { 'neoclide/coc.nvim' , branch = 'release'}
    use { 'nvim-lua/plenary.nvim'}
    use { 'lewis6991/gitsigns.nvim'}
