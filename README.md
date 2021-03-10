@@ -14,7 +14,7 @@ nvim-web-devicons , lua fork of vim devicons which lets me change icons of filet
 
 - nvim-tree.lua , a fast file tree 
 - galaxyline , as statusline 
-gitsigns.nvim , to show git signs of a repo on the signcolumn to indicate diffs/changes etc  (needs plenary.nvim)
-nvim-bufferline.lua , as a top bufferline like thing which lets me switch tabs , close them.
-nvim-treesitter' , better syntax highlighting for programming languages.
+- gitsigns.nvim , to show git signs of a repo on the signcolumn to indicate diffs/changes etc  (needs plenary.nvim)
+- nvim-bufferline.lua , as a top bufferline like thing which lets me switch tabs , close them.
+- nvim-treesitter' , better syntax highlighting for programming languages.
 
