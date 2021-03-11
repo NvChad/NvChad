@@ -7,6 +7,11 @@ require('nvimTree.lua')
 require('bufferline.lua')
 require('statusline.lua')
 
+-- lsp
+require('nvim-lspconfig.lua')
+require('nvim-compe.lua')
+require('coc.lua')
+
 require('gitsigns.lua')
 
 require'colorizer'.setup()
@@ -39,3 +44,5 @@ cmd("hi EndOfBuffer guifg=#282c34")
 -- tree folder name , icon color 
 cmd("highlight NvimTreeFolderIcon guifg = #61afef")
 cmd("highlight NvimTreeFolderName guifg = #61afef")
+
+require('nvim-autopairs').setup()

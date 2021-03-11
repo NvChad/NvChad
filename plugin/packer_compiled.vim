@@ -36,9 +36,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/base16-vim"
   },
-  ["coc.nvim"] = {
+  ["completion-nvim"] = {
     loaded = true,
-    path = "/home/sid/.local/share/nvim/site/pack/packer/start/coc.nvim"
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/completion-nvim"
   },
   ["galaxyline.nvim"] = {
     loaded = true,
@@ -52,14 +52,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/indentLine"
   },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/home/sid/.local/share/nvim/site/pack/packer/start/lualine.nvim"
-  },
-  neoformat = {
-    loaded = true,
-    path = "/home/sid/.local/share/nvim/site/pack/packer/start/neoformat"
-  },
   ["nvim-bufferline.lua"] = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
@@ -67,6 +59,10 @@ _G.packer_plugins = {
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+  },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
