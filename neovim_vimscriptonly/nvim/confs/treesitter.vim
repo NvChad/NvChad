@@ -11,4 +11,6 @@ ts_config.setup {
     use_languagetree = true,
   }
 }
+
 EOF
+

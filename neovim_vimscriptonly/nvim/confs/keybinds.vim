@@ -14,6 +14,6 @@ map <C-h> <C-w>h
 
 
 nnoremap ,<space> :Neoformat <CR>
-nnoremap .<space> :w <CR>
+nnoremap .<space> :Telescope<CR>
 
 inoremap kk <ESC>

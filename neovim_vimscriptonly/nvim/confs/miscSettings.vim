@@ -46,7 +46,8 @@ set signcolumn=yes
 
 let g:auto_save = 1
  
-" let mapleader = "'"
+let mapleader = "b"
+
 set ignorecase 
 set noswapfile 
 set title
