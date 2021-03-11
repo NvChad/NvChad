@@ -52,7 +52,7 @@ require('telescope').setup{
   },
 
   
-  --[[
+
 
   extensions = {
     media_files = {
@@ -61,17 +61,16 @@ require('telescope').setup{
     }
   }
 
- -- ]]
  }
 
--- require('telescope').load_extension('media_files')
--- require('telescope').extensions.media_files.media_files()
+require('telescope').load_extension('media_files')
 
 EOF
 
 " telescope mappings 
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+"nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope').extensions.media_files.media_files()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 

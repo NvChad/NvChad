@@ -20,5 +20,5 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-"Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
 call plug#end()
