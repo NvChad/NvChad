@@ -6,6 +6,8 @@ require('utils.lua')
 require('nvimTree.lua')
 require('bufferline.lua')
 require('statusline.lua')
+require('telescope-nvim.lua')
+
 
 -- lsp
 require('nvim-lspconfig.lua')
@@ -28,9 +30,8 @@ g.auto_save = 1
 
 g.indentLine_enabled = 1
 g.indentLine_char_list = {'▏'}
-g.mapleader = "b"
-g.maplocalleader = "b"
 
+g.mapleader = ' '
 
 require('treesitter.lua')
 require('mappings.lua')
@@ -44,6 +45,11 @@ cmd("highlight DiffChange guifg =#3A3E44 guibg = none")
 cmd("highlight DiffModified guifg = #81A1C1 guibg = none")
 cmd("hi EndOfBuffer guifg=#282c34")
 
+cmd("highlight TelescopeBorder   guifg=#3e4451")
+cmd("highlight TelescopePromptBorder   guifg=#3e4451")
+cmd("highlight TelescopeResultsBorder  guifg=#3e4451")
+cmd("highlight TelescopePreviewBorder  guifg=#525865")
+
 -- tree folder name , icon color 
 cmd("highlight NvimTreeFolderIcon guifg = #61afef")
 cmd("highlight NvimTreeFolderName guifg = #61afef")
@@ -51,27 +57,5 @@ cmd("highlight NvimTreeFolderName guifg = #61afef")
 require('nvim-autopairs').setup()
 
 require('lspkind').init({
-    -- with_text = true,
-    -- symbol_map = {
-    --   Text = '',
-    --   Method = 'ƒ',
-    --   Function = '',
-    --   Constructor = '',
-    --   Variable = '',
-    --   Class = '',
-    --   Interface = 'ﰮ',
-    --   Module = '',
-    --   Property = '',
-    --   Unit = '',
-    --   Value = '',
-    --   Enum = '了',
-    --   Keyword = '',
-    --   Snippet = '﬌',
-    --   Color = '',
          File = ' ',
-    --   Folder = '',
-    --   EnumMember = '',
-    --   Constant = '',
-    --   Struct = ''
-    -- },
 })

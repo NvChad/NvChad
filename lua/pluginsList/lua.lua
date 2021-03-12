@@ -22,4 +22,7 @@ return require('packer').startup(function()
    use { 'alvan/vim-closetag'}
    use { 'tweekmonster/startuptime.vim'}
    use {'onsails/lspkind-nvim'}
+   use { 'nvim-telescope/telescope.nvim'}
+   use {'nvim-telescope/telescope-media-files.nvim'}
+   use {'nvim-lua/popup.nvim'}
 end)

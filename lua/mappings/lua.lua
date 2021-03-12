@@ -5,6 +5,5 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- keybind list 
-
 map('', '<leader>c', '"+y') 
-map('' , '<leader>uu' , 'Neoformat')
+
