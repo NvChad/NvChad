@@ -1,5 +1,3 @@
-
-
 require('telescope').setup{
 
   defaults = {
@@ -70,3 +68,5 @@ vim.api.nvim_set_keymap('n', '<Leader>fp',  [[<Cmd>lua require('telescope').exte
 vim.api.nvim_set_keymap('n', '<Leader>fb',  [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], opt)
 vim.api.nvim_set_keymap('n', '<Leader>fh',  [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], opt)
 vim.api.nvim_set_keymap('n', '<Leader>fo',  [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], opt)
+vim.api.nvim_set_keymap('n', '<Leader>zz',  [[<Cmd> Neoformat<CR>]] , opt)
+
