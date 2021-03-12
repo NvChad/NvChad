@@ -13,7 +13,6 @@ return require('packer').startup(function()
    use { 'nvim-treesitter/nvim-treesitter'}
    use { 'chriskempson/base16-vim'}
    use { 'norcalli/nvim-colorizer.lua'}
-   use { 'Yggdroot/indentLine'}
    use { 'ryanoasis/vim-devicons'}
    use { 'sbdchd/neoformat'}
    use { 'neovim/nvim-lspconfig'}

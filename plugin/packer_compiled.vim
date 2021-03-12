@@ -36,10 +36,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/base16-vim"
   },
-  ["completion-nvim"] = {
-    loaded = true,
-    path = "/home/sid/.local/share/nvim/site/pack/packer/start/completion-nvim"
-  },
   ["galaxyline.nvim"] = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
@@ -52,6 +48,18 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/indentLine"
   },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
+  },
+  neoformat = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/neoformat"
+  },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/nvim-autopairs"
+  },
   ["nvim-bufferline.lua"] = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
@@ -59,6 +67,10 @@ _G.packer_plugins = {
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+  },
+  ["nvim-compe"] = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -85,13 +97,29 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/popup.nvim"
+  },
   ["startuptime.vim"] = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/startuptime.vim"
   },
+  ["telescope-media-files.nvim"] = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
   ["vim-auto-save"] = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/vim-auto-save"
+  },
+  ["vim-closetag"] = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/vim-closetag"
   },
   ["vim-devicons"] = {
     loaded = true,
