@@ -49,6 +49,7 @@ cmd("highlight TelescopeBorder   guifg=#3e4451")
 cmd("highlight TelescopePromptBorder   guifg=#3e4451")
 cmd("highlight TelescopeResultsBorder  guifg=#3e4451")
 cmd("highlight TelescopePreviewBorder  guifg=#525865")
+cmd("highlight PmenuSel  guibg=#BBE67E")
 
 -- tree folder name , icon color 
 cmd("highlight NvimTreeFolderIcon guifg = #61afef")
