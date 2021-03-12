@@ -28,6 +28,9 @@ g.auto_save = 1
 
 g.indentLine_enabled = 1
 g.indentLine_char_list = {'▏'}
+g.mapleader = "b"
+g.maplocalleader = "b"
+
 
 require('treesitter.lua')
 require('mappings.lua')
@@ -46,3 +49,29 @@ cmd("highlight NvimTreeFolderIcon guifg = #61afef")
 cmd("highlight NvimTreeFolderName guifg = #61afef")
 
 require('nvim-autopairs').setup()
+
+require('lspkind').init({
+    -- with_text = true,
+    -- symbol_map = {
+    --   Text = '',
+    --   Method = 'ƒ',
+    --   Function = '',
+    --   Constructor = '',
+    --   Variable = '',
+    --   Class = '',
+    --   Interface = 'ﰮ',
+    --   Module = '',
+    --   Property = '',
+    --   Unit = '',
+    --   Value = '',
+    --   Enum = '了',
+    --   Keyword = '',
+    --   Snippet = '﬌',
+    --   Color = '',
+         File = ' ',
+    --   Folder = '',
+    --   EnumMember = '',
+    --   Constant = '',
+    --   Struct = ''
+    -- },
+})

@@ -21,4 +21,5 @@ return require('packer').startup(function()
    use { 'windwp/nvim-autopairs'}
    use { 'alvan/vim-closetag'}
    use { 'tweekmonster/startuptime.vim'}
+   use {'onsails/lspkind-nvim'}
 end)
