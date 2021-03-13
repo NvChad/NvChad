@@ -8,9 +8,7 @@ slowly migrating to init.lua and still WIP! so use config from neovim_vimscripto
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice1.png">
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice2.png">
 
-some cool lua plugins I use 
-
-
+# Some cool lua plugins I use 
 
 - nvim-lspkind , for lil icons on completion items
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/lspkind.png">
