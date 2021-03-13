@@ -1,4 +1,4 @@
-# screenshots
+# Screenshots
 
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/initialNvim.png">
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice2.png">
@@ -24,7 +24,7 @@
  
 - nvim-treesitter' , better syntax highlighting for programming languages ( my config just has html,css,js support for now ). 
 
-# clone my setup
+# Clone my setup
 
 - Install neovim-nightly , also use a nerdfont on your terminal.
 - Install packer.nvim 
