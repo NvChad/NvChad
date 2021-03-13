@@ -8,9 +8,9 @@ slowly migrating to init.lua and still WIP! so use config from neovim_vimscripto
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice1.png">
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice2.png">
 
-# Some cool lua plugins I use 
+# Some VERY COOL lua plugins I use 
 
-- nvim-lspkind , for lil icons on completion items
+- nvim-lspkind , for showing lil icons/pictograms on completion items
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/lspkind.png">
  
 - nvim-tree.lua , a fast file tree 
@@ -21,7 +21,7 @@ slowly migrating to init.lua and still WIP! so use config from neovim_vimscripto
  
 - gitsigns.nvim , to show git signs of a repo on the signcolumn to indicate diffs/changes etc  (needs plenary.nvim)
 
-- nvim-bufferline.lua , as a top bufferline like thing which lets me switch tabs , close them.
+- nvim-bufferline.lua , as a top bufferline like thing which lets me handle tabs like switching , closing tabs.
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/bufferline.png">
  
 - nvim-web-devicons , lua fork of vim devicons which lets me change icons of filetypes
