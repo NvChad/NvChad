@@ -21,6 +21,9 @@ opt("w", "signcolumn", "yes")
 opt("o", "cmdheight", 1)
 opt("o", "updatetime", 250)
 opt("o", "clipboard", "unnamedplus")
+opt("b", "expandtab", true )
+opt("b", "shiftwidth", 2 )
+
 
 local M = {}
 

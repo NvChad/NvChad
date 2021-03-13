@@ -26,6 +26,8 @@ cmd "syntax enable"
 cmd "syntax on"
 
 g.auto_save = 1
+g.indentLine_enabled = 1
+g.indentLine_char_list = {'▏'}
 
 g.mapleader = " "
 
