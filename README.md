@@ -51,6 +51,8 @@ git clone https://github.com/wbthomason/packer.nvim\
  - Open neovim and install all plugins , :PackerInstall and :TSUpdate 
  - Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!) 
  
+ ` test ` 
+ 
 ` 
  sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
  
