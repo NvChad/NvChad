@@ -29,7 +29,7 @@ The config is complete but still WIP as Im new to lua and slowly learning vim st
 - nvim-web-devicons , lua fork of vim devicons which lets me change icons of filetypes
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/image.png">
  
-- nvim-treesitter' , better syntax highlighting for programming languages ( my config just has html,css,js support for now ). 
+- nvim-treesitter , better syntax highlighting for programming languages ( my config just has html,css,js support for now ). 
 
  without Treesitter 
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/woTree.png">
@@ -50,8 +50,8 @@ git clone https://github.com/wbthomason/packer.nvim\
  
  - Open neovim and install all plugins , :PackerInstall and :TSUpdate 
  - Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!) 
- ` 
- 
+` 
  sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
  
- `
+ `  
+ 
