@@ -38,10 +38,15 @@ The config is complete but still WIP as Im new to lua and slowly learning vim st
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/wiTree.png">
 
 # Some guides to migrate to init.lua!
-https://github.com/nanotee/nvim-lua-guide
-https://alpha2phi.medium.com/neovim-init-lua-e80f4f136030
-https://oroques.dev/notes/neovim-init/ 
-https://icyphox.sh/blog/nvim-lua/
+
+- https://github.com/nanotee/nvim-lua-guide
+
+- https://alpha2phi.medium.com/neovim-init-lua-e80f4f136030
+
+- https://oroques.dev/notes/neovim-init/ 
+
+- https://icyphox.sh/blog/nvim-lua/
+
 
 # Clone my setup
 
