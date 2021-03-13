@@ -36,6 +36,6 @@ slowly migrating to init.lua and still WIP! so use config from neovim_vimscripto
 ` git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
  
- - open neovim and install all plugins , :PackerInstall
+ - open neovim and install all plugins , :PackerInstall and :TSUpdate 
  - install language servers and prettier ( for autocompletion etc and code formatting ) 
  `sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier` 
