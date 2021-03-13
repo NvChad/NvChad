@@ -11,7 +11,6 @@ require("telescope-nvim.lua")
 -- lsp
 require("nvim-lspconfig.lua")
 require("nvim-compe.lua")
-require("coc.lua")
 
 require("gitsigns.lua")
 
