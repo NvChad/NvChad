@@ -1,5 +1,6 @@
 vim.o.termguicolors = true
 
+-- colors for active , inactive buffer tabs 
 require "bufferline".setup {
     options = {
         buffer_close_icon = "",

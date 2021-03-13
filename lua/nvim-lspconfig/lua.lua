@@ -29,6 +29,7 @@ map("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 map("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 
+--  lsp for html , css and js/ts
 require "lspconfig".tsserver.setup {}
 require "lspconfig".cssls.setup {}
 require "lspconfig".html.setup {}

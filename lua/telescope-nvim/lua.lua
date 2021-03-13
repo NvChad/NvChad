@@ -59,6 +59,8 @@ require("telescope").load_extension("media_files")
 local opt = {noremap = true, silent = true}
 
 vim.g.mapleader = " "
+
+-- mappings 
 vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
 vim.api.nvim_set_keymap(
     "n",
