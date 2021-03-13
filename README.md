@@ -64,8 +64,11 @@ git clone https://github.com/wbthomason/packer.nvim\
  `  sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
  ` 
  
- To setup any language server , follow this guide https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md and search up the needed LSP. For example if I needed clangd's lsp server
- ![image](https://user-images.githubusercontent.com/59060246/111027526-d43f5780-8416-11eb-87d2-6f85f5f2be6f.png) .
+ To setup any language server , follow this guide https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md and search up the needed LSP. For example if I needed clangd's lsp server : 
+ 
+ <kbd>
+ <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/wiTree.png">
+  </kbd>
  
 
   I'd install it first and add its setup line ( require'lspconfig'.clangd.setup{} ) in /lua/nvim-lspconfig/lua.lua file .
