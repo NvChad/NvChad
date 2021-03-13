@@ -17,4 +17,5 @@ nvim-web-devicons , lua fork of vim devicons which lets me change icons of filet
 - gitsigns.nvim , to show git signs of a repo on the signcolumn to indicate diffs/changes etc  (needs plenary.nvim)
 - nvim-bufferline.lua , as a top bufferline like thing which lets me switch tabs , close them.
 - nvim-treesitter' , better syntax highlighting for programming languages.
+- nvim-lspkind , for lil icons on completion items
 
