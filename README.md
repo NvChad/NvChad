@@ -1,4 +1,4 @@
-The config is complete but still WIP as Im new to lua and slowly learning stuffs , so I'll keep adding new features like snippets etc and clean the config!
+The config is complete but still WIP as Im new to lua and slowly learning vim stuffs , so I'll keep adding new features like snippets etc and clean the config!
 
 # Screenshots
 
@@ -30,6 +30,13 @@ The config is complete but still WIP as Im new to lua and slowly learning stuffs
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/image.png">
  
 - nvim-treesitter' , better syntax highlighting for programming languages ( my config just has html,css,js support for now ). 
+
+ without Treesitter 
+ <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/woTree.png">
+ 
+ with Treesitter 
+ <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/wiTree.png">
+
 
 # Clone my setup
 
