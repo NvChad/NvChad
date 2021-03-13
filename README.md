@@ -21,6 +21,8 @@ some cool lua plugins I use
 
 
 - nvim-tree.lua , a fast file tree 
+- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimtree.png">
+
 - galaxyline , as statusline 
 - gitsigns.nvim , to show git signs of a repo on the signcolumn to indicate diffs/changes etc  (needs plenary.nvim)
 - nvim-bufferline.lua , as a top bufferline like thing which lets me switch tabs , close them.
