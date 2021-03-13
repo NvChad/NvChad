@@ -1,3 +1,5 @@
+The config is complete but still WIP as Im new to lua and slowly learning stuffs , so I'll keep adding new features like snippets etc and clean the config!
+
 # Screenshots
 
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/initialNvim.png">
