@@ -1,37 +1,38 @@
 -- load plugins
-require('pluginsList.lua')
-require('web-devicons.lua')
+require("pluginsList.lua")
+require("web-devicons.lua")
 
-require('utils.lua')
-require('nvimTree.lua')
-require('bufferline.lua')
-require('statusline.lua')
-require('telescope-nvim.lua')
+require("utils.lua")
+require("nvimTree.lua")
+require("bufferline.lua")
+require("statusline.lua")
+require("telescope-nvim.lua")
 
 -- lsp
-require('nvim-lspconfig.lua')
-require('nvim-compe.lua')
-require('coc.lua')
+require("nvim-lspconfig.lua")
+require("nvim-compe.lua")
+require("coc.lua")
 
-require('gitsigns.lua')
+require("gitsigns.lua")
 
-require'colorizer'.setup()
+require "colorizer".setup()
 
 local cmd = vim.cmd
 local g = vim.g
 local indent = 2
 
-cmd 'colorscheme base16-onedark'                      
-cmd 'syntax enable'
-cmd 'syntax on'
+cmd "colorscheme base16-onedark"
+cmd "syntax enable"
+cmd "syntax on"
 
 g.auto_save = 1
-g.mapleader = ' '
 
-require('treesitter.lua')
-require('mappings.lua')
+g.mapleader = " "
 
--- highlights 
+require("treesitter.lua")
+require("mappings.lua")
+
+-- highlights
 cmd("hi LineNr guibg=NONE")
 cmd("hi SignColumn guibg=NONE")
 cmd("hi VertSplit guibg=NONE")
@@ -44,14 +45,16 @@ cmd("highlight TelescopeBorder   guifg=#3e4451")
 cmd("highlight TelescopePromptBorder   guifg=#3e4451")
 cmd("highlight TelescopeResultsBorder  guifg=#3e4451")
 cmd("highlight TelescopePreviewBorder  guifg=#525865")
-cmd("highlight PmenuSel  guibg=#BBE67E")
+cmd("highlight PmenuSel  guibg=#98c379")
 
--- tree folder name , icon color 
+-- tree folder name , icon color
 cmd("highlight NvimTreeFolderIcon guifg = #61afef")
 cmd("highlight NvimTreeFolderName guifg = #61afef")
 
-require('nvim-autopairs').setup()
+require("nvim-autopairs").setup()
 
-require('lspkind').init({
-         File = ' ',
-})
+require("lspkind").init(
+    {
+        File = " "
+    }
+)
