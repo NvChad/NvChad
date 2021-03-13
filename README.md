@@ -53,16 +53,17 @@ The config is complete but still WIP as Im new to lua and slowly learning vim st
 - Install neovim-nightly , also use a nerdfont on your terminal.
 - Install packer.nvim 
 
-` 
+```shell
 git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
- `
+```
  
  - Open neovim and install all plugins , :PackerInstall and :TSUpdate 
  - Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!) 
  
- `  sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
- ` 
+ ``` 
+ sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
+ ```
  
  To setup any language server , follow this guide https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md and search up the needed LSP. For example if I needed clangd's lsp server : 
  
