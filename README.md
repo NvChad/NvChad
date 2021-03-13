@@ -27,4 +27,15 @@ slowly migrating to init.lua and still WIP! so use config from neovim_vimscripto
 - nvim-web-devicons , lua fork of vim devicons which lets me change icons of filetypes
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/image.png">
  
-- nvim-treesitter' , better syntax highlighting for programming languages. 
+- nvim-treesitter' , better syntax highlighting for programming languages ( my config just has html,css,js support for now ). 
+
+# clone my setup
+
+- install neovim-nightly , also use a nerdfont on your terminal.
+- install packer.nvim 
+` git clone https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
+ 
+ - open neovim and install all plugins , :PackerInstall
+ - install language servers and prettier ( for autocompletion etc and code formatting ) 
+ `sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier` 
