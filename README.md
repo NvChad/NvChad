@@ -31,11 +31,13 @@ slowly migrating to init.lua and still WIP! so use config from neovim_vimscripto
 
 # clone my setup
 
-- install neovim-nightly , also use a nerdfont on your terminal.
-- install packer.nvim 
+- Install neovim-nightly , also use a nerdfont on your terminal.
+- Install packer.nvim 
+
 ` git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
  
- - open neovim and install all plugins , :PackerInstall and :TSUpdate 
- - install language servers and prettier ( for autocompletion etc and code formatting ) 
+ - Open neovim and install all plugins , :PackerInstall and :TSUpdate 
+ - Install language servers and prettier ( for autocompletion etc and code formatting ) 
+ 
  `sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier` 
