@@ -58,5 +58,5 @@ git clone https://github.com/wbthomason/packer.nvim\
  ![image](https://user-images.githubusercontent.com/59060246/111027526-d43f5780-8416-11eb-87d2-6f85f5f2be6f.png) .
  
 
-  I'd install it first and add its setup line ( require'lspconfig'.clangd.setup{} ) in /lua/lsp_config/lua.lua file .
+  I'd install it first and add its setup line ( require'lspconfig'.clangd.setup{} ) in /lua/nvim-lspconfig/lua.lua file .
  
