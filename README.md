@@ -5,7 +5,7 @@ slowly migrating to init.lua and still WIP! so use config from neovim_vimscripto
 
 # screenshots
 
-<img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice1.png">
+<img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/initialNvim.png">
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice2.png">
 
 # Some VERY COOL lua plugins I use 
