@@ -13,6 +13,11 @@ The config is complete but still WIP as Im new to lua and slowly learning stuffs
 - nvim-tree.lua , a fast file tree 
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimtree.png">
  
+- telescope-nvim , a fuzzy file finder , picker , sorter , previewer and much more!
+ <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/tel.png">
+ <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/telmedia.png">
+
+
 - galaxyline , a statusline plugin
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/statusline.png">
  
@@ -39,6 +44,7 @@ git clone https://github.com/wbthomason/packer.nvim\
  - Open neovim and install all plugins , :PackerInstall and :TSUpdate 
  - Install language servers and prettier ( for autocompletion etc and code formatting ) 
  
- `
+ `Install nodejs .
+ 
  sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
  ` 
