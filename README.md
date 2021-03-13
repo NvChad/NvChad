@@ -2,40 +2,40 @@ The config is complete but still WIP as Im new to lua and slowly learning vim st
 
 # Screenshots
 
-<img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/initialNvim.png">
-<img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice2.png">
+<kbd>  <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/initialNvim.png"></kbd>
+<kbd><img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice2.png"></kbd>
 
 # Some VERY COOL lua plugins I use 
 
 - nvim-lspkind , for showing lil icons/pictograms on completion items
- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/lspkind.png">
+ <kbd><img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/lspkind.png"></kbd>
  
 - nvim-tree.lua , a fast file tree 
- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimtree.png">
+ <kbd><img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimtree.png"></kbd>
  
 - telescope-nvim , a fuzzy file finder , picker , sorter , previewer and much more!
- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/tel.png">
- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/telmedia.png">
+<kbd> <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/tel.png"></kbd>
+<kbd> <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/telmedia.png"></kbd>
 
 
 - galaxyline , a statusline plugin
- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/statusline.png">
+ <kbd><img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/statusline.png"></kbd>
  
 - gitsigns.nvim , to show git signs of a repo on the signcolumn to indicate diffs/changes etc  (needs plenary.nvim)
 
 - nvim-bufferline.lua , as a top bufferline like thing which lets me handle tabs like switching , closing tabs.
- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/bufferline.png">
+<kbd> <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/bufferline.png"></kbd>
  
 - nvim-web-devicons , lua fork of vim devicons which lets me change icons of filetypes
- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/image.png">
+<kbd> <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/image.png"></kbd>
  
 - nvim-treesitter , better syntax highlighting for programming languages ( my config just has html,css,js support for now ). 
 
  without Treesitter 
- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/woTree.png">
+<kbd> <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/woTree.png"></kbd>
  
  with Treesitter 
- <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/wiTree.png">
+<kbd> <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/wiTree.png"></kbd>
 
 # Some guides to migrate to init.lua!
 
@@ -70,6 +70,7 @@ git clone https://github.com/wbthomason/packer.nvim\
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/clang.png">
   </kbd>
  
+ 
+ 
 
   I'd install it first and add its setup line ( require'lspconfig'.clangd.setup{} ) in /lua/nvim-lspconfig/lua.lua file .
- 
