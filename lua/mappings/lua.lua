@@ -8,3 +8,7 @@ end
 
 -- keybind list
 map("", "<leader>c", '"+y')
+
+-- open terminals  
+map("n", "<C-b>" , [[<Cmd> vnew term://bash<CR>]] , opt) -- split term vertically , over the right  
+map("n", "<C-x>" , [[<Cmd> split term://bash | resize 10 <CR>]] , opt) -- split term vertically , over the right  
