@@ -74,4 +74,4 @@ git clone https://github.com/wbthomason/packer.nvim\
  
  
 
-  I'd install it first and add its setup line ( require'lspconfig'.clangd.setup{} ) in /lua/nvim-lspconfig/lua.lua file .
+  I'd install it first and add its setup line ( require'lspconfig'.clangd.setup{} ) in /lua/nvim-lspconfig/lua.lua file . I will organise the config slowly and soon add a list of important mappings used in my config , on this readme so it might get easy for some :) 
