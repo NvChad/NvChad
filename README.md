@@ -57,10 +57,11 @@ The config is complete but still WIP as Im new to lua and slowly learning vim st
 git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
+
  
  - Open neovim and install all plugins , :PackerInstall and :TSUpdate 
  - Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!) 
- 
+ - copy all config files in from this repo except ( plugin folder )
  ``` 
  sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
  ```
