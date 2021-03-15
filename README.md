@@ -70,10 +70,9 @@ Better syntax highlighting for programming languages ( my config just has html,c
 git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-
+ - copy all config files in from this repo except ( plugin folder as it has config related to my system's username! )
  - Open neovim and install all plugins , :PackerInstall and :TSUpdate 
  - Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!) 
- - copy all config files in from this repo except ( plugin folder as it has config related to my system's username! )
  ``` 
  sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
  ```
