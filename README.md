@@ -1,20 +1,20 @@
 
-The config is complete but still work in progress as I am new to lua and slowly learning vim stuffs, so I'll keep adding new features like snippets etc and clean the config!
+The config is complete but still work in progress as I am new to lua and slowly learning vim stuffs. I'll keep adding new features like snippets etc and clean the config ,  make neovim (cli version) as functional as an IDE while being eyecandy.
 
 # Screenshots -
 
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/initialNvim.png"><hr>
 <kbd><img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice2.png"></kbd><hr>
 
-# Cool Plugins - 
+# Very Useful lua plugins to used in my config - 
 
 #### lspkind-nvim
-This tiny plugin adds vscode-like pictograms to neovim built-in lsp:
+This tiny plugin adds vscode-like pictograms to neovim built-in lsp completion items :
 
  <kbd><img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/lspkind.png"></kbd><hr>
  
 #### nvim-tree.lua 
-A fast and efficient file tree: 
+fast file tree : 
 
  <kbd><img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimtree.png"></kbd><hr>
  
@@ -25,7 +25,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 
 ### galaxyline -
-A statusline plugin: 
+fastest statusline plugin I've used so far: 
  <kbd><img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/statusline.png"></kbd><hr>
  
 ### gitsigns.nvim -
@@ -84,7 +84,10 @@ git clone https://github.com/wbthomason/packer.nvim\
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/clang.png">
   </kbd>
 
-  I'd install it first and add its setup line ( require'lspconfig'.clangd.setup{} ) in /lua/nvim-lspconfig/lua.lua file . I will organise the config slowly and soon add a list of important mappings used in my config , on this readme so it might get easy for some :) 
+  I'd install it first and add its setup line :
+  `` -- in /lua/nvim-lspconfig/lua.lua file 
+  
+       require'lspconfig'.clangd.setup{}  `` 
   
  # Default Mappings to make stuffs easier!
  
