@@ -71,10 +71,9 @@ git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
- 
  - Open neovim and install all plugins , :PackerInstall and :TSUpdate 
  - Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!) 
- - copy all config files in from this repo except ( plugin folder )
+ - copy all config files in from this repo except ( plugin folder as it has config related to my system's username! )
  ``` 
  sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
  ```
@@ -84,12 +83,27 @@ git clone https://github.com/wbthomason/packer.nvim\
  <kbd>
  <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/clang.png">
   </kbd>
- 
- 
- 
 
   I'd install it first and add its setup line ( require'lspconfig'.clangd.setup{} ) in /lua/nvim-lspconfig/lua.lua file . I will organise the config slowly and soon add a list of important mappings used in my config , on this readme so it might get easy for some :) 
   
+ # Default Mappings to make stuffs easier!
+ 
+ <kbd> space </kbd> is the leader key 
+ 
+ - <kbd> Ctrl </kbd>  <kbd> b </kbd> Open terminal vertically over right
+ - <kbd> Ctrl </kbd>  <kbd> x </kbd> Open terminal horizontally below the current window 
+ - <kbd> Ctrl </kbd>  <kbd> b </kbd> toggle neovim tree 
+ - <kbd> Ctrl </kbd>  <kbd> a </kbd> copies everything in the current file 
+ - select any text + <kbd> y </kbd> copies the selected text 
+ - leader + <kbd> f </kbd>  <kbd> b </kbd> open all buffers , with  telescope 
+ - leader + <kbd> f </kbd>  <kbd> p </kbd> search and preview images with telescope 
+ - leader + <kbd> f </kbd>  <kbd> f </kbd> find files in the current DIR , with telescope 
+ - leader + <kbd> f </kbd>  <kbd> o </kbd> open recently edited files , with telescope 
+ - leader + <kbd> f </kbd>  <kbd> f </kbd> find files in the current DIR , with telescope 
+ - leader + <kbd> f </kbd>  <kbd> h </kbd> opens up a manpage like thing but for all vim related things , with telescope 
+ - leader + <kbd> f </kbd>  <kbd> m </kbd>  formats or beautifies the code in current window via neoformat
+  (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check this <a> https://github.com/sbdchd/neoformat</a>)
+ 
  # Troubleshooting -
  
  ![image](https://user-images.githubusercontent.com/59060246/111059898-f096cf00-84be-11eb-977a-f91d622ee5b9.png)
