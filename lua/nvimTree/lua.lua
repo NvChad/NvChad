@@ -3,7 +3,7 @@ vim.cmd [[packadd nvim-tree.lua]]
 vim.o.termguicolors = true
 
 vim.g.nvim_tree_side = "left"
-vim.g.nvim_tree_width = 24
+vim.g.nvim_tree_width = 25
 vim.g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
 vim.g.nvim_tree_auto_open = 0
 vim.g.nvim_tree_auto_close = 0
