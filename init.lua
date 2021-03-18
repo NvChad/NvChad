@@ -60,5 +60,3 @@ require("lspkind").init(
         File = " "
     }
 )
-
-
