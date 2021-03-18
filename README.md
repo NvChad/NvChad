@@ -6,7 +6,7 @@ The config is complete but still work in progress as I am new to lua and slowly 
 <img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/initialNvim.png"><hr>
 <kbd><img src ="https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/nvimRice2.png"></kbd><hr>
 
-# Very Useful lua plugins to used in my config - 
+# Very Useful lua plugins used in my config - 
 
 #### lspkind-nvim
 This tiny plugin adds vscode-like pictograms to neovim built-in lsp completion items :
@@ -104,7 +104,12 @@ git clone https://github.com/wbthomason/packer.nvim\
  - leader + <kbd> f </kbd>  <kbd> f </kbd> find files in the current DIR , with telescope 
  - leader + <kbd> f </kbd>  <kbd> h </kbd> opens up a manpage like thing but for all vim related things , with telescope 
  - leader + <kbd> f </kbd>  <kbd> m </kbd>  formats or beautifies the code in current window via neoformat
-  (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check this <a> https://github.com/sbdchd/neoformat</a>)
+  (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check this <a> https://github.com/sbdchd/neoformat</a>).
+  
+ # TODO
+ 
+ - add snippets support 
+ - show statusline in inactive windows
  
  # Troubleshooting -
  
