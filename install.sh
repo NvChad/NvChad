@@ -2,8 +2,8 @@
 BASE=$(git rev-parse --show-toplevel)
 LSP_BIN_PATH=$HOME/.local/bin
 
-default_langs="ts rust"
-lsp_langs=${@:-"$default_langs"}
+default_lsp_langs="css html ts rust"
+lsp_langs=${@:-"$default_lsp_langs"}
 
 pfx="~~~~~ "
 heading() {
@@ -46,12 +46,24 @@ echo
 fn_exists() { declare -F "$1" > /dev/null; }
 warn_path=false
 
-install_ts() {
+install_node_deps () {
   if [[ -z $(which npm) ]]; then
     echo "npm not installed"
     return
   fi
-  npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
+  npm install -g $@
+}
+
+install_ts() {
+  install_node_deps typescript typescript-language-server prettier
+}
+
+install_html() {
+  install_node_deps vscode-html-languageserver-bin
+}
+
+install_css() {
+  install_node_deps vscode-css-languageserver-bin
 }
 
 install_rust() {
