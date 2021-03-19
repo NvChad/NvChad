@@ -64,6 +64,7 @@ Better syntax highlighting for programming languages ( my config just has html,c
 # Clone my setup - 
 
 - Install neovim-nightly , also use a nerdfont on your terminal.
+- run the install.sh script as root or copy the configs manually : 
 - Install packer.nvim 
 
 ```shell
