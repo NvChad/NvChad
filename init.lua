@@ -60,3 +60,15 @@ require("lspkind").init(
         File = " "
     }
 )
+
+cmd("hi CustomExplorerBg guibg=#242830")
+
+vim.api.nvim_exec(
+    [[
+augroup NvimTree 
+  au!
+  au FileType NvimTree setlocal winhighlight=Normal:CustomExplorerBg
+ augroup END
+ ]],
+    false
+)
