@@ -50,7 +50,26 @@ Better syntax highlighting for programming languages ( my config just has html,c
  with Treesitter :
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/personal-backup/master/rice%20flex/wiTree.png"></kbd><hr>
 
-# Guides to migrate to init.lua - 
+# Features
+
+- File navigation with Nvimtree 
+- mouse works
+- managing tabs with bufferline 
+- autosave
+- icons on nvimtree , telescope , bufferline/statusline and almost everywhere! with nvim-web-devicons
+- minimal status line ( galaxyline)
+- gitsigns (colored bars in my config)
+- using nvim-lsp
+- nvim-lspconfig for nvim-lps configuration
+- nvim-compe for autocompletion 
+- lspkind to show pictograms on autocompletion items
+- telescope for file finding , picking , previewing (files and even images)
+- nvim-treesitter for syntax highlighting 
+- nvim-autopairs , for autolosing braces and stuffs 
+- neoformat for prettifying / formatting code 
+- packer.nvim as package manager
+
+# Guides to migrate your nvim configs to init.lua - 
 
 - https://github.com/nanotee/nvim-lua-guide
 
@@ -59,7 +78,6 @@ Better syntax highlighting for programming languages ( my config just has html,c
 - https://oroques.dev/notes/neovim-init/ 
 
 - https://icyphox.sh/blog/nvim-lua/
-
 
 # Clone my setup - 
 
@@ -118,4 +136,3 @@ git clone https://github.com/wbthomason/packer.nvim\
  
 if you get any errors with packer.nvim , then remove the ~/.config/nvim/plugin/packer_nvim.vim file since it just has file paths for my system 
 and re-install packer.nvim
-
