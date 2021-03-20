@@ -51,7 +51,7 @@ install_node_deps () {
     echo "npm not installed"
     return
   fi
-  npm install -g $@
+ sudo npm install -g $@
 }
 
 install_ts() {
