@@ -136,3 +136,7 @@ git clone https://github.com/wbthomason/packer.nvim\
  
 if you get any errors with packer.nvim , then remove the ~/.config/nvim/plugin/packer_nvim.vim file since it just has file paths for my system 
 and re-install packer.nvim
+
+ # Contact -  
+ - My linux / unix related ricing community: https://t.me/DE_WM (telegram)
+ - Me: @siduck (telegram)
