@@ -57,6 +57,26 @@ require "nvim-web-devicons".setup {
             color = "#C8CCD4",
             name = "out"
         },
+        Dockerfile = {
+            icon = "",
+            color = "#b8b5ff",
+            name = "Dockerfile"
+        },
+        rb = {
+            icon = "",
+            color = "#ff75a0",
+            name = "rb"
+        },
+        vue = {
+            icon = "﵂",
+            color = "#7eca9c",
+            name = "vue"
+        },
+        py = {
+            icon = "",
+            color = "#a7c5eb",
+            name = "py"
+        },
         toml = {
             icon = "",
             color = "#61afef",
