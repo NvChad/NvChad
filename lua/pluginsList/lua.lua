@@ -14,7 +14,6 @@ return require("packer").startup(
         use {"nvim-treesitter/nvim-treesitter"}
         use {"chriskempson/base16-vim"}
         use {"norcalli/nvim-colorizer.lua"}
-        use { 'Yggdroot/indentLine'}
         use {"ryanoasis/vim-devicons"}
         use {"sbdchd/neoformat"}
         use {"neovim/nvim-lspconfig"}
@@ -26,5 +25,6 @@ return require("packer").startup(
         use {"nvim-telescope/telescope.nvim"}
         use {"nvim-telescope/telescope-media-files.nvim"}
         use {"nvim-lua/popup.nvim"}
+        use {"lukas-reineke/indent-blankline.nvim", branch = 'lua'}
     end
 )

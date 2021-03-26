@@ -1,4 +1,4 @@
--- load plugins
+-- load all plugins
 require("pluginsList.lua")
 require("web-devicons.lua")
 
@@ -8,27 +8,37 @@ require("bufferline.lua")
 require("statusline.lua")
 require("telescope-nvim.lua")
 
+require("gitsigns.lua")
+require "colorizer".setup()
+
 -- lsp
 require("nvim-lspconfig.lua")
 require("nvim-compe.lua")
 
-require("gitsigns.lua")
-
-require "colorizer".setup()
-
 local cmd = vim.cmd
 local g = vim.g
-local indent = 2
+
+g.mapleader = " "
+g.auto_save = 1
+
+-- colorscheme
 
 cmd "colorscheme base16-onedark"
 cmd "syntax enable"
 cmd "syntax on"
 
-g.auto_save = 1
-g.indentLine_enabled = 1
-g.indentLine_char_list = {"▏"}
+-- blankline
 
-g.mapleader = " "
+local indent = 2
+
+g.indentLine_enabled = 1
+g.indent_blankline_char = "▏"
+
+cmd("hi IndentBlanklineChar guifg=#373b43")
+
+g.indent_blankline_filetype_exclude = {"help", "terminal"}
+g.indent_blankline_show_trailing_blankline_indent = false
+g.indent_blankline_show_first_indent_level = false
 
 require("treesitter.lua")
 require("mappings.lua")
@@ -56,13 +66,13 @@ cmd("hi NvimTreeIndentMarker guifg=#545862")
 cmd("hi Normal guibg=NONE ctermbg=NONE")
 
 require("nvim-autopairs").setup()
-
 require("lspkind").init(
     {
         File = " "
     }
 )
 
+-- nvimTree bg color
 cmd("hi CustomExplorerBg guibg=#242830")
 
 vim.api.nvim_exec(

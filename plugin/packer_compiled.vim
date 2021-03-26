@@ -44,6 +44,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
+  ["indent-blankline.nvim"] = {
+    loaded = true,
+    path = "/home/sid/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
+  },
   indentLine = {
     loaded = true,
     path = "/home/sid/.local/share/nvim/site/pack/packer/start/indentLine"
