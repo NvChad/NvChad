@@ -79,6 +79,7 @@ with Treesitter :
 - nvim-autopairs , for autolosing braces and stuffs
 - neoformat for prettifying / formatting code
 - packer.nvim as package manager
+- indent-blankline.Nvim for indentlines 
 
 # Guides to migrate your nvim configs to init.lua -
 
