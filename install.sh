@@ -23,14 +23,24 @@ get_platform() {
 }
 
 heading "Linking config"
-for f in `find -E . -regex ".*\.vim$|.*\.lua$"`; do
-  p=${f#*/}
-  echo -e '\t' ${p}
-  path=~/.config/nvim/${p}
-  rm -rf ~/.config/nvim/${p}
-  mkdir -p $(dirname "${path}")
-  ln -s ${BASE}/${p} ~/.config/nvim/${p}
-done
+heading "old nvim config will be deleted"
+
+# copying config 
+
+cd .. && cp -r neovim-dots ~/.config
+mv ~/.config/neovim-dots ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+rm -rf ~/.config/nvim/install.sh
+rm -rf ~/.config/nvim/README.md
+
+#for f in `find -E . -regex ".*\.vim$|.*\.lua$"`; do
+#  p=${f#*/}
+#  echo -e '\t' ${p}
+#  path=~/.config/nvim/${p}
+#  rm -rf ~/.config/nvim/${p}
+#  mkdir -p $(dirname "${path}")
+#  ln -s ${BASE}/${p} ~/.config/nvim/${p}
+#done
 
 if [[ ! -e ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
   heading "Installing packer"
@@ -39,8 +49,8 @@ if [[ ! -e ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
 fi
 
 heading "Installing plugins"
-nvim --headless +PackerInstall +qa
-nvim --headless +TSUpdate +qa
+#nvim --headless +PackerInstall +qa
+#nvim --headless +TSUpdate +qa
 echo
 
 fn_exists() { declare -F "$1" > /dev/null; }
