@@ -22,16 +22,21 @@ get_platform() {
   echo $platform
 }
 
+heading "installing packer"
+
+if [[ ! -e ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
+  heading "Installing packer"
+  git clone https://github.com/wbthomason/packer.nvim\
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
+
 heading "Linking config"
-heading "old nvim config will be deleted"
+heading "old nvim config will be deleted so watchout :0"
 
 # copying config 
 
-cd .. && cp -r neovim-dots ~/.config
-mv ~/.config/neovim-dots ~/.config/nvim
-rm -rf ~/.config/nvim/.git
-rm -rf ~/.config/nvim/install.sh
-rm -rf ~/.config/nvim/README.md
+rm -rf ~/.config/nvim/ && mkdir ~/.config/nvim
+cp -r init.lua ~/.config/nvim && cp -r lua ~/.config/nvim 
 
 #for f in `find -E . -regex ".*\.vim$|.*\.lua$"`; do
 #  p=${f#*/}
@@ -42,13 +47,7 @@ rm -rf ~/.config/nvim/README.md
 #  ln -s ${BASE}/${p} ~/.config/nvim/${p}
 #done
 
-if [[ ! -e ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
-  heading "Installing packer"
-  git clone https://github.com/wbthomason/packer.nvim\
-    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-fi
-
-heading "Installing plugins"
+#heading "Installing plugins"
 #nvim --headless +PackerInstall +qa
 #nvim --headless +TSUpdate +qa
 echo
