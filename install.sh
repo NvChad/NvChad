@@ -2,8 +2,8 @@
 BASE=$(git rev-parse --show-toplevel)
 LSP_BIN_PATH=$HOME/.local/bin
 
-supported_lsp_langs="css html ts rust"
-lsp_langs=${@:-"$supported_lsp_langs"}
+default_lsp_langs="css html ts rust"
+lsp_langs=${@:-"$default_lsp_langs"}
 
 pfx="~~~~~ "
 heading() {
@@ -35,8 +35,8 @@ heading "old nvim config will be deleted so watchout :0"
 
 # copying config 
 
-#rm -rf ~/.config/nvim/ && mkdir ~/.config/nvim
-#cp -r init.lua ~/.config/nvim && cp -r lua ~/.config/nvim 
+rm -rf ~/.config/nvim/ && mkdir ~/.config/nvim
+cp -r init.lua ~/.config/nvim && cp -r lua ~/.config/nvim 
 
 #for f in `find -E . -regex ".*\.vim$|.*\.lua$"`; do
 #  p=${f#*/}
@@ -86,11 +86,14 @@ install_rust() {
   fi
 }
 
-echo 'select languages you would be developing in.'
-select lang in ${lsp_langs}; do
-  heading "Installing $lang language server"
-  install_$lang
-  echo 
+for lang in ${lsp_langs}; do
+  if fn_exists install_$lang ; then
+    heading "Installing $lang language server"
+    install_$lang
+  else
+    echo $lang setup not implemented
+    echo 
+  fi
 done
 
 if [[ ${warn_path} = true ]]; then
