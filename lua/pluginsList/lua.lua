@@ -5,6 +5,7 @@ return require("packer").startup(
     function()
         use {"wbthomason/packer.nvim", opt = true}
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+
         use "kyazdani42/nvim-web-devicons"
         use "kyazdani42/nvim-tree.lua"
         use "nvim-lua/plenary.nvim"
@@ -26,5 +27,6 @@ return require("packer").startup(
         use "nvim-telescope/telescope.nvim"
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
+        use "karb94/neoscroll.nvim"
     end
 )

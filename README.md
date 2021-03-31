@@ -84,6 +84,7 @@ with Treesitter :
 - neoformat for prettifying / formatting code
 - packer.nvim as package manager
 - indent-blankline.Nvim for indentlines
+- smooth scrolling
 
 # Guides to migrate your nvim configs to init.lua -
 
@@ -142,6 +143,7 @@ I'd install it first and add its setup line :
 - leader + <kbd> f </kbd> <kbd> h </kbd> opens up a manpage like thing but for all vim related things , with telescope
 - leader + <kbd> f </kbd> <kbd> m </kbd> formats or beautifies the code in current window via neoformat
   (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check this <a> https://github.com/sbdchd/neoformat</a>).
+- `<C-u>`, `<C-d>`, `<C-b>`, `<C-f>`, `<C-y>` and `<C-e>` : Smooth scrolling for window movement commands.
 
 # TODO
 
