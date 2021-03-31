@@ -2,7 +2,7 @@
 BASE=$(git rev-parse --show-toplevel)
 LSP_BIN_PATH=$HOME/.local/bin
 
-default_lsp_langs="css html ts rust"
+default_lsp_langs="css html ts rust python"
 lsp_langs=${@:-"$default_lsp_langs"}
 
 pfx="~~~~~ "
@@ -63,6 +63,14 @@ install_node_deps () {
  sudo npm install -g $@
 }
 
+install_python_deps () {
+  if [[ -z $(which pip) ]]; then
+    echo "python/pip not installed"
+    return
+  fi
+ sudo python3 -m pip install $@
+}
+
 install_ts() {
   install_node_deps typescript typescript-language-server prettier
 }
@@ -84,6 +92,10 @@ install_rust() {
   else
     echo "already installed"
   fi
+}
+
+install_python(){
+  install_python_deps 'python-language-server[all]'
 }
 
 for lang in ${lsp_langs}; do

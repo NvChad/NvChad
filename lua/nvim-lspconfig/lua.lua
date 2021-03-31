@@ -36,9 +36,7 @@ function on_attach(client)
 
 end 
 
-local servers = { "tsserver" }
+local servers = { "tsserver", "cssls", "pyls", "html" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
 end
-
-
