@@ -30,6 +30,10 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 adds indentline :
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/blanklineNvim.png"></kbd>
 
+using indenLine plugin on left and blanklineNvim on right
+
+<kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/blanklineVSindentline.png"></kbd>
+
 ### galaxyline -
 
 fastest statusline plugin I've used so far:
@@ -79,7 +83,7 @@ with Treesitter :
 - nvim-autopairs , for autolosing braces and stuffs
 - neoformat for prettifying / formatting code
 - packer.nvim as package manager
-- indent-blankline.Nvim for indentlines 
+- indent-blankline.Nvim for indentlines
 
 # Guides to migrate your nvim configs to init.lua -
 
