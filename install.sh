@@ -64,7 +64,11 @@ install_node_deps () {
 }
 
 install_python_deps () {
-  if [[ -z $(which pip) ]]; then
+  if [[ -z $(which pip) && $(which pip3) ]]; then
+    echo "python/pip not installed"
+    return
+  fi
+ sudo python3 -m pip install $@ ]]; then
     echo "python/pip not installed"
     return
   fi
