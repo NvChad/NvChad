@@ -64,7 +64,7 @@ install_node_deps () {
 }
 
 install_python_deps () {
-  if [[ -z $(which pip) && $(which pip3) ]]; then
+  if [[ -z $(which pip) && -z $(which pip3) ]]; then
     echo "python/pip not installed"
     return
   fi
