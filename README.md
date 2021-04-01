@@ -130,7 +130,7 @@ I'd install it first and add its setup line :
 
 <kbd> space </kbd> is the leader key
 
-- <kbd> Ctrl </kbd> <kbd> b </kbd> Open terminal vertically over right
+- <kbd> Ctrl </kbd> <kbd> l </kbd> Open terminal vertically over right
 - <kbd> Ctrl </kbd> <kbd> x </kbd> Open terminal horizontally below the current window
 - <kbd> Ctrl </kbd> <kbd> n </kbd> toggle neovim tree
 - <kbd> Ctrl </kbd> <kbd> a </kbd> copies everything in the current file
