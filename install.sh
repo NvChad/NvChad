@@ -35,7 +35,7 @@ heading "old nvim config will be deleted so watchout :0"
 
 # copying config 
 
-rm -rf ~/.config/nvim/ && mkdir ~/.config/nvim
+rm -rf ~/.config/nvim/ && mkdir -p ~/.config/nvim
 cp -r init.lua ~/.config/nvim && cp -r lua ~/.config/nvim 
 
 #for f in `find -E . -regex ".*\.vim$|.*\.lua$"`; do
