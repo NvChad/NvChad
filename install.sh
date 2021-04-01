@@ -60,7 +60,7 @@ install_node_deps () {
     echo "npm not installed"
     return
   fi
- sudo npm install -g $@
+  sudo npm install -g $@
 }
 
 install_python_deps () {
@@ -68,11 +68,7 @@ install_python_deps () {
     echo "python/pip not installed"
     return
   fi
- sudo python3 -m pip install $@ ]]; then
-    echo "python/pip not installed"
-    return
-  fi
- sudo python3 -m pip install $@
+  sudo python3 -m pip install $@
 }
 
 install_ts() {
