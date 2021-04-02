@@ -9,11 +9,9 @@ end
 -- copy any selected text with pressing y
 map("", "<leader>c", '"+y')
 
+-- OPEN TERMINALS --
+map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- open term over right
+map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) -- open term bottom
 
--- OPEN TERMINALS -- 
-
--- split term vertically , over the right
-map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt)
-
--- split term vertically , over the right
-map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt)
+-- COPY EVERYTHING --
+map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)

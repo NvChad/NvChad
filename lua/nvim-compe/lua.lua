@@ -43,6 +43,7 @@ local check_back_space = function()
     end
 end
 
+-- tab completion 
 
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
