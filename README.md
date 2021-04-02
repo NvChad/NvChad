@@ -65,7 +65,7 @@ without Treesitter :
 with Treesitter :
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/wiTree.png"></kbd><hr>
 
-#Config structure
+# Config structure
 
 ```
      nvim
