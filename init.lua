@@ -21,11 +21,13 @@ local g = vim.g
 g.mapleader = " "
 g.auto_save = 1
 
--- colorscheme
+-- colorscheme related stuff
 
-cmd "colorscheme base16-onedark"
 cmd "syntax enable"
 cmd "syntax on"
+
+local base16 = require "base16"
+base16(base16.themes["onedark"], true)
 
 -- blankline
 
