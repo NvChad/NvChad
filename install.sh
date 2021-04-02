@@ -35,7 +35,7 @@ heading "old nvim config will be deleted so watchout :0"
 
 # copying config 
 
-rm -rf ~/.config/nvim/ && mkdir ~/.config/nvim
+rm -rf ~/.config/nvim/ && mkdir -p ~/.config/nvim
 cp -r init.lua ~/.config/nvim && cp -r lua ~/.config/nvim 
 
 #for f in `find -E . -regex ".*\.vim$|.*\.lua$"`; do
@@ -60,15 +60,15 @@ install_node_deps () {
     echo "npm not installed"
     return
   fi
- sudo npm install -g $@
+  sudo npm install -g $@
 }
 
 install_python_deps () {
-  if [[ -z $(which pip) ]]; then
+  if [[ -z $(which pip) && -z $(which pip3) ]]; then
     echo "python/pip not installed"
     return
   fi
- sudo python3 -m pip install $@
+  sudo python3 -m pip install $@
 }
 
 install_ts() {
