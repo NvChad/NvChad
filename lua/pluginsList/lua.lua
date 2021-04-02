@@ -13,6 +13,7 @@ return require("packer").startup(
         use "nvim-lua/plenary.nvim"
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
+        use "glepnir/galaxyline.nvim"
         use "907th/vim-auto-save"
         use "nvim-treesitter/nvim-treesitter"
         use "norcalli/nvim-colorizer.lua"
@@ -28,5 +29,6 @@ return require("packer").startup(
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
         use "karb94/neoscroll.nvim"
+        
     end
 )
