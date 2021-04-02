@@ -65,6 +65,19 @@ without Treesitter :
 with Treesitter :
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/wiTree.png"></kbd><hr>
 
+#Config structure
+
+```
+     nvim
+      ├──init.lua
+      └──lua
+          └──foo
+              └──lua.lua
+```
+
+- The init.lua is used instead of init.vim.
+- The lua folder contains modules , in the example above "foo" could be considered as a module and it contains a lua.lua file in which you could write your config in lua , its like splitting the overall config into small bit . To load/source that "foo" module , you need to specify it in init.lua like this : require('foo.lua').
+
 # Features
 
 - File navigation with Nvimtree
