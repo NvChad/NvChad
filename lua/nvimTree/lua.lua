@@ -2,27 +2,29 @@ vim.cmd [[packadd nvim-tree.lua]]
 
 vim.o.termguicolors = true
 
-vim.g.nvim_tree_side = "left"
-vim.g.nvim_tree_width = 25
-vim.g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
-vim.g.nvim_tree_auto_open = 0
-vim.g.nvim_tree_auto_close = 0
-vim.g.nvim_tree_quit_on_open = 0
-vim.g.nvim_tree_follow = 1
-vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_hide_dotfiles = 1
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_root_folder_modifier = ":~"
-vim.g.nvim_tree_tab_open = 1
-vim.g.nvim_tree_allow_resize = 1
+local g = vim.g
 
-vim.g.nvim_tree_show_icons = {
+g.nvim_tree_side = "left"
+g.nvim_tree_width = 25
+g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
+g.nvim_tree_auto_open = 0
+g.nvim_tree_auto_close = 0
+g.nvim_tree_quit_on_open = 0
+g.nvim_tree_follow = 1
+g.nvim_tree_indent_markers = 1
+g.nvim_tree_hide_dotfiles = 1
+g.nvim_tree_git_hl = 1
+g.nvim_tree_root_folder_modifier = ":~"
+g.nvim_tree_tab_open = 1
+g.nvim_tree_allow_resize = 1
+
+g.nvim_tree_show_icons = {
     git = 1,
     folders = 1,
     files = 1
 }
 
-vim.g.nvim_tree_icons = {
+g.nvim_tree_icons = {
     default = " ",
     symlink = " ",
     git = {
@@ -55,7 +57,7 @@ vim.api.nvim_set_keymap(
     }
 )
 
-vim.g.nvim_tree_bindings = {
+g.nvim_tree_bindings = {
     ["<CR>"] = get_lua_cb("edit"),
     ["o"] = get_lua_cb("edit"),
     ["<2-LeftMouse>"] = get_lua_cb("edit"),

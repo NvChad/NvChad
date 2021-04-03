@@ -1,6 +1,7 @@
 local gl = require("galaxyline")
 local gls = gl.section
-gl.short_line_list = {" "}
+
+gl.short_line_list = {" "} -- keeping this table { } as empty will show inactive statuslines
 
 local colors = {
     bg = "#282c34",
@@ -31,7 +32,7 @@ gls.left[1] = {
 }
 
 gls.left[2] = {
-    ViMode = {
+    statusIcon = {
         provider = function()
             return "   "
         end,
@@ -168,7 +169,7 @@ gls.right[3] = {
 }
 
 gls.right[4] = {
-    SiMode = {
+    ViMode = {
         provider = function()
             local alias = {
                 n = "NORMAL",

@@ -6,9 +6,12 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- keybind list
+-- copy any selected text with pressing y
 map("", "<leader>c", '"+y')
 
--- open terminals  
-map("n", "<C-b>" , [[<Cmd> vnew term://bash<CR>]] , opt) -- split term vertically , over the right  
-map("n", "<C-x>" , [[<Cmd> split term://bash | resize 10 <CR>]] , opt) -- split term vertically , over the right  
+-- OPEN TERMINALS --
+map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- open term over right
+map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) -- open term bottom
+
+-- COPY EVERYTHING --
+map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
