@@ -123,7 +123,8 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 # Clone my setup -
 
 - Install neovim-nightly , also use a nerdfont on your terminal.
-- run the install.sh (this might work only on nix systems) or do it manually :
+- run the install.sh (this might work only on nix systems) and open neovim , do :PackerInstall 
+- or do it manually :
 
 - Install packer.nvim
 
