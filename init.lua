@@ -90,8 +90,10 @@ augroup NvimTree
     false
 )
 
+-- hide line numbers in terminal windows
 vim.api.nvim_exec([[
    au BufEnter term://* setlocal nonumber
 ]], false)
 
+-- inactive statuslines as thin splitlines
 cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#3e4451")
