@@ -39,21 +39,24 @@ g.indent_blankline_char = "▏"
 cmd("hi IndentBlanklineChar guifg=#373b43")
 
 g.indent_blankline_filetype_exclude = {"help", "terminal"}
+g.indent_blankline_buftype_exclude = {"terminal"}
+
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 
 require("treesitter.lua")
 require("mappings.lua")
 
--- highlights
+-- highlights --
 cmd("hi LineNr guibg=NONE")
 cmd("hi SignColumn guibg=NONE")
-cmd("hi VertSplit guibg=NONE")
+cmd("hi VertSplit guibg=NONE guifg=#3e4451")
 cmd("hi DiffAdd guifg=#81A1C1 guibg = none")
 cmd("hi DiffChange guifg =#3A3E44 guibg = none")
 cmd("hi DiffModified guifg = #81A1C1 guibg = none")
 cmd("hi EndOfBuffer guifg=#282c34")
 
+-- telescope stuff and popupmenu
 cmd("hi TelescopeBorder   guifg=#3e4451")
 cmd("hi TelescopePromptBorder   guifg=#3e4451")
 cmd("hi TelescopeResultsBorder  guifg=#3e4451")
@@ -87,10 +90,8 @@ augroup NvimTree
     false
 )
 
--- remove line n.os from terminal
 vim.api.nvim_exec([[
    au BufEnter term://* setlocal nonumber
 ]], false)
 
--- make inactive statuslines look thin
 cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#3e4451")
