@@ -86,3 +86,7 @@ augroup NvimTree
  ]],
     false
 )
+
+vim.api.nvim_exec([[
+   au BufEnter term://* setlocal nonumber
+]], false)
