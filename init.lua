@@ -87,6 +87,10 @@ augroup NvimTree
     false
 )
 
+-- remove line n.os from terminal
 vim.api.nvim_exec([[
    au BufEnter term://* setlocal nonumber
 ]], false)
+
+-- make inactive statuslines look thin
+cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#3e4451")
