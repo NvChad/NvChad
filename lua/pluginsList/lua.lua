@@ -20,6 +20,7 @@ return require("packer").startup(
         use "ryanoasis/vim-devicons"
         use "sbdchd/neoformat"
         use "neovim/nvim-lspconfig"
+        use "kabouzeid/nvim-lspinstall"
         use "hrsh7th/nvim-compe"
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"

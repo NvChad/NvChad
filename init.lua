@@ -13,6 +13,7 @@ require "colorizer".setup()
 
 -- lsp
 require("lspconfig.lua")
+require("nvim-lspinstall.lua")
 require("compe.lua")
 
 local cmd = vim.cmd
@@ -20,8 +21,6 @@ local g = vim.g
 
 g.mapleader = " "
 g.auto_save = 0
-
-vim.wo.relativenumber = true
 
 -- colorscheme related stuff
 
