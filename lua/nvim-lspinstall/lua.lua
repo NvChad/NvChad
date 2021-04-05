@@ -1,4 +1,4 @@
-function on_attach(client)
+local function on_attach(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
