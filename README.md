@@ -65,6 +65,17 @@ without Treesitter :
 with Treesitter :
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/wiTree.png"></kbd><hr>
 
+### nvim-base16 -
+
+contains a collection of all base16 themes for vim , plugin written in lua (comparison of base16-vim and nvim-base16):
+
+nvim-base16 doesnt even take time to load unlike base16-vim which was eating half of the loadup time! ( the below screenshot was taken and tested on my old pentium laptop , so results might differ)
+<kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvim-base16.png"></kbd><hr>
+
+(neovim loads pretty fast on ssds)
+
+<kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvim-startup.png"></kbd><hr>
+
 # Config structure
 
 ```
@@ -112,7 +123,9 @@ with Treesitter :
 # Clone my setup -
 
 - Install neovim-nightly , also use a nerdfont on your terminal.
-- run the install.sh script as root or copy the configs manually :
+- run the install.sh (this might work only on nix systems) and open neovim , do :PackerInstall 
+- or do it manually :
+
 - Install packer.nvim
 
 ```shell
@@ -120,9 +133,9 @@ git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
 
-- copy all config files in from this repo except ( plugin folder as it has config related to my system's username! )
-- Open neovim and install all plugins , :PackerInstall and :TSUpdate
-- Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!)
+- copy lua folder and init.lua into ~/.config/nvim
+- Open neovim and install all plugins , :PackerInstall (let treesitter install all its extensionsm
+- Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!) , this usually depends on the language support you want to add in your neovim config.
 
 ```
 sudo npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
@@ -162,13 +175,6 @@ I'd install it first and add its setup line :
 
 - add snippets support
 - show statusline in inactive windows
-
-# Troubleshooting -
-
-![image](https://user-images.githubusercontent.com/59060246/111059898-f096cf00-84be-11eb-977a-f91d622ee5b9.png)
-
-if you get any errors with packer.nvim , then remove the ~/.config/nvim/plugin/packer_nvim.vim file since it just has file paths for my system
-and re-install packer.nvim
 
 # Contact -
 
