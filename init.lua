@@ -79,9 +79,13 @@ cmd "hi DiffChange guifg =#3A3E44 guibg = none"
 cmd "hi DiffModified guifg = #81A1C1 guibg = none"
 
 require("nvim-autopairs").setup()
+
 require("lspkind").init(
     {
-        File = " "
+        with_text = true,
+        symbol_map = {
+            Folder = ""
+        }
     }
 )
 
