@@ -38,6 +38,13 @@ heading "old nvim config will be deleted so watchout :0"
 rm -rf ~/.config/nvim/ && mkdir -p ~/.config/nvim
 cp -r init.lua ~/.config/nvim && cp -r lua ~/.config/nvim 
 
+# change shell for nvim
+read -p "which shell do you use?: " shellname
+echo "$shellname"
+
+sed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
+echo "shell changed to $shellname on nvim successfully!"
+
 #for f in `find -E . -regex ".*\.vim$|.*\.lua$"`; do
 #  p=${f#*/}
 #  echo -e '\t' ${p}
