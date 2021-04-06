@@ -29,6 +29,8 @@ return require("packer").startup(
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
         use "karb94/neoscroll.nvim"
+
+        use "nekonako/xresources-nvim"
         
     end
 )

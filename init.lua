@@ -36,7 +36,7 @@ local indent = 2
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"
 
-cmd("hi IndentBlanklineChar guifg=#373b43")
+cmd("hi IndentBlanklineChar guifg=#2a2e36")
 
 g.indent_blankline_filetype_exclude = {"help", "terminal"}
 g.indent_blankline_buftype_exclude = {"terminal"}
@@ -48,25 +48,28 @@ require("treesitter.lua")
 require("mappings.lua")
 
 -- highlights --
-cmd("hi LineNr guibg=NONE")
+cmd("hi LineNr guifg=#383c44 guibg=NONE")
+cmd("hi Comment guifg=#3d4149")
+
 cmd("hi SignColumn guibg=NONE")
-cmd("hi VertSplit guibg=NONE guifg=#3e4451")
+cmd("hi VertSplit guibg=NONE guifg=#2a2e36")
 cmd("hi DiffAdd guifg=#81A1C1 guibg = none")
 cmd("hi DiffChange guifg =#3A3E44 guibg = none")
 cmd("hi DiffModified guifg = #81A1C1 guibg = none")
-cmd("hi EndOfBuffer guifg=#282c34")
+cmd("hi EndOfBuffer guifg=#1e222a")
 
 -- telescope stuff and popupmenu
-cmd("hi TelescopeBorder   guifg=#3e4451")
-cmd("hi TelescopePromptBorder   guifg=#3e4451")
-cmd("hi TelescopeResultsBorder  guifg=#3e4451")
+cmd("hi TelescopeBorder   guifg=#2a2e36")
+cmd("hi TelescopePromptBorder   guifg=#2a2e36")
+cmd("hi TelescopeResultsBorder  guifg=#2a2e36")
 cmd("hi TelescopePreviewBorder  guifg=#525865")
-cmd("hi PmenuSel  guibg=#98c379")
+cmd("hi PmenuSel guibg=#98c379")
+cmd("hi Pmenu  guibg=#282c34")
 
 -- tree folder name , icon color
 cmd("hi NvimTreeFolderIcon guifg = #61afef")
 cmd("hi NvimTreeFolderName guifg = #61afef")
-cmd("hi NvimTreeIndentMarker guifg=#545862")
+cmd("hi NvimTreeIndentMarker guifg=#383c44")
 
 cmd("hi Normal guibg=NONE ctermbg=NONE")
 
@@ -78,17 +81,6 @@ require("lspkind").init(
 )
 
 -- nvimTree bg color
-cmd("hi CustomExplorerBg guibg=#242830")
-
-vim.api.nvim_exec(
-    [[
-augroup NvimTree 
-  au!
-  au FileType NvimTree setlocal winhighlight=Normal:CustomExplorerBg
- augroup END
- ]],
-    false
-)
 
 -- hide line numbers in terminal windows
 vim.api.nvim_exec([[
@@ -96,4 +88,7 @@ vim.api.nvim_exec([[
 ]], false)
 
 -- inactive statuslines as thin splitlines
-cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#3e4451")
+cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
+
+-- smooth scroll
+require("neoscroll").setup()
