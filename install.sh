@@ -3,7 +3,20 @@ BASE=$(git rev-parse --show-toplevel)
 LSP_BIN_PATH=$HOME/.local/bin
 
 default_lsp_langs="css html ts rust python"
-lsp_langs=${@:-"$default_lsp_langs"}
+lsp_langs=""
+
+choose_langs() {
+  read -p "Would you like to install $1 lsp?(y/n)" lang
+  if [ "$lang" = "y" ]
+  then
+    lsp_langs+="$1 "
+  fi
+}
+
+for lang in $default_lsp_langs
+do
+  choose_langs $lang
+done
 
 pfx="~~~~~ "
 heading() {
