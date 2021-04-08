@@ -46,8 +46,9 @@ require("treesitter.lua")
 require("mappings.lua")
 
 -- highlights --
-cmd "hi LineNr guifg=#383c44 guibg=NONE"
-cmd "hi Comment guifg=#3d4149"
+cmd "hi LineNr guifg=#42464e guibg=NONE"
+cmd "hi Comment guifg=#42464e"
+
 cmd "hi SignColumn guibg=NONE"
 cmd "hi VertSplit guibg=NONE guifg=#2a2e36"
 cmd "hi EndOfBuffer guifg=#1e222a"
