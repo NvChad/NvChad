@@ -15,3 +15,6 @@ map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) -- open ter
 
 -- COPY EVERYTHING --
 map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
+
+-- toggle line number
+map("n", "<S-n>", [[ <Cmd> set nu! <CR>]], opt)
