@@ -87,7 +87,10 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 ```
 
 - The init.lua is used instead of init.vim.
-- The lua folder contains modules , in the example above "foo" could be considered as a module and it contains a lua.lua file in which you could write your config in lua , its like splitting the overall config into small bit . To load/source that "foo" module , you need to specify it in init.lua like this : require('foo.lua').
+
+- The lua folder contains modules ( config files ) , in the example above "foo" folder could be considered as a module and it contains a lua.lua.
+- The lua.lua file is supposed to have any nvim config written in lua , its like splitting the overall config into small bits and make it more organized.
+- To load or source that "foo" module  (like making it load with init.lua )  , you need to load it in init.lua like this : require('foo.lua').
 
 # Features
 
