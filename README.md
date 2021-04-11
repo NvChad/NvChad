@@ -127,7 +127,9 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 
 - Install neovim-nightly , also use a nerdfont on your terminal.
 - run the install.sh (this might work only on nix systems) and open neovim , do :PackerInstall
-- or do it manually :
+- Install ripgrep , fd , ueberzug for telescope media extension to work. 
+
+- Manual installation , incase the install.sh doesnt work for you :
 
 - Install packer.nvim
 
@@ -178,7 +180,7 @@ I'd install it first and add its setup line :
 # TODO
 
 - add snippets support
-- show statusline in inactive windows
+- show better statusline in inactive windows
 
 # Contact -
 
