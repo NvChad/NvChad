@@ -84,3 +84,9 @@ g.nvim_tree_bindings = {
     ["-"] = get_lua_cb("dir_up"),
     ["q"] = get_lua_cb("close")
 }
+
+local cmd = vim.cmd
+
+cmd "hi NvimTreeFolderIcon guifg = #61afef"
+cmd "hi NvimTreeFolderName guifg = #61afef"
+cmd "hi NvimTreeIndentMarker guifg=#383c44"

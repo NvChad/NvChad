@@ -55,29 +55,13 @@ cmd "hi EndOfBuffer guifg=#1e222a"
 cmd "hi PmenuSel guibg=#98c379"
 cmd "hi Pmenu  guibg=#282c34"
 
--- telescope stuff and popupmenu
-require "telescope.lua"
-
-cmd "hi TelescopeBorder   guifg=#2a2e36"
-cmd "hi TelescopePromptBorder   guifg=#2a2e36"
-cmd "hi TelescopeResultsBorder  guifg=#2a2e36"
-cmd "hi TelescopePreviewBorder  guifg=#525865"
-
---  nvim tree color for folder name and icon
-require "nvimTree.lua"
-
-cmd "hi NvimTreeFolderIcon guifg = #61afef"
-cmd "hi NvimTreeFolderName guifg = #61afef"
-cmd "hi NvimTreeIndentMarker guifg=#383c44"
-
 cmd "hi Normal guibg=NONE ctermbg=NONE"
+
+require "telescope.lua"
+require "nvimTree.lua"
 
 -- git signs
 require "gitsigns.lua"
-
-cmd "hi DiffAdd guifg=#81A1C1 guibg = none"
-cmd "hi DiffChange guifg =#3A3E44 guibg = none"
-cmd "hi DiffModified guifg = #81A1C1 guibg = none"
 
 require("nvim-autopairs").setup()
 
