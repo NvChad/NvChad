@@ -122,3 +122,7 @@ if [[ ${warn_path} == true ]]; then
   echo ""
   echo "Ensure ${LSP_BIN_PATH} is available in your \$PATH variable"
 fi
+
+# install all plugins via packer
+
+nvim +PackerInstall

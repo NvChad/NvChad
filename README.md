@@ -90,7 +90,7 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 
 - The lua folder contains modules ( config files ) , in the example above "foo" folder could be considered as a module and it contains a lua.lua.
 - The lua.lua file is supposed to have any nvim config written in lua , its like splitting the overall config into small bits and make it more organized.
-- To load or source that "foo" module  (like making it load with init.lua )  , you need to load it in init.lua like this : require('foo.lua').
+- To load or source that "foo" module (like making it load with init.lua ) , you need to load it in init.lua like this : require('foo.lua').
 
 # Features
 
@@ -126,8 +126,8 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 # Clone my setup -
 
 - Install neovim-nightly , also use a nerdfont on your terminal.
-- run the install.sh (this might work only on nix systems) and open neovim , do :PackerInstall
-- Install ripgrep , fd , ueberzug for telescope media extension to work. 
+- run the install.sh (this might work only on nix systems),this opens neovim (press enter or y to skip the errors , the errors will only show once).
+- Install ripgrep , fd , ueberzug for telescope media extension to work.
 
 - Manual installation , incase the install.sh doesnt work for you :
 
