@@ -179,8 +179,9 @@ I'd install it first and add its setup line :
 
 # TODO
 
-- add snippets support
-- show better statusline in inactive windows
+- Add snippets support.
+- Make the statusline more elegant.
+- Add more themes.
 
 # Contact -
 
