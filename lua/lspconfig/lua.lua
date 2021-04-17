@@ -39,7 +39,13 @@ function on_attach(client)
     end
 end
 
-local servers = {"tsserver", "cssls", "html" , "pyright"}
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {on_attach = on_attach}
+local lspconf = require "lspconfig"
+local servers = {"html", "cssls", "tsserver", "pyright"}
+
+for k, lang in pairs(servers) do
+    lspconf[lang].setup {
+        root_dir = function()
+            return vim.loop.cwd()
+        end
+    }
 end
