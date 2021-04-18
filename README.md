@@ -126,6 +126,7 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 # Clone my setup -
 
 - Install neovim-nightly , also use a nerdfont on your terminal.
+- Use these [colors](https://github.com/siduck76/dotfiles/blob/master/thinkpad/.Xresources) for your terminal , Its in xresources format so it'd would be easier to use a terminal that supports xresources like st , urxvt , xterm , My [st build](https://github.com/siduck76/st).
 - run the install.sh (this might work only on nix systems),this opens neovim (press enter or y to skip the errors , the errors will only show once).
 - Install ripgrep , fd , ueberzug for telescope media extension to work.
 
