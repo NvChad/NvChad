@@ -58,6 +58,9 @@ local sumneko_binary = USER .. "/.config/lua-language-server/bin/Linux/lua-langu
 
 require "lspconfig".sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
+    root_dir = function()
+        return vim.loop.cwd()
+    end,
     settings = {
         Lua = {
             runtime = {
@@ -69,7 +72,10 @@ require "lspconfig".sumneko_lua.setup {
             },
             workspace = {
                 library = {[vim.fn.expand("$VIMRUNTIME/lua")] = true, [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true}
+            },
+            telemetry = {
+                enable = false
             }
         }
-    },
+    }
 }
