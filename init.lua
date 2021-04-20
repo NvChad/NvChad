@@ -42,8 +42,8 @@ g.indent_blankline_buftype_exclude = {"terminal"}
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 
-require("treesitter.lua")
-require("mappings.lua")
+require "treesitter.lua"
+require "mappings.lua"
 
 -- highlights --
 cmd "hi LineNr guifg=#42464e guibg=NONE"
@@ -84,3 +84,6 @@ cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
 
 cmd "hi clear CursorLine"
 cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
+
+-- setup for TrueZen.nvim
+require "zenmode.lua"

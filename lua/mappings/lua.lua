@@ -15,3 +15,9 @@ map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) -- open ter
 
 -- COPY EVERYTHING --
 map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
+
+-- toggle numbers ---
+map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
+
+-- toggle truezen.nvim's ataraxis mode
+map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)

@@ -168,6 +168,8 @@ I'd install it first and add its setup line :
 - <kbd> Shift </kbd> <kbd> n </kbd> toggle line number
 - <kbd> Ctrl </kbd> <kbd> a </kbd> copies everything in the current file
 - select any text + <kbd> y </kbd> copies the selected text
+- leader + <kbd> z </kbd> toggle truezen.nvim's Ataraxis mode
+- leader + <kbd> n </kbd> toggle line number 
 - leader + <kbd> f </kbd> <kbd> b </kbd> open all buffers , with telescope
 - leader + <kbd> f </kbd> <kbd> p </kbd> search and preview images with telescope
 - leader + <kbd> f </kbd> <kbd> f </kbd> find files in the current DIR , with telescope
