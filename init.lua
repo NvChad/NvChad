@@ -17,7 +17,7 @@ local cmd = vim.cmd
 local g = vim.g
 
 g.mapleader = " "
-g.auto_save = 1
+g.auto_save = 0
 
 -- colorscheme related stuff
 
