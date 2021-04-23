@@ -43,9 +43,7 @@ local servers = {"html", "cssls", "tsserver", "pyright"}
 
 for k, lang in pairs(servers) do
     lspconf[lang].setup {
-        root_dir = function()
-            return vim.loop.cwd()
-        end
+        root_dir = vim.loop.cwd
     }
 end
 
