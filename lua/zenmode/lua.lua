@@ -8,7 +8,7 @@ true_zen.setup(
         before_minimalist_mode_hidden = true,
         after_minimalist_mode_shown = true,
         after_minimalist_mode_hidden = true,
-        unknown_bkg_color_fix = true,
+--        unknown_bkg_color_fix = true,
         bottom = {
             hidden_laststatus = 0,
             hidden_ruler = false,
@@ -34,9 +34,9 @@ true_zen.setup(
             shown_signcolumn = "no"
         },
         ataraxis = {
-            just_do_it_for_me = true,
-            left_padding = 40,
-            right_padding = 40,
+            just_do_it_for_me = false,
+            left_padding = 37,
+            right_padding = 37,
             top_padding = 2,
             bottom_padding = 2
         },

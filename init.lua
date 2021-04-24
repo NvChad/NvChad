@@ -56,6 +56,7 @@ cmd "hi PmenuSel guibg=#98c379"
 cmd "hi Pmenu  guibg=#282c34"
 
 cmd "hi Normal guibg=NONE ctermbg=NONE"
+-- cmd "hi Normal guibg=#1e222a"
 
 require "telescope.lua"
 require "nvimTree.lua"
