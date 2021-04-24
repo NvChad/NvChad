@@ -53,7 +53,12 @@ cp -r init.lua ~/.config/nvim && cp -r lua ~/.config/nvim
 read -p "which shell do you use?: " shellname
 echo "$shellname"
 
-sed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
+if [ "$(get_platform)" = "Mac" ]; then
+    gsed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
+else
+    sed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
+fi
+
 echo "shell changed to $shellname on nvim successfully!"
 
 #for f in `find -E . -regex ".*\.vim$|.*\.lua$"`; do
