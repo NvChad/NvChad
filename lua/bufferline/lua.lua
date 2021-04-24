@@ -63,10 +63,10 @@ vim.g.mapleader = " "
 
 --command that adds new buffer and moves to it
 vim.api.nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blast"
-vim.api.nvim_set_keymap("n", "<S-b>", ":New ", opt)
+vim.api.nvim_set_keymap("n", "<S-b>", [[<Cmd>tabnew<CR>]], opt)
 
 --removing a buffer
-vim.api.nvim_set_keymap("n", "<S-f>", [[<Cmd>bdelete<CR>]], opt)
+vim.api.nvim_set_keymap("n", "<S-d>", [[<Cmd>bdelete<CR>]], opt)
 
 -- tabnew and tabprev
 vim.api.nvim_set_keymap("n", "<S-l>", [[<Cmd>BufferLineCycleNext<CR>]], opt)

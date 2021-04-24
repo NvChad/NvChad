@@ -158,27 +158,57 @@ I'd install it first and add its setup line :
 
        require'lspconfig'.clangd.setup{}  ``
 
-# Default Mappings to make stuffs easier!
+# Default Mappings
 
-<kbd> space </kbd> is the leader key
+<kbd> space </kbd> is the **leader** key.
 
+- Opening terminals!
 - <kbd> Ctrl </kbd> <kbd> l </kbd> Open terminal vertically over right
 - <kbd> Ctrl </kbd> <kbd> x </kbd> Open terminal horizontally below the current window
+
+- **File tree (nvim-tree)**
+
 - <kbd> Ctrl </kbd> <kbd> n </kbd> toggle neovim tree
-- <kbd> Shift </kbd> <kbd> n </kbd> toggle line number
+
+- <kbd> Shift </kbd> <kbd> h </kbd> show hidden files (use these keybinds when cursor's in the filetree, same for the keybinds below).
+- <kbd> Ctrl </kbd> + <kbd> v </kbd> open files in vertical split
+- <kbd> Ctrl </kbd> + <kbd> x </kbd> open files in horizontal split
+
+- **Toggling stuffs**
+
+- leader + <kbd> n </kbd> toggle line number
+- leader + <kbd> z </kbd> toggle truezen.nvim's Ataraxis mode
+- leader + <kbd> m </kbd> toggle truezen.nvim's minimalistic mode
+
+- **Copy text**
+
 - <kbd> Ctrl </kbd> <kbd> a </kbd> copies everything in the current file
 - select any text + <kbd> y </kbd> copies the selected text
-- leader + <kbd> z </kbd> toggle truezen.nvim's Ataraxis mode
-- leader + <kbd> n </kbd> toggle line number 
-- leader + <kbd> f </kbd> <kbd> b </kbd> open all buffers , with telescope
-- leader + <kbd> f </kbd> <kbd> p </kbd> search and preview images with telescope
-- leader + <kbd> f </kbd> <kbd> f </kbd> find files in the current DIR , with telescope
-- leader + <kbd> f </kbd> <kbd> o </kbd> open recently edited files , with telescope
-- leader + <kbd> f </kbd> <kbd> f </kbd> find files in the current DIR , with telescope
-- leader + <kbd> f </kbd> <kbd> h </kbd> opens up a manpage like thing but for all vim related things , with telescope
+
+- **Telescope**
+
+- leader + <kbd> f </kbd> <kbd> b </kbd> open all buffers
+- leader + <kbd> f </kbd> <kbd> f </kbd> find files in the current DIR
+- leader + <kbd> f </kbd> <kbd> o </kbd> open recently edited files
+- leader + <kbd> f </kbd> <kbd> f </kbd> find files in the current DIR
+- leader + <kbd> f </kbd> <kbd> h </kbd> opens up a help page like thing
+- <kbd> Ctrl </kbd> + <kbd> v </kbd> open files in vertical split
+- <kbd> Ctrl </kbd> + <kbd> x </kbd> open files in horizontal split
+
+- **Formatting code**
+
 - leader + <kbd> f </kbd> <kbd> m </kbd> formats or beautifies the code in current window via neoformat
-  (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check this <a> https://github.com/sbdchd/neoformat</a>).
+  (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check (this)[https://github.com/sbdchd/neoformat].
+
+- **Neoscroll**
+
 - `<C-u>`, `<C-d>`, `<C-b>`, `<C-f>`, `<C-y>` and `<C-e>` : Smooth scrolling for window movement commands.
+
+- **Managing tabs with bufferline!**
+
+- <kbd> Shift </kbd> <kbd> l or s </kbd> cycle through opened tabs
+- <kbd> Shift </kbd> <kbd> d </kbd> close current tab
+- <kbd> Shift </kbd> <kbd> b </kbd> open new tab
 
 # TODO
 
