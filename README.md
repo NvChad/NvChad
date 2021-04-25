@@ -134,9 +134,11 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 
 - Install packer.nvim
 
-```shell
+```
+
 git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+ 
 ```
 
 - copy lua folder and init.lua into ~/.config/nvim
