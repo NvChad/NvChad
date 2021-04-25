@@ -7,11 +7,12 @@ ts_config.setup {
         "css",
         "bash",
         "lua",
-        "json"
+        "json",
+        "python"
         --  "cpp",
         --   "rust",
-        --   "python"
     },
+
     highlight = {
         enable = true,
         use_languagetree = true

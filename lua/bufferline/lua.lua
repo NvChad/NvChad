@@ -1,6 +1,10 @@
 vim.o.termguicolors = true
 
--- colors for active , inactive uffer tabs
+-- colors
+
+local bar_fg = "#565c64"
+local activeBuffer_fg = "#c8ccd4"
+
 require "bufferline".setup {
     options = {
         buffer_close_icon = "",
@@ -18,40 +22,47 @@ require "bufferline".setup {
     },
     highlights = {
         background = {
-            guifg = comment_fg,
+            guifg = bar_fg,
             guibg = "#1e222a"
         },
         fill = {
-            guifg = comment_fg,
+            guifg = bar_fg,
             guibg = "#1e222a"
         },
+
+        -- focused window
         buffer_selected = {
-            guifg = normal_fg,
-            guibg = "#282c34",
+            guifg = activeBuffer_fg,
+            guibg = "#353b45",
             gui = "bold"
         },
+        separator_selected = {
+            guifg = "#353b45",
+            guibg = "#353b45"
+        },
+
+        -- unfocused opened window
         buffer_visible = {
-            guifg = "#3e4451",
-            guibg = "#1e222a"
+            guifg = "#9298a0",
+            guibg = "#282c34"
         },
         separator_visible = {
-            guifg = "#1e222a",
-            guibg = "#1e222a"
+            guifg = "#282c34",
+            guibg = "#282c34"
         },
-        separator_selected = {
-            guifg = "#1e222a",
-            guibg = "#1e222a"
-        },
+
         separator = {
             guifg = "#1e222a",
             guibg = "#1e222a"
         },
+
         indicator_selected = {
             guifg = "#1e222a",
             guibg = "#1e222a"
         },
+
         modified_selected = {
-            guifg = string_fg,
+            guifg = bar_fg,
             guibg = "#353b45"
         }
     }
@@ -59,15 +70,15 @@ require "bufferline".setup {
 
 local opt = {silent = true}
 
+local map = vim.api.nvim_set_keymap
 vim.g.mapleader = " "
 
 --command that adds new buffer and moves to it
-vim.api.nvim_command "com -nargs=? -complete=file_in_path New badd <args> | blast"
-vim.api.nvim_set_keymap("n", "<S-b>", [[<Cmd>tabnew<CR>]], opt)
+map("n", "<S-b>", [[<Cmd>tabnew<CR>]], opt)
 
 --removing a buffer
-vim.api.nvim_set_keymap("n", "<S-d>", [[<Cmd>bdelete<CR>]], opt)
+map("n", "<S-d>", [[<Cmd>bdelete<CR>]], opt)
 
 -- tabnew and tabprev
-vim.api.nvim_set_keymap("n", "<S-l>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
-vim.api.nvim_set_keymap("n", "<S-s>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+map("n", "<S-l>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
+map("n", "<S-s>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
