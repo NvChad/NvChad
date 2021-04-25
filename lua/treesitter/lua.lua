@@ -12,7 +12,6 @@ ts_config.setup {
         --  "cpp",
         --   "rust",
     },
-
     highlight = {
         enable = true,
         use_languagetree = true

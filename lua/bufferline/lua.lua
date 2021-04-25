@@ -29,7 +29,6 @@ require "bufferline".setup {
             guifg = bar_fg,
             guibg = "#1e222a"
         },
-
         -- focused window
         buffer_selected = {
             guifg = activeBuffer_fg,
@@ -40,7 +39,6 @@ require "bufferline".setup {
             guifg = "#353b45",
             guibg = "#353b45"
         },
-
         -- unfocused opened window
         buffer_visible = {
             guifg = "#9298a0",
@@ -50,17 +48,14 @@ require "bufferline".setup {
             guifg = "#282c34",
             guibg = "#282c34"
         },
-
         separator = {
             guifg = "#1e222a",
             guibg = "#1e222a"
         },
-
         indicator_selected = {
             guifg = "#1e222a",
             guibg = "#1e222a"
         },
-
         modified_selected = {
             guifg = bar_fg,
             guibg = "#353b45"
@@ -74,7 +69,7 @@ local map = vim.api.nvim_set_keymap
 vim.g.mapleader = " "
 
 --command that adds new buffer and moves to it
-map("n", "<S-b>", [[<Cmd>tabnew<CR>]], opt)
+map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt)
 
 --removing a buffer
 map("n", "<S-d>", [[<Cmd>bdelete<CR>]], opt)
