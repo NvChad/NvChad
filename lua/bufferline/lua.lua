@@ -48,12 +48,10 @@ require "bufferline".setup {
             guifg = "#282c34",
             guibg = "#282c34"
         },
-
         separator = {
             guifg = "#1e222a",
             guibg = "#1e222a"
         },
-
         indicator_selected = {
             guifg = "#1e222a",
             guibg = "#1e222a"

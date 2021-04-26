@@ -2,7 +2,7 @@
 BASE=$(git rev-parse --show-toplevel)
 LSP_BIN_PATH=$HOME/.local/bin
 
-default_lsp_langs="css html ts rust python"
+default_lsp_langs="css html ts rust python bash"
 lsp_langs=""
 
 choose_langs() {
@@ -54,9 +54,9 @@ read -p "which shell do you use?: " shellname
 echo "$shellname"
 
 if [ "$(get_platform)" = "Mac" ]; then
-    gsed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
+  gsed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
 else
-    sed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
+  sed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
 fi
 
 echo "shell changed to $shellname on nvim successfully!"
@@ -86,6 +86,8 @@ install_node_deps() {
   sudo npm install -g $@
 }
 
+# install languages
+
 install_ts() {
   install_node_deps typescript typescript-language-server prettier
 }
@@ -111,6 +113,10 @@ install_rust() {
 
 install_python() {
   install_node_deps pyright
+}
+
+install_bash() {
+  install_node_deps bash-language-server
 }
 
 for lang in ${lsp_langs}; do
