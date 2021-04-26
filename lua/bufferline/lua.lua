@@ -1,5 +1,3 @@
-vim.o.termguicolors = true
-
 -- colors
 
 local bar_fg = "#565c64"
@@ -8,7 +6,7 @@ local activeBuffer_fg = "#c8ccd4"
 require "bufferline".setup {
     options = {
         buffer_close_icon = "",
-        modified_icon = "●",
+        modified_icon = "",
         close_icon = "",
         left_trunc_marker = "",
         right_trunc_marker = "",
@@ -29,6 +27,7 @@ require "bufferline".setup {
             guifg = bar_fg,
             guibg = "#1e222a"
         },
+
         -- focused window
         buffer_selected = {
             guifg = activeBuffer_fg,
@@ -39,6 +38,7 @@ require "bufferline".setup {
             guifg = "#353b45",
             guibg = "#353b45"
         },
+
         -- unfocused opened window
         buffer_visible = {
             guifg = "#9298a0",
@@ -48,16 +48,18 @@ require "bufferline".setup {
             guifg = "#282c34",
             guibg = "#282c34"
         },
+
         separator = {
             guifg = "#1e222a",
             guibg = "#1e222a"
         },
+
         indicator_selected = {
             guifg = "#1e222a",
             guibg = "#1e222a"
         },
         modified_selected = {
-            guifg = bar_fg,
+            guifg = "#d0f5c2",
             guibg = "#353b45"
         }
     }
