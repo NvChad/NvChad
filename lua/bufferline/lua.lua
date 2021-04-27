@@ -27,7 +27,6 @@ require "bufferline".setup {
             guifg = bar_fg,
             guibg = "#1e222a"
         },
-
         -- focused window
         buffer_selected = {
             guifg = activeBuffer_fg,
@@ -38,7 +37,6 @@ require "bufferline".setup {
             guifg = "#353b45",
             guibg = "#353b45"
         },
-
         -- unfocused opened window
         buffer_visible = {
             guifg = "#9298a0",
@@ -72,8 +70,8 @@ vim.g.mapleader = " "
 map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt)
 
 --removing a buffer
-map("n", "<S-d>", [[<Cmd>bdelete<CR>]], opt)
+map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opt)
 
 -- tabnew and tabprev
 map("n", "<S-l>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
-map("n", "<S-s>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+map("n", "<S-p>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
