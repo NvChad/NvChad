@@ -106,6 +106,11 @@ require "nvim-web-devicons".setup {
             icon = "",
             color = "#fca2aa",
             name = "rpm"
+        },
+        vala = {
+            icon = "",
+            color = "#ccaced",
+            name = "vala"
         }
     }
 }
