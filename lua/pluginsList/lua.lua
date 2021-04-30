@@ -1,14 +1,10 @@
--- check if packer is installed (~/local/share/nvim/site/pack)
-local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
-
 local packer = require("packer")
 local use = packer.use
 
--- using { } when using a different branch of the plugin or loading the plugin with certain commands
+-- using { } for using different branch , loading plugin with certain commands etc
 return require("packer").startup(
     function()
-        use {"wbthomason/packer.nvim", opt = true}
-        use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+        use "wbthomason/packer.nvim"
 
         -- color related stuff
         use "norcalli/nvim-base16.lua"
@@ -42,5 +38,6 @@ return require("packer").startup(
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
 
+        use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     end
 )

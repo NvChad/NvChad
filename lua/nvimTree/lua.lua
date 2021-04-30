@@ -1,8 +1,6 @@
 local cmd = vim.cmd
 local g = vim.g
 
-cmd [[packadd nvim-tree.lua]]
-
 vim.o.termguicolors = true
 
 g.nvim_tree_side = "left"

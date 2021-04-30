@@ -1,6 +1,3 @@
-vim.cmd [[packadd nvim-lspconfig]]
-vim.cmd [[packadd nvim-compe]]
-
 function on_attach(client)
     local function map(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
