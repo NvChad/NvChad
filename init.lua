@@ -61,19 +61,10 @@ cmd "hi Normal guibg=NONE ctermbg=NONE"
 require "telescope.lua"
 require "nvimTree.lua"
 
--- git signs
+-- git signs , lsp symbols etc
 require "gitsigns.lua"
-
 require("nvim-autopairs").setup()
-
-require("lspkind").init(
-    {
-        with_text = true,
-        symbol_map = {
-            Folder = ""
-        }
-    }
-)
+require("lspkind").init()
 
 -- hide line numbers in terminal windows
 vim.api.nvim_exec([[
