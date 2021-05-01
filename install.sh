@@ -16,6 +16,8 @@ for lang in $default_lsp_langs; do
   choose_langs $lang
 done
 
+npm config set prefix=~/.node_modules # for global npm pkg installation
+
 pfx="~~~~~ "
 heading() {
   echo
@@ -83,7 +85,7 @@ install_node_deps() {
     echo "npm not installed"
     return
   fi
-  sudo npm install -g $@
+  npm install -g $@
 }
 
 # install languages
@@ -133,6 +135,8 @@ if [[ ${warn_path} == true ]]; then
   echo ""
   echo "Ensure ${LSP_BIN_PATH} is available in your \$PATH variable"
 fi
+
+echo "add ~/.node_modules/bin at PATH!"
 
 # install all plugins via packer
 
