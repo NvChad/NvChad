@@ -192,7 +192,6 @@ I'd install it first and add its setup line :
 - leader + <kbd> f </kbd> <kbd> b </kbd> open all buffers
 - leader + <kbd> f </kbd> <kbd> f </kbd> find files in the current DIR
 - leader + <kbd> f </kbd> <kbd> o </kbd> open recently edited files
-- leader + <kbd> f </kbd> <kbd> f </kbd> find files in the current DIR
 - leader + <kbd> f </kbd> <kbd> h </kbd> opens up a help page like thing
 - <kbd> Ctrl </kbd> + <kbd> v </kbd> open files in vertical split
 - <kbd> Ctrl </kbd> + <kbd> x </kbd> open files in horizontal split
