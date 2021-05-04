@@ -213,7 +213,6 @@ I'd install it first and add its setup line :
 
 # TODO
 
-- Add snippets support.
 - Make the statusline more elegant.
 - Add more themes.
 
