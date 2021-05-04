@@ -109,7 +109,8 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 - packer.nvim as package manager
 - indent-blankline.Nvim for indentlines
 - smooth scrolling
-
+- Snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
+  
 # Guides to migrate your nvim configs to init.lua -
 
 - https://github.com/nanotee/nvim-lua-guide
@@ -119,6 +120,8 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 - https://oroques.dev/notes/neovim-init/
 
 - https://icyphox.sh/blog/nvim-lua/
+
+- https://github.com/rafamadriz/friendly-snippets/wiki
 
 # Clone my setup -
 
