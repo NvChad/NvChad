@@ -23,6 +23,10 @@ return require("packer").startup(
         use "glepnir/galaxyline.nvim"
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
+        
+        -- snippet support
+        use "hrsh7th/vim-vsnip"
+        use "rafamadriz/friendly-snippets"
 
         -- file managing , picker etc
         use "kyazdani42/nvim-tree.lua"
