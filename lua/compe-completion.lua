@@ -1,6 +1,3 @@
-vim.cmd [[packadd nvim-lspconfig]]
-vim.cmd [[packadd nvim-compe]]
-
 vim.o.completeopt = "menuone,noselect"
 
 require "compe".setup {
@@ -18,9 +15,9 @@ require "compe".setup {
     documentation = true,
     source = {
         path = true,
-        buffer = true,
+        buffer = {kind = "﬘" , true},
         calc = true,
-        vsnip = true,
+        vsnip = {kind = "﬌"}, --replace to what sign you prefer
         nvim_lsp = true,
         nvim_lua = true,
         spell = true,

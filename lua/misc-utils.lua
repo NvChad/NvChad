@@ -14,19 +14,19 @@ opt("o", "splitright", true)
 opt("o", "termguicolors", true)
 opt("w", "number", true)
 opt("o", "numberwidth", 2)
+opt("w", "cul", true)
 
 opt("o", "mouse", "a")
 
 opt("w", "signcolumn", "yes")
 opt("o", "cmdheight", 1)
 
-opt("o", "updatetime", 250) -- update interval for gitsigns 
+opt("o", "updatetime", 250) -- update interval for gitsigns
 opt("o", "clipboard", "unnamedplus")
 
 -- for indenline
-opt("b", "expandtab", true )
-opt("b", "shiftwidth", 2 )
-
+opt("b", "expandtab", true)
+opt("b", "shiftwidth", 2)
 
 local M = {}
 

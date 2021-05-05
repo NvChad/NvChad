@@ -1,25 +1,23 @@
 -- load all plugins
-require("pluginsList.lua")
-require("file-icons.lua")
+require "pluginList"
+require "file-icons"
 
-require("misc-utils.lua")
-require("nvimTree.lua")
-require("bufferline.lua")
-require("statusline.lua")
-require("telescope.lua")
+require "misc-utils"
+require "top-bufferline"
+require "statusline"
 
-require("gitsigns.lua")
-require "colorizer".setup()
+require("colorizer").setup()
+require("neoscroll").setup() -- smooth scroll
 
 -- lsp
-require("lspconfig.lua")
-require("compe.lua")
+require "nvim-lspconfig"
+require "compe-completion"
 
 local cmd = vim.cmd
 local g = vim.g
 
 g.mapleader = " "
-g.auto_save = 1
+g.auto_save = 0
 
 -- colorscheme related stuff
 
@@ -36,7 +34,7 @@ local indent = 2
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"
 
-cmd("hi IndentBlanklineChar guifg=#2a2e36")
+cmd "hi IndentBlanklineChar guifg=#2a2e36"
 
 g.indent_blankline_filetype_exclude = {"help", "terminal"}
 g.indent_blankline_buftype_exclude = {"terminal"}
@@ -44,43 +42,29 @@ g.indent_blankline_buftype_exclude = {"terminal"}
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 
-require("treesitter.lua")
-require("mappings.lua")
+require "treesitter-nvim"
+require "mappings"
 
 -- highlights --
-cmd("hi LineNr guifg=#383c44 guibg=NONE")
-cmd("hi Comment guifg=#3d4149")
+cmd "hi LineNr guifg=#42464e guibg=NONE"
+cmd "hi Comment guifg=#42464e"
 
-cmd("hi SignColumn guibg=NONE")
-cmd("hi VertSplit guibg=NONE guifg=#2a2e36")
-cmd("hi DiffAdd guifg=#81A1C1 guibg = none")
-cmd("hi DiffChange guifg =#3A3E44 guibg = none")
-cmd("hi DiffModified guifg = #81A1C1 guibg = none")
-cmd("hi EndOfBuffer guifg=#1e222a")
+cmd "hi SignColumn guibg=NONE"
+cmd "hi VertSplit guibg=NONE guifg=#2a2e36"
+cmd "hi EndOfBuffer guifg=#1e222a"
+cmd "hi PmenuSel guibg=#98c379"
+cmd "hi Pmenu  guibg=#282c34"
 
--- telescope stuff and popupmenu
-cmd("hi TelescopeBorder   guifg=#2a2e36")
-cmd("hi TelescopePromptBorder   guifg=#2a2e36")
-cmd("hi TelescopeResultsBorder  guifg=#2a2e36")
-cmd("hi TelescopePreviewBorder  guifg=#525865")
-cmd("hi PmenuSel guibg=#98c379")
-cmd("hi Pmenu  guibg=#282c34")
+cmd "hi Normal guibg=NONE ctermbg=NONE"
+-- cmd "hi Normal guibg=#1e222a"
 
--- tree folder name , icon color
-cmd("hi NvimTreeFolderIcon guifg = #61afef")
-cmd("hi NvimTreeFolderName guifg = #61afef")
-cmd("hi NvimTreeIndentMarker guifg=#383c44")
+require "telescope-nvim"
+require "nvimTree"
 
-cmd("hi Normal guibg=NONE ctermbg=NONE")
-
+-- git signs , lsp symbols etc
+require "gitsigns-nvim"
 require("nvim-autopairs").setup()
-require("lspkind").init(
-    {
-        File = " "
-    }
-)
-
--- nvimTree bg color
+require("lspkind").init()
 
 -- hide line numbers in terminal windows
 vim.api.nvim_exec([[
@@ -90,5 +74,8 @@ vim.api.nvim_exec([[
 -- inactive statuslines as thin splitlines
 cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
 
--- smooth scroll
-require("neoscroll").setup()
+cmd "hi clear CursorLine"
+cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
+
+-- setup for TrueZen.nvim
+require "zenmode"

@@ -1,8 +1,7 @@
-vim.cmd [[packadd nvim-tree.lua]]
+local cmd = vim.cmd
+local g = vim.g
 
 vim.o.termguicolors = true
-
-local g = vim.g
 
 g.nvim_tree_side = "left"
 g.nvim_tree_width = 25
@@ -84,3 +83,7 @@ g.nvim_tree_bindings = {
     ["-"] = get_lua_cb("dir_up"),
     ["q"] = get_lua_cb("close")
 }
+
+cmd "hi NvimTreeFolderIcon guifg = #61afef"
+cmd "hi NvimTreeFolderName guifg = #61afef"
+cmd "hi NvimTreeIndentMarker guifg=#383c44"

@@ -1,5 +1,3 @@
-vim.cmd [[packadd nvim-web-devicons]]
-
 require "nvim-web-devicons".setup {
     override = {
         html = {
@@ -96,6 +94,16 @@ require "nvim-web-devicons".setup {
             icon = "",
             color = "#EBCB8B",
             name = "xz"
+        },
+        deb = {
+            icon = "",
+            color = "#a3b8ef",
+            name = "deb"
+        },
+        rpm = {
+            icon = "",
+            color = "#fca2aa",
+            name = "rpm"
         }
     }
 }
