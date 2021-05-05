@@ -56,9 +56,9 @@ read -p "which shell do you use?: " shellname
 echo "$shellname"
 
 if [ "$(get_platform)" = "Mac" ]; then
-  gsed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
+  gsed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings.lua
 else
-  sed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings/lua.lua
+  sed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings.lua
 fi
 
 echo "shell changed to $shellname on nvim successfully!"
