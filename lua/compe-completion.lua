@@ -15,7 +15,7 @@ require "compe".setup {
     documentation = true,
     source = {
         path = true,
-        buffer = true,
+        buffer = {kind = "﬘" , true},
         calc = true,
         vsnip = {kind = "﬌"}, --replace to what sign you prefer
         nvim_lsp = true,
