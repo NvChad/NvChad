@@ -79,15 +79,13 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
      nvim
       ├──init.lua
       └──lua
-          └──foo
-              └──lua.lua
+          └──anything.lua
 ```
 
 - The init.lua is used instead of init.vim.
-
-- The lua folder contains modules ( config files ) , in the example above "foo" folder could be considered as a module and it contains a lua.lua.
-- The lua.lua file is supposed to have any nvim config written in lua , its like splitting the overall config into small bits and make it more organized.
-- To load or source that "foo" module (like making it load with init.lua ) , you need to load it in init.lua like this : require('foo.lua').
+- The lua folder contains modules ( config files ) , in the example above anything.lua file in lua folder could be considered as a module.
+- The anything.lua file is supposed to have any neovim config written in lua , its like splitting the overall config into small bits and make it more organized , like one module for highlights and colors , another one for statusline and so on!.
+- To load or source that "anything" module (like making it load with init.lua ) ,add this is in init.lua : require "anything".
 
 # Features
 
@@ -110,7 +108,7 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 - indent-blankline.Nvim for indentlines
 - smooth scrolling
 - Snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
-  
+
 # Guides to migrate your nvim configs to init.lua -
 
 - https://github.com/nanotee/nvim-lua-guide
@@ -138,7 +136,7 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 
 git clone https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
- 
+
 ```
 
 - copy lua folder and init.lua into ~/.config/nvim
@@ -146,7 +144,7 @@ git clone https://github.com/wbthomason/packer.nvim\
 - Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!) , this usually depends on the language support you want to add in your neovim config.
 
 ```
-npm config set prefix=~/.node_modules 
+npm config set prefix=~/.node_modules
 npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
 
 (ADD ~/.node_modules at your PATH)

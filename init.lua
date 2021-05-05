@@ -1,17 +1,17 @@
 -- load all plugins
-require "pluginsList.lua"
-require "file-icons.lua"
+require "pluginList"
+require "file-icons"
 
-require "misc-utils.lua"
-require "bufferline.lua"
-require "statusline.lua"
+require "misc-utils"
+require "top-bufferline"
+require "statusline"
 
 require("colorizer").setup()
 require("neoscroll").setup() -- smooth scroll
 
 -- lsp
-require "lspconfig.lua"
-require "compe.lua"
+require "nvim-lspconfig"
+require "compe-completion"
 
 local cmd = vim.cmd
 local g = vim.g
@@ -42,8 +42,8 @@ g.indent_blankline_buftype_exclude = {"terminal"}
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 
-require "treesitter.lua"
-require "mappings.lua"
+require "treesitter-nvim"
+require "mappings"
 
 -- highlights --
 cmd "hi LineNr guifg=#42464e guibg=NONE"
@@ -58,11 +58,11 @@ cmd "hi Pmenu  guibg=#282c34"
 cmd "hi Normal guibg=NONE ctermbg=NONE"
 -- cmd "hi Normal guibg=#1e222a"
 
-require "telescope.lua"
-require "nvimTree.lua"
+require "telescope-nvim"
+require "nvimTree"
 
 -- git signs , lsp symbols etc
-require "gitsigns.lua"
+require "gitsigns-nvim"
 require("nvim-autopairs").setup()
 require("lspkind").init()
 
@@ -78,4 +78,4 @@ cmd "hi clear CursorLine"
 cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
 
 -- setup for TrueZen.nvim
-require "zenmode.lua"
+require "zenmode"
