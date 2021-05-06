@@ -21,7 +21,6 @@ g.auto_save = 0
 
 -- colorscheme related stuff
 
-cmd "syntax enable"
 cmd "syntax on"
 
 local base16 = require "base16"

@@ -12,7 +12,7 @@ require "bufferline".setup {
         right_trunc_marker = "",
         max_name_length = 14,
         max_prefix_length = 13,
-        tab_size = 18,
+        tab_size = 20,
         enforce_regular_tabs = true,
         view = "multiwindow",
         show_buffer_close_icons = true,
@@ -21,21 +21,21 @@ require "bufferline".setup {
     highlights = {
         background = {
             guifg = bar_fg,
-            guibg = "#1e222a"
+            guibg = "#282c34"
         },
         fill = {
             guifg = bar_fg,
-            guibg = "#1e222a"
+            guibg = "#282c34"
         },
         -- focused window
         buffer_selected = {
             guifg = activeBuffer_fg,
-            guibg = "#353b45",
+            guibg = "#1e222a",
             gui = "bold"
         },
         separator_selected = {
-            guifg = "#353b45",
-            guibg = "#353b45"
+            guifg = "#1e222a",
+            guibg = "#1e222a"
         },
         -- unfocused opened window
         buffer_visible = {
@@ -47,16 +47,16 @@ require "bufferline".setup {
             guibg = "#282c34"
         },
         separator = {
-            guifg = "#1e222a",
-            guibg = "#1e222a"
+            guifg = "#282c34",
+            guibg = "#282c34"
         },
         indicator_selected = {
-            guifg = "#1e222a",
-            guibg = "#1e222a"
+            guifg = "#282c34",
+            guibg = "#282c34"
         },
         modified_selected = {
-            guifg = "#d0f5c2",
-            guibg = "#353b45"
+            guifg = "#A3BE8C",
+            guibg = "#1e222a"
         }
     }
 }

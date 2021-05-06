@@ -16,7 +16,8 @@ for lang in $default_lsp_langs; do
   choose_langs $lang
 done
 
-npm config set prefix=~/.node_modules # for global npm pkg installation
+# install npm pkg global
+npm config set prefix=~/.node_modules 
 
 pfx="~~~~~ "
 heading() {
