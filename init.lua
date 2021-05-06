@@ -46,17 +46,13 @@ require "treesitter-nvim"
 require "mappings"
 
 -- highlights --
-cmd "hi LineNr guifg=#42464e guibg=NONE"
+cmd "hi LineNr guifg=#42464e"
 cmd "hi Comment guifg=#42464e"
 
-cmd "hi SignColumn guibg=NONE"
-cmd "hi VertSplit guibg=NONE guifg=#2a2e36"
+cmd "hi VertSplit guifg=#2a2e36"
 cmd "hi EndOfBuffer guifg=#1e222a"
 cmd "hi PmenuSel guibg=#98c379"
 cmd "hi Pmenu  guibg=#282c34"
-
-cmd "hi Normal guibg=NONE ctermbg=NONE"
--- cmd "hi Normal guibg=#1e222a"
 
 require "telescope-nvim"
 require "nvimTree"
@@ -72,10 +68,10 @@ vim.api.nvim_exec([[
 ]], false)
 
 -- inactive statuslines as thin splitlines
-cmd("highlight! StatusLineNC gui=underline guibg=NONE guifg=#383c44")
+cmd("highlight! StatusLineNC gui=underline guifg=#383c44")
 
 cmd "hi clear CursorLine"
-cmd "hi cursorlinenr guibg=NONE guifg=#abb2bf"
+cmd "hi cursorlinenr guifg=#abb2bf"
 
 -- setup for TrueZen.nvim
 require "zenmode"

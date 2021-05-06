@@ -7,7 +7,7 @@ return require("packer").startup(
         use "wbthomason/packer.nvim"
 
         -- color related stuff
-        use "norcalli/nvim-base16.lua"
+        use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
 
         -- lsp stuff
