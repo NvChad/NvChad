@@ -36,13 +36,18 @@ function on_attach(client)
 end
 
 local lspconf = require "lspconfig"
-local servers = {"html", "cssls", "tsserver", "pyright", "bashls"}
+local servers = {"html", "cssls", "tsserver", "pyright", "bashls", "vls"}
 
 for k, lang in pairs(servers) do
     lspconf[lang].setup {
         root_dir = vim.loop.cwd
     }
 end
+
+local vls_binary = '/usr/local/bin/vls'
+require'lspconfig'.vls.setup {
+  cmd = {vls_binary},
+}
 
 -- lua lsp settings
 USER = "/home/" .. vim.fn.expand("$USER")

@@ -9,8 +9,6 @@ ts_config.setup {
         "lua",
         "json",
         "python"
-        --  "cpp",
-        --   "rust",
     },
     highlight = {
         enable = true,

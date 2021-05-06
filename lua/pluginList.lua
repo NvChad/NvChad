@@ -9,6 +9,7 @@ return require("packer").startup(
         -- color related stuff
         use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
+        -- use "ollykel/v-vim" -- v syntax highlighter
 
         -- lsp stuff
         use "nvim-treesitter/nvim-treesitter"
@@ -41,6 +42,10 @@ return require("packer").startup(
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
+
+        -- discord rich presence
+        --use "andweeb/presence.nvim"
+
 
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     end
