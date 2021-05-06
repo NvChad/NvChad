@@ -9,7 +9,7 @@ return require("packer").startup(
         -- color related stuff
         use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
-        use "ollykel/v-vim" -- v syntax
+        -- use "ollykel/v-vim" -- v syntax highlighter
 
         -- lsp stuff
         use "nvim-treesitter/nvim-treesitter"
