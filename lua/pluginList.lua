@@ -47,5 +47,10 @@ return require("packer").startup(
         --use "andweeb/presence.nvim"
 
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
-    end
+    end,
+    {
+        display = {
+            border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
+        }
+    }
 )
