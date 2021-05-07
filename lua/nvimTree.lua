@@ -87,3 +87,5 @@ g.nvim_tree_bindings = {
 cmd "hi NvimTreeFolderIcon guifg = #61afef"
 cmd "hi NvimTreeFolderName guifg = #61afef"
 cmd "hi NvimTreeIndentMarker guifg=#383c44"
+cmd "hi NvimTreeNormal guibg=#1b1f27"
+cmd "hi NvimTreeVertSplit guifg=#1e222a"

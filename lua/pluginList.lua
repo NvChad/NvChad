@@ -46,7 +46,6 @@ return require("packer").startup(
         -- discord rich presence
         --use "andweeb/presence.nvim"
 
-
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     end
 )

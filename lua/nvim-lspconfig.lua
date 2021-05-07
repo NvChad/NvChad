@@ -44,6 +44,7 @@ for k, lang in pairs(servers) do
     }
 end
 
+-- remove the lsp servers with their configs you don want
 local vls_binary = '/usr/local/bin/vls'
 require'lspconfig'.vls.setup {
   cmd = {vls_binary},

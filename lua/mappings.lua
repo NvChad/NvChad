@@ -17,9 +17,6 @@ map("v", "x", [=[ "_x ]=], opt)
 
 ]]
 
--- copy any selected text with pressing y
-map("", "<leader>c", '"+y')
-
 -- OPEN TERMINALS --
 map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- open term over right
 map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) -- open term bottom
@@ -33,4 +30,3 @@ map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 -- toggle truezen.nvim's ataraxis and minimalist mode
 map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
 map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
-
