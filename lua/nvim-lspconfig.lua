@@ -36,7 +36,7 @@ function on_attach(client)
 end
 
 local lspconf = require "lspconfig"
-local servers = {"html", "cssls", "tsserver", "pyright", "bashls", "vls"}
+local servers = {"html", "cssls", "tsserver", "pyright", "bashls", "vls", "clangd"}
 
 for k, lang in pairs(servers) do
     lspconf[lang].setup {
