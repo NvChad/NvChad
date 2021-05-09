@@ -208,15 +208,9 @@ I'd install it first and add its setup line :
 
 - **Managing tabs with bufferline!**
 
-<<<<<<< HEAD
-- <kbd> Shift </kbd> <kbd> l or p </kbd> cycle through opened tabs
-- <kbd> Shift </kbd> <kbd> x </kbd> close current tab
-- <kbd> Shift </kbd> <kbd> t </kbd> open new tab
-=======
 - <kbd> Shift </kbd> <kbd> TAB or Shift TAB </kbd> cycle through opened tabs
 - <kbd> Shift </kbd> <kbd> x </kbd> close current tab
 - <kbd> Shift </kbd> <kbd> t </kbd> open new tab
->>>>>>> parent of 5272eb3 (Update README.md)
 
 # TODO
 
