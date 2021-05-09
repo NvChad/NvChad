@@ -5,6 +5,7 @@ local activeBuffer_fg = "#c8ccd4"
 
 require "bufferline".setup {
     options = {
+        offsets = {{filetype = "NvimTree", text = "Explorer"}},
         buffer_close_icon = "",
         modified_icon = "",
         close_icon = " ",
@@ -20,7 +21,6 @@ require "bufferline".setup {
         separator_style = "thin",
         mappings = "true"
     },
-
     -- bar colors!!
     highlights = {
         fill = {
@@ -31,7 +31,6 @@ require "bufferline".setup {
             guifg = bar_fg,
             guibg = "#252931"
         },
-
         -- buffer
         buffer_selected = {
             guifg = activeBuffer_fg,
@@ -42,21 +41,19 @@ require "bufferline".setup {
             guifg = "#9298a0",
             guibg = "#252931"
         },
-
         -- tabs over right
         tab = {
             guifg = "#9298a0",
             guibg = "#30343c"
         },
-         tab_selected = {
+        tab_selected = {
             guifg = "#30343c",
             guibg = "#9298a0"
         },
-         tab_close = {
+        tab_close = {
             guifg = "#f9929b",
             guibg = "#252931"
         },
-
         -- buffer separators
         separator = {
             guifg = "#252931",
@@ -70,12 +67,10 @@ require "bufferline".setup {
             guifg = "#252931",
             guibg = "#252931"
         },
-
         indicator_selected = {
             guifg = "#252931",
             guibg = "#252931"
         },
-
         -- modified files (but not saved)
         modified_selected = {
             guifg = "#A3BE8C",
@@ -99,4 +94,3 @@ map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opt) -- close tab
 -- move between tabs
 map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
 map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
-
