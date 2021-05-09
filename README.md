@@ -208,9 +208,9 @@ I'd install it first and add its setup line :
 
 - **Managing tabs with bufferline!**
 
-- <kbd> Shift </kbd> <kbd> l or s </kbd> cycle through opened tabs
-- <kbd> Shift </kbd> <kbd> d </kbd> close current tab
-- <kbd> Shift </kbd> <kbd> b </kbd> open new tab
+- <kbd> Shift </kbd> <kbd> TAB or Shift TAB </kbd> cycle through opened tabs
+- <kbd> Shift </kbd> <kbd> x </kbd> close current tab
+- <kbd> Shift </kbd> <kbd> t </kbd> open new tab
 
 # TODO
 
