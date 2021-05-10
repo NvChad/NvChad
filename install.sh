@@ -2,7 +2,7 @@
 BASE=$(git rev-parse --show-toplevel)
 LSP_BIN_PATH=$HOME/.local/bin
 
-default_lsp_langs="css html ts rust python bash json"
+default_lsp_langs="css html ts rust python bash json lua"
 lsp_langs=""
 
 choose_langs() {
@@ -124,6 +124,16 @@ install_python() {
 
 install_bash() {
   install_node_deps bash-language-server
+}
+
+install_lua() {
+    git clone https://github.com/sumneko/lua-language-server ~/.config/lua-language-server
+    ( cd ~/.config/lua-language-server/ && git submodule update --init --recursive )
+
+    #linux only
+    (cd ~/.config/lua-language-server/3rd/luamake/ && compile/install.sh)
+    (cd ~/.config/lua-language-server/ &&  ./3rd/luamake/luamake rebuild)
+    
 }
 
 for lang in ${lsp_langs}; do
