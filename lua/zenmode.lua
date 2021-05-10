@@ -30,7 +30,7 @@ true_zen.setup(
             hidden_signcolumn = "no",
             shown_number = true,
             shown_relativenumber = false,
-            shown_signcolumn = "no"
+            shown_signcolumn = "yes"
         },
         ataraxis = {
             just_do_it_for_me = false,

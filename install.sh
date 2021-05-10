@@ -2,7 +2,7 @@
 BASE=$(git rev-parse --show-toplevel)
 LSP_BIN_PATH=$HOME/.local/bin
 
-default_lsp_langs="css html ts rust python bash"
+default_lsp_langs="css html ts rust python bash json"
 lsp_langs=""
 
 choose_langs() {
@@ -101,6 +101,10 @@ install_html() {
 
 install_css() {
   install_node_deps vscode-css-languageserver-bin
+}
+
+install_json() {
+  install_node_deps vscode-json-languageserver
 }
 
 install_rust() {
