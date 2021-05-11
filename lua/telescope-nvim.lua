@@ -73,12 +73,3 @@ vim.api.nvim_set_keymap("n", "<Leader>fb", [[<Cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap("n", "<Leader>fh", [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>fo", [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], opt)
 vim.api.nvim_set_keymap("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
-
--- highlights 
-
-local cmd = vim.cmd
-
-cmd "hi TelescopeBorder   guifg=#2a2e36"
-cmd "hi TelescopePromptBorder   guifg=#2a2e36"
-cmd "hi TelescopeResultsBorder  guifg=#2a2e36"
-cmd "hi TelescopePreviewBorder  guifg=#525865"

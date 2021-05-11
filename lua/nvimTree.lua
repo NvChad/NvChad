@@ -1,5 +1,3 @@
-
-local cmd = vim.cmd
 local g = vim.g
 
 vim.o.termguicolors = true
@@ -84,10 +82,3 @@ g.nvim_tree_bindings = {
     ["-"] = get_lua_cb("dir_up"),
     ["q"] = get_lua_cb("close")
 }
-
-cmd "hi NvimTreeFolderIcon guifg = #61afef"
-cmd "hi NvimTreeFolderName guifg = #61afef"
-cmd "hi NvimTreeIndentMarker guifg=#383c44"
-cmd "hi NvimTreeNormal guibg=#1b1f27"
-cmd "hi NvimTreeVertSplit guifg=#1e222a"
-cmd "hi NvimTreeRootFolder guifg=#f9929b"

@@ -25,9 +25,3 @@ require("gitsigns").setup {
     sign_priority = 5,
     status_formatter = nil -- Use default
 }
-
-local cmd = vim.cmd
-
-cmd "hi DiffAdd guifg=#81A1C1 guibg = none"
-cmd "hi DiffChange guifg =#3A3E44 guibg = none"
-cmd "hi DiffModified guifg = #81A1C1 guibg = none"
