@@ -1,10 +1,9 @@
-local cmd = vim.cmd
 local g = vim.g
 
 vim.o.termguicolors = true
 
 g.nvim_tree_side = "left"
-g.nvim_tree_width = 25
+g.nvim_tree_width = 26
 g.nvim_tree_ignore = {".git", "node_modules", ".cache"}
 g.nvim_tree_auto_open = 0
 g.nvim_tree_auto_close = 0
@@ -13,8 +12,8 @@ g.nvim_tree_follow = 1
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_hide_dotfiles = 1
 g.nvim_tree_git_hl = 1
-g.nvim_tree_root_folder_modifier = ":~"
-g.nvim_tree_tab_open = 1
+g.nvim_tree_root_folder_modifier = ":t"
+g.nvim_tree_tab_open = 0
 g.nvim_tree_allow_resize = 1
 
 g.nvim_tree_show_icons = {
@@ -83,9 +82,3 @@ g.nvim_tree_bindings = {
     ["-"] = get_lua_cb("dir_up"),
     ["q"] = get_lua_cb("close")
 }
-
-cmd "hi NvimTreeFolderIcon guifg = #61afef"
-cmd "hi NvimTreeFolderName guifg = #61afef"
-cmd "hi NvimTreeIndentMarker guifg=#383c44"
-cmd "hi NvimTreeNormal guibg=#1b1f27"
-cmd "hi NvimTreeVertSplit guifg=#1e222a"
