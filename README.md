@@ -212,6 +212,15 @@ I'd install it first and add its setup line :
 - <kbd> Shift </kbd> <kbd> x </kbd> close current tab
 - <kbd> Shift </kbd> <kbd> t </kbd> open new tab
 
+**Nvim-lspconfig (major ones)**
+- <kbd> K </kbd> hover and show the definition
+- <kbd> gd </kbd> jumps to the definition (works for user and language definitions)
+- <kbd> [d </kbd> jumps to the previous error
+- <kbd> ]d </kbd> jumps to the next error
+- leader <kbd> D </kbd> jumps to the definition
+- leader <kbd> w </kbd> + <kbd> q </kbd>list all the errors in a new buffer
+- leader <kbd> r </kbd> + <kbd> n </kbd> rename all instances of this definition (user functions and declaration)
+- 
 # TODO
 
 - Make the statusline more elegant.
