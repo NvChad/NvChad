@@ -23,7 +23,7 @@ jobs:
         env:
           VALIDATE_YAML: true
           VALIDATE_BASH_EXEC: true
-          VALIDATE_PYTHON_PYLINT: true
+          VALIDATE_LUA: true
           OUTPUT_FOLDER: super-linter.report
           OUTPUT_DETAILS: detailed
           DEFAULT_BRANCH: main
