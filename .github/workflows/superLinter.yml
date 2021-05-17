@@ -23,7 +23,7 @@ jobs:
         env:
           VALIDATE_YAML: true
           VALIDATE_BASH_EXEC: true
-          VALIDATE_LUA: true
+          #VALIDATE_LUA: true #removed because the lua gets caught with all the vim
           OUTPUT_FOLDER: super-linter.report
           OUTPUT_DETAILS: detailed
           DEFAULT_BRANCH: main
