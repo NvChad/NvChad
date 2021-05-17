@@ -1,3 +1,4 @@
+
 An attempt to make neovim (cli version) as functional as an IDE while being very eyecandy.
 
 # Screenshots -
