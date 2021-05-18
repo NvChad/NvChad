@@ -149,7 +149,7 @@ git clone https://github.com/wbthomason/packer.nvim\
 npm config set prefix=~/.node_modules
 npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
 
-(ADD ~/.node_modules at your PATH)
+(ADD ~/.node_modules/bin at your PATH)
 ```
 
 To setup any language server , follow this guide https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md and search up the needed LSP. For example if I needed clangd's lsp server :
