@@ -202,7 +202,7 @@ I'd install it first and add its setup line :
 - **Formatting code**
 
 - leader + <kbd> f </kbd> <kbd> m </kbd> formats or beautifies the code in current window via neoformat
-  (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check (this)[https://github.com/sbdchd/neoformat].
+  (currently only html ,css , js can be formatted . To be able to use this keybind you need to install the formatter locally for your language , in my case prettier was required only so I installed it. check [this](https://github.com/sbdchd/neoformat).
 
 - **Neoscroll**
 
