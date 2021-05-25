@@ -1,37 +1,27 @@
 local gl = require("galaxyline")
 local gls = gl.section
 
-gl.short_line_list = {" "} -- keeping this table { } as empty will show inactive statuslines
+gl.short_line_list = {"defx", "vista", "dbui", "vista_markdown", "packer"}
 
 local colors = {
-    bg = "#1e222a",
-    line_bg = "#1e222a",
-    fg = "#D8DEE9",
-    green = "#BBE67E",
-    orange = "#FF8800",
-    red = "#DF8890",
-    lightbg = "#282c34",
-    nord = "#81A1C1",
-    greenYel = "#EBCB8B"
-}
-
-gls.left[1] = {
-    leftRounded = {
-        provider = function()
-            return ""
-        end,
-        highlight = {colors.nord, colors.bg}
-    }
+    bg = "#22262e",
+    fg = "#abb2bf",
+    green = "#82ad63",
+    red = "#d47d85",
+    lightbg = "#2e323a",
+    blue = "#7797b7",
+    yellow = "#e0c080",
+    grey = "#6f737b"
 }
 
 gls.left[2] = {
     statusIcon = {
         provider = function()
-            return "   "
+            return "   "
         end,
-        highlight = {colors.bg, colors.nord},
-        separator = " ",
-        separator_highlight = {colors.lightbg, colors.lightbg}
+        highlight = {colors.bg, colors.blue},
+        separator = "  ",
+        separator_highlight = {colors.blue, colors.lightbg}
     }
 }
 
@@ -39,106 +29,80 @@ gls.left[3] = {
     FileIcon = {
         provider = "FileIcon",
         condition = buffer_not_empty,
-        highlight = {require("galaxyline.provider_fileinfo").get_file_icon_color, colors.lightbg}
+        highlight = {colors.fg, colors.lightbg}
     }
 }
 
 gls.left[4] = {
     FileName = {
-        provider = {"FileName", "FileSize"},
+        provider = {"FileName"},
         condition = buffer_not_empty,
-        highlight = {colors.fg, colors.lightbg}
-    }
-}
-
-gls.left[5] = {
-    teech = {
-        provider = function()
-            return ""
-        end,
-        separator = " ",
-        highlight = {colors.lightbg, colors.bg}
+        highlight = {colors.fg, colors.lightbg},
+        separator = " ",
+        separator_highlight = {colors.lightbg, colors.bg}
     }
 }
 
 local checkwidth = function()
     local squeeze_width = vim.fn.winwidth(0) / 2
-    if squeeze_width > 40 then
+    if squeeze_width > 30 then
         return true
     end
     return false
 end
 
-gls.left[6] = {
+gls.left[5] = {
     DiffAdd = {
         provider = "DiffAdd",
         condition = checkwidth,
-        icon = "   ",
-        highlight = {colors.greenYel, colors.line_bg}
+        icon = "  ",
+        highlight = {colors.fg, colors.bg}
+    }
+}
+
+gls.left[6] = {
+    DiffModified = {
+        provider = "DiffModified",
+        condition = checkwidth,
+        icon = "   ",
+        highlight = {colors.grey, colors.bg}
     }
 }
 
 gls.left[7] = {
-    DiffModified = {
-        provider = "DiffModified",
+    DiffRemove = {
+        provider = "DiffRemove",
         condition = checkwidth,
-        icon = " ",
-        highlight = {colors.orange, colors.line_bg}
+        icon = "  ",
+        highlight = {colors.grey, colors.bg}
     }
 }
 
 gls.left[8] = {
-    DiffRemove = {
-        provider = "DiffRemove",
-        condition = checkwidth,
-        icon = " ",
-        highlight = {colors.red, colors.line_bg}
+    DiagnosticError = {
+        provider = "DiagnosticError",
+        icon = "  ",
+        highlight = {colors.grey, colors.bg}
     }
 }
 
 gls.left[9] = {
-    LeftEnd = {
-        provider = function()
-            return " "
-        end,
-        separator = " ",
-        separator_highlight = {colors.line_bg, colors.line_bg},
-        highlight = {colors.line_bg, colors.line_bg}
-    }
-}
-
-gls.left[10] = {
-    DiagnosticError = {
-        provider = "DiagnosticError",
-        icon = "  ",
-        highlight = {colors.red, colors.bg}
-    }
-}
-
-gls.left[11] = {
-    Space = {
-        provider = function()
-            return " "
-        end,
-        highlight = {colors.line_bg, colors.line_bg}
-    }
-}
-
-gls.left[12] = {
     DiagnosticWarn = {
         provider = "DiagnosticWarn",
         icon = "  ",
-        highlight = {colors.red, colors.bg}
+        highlight = {colors.yellow, colors.bg}
     }
 }
 
 gls.right[1] = {
     GitIcon = {
         provider = function()
-            return "   "
+            return " "
         end,
         condition = require("galaxyline.provider_vcs").check_git_workspace,
-        highlight = {colors.green, colors.line_bg}
+        highlight = {colors.grey, colors.lightbg},
+        separator = "",
+        separator_highlight = {colors.lightbg, colors.bg}
     }
 }
 
@@ -146,18 +110,18 @@ gls.right[2] = {
     GitBranch = {
         provider = "GitBranch",
         condition = require("galaxyline.provider_vcs").check_git_workspace,
-        highlight = {colors.green, colors.line_bg}
+        highlight = {colors.grey, colors.lightbg}
     }
 }
 
 gls.right[3] = {
-    right_LeftRounded = {
+    viMode_icon = {
         provider = function()
-            return ""
+            return " "
         end,
-        separator = " ",
-        separator_highlight = {colors.bg, colors.bg},
-        highlight = {colors.red, colors.bg}
+        highlight = {colors.bg, colors.red},
+        separator = " ",
+        separator_highlight = {colors.red, colors.lightbg}
     }
 }
 
@@ -165,34 +129,36 @@ gls.right[4] = {
     ViMode = {
         provider = function()
             local alias = {
-                n = "NORMAL",
-                i = "INSERT",
-                c = "COMMAND",
-                V = "VISUAL",
-                [""] = "VISUAL",
-                v = "VISUAL",
-                R = "REPLACE"
+                n = "Normal",
+                i = "Insert",
+                c = "Command",
+                V = "Visual",
+                [""] = "Visual",
+                v = "Visual",
+                R = "Replace"
             }
-            return alias[vim.fn.mode()]
+            return "  " .. alias[vim.fn.mode()] .. " "
         end,
-        highlight = {colors.bg, colors.red}
+        highlight = {colors.red, colors.lightbg}
     }
 }
 
 gls.right[5] = {
-    PerCent = {
-        provider = "LinePercent",
-        separator = " ",
-        separator_highlight = {colors.red, colors.red},
-        highlight = {colors.bg, colors.fg}
+    time_icon = {
+        provider = function()
+            return " "
+        end,
+        separator = "",
+        separator_highlight = {colors.green, colors.bg},
+        highlight = {colors.lightbg, colors.green}
     }
 }
 
 gls.right[6] = {
-    rightRounded = {
+    time = {
         provider = function()
-            return ""
+            return "  " .. os.date("%H:%M") .. " "
         end,
-        highlight = {colors.fg, colors.bg}
+        highlight = {colors.green, colors.lightbg}
     }
 }
