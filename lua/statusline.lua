@@ -139,7 +139,9 @@ gls.right[4] = {
             }
             local current_Mode = alias[vim.fn.mode()]
 
-            if current_Mode ~= nil then
+            if current_Mode == nil then
+                return "  Terminal "
+            else
                 return "  " .. current_Mode .. " "
             end
         end,
