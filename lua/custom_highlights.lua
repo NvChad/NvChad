@@ -1,7 +1,7 @@
 local cmd = vim.cmd
 -- blankline
 
-cmd "hi IndentBlanklineChar guifg=#383c44"
+cmd "hi IndentBlanklineChar guifg=#282c34"
 
 -- misc --
 cmd "hi LineNr guifg=#42464e"

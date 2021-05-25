@@ -1,8 +1,7 @@
 -- load all plugins
 require "pluginList"
-require "file-icons"
-
 require "misc-utils"
+
 require "top-bufferline"
 require "statusline"
 
@@ -29,8 +28,6 @@ require "custom_highlights"
 
 -- blankline
 
-local indent = 2
-
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"
 
@@ -44,7 +41,8 @@ require "treesitter-nvim"
 require "mappings"
 
 require "telescope-nvim"
-require "nvimTree"
+require "nvimTree" -- file tree stuff
+require "file-icons"
 
 -- git signs , lsp symbols etc
 require "gitsigns-nvim"
@@ -58,3 +56,4 @@ vim.api.nvim_exec([[
 
 -- setup for TrueZen.nvim
 require "zenmode"
+require "whichkey"
