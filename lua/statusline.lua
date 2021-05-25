@@ -137,7 +137,11 @@ gls.right[4] = {
                 v = "Visual",
                 R = "Replace"
             }
-            return "  " .. alias[vim.fn.mode()] .. " "
+            local current_Mode = alias[vim.fn.mode()]
+
+            if current_Mode ~= nil then
+                return "  " .. current_Mode .. " "
+            end
         end,
         highlight = {colors.red, colors.lightbg}
     }
