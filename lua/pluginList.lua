@@ -9,15 +9,15 @@ return require("packer").startup(
         -- color related stuff
         use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
-        -- use "ollykel/v-vim" -- v syntax highlighter
 
-        -- lsp stuff
+        -- lang stuff
         use "nvim-treesitter/nvim-treesitter"
         use "neovim/nvim-lspconfig"
         use "hrsh7th/nvim-compe"
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
+        use "kabouzeid/nvim-lspinstall"
 
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
@@ -43,15 +43,11 @@ return require("packer").startup(
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
-
-        -- discord rich presence
-        --use "andweeb/presence.nvim"
-
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     end,
     {
         display = {
-            border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" }
+            border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}
         }
     }
 )
