@@ -1,4 +1,4 @@
-function on_attach(client)
+ function on_attach(client)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -35,79 +35,56 @@ function on_attach(client)
     end
 end
 
-local lspconf = require("lspconfig")
+-- lspInstall + lspconfig stuff
 
--- these langs require same lspconfig so put em all in a table and loop through!
-local servers = {"html", "cssls", "tsserver", "pyright", "bashls", "clangd", "ccls"}
+local function setup_servers()
+    require "lspinstall".setup()
 
-for _, lang in ipairs(servers) do
-  lspconf[lang].setup {
-    on_attach = on_attach,
-    root_dir = vim.loop.cwd
-  }
-end
+    local lspconf = require("lspconfig")
+    local servers = require "lspinstall".installed_servers()
 
--- vls conf example
-local vls_binary = "/usr/local/bin/vls"
-lspconf.vls.setup {
-    cmd = {vls_binary}
-}
-
--- lua lsp settings
-USER = "/home/" .. vim.fn.expand("$USER")
-
-local sumneko_root_path = USER .. "/.config/lua-language-server"
-local sumneko_binary = USER .. "/.config/lua-language-server/bin/Linux/lua-language-server"
-
-
-local lsp_installer = require'nvim-lsp-installer'
-
-local installed_servers = lsp_installer.get_installed_servers()
-
-for _, server in pairs(installed_servers) do
-    opts = {
-        on_attach = common_on_attach,
-    }
-
-    -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
-
-    server:setup(opts)
-end
-
-
-lspconf.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    root_dir = function()
-        return vim.loop.cwd()
-    end,
-    settings = {
-        Lua = {
-            runtime = {
-                version = "LuaJIT",
-                path = vim.split(package.path, ";")
-            },
-            diagnostics = {
-                globals = {"vim"}
-            },
-            workspace = {
-                library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                }
-            },
-            telemetry = {
-                enable = false
+    for _, lang in pairs(servers) do
+        if lang ~= "lua" then
+            lspconf[lang].setup {
+                on_attach = on_attach,
+                root_dir = vim.loop.cwd
             }
-        }
-    }
-}
+        elseif lang == "lua" then
+            lspconf.sumneko_lua.setup {
+                root_dir = function()
+                    return vim.loop.cwd()
+                end,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = {"vim"}
+                        },
+                        workspace = {
+                            library = {
+                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+                            }
+                        },
+                        telemetry = {
+                            enable = false
+                        }
+                    }
+                }
+            }
+        end
+    end
+end
+
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require "lspinstall".post_install_hook = function()
+    setup_servers() -- reload installed servers
+    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
 
 -- replace the default lsp diagnostic letters with prettier symbols
 vim.fn.sign_define("LspDiagnosticsSignError", {text = "", numhl = "LspDiagnosticsDefaultError"})
 vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "", numhl = "LspDiagnosticsDefaultHint"})
-
