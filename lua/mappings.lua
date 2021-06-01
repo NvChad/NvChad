@@ -18,8 +18,8 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 
 -- OPEN TERMINALS --
-map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- over right
-map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  bottom
+map("n", "<C-l>", [[<Cmd>vnew term://bash<CR>]], opt) -- over right
+map("n", "<C-x>", [[<Cmd> split term://bash| resize 10 <CR>]], opt) --  bottom
 map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- newtab
 
 -- COPY EVERYTHING in the file--
