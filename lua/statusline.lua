@@ -8,7 +8,8 @@ local colors = {
     fg = "#abb2bf",
     green = "#82ad63",
     red = "#d47d85",
-    lightbg = "#2e323a",
+    lightbg = "#2d3139",
+    lightbg2 = "#262a32",
     blue = "#7797b7",
     yellow = "#e0c080",
     grey = "#6f737b"
@@ -39,7 +40,19 @@ gls.left[4] = {
         condition = buffer_not_empty,
         highlight = {colors.fg, colors.lightbg},
         separator = " ",
-        separator_highlight = {colors.lightbg, colors.bg}
+        separator_highlight = {colors.lightbg, colors.lightbg2}
+    }
+}
+
+gls.left[5] = {
+    current_dir = {
+        provider = function()
+            local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+            return "  " .. dir_name .. " "
+        end,
+        highlight = {colors.grey, colors.lightbg2},
+        separator = " ",
+        separator_highlight = {colors.lightbg2, colors.bg}
     }
 }
 
@@ -51,7 +64,7 @@ local checkwidth = function()
     return false
 end
 
-gls.left[5] = {
+gls.left[6] = {
     DiffAdd = {
         provider = "DiffAdd",
         condition = checkwidth,
@@ -60,7 +73,7 @@ gls.left[5] = {
     }
 }
 
-gls.left[6] = {
+gls.left[7] = {
     DiffModified = {
         provider = "DiffModified",
         condition = checkwidth,
@@ -69,7 +82,7 @@ gls.left[6] = {
     }
 }
 
-gls.left[7] = {
+gls.left[8] = {
     DiffRemove = {
         provider = "DiffRemove",
         condition = checkwidth,
@@ -78,15 +91,15 @@ gls.left[7] = {
     }
 }
 
-gls.left[8] = {
+gls.left[9] = {
     DiagnosticError = {
         provider = "DiagnosticError",
         icon = "  ",
-        highlight = {colors.grey, colors.bg}
+        highlight = {colors.red, colors.bg}
     }
 }
 
-gls.left[9] = {
+gls.left[10] = {
     DiagnosticWarn = {
         provider = "DiagnosticWarn",
         icon = "  ",
@@ -155,7 +168,7 @@ gls.right[5] = {
             return " "
         end,
         separator = "",
-        separator_highlight = {colors.green, colors.bg},
+        separator_highlight = {colors.green, colors.lightbg},
         highlight = {colors.lightbg, colors.green}
     }
 }
