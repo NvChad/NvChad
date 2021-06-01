@@ -38,14 +38,14 @@ end
 local lspconf = require("lspconfig")
 
 -- these langs require same lspconfig so put em all in a table and loop through!
-local servers = {"html", "cssls", "tsserver", "pyright", "bashls", "clangd", "ccls"}
+local lspservers = {"html", "cssls", "tsserver", "pyright", "bashls", "clangd", "ccls", "gopls"}
 
-for _, lang in ipairs(servers) do
-    lspconf[lang].setup {
-        on_attach = on_attach,
-        root_dir = vim.loop.cwd
-    }
-end
+for _, lang in ipairs(lspservers) do
+  lspconf[lang].setup {
+     on_attach = on_attach,
+     root_dir = vim.loop.cwd
+ }
+ end
 
 -- vls conf example
 local vls_binary = "/usr/local/bin/vls"
@@ -58,6 +58,29 @@ USER = "/home/" .. vim.fn.expand("$USER")
 
 local sumneko_root_path = USER .. "/.config/lua-language-server"
 local sumneko_binary = USER .. "/.config/lua-language-server/bin/Linux/lua-language-server"
+
+
+local lsp_installer = require'nvim-lsp-installer'
+
+function common_on_attach(client, bufnr)
+    -- setup buffer keymaps etc.
+end
+
+local installed_servers = lsp_installer.get_installed_servers()
+
+for _, server in pairs(installed_servers) do
+    opts = {
+        on_attach = common_on_attach,
+    }
+
+    -- (optional) Customize the options passed to the server
+    -- if server.name == "tsserver" then
+    --     opts.root_dir = function() ... end
+    -- end
+
+    server:setup(opts)
+end
+
 
 lspconf.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
