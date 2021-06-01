@@ -4,8 +4,7 @@ local use = packer.use
 -- using { } for using different branch , loading plugin with certain commands etc
 return require("packer").startup(
     function()
-        use 'williamboman/nvim-lsp-installer'
-        use "wbthomason/packer.nvim"
+        use "kabouzeid/nvim-lspinstall"
         -- color related stuff
         use "siduck76/nvim-base16.lua"
         use "norcalli/nvim-colorizer.lua"
