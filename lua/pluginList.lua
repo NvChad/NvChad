@@ -4,7 +4,6 @@ local use = packer.use
 -- using { } for using different branch , loading plugin with certain commands etc
 return require("packer").startup(
     function()
-        use 'neovim/nvim-lsp-config'
         use 'williamboman/nvim-lsp-installer'
         use "wbthomason/packer.nvim"
         -- color related stuff
@@ -46,7 +45,6 @@ return require("packer").startup(
 
         -- discord rich presence
         --use "andweeb/presence.nvim"
-        use "wakatime/vim-wakatime"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     end,
     {

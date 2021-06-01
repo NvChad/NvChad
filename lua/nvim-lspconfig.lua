@@ -38,9 +38,9 @@ end
 local lspconf = require("lspconfig")
 
 -- these langs require same lspconfig so put em all in a table and loop through!
-local lspservers = {"html", "cssls", "tsserver", "pyright", "bashls", "clangd", "ccls", "gopls"}
+local servers = {"html", "cssls", "tsserver", "pyright", "bashls", "clangd", "ccls", "gopls"}
 
-for _, lang in ipairs(lspservers) do
+for _, lang in ipairs(servers) do
   lspconf[lang].setup {
      on_attach = on_attach,
      root_dir = vim.loop.cwd
