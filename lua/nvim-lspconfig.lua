@@ -42,10 +42,10 @@ local servers = {"html", "cssls", "tsserver", "pyright", "bashls", "clangd", "cc
 
 for _, lang in ipairs(servers) do
   lspconf[lang].setup {
-     on_attach = on_attach,
-     root_dir = vim.loop.cwd
- }
- end
+    on_attach = on_attach,
+    root_dir = vim.loop.cwd
+  }
+end
 
 -- vls conf example
 local vls_binary = "/usr/local/bin/vls"
