@@ -1,4 +1,4 @@
- function on_attach(client)
+function on_attach(client)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
@@ -50,7 +50,7 @@ local function setup_servers()
                 root_dir = vim.loop.cwd
             }
         elseif lang == "lua" then
-            lspconf.sumneko_lua.setup {
+            lspconf[lang].setup {
                 root_dir = function()
                     return vim.loop.cwd()
                 end,
