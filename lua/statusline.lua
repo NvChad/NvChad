@@ -1,7 +1,7 @@
 local gl = require("galaxyline")
 local gls = gl.section
 
-gl.short_line_list = {" "} -- keeping this table { } as empty will show inactive statuslines
+gl.short_line_list = {" "}
 
 local colors = {
     bg = "#22262e",
