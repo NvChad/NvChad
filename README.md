@@ -1,4 +1,4 @@
-[![GitHub Super-Linter](https://github.com/siduck76/NvChad/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![Super-Linter](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml/badge.svg)](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml)
 
 An attempt to make neovim (cli version) as functional as an IDE while being very eyecandy.
 
