@@ -42,5 +42,4 @@ function M.has_width_gt(cols)
 end
 -- file extension specific tabbing
 vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
-vim.cmd([[autocmd Filetype bash setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
 return M
