@@ -24,7 +24,7 @@ cmd "syntax on"
 local base16 = require "base16"
 base16(base16.themes["onedark"], true)
 
-require "custom_highlights"
+require "colors"
 
 -- blankline
 
