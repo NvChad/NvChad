@@ -1,16 +1,17 @@
 local gl = require("galaxyline")
 local gls = gl.section
+local condition = require("galaxyline.condition")
 
 gl.short_line_list = {" "}
 
 local colors = {
     bg = "#22262e",
     fg = "#abb2bf",
-    green = "#82ad63",
+    green = "#97C378",
     red = "#d47d85",
     lightbg = "#2d3139",
     lightbg2 = "#262a32",
-    blue = "#7797b7",
+    blue = "#81A1C1",
     yellow = "#e0c080",
     grey = "#6f737b"
 }
@@ -29,7 +30,7 @@ gls.left[2] = {
 gls.left[3] = {
     FileIcon = {
         provider = "FileIcon",
-        condition = buffer_not_empty,
+        condition = condition.buffer_not_empty,
         highlight = {colors.fg, colors.lightbg}
     }
 }
@@ -37,7 +38,7 @@ gls.left[3] = {
 gls.left[4] = {
     FileName = {
         provider = {"FileName"},
-        condition = buffer_not_empty,
+        condition = condition.buffer_not_empty,
         highlight = {colors.fg, colors.lightbg},
         separator = " ",
         separator_highlight = {colors.lightbg, colors.lightbg2}
@@ -108,6 +109,21 @@ gls.left[10] = {
 }
 
 gls.right[1] = {
+    lsp_status = {
+        provider = function(msg)
+            msg = msg or "No Active Lsp"
+            local clients = vim.lsp.get_active_clients()
+            if next(clients) ~= nil then
+                return " " .. "  " .. " active "
+            else
+                return ""
+            end
+        end,
+        highlight = {colors.grey, colors.bg}
+    }
+}
+
+gls.right[2] = {
     GitIcon = {
         provider = function()
             return " "
@@ -119,7 +135,7 @@ gls.right[1] = {
     }
 }
 
-gls.right[2] = {
+gls.right[3] = {
     GitBranch = {
         provider = "GitBranch",
         condition = require("galaxyline.provider_vcs").check_git_workspace,
@@ -127,7 +143,7 @@ gls.right[2] = {
     }
 }
 
-gls.right[3] = {
+gls.right[4] = {
     viMode_icon = {
         provider = function()
             return " "
@@ -138,7 +154,7 @@ gls.right[3] = {
     }
 }
 
-gls.right[4] = {
+gls.right[5] = {
     ViMode = {
         provider = function()
             local alias = {
@@ -162,10 +178,10 @@ gls.right[4] = {
     }
 }
 
-gls.right[5] = {
-    time_icon = {
+gls.right[6] = {
+    some_icon = {
         provider = function()
-            return " "
+            return " "
         end,
         separator = "",
         separator_highlight = {colors.green, colors.lightbg},
@@ -173,10 +189,19 @@ gls.right[5] = {
     }
 }
 
-gls.right[6] = {
-    time = {
+gls.right[7] = {
+    line_percentage = {
         provider = function()
-            return "  " .. os.date("%H:%M") .. " "
+            local current_line = vim.fn.line(".")
+            local total_line = vim.fn.line("$")
+
+            if current_line == 1 then
+                return "  Top "
+            elseif current_line == vim.fn.line("$") then
+                return "  Bot "
+            end
+            local result, _ = math.modf((current_line / total_line) * 100)
+            return "  " .. result .. "% "
         end,
         highlight = {colors.green, colors.lightbg}
     }

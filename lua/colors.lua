@@ -17,7 +17,7 @@ cmd "hi PmenuSbar guibg =#353b45"
 cmd "hi PmenuThumb guibg =#81A1C1"
 
 -- inactive statuslines as thin splitlines
-cmd("highlight! StatusLineNC gui=underline guifg=#383c44")
+cmd("hi! StatusLineNC gui=underline guifg=#383c44")
 
 -- line n.o
 cmd "hi clear CursorLine"
