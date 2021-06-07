@@ -146,10 +146,9 @@ git clone https://github.com/wbthomason/packer.nvim\
 - Install language servers and prettier ( for autocompletion etc and code formatting , nodejs should be installed too!) , this usually depends on the language support you want to add in your neovim config.
 
 ```
-npm config set prefix=~/.node_modules
-npm install -g vscode-html-languageserver-bin typescript typescript-language-server  vscode-css-languageserver-bin prettier
-
-(ADD ~/.node_modules/bin at your PATH)
+ install the languages you want , check [lspInstal-repo](https://github.com/kabouzeid/nvim-lspinstall)
+ 
+ example - :LspInstall html
 ```
 
 To setup any language server , follow this guide https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md and search up the needed LSP. For example if I needed clangd's lsp server :
