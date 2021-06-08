@@ -75,20 +75,6 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvim-startup.png"></kbd><hr>
 
-# Config structure
-
-```
-     nvim
-      ├──init.lua
-      └──lua
-          └──anything.lua
-```
-
-- The init.lua is used instead of init.vim.
-- The lua folder contains modules ( config files ) , in the example above anything.lua file in lua folder could be considered as a module.
-- The anything.lua file is supposed to have any neovim config written in lua , its like splitting the overall config into small bits and make it more organized , like one module for highlights and colors , another one for statusline and so on!.
-- To load or source that "anything" module (like making it load with init.lua ) ,add this is in init.lua : require "anything".
-
 # Features
 
 - File navigation with Nvimtree
