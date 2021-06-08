@@ -97,6 +97,12 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 - smooth scrolling
 - Snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
 
+# Requirements 
+
+- neovim 0.5
+- A terminal that supports [nerdfonts](https://github.com/ryanoasis/nerd-fonts) 
+- Set terminal's inner padding to 0.
+
 # Wiki
 
 - [config-structure](https://github.com/siduck76/NvChad/wiki#config-structure)
