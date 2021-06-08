@@ -100,7 +100,7 @@ nvim-base16 doesnt even take time to load unlike base16-vim which was eating hal
 # Wiki
 
 - [config-structure](https://github.com/siduck76/NvChad/wiki#config-structure)
-- [Install](https://github.com/siduck76/NvChad/wiki#config-structure)
+- [Install](https://github.com/siduck76/NvChad/wiki#clone-my-setup)
 - [mappings](https://github.com/siduck76/NvChad/wiki/mappings)
 
 # TODO
