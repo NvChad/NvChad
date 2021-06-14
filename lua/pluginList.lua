@@ -2,7 +2,7 @@ local packer = require("packer")
 local use = packer.use
 
 -- using { } for using different branch , loading plugin with certain commands etc
-return require("packer").startup(
+return packer.startup(
     function()
         use "wbthomason/packer.nvim"
 
