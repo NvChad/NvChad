@@ -101,7 +101,7 @@ fg("LspDiagnosticsVirtualTextHint", purple)
 fg_bg("BufferLineFill", grey_fg, black2)
 fg_bg("BufferLineBackground", light_grey, black2)
 
-fg_bg("BufferLineBufferVisible", light_grey, one_bg)
+fg_bg("BufferLineBufferVisible", light_grey, black2)
 fg_bg("BufferLineBufferSelected", white, black)
 
 cmd "hi BufferLineBufferSelected gui=bold"
