@@ -1,108 +1,110 @@
+local colors = require "themes/onedark"
+
 require "nvim-web-devicons".setup {
     override = {
         html = {
             icon = "",
-            color = "#DE8C92",
+            color = colors.baby_pink,
             name = "html"
         },
         css = {
             icon = "",
-            color = "#61afef",
+            color = colors.blue,
             name = "css"
         },
         js = {
             icon = "",
-            color = "#EBCB8B",
+            color = colors.sun,
             name = "js"
         },
         ts = {
             icon = "ﯤ",
-            color = "#519ABA",
+            color = colors.teal,
             name = "ts"
         },
         kt = {
             icon = "󱈙",
-            color = "#ffcb91",
+            color = colors.orange,
             name = "kt"
         },
         png = {
-            icon = " ",
-            color = "#BD77DC",
+            icon = "",
+            color = colors.dark_purple,
             name = "png"
         },
         jpg = {
-            icon = " ",
-            color = "#BD77DC",
+            icon = "",
+            color = colors.dark_purple,
             name = "jpg"
         },
         jpeg = {
-            icon = " ",
-            color = "#BD77DC",
+            icon = "",
+            color = "colors.dark_purple",
             name = "jpeg"
         },
         mp3 = {
             icon = "",
-            color = "#C8CCD4",
+            color = colors.white,
             name = "mp3"
         },
         mp4 = {
             icon = "",
-            color = "#C8CCD4",
+            color = colors.white,
             name = "mp4"
         },
         out = {
             icon = "",
-            color = "#C8CCD4",
+            color = colors.white,
             name = "out"
         },
         Dockerfile = {
             icon = "",
-            color = "#b8b5ff",
+            color = colors.cyan,
             name = "Dockerfile"
         },
         rb = {
             icon = "",
-            color = "#ff75a0",
+            color = colors.pink,
             name = "rb"
         },
         vue = {
             icon = "﵂",
-            color = "#7eca9c",
+            color = colors.vibrant_green,
             name = "vue"
         },
         py = {
             icon = "",
-            color = "#a7c5eb",
+            color = colors.cyan,
             name = "py"
         },
         toml = {
             icon = "",
-            color = "#61afef",
+            color = colors.blue,
             name = "toml"
         },
         lock = {
             icon = "",
-            color = "#DE6B74",
+            color = colors.red,
             name = "lock"
         },
         zip = {
             icon = "",
-            color = "#EBCB8B",
+            color = colors.sun,
             name = "zip"
         },
         xz = {
             icon = "",
-            color = "#EBCB8B",
+            color = colors.sun,
             name = "xz"
         },
         deb = {
             icon = "",
-            color = "#a3b8ef",
+            color = colors.cyan,
             name = "deb"
         },
         rpm = {
             icon = "",
-            color = "#fca2aa",
+            color = colors.orange,
             name = "rpm"
         }
     }

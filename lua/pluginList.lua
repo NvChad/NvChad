@@ -38,6 +38,7 @@ return require("packer").startup(
         use "nvim-lua/popup.nvim"
 
         -- misc
+        use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
