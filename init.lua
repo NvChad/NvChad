@@ -57,3 +57,8 @@ vim.api.nvim_exec([[
 require "zenmode"
 require "whichkey"
 require "dashboard"
+
+-- lsp (not found on lsp install) list bellow:
+-- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+-- steps: 1) add a file in the lsp folder (kinda like lunar nvim); 2) add its requirement here
+require 'lsp.emmet'
