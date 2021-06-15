@@ -54,10 +54,3 @@ ts_config.setup {
         use_languagetree = true
     }
 }
-
--- Treesitter Based indentation
-ts_config.setup {
-  indent = {
-    enable = true
-  }
-}
