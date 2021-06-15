@@ -5,9 +5,6 @@ require "misc-utils"
 require "top-bufferline"
 require "statusline"
 
--- Commenter
-require "commenter"
-
 require("colorizer").setup()
 require("neoscroll").setup() -- smooth scroll
 
@@ -60,3 +57,4 @@ vim.api.nvim_exec([[
 require "zenmode"
 require "whichkey"
 require "dashboard"
+require('nvim_comment').setup()
