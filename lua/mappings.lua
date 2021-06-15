@@ -33,3 +33,7 @@ map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
 
 map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
 -- vim.cmd("inoremap jh <Esc>")
+
+-- Commenter Keybinding
+map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
