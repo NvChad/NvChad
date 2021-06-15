@@ -27,7 +27,6 @@ base16(base16.themes["onedark"], true)
 require "highlights"
 
 -- blankline
-vim.bo.smartindent = true --smartindent
 
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"
