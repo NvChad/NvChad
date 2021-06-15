@@ -8,7 +8,8 @@ An attempt to make neovim (cli version) as functional as an IDE while being very
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
-<kbd><img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimRice2.png"></kbd><hr>
+<img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimRice2.png"><hr>
+<img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 
 # Very Useful lua plugins used in my config -
 
@@ -111,7 +112,7 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
 
 If you enjoy using NvChad and would like to show your appreciation, you may want to tip me here.
 
-It is never required but always appreciated ^-^.
+It is never required but always appreciated.
 
 <p align="center">
   <a href="https://www.buymeacoffee.com/siduck7" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/1.png"></a>
