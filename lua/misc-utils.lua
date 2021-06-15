@@ -28,6 +28,8 @@ opt("o", "timeoutlen", 500)
 -- for indenline
 opt("b", "expandtab", true)
 opt("b", "shiftwidth", 2)
+opt("b", "smartindent", true)
+
 
 local M = {}
 
