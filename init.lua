@@ -5,6 +5,9 @@ require "misc-utils"
 require "top-bufferline"
 require "statusline"
 
+-- Commenter
+require "commenter"
+
 require("colorizer").setup()
 require("neoscroll").setup() -- smooth scroll
 
