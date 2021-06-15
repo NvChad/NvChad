@@ -28,6 +28,8 @@ require "highlights"
 
 -- blankline
 
+vim.bo.smartindent = true --smartindent
+
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"
 
