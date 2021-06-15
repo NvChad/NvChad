@@ -23,13 +23,21 @@ if [ ! -d ~/.local/share/nvim/site/pack/packer ]; then
 fi
 
 echo "Linking config"
-echo "old nvim config will be deleted so watchout! :0"
-echo
+echo "old nvim config will be changed to nvim.bak if exists! :0"
 
 # copying config
+if [ -d ~/.config/nvim ]; then
+   echo "Nvim Directory exists"
+   echo "Changing nvim to nvim.bak"
+   mv ~/.config/nvim/ ~/.config/nvim.bak/
+   echo "Creating new nvim directory"
+   mkdir -p ~/.config/nvim
+else
+   echo "Nvim Config doesn't exist so creating one"
+   mkdir -p ~/.config/nvim/
+fi
 
-rm -rf ~/.config/nvim/ && mkdir -p ~/.config/nvim
-cp -r init.lua ~/.config/nvim && cp -r lua ~/.config/nvim
+cp -r init.lua ~/.config/nvim/ && cp -r lua ~/.config/nvim/
 
 # change shell in nvim config
 read -p "which shell do you use?: " shellname
