@@ -25,6 +25,9 @@ return packer.startup(
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
 
+        -- Comment
+        use "terrortylor/nvim-comment"
+
         -- snippet support
         use "hrsh7th/vim-vsnip"
         use "rafamadriz/friendly-snippets"
