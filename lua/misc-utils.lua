@@ -12,8 +12,6 @@ opt("o", "ignorecase", true)
 opt("o", "splitbelow", true)
 opt("o", "splitright", true)
 opt("o", "termguicolors", true)
-opt("w", "number", true)
-opt("o", "numberwidth", 2)
 opt("w", "cul", true)
 
 opt("o", "mouse", "a")
@@ -25,11 +23,15 @@ opt("o", "updatetime", 250) -- update interval for gitsigns
 opt("o", "clipboard", "unnamedplus")
 opt("o", "timeoutlen", 500)
 
+-- Numbers
+opt("w", "number", true)
+opt("o", "numberwidth", 2)
+-- opt("w", "relativenumber", true)
+
 -- for indenline
 opt("b", "expandtab", true)
 opt("b", "shiftwidth", 2)
 opt("b", "smartindent", true)
-
 
 local M = {}
 
