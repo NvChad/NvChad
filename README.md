@@ -1,4 +1,5 @@
 [![Super-Linter](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml/badge.svg)](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml)
+[![Gitter](https://badges.gitter.im/neovim-dotfiles/community.svg)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 An attempt to make neovim (cli version) as functional as an IDE while being very eyecandy.
 
@@ -7,7 +8,8 @@ An attempt to make neovim (cli version) as functional as an IDE while being very
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
-<kbd><img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimRice2.png"></kbd><hr>
+<img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimRice2.png"><hr>
+<img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 
 # Very Useful lua plugins used in my config -
 
@@ -94,10 +96,26 @@ without / with Treesitter :
 
 # TODO
 
+It would be nice if NvChad focuses on existing plugins and config before adding new things , some plugins like whichkey , telescope , treesitter still have basic configs! Also adding new features that'd make NvChad slow or its startuptime slow wouldnt be encouraged , if that feature's really needed then It'll be mentioned in the wiki with its config.
+
+- Debloat the config
 - Add more themes.
-- Add a theme switcher
+- Add a theme switcher.
+- Add a global configuration so it doesnt get hard to update :c 
 
 # Contact -
 
 - My linux / unix related ricing community: https://t.me/DE_WM (telegram)
 - Me: @siduck (telegram)
+
+## :gift_heart:  Tip Jar
+
+If you enjoy using NvChad and would like to show your appreciation, you may want to tip me here.
+
+It is never required but always appreciated.
+
+<p align="center">
+  <a href="https://www.buymeacoffee.com/siduck7" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/1.png"></a>
+  <a href="https://ko-fi.com/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/2.png"></a>
+  <a href="https://www.paypal.com/paypalme/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/3.png"></a>
+</p>
