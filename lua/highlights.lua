@@ -135,3 +135,6 @@ fg("DashboardHeader", grey_fg)
 fg("DashboardCenter", grey_fg)
 fg("DashboardShortcut", grey_fg)
 fg("DashboardFooter", black)
+
+-- Default nvim bg
+-- vim.cmd("hi Normal guibg=#1e222a")
