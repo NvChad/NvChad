@@ -12,8 +12,6 @@ opt("o", "ignorecase", true)
 opt("o", "splitbelow", true)
 opt("o", "splitright", true)
 opt("o", "termguicolors", true)
-opt("w", "number", true)
-opt("o", "numberwidth", 2)
 opt("w", "cul", true)
 
 opt("o", "mouse", "a")
