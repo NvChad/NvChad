@@ -1,3 +1,6 @@
+-- These files are being read from the files inside lua directory.
+-- So if you wanna make changes to the config go ahead inside the lua direcotry and check around :p.
+
 local cmd = vim.cmd
 local g = vim.g
 
