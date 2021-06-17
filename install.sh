@@ -54,4 +54,5 @@ echo
 echo "neovim will open with some errors , just press enter" && sleep 1
 
 # install all plugins
+echo "If nothing happens open nvim and type in nvim prompt ':PackerInstall'"
 nvim +PackerInstall 

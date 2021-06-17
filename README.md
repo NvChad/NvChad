@@ -6,7 +6,6 @@ An attempt to make neovim (cli version) as functional as an IDE while being very
 # Screenshots -
 
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
-<img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimRice2.png"><hr>
 <img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
@@ -38,6 +37,7 @@ adds indentline :
 
 ### galaxyline -
 
+Galaxyline is a light-weight and Super Fast statusline plugin. Written in Lua.
 fastest statusline plugin I've used so far:
 <kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/statusline.png"></kbd><hr>
 
@@ -45,7 +45,7 @@ fastest statusline plugin I've used so far:
 
 ### nvim-bufferline.lua -
 
-As a top bufferline like thing which lets me handle tabs like switching, closing tabs.
+As a top bufferline like thing which lets me handle tabs like switching, closing tabs. Written in Lua ;)
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/bufferline.png"></kbd>
 
 <hr>
@@ -55,6 +55,7 @@ Lua fork of vim devicons which lets me change icons of filetypes
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/image.png"></kbd><hr>
  
 ### nvim-treesitter 
+Tree-sitter, transforms text into a syntax tree. Each time you make a change, only the parts of the code that change need to be parsed. This greatly improves the speed of parsing.
 Better syntax highlighting for programming languages ( my config just has html,css,js support for now ).
 
 without / with Treesitter :

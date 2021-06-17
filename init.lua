@@ -1,19 +1,19 @@
+local cmd = vim.cmd
+local g = vim.g
+
 -- load all plugins
-require "pluginList"
-require "misc-utils"
+require "pluginList" -- Plugins
+require "misc-utils" -- Settings
 
-require "top-bufferline"
-require "statusline"
+require "top-bufferline" -- Bufferline
+require "statusline" -- statusline
 
-require("colorizer").setup()
+require("colorizer").setup() -- Colorizer
 require("neoscroll").setup() -- smooth scroll
 
 -- lsp stuff
 require "nvim-lspconfig"
-require "compe-completion"
-
-local cmd = vim.cmd
-local g = vim.g
+require "compe-completion" -- Completion
 
 g.mapleader = " "
 g.auto_save = 0
@@ -37,12 +37,14 @@ g.indent_blankline_buftype_exclude = {"terminal"}
 g.indent_blankline_show_trailing_blankline_indent = false
 g.indent_blankline_show_first_indent_level = false
 
+-- Treesitter
 require "treesitter-nvim"
 require "mappings"
 
+-- Finder and Explorer
 require "telescope-nvim"
 require "nvimTree" -- file tree stuff
-require "file-icons"
+require "file-icons" -- file icons
 
 -- git signs , lsp symbols etc
 require "gitsigns-nvim"
@@ -55,6 +57,6 @@ vim.api.nvim_exec([[
 ]], false)
 
 require "zenmode"
-require "whichkey"
-require "dashboard"
-require('nvim_comment').setup()
+require "whichkey" -- whick key
+require "dashboard" -- dashboard
+require('nvim_comment').setup() -- commenter
