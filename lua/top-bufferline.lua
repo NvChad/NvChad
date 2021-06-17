@@ -14,6 +14,7 @@ require "bufferline".setup {
         view = "multiwindow",
         show_buffer_close_icons = true,
         separator_style = "thin",
+        indicator_icon = '▎',
         mappings = "true"
     }
 }

@@ -18,8 +18,11 @@ return packer.startup(
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
         use "kabouzeid/nvim-lspinstall"
+        use "ekalinin/Dockerfile.vim"
+        use "sheerun/vim-polyglot"
 
         use "lewis6991/gitsigns.nvim"
+        use 'tpope/vim-fugitive'
         use "akinsho/nvim-bufferline.lua"
         use "glepnir/galaxyline.nvim"
         use "windwp/nvim-autopairs"
@@ -41,13 +44,26 @@ return packer.startup(
         use "nvim-lua/popup.nvim"
 
         -- misc
+        use 'kshenoy/vim-signature'
+        use "tommcdo/vim-exchange"
+        use "matze/vim-move"
+        use "tpope/vim-abolish"
+        use "tpope/vim-surround"
+        use "tpope/vim-repeat"
+        use {"mg979/vim-visual-multi", branch = "master"}
+        use "easymotion/vim-easymotion"
+        use "godlygeek/tabular"
+        use "p00f/nvim-ts-rainbow" 
         use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
         use "907th/vim-auto-save"
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
-        use "folke/which-key.nvim"
+        -- use "folke/which-key.nvim"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+
+        -- development tools
+        use "editorconfig/editorconfig-vim"
     end,
     {
         display = {
