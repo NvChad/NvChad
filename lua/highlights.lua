@@ -137,4 +137,4 @@ fg("DashboardShortcut", grey_fg)
 fg("DashboardFooter", black)
 
 -- Default nvim bg
--- cmd("hi Normal guibg=#1e222a")
+-- cmd "hi Normal guibg=#1e222a"
