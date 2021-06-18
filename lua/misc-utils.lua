@@ -8,6 +8,7 @@ local function opt(scope, key, value)
 end
 
 opt("o", "ruler", false)
+opt("o", "showmode", false)
 opt("o", "hidden", true)
 opt("o", "ignorecase", true)
 opt("o", "splitbelow", true)
