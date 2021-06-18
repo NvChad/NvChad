@@ -108,7 +108,7 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
 - PR's are always welcomed however NvChad aims to be less bloated and suckless. So PR's regarding existing plugin's enhancement , bug fixes are more encouraged. 
 - PR's regarding adding new plugins and their configs must be given some thought since NvChad aims to have a minimal config and meant to be used as a "base" neovim config so it will have only a set of important plugins. So adding more and more plugins, making NvChad bloated + slow wont help!.
 - NvChad isnt a Framework. NvChad wont keep adding more and more features ( adding new plugins most likely)  as requested , no spoonfeeding!! If you think the plugin you want to be added is very useful and many NvChaders would find it useful, then such feature's PR is welcomed!
-- But adding specific features like adding config for https://github.com/wakatime/vim-wakatime etc will be added in this (section)[https://github.com/siduck76/NvChad/wiki/Chad-user-configs]. This lets the user select the things only they want ( from extra configs ) .
+- But adding specific features like adding config for https://github.com/wakatime/vim-wakatime etc will be added in this https://github.com/siduck76/NvChad/wiki/Chad-user-configs. This lets the user select the things only they want ( from extra configs ) .
 
 ## :gift_heart:  Support 
 
