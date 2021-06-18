@@ -50,11 +50,16 @@ require("nvim-autopairs").setup()
 require("lspkind").init()
 
 -- hide line numbers in terminal windows
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+    [[
    au BufEnter term://* setlocal nonumber
-]], false)
+   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+   au BufEnter term://* set laststatus=0 
+]],
+    false
+)
 
 require "zenmode"
 require "whichkey"
 require "dashboard"
-require('nvim_comment').setup()
+require("nvim_comment").setup()
