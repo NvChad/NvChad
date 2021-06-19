@@ -23,8 +23,8 @@ g.nvim_tree_show_icons = {
 }
 
 g.nvim_tree_icons = {
-    default = " ",
-    symlink = " ",
+    default = "",
+    symlink = "",
     git = {
         unstaged = "✗",
         staged = "✓",
