@@ -134,7 +134,7 @@ fg_bg("BufferLineCLoseButtonSelected", red, black)
 fg("DashboardHeader", grey_fg)
 fg("DashboardCenter", grey_fg)
 fg("DashboardShortcut", grey_fg)
-fg("DashboardFooter", black)
+fg("DashboardFooter", grey_fg)
 
 -- Default nvim bg
 -- cmd "hi Normal guibg=#1e222a"

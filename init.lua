@@ -49,7 +49,7 @@ require "gitsigns-nvim"
 require("nvim-autopairs").setup()
 require("lspkind").init()
 
--- hide line numbers in terminal windows
+-- hide line numbers , statusline in specific buffers!
 vim.api.nvim_exec(
     [[
    au BufEnter term://* setlocal nonumber
