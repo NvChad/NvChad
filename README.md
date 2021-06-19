@@ -90,6 +90,7 @@ without / with Treesitter :
 
 # Wiki
 
+- [pr-requisite](https://github.com/siduck76/NvChad/wiki/Lua-guides)
 - [config-structure](https://github.com/siduck76/NvChad/wiki#config-structure)
 - [Install](https://github.com/siduck76/NvChad/wiki#clone-my-setup)
 - [mappings](https://github.com/siduck76/NvChad/wiki/mappings)
