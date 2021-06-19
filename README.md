@@ -1,7 +1,7 @@
 [![Super-Linter](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml/badge.svg)](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml)
 [![Gitter](https://badges.gitter.im/neovim-dotfiles/community.svg)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-An attempt to make neovim (cli version) as functional as an IDE while being very eyecandy.
+An attempt to make neovim (cli version) as functional as an IDE while being very eyecandy and less bloated.
 
 # Screenshots -
 
@@ -103,12 +103,14 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
 - Add a theme switcher.
 - Add a global configuration so it doesnt get hard to update :c 
 
-# Contact -
+# Contibute 
 
-- My linux / unix related ricing community: https://t.me/DE_WM (telegram)
-- Me: @siduck (telegram)
+- PR's are always welcomed however NvChad aims to be less bloated and suckless. So PR's regarding existing plugin's enhancement , bug fixes are more encouraged. 
+- PR's regarding adding new plugins and their configs must be given some thought since NvChad aims to have a minimal config and meant to be used as a "base" neovim config so it will have only a set of important plugins. So adding more and more plugins, making NvChad bloated + slow wont help!.
+- NvChad isnt a Framework. NvChad wont keep adding more and more features ( adding new plugins most likely)  as requested , no spoonfeeding!! If you think the plugin you want to be added is very useful and many NvChaders would find it useful, then such feature's PR is welcomed!
+- But adding specific features like adding config for https://github.com/wakatime/vim-wakatime etc will be added in this https://github.com/siduck76/NvChad/wiki/Chad-user-configs. This lets the user select the things only they want ( from extra configs ) .
 
-## :gift_heart:  Tip Jar
+## :gift_heart:  Support 
 
 If you enjoy using NvChad and would like to show your appreciation, you may want to tip me here.
 
@@ -119,3 +121,8 @@ It is never required but always appreciated.
   <a href="https://ko-fi.com/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/2.png"></a>
   <a href="https://www.paypal.com/paypalme/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/3.png"></a>
 </p>
+
+# Contact -
+
+- My linux / unix related ricing community: https://t.me/DE_WM (telegram)
+- Me: @siduck (telegram)
