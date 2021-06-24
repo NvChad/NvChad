@@ -13,7 +13,16 @@ return packer.startup(
         -- lang stuff
         use "nvim-treesitter/nvim-treesitter"
         use "neovim/nvim-lspconfig"
-        use "hrsh7th/nvim-compe"
+
+        -- loads compe and vsnip in insert mode only
+        use {
+            "hrsh7th/nvim-compe",
+            event = "InsertEnter",
+            config = function()
+                require("compe-completion").config()
+            end
+        }
+
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
@@ -23,7 +32,7 @@ return packer.startup(
         use "akinsho/nvim-bufferline.lua"
         use "glepnir/galaxyline.nvim"
         use "windwp/nvim-autopairs"
-        use "alvan/vim-closetag"
+        --   use "alvan/vim-closetag" -- for html
 
         -- Comment
         use "terrortylor/nvim-comment"
