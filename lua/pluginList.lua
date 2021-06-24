@@ -14,7 +14,7 @@ return packer.startup(
         use "nvim-treesitter/nvim-treesitter"
         use "neovim/nvim-lspconfig"
 
-        -- loads compe and vsnip in insert mode only
+        -- load compe in insert mode only
         use {
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
@@ -38,7 +38,10 @@ return packer.startup(
         use "terrortylor/nvim-comment"
 
         -- snippet support
-        use "hrsh7th/vim-vsnip"
+        use {
+            "hrsh7th/vim-vsnip",
+            event = "InsertCharPre"
+        }
         use "rafamadriz/friendly-snippets"
 
         -- file managing , picker etc
@@ -51,7 +54,15 @@ return packer.startup(
         -- misc
         use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
-        use "907th/vim-auto-save"
+
+        -- load autosave plugin only if its globally enabled
+        use {
+            "907th/vim-auto-save",
+            cond = function()
+                return vim.g.auto_save == 1
+            end
+        }
+
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
