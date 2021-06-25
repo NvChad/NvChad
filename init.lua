@@ -18,7 +18,7 @@ g.mapleader = " "
 g.auto_save = 0
 
 -- colorscheme related stuff
-cmd "syntax on"
+-- cmd "syntax on"
 
 local base16 = require "base16"
 base16(base16.themes["onedark"], true)
