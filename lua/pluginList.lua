@@ -11,7 +11,14 @@ return packer.startup(
         use "norcalli/nvim-colorizer.lua"
 
         -- lang stuff
-        use "nvim-treesitter/nvim-treesitter"
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            event = "BufRead",
+            config = function()
+                require("treesitter-nvim").config()
+            end
+        }
+
         use "neovim/nvim-lspconfig"
 
         -- load compe in insert mode only
@@ -35,9 +42,9 @@ return packer.startup(
         --   use "alvan/vim-closetag" -- for html
 
         -- Comment
-        use "terrortylor/nvim-comment"
+        use "terrortylor/nvim-comment" -- snippet support
 
-        -- snippet support
+        -- snippet
         use {
             "hrsh7th/vim-vsnip",
             event = "InsertCharPre"
