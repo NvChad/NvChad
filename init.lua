@@ -39,12 +39,10 @@ g.indent_blankline_show_first_indent_level = false
 require "mappings"
 
 require "telescope-nvim"
-require "nvimTree" -- file tree stuff
 require "file-icons"
 
 -- git signs , lsp symbols etc
 require "gitsigns-nvim"
-require("nvim-autopairs").setup()
 require("lspkind").init()
 
 -- hide line numbers , statusline in specific buffers!

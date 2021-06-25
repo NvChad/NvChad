@@ -91,3 +91,14 @@ map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
+
+-- Mappings for nvimtree
+vim.api.nvim_set_keymap(
+    "n",
+    "<C-n>",
+    ":NvimTreeToggle<CR>",
+    {
+        noremap = true,
+        silent = true
+    }
+)

@@ -38,10 +38,16 @@ return packer.startup(
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
         use "glepnir/galaxyline.nvim"
-        use "windwp/nvim-autopairs"
+
+        use {
+            "windwp/nvim-autopairs",
+            event = "InsertEnter",
+            config = function()
+                require("nvim-autopairs").setup()
+            end
+        }
         --   use "alvan/vim-closetag" -- for html
 
-        -- Comment
         use "terrortylor/nvim-comment" -- snippet support
 
         -- snippet
@@ -52,7 +58,14 @@ return packer.startup(
         use "rafamadriz/friendly-snippets"
 
         -- file managing , picker etc
-        use "kyazdani42/nvim-tree.lua"
+        use {
+            "kyazdani42/nvim-tree.lua",
+            cmd = "NvimTreeToggle",
+            config = function()
+                require("nvimTree").config()
+            end
+        }
+
         use "kyazdani42/nvim-web-devicons"
         use "nvim-telescope/telescope.nvim"
         use "nvim-telescope/telescope-media-files.nvim"
