@@ -19,6 +19,7 @@ base16(base16.themes["onedark"], true)
 
 require "highlights"
 require("colorizer").setup()
+
 require "mappings"
 require "telescope-nvim"
 require "file-icons"

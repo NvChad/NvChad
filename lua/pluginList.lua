@@ -53,8 +53,6 @@ return packer.startup(
             cmd = "Neoformat"
         }
 
-        use "nvim-lua/plenary.nvim"
-
         -- snippet support
         use {
             "hrsh7th/vim-vsnip",
@@ -72,9 +70,15 @@ return packer.startup(
         }
 
         use "kyazdani42/nvim-web-devicons"
-        use "nvim-telescope/telescope.nvim"
-        use "nvim-telescope/telescope-media-files.nvim"
-        use "nvim-lua/popup.nvim"
+        use {
+            "nvim-telescope/telescope.nvim",
+            requires = {
+                {"nvim-lua/popup.nvim"},
+                {"nvim-lua/plenary.nvim"},
+                {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
+                {"nvim-telescope/telescope-media-files.nvim"}
+            }
+        }
 
         -- misc plugins
         use {
