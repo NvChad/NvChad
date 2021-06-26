@@ -38,5 +38,4 @@ vim.api.nvim_exec(
     false
 )
 
-require "zenmode"
 require "whichkey"

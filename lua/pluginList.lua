@@ -124,7 +124,15 @@ return packer.startup(
         }
 
         use "karb94/neoscroll.nvim"
-        use "kdav5758/TrueZen.nvim"
+
+        use {
+            "kdav5758/TrueZen.nvim",
+            cmd = {"TZAtaraxis", "TZMinimalist"},
+            config = function()
+                require("zenmode").config()
+            end
+        }
+
         use "folke/which-key.nvim"
         --   use "alvan/vim-closetag" -- for html
 
