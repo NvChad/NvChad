@@ -14,9 +14,9 @@ g.auto_save = 0
 -- colorscheme related stuff
 cmd "syntax on"
 
-g.nvchad_theme = "gruvbox"
+g.nvchad_theme = "onedark"
 local base16 = require "base16"
-base16(base16.themes["nvchad-softgruv"], true)
+base16(base16.themes["onedark"], true)
 
 require "highlights"
 require "mappings"
