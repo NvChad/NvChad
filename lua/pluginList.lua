@@ -1,7 +1,6 @@
 local packer = require("packer")
 local use = packer.use
 
--- using { } for using different branch , loading plugin with certain commands etc
 return packer.startup(
     function()
         use "wbthomason/packer.nvim"
@@ -108,7 +107,22 @@ return packer.startup(
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
-        use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            branch = "lua",
+            event = "BufRead",
+            setup = function()
+                vim.g.indentLine_enabled = 1
+                vim.g.indent_blankline_char = "▏"
+
+                vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+                vim.g.indent_blankline_buftype_exclude = {"terminal"}
+
+                vim.g.indent_blankline_show_trailing_blankline_indent = false
+                vim.g.indent_blankline_show_first_indent_level = false
+            end
+        }
     end,
     {
         display = {
