@@ -16,7 +16,7 @@
 
 An attempt to make neovim (cli version) as functional as an IDE while being very eyecandy and less bloated.
 
-<center> <h2>Screenshots</h2> </center>
+<h1 align="center">Screenshots</h1>
 
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
