@@ -70,6 +70,7 @@ return packer.startup(
         }
 
         use "kyazdani42/nvim-web-devicons"
+
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
@@ -77,10 +78,16 @@ return packer.startup(
                 {"nvim-lua/plenary.nvim"},
                 {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
                 {"nvim-telescope/telescope-media-files.nvim"}
-            }
+            },
+            cmd = {
+                "Telescope"
+            },
+            config = function()
+                require("telescope-nvim").config()
+            end
         }
 
-        -- misc plugins
+        -- git stuff
         use {
             "lewis6991/gitsigns.nvim",
             event = "BufRead",
@@ -89,6 +96,7 @@ return packer.startup(
             end
         }
 
+        -- misc plugins
         use {
             "windwp/nvim-autopairs",
             event = "InsertEnter",
@@ -113,7 +121,7 @@ return packer.startup(
         use {
             "glepnir/dashboard-nvim",
             cmd = {
-                "Telescope live_grep",
+                "Dashboard",
                 "DashboardNewFile",
                 "DashboardJumpMarks"
             },

@@ -107,7 +107,17 @@ map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
 
 -- dashboard stuff
 map("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
+map("n", "<Leader>db", [[<Cmd> Dashboard<CR>]], opt)
 map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
 map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
 map("n", "<Leader>sl", [[<Cmd> SessionLoad<CR>]], opt)
 map("n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], opt)
+
+-- Telescope
+map("n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], opt)
+map("n", "<Leader>cm", [[<Cmd> Telescope git_commits <CR>]], opt)
+map("n", "<Leader>ff", [[<Cmd> Telescope find_files <CR>]], opt)
+map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opt)
+map("n", "<Leader>fb", [[<Cmd>Telescope Buffers<CR>]], opt)
+map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
+map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)

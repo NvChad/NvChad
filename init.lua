@@ -3,7 +3,7 @@ require "pluginList"
 require "misc-utils"
 
 require "top-bufferline"
-require "telescope-nvim"
+require("colorizer").setup()
 
 local cmd = vim.cmd
 local g = vim.g
@@ -19,7 +19,6 @@ local base16 = require "base16"
 base16(base16.themes["nvchad-softgruv"], true)
 
 require "highlights"
-require("colorizer").setup()
 require "mappings"
 require "file-icons"
 require "statusline"
