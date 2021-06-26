@@ -53,5 +53,5 @@ echo "shell changed to $shellname on nvim successfully!"
 echo
 echo "neovim will open with some errors , just press enter" && sleep 1
 
-# install all plugins
-nvim +PackerInstall 
+# install all plugins + compile them
+nvim +PackerSync
