@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local colors = require "themes/onedark"
+local colors = require "themes/gruvbox"
 
 local white = colors.white
 local darker_black = colors.darker_black
@@ -66,6 +66,8 @@ fg_bg("DiffModified", nord_blue, "none")
 -- NvimTree
 fg("NvimTreeFolderIcon", blue)
 fg("NvimTreeFolderName", blue)
+fg("NvimTreeOpenedFolderName", blue)
+fg("NvimTreeEmptyFolderName", blue)
 fg("NvimTreeIndentMarker", one_bg2)
 fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)

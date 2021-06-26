@@ -1,4 +1,4 @@
-local colors = require "themes/onedark"
+local colors = require "themes/gruvbox"
 
 require "nvim-web-devicons".setup {
     override = {
@@ -106,6 +106,11 @@ require "nvim-web-devicons".setup {
             icon = "",
             color = colors.orange,
             name = "rpm"
+        },
+        lua = {
+            icon = "",
+            color = colors.blue,
+            name = "lua"
         }
     }
 }

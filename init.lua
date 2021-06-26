@@ -15,11 +15,10 @@ g.auto_save = 0
 cmd "syntax on"
 
 local base16 = require "base16"
-base16(base16.themes["onedark"], true)
+base16(base16.themes["nvchad-softgruv"], true)
 
 require "highlights"
 require("colorizer").setup()
-
 require "mappings"
 require "telescope-nvim"
 require "file-icons"

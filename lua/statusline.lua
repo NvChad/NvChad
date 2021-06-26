@@ -4,7 +4,7 @@ local condition = require("galaxyline.condition")
 
 gl.short_line_list = {" "}
 
-local colors = require "themes/onedark"
+local colors = require "themes/gruvbox"
 
 gls.left[1] = {
   FirstElement = {
