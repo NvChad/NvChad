@@ -1,4 +1,4 @@
-<h1 align="center">NvChad</h1><hr>
+<h1 align="center">NvChad</h1> 
 
 <div align="center">
 	<a href="https://github.com/siduck76/NvChad/wiki#clone-my-setup">Home</a>
