@@ -7,7 +7,7 @@
   <span> • </span>
        	<a href="https://github.com/siduck76/NvChad#contribute">Contribute</a>
   <span> • </span>
-	<a href="https://github.com/siduck76/NvChad#gift_heart--support">Support</a>
+	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
       	<a href="https://github.com/siduck76/NvChad/wiki/Chad-user-configs">Extras</a>
   <p></p>
