@@ -45,20 +45,25 @@ return packer.startup(
             event = "InsertEnter",
             config = function()
                 require("compe-completion").config()
-            end
+            end,
+            wants = {"LuaSnip"},
+            requires = {
+                {
+                    "L3MON4D3/LuaSnip",
+                    wants = "friendly-snippets",
+                    event = "InsertCharPre",
+                    config = function()
+                        require("compe-completion").snippets()
+                    end
+                },
+                "rafamadriz/friendly-snippets"
+            }
         }
 
         use {
             "sbdchd/neoformat",
             cmd = "Neoformat"
         }
-
-        -- snippet support
-        use {
-            "hrsh7th/vim-vsnip",
-            event = "InsertCharPre"
-        }
-        use "rafamadriz/friendly-snippets"
 
         -- file managing , picker etc
         use {
@@ -79,9 +84,7 @@ return packer.startup(
                 {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
                 {"nvim-telescope/telescope-media-files.nvim"}
             },
-            cmd = {
-                "Telescope"
-            },
+            cmd = "Telescope",
             config = function()
                 require("telescope-nvim").config()
             end
@@ -132,7 +135,7 @@ return packer.startup(
 
         use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
-        -- load autosave plugin only if its globally enabled
+        -- load autosave only if its globally enabled
         use {
             "907th/vim-auto-save",
             cond = function()
@@ -164,14 +167,7 @@ return packer.startup(
             branch = "lua",
             event = "BufRead",
             setup = function()
-                vim.g.indentLine_enabled = 1
-                vim.g.indent_blankline_char = "▏"
-
-                vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
-                vim.g.indent_blankline_buftype_exclude = {"terminal"}
-
-                vim.g.indent_blankline_show_trailing_blankline_indent = false
-                vim.g.indent_blankline_show_first_indent_level = false
+                require("misc-utils").blankline()
             end
         }
     end,

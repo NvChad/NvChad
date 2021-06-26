@@ -30,8 +30,8 @@ map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
 map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 
 -- Truezen.nvim
-map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
-map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
+map("n", "<leader>z", ":TZAtaraxis<CR>", opt)
+map("n", "<leader>m", ":TZMinimalist<CR>", opt)
 
 map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
 -- vim.cmd("inoremap jh <Esc>")
@@ -39,6 +39,8 @@ map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
 -- Commenter Keybinding
 map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+
+map("n","<C-q>",":BufDel", opt)
 
 -- compe stuff
 

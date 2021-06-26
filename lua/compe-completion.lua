@@ -16,10 +16,23 @@ M.config = function()
         documentation = true,
         source = {
             buffer = {kind = "﬘", true},
-            vsnip = {kind = "﬌"},
-            nvim_lsp = true
+            luasnip = {kind = "﬌", true},
+            nvim_lsp = true,
+            nvim_lua = true,
         }
     }
+end
+
+M.snippets = function()
+    local ls = require("luasnip")
+
+    ls.config.set_config(
+        {
+            history = true,
+            updateevents = "TextChanged,TextChangedI"
+        }
+    )
+    require("luasnip/loaders/from_vscode").load()
 end
 
 return M
