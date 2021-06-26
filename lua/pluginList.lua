@@ -72,6 +72,11 @@ return packer.startup(
         }
 
         use {
+            "andymass/vim-matchup",
+            event = "CursorMoved"
+        }
+
+        use {
             "terrortylor/nvim-comment",
             cmd = "CommentToggle",
             config = function()
@@ -113,7 +118,7 @@ return packer.startup(
             end
         }
 
-        use "tweekmonster/startuptime.vim"
+        use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
         -- load autosave plugin only if its globally enabled
         use {
@@ -123,7 +128,14 @@ return packer.startup(
             end
         }
 
-        use "karb94/neoscroll.nvim"
+        -- smooth scroll
+        use {
+            "karb94/neoscroll.nvim",
+            event = "WinScrolled",
+            config = function()
+                require("neoscroll").setup()
+            end
+        }
 
         use {
             "kdav5758/TrueZen.nvim",

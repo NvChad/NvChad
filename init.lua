@@ -5,8 +5,6 @@ require "misc-utils"
 require "top-bufferline"
 require "statusline"
 
-require("neoscroll").setup() -- smooth scroll
-
 -- lsp stuff
 require "nvim-lspconfig"
 
