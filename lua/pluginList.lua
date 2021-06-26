@@ -5,9 +5,11 @@ return packer.startup(
     function()
         use "wbthomason/packer.nvim"
 
+        use "akinsho/nvim-bufferline.lua"
+        use "glepnir/galaxyline.nvim"
+
         -- color related stuff
         use "siduck76/nvim-base16.lua"
-
         use {
             "norcalli/nvim-colorizer.lua",
             event = "BufRead",
@@ -16,7 +18,7 @@ return packer.startup(
             end
         }
 
-        -- lang stuff
+        -- language related plugins
         use {
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
@@ -25,7 +27,23 @@ return packer.startup(
             end
         }
 
-        use "neovim/nvim-lspconfig"
+        use {
+            "neovim/nvim-lspconfig",
+            event = "BufRead",
+            config = function()
+                require("nvim-lspconfig").config()
+            end
+        }
+
+        use "kabouzeid/nvim-lspinstall"
+
+        use {
+            "onsails/lspkind-nvim",
+            event = "BufRead",
+            config = function()
+                require("lspkind").init()
+            end
+        }
 
         -- load compe in insert mode only
         use {
@@ -37,52 +55,11 @@ return packer.startup(
         }
 
         use {
-            "onsails/lspkind-nvim",
-            event = "BufRead",
-            config = function()
-                require("lspkind").init()
-            end
-        }
-
-        use {
             "sbdchd/neoformat",
             cmd = "Neoformat"
         }
 
         use "nvim-lua/plenary.nvim"
-        use "kabouzeid/nvim-lspinstall"
-
-        use {
-            "lewis6991/gitsigns.nvim",
-            event = "BufRead",
-            config = function()
-                require("gitsigns-nvim").config()
-            end
-        }
-
-        use "akinsho/nvim-bufferline.lua"
-        use "glepnir/galaxyline.nvim"
-
-        use {
-            "windwp/nvim-autopairs",
-            event = "InsertEnter",
-            config = function()
-                require("nvim-autopairs").setup()
-            end
-        }
-
-        use {
-            "andymass/vim-matchup",
-            event = "CursorMoved"
-        }
-
-        use {
-            "terrortylor/nvim-comment",
-            cmd = "CommentToggle",
-            config = function()
-                require("nvim_comment").setup()
-            end
-        }
 
         -- snippet support
         use {
@@ -105,7 +82,36 @@ return packer.startup(
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
 
-        -- misc
+        -- misc plugins
+        use {
+            "lewis6991/gitsigns.nvim",
+            event = "BufRead",
+            config = function()
+                require("gitsigns-nvim").config()
+            end
+        }
+
+        use {
+            "windwp/nvim-autopairs",
+            event = "InsertEnter",
+            config = function()
+                require("nvim-autopairs").setup()
+            end
+        }
+
+        use {
+            "andymass/vim-matchup",
+            event = "CursorMoved"
+        }
+
+        use {
+            "terrortylor/nvim-comment",
+            cmd = "CommentToggle",
+            config = function()
+                require("nvim_comment").setup()
+            end
+        }
+
         use {
             "glepnir/dashboard-nvim",
             cmd = {

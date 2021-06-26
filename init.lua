@@ -5,9 +5,6 @@ require "misc-utils"
 require "top-bufferline"
 require "statusline"
 
--- lsp stuff
-require "nvim-lspconfig"
-
 local cmd = vim.cmd
 local g = vim.g
 
