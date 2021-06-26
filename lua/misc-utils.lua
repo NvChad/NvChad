@@ -23,7 +23,6 @@ opt("o", "cmdheight", 1)
 
 opt("o", "updatetime", 250) -- update interval for gitsigns
 opt("o", "clipboard", "unnamedplus")
-opt("o", "timeoutlen", 500)
 
 -- Numbers
 opt("w", "number", true)

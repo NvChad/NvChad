@@ -151,8 +151,7 @@ return packer.startup(
             end
         }
 
-        use "folke/which-key.nvim"
-        --   use "alvan/vim-closetag" -- for html
+        --   use "alvan/vim-closetag" -- for html autoclosing tag
 
         use {
             "lukas-reineke/indent-blankline.nvim",
