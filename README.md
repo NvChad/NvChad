@@ -1,5 +1,4 @@
-[![Super-Linter](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml/badge.svg)](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml)
-[![Gitter](https://badges.gitter.im/neovim-dotfiles/community.svg)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+<h1 align="center">NvChad</h1><hr>
 
 <div align="center">
 	<a href="https://github.com/siduck76/NvChad/wiki#clone-my-setup">Home</a>
@@ -14,10 +13,9 @@
   <p></p>
 </div>
 
-An attempt to make neovim (cli version) as functional as an IDE while being very eyecandy and less bloated.
-
-<h1 align="center">Screenshots</h1>
-
+[![Super-Linter](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml/badge.svg)](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml)
+[![Gitter](https://badges.gitter.im/neovim-dotfiles/community.svg)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+ 
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
