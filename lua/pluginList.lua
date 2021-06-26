@@ -45,7 +45,14 @@ return packer.startup(
         use "nvim-lua/plenary.nvim"
         use "kabouzeid/nvim-lspinstall"
 
-        use "lewis6991/gitsigns.nvim"
+        use {
+            "lewis6991/gitsigns.nvim",
+            event = "BufRead",
+            config = function()
+                require("gitsigns-nvim").config()
+            end
+        }
+
         use "akinsho/nvim-bufferline.lua"
         use "glepnir/galaxyline.nvim"
 

@@ -28,7 +28,6 @@ require "highlights"
 require "mappings"
 require "telescope-nvim"
 require "file-icons"
-require "gitsigns-nvim"
 
 -- hide line numbers , statusline in specific buffers!
 vim.api.nvim_exec(
