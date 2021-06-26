@@ -7,7 +7,14 @@ return packer.startup(
 
         -- color related stuff
         use "siduck76/nvim-base16.lua"
-        use "norcalli/nvim-colorizer.lua"
+
+        use {
+            "norcalli/nvim-colorizer.lua",
+            event = "BufRead",
+            config = function()
+                require("colorizer").setup()
+            end
+        }
 
         -- lang stuff
         use {
@@ -63,11 +70,16 @@ return packer.startup(
                 require("nvim-autopairs").setup()
             end
         }
-        --   use "alvan/vim-closetag" -- for html
 
-        use "terrortylor/nvim-comment" -- snippet support
+        use {
+            "terrortylor/nvim-comment",
+            cmd = "CommentToggle",
+            config = function()
+                require("nvim_comment").setup()
+            end
+        }
 
-        -- snippet
+        -- snippet support
         use {
             "hrsh7th/vim-vsnip",
             event = "InsertCharPre"
@@ -114,6 +126,7 @@ return packer.startup(
         use "karb94/neoscroll.nvim"
         use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
+        --   use "alvan/vim-closetag" -- for html
 
         use {
             "lukas-reineke/indent-blankline.nvim",
