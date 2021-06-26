@@ -1,41 +1,30 @@
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo}
+local opt = vim.opt
 
-local function opt(scope, key, value)
-    scopes[scope][key] = value
-    if scope ~= "o" then
-        scopes["o"][key] = value
-    end
-end
-
-opt("o", "ruler", false)
-opt("o", "showmode", false)
-opt("o", "hidden", true)
-opt("o", "ignorecase", true)
-opt("o", "splitbelow", true)
-opt("o", "splitright", true)
-opt("o", "termguicolors", true)
-opt("w", "cul", true)
-
-opt("o", "mouse", "a")
-
-opt("w", "signcolumn", "yes")
-opt("o", "cmdheight", 1)
-
-opt("o", "updatetime", 250) -- update interval for gitsigns
-opt("o", "clipboard", "unnamedplus")
+opt.ruler = false
+opt.showmode = false
+opt.hidden = true
+opt.ignorecase = true
+opt.splitbelow = true
+opt.splitright = true
+opt.termguicolors = true
+opt.cul = true
+opt.mouse = "a"
+opt.signcolumn = "yes"
+opt.cmdheight = 1
+opt.updatetime = 250 -- update interval for gitsigns
+opt.clipboard = "unnamedplus"
 
 -- Numbers
-opt("w", "number", true)
-opt("o", "numberwidth", 2)
+opt.number = true
+opt.numberwidth = 2
 -- opt("w", "relativenumber", true)
 
 -- for indenline
-opt("b", "expandtab", true)
-opt("b", "shiftwidth", 2)
-opt("b", "smartindent", true)
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.smartindent = true
 
 -- disable builtin vim plugins
-
 vim.g.loaded_gzip = 0
 vim.g.loaded_tar = 0
 vim.g.loaded_tarPlugin = 0
