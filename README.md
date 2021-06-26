@@ -16,11 +16,11 @@
 [![Super-Linter](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml/badge.svg)](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml)
 [![Gitter](https://badges.gitter.im/neovim-dotfiles/community.svg)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
  
+<img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimRice2.png"><hr>
-<img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 
 # Very Very Useful lua plugins used in my config
 
