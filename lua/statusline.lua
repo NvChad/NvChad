@@ -4,13 +4,16 @@ local condition = require("galaxyline.condition")
 
 gl.short_line_list = {" "}
 
-local colors = require "themes/gruvbox"
+local global_theme = "themes/" .. vim.g.nvchad_theme
+local colors = require(global_theme)
 
 gls.left[1] = {
-  FirstElement = {
-    provider = function() return '▋' end,
-    highlight = { colors.nord_blue, colors.nord_blue }
-  },
+    FirstElement = {
+        provider = function()
+            return "▋"
+        end,
+        highlight = {colors.nord_blue, colors.nord_blue}
+    }
 }
 
 gls.left[2] = {
