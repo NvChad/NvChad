@@ -69,6 +69,10 @@ Better syntax highlighting for programming languages ( my config just has html,c
 without / with Treesitter :
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/woTree.png"></kbd>
 
+# Credits
+
+[Elianiva](https://github.com/elianiva) helped me with neovim lua related issues many times, NvChad wouldnt exist without his help at all!
+
 # Features
 
 - File navigation with Nvimtree
