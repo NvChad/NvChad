@@ -93,7 +93,7 @@ map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
 
 -- Mappings for nvimtree
-vim.api.nvim_set_keymap(
+map(
     "n",
     "<C-n>",
     ":NvimTreeToggle<CR>",
@@ -102,3 +102,5 @@ vim.api.nvim_set_keymap(
         silent = true
     }
 )
+
+map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)

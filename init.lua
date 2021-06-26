@@ -40,10 +40,7 @@ require "mappings"
 
 require "telescope-nvim"
 require "file-icons"
-
--- git signs , lsp symbols etc
 require "gitsigns-nvim"
-require("lspkind").init()
 
 -- hide line numbers , statusline in specific buffers!
 vim.api.nvim_exec(

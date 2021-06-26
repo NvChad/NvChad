@@ -30,8 +30,19 @@ return packer.startup(
             end
         }
 
-        use "onsails/lspkind-nvim"
-        use "sbdchd/neoformat"
+        use {
+            "onsails/lspkind-nvim",
+            event = "BufRead",
+            config = function()
+                require("lspkind").init()
+            end
+        }
+
+        use {
+            "sbdchd/neoformat",
+            cmd = "Neoformat"
+        }
+
         use "nvim-lua/plenary.nvim"
         use "kabouzeid/nvim-lspinstall"
 
