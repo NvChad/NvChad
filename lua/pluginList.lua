@@ -83,7 +83,18 @@ return packer.startup(
         use "nvim-lua/popup.nvim"
 
         -- misc
-        use "glepnir/dashboard-nvim"
+        use {
+            "glepnir/dashboard-nvim",
+            cmd = {
+                "Telescope live_grep",
+                "DashboardNewFile",
+                "DashboardJumpMarks"
+            },
+            setup = function()
+                require("dashboard").config()
+            end
+        }
+
         use "tweekmonster/startuptime.vim"
 
         -- load autosave plugin only if its globally enabled

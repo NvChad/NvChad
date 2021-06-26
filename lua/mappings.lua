@@ -104,3 +104,10 @@ map(
 )
 
 map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
+
+-- dashboard stuff
+map("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
+map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
+map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
+map("n", "<Leader>sl", [[<Cmd> SessionLoad<CR>]], opt)
+map("n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], opt)
