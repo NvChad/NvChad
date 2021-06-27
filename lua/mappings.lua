@@ -1,5 +1,5 @@
 local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
+    local options = {noremap = true, silent = true}
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
@@ -37,8 +37,8 @@ map("n", "<C-s>", ":w <CR>", opt)
 -- vim.cmd("inoremap jh <Esc>")
 
 -- Commenter Keybinding
-map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
-map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+map("n", "<leader>/", ":CommentToggle<CR>", opt)
+map("v", "<leader>/", ":CommentToggle<CR>", opt)
 
 map("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd! <CR>", opt)
 
@@ -94,17 +94,10 @@ map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
 
--- Mappings for nvimtree
-map(
-    "n",
-    "<C-n>",
-    ":NvimTreeToggle<CR>",
-    {
-        noremap = true,
-        silent = true
-    }
-)
+-- nvimtree
+map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
 
+-- format code
 map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
 
 -- dashboard stuff
@@ -125,8 +118,8 @@ map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
 map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
 
 -- bufferline tab stuff
-map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt) -- new tab
-map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opt) -- close tab
+map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab
+map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
 
 -- move between tabs
 map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)

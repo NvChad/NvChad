@@ -10,7 +10,14 @@ return packer.startup(
 
         -- color related stuff
         use "siduck76/nvim-base16.lua"
-        use "norcalli/nvim-colorizer.lua"
+
+        use {
+            "norcalli/nvim-colorizer.lua",
+            event = "BufWinEnter",
+            config = function()
+                require("colorizer").setup()
+            end
+        }
 
         -- language related plugins
         use {

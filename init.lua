@@ -1,9 +1,7 @@
 -- load all plugins
 require "pluginList"
 require "misc-utils"
-
 require "top-bufferline"
-require("colorizer").setup()
 
 local g = vim.g
 
