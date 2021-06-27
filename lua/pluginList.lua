@@ -13,9 +13,10 @@ return packer.startup(
 
         use {
             "norcalli/nvim-colorizer.lua",
-            event = "BufWinEnter",
+            event = "BufRead",
             config = function()
                 require("colorizer").setup()
+                vim.cmd("ColorizerReloadAllBuffers")
             end
         }
 
@@ -36,7 +37,9 @@ return packer.startup(
             end
         }
 
-        use "kabouzeid/nvim-lspinstall"
+        use {
+            "kabouzeid/nvim-lspinstall"
+        }
 
         use {
             "onsails/lspkind-nvim",
