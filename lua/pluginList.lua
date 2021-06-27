@@ -37,9 +37,7 @@ return packer.startup(
             end
         }
 
-        use {
-            "kabouzeid/nvim-lspinstall"
-        }
+        use "kabouzeid/nvim-lspinstall"
 
         use {
             "onsails/lspkind-nvim",
@@ -70,10 +68,7 @@ return packer.startup(
             }
         }
 
-        use {
-            "sbdchd/neoformat",
-            cmd = "Neoformat"
-        }
+        use {"sbdchd/neoformat", cmd = "Neoformat"}
 
         -- file managing , picker etc
         use {
@@ -85,7 +80,6 @@ return packer.startup(
         }
 
         use "kyazdani42/nvim-web-devicons"
-
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
@@ -118,10 +112,7 @@ return packer.startup(
             end
         }
 
-        use {
-            "andymass/vim-matchup",
-            event = "CursorMoved"
-        }
+        use {"andymass/vim-matchup", event = "CursorMoved"}
 
         use {
             "terrortylor/nvim-comment",
@@ -136,7 +127,9 @@ return packer.startup(
             cmd = {
                 "Dashboard",
                 "DashboardNewFile",
-                "DashboardJumpMarks"
+                "DashboardJumpMarks",
+                "SessionLoad",
+                "SessionSave"
             },
             setup = function()
                 require("dashboard").config()

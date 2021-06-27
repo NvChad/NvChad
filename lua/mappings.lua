@@ -105,8 +105,8 @@ map("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
 map("n", "<Leader>db", [[<Cmd> Dashboard<CR>]], opt)
 map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
 map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
-map("n", "<Leader>sl", [[<Cmd> SessionLoad<CR>]], opt)
-map("n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], opt)
+map("n", "<C-s>l", [[<Cmd> SessionLoad<CR>]], opt)
+map("n", "<C-s>s", [[<Cmd> SessionSave<CR>]], opt)
 
 -- Telescope
 map("n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], opt)
