@@ -33,14 +33,14 @@ map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 map("n", "<leader>z", ":TZAtaraxis<CR>", opt)
 map("n", "<leader>m", ":TZMinimalist<CR>", opt)
 
-map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
+map("n", "<C-s>", ":w <CR>", opt)
 -- vim.cmd("inoremap jh <Esc>")
 
 -- Commenter Keybinding
 map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
 
-map("n","<C-q>",":BufDel", opt)
+map("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd! <CR>", opt)
 
 -- compe stuff
 
@@ -123,3 +123,11 @@ map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.me
 map("n", "<Leader>fb", [[<Cmd>Telescope Buffers<CR>]], opt)
 map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
 map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
+
+-- bufferline tab stuff
+map("n", "<S-t>", [[<Cmd>tabnew<CR>]], opt) -- new tab
+map("n", "<S-x>", [[<Cmd>bdelete<CR>]], opt) -- close tab
+
+-- move between tabs
+map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
+map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)

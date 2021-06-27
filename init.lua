@@ -5,14 +5,12 @@ require "misc-utils"
 require "top-bufferline"
 require("colorizer").setup()
 
-local cmd = vim.cmd
 local g = vim.g
 
 g.mapleader = " "
 g.auto_save = 0
 
 -- colorscheme related stuff
-cmd "syntax on"
 
 g.nvchad_theme = "onedark"
 local base16 = require "base16"
