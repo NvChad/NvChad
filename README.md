@@ -26,7 +26,12 @@
     />
 [![Gitter](https://badges.gitter.im/neovim-dotfiles/community.svg)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![GitHub Release](https://img.shields.io/github/release/siduck76/NvChad.svg?)]()  
-
+<a href="https://github.com/kdav5758/whid.nvim/commits/main"
+            ><img
+            src="https://img.shields.io/github/last-commit/kdav5758/whid.nvim"
+            alt="Latest commit"
+    /></a>
+    
 <img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
