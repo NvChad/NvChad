@@ -16,10 +16,10 @@ if [ -d ~/.local/share/nvim/site/pack/packer ]; then
   rm -rf ~/.local/share/nvim/site/pack
 fi
 
-echo -e "\n=> Installing packer"
+echo "\n=> Installing packer"
 git clone https://github.com/wbthomason/packer.nvim \
   ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-echo -e "=> packer installed!"
+echo "=> packer installed!"
 
 echo "Linking config"
 echo "old nvim config will be changed to nvim.bak if exists! :0"
@@ -48,8 +48,8 @@ else
   sed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings.lua
 fi
 
-echo -e "\n=> shell changed to $shellname on nvim successfully!"
-echo -e "\n=> neovim will open with some errors , just press enter" && sleep 1
+echo "\n=> shell changed to $shellname on nvim successfully!"
+echo "\n=> neovim will open with some errors , just press enter" && sleep 1
 
 # install all plugins + compile them
 nvim +PackerSync
