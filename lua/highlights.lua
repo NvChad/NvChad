@@ -1,6 +1,6 @@
 local cmd = vim.cmd
 
-local global_theme = "themes/"..vim.g.nvchad_theme
+local global_theme = "themes/" .. vim.g.nvchad_theme
 local colors = require(global_theme)
 
 local white = colors.white
@@ -72,10 +72,12 @@ fg("NvimTreeEmptyFolderName", blue)
 fg("NvimTreeIndentMarker", one_bg2)
 fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
+fg("NvimTreeEndOfBuffer", darker_black)
 
 fg("NvimTreeRootFolder", darker_black)
 bg("NvimTreeNormal", darker_black)
 fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
+fg_bg("NvimTreeWindowPicker", red, black2)
 
 -- telescope
 fg("TelescopeBorder", line)
