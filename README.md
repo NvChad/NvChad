@@ -26,7 +26,7 @@
     />
 [![Gitter](https://badges.gitter.im/neovim-dotfiles/community.svg)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![GitHub Release](https://img.shields.io/github/release/siduck76/NvChad.svg?)]()
-[![GitHub Stars](https://img.shields.io/github/stars/siduck76/NvChad.svg?)]()
+[![GitHub Stars](https://img.shields.io/github/stars/siduck76/NvChad)]()
 [![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?)]()
 
 <img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
