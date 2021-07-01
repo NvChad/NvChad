@@ -156,7 +156,7 @@ return packer.startup(
         }
 
         use {
-            "kdav5758/TrueZen.nvim",
+            "Pocco81/TrueZen.nvim",
             cmd = {"TZAtaraxis", "TZMinimalist"},
             config = function()
                 require("zenmode").config()
