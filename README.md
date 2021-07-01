@@ -16,20 +16,20 @@
 [![Super-Linter](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml/badge.svg)](https://github.com/siduck76/NvChad/actions/workflows/superLinter.yml)
 <a href="https://github.com/siduck76/NvChad"
         ><img
-            src="https://img.shields.io/github/repo-size/siduck76/NvChad"
+            src="https://img.shields.io/github/repo-size/siduck76/NvChad?style=flat-square"
             alt="GitHub repository size"
     /></a>
       <a href="https://github.com/siduck76/NvChad/blob/main/LICENSE"
         ><img
-            src="https://img.shields.io/github/license/siduck76/NvChad"
+            src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square"
             alt="License"
     />
 [![Gitter](https://badges.gitter.im/neovim-dotfiles/community.svg)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![GitHub Release](https://img.shields.io/github/release/siduck76/NvChad.svg?)]()
+[![GitHub Release](https://img.shields.io/github/release/siduck76/NvChad.svg?style=flat-square)]()
  <a href="https://github.com/siduck76/NvChad/pulse">
-      <img alt="Last commit" src="https://img.shields.io/github/last-commit/siduck76/NvChad"/>
+      <img alt="Last commit" src="https://img.shields.io/github/last-commit/siduck76/NvChad?style=flat-square"/>
     </a>
-[![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?)]()
+[![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?style=flat-square)]()
 
 <img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
