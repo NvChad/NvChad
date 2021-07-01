@@ -13,6 +13,8 @@
   <p></p>
 </div>
 
+<div align="center">
+	
 [![Super Linter](https://img.shields.io/github/workflow/status/siduck76/NvChad/Super-Linter/main?style=flat-square)]()
 <a href="https://github.com/siduck76/NvChad"
         ><img
@@ -29,6 +31,7 @@
  <a href="https://github.com/siduck76/NvChad/pulse">
       <img alt="Last commit" src="https://img.shields.io/github/last-commit/siduck76/NvChad?style=flat-square"/>
     </a>
+</div>	      
 
 <img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
