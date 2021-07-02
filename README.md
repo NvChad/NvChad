@@ -14,25 +14,23 @@
 </div>
 
 <div align="center">
-	
-[![Super Linter](https://img.shields.io/github/workflow/status/siduck76/NvChad/Super-Linter/main?style=flat-square&logo=github)]()
+
+[![Super Linter](https://img.shields.io/github/workflow/status/siduck76/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&labelColor=black)]()
 <a href="https://github.com/siduck76/NvChad"
         ><img
-            src="https://img.shields.io/github/repo-size/siduck76/NvChad?style=flat-square&"
+            src="https://img.shields.io/github/repo-size/siduck76/NvChad?style=flat-square&label=Repo&labelColor=black"
             alt="GitHub repository size"
     /></a>
       <a href="https://github.com/siduck76/NvChad/blob/main/LICENSE"
         ><img
-            src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square&logo=GNU"
+            src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square&logo=GNU&label=License&labelColor=black"
             alt="License"
     />
-[![Gitter](https://img.shields.io/gitter/room/siduck76/NvChad?style=flat-square&logo=gitter&logoColor=white)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![GitHub Issues](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)]()
-[![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?style=flat-square)]()
- <a href="https://github.com/siduck76/NvChad/pulse">
-      <img alt="Last commit" src="https://img.shields.io/github/last-commit/siduck76/NvChad?style=flat-square"/>
-    </a>
-</div>	      
+[![Gitter](https://img.shields.io/gitter/room/siduck76/NvChad?style=flat-square&logo=gitter&logoColor=white&label=Chat&labelColor=black)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white&labelColor=black)]()
+[![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?style=flat-square&label=Issues&labelColor=black)]()
+[![Last Commit](https://img.shields.io/github/last-commit/siduck76/NvChad.svg?style=flat-square&label=Last%20Commit&labelColor=black)]()
+	      
 
 <img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
