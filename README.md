@@ -14,7 +14,9 @@
 </div>
 
 <div align="center">
-[![Made with Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]()
+	
+[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]()
+	
 </div>
 
 <div align="center">
