@@ -28,7 +28,7 @@
     />
 [![Gitter](https://img.shields.io/gitter/room/siduck76/NvChad?style=flat-square&logo=gitter&logoColor=white&label=Chat&labelColor=black)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white&labelColor=black)]()
-[![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?style=flat-square&label=Issues&labelColor=black)]()
+[![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?style=flat-square&label=Issues&labelColor=black&color=fc0330)]()
 [![Last Commit](https://img.shields.io/github/last-commit/siduck76/NvChad.svg?style=flat-square&label=Last%20Commit&labelColor=black)]()
 	      
 
