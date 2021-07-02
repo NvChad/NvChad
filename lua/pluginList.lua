@@ -140,9 +140,12 @@ return packer.startup(
 
         -- load autosave only if its globally enabled
         use {
-            "907th/vim-auto-save",
+            "Pocco81/AutoSave.nvim",
+            config = function()
+                require("zenmode").autoSave()
+            end,
             cond = function()
-                return vim.g.auto_save == 1
+                return vim.g.auto_save == true
             end
         }
 
@@ -157,7 +160,7 @@ return packer.startup(
 
         use {
             "Pocco81/TrueZen.nvim",
-            cmd = {"TZAtaraxis", "TZMinimalist"},
+            cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()
                 require("zenmode").config()
             end

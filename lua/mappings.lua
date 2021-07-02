@@ -32,6 +32,7 @@ map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 -- Truezen.nvim
 map("n", "<leader>z", ":TZAtaraxis<CR>", opt)
 map("n", "<leader>m", ":TZMinimalist<CR>", opt)
+map("n", "<leader>f", ":TZFocus<CR>", opt)
 
 map("n", "<C-s>", ":w <CR>", opt)
 -- vim.cmd("inoremap jh <Esc>")
