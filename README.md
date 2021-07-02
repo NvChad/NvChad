@@ -14,7 +14,11 @@
 </div>
 
 <div align="center">
+[![Made with Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)]
+</div>
 
+<div align="center">
+	
 [![Super Linter](https://img.shields.io/github/workflow/status/siduck76/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&color=green)]()
 <a href="https://github.com/siduck76/NvChad"
         ><img
