@@ -170,7 +170,6 @@ return packer.startup(
 
         use {
             "lukas-reineke/indent-blankline.nvim",
-            branch = "lua",
             event = "BufRead",
             setup = function()
                 require("misc-utils").blankline()
