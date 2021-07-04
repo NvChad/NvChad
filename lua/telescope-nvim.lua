@@ -67,4 +67,10 @@ M.config = function()
     require("telescope").load_extension("media_files")
 end
 
+function M.search_dootfiles()
+    require('telescope.builtin').find_files {
+        cwd = "~/.config/nvim/",
+    }
+end
+
 return M

@@ -29,8 +29,9 @@ M.config = function()
         b = {description = {"  Recents                   SPC f o"}, command = "Telescope oldfiles"},
         c = {description = {"  Find Word                 SPC f w"}, command = "Telescope live_grep"},
         d = {description = {"洛 New File                  SPC f n"}, command = "DashboardNewFile"},
-        e = {description = {"  Bookmarks                 SPC b m"}, command = "Telescope marks"},
-        f = {description = {"  Load Last Session         SPC s l"}, command = "SessionLoad"}
+        e = {description = {"洛 Open Config               SPC f l"}, command = "Telescope search_dootfiles"},
+        f = {description = {"  Bookmarks                 SPC b m"}, command = "Telescope marks"},
+        g = {description = {"  Load Last Session         SPC s l"}, command = "SessionLoad"}
     }
 
     g.dashboard_custom_footer = {

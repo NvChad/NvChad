@@ -117,6 +117,7 @@ map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.me
 map("n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], opt)
 map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
 map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
+map("n", "<Leader>fl", [[<Cmd>Telescope search_dootfiles<CR>]], opt) --f lua
 
 -- bufferline tab stuff
 map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab
