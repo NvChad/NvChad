@@ -142,4 +142,10 @@ fg("DashboardShortcut", grey_fg)
 fg("DashboardFooter", grey_fg)
 
 -- Default nvim bg (based on terminal bg)
+
+-- Onedark background
 -- cmd "hi Normal guibg=#1e222a"
+-- Gruvbox background
+-- cmd "hi Normal guibg=#282828"
+-- Tomorrow-ight background
+-- cmd "hi Normal guibg=#1d1f21"
