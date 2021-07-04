@@ -9,9 +9,6 @@ base16(base16.themes["onedark"], true)
 -- vim.g.nvchad_theme = "gruvbox"
 -- base16(base16.themes["nvchad-softgruv"], true)
 
--- vim.g.nvchad_theme = "tomorrow-night"
--- base16(base16.themes["tomorrow-night"], true)
-
 require "highlights"
 
 
