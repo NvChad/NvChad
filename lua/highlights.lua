@@ -141,5 +141,11 @@ fg("DashboardCenter", grey_fg)
 fg("DashboardShortcut", grey_fg)
 fg("DashboardFooter", grey_fg)
 
--- Default nvim bg (based on terminal bg)
--- cmd "hi Normal guibg=#1e222a"
+-- set bg color for nvim ( so nvim wont use terminal bg)
+
+-- NvChad themes bg colors
+-- Onedark #1e222a
+-- Gruvbox  #222526
+-- tomorrow night #1d1f21
+
+-- bg("Normal", "#1e222a") -- change the hex color here.
