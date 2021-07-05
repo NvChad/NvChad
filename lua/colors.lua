@@ -1,6 +1,3 @@
-local cmd = vim.cmd
-
-cmd "syntax on"
 local base16 = require "base16"
 
 vim.g.nvchad_theme = "onedark"
