@@ -1,6 +1,6 @@
 local colors = {
     white = "#c4c8c5",
-    darker_black = "#141517",
+    darker_black = "#131517",
     black = "#1d1f21", --  nvim bg
     black2 = "#252931",
     one_bg = "#363a41",
