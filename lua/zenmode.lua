@@ -8,6 +8,7 @@ M.config = function()
     true_zen.setup({
           misc = {
             on_off_commands = false,
+            ui_elements_commands = false,
             cursor_by_mode = false,
             before_minimalist_mode_shown = true,
             before_minimalist_mode_hidden = true,
@@ -39,11 +40,17 @@ M.config = function()
               bottom_padding = 2,
               just_do_it_for_me = false,
               ideal_writing_area_width = 0,
+              keep_default_fold_fillchars = true,
               custome_bg = "#1e222a",
+            },
+            focus = {
+	      margin_of_error = 5,
+              focus_method = "experimental"
             },
           },
           integrations = {
-            integration_galaxyline = true,
+            galaxyline = true,
+            nvim_bufferline = true,
           }
         })
 end
