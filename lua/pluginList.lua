@@ -53,6 +53,12 @@ return packer.startup(
             event = "InsertEnter",
             config = function()
                 require("compe-completion").config()
+                require("nvim-autopairs.completion.compe").setup(
+                    {
+                        map_cr = true,
+                        map_complete = true -- insert () func completion
+                    }
+                )
             end,
             wants = {"LuaSnip"},
             requires = {
@@ -106,6 +112,7 @@ return packer.startup(
         -- misc plugins
         use {
             "windwp/nvim-autopairs",
+            after = "nvim-compe",
             event = "InsertEnter",
             config = function()
                 require("nvim-autopairs").setup()
