@@ -6,7 +6,13 @@ return packer.startup(
         use "wbthomason/packer.nvim"
 
         use "akinsho/nvim-bufferline.lua"
-        use "glepnir/galaxyline.nvim"
+
+        use {
+            "glepnir/galaxyline.nvim",
+            config = function()
+                require("plugins.statusline").config()
+            end
+        }
 
         -- color related stuff
         use "siduck76/nvim-base16.lua"
@@ -25,7 +31,7 @@ return packer.startup(
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             config = function()
-                require("treesitter-nvim").config()
+                require("plugins.treesitter").config()
             end
         }
 
@@ -33,7 +39,7 @@ return packer.startup(
             "neovim/nvim-lspconfig",
             event = "BufRead",
             config = function()
-                require("nvim-lspconfig").config()
+                require("plugins.lspconfig").config()
             end
         }
 
@@ -52,7 +58,7 @@ return packer.startup(
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require("compe-completion").config()
+                require("plugins.compe").config()
             end,
             wants = {"LuaSnip"},
             requires = {
@@ -61,7 +67,7 @@ return packer.startup(
                     wants = "friendly-snippets",
                     event = "InsertCharPre",
                     config = function()
-                        require("compe-completion").snippets()
+                        require("plugins.compe").snippets()
                     end
                 },
                 "rafamadriz/friendly-snippets"
@@ -75,11 +81,17 @@ return packer.startup(
             "kyazdani42/nvim-tree.lua",
             cmd = "NvimTreeToggle",
             config = function()
-                require("nvimTree").config()
+                require("plugins.nvimtree").config()
             end
         }
 
-        use "kyazdani42/nvim-web-devicons"
+        use {
+            "kyazdani42/nvim-web-devicons",
+            config = function()
+                require("plugins.icons").config()
+            end
+        }
+
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
@@ -90,7 +102,7 @@ return packer.startup(
             },
             cmd = "Telescope",
             config = function()
-                require("telescope-nvim").config()
+                require("plugins.telescope").config()
             end
         }
 
@@ -99,7 +111,7 @@ return packer.startup(
             "lewis6991/gitsigns.nvim",
             event = "BufRead",
             config = function()
-                require("gitsigns-nvim").config()
+                require("plugins.gitsigns").config()
             end
         }
 
@@ -138,7 +150,7 @@ return packer.startup(
                 "SessionSave"
             },
             setup = function()
-                require("dashboard").config()
+                require("plugins.dashboard").config()
             end
         }
 
@@ -148,7 +160,7 @@ return packer.startup(
         use {
             "Pocco81/AutoSave.nvim",
             config = function()
-                require("zenmode").autoSave()
+                require("plugins.zenmode").autoSave()
             end,
             cond = function()
                 return vim.g.auto_save == true
@@ -168,7 +180,7 @@ return packer.startup(
             "Pocco81/TrueZen.nvim",
             cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
             config = function()
-                require("zenmode").config()
+                require("plugins.zenmode").config()
             end
         }
 
@@ -178,7 +190,7 @@ return packer.startup(
             "lukas-reineke/indent-blankline.nvim",
             event = "BufRead",
             setup = function()
-                require("misc-utils").blankline()
+                require("utils").blankline()
             end
         }
     end,
