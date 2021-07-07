@@ -2,6 +2,10 @@ local M = {}
 
 M.config = function()
     local g = vim.g
+    local fn = vim.fn
+
+    local plugins_count =
+            fn.len(fn.globpath('~/.local/share/nvim/site/pack/packer/start', '*', 0, 1))
 
     g.dashboard_disable_at_vimenter = 1 -- dashboard is disabled by default
     g.dashboard_disable_statusline = 1
@@ -35,7 +39,7 @@ M.config = function()
 
     g.dashboard_custom_footer = {
         "   ",
-        "NvChad v0.5"
+        "NvChad Loaded " .. plugins_count .. ' plugins',
     }
 end
 
