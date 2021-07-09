@@ -54,7 +54,7 @@ _setup_packer() {
   else
     printf "%s\n" "Installing packer"
     if [ -d ~/.local/share/nvim/site/pack/packer ]; then
-      printf "%s\n" "Clearning previous packer installs"
+      printf "%s\n" "Clearing previous packer installs"
       rm -rf ~/.local/share/nvim/site/pack
     fi
     _clone_packer
