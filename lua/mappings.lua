@@ -41,7 +41,7 @@ map("n", "<C-s>", ":w <CR>", opt)
 map("n", "<leader>/", ":CommentToggle<CR>", opt)
 map("v", "<leader>/", ":CommentToggle<CR>", opt)
 
-map("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd! <CR>", opt)
+map("n", "<C-q>", ":bd! <CR>", opt)
 
 -- compe stuff
 
