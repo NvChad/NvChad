@@ -6,7 +6,10 @@ packer.init {
         open_fn = function()
             return require("packer.util").float {border = "single"}
         end
-    }
+    },
+    git = {
+    clone_timeout = 600, -- Timeout, in seconds, for git clones
+  }
 }
 
 return packer.startup(
