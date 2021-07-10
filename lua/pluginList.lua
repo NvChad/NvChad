@@ -127,6 +127,15 @@ return packer.startup(
         }
 
         -- misc plugins
+
+        use {
+            "folke/which-key.nvim",
+            keys = "<space>",
+            config = function()
+                require("plugins.whichkey").config()
+            end
+        }
+
         use {
             "windwp/nvim-autopairs",
             after = "nvim-compe",
