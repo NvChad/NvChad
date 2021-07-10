@@ -10,9 +10,9 @@ g.auto_save = false
 
 -- colorscheme related stuff
 
-g.nvchad_theme = "onedark"
+g.nvchad_theme = "gruvbox"
 local base16 = require "base16"
-base16(base16.themes["onedark"], true)
+base16(base16.themes["nvchad-softgruv"], true)
 
 require "highlights"
 require "mappings"
