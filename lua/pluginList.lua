@@ -8,8 +8,8 @@ packer.init {
         end
     },
     git = {
-    clone_timeout = 600, -- Timeout, in seconds, for git clones
-  }
+        clone_timeout = 600 -- Timeout, in seconds, for git clones
+    }
 }
 
 return packer.startup(
@@ -47,14 +47,17 @@ return packer.startup(
         }
 
         use {
+            "kabouzeid/nvim-lspinstall",
+            event = "VimEnter"
+        }
+
+        use {
             "neovim/nvim-lspconfig",
             event = "BufRead",
             config = function()
                 require("plugins.lspconfig").config()
             end
         }
-
-        use "kabouzeid/nvim-lspinstall"
 
         use {
             "onsails/lspkind-nvim",
