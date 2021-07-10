@@ -1,18 +1,18 @@
 local M = {}
 
 M.config = function()
-    function on_attach(client, bufnr)
+    local lspconf = require("lspconfig")
+
+    local function on_attach(client, bufnr)
+        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+        local opts = {noremap = true, silent = true}
+
         local function buf_set_keymap(...)
             vim.api.nvim_buf_set_keymap(bufnr, ...)
         end
-        local function buf_set_option(...)
-            vim.api.nvim_buf_set_option(bufnr, ...)
-        end
-
-        buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
         -- Mappings.
-        local opts = {noremap = true, silent = true}
 
         buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
         buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -38,18 +38,20 @@ M.config = function()
         end
     end
 
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+
     -- lspInstall + lspconfig stuff
 
     local function setup_servers()
         require "lspinstall".setup()
-
-        local lspconf = require("lspconfig")
         local servers = require "lspinstall".installed_servers()
 
         for _, lang in pairs(servers) do
             if lang ~= "lua" then
                 lspconf[lang].setup {
                     on_attach = on_attach,
+                    capabilities = capabilities,
                     root_dir = vim.loop.cwd
                 }
             elseif lang == "lua" then
