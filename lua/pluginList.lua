@@ -48,12 +48,12 @@ return packer.startup(
 
         use {
             "kabouzeid/nvim-lspinstall",
-            event = "VimEnter"
+            event = "BufRead"
         }
 
         use {
             "neovim/nvim-lspconfig",
-            event = "BufRead",
+            after = "nvim-lspinstall",
             config = function()
                 require("plugins.lspconfig").config()
             end
