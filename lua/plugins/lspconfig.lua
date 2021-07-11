@@ -44,6 +44,9 @@ M.config = function()
     -- lspInstall + lspconfig stuff
 
     local function setup_servers()
+
+        vim.cmd [[packadd nvim-lspinstall]] -- If LspInstall is lazy loaded.
+
         require "lspinstall".setup()
         local servers = require "lspinstall".installed_servers()
 
