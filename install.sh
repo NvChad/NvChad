@@ -39,7 +39,7 @@ _setup_packer() {
 
     printf "\n%s\n" "=> Cloning packer.."
     if "${_GIT}" clone "${_PACKER_REPO_URL}" \
-      "${_PACKER_PATH}"; then
+      "${_PACKER_PATH}" --depth 20; then
       printf "%s\n" "=> Packer Installed!"
     else
       printf "Error: Couldn't clone packer\n"
