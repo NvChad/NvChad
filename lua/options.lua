@@ -11,7 +11,7 @@ opt.mouse = "a"
 opt.signcolumn = "yes"
 opt.cmdheight = 1
 opt.updatetime = 250 -- update interval for gitsigns
-opt.timeoutlen = 200
+opt.timeoutlen = 400
 opt.clipboard = "unnamedplus"
 
 -- Numbers
