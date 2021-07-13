@@ -13,6 +13,7 @@ local one_bg3 = colors.one_bg3
 local light_grey = colors.light_grey
 local grey = colors.grey
 local grey_fg = colors.grey_fg
+local grey_fg2 = colors.grey_fg2
 local red = colors.red
 local line = colors.line
 local green = colors.green
@@ -41,7 +42,7 @@ fg("IndentBlanklineChar", line)
 
 -- misc --
 fg("LineNr", grey)
-fg("Comment", grey)
+fg("Comment", grey_fg2)
 fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
