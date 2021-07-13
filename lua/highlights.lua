@@ -13,6 +13,7 @@ local one_bg3 = colors.one_bg3
 local light_grey = colors.light_grey
 local grey = colors.grey
 local grey_fg = colors.grey_fg
+local grey_fg2 = colors.grey_fg2
 local red = colors.red
 local line = colors.line
 local green = colors.green
@@ -41,7 +42,7 @@ fg("IndentBlanklineChar", line)
 
 -- misc --
 fg("LineNr", grey)
-fg("Comment", grey)
+fg("Comment", grey_fg2)
 fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
@@ -149,9 +150,4 @@ fg("FloatBorder", black2)
 
 -- set bg color for nvim ( so nvim wont use terminal bg)
 
--- NvChad themes bg colors
--- Onedark #1e222a
--- Gruvbox  #222526
--- tomorrow night #1d1f21
-
--- bg("Normal", "#1e222a") -- change the hex color here.
+bg("Normal", black)
