@@ -14,6 +14,12 @@ opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 400
 opt.clipboard = "unnamedplus"
 
+-- disable nvim intro
+opt.shortmess:append("sI")
+
+-- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
+vim.cmd [[let &fcs='eob: ']]
+
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
