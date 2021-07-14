@@ -132,6 +132,16 @@ without / with Treesitter :
 - [config-structure](https://github.com/siduck76/NvChad/wiki#config-structure)
 - [mappings](https://github.com/siduck76/NvChad/wiki/mappings)
 
+# Bloat
+
+-  To all those who think this is probably bloated , sure it is . Bloat means different to everyone . NvChad has like 30 ~ plugins but that doesnt mean those plugins are compromsing neovim's speed, snappiness or making it slow. No matter how many plugins I'd add on nvchad , it wouldnt compromise speed / snappiness / make it slow or whatever since it uses packer.nvim as plugin manager , packer.nvim lets you lazy load plugins i.e loading plugins on certain events , mappings , sequentially loading them etc so loading them only when needed , I have lazy loaded 90% plugins so most plugins arent loaded by default , hence not affecting neovim's startup/launch time.
+
+<img src = "https://chadpaste.com/f/kdmxdabxbk.png">
+
+- Without lazy loading vs with lazy loading ( this is tested on my old pentium system so ofc the startuptime will be a lot much lesser for you )
+
+<img src = "https://chadpaste.com/f/ndwkcrxdpn.png">
+	
 # TODO
 
 It would be nice if NvChad focuses on existing plugins and config before adding new things , some plugins like whichkey , telescope , treesitter still have basic configs! Also adding new features that'd make NvChad slow or its startuptime slow wouldnt be encouraged , if that feature's really needed then It'll be mentioned in the wiki with its config.
