@@ -1,4 +1,5 @@
 local opt = vim.opt
+local g = vim.g
 
 opt.ruler = false
 opt.hidden = true
@@ -30,17 +31,20 @@ opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 
+g.mapleader = " "
+g.auto_save = false
+
 -- disable builtin vim plugins
-vim.g.loaded_gzip = 0
-vim.g.loaded_tar = 0
-vim.g.loaded_tarPlugin = 0
-vim.g.loaded_zipPlugin = 0
-vim.g.loaded_2html_plugin = 0
-vim.g.loaded_netrw = 0
-vim.g.loaded_netrwPlugin = 0
-vim.g.loaded_matchit = 0
-vim.g.loaded_matchparen = 0
-vim.g.loaded_spec = 0
+g.loaded_gzip = 0
+g.loaded_tar = 0
+g.loaded_tarPlugin = 0
+g.loaded_zipPlugin = 0
+g.loaded_2html_plugin = 0
+g.loaded_netrw = 0
+g.loaded_netrwPlugin = 0
+g.loaded_matchit = 0
+g.loaded_matchparen = 0
+g.loaded_spec = 0
 
 local M = {}
 
