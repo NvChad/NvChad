@@ -62,7 +62,7 @@ fg("cursorlinenr", white)
 
 -- git signs ---
 fg_bg("DiffAdd", nord_blue, "none")
-fg_bg("DiffChange", one_bg2, "none")
+fg_bg("DiffChange", grey, "none")
 fg_bg("DiffModified", nord_blue, "none")
 
 -- NvimTree
