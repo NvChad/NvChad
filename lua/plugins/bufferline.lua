@@ -1,7 +1,18 @@
 local global_theme = "themes/" .. vim.g.nvchad_theme
 local colors = require(global_theme)
 
-require "bufferline".setup {
+local bufferline
+if
+    not pcall(
+        function()
+            bufferline = require "bufferline"
+        end
+    )
+ then
+    return
+end
+
+bufferline.setup {
     options = {
         offsets = {{filetype = "NvimTree", text = "", padding = 1}},
         buffer_close_icon = "",
