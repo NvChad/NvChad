@@ -1,7 +1,6 @@
 -- load all plugins
 require "pluginList"
 require "options"
-require "plugins.bufferline"
 
 local g = vim.g
 
@@ -16,5 +15,6 @@ base16(base16.themes["onedark"], true)
 
 require "highlights"
 require "mappings"
+require "plugins.bufferline"
 
 require("utils").hideStuff()
