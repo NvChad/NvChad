@@ -76,7 +76,17 @@ _G.s_tab_complete = function()
 end
 
 function _G.completions()
-    local npairs = require("nvim-autopairs")
+    local npairs
+    if
+        not pcall(
+            function()
+                npairs = require "nvim-autopairs"
+            end
+        )
+     then
+        return
+    end
+
     if vim.fn.pumvisible() == 1 then
         if vim.fn.complete_info()["selected"] ~= -1 then
             return vim.fn["compe#confirm"]("<CR>")
