@@ -26,7 +26,7 @@ opt.number = true
 opt.numberwidth = 2
 -- opt.relativenumber = true
 
--- for indenline
+-- Indenline
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true

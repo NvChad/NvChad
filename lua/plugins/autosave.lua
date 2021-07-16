@@ -3,7 +3,7 @@ local autosave
 if
     not pcall(
         function()
-            func = require "autosave"
+            autosave = require "autosave"
         end
     )
  then
@@ -20,7 +20,7 @@ autosave.setup(
             filetype_is_not = {},
             modifiable = true
         },
-        write_all_buffers = true,
+        write_all_buffers = false,
         on_off_commands = true,
         clean_command_line_interval = 2500
     }

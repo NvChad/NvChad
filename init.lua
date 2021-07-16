@@ -1,8 +1,7 @@
 -- load all options
 require "options"
 
--- only try to load stuff if atleast base16 is initialized
--- TODO: Find a better way to trigger PackerSync
+-- load stuff only if theme is initialized
 if require "theme" then
     local async
     async =
@@ -21,7 +20,7 @@ if require "theme" then
     )
     async:send()
 else
-    -- otherwise run packer sync
+    -- otherwise run PackerSync
     require "pluginList"
     print("Now PackerSync will be executed, after completion, restart neovim.\n")
     vim.cmd("PackerSync")

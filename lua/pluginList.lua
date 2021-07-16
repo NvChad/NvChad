@@ -33,7 +33,7 @@ return packer.startup(
             "norcalli/nvim-colorizer.lua",
             event = "BufRead",
             config = function()
-                require "plugins.colorizer"
+                require("plugins.others").colorizer()
             end
         }
 
@@ -63,7 +63,7 @@ return packer.startup(
             "onsails/lspkind-nvim",
             event = "BufRead",
             config = function()
-                require "plugins.lspkind"
+                require("plugins.others").lspkind()
             end
         }
 
@@ -122,7 +122,6 @@ return packer.startup(
         }
 
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope"}
-
         use {
             "nvim-telescope/telescope-media-files.nvim",
             cmd = "Telescope"
@@ -152,7 +151,7 @@ return packer.startup(
             "terrortylor/nvim-comment",
             cmd = "CommentToggle",
             config = function()
-                require "plugins.comment"
+                require("plugins.others").comment()
             end
         }
 
@@ -188,7 +187,7 @@ return packer.startup(
             "karb94/neoscroll.nvim",
             event = "WinScrolled",
             config = function()
-                require "plugins.neoscroll"
+                require("plugins.others").neoscroll()
             end
         }
 
@@ -206,7 +205,7 @@ return packer.startup(
             "lukas-reineke/indent-blankline.nvim",
             event = "BufRead",
             setup = function()
-                require "plugins.blankline"
+                require("plugins.others").blankline()
             end
         }
     end
