@@ -42,6 +42,7 @@ _copy_config() {
     printf "%s\n" "Nvim Directory exists"
     if [ "${_NO_BACKUP}" = "true" ]; then
       printf "%s\n" "Skipping backup as --no-backup flag was passed.."
+      [ "${_UPDATE}" = "false" ] && rm -rf "${_CONFIG_PATH}"
     else
       printf "%s\n" "Taking backup of existing config.."
       mv "${_CONFIG_PATH}" "${_BACKUP_PATH}" || {
@@ -50,7 +51,6 @@ _copy_config() {
         exit 1
       }
     fi
-    printf "%s\n" "Creating new nvim directory"
   else
     printf "%s\n" "Nvim Config doesn't exist so creating one"
   fi
@@ -147,7 +147,7 @@ main() {
 
   _setup_arguments "${@}"
   _copy_config
-  _setup_terminal_shell
+  [ "${_UPDATE}" = "false" ] && _setup_terminal_shell
 
   # install all plugins + compile them
   if _NVIM="$(command -v nvim)"; then
