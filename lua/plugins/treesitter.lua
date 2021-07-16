@@ -11,15 +11,8 @@ end
 
 ts_config.setup {
     ensure_installed = {
-        "javascript",
-        "html",
-        "css",
         "bash",
-        "lua",
-        "json",
-        "python"
-        -- "rust",
-        -- "go"
+        "lua"
     },
     highlight = {
         enable = true,
