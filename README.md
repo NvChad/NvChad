@@ -140,7 +140,7 @@ without / with Treesitter :
 
 - Without lazy loading vs with lazy loading ( this is tested on my old pentium system so ofc the startuptime will be a lot much lesser for you )
 
-<img src = "https://chadpaste.com/f/ndwkcrxdpn.png">
+<img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/lazy-load.png">
 	
 # TODO
 
