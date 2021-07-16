@@ -8,8 +8,8 @@ packer.init {
         end
     },
     git = {
-    clone_timeout = 600, -- Timeout, in seconds, for git clones
-  }
+        clone_timeout = 600 -- Timeout, in seconds, for git clones
+    }
 }
 
 return packer.startup(
@@ -47,14 +47,17 @@ return packer.startup(
         }
 
         use {
+            "kabouzeid/nvim-lspinstall",
+            event = "BufRead"
+        }
+
+        use {
             "neovim/nvim-lspconfig",
-            event = "BufRead",
+            after = "nvim-lspinstall",
             config = function()
                 require("plugins.lspconfig").config()
             end
         }
-
-        use "kabouzeid/nvim-lspinstall"
 
         use {
             "onsails/lspkind-nvim",
@@ -81,7 +84,10 @@ return packer.startup(
                         require("plugins.compe").snippets()
                     end
                 },
-                "rafamadriz/friendly-snippets"
+                {
+                    "rafamadriz/friendly-snippets",
+                    event = "InsertCharPre"
+                }
             }
         }
 
@@ -107,14 +113,19 @@ return packer.startup(
             "nvim-telescope/telescope.nvim",
             requires = {
                 {"nvim-lua/popup.nvim"},
-                {"nvim-lua/plenary.nvim"},
-                {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
-                {"nvim-telescope/telescope-media-files.nvim"}
+                {"nvim-lua/plenary.nvim"}
             },
             cmd = "Telescope",
             config = function()
                 require("plugins.telescope").config()
             end
+        }
+
+        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope"}
+
+        use {
+            "nvim-telescope/telescope-media-files.nvim",
+            cmd = "Telescope"
         }
 
         -- git stuff
@@ -127,15 +138,6 @@ return packer.startup(
         }
 
         -- misc plugins
-
-        use {
-            "folke/which-key.nvim",
-            keys = "<space>",
-            config = function()
-                require("plugins.whichkey").config()
-            end
-        }
-
         use {
             "windwp/nvim-autopairs",
             after = "nvim-compe",
