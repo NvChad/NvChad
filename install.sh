@@ -33,36 +33,6 @@ _check_nvim_version() {
   done
 }
 
-_setup_packer() {
-  _clone_packer() {
-    [ -d "${_PACKER_PATH}" ] && rm -rf "${_PACKER_PATH}"
-
-    printf "\n%s\n" "=> Cloning packer.."
-    if "${_GIT}" clone "${_PACKER_REPO_URL}" \
-      "${_PACKER_PATH}" --depth 20; then
-      printf "%s\n" "=> Packer Installed!"
-    else
-      printf "Error: Couldn't clone packer\n"
-      exit 1
-    fi
-  }
-
-  if [ "${_UPDATE}" = "true" ]; then
-    printf "%s\n" "Updating packer"
-    { [ -d "${_PACKER_PATH}" ] \
-      && "${_GIT}" -C "${_PACKER_PATH}" pull "${_PACKER_REPO_URL}"; } || _clone_packer
-  else
-    printf "%s\n" "Installing packer"
-    if [ -d ~/.local/share/nvim/site/pack/packer ]; then
-      printf "%s\n" "Clearing previous packer installs"
-      rm -rf ~/.local/share/nvim/site/pack
-    fi
-    _clone_packer
-  fi
-  printf "\n"
-  return 0
-}
-
 _copy_config() {
   printf "%s\n" "Linking config"
   printf "%s\n" "Old nvim config will be changed to nvim.bak if exists! :0"
@@ -72,6 +42,7 @@ _copy_config() {
     printf "%s\n" "Nvim Directory exists"
     if [ "${_NO_BACKUP}" = "true" ]; then
       printf "%s\n" "Skipping backup as --no-backup flag was passed.."
+      [ "${_UPDATE}" = "false" ] && rm -rf "${_CONFIG_PATH}"
     else
       printf "%s\n" "Taking backup of existing config.."
       mv "${_CONFIG_PATH}" "${_BACKUP_PATH}" || {
@@ -80,7 +51,6 @@ _copy_config() {
         exit 1
       }
     fi
-    printf "%s\n" "Creating new nvim directory"
   else
     printf "%s\n" "Nvim Config doesn't exist so creating one"
   fi
@@ -124,8 +94,6 @@ _setup_terminal_shell() {
 
 _setup_arguments() {
   # default variables to be used
-  _PACKER_PATH="${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
-  _PACKER_REPO_URL="https://github.com/wbthomason/packer.nvim"
   _CONFIG_PATH="${HOME}/.config/nvim"
   _UPDATE=""
   _BACKUP_PATH="${_CONFIG_PATH}.bak"
@@ -133,22 +101,22 @@ _setup_arguments() {
   _CURRENT_SHELL="${SHELL##*/}"
 
   _check_longoptions() {
-    [ -z "${2}" ] \
-      && printf '%s: %s: option requires an argument\nTry '"%s -h/--help"' for more information.\n' "${0##*/}" "${1}" "${0##*/}" \
-      && exit 1
+    [ -z "${2}" ] &&
+      printf '%s: %s: option requires an argument\nTry '"%s -h/--help"' for more information.\n' "${0##*/}" "${1}" "${0##*/}" &&
+      exit 1
     return 0
   }
 
   while [ $# -gt 0 ]; do
     case "${1}" in
-      -h | --help) _usage ;;
-      -i | --install) _UPDATE="false" ;;
-      -u | --update) _UPDATE="true" ;;
-      -b | --backup)
-        _check_longoptions "${1}" "${2}"
-        _BACKUP_PATH="${2}" && shift
-        ;;
-      -nb | --nobackup) _NO_BACKUP="true" ;;
+    -h | --help) _usage ;;
+    -i | --install) _UPDATE="false" ;;
+    -u | --update) _UPDATE="true" ;;
+    -b | --backup)
+      _check_longoptions "${1}" "${2}"
+      _BACKUP_PATH="${2}" && shift
+      ;;
+    -nb | --nobackup) _NO_BACKUP="true" ;;
     esac
     shift
   done
@@ -178,22 +146,23 @@ main() {
   _check_install_dependencies
 
   _setup_arguments "${@}"
-  _setup_packer
   _copy_config
-  _setup_terminal_shell
+  [ "${_UPDATE}" = "false" ] && _setup_terminal_shell
 
   # install all plugins + compile them
   if _NVIM="$(command -v nvim)"; then
     if _check_nvim_version; then
-      printf "\n%s\n" "=> Neovim will open with some errors, just press enter" && sleep 1
-      "${_NVIM}" +PackerSync
+      printf "\n%s\n" "=> Neovim will now open." && sleep 1
+      if [ "${_UPDATE}" = "false" ]; then
+        "${_NVIM}" +":lua require 'pluginList' vim.cmd('PackerSync')"
+      else
+        "${_NVIM}"
+      fi
     else
-      printf "Error: Neovim is installed, but version is lower than 0.5.x, install Neovim >= 5.x and then run the below command.\n"
-      printf "  nvim +PackerSync\n"
+      printf "Error: Neovim is installed, but version is lower than 0.5.x, install Neovim >= 5.x and then run nvim & do :PackerSync\n."
     fi
   else
-    printf "Error: Neovim is not installed, install Neovim >= 5.x and then run the below command\n"
-    printf "  nvim +PackerSync\n"
+    printf "Error: Neovim is not installed, install Neovim >= 5.x and then run neovim & do :PackerSync.\n"
   fi
 }
 
