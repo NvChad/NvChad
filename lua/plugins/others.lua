@@ -51,4 +51,11 @@ M.blankline = function()
     vim.g.indent_blankline_show_first_indent_level = false
 end
 
+M.betterEscape = function()
+    vim.g.better_escape_shortcut = {"jk", "kj"}
+    --vim.g.better_escape_shortcut = 'jh'
+
+    --vim.g.better_escape_interval = 200
+end
+
 return M
