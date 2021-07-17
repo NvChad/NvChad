@@ -22,6 +22,6 @@ if require "theme" then
 else
     -- otherwise run PackerSync
     require "pluginList"
-    print("Now PackerSync will be executed, after completion, restart neovim.\n")
+    print("Now PackerSync will be executed, after completion, restart nvim.\n")
     vim.cmd("PackerSync")
 end
