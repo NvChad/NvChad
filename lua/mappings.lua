@@ -133,3 +133,9 @@ map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
 -- move between tabs
 map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
 map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+
+-- use ESC to turn off search highlighting
+map("n", "<Esc>", ":noh<CR>", opts)
+
+-- get out of terminal with ESC
+map("t", "<Esc>", "<C-\\><C-n>", opts)
