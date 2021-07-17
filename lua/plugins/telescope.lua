@@ -1,11 +1,5 @@
-local telescope
-if
-    not pcall(
-        function()
-            telescope = require("telescope")
-        end
-    )
- then
+local present, telescope = pcall(require, "telescope")
+if not present then
     return
 end
 

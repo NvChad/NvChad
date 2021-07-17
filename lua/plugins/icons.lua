@@ -1,11 +1,5 @@
-local icons
-if
-    not pcall(
-        function()
-            icons = require "nvim-web-devicons"
-        end
-    )
- then
+local present, icons = pcall(require, "nvim-web-devicons")
+if not present then
     return
 end
 

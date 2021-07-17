@@ -1,12 +1,7 @@
-local autopairs, autopairs_completion
-if
-    not pcall(
-        function()
-            autopairs = require "nvim-autopairs"
-            autopairs_completion = require "nvim-autopairs.completion.compe"
-        end
-    )
- then
+local present1, autopairs = pcall(require, "nvim-autopairs")
+local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.compe")
+
+if not (present1 or present2) then
     return
 end
 

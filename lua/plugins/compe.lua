@@ -1,11 +1,5 @@
-local compe
-if
-    not pcall(
-        function()
-            compe = require "compe"
-        end
-    )
- then
+local present, compe = pcall(require, "compe")
+if not present then
     return
 end
 

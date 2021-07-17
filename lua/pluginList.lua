@@ -1,11 +1,6 @@
-local packer
-if
-    pcall(
-        function()
-            require "packerInit"
-        end
-    )
- then
+local present, _ = pcall(require, "packerInit")
+
+if present then
     packer = require "packer"
 else
     return false

@@ -1,35 +1,25 @@
 local M = {}
 
 M.colorizer = function()
-    local colorizer
-    if
-        not pcall(
-            function()
-                colorizer = require("colorizer")
-            end
-        )
-     then
-        return
+    local present, colorizer = pcall(require, "colorizer")
+    if present then
+        colorizer.setup()
+        vim.cmd("ColorizerReloadAllBuffers")
     end
-
-    colorizer.setup()
-    vim.cmd("ColorizerReloadAllBuffers")
 end
 
 M.comment = function()
-    pcall(
-        function()
-            require("nvim_comment").setup()
-        end
-    )
+    local present, nvim_comment = pcall(require, "nvim_comment")
+    if present then
+        nvim_comment.setup()
+    end
 end
 
 M.lspkind = function()
-    pcall(
-        function()
-            require("lspkind").init()
-        end
-    )
+    local present, lspkind = pcall(require, "lspkind")
+    if present then
+        lspkind.init()
+    end
 end
 
 M.neoscroll = function()

@@ -1,11 +1,5 @@
-local gitsigns
-if
-    not pcall(
-        function()
-            gitsigns = require "gitsigns"
-        end
-    )
- then
+local present, gitsigns = pcall(require, "gitsigns")
+if not present then
     return
 end
 
