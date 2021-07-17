@@ -138,6 +138,15 @@ return packer.startup(
 
         -- misc plugins
         use {
+            'jdhao/better-escape.vim',
+            disable = true,  -- delete line to enable plugin
+            event = 'InsertEnter',
+            config = function()
+              require("plugins.others").betterEscape()
+            end
+        }
+
+        use {
             "windwp/nvim-autopairs",
             after = "nvim-compe",
             config = function()
