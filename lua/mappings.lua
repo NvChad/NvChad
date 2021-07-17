@@ -20,6 +20,9 @@ map("v", "x", [=[ "_x ]=], opt)
 
 vim.api.nvim_set_keymap("i", "jk", "<esc>", {})
 
+-- Don't copy the replaced text after pasting in visual mode
+map("v", "p", '"_dP', opt)
+
 -- OPEN TERMINALS --
 map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- term over right
 map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) --  term bottom
