@@ -138,7 +138,9 @@ without / with Treesitter :
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
-- Without lazy loading vs with lazy loading ( this is tested on my old pentium system so ofc the startuptime will be a lot much lesser for you )
+- Without lazy loading vs with lazy loading and default nvim with startuptime.vim plugin vs nvchad
+
+( This is tested on my old pentium system so ofc the startuptime will be a lot much lesser for you )
 
 <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/lazy-load.png">
 	
