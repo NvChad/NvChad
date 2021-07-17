@@ -18,6 +18,8 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 --
 
+vim.api.nvim_set_keymap("i", "jk", "<esc>", {})
+
 -- OPEN TERMINALS --
 map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- term over right
 map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) --  term bottom
@@ -35,7 +37,6 @@ map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
 map("n", "<leader>zf", ":TZFocus<CR>", opt)
 
 map("n", "<C-s>", ":w <CR>", opt)
--- vim.cmd("inoremap jh <Esc>")
 
 -- Commenter Keybinding
 map("n", "<leader>/", ":CommentToggle<CR>", opt)
