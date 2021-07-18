@@ -100,25 +100,28 @@ without / with Treesitter :
 
 - File navigation with Nvimtree
 - Using plugins that are mouse friendly
-- sexy themes
+- Beautiful inbuilt themes
+- lazy loading 100% of plugins
 - managing tabs , buffers with bufferline
 - autosave
 - icons on nvimtree , telescope , bufferline/statusline and almost everywhere! with nvim-web-devicons
 - minimal status line ( galaxyline)
 - gitsigns (colored bars for git in my config)
-- using nvim-lsp
-- nvim-lspconfig for nvim-lps configuration
-- lspInstall for installing lsp servers easily.
+- nvim-lspconfig for nvim-lsp configuration
+- lspInstall for installing lsp servers easily
 - nvim-compe for autocompletion
 - lspkind to show pictograms on autocompletion items
 - telescope for file finding , picking , previewing (files and even images)
 - nvim-treesitter for syntax highlighting
-- nvim-autopairs , for autolosing braces and stuffs
+- nvim-autopairs for autolosing braces and stuffs
 - neoformat for prettifying / formatting code
 - packer.nvim as package manager
 - indent-blankline.Nvim for indentlines
 - smooth scrolling
-- Snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
+- luasnip for snippet plugin and snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
+- Distraction free modes ( modes in which statusline , tabline etc stuff get disabled so its just the text visible in the buffer similar to goyo.vim)
+- Code formatting / prettifying
+- gitsigns for git diffs
 
 # Requirements
 
@@ -134,7 +137,7 @@ without / with Treesitter :
 
 # Bloat
 
--  To all those who think this is probably bloated , sure it is . Bloat means different to everyone . NvChad has like 30 ~ plugins but that doesnt mean those plugins are compromsing neovim's speed, snappiness or making it slow. No matter how many plugins I'd add on nvchad , it wouldnt compromise speed / snappiness / make it slow or whatever since it uses packer.nvim as plugin manager , packer.nvim lets you lazy load plugins i.e loading plugins on certain events , mappings , sequentially loading them etc so loading them only when needed , I have lazy loaded 28/30 plugins so most plugins arent loaded by default , hence not affecting neovim's startup/launch time.
+-  To all those who think this is probably bloated , sure it is . Bloat means different to everyone . NvChad has like 30 ~ plugins but that doesnt mean those plugins are compromsing neovim's speed, snappiness or making it slow. No matter how many plugins I'd add on nvchad , it wouldnt compromise speed / snappiness / make it slow or whatever since it uses packer.nvim as plugin manager , packer.nvim lets you lazy load plugins i.e loading plugins on certain events , mappings , sequentially loading them etc so loading them only when needed , I have lazy loaded all the plugins so most plugins arent loaded by default , hence not affecting neovim's startup/launch time.
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
