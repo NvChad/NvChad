@@ -1,3 +1,5 @@
+vim.cmd [[packadd packer.nvim]]
+
 local present, _ = pcall(require, "packerInit")
 
 if present then
@@ -10,20 +12,26 @@ local use = packer.use
 
 return packer.startup(
     function()
-        use "wbthomason/packer.nvim"
+        use {"wbthomason/packer.nvim", event = "VimEnter"}
 
-        use {"akinsho/nvim-bufferline.lua", event = "VimEnter"}
+        use {"akinsho/nvim-bufferline.lua", after = "nvim-base16.lua"}
 
         use {
             "glepnir/galaxyline.nvim",
-            event = "VimEnter",
+            after = "nvim-base16.lua",
             config = function()
                 require "plugins.statusline"
             end
         }
 
         -- color related stuff
-        use "siduck76/nvim-base16.lua"
+        use {
+            "siduck76/nvim-base16.lua",
+            after = "packer.nvim",
+            config = function()
+                require "theme"
+            end
+        }
 
         use {
             "norcalli/nvim-colorizer.lua",
@@ -100,7 +108,7 @@ return packer.startup(
 
         use {
             "kyazdani42/nvim-web-devicons",
-            event = "VimEnter",
+            after = "nvim-base16.lua",
             config = function()
                 require "plugins.icons"
             end
