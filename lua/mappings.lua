@@ -141,7 +141,7 @@ map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
 map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
 
 -- use ESC to turn off search highlighting
-map("n", "<Esc>", ":noh<CR>", opts)
+map("n", "<Esc>", ":noh<CR>", opt)
 
--- get out of terminal with ESC
-map("t", "<Esc>", "<C-\\><C-n>", opts)
+-- get out of terminal with jk
+map("t", "jk", "<C-\\><C-n>", opt)
