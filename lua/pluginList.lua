@@ -12,10 +12,11 @@ return packer.startup(
     function()
         use "wbthomason/packer.nvim"
 
-        use "akinsho/nvim-bufferline.lua"
+        use {"akinsho/nvim-bufferline.lua", event = "VimEnter"}
 
         use {
             "glepnir/galaxyline.nvim",
+            event = "VimEnter",
             config = function()
                 require "plugins.statusline"
             end
@@ -99,6 +100,7 @@ return packer.startup(
 
         use {
             "kyazdani42/nvim-web-devicons",
+            event = "VimEnter",
             config = function()
                 require "plugins.icons"
             end
