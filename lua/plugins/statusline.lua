@@ -1,12 +1,6 @@
-local gl, condition
-if
-    not pcall(
-        function()
-            gl = require "galaxyline"
-            condition = require "galaxyline.condition"
-        end
-    )
- then
+local present1, gl = pcall(require, "galaxyline")
+local present2, condition = pcall(require, "galaxyline.condition")
+if not (present1 or present2) then
     return
 end
 

@@ -1,12 +1,6 @@
 -- autosave.nvim plugin disabled by default
-local autosave
-if
-    not pcall(
-        function()
-            autosave = require "autosave"
-        end
-    )
- then
+local present, autosave = pcall(require, "autosave")
+if not present then
     return
 end
 

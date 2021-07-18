@@ -31,6 +31,10 @@ opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append("<>hl")
+
 g.mapleader = " "
 g.auto_save = false
 

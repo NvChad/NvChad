@@ -1,12 +1,6 @@
-local lspconfig, lspinstall
-if
-    not pcall(
-        function()
-            lspconfig = require "lspconfig"
-            lspinstall = require "lspinstall"
-        end
-    )
- then
+local present1, lspconfig = pcall(require, "lspconfig")
+local present2, lspinstall = pcall(require, "lspinstall")
+if not (present1 or present2) then
     return
 end
 

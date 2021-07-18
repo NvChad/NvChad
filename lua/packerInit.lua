@@ -1,11 +1,6 @@
-local packer
-if
-    not pcall(
-        function()
-            packer = require "packer"
-        end
-    )
- then
+local present, packer = pcall(require, "packer")
+
+if not present then
     local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
     print("Cloning packer..")
@@ -21,12 +16,10 @@ if
             packer_path
         }
     )
-    if pcall(
-            function()
-                packer = require "packer"
-            end
-        )
-     then
+
+    present, packer = pcall(require, "packer")
+
+    if present then
         print("Packer cloned successfully.")
     else
         error("Couldn't clone packer !\nPacker path: " .. packer_path)

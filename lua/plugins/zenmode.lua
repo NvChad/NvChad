@@ -1,11 +1,5 @@
-local true_zen
-if
-    not pcall(
-        function()
-            true_zen = require "true-zen"
-        end
-    )
- then
+local present, true_zen = pcall(require, "true-zen")
+if not present then
     return
 end
 
