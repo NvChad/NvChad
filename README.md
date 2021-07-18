@@ -138,7 +138,9 @@ without / with Treesitter :
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
-- Without lazy loading vs with lazy loading 
+- The below image shows startuptime for : 
+
+- NvChad Without lazy loading vs with lazy loading 
 - Default neovim with startuptime.vim plugin vs NvChad
 - NvChad on my other system with ssd
 
