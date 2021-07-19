@@ -1,6 +1,5 @@
-vim.cmd [[packadd packer.nvim]]
-
 local present, _ = pcall(require, "packerInit")
+local packer
 
 if present then
     packer = require "packer"
@@ -12,9 +11,15 @@ local use = packer.use
 
 return packer.startup(
     function()
-        use {"wbthomason/packer.nvim", event = "VimEnter"}
+        use {
+            "wbthomason/packer.nvim",
+            event = "VimEnter"
+        }
 
-        use {"akinsho/nvim-bufferline.lua", after = "nvim-base16.lua"}
+        use {
+            "akinsho/nvim-bufferline.lua",
+            after = "nvim-base16.lua"
+        }
 
         use {
             "glepnir/galaxyline.nvim",
@@ -78,7 +83,7 @@ return packer.startup(
             config = function()
                 require "plugins.compe"
             end,
-            wants = {"LuaSnip"},
+            wants = "LuaSnip",
             requires = {
                 {
                     "L3MON4D3/LuaSnip",
@@ -95,7 +100,10 @@ return packer.startup(
             }
         }
 
-        use {"sbdchd/neoformat", cmd = "Neoformat"}
+        use {
+            "sbdchd/neoformat",
+            cmd = "Neoformat"
+        }
 
         -- file managing , picker etc
         use {
@@ -114,8 +122,14 @@ return packer.startup(
             end
         }
 
-        use {"nvim-lua/plenary.nvim", event = "BufRead"}
-        use {"nvim-lua/popup.nvim", after = "plenary.nvim"}
+        use {
+            "nvim-lua/plenary.nvim",
+            event = "BufRead"
+        }
+        use {
+            "nvim-lua/popup.nvim",
+            after = "plenary.nvim"
+        }
 
         use {
             "nvim-telescope/telescope.nvim",
@@ -125,7 +139,11 @@ return packer.startup(
             end
         }
 
-        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope"}
+        use {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make",
+            cmd = "Telescope"
+        }
         use {
             "nvim-telescope/telescope-media-files.nvim",
             cmd = "Telescope"
@@ -149,7 +167,10 @@ return packer.startup(
             end
         }
 
-        use {"andymass/vim-matchup", event = "CursorMoved"}
+        use {
+            "andymass/vim-matchup",
+            event = "CursorMoved"
+        }
 
         use {
             "terrortylor/nvim-comment",
@@ -173,7 +194,10 @@ return packer.startup(
             end
         }
 
-        use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
+        use {
+            "tweekmonster/startuptime.vim",
+            cmd = "StartupTime"
+        }
 
         -- load autosave only if its globally enabled
         use {
@@ -197,7 +221,11 @@ return packer.startup(
 
         use {
             "Pocco81/TrueZen.nvim",
-            cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
+            cmd = {
+                "TZAtaraxis",
+                "TZMinimalist",
+                "TZFocus"
+            },
             config = function()
                 require "plugins.zenmode"
             end

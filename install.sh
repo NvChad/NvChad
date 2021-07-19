@@ -153,11 +153,7 @@ main() {
   if _NVIM="$(command -v nvim)"; then
     if _check_nvim_version; then
       printf "\n%s\n" "=> Neovim will now open." && sleep 1
-      if [ "${_UPDATE}" = "false" ]; then
-        "${_NVIM}" +":lua require 'pluginList' vim.cmd('PackerSync')"
-      else
-        "${_NVIM}"
-      fi
+      "${_NVIM}" +":lua require 'pluginList' vim.cmd('PackerSync')"
     else
       printf "Error: Neovim is installed, but version is lower than 0.5.x, install Neovim >= 5.x and then run nvim & do :PackerSync\n."
     fi
