@@ -19,7 +19,7 @@ opt.clipboard = "unnamedplus"
 opt.shortmess:append("sI")
 
 -- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
-vim.cmd [[let &fcs='eob: ']]
+vim.cmd("let &fcs='eob: '")
 
 -- Numbers
 opt.number = true

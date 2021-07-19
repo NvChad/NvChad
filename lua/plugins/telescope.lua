@@ -76,5 +76,8 @@ if
     )
  then
     -- This should only trigger when in need of PackerSync, so better do it
-    vim.cmd("PackerSync")
+    print("After completion of PackerSync, restart neovim.")
+    require("packer").sync("telescope-fzf-native.nvim", "telescope-media-files.nvim")
+    -- why compile too ? well, packer is supposed to compile with sync only, but sometimes it doesn't work
+    vim.cmd("PackerCompile")
 end
