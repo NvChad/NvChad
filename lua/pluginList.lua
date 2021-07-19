@@ -1,5 +1,3 @@
-vim.cmd [[packadd packer.nvim]]
-
 local present, _ = pcall(require, "packerInit")
 
 if present then
