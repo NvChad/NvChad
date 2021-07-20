@@ -27,9 +27,9 @@ vim.api.nvim_set_keymap("t", "jk", "<esc>", {})
 map("v", "p", '"_dP', opt)
 
 -- OPEN TERMINALS --
-map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- term over right
-map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) --  term bottom
-map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- term newtab
+map("n", "<C-l>", [[<Cmd> vnew +terminal | setlocal nobuflisted <CR>]], opt) -- term over right
+map("n", "<C-x>", [[<Cmd> 10new +terminal | setlocal nobuflisted <CR>]], opt) --  term bottom
+map("n", "<C-t>t", [[<Cmd> terminal <CR>]], opt) -- term buffer
 
 -- copy whole file content
 map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
