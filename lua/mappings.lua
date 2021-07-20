@@ -133,7 +133,7 @@ map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
 map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
 
 -- bufferline tab stuff
-map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab
+map("n", "<S-t>", ":enew<CR>", opt) -- new tab
 map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
 
 -- move between tabs
