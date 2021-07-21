@@ -3,8 +3,8 @@ require "options"
 local chad_modules = {
     "pluginList",
     "plugins.bufferline",
-	"mappings",
-	"utils",
+    "mappings",
+    "utils"
 }
 
 local async
