@@ -52,7 +52,7 @@ _copy_config() {
       }
     fi
   else
-    printf "%s\n" "Nvim Config doesn't exist so creating one"
+    printf "%s\n" "Nvim config doesn't exist, creating it now"
   fi
 
   mkdir -p "${_CONFIG_PATH}" || {
@@ -78,7 +78,7 @@ _setup_terminal_shell() {
   fi
 
   # don't try to do any changes user wants their default shell in nvim
-  if [ ! -z "$shellNUM" ]; then
+  if [ -n "$shellNUM" ]; then
     shellpath=$(grep '^/bin/' '/etc/shells' | sed -n "$shellNUM p")
     # Reference: https://stackoverflow.com/a/4247319
     # \( & \) will use regex brackets (for later reference with \1)
