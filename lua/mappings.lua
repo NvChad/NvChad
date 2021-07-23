@@ -146,3 +146,9 @@ map("n", "<Esc>", ":noh<CR>", opt)
 
 -- get out of terminal with jk
 map("t", "jk", "<C-\\><C-n>", opt)
+
+-- Vim Fugitive
+map("n", "<Leader>gs", ":Git<CR>", opt)
+map("n", "<Leader>gh", ":diffget //2<CR>", opt)
+map("n", "<Leader>gl", ":diffget //3<CR>", opt)
+map("n", "<Leader>gb", ":Git blame<CR>", opt)
