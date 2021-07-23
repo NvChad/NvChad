@@ -1,6 +1,5 @@
 local chad_modules = {
     "options",
-    "pluginList",
     "mappings",
     "utils"
 }
