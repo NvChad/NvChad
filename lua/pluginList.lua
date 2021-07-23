@@ -198,7 +198,7 @@ return packer.startup(
         }
 
         use {
-            "tweekmonster/startuptime.vim",
+            "dstein64/vim-startuptime",
             cmd = "StartupTime"
         }
 

@@ -1,13 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 
--- Turn these off at startup, will be enabled later just before loading the theme
-vim.cmd([[
-    syntax off
-    filetype off
-    filetype plugin indent off
-]])
-
 opt.ruler = false
 opt.hidden = true
 opt.ignorecase = true
