@@ -18,7 +18,10 @@ return packer.startup(
 
         use {
             "akinsho/nvim-bufferline.lua",
-            after = "nvim-base16.lua"
+            after = "nvim-base16.lua",
+            config = function()
+                require "plugins.bufferline"
+            end
         }
 
         use {
