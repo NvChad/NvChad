@@ -15,6 +15,11 @@ M.comment = function()
     end
 end
 
+M.escape = function()
+    vim.g.better_escape_interval = 300
+    vim.g.better_escape_shortcut = {"jk"}
+end
+
 M.lspkind = function()
     local present, lspkind = pcall(require, "lspkind")
     if present then

@@ -18,13 +18,16 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 --
 
--- escape with 'jk' mapping
-vim.api.nvim_set_keymap("i", "jk", "<esc>", {})
-vim.api.nvim_set_keymap("v", "jk", "<esc>", {})
-vim.api.nvim_set_keymap("t", "jk", "<esc>", {})
-
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP', opt)
+
+-- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
+-- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+-- empty mode is same as using :map
+map("", "j", 'v:count ? "j" : "gj"', {expr = true})
+map("", "k", 'v:count ? "k" : "gk"', {expr = true})
+map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
+map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
 -- OPEN TERMINALS --
 map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
