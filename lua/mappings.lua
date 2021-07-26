@@ -18,11 +18,6 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 --
 
--- escape with 'jk' mapping
-vim.api.nvim_set_keymap("i", "jk", "<esc>", {})
-vim.api.nvim_set_keymap("v", "jk", "<esc>", {})
-vim.api.nvim_set_keymap("t", "jk", "<esc>", {})
-
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP', opt)
 
