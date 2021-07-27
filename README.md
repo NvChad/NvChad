@@ -38,7 +38,51 @@
 [![Last Commit](https://img.shields.io/github/last-commit/siduck76/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck76/NvChad/pulse) 
 	      
   </div>
+# What is NvChad?
 
+#### Sections
+
+- [Installation](#installation)
+- [Showcase](#showcase)
+- [Plugins](#Very-Very-Useful-lua-plugins-used-in-my-config)
+- [Credits](#Credits)
+- [Features](#Features)
+- [Wiki](#Wiki)
+- [TODO](#TODO)
+- [Contribute](#Contribute)
+
+#### Installation
+See the [installing NvChad](https://github.com/siduck76/NvChad/wiki#clone-my-setup) wiki page for details.
+
+#### Git repository
+Dependencies: 
+- `git` (or `cmake -LAH build/`) contains the resolved values of all CMake variables.
+- `neovim` (release `0.5 and up`)
+
+# Requirements
+
+- neovim 0.5
+- A terminal that supports [nerdfonts](https://github.com/ryanoasis/nerd-fonts)
+- Set terminal's inner padding to 0.
+After installing the dependencies,
+install the following commands:
+
+    git clone git@github.com:siduck76/NvChad.git
+    cd NvChad
+    ./install -i
+
+to install manually (without the install script):
+    
+    git clone git@github.com:siduck76/NvChad.git ~/.config/nvim
+    nvim +"autocmd User PackerComplete ++once quitall" +":lua require 'pluginList' vim.cmd('PackerSync')"
+
+To inspect the build, these CMake features are useful:
+
+- `nvim --version` or `nvim --version | head -n1` shows NeoVim version
+- `:PackerSync` update all plugins
+- `./install.sh -u` (don't backup: `-nb`) update you local NeoVim config from the local git repo
+
+# Showcase
 <img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
@@ -123,11 +167,6 @@ without / with Treesitter :
 - Code formatting / prettifying
 - gitsigns for git diffs
 
-# Requirements
-
-- neovim 0.5
-- A terminal that supports [nerdfonts](https://github.com/ryanoasis/nerd-fonts)
-- Set terminal's inner padding to 0.
 
 # Wiki
 
