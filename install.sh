@@ -52,7 +52,7 @@ _copy_config() {
       }
     fi
   else
-    printf "%s\n" "Nvim Config doesn't exist so creating one"
+    printf "%s\n" "Nvim config doesn't exist, creating it now"
   fi
 
   mkdir -p "${_CONFIG_PATH}" || {
