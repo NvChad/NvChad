@@ -1,15 +1,23 @@
 <h1 align="center">NvChad</h1> 
 
 <div align="center">
-	<a href="https://github.com/siduck76/NvChad/wiki#clone-my-setup">Home</a>
+	<a href="https://github.com/siduck76/NvChad/">Home</a>
   <span> • </span>
-    	<a href="https://github.com/siduck76/NvChad/wiki#clone-my-setup">Install</a>
+    	<a href="https://github.com/siduck76/NvChad#Installation">Install</a>
   <span> • </span>
-       	<a href="https://github.com/siduck76/NvChad#contribute">Contribute</a>
+	<a href="https://github.com/siduck76/NvChad/#Features">Features</a>
   <span> • </span>
+	<a href="https://github.com/siduck76/NvChad/#Showcase">Showcase</a>
+  <span> • </span>
+	<a href="https://github.com/siduck76/NvChad/#Showcase">Wiki</a>
+  <p></p>
 	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
       	<a href="https://github.com/siduck76/NvChad/wiki/Chad-user-configs">Extras</a>
+  <span> • </span>
+       	<a href="https://github.com/siduck76/NvChad#contribute">Contribute</a>
+  <span> • </span>
+	<a href="https://github.com/siduck76/NvChad/#Credits">Credits</a>
   <p></p>
 </div>
 
@@ -41,18 +49,6 @@
 
 # What is NvChad?
 NvChad is an attempt to make neovim cli as functional as an IDE while being very beautiful and less bloated. 
-
-#### README 
-
-- [Installation](#installation)
-- [Showcase](#showcase)
-- [Plugins](#Very-Very-Useful-lua-plugins-used-in-my-config)
-- [Credits](#Credits)
-- [Features](#Features)
-- [Wiki](#Wiki)
-- [Performance & bloat](#Bloat)
-- [TODO](#TODO)
-- [Contribute](#Contribute)
 
 # Getting started
 #### Requirements
