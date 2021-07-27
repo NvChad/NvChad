@@ -17,8 +17,19 @@ return packer.startup(
         }
 
         use {
+            "jdhao/better-escape.vim",
+            event = "InsertEnter",
+            config = function()
+                require "plugins.others".escape()
+            end
+        }
+
+        use {
             "akinsho/nvim-bufferline.lua",
-            after = "nvim-base16.lua"
+            after = "nvim-base16.lua",
+            config = function()
+                require "plugins.bufferline"
+            end
         }
 
         use {
@@ -195,7 +206,7 @@ return packer.startup(
         }
 
         use {
-            "tweekmonster/startuptime.vim",
+            "dstein64/vim-startuptime",
             cmd = "StartupTime"
         }
 
@@ -239,6 +250,13 @@ return packer.startup(
             setup = function()
                 require("plugins.others").blankline()
             end
+        }
+
+        use {
+            "tpope/vim-fugitive",
+            cmd = {
+                "Git"
+            }
         }
     end
 )
