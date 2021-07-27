@@ -38,9 +38,11 @@
 [![Last Commit](https://img.shields.io/github/last-commit/siduck76/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck76/NvChad/pulse) 
 	      
   </div>
-# What is NvChad?
 
-#### Sections
+# What is NvChad?
+NvChad is an attempt to make neovim cli as functional as an IDE while being very beautiful and less bloated. 
+
+#### README 
 
 - [Installation](#installation)
 - [Showcase](#showcase)
@@ -48,35 +50,31 @@
 - [Credits](#Credits)
 - [Features](#Features)
 - [Wiki](#Wiki)
+- [Performance & bloat](#Bloat)
 - [TODO](#TODO)
 - [Contribute](#Contribute)
 
-#### Installation
-See the [installing NvChad](https://github.com/siduck76/NvChad/wiki#clone-my-setup) wiki page for details.
+# Getting started
+#### Requirements
 
-#### Git repository
-Dependencies: 
-- `git` (or `cmake -LAH build/`) contains the resolved values of all CMake variables.
-- `neovim` (release `0.5 and up`)
-
-# Requirements
-
-- neovim 0.5
+- `git`
+- [`neovim`](https://github.com/neovim/neovim/wiki/Installing-Neovim) (release `0.5 and up`)
 - A terminal that supports [nerdfonts](https://github.com/ryanoasis/nerd-fonts)
 - Set terminal's inner padding to 0.
-After installing the dependencies,
-install the following commands:
 
-    git clone git@github.com:siduck76/NvChad.git
-    cd NvChad
+#### Installation
+See the [installing NvChad](https://github.com/siduck76/NvChad/wiki#clone-my-setup) wiki page for extra details.
+
+After installing the dependencies,
+install with the following commands:
+
+    git clone git@github.com:siduck76/NvChad.git ~/Downloads/
+    cd ~/Downloads/NvChad
     ./install -i
 
-to install manually (without the install script):
-    
-    git clone git@github.com:siduck76/NvChad.git ~/.config/nvim
-    nvim +"autocmd User PackerComplete ++once quitall" +":lua require 'pluginList' vim.cmd('PackerSync')"
+it's possible to install manually, clone the repo into your `~/.config/nvim/` & run in nvim `:PackerSync`
 
-To inspect the build, these CMake features are useful:
+To inspect the installation, these are useful:
 
 - `nvim --version` or `nvim --version | head -n1` shows NeoVim version
 - `:PackerSync` update all plugins
