@@ -96,3 +96,4 @@ end
 -- file extension specific tabbing
 vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
 vim.cmd([[autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)]])
+vim.cmd([[autocmd BufWritePre *.go lua goimports(1000)]])
