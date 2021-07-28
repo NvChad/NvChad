@@ -19,6 +19,11 @@ compe.setup {
     source = {
         buffer = {kind = "﬘", true},
         luasnip = {kind = "﬌", true},
+        path = true,
+        tags = true,
+        spell = true,
+        calc = true,
+        tmux = true,
         nvim_lsp = true,
         nvim_lua = true
     }

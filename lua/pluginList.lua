@@ -8,12 +8,16 @@ else
 end
 
 local use = packer.use
+vim.cmd('let g:rainbow_active = 1')
+vim.cmd('let g:vista_default_executive = "ctags"')
+vim.cmd('let g:vista_executive_for = {"go":"nvim_lsp","python":"nvim_lsp"}')
 
 return packer.startup(
     function()
+        -- Packer can manage itself
         use {
             "wbthomason/packer.nvim",
-            event = "VimEnter"
+            -- event = "VimEnter"
         }
 
         use {
@@ -24,6 +28,8 @@ return packer.startup(
             end
         }
 
+
+        -- Buffer line
         use {
             "akinsho/nvim-bufferline.lua",
             after = "nvim-base16.lua",
@@ -32,6 +38,7 @@ return packer.startup(
             end
         }
 
+        -- Status line
         use {
             "glepnir/galaxyline.nvim",
             after = "nvim-base16.lua",
@@ -49,6 +56,11 @@ return packer.startup(
             end
         }
 
+        -- Theme
+        use 'joshdick/onedark.vim'
+        use 'arcticicestudio/nord-vim'
+
+        -- Color highlighter
         use {
             "norcalli/nvim-colorizer.lua",
             event = "BufRead",
@@ -65,6 +77,8 @@ return packer.startup(
                 require "plugins.treesitter"
             end
         }
+
+        use 'ludovicchabant/vim-gutentags' -- Automatic tags management
 
         use {
             "kabouzeid/nvim-lspinstall",
@@ -106,6 +120,10 @@ return packer.startup(
                 },
                 {
                     "rafamadriz/friendly-snippets",
+                    event = "InsertCharPre"
+                },
+                {
+                    "andersevenrud/compe-tmux",
                     event = "InsertCharPre"
                 }
             }
@@ -183,26 +201,30 @@ return packer.startup(
             event = "CursorMoved"
         }
 
-        use {
-            "terrortylor/nvim-comment",
-            cmd = "CommentToggle",
-            config = function()
-                require("plugins.others").comment()
-            end
-        }
+        -- use {
+        --     "terrortylor/nvim-comment",
+        --     cmd = "CommentToggle",
+        --     config = function()
+        --         require("plugins.others").comment()
+        --     end
+        -- }
+        use 'tpope/vim-commentary'
+        use 'junegunn/vim-easy-align'
+        use 'tpope/vim-surround'
+        use 'easymotion/vim-easymotion'
 
         use {
             "glepnir/dashboard-nvim",
-            cmd = {
-                "Dashboard",
-                "DashboardNewFile",
-                "DashboardJumpMarks",
-                "SessionLoad",
-                "SessionSave"
-            },
-            setup = function()
-                require "plugins.dashboard"
-            end
+            -- cmd = {
+            --     "Dashboard",
+            --     "DashboardNewFile",
+            --     "DashboardJumpMarks",
+            --     "SessionLoad",
+            --     "SessionSave"
+            -- },
+            -- setup = function()
+            --     require "plugins.dashboard"
+            -- end
         }
 
         use {
@@ -257,6 +279,31 @@ return packer.startup(
             cmd = {
                 "Git"
             }
+        }
+
+        use 'luochen1990/rainbow'
+
+        use {
+          'iamcco/markdown-preview.nvim',
+          run = 'cd app && yarn install',
+          cmd = 'MarkdownPreview'
+        }
+
+        -- Tmux
+        use 'christoomey/vim-tmux-navigator'
+        use 'tmux-plugins/vim-tmux-focus-events'
+        -- use 'fatih/vim-go'
+        use 'liuchengxu/vista.vim'
+
+        use {
+        "folke/which-key.nvim",
+        config = function()
+          require("which-key").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+          }
+        end
         }
     end
 )

@@ -6,10 +6,30 @@ end
 ts_config.setup {
     ensure_installed = {
         "bash",
-        "lua"
+        "c",
+        "cmake",
+        "comment",
+        "commonlisp",
+        "cpp",
+        "css",
+        "dockerfile",
+        "go",
+        "gomod",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "python",
+        "regex",
+        "rust",
+        "toml",
+        "yaml",
     },
     highlight = {
         enable = true,
         use_languagetree = true
-    }
+    },
+    indent = {
+        enable = true,
+    },
 }
