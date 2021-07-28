@@ -32,7 +32,7 @@ map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 -- OPEN TERMINALS --
 map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
 map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
-map("n", "<C-t>t", ":terminal <CR>", opt) -- term buffer
+map("n", "<C-t>t", ":<Cmd> terminal <CR>", opt) -- term buffer
 
 -- copy whole file content
 map("n", "<C-a>", ":%y+<CR>", opt)
