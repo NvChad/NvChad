@@ -26,8 +26,10 @@ map("v", "p", '"_dP', opt)
 -- empty mode is same as using :map
 map("", "j", 'v:count ? "j" : "gj"', {expr = true})
 map("", "k", 'v:count ? "k" : "gk"', {expr = true})
-map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
 map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
+map("i", "<Up>", 'v:count ? "k" : ":gk"', {expr = true})
+map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
+map("i", "<Down>", 'v:count ? "j" : ":gj"', {expr = true})
 
 -- OPEN TERMINALS --
 map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
