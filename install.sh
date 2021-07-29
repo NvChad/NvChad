@@ -98,7 +98,7 @@ _setup_terminal_shell() {
 }
 _setup_arguments() {
   # default variables to be used
-  _CONFIG_PATH="${HOME}/.config/nvim"
+  _CONFIG_PATH="${XDG_CONFIG_HOME:-${HOME}/.config}/nvim"
   _UPDATE=""
   _BACKUP_PATH="${_CONFIG_PATH}.bak"
   _NO_BACKUP="false"
