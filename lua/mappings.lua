@@ -134,6 +134,7 @@ map("n", "<Leader>fp", ":Telescope media_files <CR>", opt)
 map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
 map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)
+map("n", "<Leader>th", ":Telescope themes<CR>", opt)
 
 -- bufferline tab stuff
 map("n", "<S-t>", ":enew<CR>", opt) -- new buffer
