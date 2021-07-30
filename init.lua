@@ -1,7 +1,6 @@
 local chad_modules = {
     "options",
-    "mappings",
-    "utils"
+    "mappings"
 }
 
 for i = 1, #chad_modules, 1 do
