@@ -258,5 +258,15 @@ return packer.startup(
                 "Git"
             }
         }
+        use {
+            'glepnir/lspsaga.nvim',
+            branch = 'main',
+            requires = {
+                'neovim/nvim-lspconfig',
+            },
+          config = function()
+              require "plugins.lspsaga_config"
+        end
+        }
     end
 )
