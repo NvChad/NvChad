@@ -20,6 +20,7 @@ compe.setup {
         buffer = {kind = "﬘", true},
         luasnip = {kind = "﬌", true},
         nvim_lsp = true,
-        nvim_lua = true
+        nvim_lua = true,
+        zsh = true
     }
 }
