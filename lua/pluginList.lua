@@ -205,11 +205,6 @@ return packer.startup(
             end
         }
 
-        use {
-            "dstein64/vim-startuptime",
-            cmd = "StartupTime"
-        }
-
         -- load autosave only if its globally enabled
         use {
             "Pocco81/AutoSave.nvim",
