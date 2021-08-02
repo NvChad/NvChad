@@ -34,7 +34,7 @@ map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 -- OPEN TERMINALS --
 -- map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
 -- map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
--- map("n", "<C-t>t", ":<Cmd> terminal <CR>", opt) -- term buffer
+-- map("n", "<C-t>t", ":terminal <CR>", opt) -- term buffer
 
 -- copy whole file content
 map("n", "<C-a>", ":%y+<CR>", opt)
@@ -130,7 +130,7 @@ map("i", "<CR>", "v:lua.completions()", {expr = true})
 -- map("n", "<C-s>l", ":SessionLoad<CR>", opt)
 -- map("n", "<C-s>s", ":SessionSave<CR>", opt)
 
--- -- Telescope
+-- Telescope
 -- map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)
 -- map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
 -- map("n", "<Leader>cm", ":Telescope git_commits <CR>", opt)
@@ -139,6 +139,7 @@ map("i", "<CR>", "v:lua.completions()", {expr = true})
 -- map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
 -- map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
 -- map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)
+-- map("n", "<Leader>th", ":Telescope themes<CR>", opt)
 
 -- -- bufferline tab stuff
 -- map("n", "<S-t>", ":enew<CR>", opt) -- new buffer
@@ -219,6 +220,7 @@ wk.register({
     k = { "<Cmd> Telescope keymaps<CR>", "Search keymaps"},
     s = { "<Cmd> Telescope lsp_workspace_symbols<CR>", "Search symbols"},
     t = { "<Cmd> Telescope treesitter<CR>", "Search treesitter"},
+    T = { "<Cmd> Telescope themes<CR>", "Search themes"},
   },
   z = {
       name = "zoom",

@@ -32,7 +32,7 @@
             src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square&logo=GNU&label=License"
             alt="License"
     />
-[![Gitter](https://img.shields.io/gitter/room/siduck76/NvChad?style=flat-square&logo=gitter&logoColor=white&label=Chat&color=eb34a4)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Discord](https://img.shields.io/discord/869557815780470834?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/5Stgvfww)
 [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
 [![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?style=flat-square&label=Issues&color=fc0330)](https://github.com/siduck76/NvChad/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/siduck76/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck76/NvChad/pulse) 
@@ -140,16 +140,6 @@ without / with Treesitter :
 -  To all those who think this is probably bloated , sure it is . Bloat means different to everyone . NvChad has like 30 ~ plugins but that doesnt mean those plugins are compromsing neovim's speed, snappiness or making it slow. No matter how many plugins I'd add on nvchad , it wouldnt compromise speed / snappiness / make it slow or whatever since it uses packer.nvim as plugin manager , packer.nvim lets you lazy load plugins i.e loading plugins on certain events , mappings , sequentially loading them etc so loading them only when needed , I have lazy loaded all the plugins so most plugins arent loaded by default , hence not affecting neovim's startup/launch time.
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
-
-- The below image shows startuptime for : 
-
-- NvChad Without lazy loading vs with lazy loading 
-- Default neovim with startuptime.vim plugin vs NvChad
-- NvChad on my other system with ssd
-
-<img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/lazy-load.png">
-
-(The above 2 images show tests from my old pentium system so ofc the startuptime will be a lot more lesser for you )
 
 # TODO
 

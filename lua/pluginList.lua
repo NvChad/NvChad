@@ -82,7 +82,7 @@ return packer.startup(
 
         use {
             "kabouzeid/nvim-lspinstall",
-            event = "BufRead"
+            event = "BufEnter"
         }
 
         use {
@@ -95,7 +95,7 @@ return packer.startup(
 
         use {
             "onsails/lspkind-nvim",
-            event = "BufRead",
+            event = "BufEnter",
             config = function()
                 require("plugins.others").lspkind()
             end
@@ -225,11 +225,6 @@ return packer.startup(
             -- setup = function()
             --     require "plugins.dashboard"
             -- end
-        }
-
-        use {
-            "dstein64/vim-startuptime",
-            cmd = "StartupTime"
         }
 
         -- load autosave only if its globally enabled

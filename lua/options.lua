@@ -2,6 +2,7 @@ local opt = vim.opt
 local g = vim.g
 
 opt.showmode = false
+opt.undofile = true
 opt.ruler = false
 opt.hidden = true
 opt.ignorecase = true
@@ -97,3 +98,9 @@ end
 vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
 vim.cmd([[autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)]])
 vim.cmd([[autocmd BufWritePre *.go lua goimports(1000)]])
+
+-- Don't show status line on vim terminals
+vim.cmd [[ au TermOpen term://* setlocal nonumber laststatus=0 ]]
+
+-- Open a file from its last left off position
+-- vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
