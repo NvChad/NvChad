@@ -141,16 +141,6 @@ without / with Treesitter :
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
-- The below image shows startuptime for : 
-
-- NvChad Without lazy loading vs with lazy loading 
-- Default neovim with startuptime.vim plugin vs NvChad
-- NvChad on my other system with ssd
-
-<img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/lazy-load.png">
-
-(The above 2 images show tests from my old pentium system so ofc the startuptime will be a lot more lesser for you )
-
 # TODO
 
 It would be nice if NvChad focuses on existing plugins and config before adding new things , some plugins like whichkey , telescope , treesitter still have basic configs! Also adding new features that'd make NvChad slow or its startuptime slow wouldnt be encouraged , if that feature's really needed then It'll be mentioned in the wiki with its config.
