@@ -12,7 +12,8 @@ M.reload_theme = function(theme_name)
     end
 
     if not pcall(require, "themes/" .. theme_name) then
-        error("No such theme ( " .. theme_name .. " )")
+        print("No such theme ( " .. theme_name .. " )")
+        return false
     end
 
     vim.g.nvchad_theme = theme_name
@@ -20,16 +21,22 @@ M.reload_theme = function(theme_name)
     -- reload the base16 theme
     local ok, base16 = pcall(require, "base16")
     if not ok then
-        error("Error: Cannot load base16 plugin!")
+        print("Error: Cannot load base16 plugin!")
+        return false
     end
     base16(base16.themes[theme_name], true)
 
-    reload_plugin {
-        "highlights",
-        "plugins.bufferline",
-        "galaxyline",
-        "plugins.statusline"
-    }
+    if
+        not reload_plugin {
+            "highlights",
+            "plugins.bufferline",
+            "galaxyline",
+            "plugins.statusline"
+        }
+     then
+        print "Error: Not able to reload all plugins."
+        return false
+    end
 
     -- now send the provider info to actual refresh
     require("galaxyline.provider").async_load_providers:send()
@@ -152,6 +159,7 @@ M.theme_switcher = function(opts)
                 if change then
                     -- ask for confirmation to set as default theme
                     local ans = string.lower(vim.fn.input("Set " .. new_theme .. " as default theme ? [y/N] ")) == "y"
+                    local_utils.clear_cmdline()
                     if ans then
                         local_utils.change_theme(current_theme, final_theme)
                     else
@@ -161,9 +169,11 @@ M.theme_switcher = function(opts)
                 end
                 -- open a buffer and close it to reload the statusline
                 vim.cmd("new|bwipeout")
+            else
+                final_theme = current_theme
             end
             -- set nvchad_theme global var
-            vim.g.nvchad_theme = current_theme
+            vim.g.nvchad_theme = final_theme
         end
         -- launch the telescope picker
         picker:find()
