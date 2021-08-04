@@ -6,6 +6,8 @@ ORANGE='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+skip=0
+
 # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
 prompt() {
     case ${1} in
@@ -37,7 +39,6 @@ _usage() {
 "
 }
 
-skip=0
 
 _skip_ahead() {
 	amount=$1
@@ -142,5 +143,12 @@ main() {
 	_parse_args "assert_arg" "${argvs[@]}"
 }
 
+init() {
+    if [ $# -eq 0 ]; then
+        prompt -e "ERROR: This script needs at least one argument"
+    else
+        main "${@}"
+    fi
+}
 
-main "${@}"
+init "${@}"
