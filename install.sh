@@ -6,7 +6,17 @@ ORANGE='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+REPO="https://github.com/siduck76/NvChad.git"
+
 skip=0
+nvchad_path="$HOME/.config/nvim/"
+dependencies=(
+	"git"
+)
+preserved_files=(
+	"lua/mappings.lua"
+	"lua/user_config.lua"
+)
 
 # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
 prompt() {
@@ -31,7 +41,7 @@ prompt() {
 
 _usage() {
     printf "%s" \
-        "Usage: sh ${0##*/} [ options ]
+    "Usage: ./${0##*/} [ options ]
     -h, --help         -> Show this help.
     -i, --install      -> Install the config.
     -r, --remove       -> Remove the config.
@@ -39,6 +49,51 @@ _usage() {
 "
 }
 
+_remove() {
+	prompt -w "Removing config ->	  ($HOME/.config/nvim/)"
+	# rm -rf "$HOME/.config/nvim/"
+	prompt -w "Removing miscellaneous -> ($HOME/.local/share/nvim/)"
+	# rm -rf "$HOME/.local/share/nvim/"
+	prompt -w "Removing cache ->	  ($HOME/.cache/nvim/)"
+	# rm -rf "$HOME/.cache/nvim/"
+}
+
+_check_dependencies() {
+	local err
+
+    for i in "${dependencies[@]}"; do
+		
+		if ! command -v "${i}" &> /dev/null
+		then
+			prompt -e "Error: You need to install the dependency '${i}'"
+			err="true"
+		fi
+	done
+
+	if [[ "${err}" == "true" ]]; then
+		exit 1
+	fi
+}
+
+_fetch() {
+	printf "  + %s\n" "$(prompt -i "Fetching repo...")"
+	git clone -n ${REPO} --depth 1 "${nvchad_path}"
+	cd "${nvchad_path}" || return
+
+	printf "  + %s\n" "$(prompt -i "Checking out core...")"
+	git checkout HEAD lua/
+	printf "  + %s\n" "$(prompt -i "Checking out init file...")"
+	git checkout HEAD init.lua
+}
+
+_install() {
+	prompt -w "-> Checking dependencies..."
+	_check_dependencies
+	prompt -w "-> Cloning..."
+	_fetch
+}
+
+# _update() {}
 
 _skip_ahead() {
 	amount=$1
@@ -48,7 +103,6 @@ _skip_ahead() {
 _parse_args() {
 	local func_args=$1
 	local argv=("$@")
-	# local skip=0
 
 	unset 'argv[0]' # becuase arg1 is $func_arg
 	for i in "${!argv[@]}"; do new_array+=( "${argv[i]}" ); done
@@ -112,7 +166,17 @@ main() {
     local argvs=("$@")
     local argc=${#argvs[@]}
 
-    assert_arg() {
+    assert_aditional_args() {
+        var=$1 # flag
+        index=$2 # flag's index
+        case ${var} in
+		-p=* | --path=*)
+			nvchad_path="${var#*=}"
+			;;
+        esac
+    }
+
+    assert_args() {
         var=$1 # flag
         index=$2 # flag's index
         case ${var} in
@@ -120,27 +184,25 @@ main() {
             _usage
             ;;
         -i | --install)
-            prompt -i "installing..."
+            prompt -i "Installing NvChad..."
+			_install
             ;;
         -r | --remove)
-            prompt -i "removing..."
+            prompt -i "Removing NvChad..."
+			_remove
             ;;
-		-a | --action)
-			action=${argvs[index+1]}
-			prompt -i "Action to perform -> ${action}"
-			_skip_ahead 1
-			;;
-		-p=* | --path=*)
-			path="${var#*=}"
-			prompt -i "Path was set to -> ${path}"
-			;;
+        -u | --update)
+            prompt -i "Updating NvChad..."
+            ;;
+		-p=* | --path=*) ;;
         *)
             prompt -w "Warning: unknown command '${var}'"
             ;;
         esac
     }
 
-	_parse_args "assert_arg" "${argvs[@]}"
+	_parse_args "assert_aditional_args" "${argvs[@]}"
+	_parse_args "assert_args" "${argvs[@]}"
 }
 
 init() {
