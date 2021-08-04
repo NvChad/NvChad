@@ -11,8 +11,7 @@ BACKUP_PATH="/tmp/nvchad/"
 TMP_NVCHAD="/tmp/nvchad_updates/"
 
 skip=0
-# nvchad_path="$HOME/.config/nvim/"
-nvchad_path="/tmp/test_chad/"
+nvchad_path="$HOME/.config/nvim/"
 do_startup="true"
 dependencies=(
     "git"
