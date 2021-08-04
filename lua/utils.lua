@@ -2,14 +2,17 @@ local M = {}
 
 -- reload a plugin ( will try to load even if not loaded)
 -- can take a string or list ( table )
+-- return true or false
 M.reload_plugin = function(plugins)
+    local status = true
     local function _reload_plugin(plugin)
         local loaded = package.loaded[plugin]
         if loaded then
             package.loaded[plugin] = nil
         end
         if not pcall(require, plugin) then
-            error("Error: Cannot load " .. plugin .. " plugin!")
+            print("Error: Cannot load " .. plugin .. " plugin!")
+            status = false
         end
     end
 
@@ -20,6 +23,7 @@ M.reload_plugin = function(plugins)
             _reload_plugin(plugin)
         end
     end
+    return status
 end
 
 -- return a table of available themes
@@ -73,7 +77,8 @@ end
 -- 1st arg as current theme, 2nd as new theme
 M.change_theme = function(current_theme, new_theme)
     if current_theme == nil or new_theme == nil then
-        error "Provide current and new theme name"
+        print "Error: Provide current and new theme name"
+        return false
     end
     if current_theme == new_theme then
         return
@@ -87,10 +92,20 @@ M.change_theme = function(current_theme, new_theme)
     local content = string.gsub(data, find, replace)
     -- see if the find string exists in file
     if content == data then
-        error("Cannot change default theme with " .. new_theme .. ", edit " .. file .. " manually")
+        print("Error: Cannot change default theme with " .. new_theme .. ", edit " .. file .. " manually")
+        return false
     else
         assert(M.file("w", file, content))
     end
+end
+
+M.clear_cmdline = function()
+    vim.defer_fn(
+        function()
+            vim.cmd("echo")
+        end,
+        0
+    )
 end
 
 return M
