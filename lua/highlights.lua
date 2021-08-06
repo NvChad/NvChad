@@ -46,6 +46,7 @@ fg("Comment", grey_fg)
 fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
+--fg_bg("Visual",light_grey, colors.lightbg)
 
 -- Pmenu
 bg("Pmenu", one_bg)
