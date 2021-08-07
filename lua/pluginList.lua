@@ -57,7 +57,7 @@ return packer.startup(
             end
         }
 
-        -- language related plugins
+        -- lsp stuff
         use {
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
@@ -68,7 +68,7 @@ return packer.startup(
 
         use {
             "kabouzeid/nvim-lspinstall",
-            event = "BufEnter"
+            event = "BufRead"
         }
 
         use {
@@ -84,6 +84,14 @@ return packer.startup(
             event = "BufEnter",
             config = function()
                 require("plugins.others").lspkind()
+            end
+        }
+
+        use {
+            after = "nvim-lspconfig",
+            "ray-x/lsp_signature.nvim",
+            config = function()
+                require("plugins.others").signature()
             end
         }
 
