@@ -39,7 +39,7 @@ M.blankline = function()
     vim.g.indentLine_enabled = 1
     vim.g.indent_blankline_char = "▏"
 
-    vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+    vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard", "packer"}
     vim.g.indent_blankline_buftype_exclude = {"terminal"}
 
     vim.g.indent_blankline_show_trailing_blankline_indent = false
@@ -66,7 +66,7 @@ M.signature = function()
                     border = "single" -- double, single, shadow, none
                 },
                 zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
-                padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
+                padding = "" -- character to pad on left and right of signature can be ' ', or '|'  etc
             }
         )
     end
