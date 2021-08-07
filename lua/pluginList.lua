@@ -88,8 +88,8 @@ return packer.startup(
         }
 
         use {
-            after = "nvim-lspconfig",
             "ray-x/lsp_signature.nvim",
+            event = "InsertEnter",
             config = function()
                 require("plugins.others").signature()
             end
