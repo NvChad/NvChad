@@ -32,7 +32,7 @@
             src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square&logo=GNU&label=License"
             alt="License"
     />
-[![Gitter](https://img.shields.io/gitter/room/siduck76/NvChad?style=flat-square&logo=gitter&logoColor=white&label=Chat&color=eb34a4)](https://gitter.im/neovim-dotfiles/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Discord](https://img.shields.io/discord/869557815780470834?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/gADmkJb9Fb)
 [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
 [![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?style=flat-square&label=Issues&color=fc0330)](https://github.com/siduck76/NvChad/issues)
 [![Last Commit](https://img.shields.io/github/last-commit/siduck76/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck76/NvChad/pulse) 
@@ -100,25 +100,28 @@ without / with Treesitter :
 
 - File navigation with Nvimtree
 - Using plugins that are mouse friendly
-- sexy themes
+- Beautiful inbuilt themes
+- lazy loading 100% of plugins
 - managing tabs , buffers with bufferline
 - autosave
 - icons on nvimtree , telescope , bufferline/statusline and almost everywhere! with nvim-web-devicons
 - minimal status line ( galaxyline)
 - gitsigns (colored bars for git in my config)
-- using nvim-lsp
-- nvim-lspconfig for nvim-lps configuration
-- lspInstall for installing lsp servers easily.
+- nvim-lspconfig for nvim-lsp configuration
+- lspInstall for installing lsp servers easily
 - nvim-compe for autocompletion
 - lspkind to show pictograms on autocompletion items
 - telescope for file finding , picking , previewing (files and even images)
 - nvim-treesitter for syntax highlighting
-- nvim-autopairs , for autolosing braces and stuffs
+- nvim-autopairs for autolosing braces and stuffs
 - neoformat for prettifying / formatting code
 - packer.nvim as package manager
 - indent-blankline.Nvim for indentlines
 - smooth scrolling
-- Snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
+- luasnip for snippet plugin and snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
+- Distraction free modes ( modes in which statusline , tabline etc stuff get disabled so its just the text visible in the buffer similar to goyo.vim)
+- Code formatting / prettifying
+- gitsigns for git diffs
 
 # Requirements
 
@@ -132,15 +135,22 @@ without / with Treesitter :
 - [config-structure](https://github.com/siduck76/NvChad/wiki#config-structure)
 - [mappings](https://github.com/siduck76/NvChad/wiki/mappings)
 
+# Bloat
+
+-  To all those who think this is probably bloated , sure it is . Bloat means different to everyone . NvChad has like 30 ~ plugins but that doesnt mean those plugins are compromsing neovim's speed, snappiness or making it slow. No matter how many plugins I'd add on nvchad , it wouldnt compromise speed / snappiness / make it slow or whatever since it uses packer.nvim as plugin manager , packer.nvim lets you lazy load plugins i.e loading plugins on certain events , mappings , sequentially loading them etc so loading them only when needed , I have lazy loaded all the plugins so most plugins arent loaded by default , hence not affecting neovim's startup/launch time.
+
+<img src = "https://chadpaste.com/f/kdmxdabxbk.png">
+
 # TODO
 
 It would be nice if NvChad focuses on existing plugins and config before adding new things , some plugins like whichkey , telescope , treesitter still have basic configs! Also adding new features that'd make NvChad slow or its startuptime slow wouldnt be encouraged , if that feature's really needed then It'll be mentioned in the wiki with its config.
 
-- Debloat the config
+- Debloat the config.
+- Make NvChad more faster (reduce startuptime too).
+- Add another section in the wiki explaining the whole config (must be helpful for newbies).
 - Add more themes.
-- Add a theme switcher.
-- Preview shortcuts in the form of a pretty [cheatsheet](https://user-images.githubusercontent.com/59060246/122490009-95fd9980-cffe-11eb-9676-78019aa2cd65.png)
-- Add a global configuration so it doesnt get hard to update :c
+- Preview shortcuts in the form of a pretty [cheatsheet](https://user-images.githubusercontent.com/59060246/122490009-95fd9980-cffe-11eb-9676-78019aa2cd65.png).
+- Add a user config so it doesnt get hard to update :c
 
 # Contribute
 

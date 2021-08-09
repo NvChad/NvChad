@@ -1,48 +1,68 @@
-local packer = require("packer")
-local use = packer.use
+local present, _ = pcall(require, "packerInit")
+local packer
 
-packer.init {
-    display = {
-        open_fn = function()
-            return require("packer.util").float {border = "single"}
-        end
-    },
-    git = {
-        clone_timeout = 600 -- Timeout, in seconds, for git clones
-    }
-}
+if present then
+    packer = require "packer"
+else
+    return false
+end
+
+local use = packer.use
 
 return packer.startup(
     function()
-        use "wbthomason/packer.nvim"
+        use {
+            "wbthomason/packer.nvim",
+            event = "VimEnter"
+        }
 
-        use "akinsho/nvim-bufferline.lua"
+        use {
+            "jdhao/better-escape.vim",
+            event = "InsertEnter",
+            config = function()
+                require "plugins.others".escape()
+            end
+        }
+
+        use {
+            "akinsho/nvim-bufferline.lua",
+            after = "nvim-base16.lua",
+            config = function()
+                require "plugins.bufferline"
+            end
+        }
 
         use {
             "glepnir/galaxyline.nvim",
+            after = "nvim-base16.lua",
             config = function()
-                require("plugins.statusline").config()
+                require "plugins.statusline"
             end
         }
 
         -- color related stuff
-        use "siduck76/nvim-base16.lua"
+        use {
+            "siduck76/nvim-base16.lua",
+            after = "packer.nvim",
+            config = function()
+                require "theme"
+            end
+        }
 
         use {
             "norcalli/nvim-colorizer.lua",
             event = "BufRead",
             config = function()
-                require("colorizer").setup()
-                vim.cmd("ColorizerReloadAllBuffers")
+                require("plugins.others").colorizer()
             end
         }
 
-        -- language related plugins
+        -- lsp stuff
         use {
             "nvim-treesitter/nvim-treesitter",
             event = "BufRead",
             config = function()
-                require("plugins.treesitter").config()
+                require "plugins.treesitter"
             end
         }
 
@@ -55,15 +75,23 @@ return packer.startup(
             "neovim/nvim-lspconfig",
             after = "nvim-lspinstall",
             config = function()
-                require("plugins.lspconfig").config()
+                require "plugins.lspconfig"
             end
         }
 
         use {
             "onsails/lspkind-nvim",
-            event = "BufRead",
+            event = "BufEnter",
             config = function()
-                require("lspkind").init()
+                require("plugins.others").lspkind()
+            end
+        }
+
+        use {
+            "ray-x/lsp_signature.nvim",
+            after = "nvim-lspconfig",
+            config = function()
+                require("plugins.others").signature()
             end
         }
 
@@ -72,16 +100,16 @@ return packer.startup(
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require("plugins.compe").config()
+                require "plugins.compe"
             end,
-            wants = {"LuaSnip"},
+            wants = "LuaSnip",
             requires = {
                 {
                     "L3MON4D3/LuaSnip",
                     wants = "friendly-snippets",
                     event = "InsertCharPre",
                     config = function()
-                        require("plugins.compe").snippets()
+                        require "plugins.luasnip"
                     end
                 },
                 {
@@ -91,38 +119,50 @@ return packer.startup(
             }
         }
 
-        use {"sbdchd/neoformat", cmd = "Neoformat"}
+        use {
+            "sbdchd/neoformat",
+            cmd = "Neoformat"
+        }
 
         -- file managing , picker etc
         use {
             "kyazdani42/nvim-tree.lua",
             cmd = "NvimTreeToggle",
             config = function()
-                require("plugins.nvimtree").config()
+                require "plugins.nvimtree"
             end
         }
 
         use {
             "kyazdani42/nvim-web-devicons",
+            after = "nvim-base16.lua",
             config = function()
-                require("plugins.icons").config()
+                require "plugins.icons"
             end
         }
 
         use {
+            "nvim-lua/plenary.nvim",
+            event = "BufRead"
+        }
+        use {
+            "nvim-lua/popup.nvim",
+            after = "plenary.nvim"
+        }
+
+        use {
             "nvim-telescope/telescope.nvim",
-            requires = {
-                {"nvim-lua/popup.nvim"},
-                {"nvim-lua/plenary.nvim"}
-            },
             cmd = "Telescope",
             config = function()
-                require("plugins.telescope").config()
+                require "plugins.telescope"
             end
         }
 
-        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope"}
-
+        use {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make",
+            cmd = "Telescope"
+        }
         use {
             "nvim-telescope/telescope-media-files.nvim",
             cmd = "Telescope"
@@ -131,9 +171,9 @@ return packer.startup(
         -- git stuff
         use {
             "lewis6991/gitsigns.nvim",
-            event = "BufRead",
+            after = "plenary.nvim",
             config = function()
-                require("plugins.gitsigns").config()
+                require "plugins.gitsigns"
             end
         }
 
@@ -142,23 +182,20 @@ return packer.startup(
             "windwp/nvim-autopairs",
             after = "nvim-compe",
             config = function()
-                require("nvim-autopairs").setup()
-                require("nvim-autopairs.completion.compe").setup(
-                    {
-                        map_cr = true,
-                        map_complete = true -- insert () func completion
-                    }
-                )
+                require "plugins.autopairs"
             end
         }
 
-        use {"andymass/vim-matchup", event = "CursorMoved"}
+        use {
+            "andymass/vim-matchup",
+            event = "CursorMoved"
+        }
 
         use {
             "terrortylor/nvim-comment",
             cmd = "CommentToggle",
             config = function()
-                require("nvim_comment").setup()
+                require("plugins.others").comment()
             end
         }
 
@@ -172,17 +209,15 @@ return packer.startup(
                 "SessionSave"
             },
             setup = function()
-                require("plugins.dashboard").config()
+                require "plugins.dashboard"
             end
         }
-
-        use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
         -- load autosave only if its globally enabled
         use {
             "Pocco81/AutoSave.nvim",
             config = function()
-                require("plugins.zenmode").autoSave()
+                require "plugins.autosave"
             end,
             cond = function()
                 return vim.g.auto_save == true
@@ -194,15 +229,19 @@ return packer.startup(
             "karb94/neoscroll.nvim",
             event = "WinScrolled",
             config = function()
-                require("neoscroll").setup()
+                require("plugins.others").neoscroll()
             end
         }
 
         use {
             "Pocco81/TrueZen.nvim",
-            cmd = {"TZAtaraxis", "TZMinimalist", "TZFocus"},
+            cmd = {
+                "TZAtaraxis",
+                "TZMinimalist",
+                "TZFocus"
+            },
             config = function()
-                require("plugins.zenmode").config()
+                require "plugins.zenmode"
             end
         }
 
@@ -212,8 +251,15 @@ return packer.startup(
             "lukas-reineke/indent-blankline.nvim",
             event = "BufRead",
             setup = function()
-                require("utils").blankline()
+                require("plugins.others").blankline()
             end
+        }
+
+        use {
+            "tpope/vim-fugitive",
+            cmd = {
+                "Git"
+            }
         }
     end
 )

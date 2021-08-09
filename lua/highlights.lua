@@ -42,10 +42,11 @@ fg("IndentBlanklineChar", line)
 
 -- misc --
 fg("LineNr", grey)
-fg("Comment", grey_fg2)
+fg("Comment", grey_fg)
 fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
+--fg_bg("Visual",light_grey, colors.lightbg)
 
 -- Pmenu
 bg("Pmenu", one_bg)
@@ -62,7 +63,7 @@ fg("cursorlinenr", white)
 
 -- git signs ---
 fg_bg("DiffAdd", nord_blue, "none")
-fg_bg("DiffChange", grey, "none")
+fg_bg("DiffChange", grey_fg, "none")
 fg_bg("DiffModified", nord_blue, "none")
 
 -- NvimTree
@@ -75,7 +76,7 @@ fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
 fg("NvimTreeEndOfBuffer", darker_black)
 
-fg("NvimTreeRootFolder", darker_black)
+vim.cmd("hi NvimTreeRootFolder gui=underline guifg=" .. purple)
 bg("NvimTreeNormal", darker_black)
 fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
@@ -111,10 +112,8 @@ fg("DashboardFooter", grey_fg)
 
 -- packer's floating window
 
-bg("NormalFloat", black2)
-bg("FloatBorder", black2)
-fg("FloatBorder", black2)
+bg("NormalFloat", "NONE")
+fg("FloatBorder", blue)
 
--- set bg color for nvim ( so nvim wont use terminal bg)
-
-bg("Normal", black)
+-- set bg color for nvim
+-- bg("Normal", black)
