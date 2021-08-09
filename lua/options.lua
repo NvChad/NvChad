@@ -1,42 +1,44 @@
 local options = require("chadrc").options
+local opt = vim.opt
+local g = vim.g
 
-vim.opt.undofile = options.permanent_undo
-vim.opt.ruler = options.ruler
-vim.opt.hidden = options.hidden
-vim.opt.ignorecase = options.ignorecase
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.termguicolors = true
-vim.opt.cul = true
-vim.opt.mouse = options.mouse
-vim.opt.signcolumn = "yes"
-vim.opt.cmdheight = options.cmdheight
-vim.opt.updatetime = options.updatetime -- update interval for gitsigns
-vim.opt.timeoutlen = options.timeoutlen
-vim.opt.clipboard = options.clipboard
+opt.undofile = options.permanent_undo
+opt.ruler = options.ruler
+opt.hidden = options.hidden
+opt.ignorecase = options.ignorecase
+opt.splitbelow = true
+opt.splitright = true
+opt.termguicolors = true
+opt.cul = true
+opt.mouse = options.mouse
+opt.signcolumn = "yes"
+opt.cmdheight = options.cmdheight
+opt.updatetime = options.updatetime -- update interval for gitsigns
+opt.timeoutlen = options.timeoutlen
+opt.clipboard = options.clipboard
 
 -- disable nvim intro
-vim.opt.shortmess:append("sI")
+opt.shortmess:append("sI")
 
 -- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
-vim.opt.fillchars = {eob = " "}
+opt.fillchars = {eob = " "}
 
 -- Numbers
-vim.opt.number = options.number
-vim.opt.numberwidth = options.numberwidth
--- vim.opt.relativenumber = true
+opt.number = options.number
+opt.numberwidth = options.numberwidth
+-- opt.relativenumber = true
 
 -- Indenline
-vim.opt.expandtab = options.expandtab
-vim.opt.shiftwidth = options.shiftwidth
-vim.opt.smartindent = options.smartindent
+opt.expandtab = options.expandtab
+opt.shiftwidth = options.shiftwidth
+opt.smartindent = options.smartindent
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-vim.opt.whichwrap:append("<>hl")
+opt.whichwrap:append("<>hl")
 
-vim.g.mapleader = options.mapleader
-vim.g.auto_save = options.autosave
+g.mapleader = options.mapleader
+g.auto_save = options.autosave
 
 -- disable builtin vim plugins
 local disabled_built_ins = {
@@ -61,7 +63,7 @@ local disabled_built_ins = {
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-    vim.g["loaded_" .. plugin] = 1
+    g["loaded_" .. plugin] = 1
 end
 
 -- Don't show status line on vim terminals

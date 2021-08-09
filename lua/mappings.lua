@@ -1,3 +1,5 @@
+local cmd = vim.cmd
+
 local function map(mode, lhs, rhs, opts)
     local options = {noremap = true, silent = true}
     if opts then
@@ -152,11 +154,11 @@ map("n", "<Esc>", ":noh<CR>", opt)
 map("t", "jk", "<C-\\><C-n>", opt)
 
 -- Packer commands till because we are not loading it at startup
-vim.cmd("silent! command PackerCompile lua require 'pluginList' require('packer').compile()")
-vim.cmd("silent! command PackerInstall lua require 'pluginList' require('packer').install()")
-vim.cmd("silent! command PackerStatus lua require 'pluginList' require('packer').status()")
-vim.cmd("silent! command PackerSync lua require 'pluginList' require('packer').sync()")
-vim.cmd("silent! command PackerUpdate lua require 'pluginList' require('packer').update()")
+cmd("silent! command PackerCompile lua require 'pluginList' require('packer').compile()")
+cmd("silent! command PackerInstall lua require 'pluginList' require('packer').install()")
+cmd("silent! command PackerStatus lua require 'pluginList' require('packer').status()")
+cmd("silent! command PackerSync lua require 'pluginList' require('packer').sync()")
+cmd("silent! command PackerUpdate lua require 'pluginList' require('packer').update()")
 
 -- Vim Fugitive
 map("n", "<Leader>gs", ":Git<CR>", opt)
