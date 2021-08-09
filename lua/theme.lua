@@ -1,4 +1,4 @@
-local chad_theme = require("user_config").ui.theme
+local chad_theme = require("chadrc").ui.theme
 
 vim.g.nvchad_theme = chad_theme
 local present, base16 = pcall(require, "base16")

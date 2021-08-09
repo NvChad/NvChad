@@ -1,43 +1,42 @@
-local opt = vim.opt
-local g = vim.g
+local options = require("chadrc").options
 
-opt.undofile = true
-opt.ruler = false
-opt.hidden = true
-opt.ignorecase = true
-opt.splitbelow = true
-opt.splitright = true
-opt.termguicolors = true
-opt.cul = true
-opt.mouse = "a"
-opt.signcolumn = "yes"
-opt.cmdheight = 1
-opt.updatetime = 250 -- update interval for gitsigns
-opt.timeoutlen = 400
-opt.clipboard = "unnamedplus"
+vim.opt.undofile = options.permanent_undo
+vim.opt.ruler = options.ruler
+vim.opt.hidden = options.hidden
+vim.opt.ignorecase = options.ignorecase
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.termguicolors = true
+vim.opt.cul = true
+vim.opt.mouse = options.mouse
+vim.opt.signcolumn = "yes"
+vim.opt.cmdheight = options.cmdheight
+vim.opt.updatetime = options.updatetime -- update interval for gitsigns
+vim.opt.timeoutlen = options.timeoutlen
+vim.opt.clipboard = options.clipboard
 
 -- disable nvim intro
-opt.shortmess:append("sI")
+vim.opt.shortmess:append("sI")
 
 -- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = {eob = " "}
+vim.opt.fillchars = {eob = " "}
 
 -- Numbers
-opt.number = true
-opt.numberwidth = 2
--- opt.relativenumber = true
+vim.opt.number = options.number
+vim.opt.numberwidth = options.numberwidth
+-- vim.opt.relativenumber = true
 
 -- Indenline
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.smartindent = true
+vim.opt.expandtab = options.expandtab
+vim.opt.shiftwidth = options.shiftwidth
+vim.opt.smartindent = options.smartindent
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append("<>hl")
+vim.opt.whichwrap:append("<>hl")
 
-g.mapleader = " "
-g.auto_save = false
+vim.g.mapleader = options.mapleader
+vim.g.auto_save = options.autosave
 
 -- disable builtin vim plugins
 local disabled_built_ins = {
