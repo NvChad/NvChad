@@ -55,7 +55,7 @@ prompt() {
 _usage() {
     printf "%s" \
         "Usage: ./${0##*/} [ options ]
-    -h, --help                -> Show this.
+    -h, --help                -> Show this message.
     -i, --install <branch>    -> Install the config from <branch>, being the latter optional.
     -r, --remove              -> Remove the config.
     -u, --update              -> Update the existing config without removing existing stuff.
@@ -367,11 +367,17 @@ main() {
 
     _parse_args "assert_extra_args"
     _parse_args "assert_independent_args"
+
+	# restore system vars
+	skip=0
+	args_counter=0
+	unset ARGV
+    ARGC=0
 }
 
 init() {
     if [ $# -eq 0 ]; then
-        prompt -e "ERROR: This script needs at least one argument"
+        prompt -e "Error: This script needs at least one argument"
     else
         main "${@}"
     fi
