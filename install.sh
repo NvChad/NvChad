@@ -9,17 +9,17 @@ ORANGE='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-REPO="https://github.com/siduck76/NvChad.git" # repo url with HTTPS protocol
+REPO="https://github.com/siduck76/NvChad.git"             # repo url with HTTPS protocol
 BACKUP_PATH="${XDG_CONFIG_HOME:-${HOME}/.config/}nvchad/" # path for storing backups
-TMP_NVCHAD="$(mktemp -d)/" # path for creating tmp files
+TMP_NVCHAD="$(mktemp -d)/"                                # path for creating tmp files
 
 nvchad_path="$HOME/.config/nvim/" # installation path
-do_startup="true" # startup nvim after installation
-default_branch="main" # fetching branch
-dependencies=( # nvchad dependencies
+do_startup="true"                 # startup nvim after installation
+default_branch="main"             # fetching branch
+dependencies=(# nvchad dependencies
     "git"
 )
-preserved_files=( # files that should be preserved on updates
+preserved_files=(# files that should be preserved on updates
     "lua/mappings.lua"
     "lua/chadrc.lua"
 )
@@ -27,7 +27,7 @@ preserved_files=( # files that should be preserved on updates
 # --> system vars
 
 declare -a ARGV=() # cli args
-ARGC=${#ARGV[@]} # arg count
+ARGC=${#ARGV[@]}   # arg count
 args_counter=0
 skip=0
 
@@ -368,10 +368,10 @@ main() {
     _parse_args "assert_extra_args"
     _parse_args "assert_independent_args"
 
-	# restore system vars
-	skip=0
-	args_counter=0
-	unset ARGV
+    # restore system vars
+    skip=0
+    args_counter=0
+    unset ARGV
     ARGC=0
 }
 
