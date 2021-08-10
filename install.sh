@@ -55,13 +55,13 @@ prompt() {
 _usage() {
     printf "%s" \
         "Usage: ./${0##*/} [ options ]
-    -h, --help          -> Show this help.
-    -i, --install       -> Install the config.
-    -r, --remove        -> Remove the config.
-    -u, --update        -> Update the existing config without removing existing stuff.
-    -s, --skip-startup  -> Skip starting up nvim after installing the config.
-    -c, --clean-backups -> Remove backups (if any) from your system.
-    -p=*, --path=*      -> Path to NvChad. Relevant for installing and updating.
+    -h, --help                -> Show this.
+    -i, --install <branch>    -> Install the config from <branch>, being the latter optional.
+    -r, --remove              -> Remove the config.
+    -u, --update              -> Update the existing config without removing existing stuff.
+    -s, --skip-startup        -> Skip starting up nvim after installing the config.
+    -c, --clean-backups       -> Remove backups (if any) from your system.
+    -p=<path>, --path=<path>  -> Path to NvChad. Relevant for installing and updating.
 "
 }
 
