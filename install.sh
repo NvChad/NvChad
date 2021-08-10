@@ -175,6 +175,7 @@ _install() {
     fi
 }
 
+# remove the backups directory
 _clean_backups() {
     prompt -w "-> Looking for backups..."
     if [[ -d "${BACKUP_PATH}" ]]; then
@@ -190,7 +191,6 @@ _clean_backups() {
 }
 
 _update() {
-
     prompt -w "-> Checking if conf is eligible for being updated..."
 
     if [[ -z "$(ls -A ${nvchad_path})" ]]; then
@@ -231,6 +231,7 @@ _skip_ahead() {
     skip=$((skip + amount))
 }
 
+# returns an array that had missing values/indexes, but without them
 _reorder_array() {
     local arr=("$@")
 
@@ -243,6 +244,7 @@ _reorder_array() {
     echo "${arr[@]}"
 }
 
+# parse command line arguments
 _parse_args() {
     local func_args=$1
 
