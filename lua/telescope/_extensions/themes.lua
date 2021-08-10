@@ -24,7 +24,7 @@ M.reload_theme = function(theme_name)
         print("Error: Cannot load base16 plugin!")
         return false
     end
-    base16(base16.themes[theme_name], true)
+    base16(base16.themes(theme_name), true)
 
     if
         not reload_plugin {
