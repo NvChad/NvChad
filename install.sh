@@ -10,8 +10,8 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 REPO="https://github.com/siduck76/NvChad.git" # repo url with HTTPS protocol
-BACKUP_PATH="/tmp/nvchad/" # path for storing backups
-TMP_NVCHAD="/tmp/nvchad_updates/" # path for creating tmp files
+BACKUP_PATH="$HOME/.config/nvchad/" # path for storing backups
+TMP_NVCHAD="$(mktemp -d)/" # path for creating tmp files
 
 nvchad_path="$HOME/.config/nvim/" # installation path
 do_startup="true" # startup nvim after installation
