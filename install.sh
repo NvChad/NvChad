@@ -1,25 +1,35 @@
 #!/usr/bin/env bash
 
+# --> dev settings
+
+# promot colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-REPO="https://github.com/siduck76/NvChad.git -b dev"
-BACKUP_PATH="/tmp/nvchad/"
-TMP_NVCHAD="/tmp/nvchad_updates/"
+REPO="https://github.com/siduck76/NvChad.git" # repo url with HTTPS protocol
+BACKUP_PATH="/tmp/nvchad/" # path for storing backups
+TMP_NVCHAD="/tmp/nvchad_updates/" # path for creating tmp files
 
-skip=0
-nvchad_path="$HOME/.config/nvim/"
-do_startup="true"
-dependencies=(
+nvchad_path="$HOME/.config/nvim/" # installation path
+do_startup="true" # startup nvim after installation
+default_branch="main" # fetching branch
+dependencies=( # nvchad dependencies
     "git"
 )
-preserved_files=(
+preserved_files=( # files that should be preserved on updates
     "lua/mappings.lua"
     "lua/chadrc.lua"
 )
+
+# --> system vars
+
+declare -a ARGV=() # cli args
+ARGC=${#ARGV[@]} # arg count
+args_counter=0
+skip=0
 
 # https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
 prompt() {
@@ -55,24 +65,25 @@ _usage() {
 "
 }
 
+# purge nvim
 _remove() {
-	
-	read -p "Are you sure you want to uninstall NvChad? This will 'flush' dirs such as $HOME/.config/nvim/. (y/n): " u_reply
 
-	if [[ "${u_reply}" == "y" ]]; then
-		printf "  + %s\n" "$(prompt -w "Removing config        ->	($HOME/.config/nvim/)")"
-		rm -rf "$HOME/.config/nvim/"
+    read -p "Are you sure you want to uninstall NvChad? This will 'flush' dirs such as $HOME/.config/nvim/. (y/n): " u_reply
 
-		printf "  + %s\n" "$(prompt -w "Removing miscellaneous ->	($HOME/.local/share/nvim/)")"
-		rm -rf "$HOME/.local/share/nvim/"
+    if [[ "${u_reply}" == "y" ]]; then
+        printf "  + %s\n" "$(prompt -w "Removing config        ->	($HOME/.config/nvim/)")"
+        rm -rf "$HOME/.config/nvim/"
 
-		printf "  + %s\n" "$(prompt -w "Removing cache         ->	($HOME/.cache/nvim/)")"
-		rm -rf "$HOME/.cache/nvim/"
-	elif [[ "${u_reply}" == "n" ]]; then
-		prompt -i "Ok, enjoy NvChad :)"
-	else
-		prompt -e "Error: you must type either 'n' for no or 'y' for yes."
-	fi
+        printf "  + %s\n" "$(prompt -w "Removing miscellaneous ->	($HOME/.local/share/nvim/)")"
+        rm -rf "$HOME/.local/share/nvim/"
+
+        printf "  + %s\n" "$(prompt -w "Removing cache         ->	($HOME/.cache/nvim/)")"
+        rm -rf "$HOME/.cache/nvim/"
+    elif [[ "${u_reply}" == "n" ]]; then
+        prompt -i "Ok, enjoy NvChad :)"
+    else
+        prompt -e "Error: you must type either 'n' for no or 'y' for yes."
+    fi
 
 }
 
@@ -92,11 +103,19 @@ _check_dependencies() {
     fi
 }
 
+# fetch the repository
 _fetch() {
     printf "  + %s\n" "$(prompt -i "Cleaning workspace")"
-    rm -rf ${nvchad_path}
+    rm -rf "${nvchad_path}"
     printf "  + %s\n" "$(prompt -i "Fetching repo")"
-    git clone -n ${REPO} --depth 1 "${nvchad_path}"
+
+    exists_branch=$(git ls-remote --heads ${REPO} ${default_branch})
+    if [[ "$exists_branch" != "" ]]; then
+        git clone -n ${REPO} -b ${default_branch} --depth 1 "${nvchad_path}"
+    else
+        # clone the repo's default branch
+        git clone -n ${REPO} --depth 1 "${nvchad_path}"
+    fi
     cd "${nvchad_path}" || return
 
     printf "  + %s\n" "$(prompt -i "Checking out core")"
@@ -105,6 +124,7 @@ _fetch() {
     git checkout HEAD init.lua
 }
 
+# assert and backup previous configs
 _check_prev_conf() {
     if [[ -d "${nvchad_path}" ]]; then
         mkdir -p "${BACKUP_PATH}"
@@ -121,6 +141,7 @@ _check_nvim_version() {
     done
 }
 
+# start nvim
 _startup() {
 
     printf "  + %s\n" "$(prompt -i "Checking nvim version")"
@@ -128,7 +149,7 @@ _startup() {
         if _check_nvim_version; then
             printf "  + %s\n" "$(prompt -i "NeoVim will open now")"
             sleep 1
-            "${_NVIM}" +'autocmd User PackerComplete ++once lua print "Waiting for PackerCompile.." vim.cmd "PackerCompile"' \
+            "${_NVIM}" +'hi NormalFloat guibg=#2e3440 | autocmd User PackerComplete ++once lua print "Waiting for PackerCompile.." vim.cmd "PackerCompile"' \
                 +'autocmd User PackerCompileDone ++once quitall' \
                 +'lua print "Wait for PackerUpdate and PackerCompile to complete.." require "pluginList" vim.cmd "PackerUpdate"'
             "${_NVIM}"
@@ -224,14 +245,6 @@ _reorder_array() {
 
 _parse_args() {
     local func_args=$1
-    local argv=("$@")
-
-    unset 'argv[0]' # becuase arg1 is $func_arg
-    for i in "${!argv[@]}"; do new_array+=("${argv[i]}"); done
-    argv=("${new_array[@]}")
-    unset new_array
-
-    local argc=${#argv[@]}
 
     _skip_ahead() {
         amount=$1
@@ -247,63 +260,62 @@ _parse_args() {
         fi
     }
 
-    for j in "${!argv[@]}"; do
+    for i in "${!ARGV[@]}"; do
+        local val=${ARGV[i]}
+
         if [[ ${skip} -gt 0 ]]; then
-            left=$((argc - j))
+            left=$((ARGC - i))
             while [[ ${skip} > ${left} ]]; do ((skip--)); done
             skip=$((skip - 1))
             continue
         fi
 
-        case ${argv[j]} in
-        --*) # End of all opt
-            case ${argv[j]} in
-            --) # End of all options.
-                break
+        # ignoring freed arguments
+        if [[ "${val}" != "" ]]; then
+            case ${val} in
+            --*)
+                case ${val} in
+                --) # End of all options.
+                    break
+                    ;;
+                *)
+                    eval "${func_args}" "$i" "${val}"
+                    ;;
+                esac
+                ;;
+            -*)
+                if [[ ${#val} -le 2 ]]; then
+                    eval "${func_args}" "$i" "${val}"
+                else
+                    tangled_args=$(_clean_arg "${val}")
+                    for ((j = 0; j < ${#tangled_args}; j++)); do
+                        eval "${func_args}" "$i" "-${tangled_args:$j:1}"
+                    done
+                fi
                 ;;
             *)
-                # eval "${func_args}" "$(_clean_arg "${argv[j]}")" "$j"
-                eval "${func_args}" "${argv[j]}" "$j"
+                eval "${func_args}" "$i" "${val}"
                 ;;
             esac
-            ;;
-        -*)
-            if [[ ${#argv[j]} -le 2 ]]; then
-                eval "${func_args}" "${argv[j]}" "$j"
-            else
-                tangled_args=$(_clean_arg "${argv[j]}")
-                for ((k = 0; k < ${#tangled_args}; k++)); do
-                    eval "${func_args}" "-${tangled_args:$k:1}" "$j"
-                done
-            fi
-            ;;
-        *)
-            eval "${func_args}" "${argv[j]}" "$j"
-            ;;
-        esac
+        fi
     done
 }
 
+# remove an argument from $ARGV[@]
+_free_arg() {
+    local index=$1
+    unset 'ARGV[index-args_counter]'
+    ARGV=($(_reorder_array "${ARGV[@]}"))
+    ((args_counter++))
+}
+
 main() {
-    local argvs=("$@")
-    local argc=${#argvs[@]}
-    local counter=0
+    ARGV=("$@")
+    ARGC=${#ARGV[@]}
 
-    _set_params() {
-        argc=${#argvs[@]}
-        counter=0
-    }
-
-    _free_arg() {
-        local index=$1
-        unset 'argvs[index-counter]'
-        argvs=($(_reorder_array "${argvs[@]}"))
-        ((counter++))
-    }
-
-    assert_aditional_args() {
-        var=$1   # flag
-        index=$2 # flag's index
+    assert_extra_args() {
+        index=$1 # flag's index
+        var=$2   # flag
         case ${var} in
         -p=* | --path=*)
             nvchad_path="${var#*=}"
@@ -316,15 +328,21 @@ main() {
         esac
     }
 
-    assert_args() {
-        var=$1   # flag
-        index=$2 # flag's index
+    assert_independent_args() {
+        index=$1 # flag's index
+        var=$2   # flag
         case ${var} in
         -h | --help)
             _usage
             ;;
         -i | --install)
             prompt -i "Installing NvChad..."
+
+            local val="${ARGV[index + 1]}"
+            if [[ "${val}" != "-"* && "${val}" != "--"* && "${val}" != "" ]]; then
+                default_branch="${val}"
+                _free_arg "$((index + 1))"
+            fi
             _install
             ;;
         -r | --remove)
@@ -340,15 +358,13 @@ main() {
             _clean_backups
             ;;
         *)
-            prompt -w "Warning: --unknown command '${var}'"
+            prompt -w "Warning: unknown command '${var}'"
             ;;
         esac
     }
 
-    _set_params
-    _parse_args "assert_aditional_args" "${argvs[@]}"
-    _set_params
-    _parse_args "assert_args" "${argvs[@]}"
+    _parse_args "assert_extra_args"
+    _parse_args "assert_independent_args"
 }
 
 init() {
