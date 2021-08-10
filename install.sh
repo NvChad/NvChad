@@ -197,32 +197,37 @@ _update() {
         printf "  + %s\n" "$(prompt -e "Error: there is nothing to update")"
     else
         printf "  + %s\n" "$(prompt -i "Updating config")"
-        mkdir -p ${TMP_NVCHAD}
-        for to_preservef in "${!preserved_files[@]}"; do
-            file="${nvchad_path}${preserved_files[to_preservef]}"
-            printf "    + %s\n" "$(prompt -i "saving file: ${preserved_files[to_preservef]}")"
-            if [[ -e "${file}" ]]; then
-                mv "${file}" "${TMP_NVCHAD}"
-            fi
-        done
+
+		# TODO: proper way to update without overrriding user config
+
+        # mkdir -p ${TMP_NVCHAD}
+        # for to_preservef in "${!preserved_files[@]}"; do
+        #     file="${nvchad_path}${preserved_files[to_preservef]}"
+        #     printf "    + %s\n" "$(prompt -i "saving file: ${preserved_files[to_preservef]}")"
+        #     if [[ -e "${file}" ]]; then
+        #         mv "${file}" "${TMP_NVCHAD}"
+        #     fi
+        # done
 
         do_startup="false"
         _install
 
-        for to_preservef in "${!preserved_files[@]}"; do
-            destination_file="${nvchad_path}${preserved_files[to_preservef]}"
-            file_name=$(basename "${preserved_files[to_preservef]}")
-            location_path=$(dirname "${destination_file}")
-            stored_file="${TMP_NVCHAD}${file_name}"
-            printf "    + %s\n" "$(prompt -i "restoring file: ${preserved_files[to_preservef]}")"
+		# TODO: proper way to update without overrriding user config
 
-            if [[ -e "${stored_file}" ]]; then
-                rm -rf "${destination_file}"
-                mkdir -p "${location_path}"
-                mv "${stored_file}" "${destination_file}"
-            fi
-        done
-        rm -rf "${TMP_NVCHAD}"
+        # for to_preservef in "${!preserved_files[@]}"; do
+        #     destination_file="${nvchad_path}${preserved_files[to_preservef]}"
+        #     file_name=$(basename "${preserved_files[to_preservef]}")
+        #     location_path=$(dirname "${destination_file}")
+        #     stored_file="${TMP_NVCHAD}${file_name}"
+        #     printf "    + %s\n" "$(prompt -i "restoring file: ${preserved_files[to_preservef]}")"
+
+        #     if [[ -e "${stored_file}" ]]; then
+        #         rm -rf "${destination_file}"
+        #         mkdir -p "${location_path}"
+        #         mv "${stored_file}" "${destination_file}"
+        #     fi
+        # done
+        # rm -rf "${TMP_NVCHAD}"
     fi
 }
 
