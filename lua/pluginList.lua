@@ -171,22 +171,21 @@ return packer.startup(
         use {
             "nvim-telescope/telescope.nvim",
             cmd = "Telescope",
+            requires = {
+                {
+                    "nvim-telescope/telescope-fzf-native.nvim",
+                    run = "make"
+                },
+                {
+                    "nvim-telescope/telescope-media-files.nvim"
+                }
+            },
             config = function()
                 require "plugins.telescope"
             end,
             setup = function()
                 require "mappings".telescope()
             end
-        }
-
-        use {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "make",
-            cmd = "Telescope"
-        }
-        use {
-            "nvim-telescope/telescope-media-files.nvim",
-            cmd = "Telescope"
         }
 
         -- git stuff
