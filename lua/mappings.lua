@@ -29,10 +29,8 @@ map("", "k", 'v:count ? "k" : "gk"', {expr = true})
 map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
 map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
--- OPEN TERMINALS --
-map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
-map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
-map("n", "<C-t>t", ":terminal <CR>", opt) -- term buffer
+-- toggle lazygit --
+map("n", "<leader>lg", "<cmd>lua require('plugins.others').toggle_lazygit()<CR>", opt)
 
 -- copy whole file content
 map("n", "<C-a>", ":%y+<CR>", opt)
@@ -85,7 +83,7 @@ _G.s_tab_complete = function()
     end
 end
 
-function _G.completions()
+_G.completions = function()
     local npairs
     if
         not pcall(
@@ -103,6 +101,16 @@ function _G.completions()
         end
     end
     return npairs.check_break_line_char()
+end
+
+_G.set_terminal_keymaps = function()
+  local opts = {noremap = true}
+  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
 end
 
 --  compe mappings
@@ -157,6 +165,7 @@ vim.cmd("silent! command PackerInstall lua require 'pluginList' require('packer'
 vim.cmd("silent! command PackerStatus lua require 'pluginList' require('packer').status()")
 vim.cmd("silent! command PackerSync lua require 'pluginList' require('packer').sync()")
 vim.cmd("silent! command PackerUpdate lua require 'pluginList' require('packer').update()")
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 -- Vim Fugitive
 map("n", "<Leader>gs", ":Git<CR>", opt)

@@ -261,5 +261,14 @@ return packer.startup(
                 "Git"
             }
         }
+
+        -- terminal
+        use {
+          "akinsho/nvim-toggleterm.lua",
+          event = "BufWinEnter",
+          config = function()
+            require "plugins.terminal"
+          end
+        }
     end
 )
