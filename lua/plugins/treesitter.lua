@@ -5,6 +5,12 @@ end
 
 ts_config.setup {
     ensure_installed = {
+        "c",
+        "cpp",
+        "rust",
+        "ruby",
+        "go",
+        "yaml",
         "bash",
         "lua"
     },
