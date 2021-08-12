@@ -38,6 +38,41 @@ local M = {
         vim_fugitive = false,
         nvim_comment = false,
         neoscroll_nvim = false
+    },
+    -- make sure you dont use same keys twice
+    mappings = {
+        truezen = {
+            ataraxisMode = "<leader>zz",
+            minimalisticmode = "<leader>zm",
+            focusmode = "<leader>zf"
+        },
+        comment_nvim = {
+            comment_toggle = "<leader>/"
+        },
+        nvimtree = {
+            treetoggle = "<C-n>"
+        },
+        neoformat = {
+            format = "<leader>fm"
+        },
+        dashboard = {
+            open = "<leader>db",
+            newfile = "<leader>fn",
+            bookmarks = "<leader>bm",
+            sessionload = "<leader>l",
+            sessionsave = "<leader>s"
+        },
+        telescope = {
+            live_grep = "<leader>fw",
+            git_status = "<leader>gt",
+            git_commits = "<leader>cm",
+            find_files = "<leader>ff",
+            media_files = "<leader>fp",
+            buffers = "<leader>fb",
+            help_tags = "<leader>fh",
+            oldfiles = "<leader>fo",
+            themes = "<leader>th"
+        }
     }
 }
 

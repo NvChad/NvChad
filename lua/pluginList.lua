@@ -145,6 +145,9 @@ return packer.startup(
             cmd = "NvimTreeToggle",
             config = function()
                 require "plugins.nvimtree"
+            end,
+            setup = function()
+                require "mappings".nvimtree()
             end
         }
 
@@ -170,6 +173,9 @@ return packer.startup(
             cmd = "Telescope",
             config = function()
                 require "plugins.telescope"
+            end,
+            setup = function()
+                require "mappings".telescope()
             end
         }
 

@@ -1,3 +1,5 @@
+local user_map = require("chadrc").mappings
+
 local M = {}
 local cmd = vim.cmd
 
@@ -44,16 +46,19 @@ map("n", "<C-a>", ":%y+<CR>", opt)
 map("n", "<leader>n", ":set nu!<CR>", opt)
 
 M.truezen = function()
-    map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
-    map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
-    map("n", "<leader>zf", ":TZFocus<CR>", opt)
+    local m = user_map.truezen
+
+    map("n", m.ataraxisMode, ":TZAtaraxis<CR>", opt)
+    map("n", m.minimalisticmode, ":TZMinimalist<CR>", opt)
+    map("n", m.focusmode, ":TZFocus<CR>", opt)
 end
 
 map("n", "<C-s>", ":w <CR>", opt)
 
 M.comment_nvim = function()
-    map("n", "<leader>/", ":CommentToggle<CR>", opt)
-    map("v", "<leader>/", ":CommentToggle<CR>", opt)
+    local m = user_map.comment_nvim.comment_toggle
+    map("n", m, ":CommentToggle<CR>", opt)
+    map("v", m, ":CommentToggle<CR>", opt)
 end
 
 -- compe stuff
@@ -117,31 +122,41 @@ map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
 
--- nvimtree
-map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
+M.nvimtree = function()
+    local m = user_map.nvimtree.treetoggle
+
+    map("n", m, ":NvimTreeToggle<CR>", opt)
+end
 
 M.neoformat = function()
-    map("n", "<Leader>fm", ":Neoformat<CR>", opt)
+    local m = user_map.neoformat.format
+
+    map("n", m, ":Neoformat<CR>", opt)
 end
 
 M.dashboard = function()
-    map("n", "<Leader>db", ":Dashboard<CR>", opt)
-    map("n", "<Leader>fn", ":DashboardNewFile<CR>", opt)
-    map("n", "<Leader>bm", ":DashboardJumpMarks<CR>", opt)
-    map("n", "<C-s>l",     ":SessionLoad<CR>", opt)
-    map("n", "<C-s>s",     ":SessionSave<CR>", opt)
+    local m = user_map.dashboard
+
+    map("n", m.open, ":Dashboard<CR>", opt)
+    map("n", m.newfile, ":DashboardNewFile<CR>", opt)
+    map("n", m.bookmarks, ":DashboardJumpMarks<CR>", opt)
+    map("n", m.sessionload, ":SessionLoad<CR>", opt)
+    map("n", m.sessionsave, ":SessionSave<CR>", opt)
 end
 
--- Telescope
-map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)
-map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
-map("n", "<Leader>cm", ":Telescope git_commits <CR>", opt)
-map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)
-map("n", "<Leader>fp", ":Telescope media_files <CR>", opt)
-map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
-map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
-map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)
-map("n", "<Leader>th", ":Telescope themes<CR>", opt)
+M.telescope = function()
+    local m = user_map.telescope
+
+    map("n", m.live_grep, ":Telescope live_grep<CR>", opt)
+    map("n", m.git_status, ":Telescope git_status <CR>", opt)
+    map("n", m.git_commits, ":Telescope git_commits <CR>", opt)
+    map("n", m.find_files, ":Telescope find_files <CR>", opt)
+    map("n", m.media_files, ":Telescope media_files <CR>", opt)
+    map("n", m.buffers, ":Telescope buffers<CR>", opt)
+    map("n", m.help_tags, ":Telescope help_tags<CR>", opt)
+    map("n", m.oldfiles, ":Telescope oldfiles<CR>", opt)
+    map("n", m.themes, ":Telescope themes<CR>", opt)
+end
 
 M.bufferline = function()
     map("n", "<S-t>", ":enew<CR>", opt) -- new buffer
