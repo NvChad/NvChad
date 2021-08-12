@@ -72,6 +72,27 @@ local M = {
             help_tags = "<leader>fh",
             oldfiles = "<leader>fo",
             themes = "<leader>th"
+        },
+        bufferline = {
+            new_buffer = "<S-t>",
+            newtab = "<C-t>b",
+            close = "<S-x>",
+            cycleNext = "<TAB>",
+            cyclePrev = "<S-Tab>"
+        },
+        fugitive = {
+            Git = "<leader>gs",
+            diffget_2 = "<leader>gh",
+            diffget_3 = "<leader>gl",
+            git_blame = "<leader>gb"
+        },
+        misc = {
+            openTerm_right = "<C-l>",
+            openTerm_bottom = "<C-x>",
+            openTerm_currentBuf = "<C-t>t",
+            copywhole_file = "<C-a>",
+            toggle_linenr = "<leader>n",
+            esc_Termmode = "jk"
         }
     }
 }

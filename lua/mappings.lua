@@ -1,4 +1,5 @@
 local user_map = require("chadrc").mappings
+local miscMap = user_map.misc
 
 local M = {}
 local cmd = vim.cmd
@@ -35,15 +36,15 @@ map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
 map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
 -- OPEN TERMINALS --
-map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
-map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
-map("n", "<C-t>t", ":terminal <CR>", opt) -- term buffer
+map("n", miscMap.openTerm_right, ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
+map("n", miscMap.openTerm_bottom, ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
+map("n", miscMap.openTerm_currentBuf, ":terminal <CR>", opt) -- term buffer
 
 -- copy whole file content
-map("n", "<C-a>", ":%y+<CR>", opt)
+map("n", miscMap.copywhole_file, ":%y+<CR>", opt)
 
 -- toggle numbers
-map("n", "<leader>n", ":set nu!<CR>", opt)
+map("n", miscMap.toggle_linenr, ":set nu!<CR>", opt)
 
 M.truezen = function()
     local m = user_map.truezen
@@ -130,7 +131,6 @@ end
 
 M.neoformat = function()
     local m = user_map.neoformat.format
-
     map("n", m, ":Neoformat<CR>", opt)
 end
 
@@ -159,21 +159,23 @@ M.telescope = function()
 end
 
 M.bufferline = function()
-    map("n", "<S-t>", ":enew<CR>", opt) -- new buffer
-    map("n", "<C-t>b", ":tabnew<CR>", opt) -- new tab
-    map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
+    local m = user_map.bufferline
+
+    map("n", m.new_buffer, ":enew<CR>", opt) -- new buffer
+    map("n", m.newtab, ":tabnew<CR>", opt) -- new tab
+    map("n", m.close, ":bd!<CR>", opt) -- close  buffer
 
     -- move between tabs
 
-    map("n", "<TAB>", ":BufferLineCycleNext<CR>", opt)
-    map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", opt)
+    map("n", m.cycleNext, ":BufferLineCycleNext<CR>", opt)
+    map("n", m.cyclePrev, ":BufferLineCyclePrev<CR>", opt)
 end
 
 -- use ESC to turn off search highlighting
 map("n", "<Esc>", ":noh<CR>", opt)
 
 -- get out of terminal with jk
-map("t", "jk", "<C-\\><C-n>", opt)
+map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
 
 -- Packer commands till because we are not loading it at startup
 cmd("silent! command PackerCompile lua require 'pluginList' require('packer').compile()")
@@ -183,10 +185,12 @@ cmd("silent! command PackerSync lua require 'pluginList' require('packer').sync(
 cmd("silent! command PackerUpdate lua require 'pluginList' require('packer').update()")
 
 M.fugitive = function()
-    map("n", "<Leader>gs", ":Git<CR>", opt)
-    map("n", "<Leader>gh", ":diffget //2<CR>", opt)
-    map("n", "<Leader>gl", ":diffget //3<CR>", opt)
-    map("n", "<Leader>gb", ":Git blame<CR>", opt)
+    local m = user_map.fugitive
+
+    map("n", m.Git, ":Git<CR>", opt)
+    map("n", m.diffget_2, ":diffget //2<CR>", opt)
+    map("n", m.diffget_3, ":diffget //3<CR>", opt)
+    map("n", m.git_blame, ":Git blame<CR>", opt)
 end
 
 return M
