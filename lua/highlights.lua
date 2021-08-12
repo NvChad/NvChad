@@ -69,6 +69,7 @@ fg_bg("DiffModified", nord_blue, "none")
 -- NvimTree
 fg("NvimTreeFolderIcon", blue)
 fg("NvimTreeFolderName", blue)
+fg("NvimTreeGitDirty", red)
 fg("NvimTreeOpenedFolderName", blue)
 fg("NvimTreeEmptyFolderName", blue)
 fg("NvimTreeIndentMarker", one_bg2)
