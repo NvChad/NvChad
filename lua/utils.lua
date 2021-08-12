@@ -84,7 +84,7 @@ M.change_theme = function(current_theme, new_theme)
         return
     end
 
-    local file = vim.fn.stdpath("config") .. "/lua/user_config.lua"
+    local file = vim.fn.stdpath("config") .. "/lua/chadrc.lua"
     -- store in data variable
     local data = assert(M.file("r", file))
     local find = "theme = .?" .. current_theme .. ".?"
