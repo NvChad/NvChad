@@ -38,7 +38,6 @@ map("", "k", 'v:count ? "k" : "gk"', {expr = true})
 map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
 map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
-
 -- copy whole file content
 map("n", miscMap.copywhole_file, ":%y+<CR>", opt)
 

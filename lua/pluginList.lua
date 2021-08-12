@@ -310,5 +310,14 @@ return packer.startup(
                 require "mappings".fugitive()
             end
         }
+
+        -- terminal
+        use {
+          "akinsho/nvim-toggleterm.lua",
+          event = "BufWinEnter",
+          config = function()
+            require "plugins.terminal"
+          end
+        }
     end
 )
