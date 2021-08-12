@@ -1,3 +1,4 @@
+local M = {}
 local cmd = vim.cmd
 
 local function map(mode, lhs, rhs, opts)
@@ -42,16 +43,18 @@ map("n", "<C-a>", ":%y+<CR>", opt)
 -- toggle numbers
 map("n", "<leader>n", ":set nu!<CR>", opt)
 
--- Truezen.nvim
-map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
-map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
-map("n", "<leader>zf", ":TZFocus<CR>", opt)
+M.truezen = function()
+    map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
+    map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
+    map("n", "<leader>zf", ":TZFocus<CR>", opt)
+end
 
 map("n", "<C-s>", ":w <CR>", opt)
 
--- Commenter Keybinding
-map("n", "<leader>/", ":CommentToggle<CR>", opt)
-map("v", "<leader>/", ":CommentToggle<CR>", opt)
+M.comment_nvim = function()
+    map("n", "<leader>/", ":CommentToggle<CR>", opt)
+    map("v", "<leader>/", ":CommentToggle<CR>", opt)
+end
 
 -- compe stuff
 local t = function(str)
@@ -117,15 +120,17 @@ map("i", "<CR>", "v:lua.completions()", {expr = true})
 -- nvimtree
 map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
 
--- format code
-map("n", "<Leader>fm", ":Neoformat<CR>", opt)
+M.neoformat = function()
+    map("n", "<Leader>fm", ":Neoformat<CR>", opt)
+end
 
--- dashboard stuff
-map("n", "<Leader>db", ":Dashboard<CR>", opt)
-map("n", "<Leader>fn", ":DashboardNewFile<CR>", opt)
-map("n", "<Leader>bm", ":DashboardJumpMarks<CR>", opt)
-map("n", "<C-s>l", ":SessionLoad<CR>", opt)
-map("n", "<C-s>s", ":SessionSave<CR>", opt)
+M.dashboard = function()
+    map("n", "<Leader>db", ":Dashboard<CR>", opt)
+    map("n", "<Leader>fn", ":DashboardNewFile<CR>", opt)
+    map("n", "<Leader>bm", ":DashboardJumpMarks<CR>", opt)
+    map("n", "<C-s>l",     ":SessionLoad<CR>", opt)
+    map("n", "<C-s>s",     ":SessionSave<CR>", opt)
+end
 
 -- Telescope
 map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)
@@ -138,14 +143,16 @@ map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
 map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)
 map("n", "<Leader>th", ":Telescope themes<CR>", opt)
 
--- bufferline tab stuff
-map("n", "<S-t>", ":enew<CR>", opt) -- new buffer
-map("n", "<C-t>b", ":tabnew<CR>", opt) -- new tab
-map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
+M.bufferline = function()
+    map("n", "<S-t>", ":enew<CR>", opt) -- new buffer
+    map("n", "<C-t>b", ":tabnew<CR>", opt) -- new tab
+    map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
 
--- move between tabs
-map("n", "<TAB>", ":BufferLineCycleNext<CR>", opt)
-map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", opt)
+    -- move between tabs
+
+    map("n", "<TAB>", ":BufferLineCycleNext<CR>", opt)
+    map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", opt)
+end
 
 -- use ESC to turn off search highlighting
 map("n", "<Esc>", ":noh<CR>", opt)
@@ -160,8 +167,11 @@ cmd("silent! command PackerStatus lua require 'pluginList' require('packer').sta
 cmd("silent! command PackerSync lua require 'pluginList' require('packer').sync()")
 cmd("silent! command PackerUpdate lua require 'pluginList' require('packer').update()")
 
--- Vim Fugitive
-map("n", "<Leader>gs", ":Git<CR>", opt)
-map("n", "<Leader>gh", ":diffget //2<CR>", opt)
-map("n", "<Leader>gl", ":diffget //3<CR>", opt)
-map("n", "<Leader>gb", ":Git blame<CR>", opt)
+M.fugitive = function()
+    map("n", "<Leader>gs", ":Git<CR>", opt)
+    map("n", "<Leader>gh", ":diffget //2<CR>", opt)
+    map("n", "<Leader>gl", ":diffget //3<CR>", opt)
+    map("n", "<Leader>gb", ":Git blame<CR>", opt)
+end
+
+return M

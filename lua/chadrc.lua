@@ -1,6 +1,6 @@
 local M = {
     ui = {
-        theme = "norchad"
+        theme = "onedark"
     },
     options = {
         permanent_undo = true,
@@ -19,6 +19,25 @@ local M = {
         smartindent = true,
         mapleader = " ",
         autosave = false
+    },
+    -- enable / disable plugins (true for disable)
+    plugin_status = {
+        better_esc = false,
+        nvim_bufferline = false,
+        galaxyline = false,
+        nvim_colorizer = false,
+        lspkind = false,
+        lspsignature = false,
+        neoformat = false,
+        gitsigns = false,
+        vim_matchup = false,
+        dashboard_nvim = false,
+        autosave_nvim = false,
+        truezen_nvim = false,
+        blankline = false,
+        vim_fugitive = false,
+        nvim_comment = false,
+        neoscroll_nvim = false
     }
 }
 
