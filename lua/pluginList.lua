@@ -200,6 +200,16 @@ return packer.startup(
 
         -- misc plugins
         use {
+            "akinsho/nvim-toggleterm.lua",
+            event = "BufWinEnter",
+            config = function()
+                require "plugins.toggleterm"
+            end,
+            setup = function()
+                require "mappings".toggleterm()
+            end
+        }
+        use {
             "windwp/nvim-autopairs",
             after = "nvim-compe",
             config = function()

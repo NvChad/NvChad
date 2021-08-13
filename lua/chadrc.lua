@@ -86,13 +86,15 @@ local M = {
             diffget_3 = "<leader>gl",
             git_blame = "<leader>gb"
         },
+        toggleterm = {
+            toggle_window = "<leader>w",
+            toggle_right = "<leader>v",
+            toggle_bot = "<leader>x",
+        },
         misc = {
-            openTerm_right = "<C-l>",
-            openTerm_bottom = "<C-x>",
-            openTerm_currentBuf = "<C-t>t",
+            esc_Termmode = "jk",
             copywhole_file = "<C-a>",
-            toggle_linenr = "<leader>n",
-            esc_Termmode = "jk"
+            toggle_linenr = "<leader>n"
         }
     }
 }
