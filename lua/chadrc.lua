@@ -1,6 +1,10 @@
 local M = {
     ui = {
-        theme = "onedark"
+        theme = "onedark",
+        hidden_statusline = { -- these are filetypes, not pattern matched
+            "NvimTree",
+            "toggleterm"
+        }
     },
     options = {
         permanent_undo = true,
@@ -89,7 +93,7 @@ local M = {
         toggleterm = {
             toggle_window = "<leader>w",
             toggle_right = "<leader>v",
-            toggle_bot = "<leader>x",
+            toggle_bot = "<leader>h",
         },
         misc = {
             esc_Termmode = "jk",

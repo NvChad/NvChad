@@ -66,9 +66,9 @@ for _, plugin in pairs(disabled_built_ins) do
     g["loaded_" .. plugin] = 1
 end
 
--- Don't show status line on vim terminals
-vim.cmd [[ au TermOpen term://* setlocal nonumber laststatus=0 ]]
-vim.cmd [[ au TermClose term://* setlocal number laststatus=2 ]]
+-- Don't show status line on certain windows
+vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber ]]
+vim.cmd [[let hidden_statusline = luaeval('require("chadrc").ui.hidden_statusline') | autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter,TermEnter * nested if index(hidden_statusline, &ft) >= 0 | set laststatus=0 | else | set laststatus=2 | endif]]
 
 -- Open a file from its last left off position
 -- vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]

@@ -93,6 +93,3 @@ g.nvim_tree_bindings = {
     {key = "q", cb = tree_cb("close")},
     {key = "g?", cb = tree_cb("toggle_help")}
 }
-
--- hide statusline when nvim tree is opened
-vim.cmd [[au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif]]
