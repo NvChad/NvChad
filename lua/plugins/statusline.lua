@@ -8,6 +8,9 @@ local gls = gl.section
 
 gl.short_line_list = {" "}
 
+local left_separator = "" -- or " "
+local right_separator = " " -- or ""
+
 local global_theme = "themes/" .. vim.g.nvchad_theme
 local colors = require(global_theme)
 
@@ -26,7 +29,7 @@ gls.left[2] = {
             return "  "
         end,
         highlight = {colors.statusline_bg, colors.nord_blue},
-        separator = "  ",
+        separator = right_separator .. " ",
         separator_highlight = {colors.nord_blue, colors.lightbg}
     }
 }
@@ -44,7 +47,7 @@ gls.left[4] = {
         provider = {"FileName"},
         condition = condition.buffer_not_empty,
         highlight = {colors.white, colors.lightbg},
-        separator = " ",
+        separator = right_separator,
         separator_highlight = {colors.lightbg, colors.lightbg2}
     }
 }
@@ -56,7 +59,7 @@ gls.left[5] = {
             return "  " .. dir_name .. " "
         end,
         highlight = {colors.grey_fg2, colors.lightbg2},
-        separator = " ",
+        separator = right_separator,
         separator_highlight = {colors.lightbg2, colors.statusline_bg}
     }
 }
@@ -121,7 +124,7 @@ gls.right[1] = {
                 for _, client in ipairs(clients) do
                     local filetypes = client.config.filetypes
                     if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                        return " " .. "  " .. " LSP "
+                        return " " .. "  " .. " LSP"
                     end
                 end
                 return ""
@@ -153,53 +156,71 @@ gls.right[3] = {
     }
 }
 
+local active_mode = {
+    n = {"Normal", colors.red},
+    i = {"Insert", colors.dark_purple},
+    c = {"Command", colors.pink},
+    V = {"Visual", colors.cyan},
+    [""] = {"Visual", colors.cyan},
+    v = {"Visual", colors.cyan},
+    R = {"Replace", colors.orange},
+    t = {"Terminal", colors.green}
+}
+
+local function mode(m)
+    local chad_mode = active_mode[vim.fn.mode()][m]
+
+    if chad_mode == "nil" then
+        return active_mode[vim.fn.mode()]["t"]
+    else
+        return chad_mode
+    end
+end
+
 gls.right[4] = {
-    viMode_icon = {
+    left_round = {
         provider = function()
-            return " "
+            vim.cmd("hi Galaxyleft_round guifg=" .. mode(2))
+            return left_separator
         end,
-        highlight = {colors.statusline_bg, colors.red},
-        separator = " ",
-        separator_highlight = {colors.red, colors.statusline_bg}
+        separator = " ",
+        separator_highlight = {colors.statusline_bg, colors.statusline_bg},
+        highlight = {"GalaxyViMode", colors.statusline_bg}
     }
 }
 
 gls.right[5] = {
-    ViMode = {
+    viMode_icon = {
         provider = function()
-            local alias = {
-                n = "Normal",
-                i = "Insert",
-                c = "Command",
-                V = "Visual",
-                [""] = "Visual",
-                v = "Visual",
-                R = "Replace"
-            }
-            local current_Mode = alias[vim.fn.mode()]
-
-            if current_Mode == nil then
-                return "  Terminal "
-            else
-                return "  " .. current_Mode .. " "
-            end
+            vim.cmd("hi GalaxyviMode_icon guibg=" .. mode(2))
+            return " "
         end,
-        highlight = {colors.red, colors.lightbg}
+        highlight = {colors.statusline_bg, colors.red}
     }
 }
 
 gls.right[6] = {
-    some_icon = {
+    ViMode = {
+        provider = function()
+            vim.cmd("hi GalaxyViMode guifg=" .. mode(2))
+            return "  " .. mode(1) .. " "
+        end,
+        highlight = {"GalaxyViMode", colors.lightbg} -- colors.red here will be overriden many times
+    }
+}
+
+gls.right[7] = {
+    some_RoundIcon = {
         provider = function()
             return " "
         end,
-        separator = "",
+        separator = left_separator,
         separator_highlight = {colors.green, colors.lightbg},
         highlight = {colors.lightbg, colors.green}
     }
 }
 
-gls.right[7] = {
+gls.right[8] = {
     line_percentage = {
         provider = function()
             local current_line = vim.fn.line(".")

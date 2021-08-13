@@ -8,8 +8,8 @@ local t = function(str)
 end
 
 local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+    local col = vim.fn.col(".") - 1
+    if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
         return true
     else
         return false
@@ -24,7 +24,7 @@ _G.tab_complete = function()
     elseif check_back_space() then
         return t "<Tab>"
     else
-        return vim.fn['compe#complete']()
+        return vim.fn["compe#complete"]()
     end
 end
 _G.s_tab_complete = function()
@@ -56,7 +56,6 @@ _G.completions = function()
     end
     return npairs.check_break_line_char()
 end
-
 
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
