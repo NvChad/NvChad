@@ -24,6 +24,12 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 --
 
+-- unix readline's keymap
+map("i", user_map.unix_keymap.forward, '<Right>', opt)
+map("i", user_map.unix_keymap.backward, '<Left>', opt)
+map("i", user_map.unix_keymap.top_of_line, '<ESC>^i', opt)
+map("i", user_map.unix_keymap.end_of_line, '<End>', opt)
+
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP', opt)
 

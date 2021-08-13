@@ -86,6 +86,12 @@ local M = {
             diffget_3 = "<leader>gl",
             git_blame = "<leader>gb"
         },
+        unix_keymap = {
+            forward = "<C-f>",
+            backward = "<C-b>",
+            top_of_line = "<C-a>",
+            end_of_line = "<C-e>"
+        },
         misc = {
             openTerm_right = "<C-l>",
             openTerm_bottom = "<C-x>",
