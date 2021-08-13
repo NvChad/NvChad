@@ -68,6 +68,7 @@ end
 
 -- Don't show status line on vim terminals
 vim.cmd [[ au TermOpen term://* setlocal nonumber laststatus=0 ]]
+vim.cmd [[ au TermClose term://* setlocal number laststatus=2 ]]
 
 -- Open a file from its last left off position
 -- vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
