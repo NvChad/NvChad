@@ -41,16 +41,31 @@ map("", "k", 'v:count ? "k" : "gk"', {expr = true})
 map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
 map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
--- OPEN TERMINALS --
-map("n", miscMap.openTerm_right, ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
-map("n", miscMap.openTerm_bottom, ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
-map("n", miscMap.openTerm_currentBuf, ":terminal <CR>", opt) -- term buffer
 
 -- copy whole file content
 map("n", miscMap.copywhole_file, ":%y+<CR>", opt)
 
 -- toggle numbers
 map("n", miscMap.toggle_linenr, ":set nu!<CR>", opt)
+
+-- open a new buffer as a Terminal
+-- get out of terminal with jk
+map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
+
+
+M.toggleterm = function()
+    local m = user_map.toggleterm
+
+    -- Open terminals
+    map("n", m.toggle_window, ":execute v:count . 'ToggleTerm direction=window' <CR>", opt)
+    map("n", m.toggle_right, ":execute v:count . 'ToggleTerm direction=vertical' <CR>", opt)
+    map("n", m.toggle_bot, ":execute v:count . 'ToggleTerm direction=horizontal' <CR>", opt)
+
+    -- 'Un' toggle a term from within terminal edit mode
+    map("t", m.toggle_window, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+    map("t", m.toggle_right, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+    map("t", m.toggle_bot, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+end
 
 M.truezen = function()
     local m = user_map.truezen
@@ -118,9 +133,6 @@ end
 
 -- use ESC to turn off search highlighting
 map("n", "<Esc>", ":noh<CR>", opt)
-
--- get out of terminal with jk
-map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
 
 -- Packer commands till because we are not loading it at startup
 cmd("silent! command PackerCompile lua require 'pluginList' require('packer').compile()")
