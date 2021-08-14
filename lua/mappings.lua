@@ -35,7 +35,6 @@ map("", "k", 'v:count ? "k" : "gk"', {expr = true})
 map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
 map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
-
 -- copy whole file content
 map("n", miscMap.copywhole_file, ":%y+<CR>", opt)
 
@@ -45,7 +44,6 @@ map("n", miscMap.toggle_linenr, ":set nu!<CR>", opt)
 -- open a new buffer as a Terminal
 -- get out of terminal with jk
 map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
-
 
 M.toggleterm = function()
     local m = user_map.toggleterm
@@ -105,11 +103,15 @@ M.telescope = function()
     map("n", m.git_status, ":Telescope git_status <CR>", opt)
     map("n", m.git_commits, ":Telescope git_commits <CR>", opt)
     map("n", m.find_files, ":Telescope find_files <CR>", opt)
-    map("n", m.media_files, ":Telescope media_files <CR>", opt)
     map("n", m.buffers, ":Telescope buffers<CR>", opt)
     map("n", m.help_tags, ":Telescope help_tags<CR>", opt)
     map("n", m.oldfiles, ":Telescope oldfiles<CR>", opt)
     map("n", m.themes, ":Telescope themes<CR>", opt)
+end
+
+M.telescope_media = function()
+    local m = user_map.telescope_media
+    map("n", m.media_files, ":Telescope media_files <CR>", opt)
 end
 
 M.bufferline = function()

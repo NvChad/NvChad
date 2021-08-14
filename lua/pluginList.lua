@@ -177,7 +177,11 @@ return packer.startup(
                     run = "make"
                 },
                 {
-                    "nvim-telescope/telescope-media-files.nvim"
+                    "nvim-telescope/telescope-media-files.nvim",
+                    disable = plugin_status.telescope_media,
+                    setup = function()
+                        require "mappings".telescope_media()
+                    end
                 }
             },
             config = function()

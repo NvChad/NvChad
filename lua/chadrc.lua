@@ -1,7 +1,8 @@
 local M = {
     ui = {
         theme = "onedark",
-        hidden_statusline = { -- these are filetypes, not pattern matched
+        hidden_statusline = {
+            -- these are filetypes, not pattern matched
             "NvimTree",
             "toggleterm"
         }
@@ -26,22 +27,27 @@ local M = {
     },
     -- enable / disable plugins (true for disable)
     plugin_status = {
-        better_esc = false,
+        -- UI
         nvim_bufferline = false,
         galaxyline = false,
         nvim_colorizer = false,
+        dashboard_nvim = false,
+        blankline = false,
+        truezen_nvim = false,
+        better_esc = false,
+        -- lsp stuff
         lspkind = false,
         lspsignature = false,
-        neoformat = false,
+        -- git stuff
         gitsigns = false,
-        vim_matchup = false,
-        dashboard_nvim = false,
-        autosave_nvim = false,
-        truezen_nvim = false,
-        blankline = false,
         vim_fugitive = false,
+        -- misc
+        neoformat = false,
+        vim_matchup = false,
+        autosave_nvim = false,
         nvim_comment = false,
-        neoscroll_nvim = false
+        neoscroll_nvim = false,
+        telescope_media = false
     },
     -- make sure you dont use same keys twice
     mappings = {
@@ -71,11 +77,13 @@ local M = {
             git_status = "<leader>gt",
             git_commits = "<leader>cm",
             find_files = "<leader>ff",
-            media_files = "<leader>fp",
             buffers = "<leader>fb",
             help_tags = "<leader>fh",
             oldfiles = "<leader>fo",
             themes = "<leader>th"
+        },
+        telescope_media = {
+            media_files = "<leader>fp"
         },
         bufferline = {
             new_buffer = "<S-t>",
@@ -93,7 +101,7 @@ local M = {
         toggleterm = {
             toggle_window = "<leader>w",
             toggle_right = "<leader>v",
-            toggle_bot = "<leader>h",
+            toggle_bot = "<leader>h"
         },
         misc = {
             esc_Termmode = "jk",
