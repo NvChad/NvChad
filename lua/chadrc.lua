@@ -23,7 +23,8 @@ local M = {
         shiftwidth = 2,
         smartindent = true,
         mapleader = " ",
-        autosave = false
+        autosave = false,
+        enable_insertNav = true -- navigation within insertmode
     },
     -- enable / disable plugins (true for disable)
     plugin_status = {
@@ -103,12 +104,13 @@ local M = {
             toggle_right = "<leader>v",
             toggle_bot = "<leader>h"
         },
-        unix_keymap = {
-          toggle_unix_keymap = "<leader>k",
-          forward = "<C-f>",
-          backward = "<C-b>",
-          top_of_line = "<C-a>",
-          end_of_line = "<C-e>"
+        insert_nav = {
+            forward = "<C-l>",
+            backward = "<C-h>",
+            top_of_line = "<C-a>",
+            end_of_line = "<C-e>",
+            prev_line = "<C-j>",
+            next_line = "<C-k>"
         },
         misc = {
             esc_Termmode = "jk",
