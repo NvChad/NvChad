@@ -182,9 +182,6 @@ M.reload_theme = function(theme_name)
     _G.galaxyline_providers.DiagnosticInfo = diagnostic.get_diagnostic_info
 
     return true
-    -- open a buffer and close it to reload the statusline
-    -- vim.cmd("new|bwipeout")
-    -- commented out here as it will not work with telescope picker
 end
 
 return M
