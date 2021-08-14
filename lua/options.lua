@@ -2,6 +2,7 @@ local options = require("chadrc").options
 local opt = vim.opt
 local g = vim.g
 
+opt.completeopt = {"menuone", "noselect"}
 opt.undofile = options.permanent_undo
 opt.ruler = options.ruler
 opt.hidden = options.hidden
