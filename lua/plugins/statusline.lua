@@ -46,7 +46,7 @@ gls.left[4] = {
     FileName = {
         provider = function()
             local fileinfo = require('galaxyline.provider_fileinfo')
-            return fileinfo.get_current_file_name("", "")
+            return fileinfo.get_current_file_name("", "")
         end,
         condition = condition.buffer_not_empty,
         highlight = {colors.white, colors.lightbg},
