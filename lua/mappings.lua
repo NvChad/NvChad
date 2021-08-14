@@ -160,4 +160,11 @@ if check_insertNav == true then
     map("i", m.prev_line, "<Down>", opt)
 end
 
+local theme_toggler = require("chadrc").ui.theme_toggler
+
+if theme_toggler == true then
+    local m = user_map.misc.theme_toggle
+
+    map("n", m, ":lua require('utils').toggle_theme(require('chadrc').ui.fav_themes)<CR>", opt)
+end
 return M

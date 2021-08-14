@@ -184,4 +184,22 @@ M.reload_theme = function(theme_name)
     return true
 end
 
+-- toggle between 2 themes
+-- argument should be a table with 2 theme names
+M.toggle_theme = function(themes)
+    local current_theme = vim.g.current_nvchad_theme or vim.g.nvchad_theme
+    for _, name in ipairs(themes) do
+        if name ~= current_theme then
+            if require("utils").reload_theme(name) then
+                -- open a buffer and close it to reload the statusline
+                vim.cmd("new|bwipeout")
+                vim.g.current_nvchad_theme = name
+                if M.change_theme(vim.g.nvchad_theme, name) then
+                    vim.g.nvchad_theme = name
+                end
+            end
+        end
+    end
+end
+
 return M

@@ -1,6 +1,8 @@
 local M = {
     ui = {
         theme = "onedark",
+        fav_themes = {"onedark", "gruvchad"}, -- for theme toggle
+        theme_toggler = false,
         hidden_statusline = {
             -- these are filetypes, not pattern matched
             "NvimTree",
@@ -24,9 +26,9 @@ local M = {
         smartindent = true,
         mapleader = " ",
         autosave = false,
-        enable_insertNav = true -- navigation within insertmode
+        enable_insertNav = true -- navigation in insertmode
     },
-    -- enable / disable plugins (true for disable)
+    -- enable and disable plugins (true for disable)
     plugin_status = {
         -- UI
         nvim_bufferline = false,
@@ -116,7 +118,8 @@ local M = {
         misc = {
             esc_Termmode = "jk",
             copywhole_file = "<C-a>",
-            toggle_linenr = "<leader>n"
+            toggle_linenr = "<leader>n",
+            theme_toggle = "<leader>x"
         }
     }
 }
