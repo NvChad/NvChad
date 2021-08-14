@@ -25,10 +25,7 @@ map("v", "x", [=[ "_x ]=], opt)
 --
 
 -- unix readline's keymap
-map("i", user_map.unix_keymap.forward, '<Right>', opt)
-map("i", user_map.unix_keymap.backward, '<Left>', opt)
-map("i", user_map.unix_keymap.top_of_line, '<ESC>^i', opt)
-map("i", user_map.unix_keymap.end_of_line, '<End>', opt)
+map("n", user_map.unix_keymap.toggle_unix_keymap,"<cmd>lua require 'mappings'.unix_keymap()<CR>",{nowait = true})
 
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP', opt)
@@ -54,17 +51,52 @@ map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
 
 
 M.toggleterm = function()
-    local m = user_map.toggleterm
+  local m = user_map.toggleterm
 
-    -- Open terminals
-    map("n", m.toggle_window, ":execute v:count . 'ToggleTerm direction=window' <CR>", opt)
-    map("n", m.toggle_right, ":execute v:count . 'ToggleTerm direction=vertical' <CR>", opt)
-    map("n", m.toggle_bot, ":execute v:count . 'ToggleTerm direction=horizontal' <CR>", opt)
+  -- Open terminals
+  map("n", m.toggle_window, ":execute v:count . 'ToggleTerm direction=window' <CR>", opt)
+  map("n", m.toggle_right, ":execute v:count . 'ToggleTerm direction=vertical' <CR>", opt)
+  map("n", m.toggle_bot, ":execute v:count . 'ToggleTerm direction=horizontal' <CR>", opt)
 
-    -- 'Un' toggle a term from within terminal edit mode
-    map("t", m.toggle_window, "<C-\\><C-n> :ToggleTerm <CR>", opt)
-    map("t", m.toggle_right, "<C-\\><C-n> :ToggleTerm <CR>", opt)
-    map("t", m.toggle_bot, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+  -- 'Un' toggle a term from within terminal edit mode
+  map("t", m.toggle_window, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+  map("t", m.toggle_right, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+  map("t", m.toggle_bot, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+end
+
+local _cmap_containp = function (key)
+  local cmap_tab = vim.api.nvim_get_keymap("c")
+
+  for _, value in ipairs(cmap_tab) do
+    if value['lhs'] == key then
+      return true
+    end
+  end
+  return false
+end
+
+M.unix_keymap = function()
+  local m = user_map.unix_keymap
+
+  if _cmap_containp("<C-A>") then
+    vim.api.nvim_del_keymap("i", m.forward)
+    vim.api.nvim_del_keymap("i", m.backward)
+    vim.api.nvim_del_keymap("i", m.top_of_line)
+    vim.api.nvim_del_keymap("i", m.end_of_line)
+    vim.api.nvim_del_keymap("c", m.forward)
+    vim.api.nvim_del_keymap("c", m.backward)
+    vim.api.nvim_del_keymap("c", m.top_of_line)
+    vim.api.nvim_del_keymap("c", m.end_of_line)
+  else
+    map("i", m.forward, '<Right>', opt)
+    map("i", m.backward, '<Left>', opt)
+    map("i", m.top_of_line, '<ESC>^i', opt)
+    map("i", m.end_of_line, '<End>', opt)
+    vim.api.nvim_set_keymap("c", m.forward, '<Right>', {noremap = true})
+    vim.api.nvim_set_keymap("c", m.backward, '<Left>', {noremap = true})
+    vim.api.nvim_set_keymap("c", m.top_of_line, '<Home>', {noremap = true})
+    vim.api.nvim_set_keymap("c", m.end_of_line, '<End>', {noremap = true})
+  end
 end
 
 M.truezen = function()

@@ -91,6 +91,7 @@ local M = {
             git_blame = "<leader>gb"
         },
         unix_keymap = {
+            toggle_unix_keymap = "<leader>k",
             forward = "<C-f>",
             backward = "<C-b>",
             top_of_line = "<C-a>",
