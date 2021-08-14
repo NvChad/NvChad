@@ -1,52 +1,6 @@
 -- This file can be loaded as a telescope extension
 local M = {}
 
--- reload themes without restarting vim
--- if no theme name given then reload the current theme
-M.reload_theme = function(theme_name)
-    local reload_plugin = require("utils").reload_plugin
-
-    -- if theme name is empty or nil, then reload the current theme
-    if (theme_name == nil or theme_name == "") then
-        theme_name = vim.g.nvchad_theme
-    end
-
-    if not pcall(require, "themes/" .. theme_name) then
-        print("No such theme ( " .. theme_name .. " )")
-        return false
-    end
-
-    vim.g.nvchad_theme = theme_name
-
-    -- reload the base16 theme
-    local ok, base16 = pcall(require, "base16")
-    if not ok then
-        print("Error: Cannot load base16 plugin!")
-        return false
-    end
-    base16(base16.themes(theme_name), true)
-
-    if
-        not reload_plugin {
-            "highlights",
-            "plugins.bufferline",
-            "galaxyline",
-            "plugins.statusline"
-        }
-     then
-        print "Error: Not able to reload all plugins."
-        return false
-    end
-
-    -- now send the provider info to actual refresh
-    require("galaxyline.provider").async_load_providers:send()
-
-    return true
-    -- open a buffer and close it to reload the statusline
-    -- vim.cmd("new|bwipeout")
-    -- commented out here as it will not work with telescope picker
-end
-
 -- Custom theme picker
 -- Most of the code is copied from telescope colorscheme plugin, mostly for preview creation
 M.theme_switcher = function(opts)
@@ -65,7 +19,7 @@ M.theme_switcher = function(opts)
     end
 
     local local_utils = require "utils"
-    local reload_theme = M.reload_theme
+    local reload_theme = local_utils.reload_theme
 
     -- get a table of available themes
     local themes = local_utils.list_themes()
