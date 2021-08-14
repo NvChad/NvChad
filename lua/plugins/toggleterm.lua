@@ -31,3 +31,17 @@ toggleterm.setup {
         }
     }
 }
+
+local Terminal = require("toggleterm.terminal").Terminal
+
+_G.termW = Terminal:new {
+        direction = "window",
+}
+
+_G.termV = Terminal:new {
+        direction = "vertical",
+}
+
+_G.termH = Terminal:new {
+        direction = "horizontal",
+}
