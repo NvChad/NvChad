@@ -49,14 +49,14 @@ M.toggleterm = function()
     local m = user_map.toggleterm
 
     -- Open terminals
-    map("n", m.toggle_window, ":execute v:count . 'ToggleTerm direction=window' <CR>", opt)
-    map("n", m.toggle_right, ":execute v:count . 'ToggleTerm direction=vertical' <CR>", opt)
-    map("n", m.toggle_bot, ":execute v:count . 'ToggleTerm direction=horizontal' <CR>", opt)
+    map("n", m.toggle_window, ":lua termW:toggle() <CR>", opt)
+    map("n", m.toggle_vert, ":lua termV:toggle() <CR>", opt)
+    map("n", m.toggle_hori, ":lua termH:toggle() <CR>", opt)
 
-    -- 'Un' toggle a term from within terminal edit mode
-    map("t", m.toggle_window, "<C-\\><C-n> :ToggleTerm <CR>", opt)
-    map("t", m.toggle_right, "<C-\\><C-n> :ToggleTerm <CR>", opt)
-    map("t", m.toggle_bot, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+    -- toggle(HIDE) a term from within terminal edit mode
+    map("t", m.hide_term, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+    map("t", m.hide_term, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+    map("t", m.hide_term, "<C-\\><C-n> :ToggleTerm <CR>", opt)
 end
 
 M.truezen = function()

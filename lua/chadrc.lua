@@ -101,8 +101,9 @@ local M = {
         },
         toggleterm = {
             toggle_window = "<leader>w",
-            toggle_right = "<leader>v",
-            toggle_bot = "<leader>h"
+            toggle_vert = "<leader>v",
+            toggle_hori = "<leader>h",
+            hide_term = "JK"
         },
         insert_nav = {
             forward = "<C-l>",
