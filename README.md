@@ -159,6 +159,12 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
 - NvChad isnt a Framework. NvChad wont keep adding more and more features ( adding new plugins most likely) as requested , no spoonfeeding!! If you think the plugin you want to be added is very useful and many NvChaders would find it useful, then such feature's PR is welcomed!
 - But adding specific features like adding config for https://github.com/wakatime/vim-wakatime etc will be added in this https://github.com/siduck76/NvChad/wiki/Chad-user-configs. This lets the user select the things only they want ( from extra configs ) .
 
+# Chad contributors 
+
+<a href = "https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
+  <img src = "https://contrib.rocks/image?repo=siduck76/NvChad"/>
+</a>
+
 ## :gift_heart: Support
 
 If you enjoy using NvChad and would like to show your appreciation, you may want to tip me here.
