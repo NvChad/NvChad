@@ -120,9 +120,7 @@ M.theme_switcher = function(opts)
                         -- will be used in restoring nvchad theme var
                         final_theme = current_theme
                     end
-                end
-                -- open a buffer and close it to reload the statusline
-                vim.cmd("new|bwipeout")
+                end 
             else
                 final_theme = current_theme
             end
