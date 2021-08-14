@@ -44,7 +44,10 @@ gls.left[3] = {
 
 gls.left[4] = {
     FileName = {
-        provider = {"FileName"},
+        provider = function()
+            local fileinfo = require('galaxyline.provider_fileinfo')
+            return fileinfo.get_current_file_name("", "")
+        end,
         condition = condition.buffer_not_empty,
         highlight = {colors.white, colors.lightbg},
         separator = right_separator,
