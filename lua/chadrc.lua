@@ -95,6 +95,13 @@ local M = {
             toggle_right = "<leader>v",
             toggle_bot = "<leader>h",
         },
+        unix_keymap = {
+          toggle_unix_keymap = "<leader>k",
+          forward = "<C-f>",
+          backward = "<C-b>",
+          top_of_line = "<C-a>",
+          end_of_line = "<C-e>"
+        },
         misc = {
             esc_Termmode = "jk",
             copywhole_file = "<C-a>",
