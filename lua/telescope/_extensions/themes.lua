@@ -110,7 +110,6 @@ M.theme_switcher = function(opts)
             end
 
             if reload_theme(final_theme) then
-                vim.g.current_nvchad_theme = final_theme
                 if change then
                     -- ask for confirmation to set as default theme
                     local ans = string.lower(vim.fn.input("Set " .. new_theme .. " as default theme ? [y/N] ")) == "y"
@@ -120,11 +119,8 @@ M.theme_switcher = function(opts)
                     else
                         -- will be used in restoring nvchad theme var
                         final_theme = current_theme
-                        vim.g.current_nvchad_theme = final_theme
                     end
                 end
-                -- open a buffer and close it to reload the statusline
-                vim.cmd("new|bwipeout")
             else
                 final_theme = current_theme
             end
