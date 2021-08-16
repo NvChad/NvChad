@@ -9,11 +9,8 @@ local black = colors.black
 local black2 = colors.black2
 local one_bg = colors.one_bg
 local one_bg2 = colors.one_bg2
-local one_bg3 = colors.one_bg3
-local light_grey = colors.light_grey
 local grey = colors.grey
 local grey_fg = colors.grey_fg
-local grey_fg2 = colors.grey_fg2
 local red = colors.red
 local line = colors.line
 local green = colors.green
@@ -21,6 +18,8 @@ local nord_blue = colors.nord_blue
 local blue = colors.blue
 local yellow = colors.yellow
 local purple = colors.purple
+local pmenu_bg = colors.pmenu_bg
+local folder_bg = colors.folder_bg
 
 -- for guifg , bg
 
@@ -51,7 +50,7 @@ fg("EndOfBuffer", black)
 -- Pmenu
 bg("Pmenu", one_bg)
 bg("PmenuSbar", one_bg2)
-bg("PmenuSel", green)
+bg("PmenuSel", pmenu_bg)
 bg("PmenuThumb", nord_blue)
 
 -- inactive statuslines as thin splitlines
@@ -67,8 +66,8 @@ fg_bg("DiffChange", grey_fg, "none")
 fg_bg("DiffModified", nord_blue, "none")
 
 -- NvimTree
-fg("NvimTreeFolderIcon", blue)
-fg("NvimTreeFolderName", blue)
+fg("NvimTreeFolderIcon", folder_bg)
+fg("NvimTreeFolderName", folder_bg)
 fg("NvimTreeGitDirty", red)
 fg("NvimTreeOpenedFolderName", blue)
 fg("NvimTreeEmptyFolderName", blue)
