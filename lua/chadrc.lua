@@ -31,26 +31,26 @@ local M = {
     -- enable and disable plugins (true for disable)
     plugin_status = {
         -- UI
-        nvim_bufferline = false,
-        galaxyline = false,
-        nvim_colorizer = false,
-        dashboard_nvim = false,
-        blankline = false,
-        truezen_nvim = false,
-        better_esc = false,
+        nvim_bufferline = true,
+        galaxyline = true,
+        nvim_colorizer = true,
+        dashboard_nvim = true,
+        blankline = true,
+        truezen_nvim = true,
+        better_esc = true,
         -- lsp stuff
-        lspkind = false,
-        lspsignature = false,
+        lspkind = true,
+        lspsignature = true,
         -- git stuff
-        gitsigns = false,
-        vim_fugitive = false,
+        gitsigns = true,
+        vim_fugitive = true,
         -- misc
-        neoformat = false,
-        vim_matchup = false,
-        autosave_nvim = false,
-        nvim_comment = false,
-        neoscroll_nvim = false,
-        telescope_media = false
+        neoformat = true,
+        vim_matchup = true,
+        autosave_nvim = true,
+        nvim_comment = true,
+        neoscroll_nvim = true,
+        telescope_media = true
     },
     -- make sure you dont use same keys twice
     mappings = {
