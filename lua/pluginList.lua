@@ -17,35 +17,35 @@ return packer.startup(function()
 		event = "VimEnter",
 	})
 
-	use({
-		"jdhao/better-escape.vim",
-		disable = not plugin_status.better_esc,
-		event = "InsertEnter",
-		config = function()
-			require("plugins.others").escape()
-		end,
-	})
+        use {
+            "jdhao/better-escape.vim",
+            disable = not plugin_status.better_esc,
+            event = "InsertEnter",
+            config = function()
+                require "plugins.others".escape()
+            end
+        }
 
-	use({
-		"akinsho/nvim-bufferline.lua",
-		disable = not plugin_status.nvim_bufferline,
-		after = "nvim-base16.lua",
-		config = function()
-			require("plugins.bufferline")
-		end,
-		setup = function()
-			require("mappings").bufferline()
-		end,
-	})
+        use {
+            "akinsho/nvim-bufferline.lua",
+            disable = not plugin_status.nvim_bufferline,
+            after = "nvim-base16.lua",
+            config = function()
+                require "plugins.bufferline"
+            end,
+            setup = function()
+                require "mappings".bufferline()
+            end
+        }
 
-	use({
-		"glepnir/galaxyline.nvim",
-		disable = not plugin_status.galaxyline,
-		after = "nvim-base16.lua",
-		config = function()
-			require("plugins.statusline")
-		end,
-	})
+        use {
+            "glepnir/galaxyline.nvim",
+            disable = not plugin_status.galaxyline,
+            after = "nvim-base16.lua",
+            config = function()
+                require "plugins.statusline"
+            end
+        }
 
         -- color related stuff
         use {
@@ -56,14 +56,14 @@ return packer.startup(function()
             end
         }
 
-	use({
-		"norcalli/nvim-colorizer.lua",
-		disable = not plugin_status.nvim_colorizer,
-		event = "BufRead",
-		config = function()
-			require("plugins.others").colorizer()
-		end,
-	})
+        use {
+            "norcalli/nvim-colorizer.lua",
+            disable = not plugin_status.nvim_colorizer,
+            event = "BufRead",
+            config = function()
+                require("plugins.others").colorizer()
+            end
+        }
 
 	-- lsp stuff
 	use({
@@ -87,23 +87,23 @@ return packer.startup(function()
 		end,
 	})
 
-	use({
-		"onsails/lspkind-nvim",
-		disable = not plugin_status.lspkind,
-		event = "BufEnter",
-		config = function()
-			require("plugins.others").lspkind()
-		end,
-	})
+        use {
+            "onsails/lspkind-nvim",
+            disable = not plugin_status.lspkind,
+            event = "BufEnter",
+            config = function()
+                require("plugins.others").lspkind()
+            end
+        }
 
-	use({
-		"ray-x/lsp_signature.nvim",
-		disable = not plugin_status.lspsignature,
-		after = "nvim-lspconfig",
-		config = function()
-			require("plugins.others").signature()
-		end,
-	})
+        use {
+            "ray-x/lsp_signature.nvim",
+            disable = not plugin_status.lspsignature,
+            after = "nvim-lspconfig",
+            config = function()
+                require("plugins.others").signature()
+            end
+        }
 
 	-- load compe in insert mode only
 	use({
@@ -129,14 +129,14 @@ return packer.startup(function()
 		},
 	})
 
-	use({
-		"sbdchd/neoformat",
-		disable = not plugin_status.neoformat,
-		cmd = "Neoformat",
-		setup = function()
-			require("mappings").neoformat()
-		end,
-	})
+        use {
+            "sbdchd/neoformat",
+            disable = not plugin_status.neoformat,
+            cmd = "Neoformat",
+            setup = function()
+                require "mappings".neoformat()
+            end
+        }
 
 	-- file managing , picker etc
 	use({
@@ -167,39 +167,39 @@ return packer.startup(function()
 		after = "plenary.nvim",
 	})
 
-	use({
-		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
-		requires = {
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				run = "make",
-			},
-			{
-				"nvim-telescope/telescope-media-files.nvim",
-				disable = not plugin_status.telescope_media,
-				setup = function()
-					require("mappings").telescope_media()
-				end,
-			},
-		},
-		config = function()
-			require("plugins.telescope")
-		end,
-		setup = function()
-			require("mappings").telescope()
-		end,
-	})
+        use {
+            "nvim-telescope/telescope.nvim",
+            cmd = "Telescope",
+            requires = {
+                {
+                    "nvim-telescope/telescope-fzf-native.nvim",
+                    run = "make"
+                },
+                {
+                    "nvim-telescope/telescope-media-files.nvim",
+                    disable = not plugin_status.telescope_media,
+                    setup = function()
+                        require "mappings".telescope_media()
+                    end
+                }
+            },
+            config = function()
+                require "plugins.telescope"
+            end,
+            setup = function()
+                require "mappings".telescope()
+            end
+        }
 
-	-- git stuff
-	use({
-		"lewis6991/gitsigns.nvim",
-		disable = not plugin_status.gitsigns,
-		after = "plenary.nvim",
-		config = function()
-			require("plugins.gitsigns")
-		end,
-	})
+        -- git stuff
+        use {
+            "lewis6991/gitsigns.nvim",
+            disable = not plugin_status.gitsigns,
+            after = "plenary.nvim",
+            config = function()
+                require "plugins.gitsigns"
+            end
+        }
 
 	-- misc plugins
 	use({
@@ -220,97 +220,98 @@ return packer.startup(function()
 		end,
 	})
 
-	use({
-		"andymass/vim-matchup",
-		disable = not plugin_status.vim_matchup,
-		event = "CursorMoved",
-	})
+        use {
+            "andymass/vim-matchup",
+            disable = not plugin_status.vim_matchup,
+            event = "CursorMoved"
+        }
 
-	use({
-		"terrortylor/nvim-comment",
-		disable = not plugin_status.nvim_comment,
-		cmd = "CommentToggle",
-		config = function()
-			require("plugins.others").comment()
-		end,
-		setup = function()
-			require("mappings").comment_nvim()
-		end,
-	})
+        use {
+            "terrortylor/nvim-comment",
+            disable = not plugin_status.nvim_comment,
+            cmd = "CommentToggle",
+            config = function()
+                require("plugins.others").comment()
+            end,
+            setup = function()
+                require "mappings".comment_nvim()
+            end
+        }
 
-	use({
-		"glepnir/dashboard-nvim",
-		disable = not plugin_status.dashboard_nvim,
-		cmd = {
-			"Dashboard",
-			"DashboardNewFile",
-			"DashboardJumpMarks",
-			"SessionLoad",
-			"SessionSave",
-		},
-		setup = function()
-			require("plugins.dashboard")
-			require("mappings").dashboard()
-		end,
-	})
+        use {
+            "glepnir/dashboard-nvim",
+            disable = not plugin_status.dashboard_nvim,
+            cmd = {
+                "Dashboard",
+                "DashboardNewFile",
+                "DashboardJumpMarks",
+                "SessionLoad",
+                "SessionSave"
+            },
+            setup = function()
+                require "plugins.dashboard"
+                require "mappings".dashboard()
+            end
+        }
 
-	-- load autosave only if its globally enabled
-	use({
-		disable = not plugin_status.autosave_nvim,
-		"Pocco81/AutoSave.nvim",
-		config = function()
-			require("plugins.autosave")
-		end,
-		cond = function()
-			return vim.g.auto_save == true
-		end,
-	})
+        -- load autosave only if its globally enabled
+        use {
+            disable = not plugin_status.autosave_nvim,
+            "Pocco81/AutoSave.nvim",
+            config = function()
+                require "plugins.autosave"
+            end,
+            cond = function()
+                return vim.g.auto_save == true
+            end
+        }
 
-	-- smooth scroll
-	use({
-		"karb94/neoscroll.nvim",
-		disable = not plugin_status.neoscroll_nvim,
-		event = "WinScrolled",
-		config = function()
-			require("plugins.others").neoscroll()
-		end,
-	})
+        -- smooth scroll
+        use {
+            "karb94/neoscroll.nvim",
+            disable = not plugin_status.neoscroll_nvim,
+            event = "WinScrolled",
+            config = function()
+                require("plugins.others").neoscroll()
+            end
+        }
 
-	use({
-		"Pocco81/TrueZen.nvim",
-		disable = not plugin_status.truezen_nvim,
-		cmd = {
-			"TZAtaraxis",
-			"TZMinimalist",
-			"TZFocus",
-		},
-		config = function()
-			require("plugins.zenmode")
-		end,
-		setup = function()
-			require("mappings").truezen()
-		end,
-	})
+        use {
+            "Pocco81/TrueZen.nvim",
+            disable = not plugin_status.truezen_nvim,
+            cmd = {
+                "TZAtaraxis",
+                "TZMinimalist",
+                "TZFocus"
+            },
+            config = function()
+                require "plugins.zenmode"
+            end,
+            setup = function()
+                require "mappings".truezen()
+            end
+        }
 
 	--   use "alvan/vim-closetag" -- for html autoclosing tag
 
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		disable = not plugin_status.blankline,
-		event = "BufRead",
-		setup = function()
-			require("plugins.others").blankline()
-		end,
-	})
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            disable = not plugin_status.blankline,
+            event = "BufRead",
+            setup = function()
+                require("plugins.others").blankline()
+            end
+        }
 
-	use({
-		"tpope/vim-fugitive",
-		disable = not plugin_status.vim_fugitive,
-		cmd = {
-			"Git",
-		},
-		setup = function()
-			require("mappings").fugitive()
-		end,
-	})
-end)
+        use {
+            "tpope/vim-fugitive",
+            disable = not plugin_status.vim_fugitive,
+            cmd = {
+                "Git"
+            },
+            setup = function()
+                require "mappings".fugitive()
+            end
+        }
+    end
+)
