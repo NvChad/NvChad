@@ -139,6 +139,18 @@ local M = {
          close_floatterm = "<leader>ac",
 
       },
+      hop = {
+        hop_line = "<leader>pl",
+        hop_word = "<leader>pw",
+        hop_char1 = "<leader>p1",
+        hop_char2 = "<leader>p2",
+
+      },
+      trouble = {
+        trouble_toggle = "<leader>rt",
+        trouble_document_diagnostics = "<leader>rd",
+        trouble_workspace_diagnostics = "<leader>rw",
+      },
    },
 }
 

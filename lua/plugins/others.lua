@@ -75,4 +75,25 @@ M.saga = function ()
    end
 end
 
+M.hop = function ()
+   local present, hop = pcall(require, "hop")
+   if present then
+      hop.setup()
+   end
+end
+
+M.todo = function ()
+   local present, todo = pcall(require, "todo-comments")
+   if present then
+      todo.setup()
+   end
+end
+
+M.trouble = function ()
+   local present, trouble = pcall(require, "todo-comments")
+   if present then
+      trouble.setup()
+   end
+end
+
 return M

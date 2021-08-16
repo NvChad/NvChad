@@ -336,4 +336,26 @@ return packer.startup(function()
      end
    }
 
+  use {
+     "phaazon/hop.nvim",
+     event = "BufRead",
+     cmd = {"HopWord", "HopLine", "HopChar1", "HopChar2", "HopPattern"},
+     config = function() require("plugins.others").hop() end,
+     setup = function() require("mappings").hop() end
+  }
+
+  use {
+     "folke/todo-comments.nvim",
+     after = "nvim-lspconfig",
+     config = function() require("plugins.others").todo() end,
+   }
+
+  use {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+    after = "nvim-lspconfig",
+    config = function() require("plugins.others").trouble() end,
+    setup = function() require("mappings").trouble() end
+  }
+
 end)

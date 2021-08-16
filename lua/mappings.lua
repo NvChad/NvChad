@@ -173,6 +173,23 @@ M.saga = function()
    map("n", m.close_floatterm, ":Lspsaga close_floaterm<CR>", opt)
 end
 
+M.hop = function()
+   local m = user_map.hop
+
+   map("n", m.hop_line, ":HopLine<CR>", opt)
+   map("n", m.hop_word, ":HopWord<CR>", opt)
+   map("n", m.hop_char1, ":HopChar1<CR>", opt)
+   map("n", m.hop_char2, ":HopChar2<CR>", opt)
+end
+
+M.trouble = function()
+   local m = user_map.trouble
+
+   map("n", m.trouble_toggle, ":TroubleToggle<CR>", opt)
+   map("n", m.trouble_workspace_diagnostics, ":TroubleToggle lsp_workspace_diagnostics<CR>", opt)
+   map("n", m.trouble_document_diagnostics, ":TroubleToggle lsp_document_diagnostics<CR>", opt)
+end
+
 -- navigation within insert mode
 local check_insertNav = require("chadrc").options.enable_insertNav
 
