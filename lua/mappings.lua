@@ -114,6 +114,18 @@ M.telescope_media = function()
    map("n", m.media_files, ":Telescope media_files <CR>", opt)
 end
 
+M.chadsheet = function()
+   local m = user_map.chadsheet
+
+   map("n", m.default_keys, ":lua require('cheatsheet').show_cheatsheet_telescope()<CR>", opt)
+   map(
+      "n",
+      m.user_keys,
+      ":lua require('cheatsheet').show_cheatsheet_telescope{bundled_cheatsheets = false, bundled_plugin_cheatsheets = false }<CR>",
+      opt
+   )
+end
+
 M.bufferline = function()
    local m = user_map.bufferline
 

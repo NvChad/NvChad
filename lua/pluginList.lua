@@ -169,7 +169,7 @@ return packer.startup(function()
 
    use {
       "nvim-telescope/telescope.nvim",
-      cmd = "Telescope",
+      after = "plenary.nvim",
       requires = {
          {
             "nvim-telescope/telescope-fzf-native.nvim",
@@ -180,6 +180,17 @@ return packer.startup(function()
             disable = not plugin_status.telescope_media,
             setup = function()
                require("mappings").telescope_media()
+            end,
+         },
+         {
+            "sudormrfbin/cheatsheet.nvim",
+            disable = not plugin_status.cheatsheet,
+            after = "telescope.nvim",
+            config = function()
+               require "plugins.chadsheet"
+            end,
+            setup = function()
+               require("mappings").chadsheet()
             end,
          },
       },
