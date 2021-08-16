@@ -158,6 +158,21 @@ M.fugitive = function()
    map("n", m.git_blame, ":Git blame<CR>", opt)
 end
 
+M.saga = function()
+   local m = user_map.saga
+
+   map("n", m.lsp_finder, ":Lspsaga lsp_finder<CR>", opt)
+   map("n", m.code_action, ":Lspsaga code_action<CR>", opt)
+   map("n", m.hover_doc, ":Lspsaga hover_doc<CR>", opt)
+   map("n", m.signature_help, ":Lspsaga signature_help<CR>", opt)
+   map("n", m.rename, ":Lspsaga rename<CR>", opt)
+   map("n", m.preview_definition, ":Lspsaga preview_definition<CR>", opt)
+   map("n", m.diagnostic_jump_next, ":Lspsaga diagnostic_jump_next<CR>", opt)
+   map("n", m.diagnostic_jump_prev, ":Lspsaga diagnostic_jump_prev<CR>", opt)
+   map("n", m.open_floatterm, ":Lspsaga open_floaterm<CR>", opt)
+   map("n", m.close_floatterm, ":Lspsaga close_floaterm<CR>", opt)
+end
+
 -- navigation within insert mode
 local check_insertNav = require("chadrc").options.enable_insertNav
 

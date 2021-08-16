@@ -126,6 +126,19 @@ local M = {
          toggle_linenr = "<leader>n",
          theme_toggle = "<leader>x",
       },
+      saga = {
+         lsp_finder = "<leader>af",
+         code_action = "<leader>aa",
+         hover_doc = "<leader>ah",
+         signature_help = "<leader>as",
+         rename = "<leader>ar",
+         preview_definition = "<leader>ad",
+         diagnostic_jump_next = "<leader>an",
+         diagnostic_jump_prev = "<leader>dp",
+         open_floatterm = "<leader>ao",
+         close_floatterm = "<leader>ac",
+
+      },
    },
 }
 

@@ -115,5 +115,9 @@ fg("DashboardFooter", grey_fg)
 bg("NormalFloat", "NONE")
 fg("FloatBorder", blue)
 
+-- LSPSaga Highlight
+
+fg_bg("LspSagaFinderSelection", "none", darker_black)
+
 -- set bg color for nvim
 -- bg("Normal", black)

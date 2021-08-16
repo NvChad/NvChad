@@ -324,4 +324,16 @@ return packer.startup(function()
          require("mappings").fugitive()
       end,
    }
+
+   use {
+     "glepnir/lspsaga.nvim",
+     after = "nvim-lspconfig",
+     config = function ()
+       require("plugins.others").saga()
+     end,
+     setup = function ()
+       require("mappings").saga()
+     end
+   }
+
 end)
