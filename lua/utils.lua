@@ -198,4 +198,3 @@ M.toggle_theme = function(themes)
 end
 
 return M
-
