@@ -50,7 +50,7 @@ return packer.startup(
 
         -- color related stuff
         use {
-            "siduck76/nvim-base16.lua",
+            "NvChad/nvim-base16.lua",
             after = "packer.nvim",
             config = function()
                 require "theme"
