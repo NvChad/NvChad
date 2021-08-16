@@ -104,33 +104,29 @@ M.theme_switcher = function(opts)
 				final_theme = current_theme
 			end
 
-			if reload_theme(final_theme) then
-				vim.g.current_nvchad_theme = final_theme
-				if change then
-					-- ask for confirmation to set as default theme
-					local ans = string.lower(vim.fn.input("Set " .. new_theme .. " as default theme ? [y/N] ")) == "y"
-					local_utils.clear_cmdline()
-					if ans then
-						local_utils.change_theme(current_theme, final_theme)
-					else
-						-- will be used in restoring nvchad theme var
-						final_theme = current_theme
-						vim.g.current_nvchad_theme = final_theme
-					end
-				end
-				-- open a buffer and close it to reload the statusline
-				vim.cmd("new|bwipeout")
-			else
-				final_theme = current_theme
-			end
-			-- set nvchad_theme global var
-			vim.g.nvchad_theme = final_theme
-		end
-		-- launch the telescope picker
-		picker:find()
-	else
-		print("No themes found in " .. vim.fn.stdpath("config") .. "/lua/themes")
-	end
+            if reload_theme(final_theme) then
+                if change then
+                    -- ask for confirmation to set as default theme
+                    local ans = string.lower(vim.fn.input("Set " .. new_theme .. " as default theme ? [y/N] ")) == "y"
+                    local_utils.clear_cmdline()
+                    if ans then
+                        local_utils.change_theme(current_theme, final_theme)
+                    else
+                        -- will be used in restoring nvchad theme var
+                        final_theme = current_theme
+                    end
+                end
+            else
+                final_theme = current_theme
+            end
+            -- set nvchad_theme global var
+            vim.g.nvchad_theme = final_theme
+        end
+        -- launch the telescope picker
+        picker:find()
+    else
+        print("No themes found in " .. vim.fn.stdpath("config") .. "/lua/themes")
+    end
 end
 
 -- register theme swticher as themes to telescope
