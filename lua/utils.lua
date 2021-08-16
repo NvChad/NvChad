@@ -2,32 +2,6 @@ local M = {}
 
 -- 1st arg as current theme, 2nd as new theme
 M.change_theme = function(current_theme, new_theme)
-<<<<<<< HEAD
-    if current_theme == nil or new_theme == nil then
-        print "Error: Provide current and new theme name"
-        return false
-    end
-    if current_theme == new_theme then
-        return
-    end
-
-    local file = vim.fn.stdpath("config") .. "/lua/chadrc.lua"
-    -- store in data variable
-    local data = assert(M.file("r", file))
-    -- escape characters which can be parsed as magic chars
-    current_theme = current_theme:gsub("%p", "%%%0")
-    new_theme = new_theme:gsub("%p", "%%%0")
-    local find = "theme = .?" .. current_theme .. ".?"
-    local replace = 'theme = "' .. new_theme .. '"'
-    local content = string.gsub(data, find, replace)
-    -- see if the find string exists in file
-    if content == data then
-        print("Error: Cannot change default theme with " .. new_theme .. ", edit " .. file .. " manually")
-        return false
-    else
-        assert(M.file("w", file, content))
-    end
-=======
 	if current_theme == nil or new_theme == nil then
 		print("Error: Provide current and new theme name")
 		return false
@@ -49,7 +23,6 @@ M.change_theme = function(current_theme, new_theme)
 	else
 		assert(M.file("w", file, content))
 	end
->>>>>>> 35f9501 (chore: formatted with stylua)
 end
 
 M.clear_cmdline = function()
@@ -225,3 +198,4 @@ M.toggle_theme = function(themes)
 end
 
 return M
+
