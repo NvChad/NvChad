@@ -68,4 +68,11 @@ M.signature = function()
    end
 end
 
+M.saga = function ()
+   local present, saga = pcall(require, "lspsaga")
+   if present then
+      saga.init_lsp_saga()
+   end
+end
+
 return M
