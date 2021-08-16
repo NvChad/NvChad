@@ -47,14 +47,14 @@ return packer.startup(function()
 		end,
 	})
 
-        -- color related stuff
-        use {
-            "NvChad/nvim-base16.lua",
-            after = "packer.nvim",
-            config = function()
-                require "theme"
-            end
-        }
+	-- color related stuff
+	use({
+		"siduck76/nvim-base16.lua",
+		after = "packer.nvim",
+		config = function()
+			require("theme")
+		end,
+	})
 
 	use({
 		"norcalli/nvim-colorizer.lua",
