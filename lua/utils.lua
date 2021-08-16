@@ -13,6 +13,9 @@ M.change_theme = function(current_theme, new_theme)
     local file = vim.fn.stdpath("config") .. "/lua/chadrc.lua"
     -- store in data variable
     local data = assert(M.file("r", file))
+    -- escape characters which can be parsed as magic chars
+    current_theme = current_theme:gsub("%p", "%%%0")
+    new_theme = new_theme:gsub("%p", "%%%0")
     local find = "theme = .?" .. current_theme .. ".?"
     local replace = 'theme = "' .. new_theme .. '"'
     local content = string.gsub(data, find, replace)
