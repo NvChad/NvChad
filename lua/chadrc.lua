@@ -97,4 +97,6 @@ local M = {
     }
 }
 
+M = vim.tbl_deep_extend("force", require("sys.config"), M)
+
 return M
