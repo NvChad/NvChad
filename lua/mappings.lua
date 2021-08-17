@@ -45,6 +45,10 @@ map("n", miscMap.toggle_linenr, ":set nu!<CR>", opt)
 -- get out of terminal with jk
 map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
 
+-- close current focused buffer, terminal or normal
+-- todo: don't close if non-terminal buffer is saved
+map("n", miscMap.close_buffer, ":bd!<CR>", opt)
+
 M.toggleterm = function()
    local m = user_map.toggleterm
 
@@ -131,7 +135,6 @@ M.bufferline = function()
 
    map("n", m.new_buffer, ":enew<CR>", opt) -- new buffer
    map("n", m.newtab, ":tabnew<CR>", opt) -- new tab
-   map("n", m.close, ":bd!<CR>", opt) -- close  buffer
 
    -- move between tabs
 

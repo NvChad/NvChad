@@ -29,7 +29,7 @@ local colors = {
    lightbg = "#3d454b",
    lightbg2 = "#333b41",
    pmenu_bg = "#83c092",
-   folder_bg = "#7fbbb3"
+   folder_bg = "#7fbbb3",
 }
 
 return colors
