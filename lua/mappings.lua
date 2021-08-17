@@ -41,27 +41,25 @@ map("n", miscMap.copywhole_file, ":%y+<CR>", opt)
 -- toggle numbers
 map("n", miscMap.toggle_linenr, ":set nu!<CR>", opt)
 
--- open a new buffer as a Terminal
--- get out of terminal with jk
-map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
 
--- close current focused buffer, terminal or normal
--- todo: don't close if non-terminal buffer is saved
-map("n", miscMap.close_buffer, ":bd!<CR>", opt)
+-- terminals
+local function terms()
+   local m = user_map.terms
 
-M.toggleterm = function()
-   local m = user_map.toggleterm
+   -- get out of terminal mode
+   map("t", m.esc_termmode, "<C-\\><C-n>", opt)
+   -- hide a term from within terminal mode
+   map("t", m.esc_hide_termmode, "<C-\\><C-n> :lua require('utils').close_buffer() <CR>", opt)
+  -- pick a hidden term 
+   map("n", m.pick_term, ":Telescope terms <CR>", opt)
 
    -- Open terminals
-   map("n", m.toggle_window, ":lua termW:toggle() <CR>", opt)
-   map("n", m.toggle_vert, ":lua termV:toggle() <CR>", opt)
-   map("n", m.toggle_hori, ":lua termH:toggle() <CR>", opt)
-
-   -- toggle(HIDE) a term from within terminal edit mode
-   map("t", m.hide_term, "<C-\\><C-n> :ToggleTerm <CR>", opt)
-   map("t", m.hide_term, "<C-\\><C-n> :ToggleTerm <CR>", opt)
-   map("t", m.hide_term, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+   map("n", m.new_wind, ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>", opt)
+   map("n", m.new_vert, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>", opt)
+   map("n", m.new_hori, ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>", opt)
 end
+
+terms()
 
 M.truezen = function()
    local m = user_map.truezen
@@ -135,6 +133,7 @@ M.bufferline = function()
 
    map("n", m.new_buffer, ":enew<CR>", opt) -- new buffer
    map("n", m.newtab, ":tabnew<CR>", opt) -- new tab
+   map("n", m.close, ":lua require('utils').close_buffer() <CR>", opt) -- close  buffer
 
    -- move between tabs
 

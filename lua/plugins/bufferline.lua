@@ -5,7 +5,7 @@ local present, bufferline = pcall(require, "bufferline")
 if not present then
    return
 end
-
+      
 bufferline.setup {
    options = {
       offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
@@ -24,6 +24,24 @@ bufferline.setup {
       separator_style = "thin",
       mappings = true,
       always_show_bufferline = true,
+      custom_filter = function(buf_number)
+        -- Func to filter out our managed/persistent split terms
+        local present_type, type = pcall(function()
+           return vim.api.nvim_buf_get_var(buf_number, "term_type")
+           end)
+           
+        if present_type then
+           if type == "vert" then
+               return false
+            elseif type == "hori" then
+               return false
+            else
+              return true
+            end
+        else
+          return true
+        end
+    end,
    },
    highlights = {
       fill = {

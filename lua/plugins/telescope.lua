@@ -65,8 +65,11 @@ telescope.setup {
    },
 }
 
+-- NvChad pickers
 -- load the theme_switcher extension
 require("telescope").load_extension "themes"
+-- load the term_picker extension
+require("telescope").load_extension "terms"
 
 if not pcall(function()
    telescope.load_extension "fzf"
