@@ -27,23 +27,22 @@ return packer.startup(function()
    }
 
    use {
+      "glepnir/galaxyline.nvim",
+      disable = not plugin_status.galaxyline,
+      after = "nvim-web-devicons",
+      config = function()
+         require "plugins.statusline"
+      end,
+   }
+   use {
       "akinsho/nvim-bufferline.lua",
       disable = not plugin_status.nvim_bufferline,
-      after = "nvim-base16.lua",
+      after = "galaxyline.nvim",
       config = function()
          require "plugins.bufferline"
       end,
       setup = function()
          require("mappings").bufferline()
-      end,
-   }
-
-   use {
-      "glepnir/galaxyline.nvim",
-      disable = not plugin_status.galaxyline,
-      after = "nvim-base16.lua",
-      config = function()
-         require "plugins.statusline"
       end,
    }
 
@@ -160,7 +159,7 @@ return packer.startup(function()
 
    use {
       "nvim-lua/plenary.nvim",
-      event = "BufRead",
+      after = "nvim-bufferline.lua",
    }
    use {
       "nvim-lua/popup.nvim",
