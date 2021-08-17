@@ -1,7 +1,7 @@
 local M = {}
 
 M.ui = {
-   theme = "onedark",
+   theme = "gruvchad",
    -- for theme toggle
    fav_themes = {
       "onedark",
