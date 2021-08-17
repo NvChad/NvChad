@@ -1,3 +1,10 @@
+-- this file is referecend by:
+
+-- options (loader)
+-- mappings
+-- pluginList
+-- chadrc
+
 local M = {
     ui = {
         theme = "onedark"
@@ -96,7 +103,5 @@ local M = {
         }
     }
 }
-
-M = vim.tbl_deep_extend("force", require("config.config"), M)
 
 return M
