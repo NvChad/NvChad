@@ -176,3 +176,7 @@ It is never required but always appreciated.
   <a href="https://ko-fi.com/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/2.png"></a>
   <a href="https://www.paypal.com/paypalme/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/3.png"></a>
 </p>
+
+## PS
+
+I get hearings from some plugin devs that nvchad users bring their issue , on nvim plugin repos . Please dont do that :/ . Bring NvChad related issues here only and not trouble plugin devs !!
