@@ -13,7 +13,6 @@ M.ui = {
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
-      "toggleterm",
    },
 }
 
@@ -115,12 +114,6 @@ M.mappings = {
       diffget_2 = "<leader>gh",
       diffget_3 = "<leader>gl",
       git_blame = "<leader>gb",
-   },
-   toggleterm = {
-      toggle_window = "<leader>w",
-      toggle_vert = "<leader>v",
-      toggle_hori = "<leader>h",
-      hide_term = "JK",
    },
    -- navigation in insert mode
    insert_nav = {
