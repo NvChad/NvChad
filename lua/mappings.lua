@@ -92,6 +92,10 @@ M.misc = function()
    cmd "silent! command PackerStatus lua require 'pluginList' require('packer').status()"
    cmd "silent! command PackerSync lua require 'pluginList' require('packer').sync()"
    cmd "silent! command PackerUpdate lua require 'pluginList' require('packer').update()"
+
+   -- add NvChadUpdate command and mapping
+   cmd "silent! command! NvChadUpdate lua require('utils').update_nvchad()"
+   map("n", user_map.misc.update_nvchad, ":NvChadUpdate<CR>", opt)
 end
 
 M.bufferline = function()
