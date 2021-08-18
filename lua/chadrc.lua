@@ -62,7 +62,7 @@ M.plugin_status = {
    nvim_comment = true,
    neoscroll_nvim = true,
    telescope_media = true,
-   cheatsheet = false,
+   cheatsheet = true,
 }
 
 -- make sure you dont use same keys twice
