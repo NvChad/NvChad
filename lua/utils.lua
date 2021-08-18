@@ -148,6 +148,16 @@ M.close_buffer = function(bufexpr, force)
    end
 end
 
+-- wrapper to use vim.api.nvim_echo
+-- 1st arg - text - required
+-- 2nd arg - highlight group - if not present then use None
+M.echo = function(text, group)
+   if text == nil then
+      return
+   end
+   vim.api.nvim_echo({ { text, group or "None" } }, false, {})
+end
+
 -- 1st arg - r or w
 -- 2nd arg - file path
 -- 3rd arg - content if 1st arg is w
@@ -397,6 +407,77 @@ M.toggle_theme = function(themes)
          end
       end
    end
+end
+
+-- update nvchad
+M.update_nvchad = function()
+   -- in all the comments below, config means user config
+   local config_path = vim.fn.stdpath "config"
+   local config_name = vim.g.nvchad_user_config or "chadrc"
+   local config_file = config_path .. "/lua/" .. config_name .. ".lua"
+   -- generate a random file name
+   local config_file_backup = config_path .. "/" .. config_name .. ".lua.bak." .. math.random()
+   local utils = require "utils"
+   local echo = utils.echo
+
+   -- ask the user for confirmation to update because we are going to run git reset --hard
+   echo(
+      "Updater will run git reset --hard in config folder, so changes to existing repo files except "
+         .. config_name
+         .. " will be lost!\nUpdate NvChad ? [y/N]",
+      "WarningMsg"
+   )
+   local ans = string.lower(vim.fn.input "-> ") == "y"
+   utils.clear_cmdline()
+   if not ans then
+      echo("Update cancelled!", "Title")
+      return
+   end
+
+   -- first try to fetch contents of config, this will make sure it is readable and taking backup of its contents
+   local config_contents = utils.file("r", config_file)
+   -- also make a local backup in ~/.config/nvim, will be removed when config is succesfully restored
+   utils.file("w", config_file_backup, config_contents)
+   -- write original config file with its contents, will make sure charc is writable, this maybe overkill but a little precaution always helps
+   utils.file("w", config_file, config_contents)
+
+   -- function that will executed when git commands are done
+   local function update_exit(_, code)
+      -- restore config file irrespective of whether git commands were succesfull or not
+      if pcall(function()
+         utils.file("w", config_file, config_contents)
+      end) then
+         -- config restored succesfully, remove backup file that was created
+         if not pcall(os.remove, config_file_backup) then
+            echo("Warning: Failed to remove backup chadrc, remove manually.", "WarningMsg")
+            echo("Path: " .. config_file_backup, "WarningMsg")
+         end
+      else
+         echo("Error: Restoring " .. config_name .. " failed.\n", "ErrorMsg")
+         echo("Backed up " .. config_name .. " path: " .. config_file_backup .. "\n\n", "None")
+      end
+
+      -- close the terminal buffer only if update was success, as in case of error, we need the error message
+      if code == 0 then
+         vim.cmd "bd!"
+         echo("NvChad succesfully updated.\n", "String")
+      else
+         echo("Error: NvChad Update failed.\n", "ErrorMsg")
+      end
+   end
+
+   -- git commands that will executed, reset in case config was modfied
+   -- use --ff-only to not mess up if the local repo is outdated
+   local update_script = [[git reset --hard && git pull --set-upstream https://github.com/NvChad/NvChad main --ff-only]]
+
+   -- open a new buffer
+   vim.cmd "new"
+   -- finally open the pseudo terminal buffer
+   vim.fn.termopen(update_script, {
+      -- change dir to config path so we don't need to move in script
+      cwd = config_path,
+      on_exit = update_exit,
+   })
 end
 
 return M
