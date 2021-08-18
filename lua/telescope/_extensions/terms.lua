@@ -102,20 +102,27 @@ M.term_picker = function(opts)
             local entry = action_state.get_selected_entry()
             actions.close(prompt_bufnr)
 
-            local buf = entry.contents
-            print (buf)
-            
-            if buf == "wind" then
-               vim.cmd(string.format('b %d', buf))
-               vim.defer_fn(
-                  function()
-                     vim.cmd('hello')
-                     -- vim.cmd(string.format('%d bufdo setlocal bl', buf))
-                  end, 0)
-            elseif buf == "vert" then
-               vim.cmd(string.format('vsp %d', buf))
-            elseif buf == "hori" then
-               vim.cmd(string.format('15 sp %d', buf))
+            local buf = entry.bufnr
+               
+            local chad_term, type = pcall(function()
+                  return vim.api.nvim_buf_get_var(buf, "term_type")
+               end)
+         
+            -- TODO buffer checks/error detection (make sure we do get a buf)
+
+            if chad_term then
+               if type == "wind" then
+                  -- swtich to term buff & show in bufferline
+                  vim.cmd(string.format('b %d | setlocal bl', buf))
+                  -- vim.cmd('startinsert') TODO fix this
+               elseif type == "vert" then
+                  vim.cmd(string.format('vsp #%d', buf))
+                  -- vim.cmd('startinsert') TODO fix this
+               elseif type == "hori" then
+                  -- TODO change 15 to a chad config var number
+                  vim.cmd(string.format('15 sp #%d ', buf))
+                  -- vim.cmd('startinsert') TODO fix this
+               end
             end
          end)
 

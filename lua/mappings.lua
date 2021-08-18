@@ -54,6 +54,7 @@ local function terms()
    map("n", m.pick_term, ":Telescope terms <CR>", opt)
 
    -- Open terminals
+   -- TODO this opens on top of an existing vert/hori term, fixme
    map("n", m.new_wind, ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>", opt)
    map("n", m.new_vert, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>", opt)
    map("n", m.new_hori, ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>", opt)

@@ -94,6 +94,17 @@ M.close_buffer = function(bufexpr, force)
          end
          return
       end
+      
+      local chad_term, type = pcall(function()
+         return vim.api.nvim_buf_get_var(buf, "term_type")
+         end)
+         
+      if chad_term then
+         -- Must be a window type
+         vim.cmd(string.format('setlocal nobl', buf))
+         vim.cmd('enew')
+         return
+      end
       -- don't exit and create a new empty buffer
       vim.cmd('enew')
       vim.cmd('bp')
@@ -114,11 +125,13 @@ M.close_buffer = function(bufexpr, force)
             -- hide from bufferline
             vim.cmd(string.format('%d bufdo setlocal nobl', buf))
             -- swtich to another buff
+            -- TODO switch to next bufffer, this works too
             vim.cmd('BufferLineCycleNext')
          else
+            local cur_win = vim.fn.winnr()
             -- we can close this window
-            vim.cmd('b %d', next_buf)
-            vim.cmd('close')
+            vim.cmd(string.format('%d wincmd c', cur_win))
+            return
          end
       else
          switch_buffer(windows, next_buf)
