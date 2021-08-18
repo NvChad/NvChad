@@ -112,7 +112,7 @@ fg("DashboardFooter", grey_fg)
 
 -- packer's floating window
 
-bg("NormalFloat", "NONE")
+bg("NormalFloat", one_bg)
 fg("FloatBorder", blue)
 
 -- set bg color for nvim
