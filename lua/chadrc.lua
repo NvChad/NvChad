@@ -141,6 +141,7 @@ M.mappings = {
       copywhole_file = "<C-a>",
       toggle_linenr = "<leader>n", -- show or hide line number
       theme_toggle = "<leader>x",
+      update_nvchad = "<leader>uu",
    },
 }
 
