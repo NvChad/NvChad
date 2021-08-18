@@ -13,7 +13,7 @@ M.ui = {
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
-      "toggleterm",
+      -- "terminal",
    },
 }
 
@@ -28,6 +28,7 @@ M.options = {
    timeoutlen = 400,
    clipboard = "unnamedplus",
    number = true,
+   relativenumber = false,
    numberwidth = 2,
    expandtab = true,
    shiftwidth = 2,
