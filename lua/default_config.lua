@@ -1,3 +1,5 @@
+-- IMPORTANT NOTE : This is default config, so dont change anything here. (check chadrc.lua instead)
+
 local M = {}
 
 M.ui = {
