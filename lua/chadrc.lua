@@ -13,7 +13,6 @@ M.ui = {
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
-      "toggleterm",
    },
 }
 
@@ -107,6 +106,7 @@ M.mappings = {
    bufferline = {
       new_buffer = "<S-t>",
       newtab = "<C-t>b",
+      close = "<S-x>", -- close a buffer with custom func in utils.lua
       cycleNext = "<TAB>", -- next buffer
       cyclePrev = "<S-Tab>", -- previous buffer
    },
@@ -116,11 +116,13 @@ M.mappings = {
       diffget_3 = "<leader>gl",
       git_blame = "<leader>gb",
    },
-   toggleterm = {
-      toggle_window = "<leader>w",
-      toggle_vert = "<leader>v",
-      toggle_hori = "<leader>h",
-      hide_term = "JK",
+   terms = { -- below are NvChad mappings, not plugin mappings
+      esc_termmode = "jk",
+      esc_hide_termmode = "JK",
+      pick_term = "<leader>W", -- note: this is a telescope extension
+      new_wind = "<leader>w",
+      new_vert = "<leader>v",
+      new_hori = "<leader>h",
    },
    -- navigation in insert mode
    insert_nav = {
@@ -131,10 +133,7 @@ M.mappings = {
       prev_line = "<C-j>",
       next_line = "<C-k>",
    },
-   -- non plugin
    misc = {
-      esc_Termmode = "jk", -- get out of terminal mode
-      close_buffer = "<S-x>", -- close current focused buffer
       copywhole_file = "<C-a>",
       toggle_linenr = "<leader>n", -- show or hide line number
       theme_toggle = "<leader>x",
