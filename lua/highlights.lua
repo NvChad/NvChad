@@ -110,10 +110,17 @@ fg("DashboardCenter", grey_fg)
 fg("DashboardShortcut", grey_fg)
 fg("DashboardFooter", grey_fg)
 
--- packer's floating window
+if require("utils").load_config().ui.transparency then
+   bg("Normal", "NONE")
+   bg("Folded", "NONE")
+   fg("Folded", "NONE")
+   bg("NvimTreeNormal", "NONE")
+   bg("NvimTreeVertSplit", "NONE")
+   fg("NvimTreeVertSplit", grey)
+   bg("NvimTreeStatusLineNC", "NONE")
+   fg("Comment", grey)
+end
 
+-- For floating windows
 bg("NormalFloat", one_bg)
 fg("FloatBorder", blue)
-
--- set bg color for nvim
--- bg("Normal", black)
