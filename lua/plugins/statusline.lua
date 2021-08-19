@@ -99,9 +99,13 @@ gls.left[5] = {
    FileName = {
       provider = function()
          local fileinfo = require "galaxyline.provider_fileinfo"
+
+         if vim.api.nvim_buf_get_name(0):len() == 0 then
+            return ""
+         end
+
          return fileinfo.get_current_file_name("", "")
       end,
-      condition = condition.buffer_not_empty,
       highlight = { colors.white, colors.lightbg },
       separator = right_separator,
       separator_highlight = { colors.lightbg, colors.lightbg2 },
