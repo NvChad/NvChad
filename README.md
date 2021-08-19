@@ -124,8 +124,8 @@ without / with Treesitter :
 - gitsigns for git diffs
 
 # Bloat
-
--  To all those who think this is probably bloated , sure it is . Bloat means different to everyone . NvChad has like 30 ~ plugins but that doesnt mean those plugins are compromsing neovim's speed, snappiness or making it slow. No matter how many plugins I'd add on nvchad , it wouldnt compromise speed / snappiness / make it slow or whatever since it uses packer.nvim as plugin manager , packer.nvim lets you lazy load plugins i.e loading plugins on certain events , mappings , sequentially loading them etc so loading them only when needed , I have lazy loaded all the plugins so most plugins arent loaded by default , hence not affecting neovim's startup/launch time.
+	
+-  To all those who think this is probably bloated, sure it is. Bloat means different to everyone. NvChad has like 30 ~ plugins but that doesn't mean those plugins are compromising neovim's speed, snappiness, or making it slow. No matter how many plugins I'd add on NvChad, it wouldn't compromise speed/snappiness/make it slow or whatever since it uses packer.nvim as plugin manager. packer.nvim lets you lazy load plugins i.e. loading plugins on certain events, mappings, sequentially loading them, etc, thus loading them only when needed. I have lazy loaded all the plugins so most plugins aren't loaded by default, hence not affecting neovim's startup/launch time.
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
