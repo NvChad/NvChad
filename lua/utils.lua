@@ -264,14 +264,22 @@ M.load_config = function(reload)
       return _G._NVCHAD_CONFIG_CONTENTS
    end
 
+   local default_config = "default_config"
+   local config_name = vim.g.nvchad_user_config or "chadrc"
+   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
+
+   -- unload the modules if force reload
+   if reload then
+      package.loaded[default_config or false] = nil
+      package.loaded[config_name or false] = nil
+   end
+
    -- don't enclose in pcall, it better break when default config is faulty
-   _G._NVCHAD_CONFIG_CONTENTS = require "default_config"
+   _G._NVCHAD_CONFIG_CONTENTS = require(default_config)
 
    -- user config is not required to run nvchad but a optional
    -- Make sure the config doesn't break the whole system if user config is not present or in bad state or not a table
    -- print warning texts if user config file is  present
-   local config_name = vim.g.nvchad_user_config or "chadrc"
-   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
    -- check if the user config is present
    if vim.fn.empty(vim.fn.glob(config_file)) < 1 then
       local present, config = pcall(require, config_name)
