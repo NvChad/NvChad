@@ -131,10 +131,10 @@ without / with Treesitter :
 
 # TODO
 
-It would be nice if NvChad focuses on existing plugins and config before adding new things , some plugins like whichkey , telescope , treesitter still have basic configs! Also adding new features that'd make NvChad slow or its startuptime slow wouldnt be encouraged , if that feature's really needed then It'll be mentioned in the wiki with its config.
+It would be nice if NvChad focuses on existing plugins and config before adding new things. Some plugins like whichkey, telescope and treesitter still have basic configs! Also adding new features that'd make NvChad slow or its startup time slow wouldn't be encouraged. If that feature is really needed then it'll be mentioned in the wiki with its config.
 
 - Debloat the config.
-- Make NvChad more faster (reduce startuptime too).
+- Make NvChad more faster (reduce startup time too).
 - Add another section in the wiki explaining the whole config (must be helpful for newbies).
 - Add more themes.
 - Preview shortcuts in the form of a pretty [cheatsheet](https://user-images.githubusercontent.com/59060246/122490009-95fd9980-cffe-11eb-9676-78019aa2cd65.png).
