@@ -14,7 +14,7 @@ M.ui = {
 
    -- Enable this only if your terminal has the colorscheme set which nvchad uses
    -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
-   transparency = true,
+   transparency = false,
 
    hidden_statusline = {
       -- these are filetypes, not pattern matched
