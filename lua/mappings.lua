@@ -41,7 +41,6 @@ map("n", miscMap.copywhole_file, ":%y+<CR>", opt)
 -- toggle numbers
 map("n", miscMap.toggle_linenr, ":set nu!<CR>", opt)
 
-
 -- terminals
 local function terms()
    local m = user_map.terms
@@ -50,7 +49,7 @@ local function terms()
    map("t", m.esc_termmode, "<C-\\><C-n>", opt)
    -- hide a term from within terminal mode
    map("t", m.esc_hide_termmode, "<C-\\><C-n> :lua require('utils').close_buffer() <CR>", opt)
-  -- pick a hidden term 
+   -- pick a hidden term
    map("n", m.pick_term, ":Telescope terms <CR>", opt)
 
    -- Open terminals
