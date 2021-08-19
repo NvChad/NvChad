@@ -87,7 +87,7 @@ Lua fork of vim devicons which lets me change icons of filetypes
 
 ### Nvim-treesitter
 
-Better syntax highlighting for programming languages ( my config just has html,css,js support for now ).
+Better syntax highlighting for programming languages ( NvChad by default comes with lua/bash treesitter parsers ).
 
 without / with Treesitter :
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/woTree.png"></kbd>
