@@ -13,6 +13,11 @@ icons.setup {
          color = colors.baby_pink,
          name = "html",
       },
+      c = {
+         icon = "",
+         color = colors.blue,
+         name = "c",
+      },
       css = {
          icon = "",
          color = colors.blue,
