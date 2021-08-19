@@ -1,11 +1,11 @@
 <h1 align="center">NvChad</h1> 
 
 <div align="center">
-	<a href="https://github.com/siduck76/NvChad/wiki#clone-my-setup">Home</a>
+	<a href="https://nvchad.netlify.app/">Home</a>
   <span> • </span>
-    	<a href="https://github.com/siduck76/NvChad/wiki#clone-my-setup">Install</a>
+    	<a href="https://nvchad.netlify.app/docs/Getting%20started/Setup">Install</a>
   <span> • </span>
-       	<a href="https://github.com/siduck76/NvChad#contribute">Contribute</a>
+       	<a href="https://nvchad.netlify.app/docs/Contribute">Contribute</a>
   <span> • </span>
 	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
@@ -123,18 +123,6 @@ without / with Treesitter :
 - Code formatting / prettifying
 - gitsigns for git diffs
 
-# Requirements
-
-- neovim 0.5
-- A terminal that supports [nerdfonts](https://github.com/ryanoasis/nerd-fonts)
-- Set terminal's inner padding to 0.
-
-# Wiki
-
-- [pre-requisite](https://github.com/siduck76/NvChad/wiki/Lua-guides)
-- [config-structure](https://github.com/siduck76/NvChad/wiki#config-structure)
-- [mappings](https://github.com/siduck76/NvChad/wiki/mappings)
-
 # Bloat
 
 -  To all those who think this is probably bloated , sure it is . Bloat means different to everyone . NvChad has like 30 ~ plugins but that doesnt mean those plugins are compromsing neovim's speed, snappiness or making it slow. No matter how many plugins I'd add on nvchad , it wouldnt compromise speed / snappiness / make it slow or whatever since it uses packer.nvim as plugin manager , packer.nvim lets you lazy load plugins i.e loading plugins on certain events , mappings , sequentially loading them etc so loading them only when needed , I have lazy loaded all the plugins so most plugins arent loaded by default , hence not affecting neovim's startup/launch time.
@@ -151,13 +139,6 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
 - Add more themes.
 - Preview shortcuts in the form of a pretty [cheatsheet](https://user-images.githubusercontent.com/59060246/122490009-95fd9980-cffe-11eb-9676-78019aa2cd65.png).
 - Add a user config so it doesnt get hard to update :c
-
-# Contribute
-
-- PR's are always welcomed however NvChad aims to be less bloated. So PR's regarding existing plugin's enhancement and creating new features with existing plugins itself ( without adding a new plugin), bug fixes and corrections are more encouraged.
-- PR's regarding adding new plugins and their configs must be given some thought since NvChad is meant to be used as a "base" neovim config so it will have only a set of important plugins. So adding more and more opiniated plugins, making NvChad's config large unnecessarily + slow wont help!.
-- NvChad wont keep adding more and more features (like adding new plugins most likely) as requested if they feel unneeded and arent usable by the majority, no spoonfeeding!! If you think the plugin you want to be added is very useful and many NvChaders would find it useful, then such feature's PR is welcomed!
-- But adding specific features like adding config for https://github.com/wakatime/vim-wakatime etc will be added in this https://github.com/NvChad/NvChad/wiki/Chad-user-configs. This lets the user select the things only they want ( adding configs from extra configs ) .
 
 # Chad contributors 
 
