@@ -45,17 +45,25 @@
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
 
+
+# Some theme showcases :D
+
+![onedark](https://user-images.githubusercontent.com/59060246/130129880-59ab1ad5-9aa6-4f50-9ddd-d8dde0c16257.png)
+![nord](https://user-images.githubusercontent.com/59060246/130129890-c01117df-ac3d-40dd-b95d-2681c2461bb4.png)
+![gruvchad](https://user-images.githubusercontent.com/59060246/130129897-a68b1585-f42d-4325-8482-102dd2fe1e9e.png)
+![everforest](https://user-images.githubusercontent.com/59060246/130129901-5e582f3e-b776-4d0c-9790-be5ae738b5a8.png)
+
 # Very Very Useful lua plugins used in my config
 
 #### Lspkind-nvim
 
-This tiny plugin adds vscode-like pictograms to neovim built-in lsp completion items :
+This tiny plugin adds vscode-like pictograms to neovim built-in lsp completion items:
 
 <kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/lspkind.png"></kbd><hr>
 
 #### Nvim-tree.lua
 
-fast file tree :
+fast file tree:
 
 <kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
 
@@ -67,7 +75,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 ### Indent-blankline.nvim
 
-adds indentline :
+adds indentline:
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/blanklineNvim.png"></kbd>
 
 ### Galaxyline
@@ -82,19 +90,20 @@ As a top tabline like thing which lets me handle tabs and buffers like switching
 
 ### Nvim-web-devicons
 
-Lua fork of vim devicons which lets me change icons of filetypes
+Lua fork of vim devicons which lets me change icons of filetypes:
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/image.png"></kbd>
 
 ### Nvim-treesitter
 
 Better syntax highlighting for programming languages ( NvChad by default comes with lua/bash treesitter parsers ).
 
-without / with Treesitter :
+without / with Treesitter:
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/woTree.png"></kbd>
 
 # Credits
 
-[Elianiva](https://github.com/elianiva) helped me with neovim lua related issues many times, NvChad wouldnt exist without his help at all!
+- [Elianiva](https://github.com/elianiva) helped me with neovim lua related issues many times, NvChad wouldnt exist without his help at all!
+- @lorvethe for making NvChad logo!
 
 # Features
 
@@ -102,47 +111,44 @@ without / with Treesitter :
 - Using plugins that are mouse friendly
 - Beautiful inbuilt themes
 - lazy loading 100% of plugins
-- managing tabs , buffers with bufferline
+- managing tabs, buffers with bufferline
 - autosave
-- icons on nvimtree , telescope , bufferline/statusline and almost everywhere! with nvim-web-devicons
-- minimal status line ( galaxyline)
+- icons on nvimtree, telescope, bufferline/statusline and almost everywhere! with nvim-web-devicons
+- minimal status line (galaxyline)
 - gitsigns (colored bars for git in my config)
 - nvim-lspconfig for nvim-lsp configuration
 - lspInstall for installing lsp servers easily
 - nvim-compe for autocompletion
 - lspkind to show pictograms on autocompletion items
-- telescope for file finding , picking , previewing (files and even images)
+- telescope for file finding, picking, previewing (files and even images)
 - nvim-treesitter for syntax highlighting
 - nvim-autopairs for autolosing braces and stuffs
-- neoformat for prettifying / formatting code
+- neoformat for prettifying/formatting code
 - packer.nvim as package manager
 - indent-blankline.Nvim for indentlines
 - smooth scrolling
 - luasnip for snippet plugin and snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
-- Distraction free modes ( modes in which statusline , tabline etc stuff get disabled so its just the text visible in the buffer similar to goyo.vim)
-- Code formatting / prettifying
+- Distraction free modes (modes in which statusline, tabline etc. stuff get disabled so its just the text visible in the buffer similar to goyo.vim)
+- Code formatting/prettifying
 - gitsigns for git diffs
 
 # Bloat
-
--  To all those who think this is probably bloated , sure it is . Bloat means different to everyone . NvChad has like 30 ~ plugins but that doesnt mean those plugins are compromsing neovim's speed, snappiness or making it slow. No matter how many plugins I'd add on nvchad , it wouldnt compromise speed / snappiness / make it slow or whatever since it uses packer.nvim as plugin manager , packer.nvim lets you lazy load plugins i.e loading plugins on certain events , mappings , sequentially loading them etc so loading them only when needed , I have lazy loaded all the plugins so most plugins arent loaded by default , hence not affecting neovim's startup/launch time.
+	
+-  To all those who think this is probably bloated, sure it is. Bloat means different to everyone. NvChad has like 30 ~ plugins but that doesn't mean those plugins are compromising neovim's speed, snappiness, or making it slow. No matter how many plugins I'd add on NvChad, it wouldn't compromise speed/snappiness/make it slow or whatever since it uses packer.nvim as plugin manager. packer.nvim lets you lazy load plugins i.e. loading plugins on certain events, mappings, sequentially loading them, etc, thus loading them only when needed. I have lazy loaded all the plugins so most plugins aren't loaded by default, hence not affecting neovim's startup/launch time.
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
 # TODO
 
-It would be nice if NvChad focuses on existing plugins and config before adding new things , some plugins like whichkey , telescope , treesitter still have basic configs! Also adding new features that'd make NvChad slow or its startuptime slow wouldnt be encouraged , if that feature's really needed then It'll be mentioned in the wiki with its config.
+It would be nice if NvChad focuses on existing plugins and config before adding new things. Some plugins like whichkey, telescope and treesitter still have basic configs! Also adding new features that'd make NvChad slow or its startup time slow wouldn't be encouraged. If that feature is really needed then it'll be mentioned in the wiki with its config.
 
 - Debloat the config.
-- Make NvChad more faster (reduce startuptime too).
-- Add another section in the wiki explaining the whole config (must be helpful for newbies).
+- Make NvChad more and more faster (reduce startup time as low as possible).
 - Add more themes.
-- Preview shortcuts in the form of a pretty [cheatsheet](https://user-images.githubusercontent.com/59060246/122490009-95fd9980-cffe-11eb-9676-78019aa2cd65.png).
-- Add a user config so it doesnt get hard to update :c
 
 # Chad contributors 
 
-<a href = "https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
+<a href = "https://github.com/NvChad/NvChad/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=siduck76/NvChad"/>
 </a>
 
