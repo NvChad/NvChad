@@ -94,7 +94,8 @@ without / with Treesitter:
 
 # Credits
 
-[Elianiva](https://github.com/elianiva) helped me with neovim lua related issues many times, NvChad wouldnt exist without his help at all!
+- [Elianiva](https://github.com/elianiva) helped me with neovim lua related issues many times, NvChad wouldnt exist without his help at all!
+- @lorvethe for making NvChad logo!
 
 # Features
 
