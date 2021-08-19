@@ -102,25 +102,25 @@ without / with Treesitter :
 - Using plugins that are mouse friendly
 - Beautiful inbuilt themes
 - lazy loading 100% of plugins
-- managing tabs , buffers with bufferline
+- managing tabs, buffers with bufferline
 - autosave
-- icons on nvimtree , telescope , bufferline/statusline and almost everywhere! with nvim-web-devicons
-- minimal status line ( galaxyline)
+- icons on nvimtree, telescope, bufferline/statusline and almost everywhere! with nvim-web-devicons
+- minimal status line (galaxyline)
 - gitsigns (colored bars for git in my config)
 - nvim-lspconfig for nvim-lsp configuration
 - lspInstall for installing lsp servers easily
 - nvim-compe for autocompletion
 - lspkind to show pictograms on autocompletion items
-- telescope for file finding , picking , previewing (files and even images)
+- telescope for file finding, picking, previewing (files and even images)
 - nvim-treesitter for syntax highlighting
 - nvim-autopairs for autolosing braces and stuffs
-- neoformat for prettifying / formatting code
+- neoformat for prettifying/formatting code
 - packer.nvim as package manager
 - indent-blankline.Nvim for indentlines
 - smooth scrolling
 - luasnip for snippet plugin and snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
-- Distraction free modes ( modes in which statusline , tabline etc stuff get disabled so its just the text visible in the buffer similar to goyo.vim)
-- Code formatting / prettifying
+- Distraction free modes (modes in which statusline, tabline etc. stuff get disabled so its just the text visible in the buffer similar to goyo.vim)
+- Code formatting/prettifying
 - gitsigns for git diffs
 
 # Bloat
