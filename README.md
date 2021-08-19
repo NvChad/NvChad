@@ -142,7 +142,7 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
 
 # Chad contributors 
 
-<a href = "https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
+<a href = "https://github.com/NvChad/NvChad/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=siduck76/NvChad"/>
 </a>
 
