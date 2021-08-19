@@ -10,7 +10,8 @@ M.change_theme = function(current_theme, new_theme)
       return
    end
 
-   local file = vim.fn.stdpath "config" .. "/lua/chadrc.lua"
+   local user_config = vim.g.nvchad_user_config
+   local file = vim.fn.stdpath "config" .. "/lua/" .. user_config .. ".lua"
    -- store in data variable
    local data = assert(M.file("r", file))
    -- escape characters which can be parsed as magic chars
@@ -193,6 +194,89 @@ M.list_themes = function(return_type)
       end
    end
    return themes
+end
+
+-- Base code: https://gist.github.com/revolucas/184aec7998a6be5d2f61b984fac1d7f7
+-- Changes over it: preserving table 1 contents and also update with table b, without duplicating
+-- 1st arg - base table, 2nd arg - table to merge
+M.merge_table = function(into, from)
+   -- make sure both are table
+   if type(into) ~= "table" or type(from) ~= "table" then
+      return 1
+   end
+   local stack, seen = {}, {}
+   local table1, table2 = into, from
+   while true do
+      for k, v in pairs(table2) do
+         if type(v) == "table" and type(table1[k]) == "table" then
+            table.insert(stack, { table1[k], table2[k] })
+         else
+            local present = seen[v] or false
+            if not present then
+               -- add the value to seen table until value is found
+               for _, value in pairs(table1) do
+                  seen[value] = true
+                  if value == v then
+                     present = true
+                     break
+                  end
+               end
+            end
+            seen[v] = true
+            if not present then
+               -- if type is number, then it is a sub table value, so append
+               if type(k) == "number" then
+                  table1[#table1 + 1] = v
+               else
+                  table1[k] = v
+               end
+            end
+         end
+      end
+      if #stack > 0 then
+         local t = stack[#stack]
+         table1, table2 = t[1], t[2]
+         stack[#stack] = nil
+      else
+         break
+      end
+   end
+   return into
+end
+
+-- load config
+-- 1st arg = boolean - whether to force reload
+-- Modifies _G._NVCHAD_CONFIG global variable
+M.load_config = function(reload)
+   -- only do the stuff below one time, otherwise just return the set config
+   if _G._NVCHAD_CONFIG_CONTENTS ~= nil and not (reload or false) then
+      return _G._NVCHAD_CONFIG_CONTENTS
+   end
+
+   -- don't enclose in pcall, it better break when default config is faulty
+   _G._NVCHAD_CONFIG_CONTENTS = require "default_config"
+
+   -- user config is not required to run nvchad but a optional
+   -- Make sure the config doesn't break the whole system if user config is not present or in bad state or not a table
+   -- print warning texts if user config file is  present
+   local config_name = vim.g.nvchad_user_config or "chadrc"
+   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
+   -- check if the user config is present
+   if vim.fn.empty(vim.fn.glob(config_file)) < 1 then
+      local present, config = pcall(require, config_name)
+      if present then
+         -- make sure the returned value is table
+         if type(config) == "table" then
+            -- data = require(config_name)
+            _G._NVCHAD_CONFIG_CONTENTS = require("utils").merge_table(_G._NVCHAD_CONFIG_CONTENTS, config)
+         else
+            print("Warning: " .. config_name .. " sourced successfully but did not return a lua table.")
+         end
+      else
+         print("Warning: " .. config_file .. " is present but sourcing failed.")
+      end
+   end
+   return _G._NVCHAD_CONFIG_CONTENTS
 end
 
 -- reload a plugin ( will try to load even if not loaded)
