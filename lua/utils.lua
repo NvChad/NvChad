@@ -10,8 +10,7 @@ M.change_theme = function(current_theme, new_theme)
       return
    end
 
-   local user_config = vim.g.nvchad_user_config
-   local file = vim.fn.stdpath "config" .. "/lua/" .. user_config .. ".lua"
+   local file = vim.fn.stdpath "config" .. "/lua/chadrc.lua"
    -- store in data variable
    local data = assert(M.file("r", file))
    -- escape characters which can be parsed as magic chars
@@ -37,39 +36,39 @@ end
 
 M.close_buffer = function(bufexpr, force)
    -- This is a modification of a NeoVim plugin from
-   -- Author: ojroques - Olivier Roques
+   -- Author: ojroques - Olivier Roques 
    -- Src: https://github.com/ojroques/nvim-bufdel
    -- (Author has okayed copy-paste)
 
    -- Options
    local opts = {
-      next = "cycle", -- how to retrieve the next buffer
-      quit = false, -- exit when last buffer is deleted
+      next = 'cycle',  -- how to retrieve the next buffer
+      quit = false,     -- exit when last buffer is deleted
       --TODO make this a chadrc flag/option
    }
 
    -- ----------------
    -- Helper functions
    -- ----------------
-
+   
    -- Switch to buffer 'buf' on each window from list 'windows'
    local function switch_buffer(windows, buf)
       local cur_win = vim.fn.winnr()
       for _, winid in ipairs(windows) do
-         vim.cmd(string.format("%d wincmd w", vim.fn.win_id2win(winid)))
-         vim.cmd(string.format("buffer %d", buf))
+         vim.cmd(string.format('%d wincmd w', vim.fn.win_id2win(winid)))
+         vim.cmd(string.format('buffer %d', buf))
       end
-      vim.cmd(string.format("%d wincmd w", cur_win)) -- return to original window
+      vim.cmd(string.format('%d wincmd w', cur_win))  -- return to original window
    end
-
+   
    -- Select the first buffer with a number greater than given buffer
    local function get_next_buf(buf)
-      local next = vim.fn.bufnr "#"
-      if opts.next == "alternate" and vim.fn.buflisted(next) == 1 then
+      local next = vim.fn.bufnr('#')
+      if opts.next == 'alternate' and vim.fn.buflisted(next) == 1 then
          return next
       end
-      for i = 0, vim.fn.bufnr "$" - 1 do
-         next = (buf + i) % vim.fn.bufnr "$" + 1 -- will loop back to 1
+      for i = 0, vim.fn.bufnr('$') - 1 do
+         next = (buf + i) % vim.fn.bufnr('$') + 1  -- will loop back to 1
          if vim.fn.buflisted(next) == 1 then
             return next
          end
@@ -79,83 +78,73 @@ M.close_buffer = function(bufexpr, force)
    -- ----------------
    -- End helper functions
    -- ----------------
-
+   
    local buf = vim.fn.bufnr()
-   if vim.fn.buflisted(buf) == 0 then -- exit if buffer number is invalid
+   if vim.fn.buflisted(buf) == 0 then  -- exit if buffer number is invalid
       return
    end
-
-   if #vim.fn.getbufinfo { buflisted = 1 } < 2 then
+   
+   if #vim.fn.getbufinfo({buflisted = 1}) < 2 then
       if opts.quit then
          -- exit when there is only one buffer left
          if force then
-            vim.cmd "qall!"
+            vim.cmd('qall!')
          else
-            vim.cmd "confirm qall"
+            vim.cmd('confirm qall')
          end
          return
       end
-
+      
       local chad_term, type = pcall(function()
          return vim.api.nvim_buf_get_var(buf, "term_type")
-      end)
-
+         end)
+         
       if chad_term then
          -- Must be a window type
-         vim.cmd(string.format("setlocal nobl", buf))
-         vim.cmd "enew"
+         vim.cmd(string.format('setlocal nobl', buf))
+         vim.cmd('enew')
          return
       end
       -- don't exit and create a new empty buffer
-      vim.cmd "enew"
-      vim.cmd "bp"
+      vim.cmd('enew')
+      vim.cmd('bp')
    end
-
+   
    local next_buf = get_next_buf(buf)
    local windows = vim.fn.getbufinfo(buf)[1].windows
-
+   
    -- force deletion of terminal buffers to avoid the prompt
-   if force or vim.fn.getbufvar(buf, "&buftype") == "terminal" then
+   if force or vim.fn.getbufvar(buf, '&buftype') == 'terminal' then
       local chad_term, type = pcall(function()
          return vim.api.nvim_buf_get_var(buf, "term_type")
-      end)
-
+         end)
+         
       -- TODO this scope is error prone, make resilient
       if chad_term then
          if type == "wind" then
             -- hide from bufferline
-            vim.cmd(string.format("%d bufdo setlocal nobl", buf))
+            vim.cmd(string.format('%d bufdo setlocal nobl', buf))
             -- swtich to another buff
             -- TODO switch to next bufffer, this works too
-            vim.cmd "BufferLineCycleNext"
+            vim.cmd('BufferLineCycleNext')
          else
             local cur_win = vim.fn.winnr()
             -- we can close this window
-            vim.cmd(string.format("%d wincmd c", cur_win))
+            vim.cmd(string.format('%d wincmd c', cur_win))
             return
          end
       else
          switch_buffer(windows, next_buf)
-         vim.cmd(string.format("bd! %d", buf))
+         vim.cmd(string.format('bd! %d', buf))
       end
    else
       switch_buffer(windows, next_buf)
-      vim.cmd(string.format("silent! confirm bd %d", buf))
+      vim.cmd(string.format('silent! confirm bd %d', buf))
    end
    -- revert buffer switches if user has canceled deletion
    if vim.fn.buflisted(buf) == 1 then
       switch_buffer(windows, buf)
    end
-end
-
--- wrapper to use vim.api.nvim_echo
--- table of {string, highlight}
--- e.g echo({{"Hello", "Title"}, {"World"}})
-M.echo = function(opts)
-   if opts == nil or type(opts) ~= "table" then
-      return
-   end
-   vim.api.nvim_echo(opts, false, {})
 end
 
 -- 1st arg - r or w
@@ -204,89 +193,6 @@ M.list_themes = function(return_type)
       end
    end
    return themes
-end
-
--- Base code: https://gist.github.com/revolucas/184aec7998a6be5d2f61b984fac1d7f7
--- Changes over it: preserving table 1 contents and also update with table b, without duplicating
--- 1st arg - base table, 2nd arg - table to merge
-M.merge_table = function(into, from)
-   -- make sure both are table
-   if type(into) ~= "table" or type(from) ~= "table" then
-      return 1
-   end
-   local stack, seen = {}, {}
-   local table1, table2 = into, from
-   while true do
-      for k, v in pairs(table2) do
-         if type(v) == "table" and type(table1[k]) == "table" then
-            table.insert(stack, { table1[k], table2[k] })
-         else
-            local present = seen[v] or false
-            if not present then
-               -- add the value to seen table until value is found
-               for _, value in pairs(table1) do
-                  seen[value] = true
-                  if value == v then
-                     present = true
-                     break
-                  end
-               end
-            end
-            seen[v] = true
-            if not present then
-               -- if type is number, then it is a sub table value, so append
-               if type(k) == "number" then
-                  table1[#table1 + 1] = v
-               else
-                  table1[k] = v
-               end
-            end
-         end
-      end
-      if #stack > 0 then
-         local t = stack[#stack]
-         table1, table2 = t[1], t[2]
-         stack[#stack] = nil
-      else
-         break
-      end
-   end
-   return into
-end
-
--- load config
--- 1st arg = boolean - whether to force reload
--- Modifies _G._NVCHAD_CONFIG global variable
-M.load_config = function(reload)
-   -- only do the stuff below one time, otherwise just return the set config
-   if _G._NVCHAD_CONFIG_CONTENTS ~= nil and not (reload or false) then
-      return _G._NVCHAD_CONFIG_CONTENTS
-   end
-
-   -- don't enclose in pcall, it better break when default config is faulty
-   _G._NVCHAD_CONFIG_CONTENTS = require "default_config"
-
-   -- user config is not required to run nvchad but a optional
-   -- Make sure the config doesn't break the whole system if user config is not present or in bad state or not a table
-   -- print warning texts if user config file is  present
-   local config_name = vim.g.nvchad_user_config or "chadrc"
-   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
-   -- check if the user config is present
-   if vim.fn.empty(vim.fn.glob(config_file)) < 1 then
-      local present, config = pcall(require, config_name)
-      if present then
-         -- make sure the returned value is table
-         if type(config) == "table" then
-            -- data = require(config_name)
-            _G._NVCHAD_CONFIG_CONTENTS = require("utils").merge_table(_G._NVCHAD_CONFIG_CONTENTS, config)
-         else
-            print("Warning: " .. config_name .. " sourced successfully but did not return a lua table.")
-         end
-      else
-         print("Warning: " .. config_file .. " is present but sourcing failed.")
-      end
-   end
-   return _G._NVCHAD_CONFIG_CONTENTS
 end
 
 -- reload a plugin ( will try to load even if not loaded)
@@ -407,88 +313,6 @@ M.toggle_theme = function(themes)
          end
       end
    end
-end
-
--- update nvchad
-M.update_nvchad = function()
-   -- in all the comments below, config means user config
-   local config_path = vim.fn.stdpath "config"
-   local config_name = vim.g.nvchad_user_config or "chadrc"
-   local config_file = config_path .. "/lua/" .. config_name .. ".lua"
-   -- generate a random file name
-   local config_file_backup = config_path .. "/" .. config_name .. ".lua.bak." .. math.random()
-   local utils = require "utils"
-   local echo = utils.echo
-   local current_config = utils.load_config()
-   local update_url = current_config.options.update_url or "https://github.com/NvChad/NvChad"
-   local update_branch = current_config.options.update_branch or "main"
-
-   -- ask the user for confirmation to update because we are going to run git reset --hard
-   echo { { "Url: ", "Title" }, { update_url } }
-   echo { { "Branch: ", "Title" }, { update_branch } }
-   echo {
-      { "\nUpdater will run", "WarningMsg" },
-      { " git reset --hard " },
-      {
-         "in config folder, so changes to existing repo files except ",
-         "WarningMsg",
-      },
-
-      { config_name },
-      { " will be lost!\n\nUpdate NvChad ? [y/N]", "WarningMsg" },
-   }
-
-   local ans = string.lower(vim.fn.input "-> ") == "y"
-   utils.clear_cmdline()
-   if not ans then
-      echo { { "Update cancelled!", "Title" } }
-      return
-   end
-
-   -- first try to fetch contents of config, this will make sure it is readable and taking backup of its contents
-   local config_contents = utils.file("r", config_file)
-   -- also make a local backup in ~/.config/nvim, will be removed when config is succesfully restored
-   utils.file("w", config_file_backup, config_contents)
-   -- write original config file with its contents, will make sure charc is writable, this maybe overkill but a little precaution always helps
-   utils.file("w", config_file, config_contents)
-
-   -- function that will executed when git commands are done
-   local function update_exit(_, code)
-      -- restore config file irrespective of whether git commands were succesfull or not
-      if pcall(function()
-         utils.file("w", config_file, config_contents)
-      end) then
-         -- config restored succesfully, remove backup file that was created
-         if not pcall(os.remove, config_file_backup) then
-            echo { { "Warning: Failed to remove backup chadrc, remove manually.", "WarningMsg" } }
-            echo { { "Path: ", "WarningMsg" }, { config_file_backup } }
-         end
-      else
-         echo { { "Error: Restoring " .. config_name .. " failed.\n", "ErrorMsg" } }
-         echo { { "Backed up " .. config_name .. " path: " .. config_file_backup .. "\n\n", "None" } }
-      end
-
-      -- close the terminal buffer only if update was success, as in case of error, we need the error message
-      if code == 0 then
-         vim.cmd "bd!"
-         echo { { "NvChad succesfully updated.\n", "String" } }
-      else
-         echo { { "Error: NvChad Update failed.\n", "ErrorMsg" } }
-      end
-   end
-
-   -- git commands that will executed, reset in case config was modfied
-   -- use --ff-only to not mess up if the local repo is outdated
-   local update_script = [[git reset --hard && git pull --set-upstream https://github.com/NvChad/NvChad main --ff-only]]
-
-   -- open a new buffer
-   vim.cmd "new"
-   -- finally open the pseudo terminal buffer
-   vim.fn.termopen(update_script, {
-      -- change dir to config path so we don't need to move in script
-      cwd = config_path,
-      on_exit = update_exit,
-   })
 end
 
 return M

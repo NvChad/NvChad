@@ -13,7 +13,7 @@ M.ui = {
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
-      -- "terminal",
+      -- "terminal", 
    },
 }
 
@@ -28,7 +28,7 @@ M.options = {
    timeoutlen = 400,
    clipboard = "unnamedplus",
    number = true,
-   -- relative numbers in normal mode tool at the bottom of options.lua
+   -- relative numbers in normal mode tool at the bottom of options.lua  
    relativenumber = false,
    numberwidth = 2,
    expandtab = true,
@@ -37,9 +37,6 @@ M.options = {
    mapleader = " ",
    autosave = false,
    enable_insertNav = true, -- navigation in insertmode
-   -- used for updater
-   update_url = "https://github.com/NvChad/NvChad",
-   update_branch = "main",
 }
 
 -- enable and disable plugins (false for disable)
@@ -143,8 +140,9 @@ M.mappings = {
       copywhole_file = "<C-a>",
       toggle_linenr = "<leader>n", -- show or hide line number
       theme_toggle = "<leader>x",
-      update_nvchad = "<leader>uu",
    },
 }
+
+M = vim.tbl_deep_extend("force", require "default_config", M)
 
 return M

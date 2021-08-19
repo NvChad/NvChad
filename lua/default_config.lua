@@ -37,9 +37,6 @@ M.options = {
    mapleader = " ",
    autosave = false,
    enable_insertNav = true, -- navigation in insertmode
-   -- used for updater
-   update_url = "https://github.com/NvChad/NvChad",
-   update_branch = "main",
 }
 
 -- enable and disable plugins (false for disable)
@@ -143,7 +140,6 @@ M.mappings = {
       copywhole_file = "<C-a>",
       toggle_linenr = "<leader>n", -- show or hide line number
       theme_toggle = "<leader>x",
-      update_nvchad = "<leader>uu",
    },
 }
 

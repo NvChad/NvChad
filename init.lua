@@ -4,9 +4,5 @@ local chad_modules = {
 }
 
 for i = 1, #chad_modules, 1 do
-   if not pcall(require, chad_modules[i]) then
-      error("Error loading " .. chad_modules[i] .. "\n")
-   end
+   pcall(require, chad_modules[i])
 end
-
-require("mappings").misc()

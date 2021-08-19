@@ -4,7 +4,7 @@ if not present then
    return
 end
 
-local mappings = require("utils").load_config().mappings
+local mappings = require("chadrc").mappings
 
 -- add user mappings to the cheetsheet
 for section, data in pairs(mappings) do

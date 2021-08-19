@@ -38,8 +38,8 @@ telescope.setup {
       file_ignore_patterns = {},
       generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
       path_display = function(opts, path)
-         local tail = require("telescope.utils").path_tail(path)
-         return string.format("%s (%s)", tail, path)
+        local tail = require("telescope.utils").path_tail(path)
+        return string.format("%s (%s)", tail, path)
       end,
       winblend = 0,
       border = {},
