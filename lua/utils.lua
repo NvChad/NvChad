@@ -212,7 +212,7 @@ end
 M.merge_table = function(into, from)
    -- make sure both are table
    if type(into) ~= "table" or type(from) ~= "table" then
-      return 1
+      return into
    end
    local stack, seen = {}, {}
    local table1, table2 = into, from
@@ -223,20 +223,21 @@ M.merge_table = function(into, from)
          else
             local present = seen[v] or false
             if not present then
-               -- add the value to seen table until value is found
-               -- todo: maybe improve this
-               for _, value in pairs(table1) do
-                  if value == v then
-                     present = true
-                     break
-                  end
-               end
-            end
-            seen[v] = true
-            if not present then
-               -- if type is number, then it is a sub table value, so append
                if type(k) == "number" then
-                  table1[#table1 + 1] = v
+                  -- add the value to seen table until value is found
+                  -- only do when key is number we just want to append to subtables
+                  -- todo: maybe improve this
+
+                  for _, value in pairs(table1) do
+                     if value == v then
+                        present = true
+                        break
+                     end
+                  end
+                  seen[v] = true
+                  if not present then
+                     table1[#table1 + 1] = v
+                  end
                else
                   table1[k] = v
                end
