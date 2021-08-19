@@ -149,13 +149,13 @@ M.close_buffer = function(bufexpr, force)
 end
 
 -- wrapper to use vim.api.nvim_echo
--- 1st arg - text - required
--- 2nd arg - highlight group - if not present then use None
-M.echo = function(text, group)
-   if text == nil then
+-- table of {string, highlight}
+-- e.g echo({{"Hello", "Title"}, {"World"}})
+M.echo = function(opts)
+   if opts == nil or type(opts) ~= "table" then
       return
    end
-   vim.api.nvim_echo({ { text, group or "None" } }, false, {})
+   vim.api.nvim_echo(opts, false, {})
 end
 
 -- 1st arg - r or w
@@ -419,18 +419,29 @@ M.update_nvchad = function()
    local config_file_backup = config_path .. "/" .. config_name .. ".lua.bak." .. math.random()
    local utils = require "utils"
    local echo = utils.echo
+   local current_config = utils.load_config()
+   local update_url = current_config.options.update_url or "https://github.com/NvChad/NvChad"
+   local update_branch = current_config.options.update_branch or "main"
 
    -- ask the user for confirmation to update because we are going to run git reset --hard
-   echo(
-      "Updater will run git reset --hard in config folder, so changes to existing repo files except "
-         .. config_name
-         .. " will be lost!\nUpdate NvChad ? [y/N]",
-      "WarningMsg"
-   )
+   echo { { "Url: ", "Title" }, { update_url } }
+   echo { { "Branch: ", "Title" }, { update_branch } }
+   echo {
+      { "\nUpdater will run", "WarningMsg" },
+      { " git reset --hard " },
+      {
+         "in config folder, so changes to existing repo files except ",
+         "WarningMsg",
+      },
+
+      { config_name },
+      { " will be lost!\n\nUpdate NvChad ? [y/N]", "WarningMsg" },
+   }
+
    local ans = string.lower(vim.fn.input "-> ") == "y"
    utils.clear_cmdline()
    if not ans then
-      echo("Update cancelled!", "Title")
+      echo { { "Update cancelled!", "Title" } }
       return
    end
 
@@ -449,20 +460,20 @@ M.update_nvchad = function()
       end) then
          -- config restored succesfully, remove backup file that was created
          if not pcall(os.remove, config_file_backup) then
-            echo("Warning: Failed to remove backup chadrc, remove manually.", "WarningMsg")
-            echo("Path: " .. config_file_backup, "WarningMsg")
+            echo { { "Warning: Failed to remove backup chadrc, remove manually.", "WarningMsg" } }
+            echo { { "Path: ", "WarningMsg" }, { config_file_backup } }
          end
       else
-         echo("Error: Restoring " .. config_name .. " failed.\n", "ErrorMsg")
-         echo("Backed up " .. config_name .. " path: " .. config_file_backup .. "\n\n", "None")
+         echo { { "Error: Restoring " .. config_name .. " failed.\n", "ErrorMsg" } }
+         echo { { "Backed up " .. config_name .. " path: " .. config_file_backup .. "\n\n", "None" } }
       end
 
       -- close the terminal buffer only if update was success, as in case of error, we need the error message
       if code == 0 then
          vim.cmd "bd!"
-         echo("NvChad succesfully updated.\n", "String")
+         echo { { "NvChad succesfully updated.\n", "String" } }
       else
-         echo("Error: NvChad Update failed.\n", "ErrorMsg")
+         echo { { "Error: NvChad Update failed.\n", "ErrorMsg" } }
       end
    end
 
