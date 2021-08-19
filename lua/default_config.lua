@@ -118,6 +118,7 @@ M.mappings = {
    bufferline = {
       new_buffer = "<S-t>",
       newtab = "<C-t>b",
+      close = "<S-x>", -- close a buffer with custom func in utils.lua
       cycleNext = "<TAB>", -- next buffer
       cyclePrev = "<S-Tab>", -- previous buffer
    },
@@ -127,13 +128,14 @@ M.mappings = {
       diffget_3 = "<leader>gl",
       git_blame = "<leader>gb",
    },
-   toggleterm = {
-      toggle_window = "<leader>w",
-      toggle_vert = "<leader>v",
-      toggle_hori = "<leader>h",
-      hide_term = "JK",
-   },
-   -- navigation in insert mode
+   terms = { -- below are NvChad mappings, not plugin mappings
+      esc_termmode = "jk",
+      esc_hide_termmode = "JK",
+      pick_term = "<leader>W", -- note: this is a telescope extension
+      new_wind = "<leader>w",
+      new_vert = "<leader>v",
+      new_hori = "<leader>h",
+   }, -- navigation in insert mode
    insert_nav = {
       forward = "<C-l>",
       backward = "<C-h>",
