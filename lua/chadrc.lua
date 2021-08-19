@@ -144,6 +144,4 @@ M.mappings = {
    },
 }
 
-M = vim.tbl_deep_extend("force", require "default_config", M)
-
 return M

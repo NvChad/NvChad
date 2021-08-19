@@ -1,4 +1,4 @@
-local user_map = require("chadrc").mappings
+local user_map = require("utils").load_config().mappings
 local miscMap = user_map.misc
 
 local cmd = vim.cmd
@@ -65,7 +65,7 @@ M.misc = function()
    map("n", "<Esc>", ":noh<CR>", opt)
 
    -- navigation within insert mode
-   local check_insertNav = require("chadrc").options.enable_insertNav
+   local check_insertNav = require("utils").load_config().options.enable_insertNav
 
    if check_insertNav == true then
       local m = user_map.insert_nav
@@ -79,11 +79,11 @@ M.misc = function()
    end
 
    -- check the theme toggler
-   local theme_toggler = require("chadrc").ui.theme_toggler
+   local theme_toggler = require("utils").load_config().ui.theme_toggler
    if theme_toggler == true then
       local m = user_map.misc.theme_toggle
 
-      map("n", m, ":lua require('utils').toggle_theme(require('chadrc').ui.fav_themes)<CR>", opt)
+      map("n", m, ":lua require('utils').toggle_theme(require('utils').load_config().ui.fav_themes)<CR>", opt)
    end
 
    -- Packer commands till because we are not loading it at startup
