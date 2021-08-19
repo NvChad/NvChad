@@ -21,7 +21,7 @@ M.ui = {
       "NvimTree",
       "terminal",
    },
-   statusline_style = "default", -- round , slant , block
+   statusline_style = "default", -- default, round , slant , block , arrow
 }
 
 M.options = {

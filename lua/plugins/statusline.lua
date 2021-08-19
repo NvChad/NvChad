@@ -30,7 +30,7 @@ local icon_styles = {
 
    slant = {
       left = " ",
-      right = "",
+      right = " ",
       main_icon = "  ",
       vi_mode_icon = " ",
       position_icon = " ",
@@ -42,6 +42,14 @@ local icon_styles = {
       main_icon = "   ",
       vi_mode_icon = "   ",
       position_icon = "  ",
+   },
+
+   arrow = {
+      left = "",
+      right = "",
+      main_icon = "  ",
+      vi_mode_icon = " ",
+      position_icon = " ",
    },
 }
 
@@ -66,12 +74,20 @@ gls.left[2] = {
          return statusline_style.main_icon
       end,
       highlight = { colors.statusline_bg, colors.nord_blue },
-      separator = right_separator .. " ",
-      separator_highlight = { colors.nord_blue, colors.lightbg },
+      separator = right_separator,
+      separator_highlight = { colors.nord_blue, colors.one_bg2 },
    },
 }
 
 gls.left[3] = {
+   left_arow2 = {
+      provider = function() end,
+      separator = right_separator .. " ",
+      separator_highlight = { colors.one_bg2, colors.lightbg },
+   },
+}
+
+gls.left[4] = {
    FileIcon = {
       provider = "FileIcon",
       condition = condition.buffer_not_empty,
@@ -79,7 +95,7 @@ gls.left[3] = {
    },
 }
 
-gls.left[4] = {
+gls.left[5] = {
    FileName = {
       provider = function()
          local fileinfo = require "galaxyline.provider_fileinfo"
@@ -92,7 +108,7 @@ gls.left[4] = {
    },
 }
 
-gls.left[5] = {
+gls.left[6] = {
    current_dir = {
       provider = function()
          local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
@@ -112,7 +128,7 @@ local checkwidth = function()
    return false
 end
 
-gls.left[6] = {
+gls.left[7] = {
    DiffAdd = {
       provider = "DiffAdd",
       condition = checkwidth,
@@ -121,7 +137,7 @@ gls.left[6] = {
    },
 }
 
-gls.left[7] = {
+gls.left[8] = {
    DiffModified = {
       provider = "DiffModified",
       condition = checkwidth,
@@ -130,7 +146,7 @@ gls.left[7] = {
    },
 }
 
-gls.left[8] = {
+gls.left[9] = {
    DiffRemove = {
       provider = "DiffRemove",
       condition = checkwidth,
@@ -139,7 +155,7 @@ gls.left[8] = {
    },
 }
 
-gls.left[9] = {
+gls.left[10] = {
    DiagnosticError = {
       provider = "DiagnosticError",
       icon = "  ",
@@ -147,7 +163,7 @@ gls.left[9] = {
    },
 }
 
-gls.left[10] = {
+gls.left[11] = {
    DiagnosticWarn = {
       provider = "DiagnosticWarn",
       icon = "  ",
@@ -214,18 +230,24 @@ local mode = function(n)
 end
 
 gls.right[4] = {
+   left_arrow = {
+      provider = function() end,
+      separator = " " .. left_separator,
+      separator_highlight = { colors.one_bg2, colors.statusline_bg },
+   },
+}
+
+gls.right[5] = {
    left_round = {
       provider = function()
          vim.cmd("hi Galaxyleft_round guifg=" .. mode(2))
          return left_separator
       end,
-      separator = " ",
-      separator_highlight = { colors.statusline_bg, colors.statusline_bg },
-      highlight = { "GalaxyViMode", colors.statusline_bg },
+      highlight = { "GalaxyViMode", colors.one_bg2 },
    },
 }
 
-gls.right[5] = {
+gls.right[6] = {
    viMode_icon = {
       provider = function()
          vim.cmd("hi GalaxyviMode_icon guibg=" .. mode(2))
@@ -235,7 +257,7 @@ gls.right[5] = {
    },
 }
 
-gls.right[6] = {
+gls.right[7] = {
    ViMode = {
       provider = function()
          vim.cmd("hi GalaxyViMode guifg=" .. mode(2))
@@ -245,18 +267,26 @@ gls.right[6] = {
    },
 }
 
-gls.right[7] = {
+gls.right[8] = {
+   left_arrow2 = {
+      provider = function() end,
+      separator = left_separator,
+      separator_highlight = { colors.grey, colors.lightbg },
+   },
+}
+
+gls.right[9] = {
    some_RoundIcon = {
       provider = function()
          return statusline_style.position_icon
       end,
       separator = left_separator,
-      separator_highlight = { colors.green, colors.lightbg },
+      separator_highlight = { colors.green, colors.grey },
       highlight = { colors.lightbg, colors.green },
    },
 }
 
-gls.right[8] = {
+gls.right[10] = {
    line_percentage = {
       provider = function()
          local current_line = vim.fn.line "."
