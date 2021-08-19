@@ -11,6 +11,7 @@ M.ui = {
       "onedark",
       "gruvchad",
    },
+   italic_comments = false,
 
    -- Enable this only if your terminal has the colorscheme set which nvchad uses
    -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal

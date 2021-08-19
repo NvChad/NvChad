@@ -41,11 +41,20 @@ fg("IndentBlanklineChar", line)
 
 -- misc --
 fg("LineNr", grey)
-fg("Comment", grey_fg)
+
+-- Comments
+local ui = require("utils").load_config().ui
+
+if ui.italic_comments then
+   cmd("hi Comment gui=italic guifg=" .. grey_fg)
+else
+   fg("Comment", grey_fg)
+end
+
 fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
---fg_bg("Visual",light_grey, colors.lightbg)
+-- fg_bg("Visual",light_grey, colors.lightbg)
 
 -- Pmenu
 bg("Pmenu", one_bg)
