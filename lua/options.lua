@@ -1,6 +1,10 @@
-local options = require("chadrc").options
 local opt = vim.opt
 local g = vim.g
+
+-- export user config as a global varibale
+g.nvchad_user_config = "chadrc"
+
+local options = require("utils").load_config().options
 
 opt.completeopt = { "menuone", "noselect" }
 opt.undofile = options.permanent_undo
@@ -27,7 +31,7 @@ opt.fillchars = { eob = " " }
 -- Numbers
 opt.number = options.number
 opt.numberwidth = options.numberwidth
-opt.relativenumber = options.relativenumber 
+opt.relativenumber = options.relativenumber
 
 -- Indenline
 opt.expandtab = options.expandtab
@@ -76,7 +80,7 @@ vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber ]]
 
 -- Don't show status line on certain windows
 vim.cmd [[ au TermOpen term://* setfiletype terminal ]]
-vim.cmd [[ let hidden_statusline = luaeval('require("chadrc").ui.hidden_statusline') | autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter,TermEnter * nested if index(hidden_statusline, &ft) >= 0 | set laststatus=0 | else | set laststatus=2 | endif ]]
+vim.cmd [[ let hidden_statusline = luaeval('require("utils").load_config().ui.hidden_statusline') | autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter,TermEnter * nested if index(hidden_statusline, &ft) >= 0 | set laststatus=0 | else | set laststatus=2 | endif ]]
 
 -- Open a file from its last left off position
 -- vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
