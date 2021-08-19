@@ -49,13 +49,13 @@
 
 #### Lspkind-nvim
 
-This tiny plugin adds vscode-like pictograms to neovim built-in lsp completion items :
+This tiny plugin adds vscode-like pictograms to neovim built-in lsp completion items:
 
 <kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/lspkind.png"></kbd><hr>
 
 #### Nvim-tree.lua
 
-fast file tree :
+fast file tree:
 
 <kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
 
@@ -67,7 +67,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 ### Indent-blankline.nvim
 
-adds indentline :
+adds indentline:
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/blanklineNvim.png"></kbd>
 
 ### Galaxyline
@@ -82,14 +82,14 @@ As a top tabline like thing which lets me handle tabs and buffers like switching
 
 ### Nvim-web-devicons
 
-Lua fork of vim devicons which lets me change icons of filetypes
+Lua fork of vim devicons which lets me change icons of filetypes:
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/image.png"></kbd>
 
 ### Nvim-treesitter
 
 Better syntax highlighting for programming languages ( NvChad by default comes with lua/bash treesitter parsers ).
 
-without / with Treesitter :
+without / with Treesitter:
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/woTree.png"></kbd>
 
 # Credits
