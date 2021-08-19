@@ -1,3 +1,6 @@
+local global_theme = "themes/" .. vim.g.nvchad_theme
+local colors = require(global_theme)
+
 local present1, gl = pcall(require, "galaxyline")
 local present2, condition = pcall(require, "galaxyline.condition")
 if not (present1 or present2) then
@@ -8,11 +11,45 @@ local gls = gl.section
 
 gl.short_line_list = { " " }
 
-local left_separator = "" -- or " "
-local right_separator = " " -- or ""
+local icon_styles = {
+   default = {
+      left = "",
+      right = " ",
+      main_icon = "  ",
+      vi_mode_icon = " ",
+      position_icon = " ",
+   },
 
-local global_theme = "themes/" .. vim.g.nvchad_theme
-local colors = require(global_theme)
+   round = {
+      left = "",
+      right = "",
+      main_icon = "  ",
+      vi_mode_icon = " ",
+      position_icon = " ",
+   },
+
+   slant = {
+      left = " ",
+      right = "",
+      main_icon = "  ",
+      vi_mode_icon = " ",
+      position_icon = " ",
+   },
+
+   block = {
+      left = " ",
+      right = " ",
+      main_icon = "   ",
+      vi_mode_icon = "   ",
+      position_icon = "  ",
+   },
+}
+
+local user_statusline_style = require("chadrc").ui.statusline_style
+local statusline_style = icon_styles[user_statusline_style]
+
+local left_separator = statusline_style.left
+local right_separator = statusline_style.right
 
 gls.left[1] = {
    FirstElement = {
@@ -26,7 +63,7 @@ gls.left[1] = {
 gls.left[2] = {
    statusIcon = {
       provider = function()
-         return "  "
+         return statusline_style.main_icon
       end,
       highlight = { colors.statusline_bg, colors.nord_blue },
       separator = right_separator .. " ",
@@ -192,7 +229,7 @@ gls.right[5] = {
    viMode_icon = {
       provider = function()
          vim.cmd("hi GalaxyviMode_icon guibg=" .. mode(2))
-         return " "
+         return statusline_style.vi_mode_icon
       end,
       highlight = { colors.statusline_bg, colors.red },
    },
@@ -211,7 +248,7 @@ gls.right[6] = {
 gls.right[7] = {
    some_RoundIcon = {
       provider = function()
-         return " "
+         return statusline_style.position_icon
       end,
       separator = left_separator,
       separator_highlight = { colors.green, colors.lightbg },

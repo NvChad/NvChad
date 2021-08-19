@@ -13,8 +13,9 @@ M.ui = {
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
-      -- "terminal",
+      "terminal",
    },
+   statusline_style = "default", -- round , slant , block
 }
 
 M.options = {
