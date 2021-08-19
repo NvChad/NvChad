@@ -37,6 +37,9 @@ M.options = {
    mapleader = " ",
    autosave = false,
    enable_insertNav = true, -- navigation in insertmode
+   -- used for updater
+   update_url = "https://github.com/NvChad/NvChad",
+   update_branch = "main",
 }
 
 -- enable and disable plugins (false for disable)
