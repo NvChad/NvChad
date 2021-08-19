@@ -487,12 +487,12 @@ M.update_nvchad = function()
    end
 
    -- git commands that will executed, reset in case config was modfied
-   -- use --ff-only to not mess up if the local repo is outdated
+   -- use --rebase, to not mess up if the local repo is outdated
    local update_script = table.concat({
       "git reset --hard && git pull --set-upstream",
       update_url,
       update_branch,
-      "--ff-only",
+      "--rebase",
    }, " ")
 
    -- open a new buffer
