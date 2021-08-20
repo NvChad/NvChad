@@ -82,6 +82,7 @@ M.close_buffer = function(bufexpr, force)
 
    local buf = vim.fn.bufnr()
    if vim.fn.buflisted(buf) == 0 then -- exit if buffer number is invalid
+      vim.cmd "close"
       return
    end
 
