@@ -161,10 +161,6 @@ return packer.startup(function()
       "nvim-lua/plenary.nvim",
       after = "nvim-bufferline.lua",
    }
-   use {
-      "nvim-lua/popup.nvim",
-      after = "plenary.nvim",
-   }
 
    use {
       "nvim-telescope/telescope.nvim",
