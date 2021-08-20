@@ -162,7 +162,7 @@ I (siduck76) would happily accept donations but I would be upset and feel bad si
 
 The following links are some donation (gofundme) links for supporting needy people. Feel free to donate if you can :
 
-https://www.gofundme.com/f/WeCareAboutSyria
-https://www.gofundme.com/f/Burundi-Nutrition
-https://charity.gofundme.com/o/en/campaign/feedingyemen
-https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school
+- https://www.gofundme.com/f/WeCareAboutSyria
+- https://www.gofundme.com/f/Burundi-Nutrition
+- https://charity.gofundme.com/o/en/campaign/feedingyemen
+- https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school
