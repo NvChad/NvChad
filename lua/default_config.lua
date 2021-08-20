@@ -17,12 +17,17 @@ M.ui = {
    -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
    transparency = false,
 
-   hidden_statusline = {
+   -- statusline related options
+   statusline = {
       -- these are filetypes, not pattern matched
-      "NvimTree",
-      -- "terminal",
+      -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
+      hidden = {
+         "NvimTree",
+         "terminal",
+      },
+      shown = {},
+      style = "default", -- default, round , slant , block , arrow
    },
-   statusline_style = "default", -- default, round , slant , block , arrow
 }
 
 M.options = {

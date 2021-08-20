@@ -78,9 +78,10 @@ end
 -- Don't show any numbers inside terminals
 vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber ]]
 
--- Don't show status line on certain windows
 vim.cmd [[ au TermOpen term://* setfiletype terminal ]]
-vim.cmd [[ let hidden_statusline = luaeval('require("utils").load_config().ui.hidden_statusline') | autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter,TermEnter * nested if index(hidden_statusline, &ft) >= 0 | set laststatus=0 | else | set laststatus=2 | endif ]]
+
+-- Don't show status line on certain windows
+vim.cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter,TermEnter * lua require("utils").hide_statusline() ]]
 
 -- Open a file from its last left off position
 -- vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
