@@ -20,7 +20,7 @@ M.ui = {
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
-      "terminal",
+      -- "terminal",
    },
    statusline_style = "default", -- default, round , slant , block , arrow
 }
@@ -36,6 +36,7 @@ M.options = {
    timeoutlen = 400,
    clipboard = "unnamedplus",
    number = true,
+   -- relative numbers in normal mode tool at the bottom of options.lua
    relativenumber = false,
    numberwidth = 2,
    expandtab = true,
