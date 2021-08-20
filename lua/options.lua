@@ -76,9 +76,7 @@ end
 -- vim.cmd[[ au InsertLeave * set relativenumber ]]
 
 -- Don't show any numbers inside terminals
-vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber ]]
-
-vim.cmd [[ au TermOpen term://* setfiletype terminal ]]
+vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
 
 -- Don't show status line on certain windows
 vim.cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter,TermEnter * lua require("utils").hide_statusline() ]]
