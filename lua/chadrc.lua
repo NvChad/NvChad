@@ -20,7 +20,7 @@ M.ui = {
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
-      -- "terminal",
+      "terminal",
    },
    statusline_style = "default", -- default, round , slant , block , arrow
 }
