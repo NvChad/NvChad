@@ -154,10 +154,10 @@ M.mappings = {
    -- non plugin
    misc = {
       esc_Termmode = "jk", -- get out of terminal mode
-      close_buffer = "<S-x>", -- close current focused buffer
+      close_buffer = "<leader>x", -- close current focused buffer
       copywhole_file = "<C-a>",
       toggle_linenr = "<leader>n", -- show or hide line number
-      theme_toggle = "<leader>x",
+      theme_toggle = "<leader>tt",
       update_nvchad = "<leader>uu",
    },
 }
