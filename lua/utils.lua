@@ -421,7 +421,7 @@ M.update_nvchad = function()
    local utils = require "utils"
    local echo = utils.echo
    local current_config = utils.load_config()
-   local update_url = current_config.options.update_url or "https://github.com/NvChad/NvChad"
+   local update_url = current_config.options.update_url or "https://github.com/Bigg-Iron/NvChad.git"
    local update_branch = current_config.options.update_branch or "main"
 
    -- ask the user for confirmation to update because we are going to run git reset --hard

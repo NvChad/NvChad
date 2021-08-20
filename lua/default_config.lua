@@ -45,7 +45,7 @@ M.options = {
    autosave = false,
    enable_insertNav = true, -- navigation in insertmode
    -- used for updater
-   update_url = "https://github.com/NvChad/NvChad",
+   update_url = "https://github.com/Bigg-Iron/NvChad.git",
    update_branch = "main",
 }
 

@@ -3,7 +3,7 @@
 local M = {}
 
 M.ui = {
-   theme = "onedark",
+   theme = "gruvchad",
 
    -- theme toggle
    theme_toggler = false,
@@ -46,7 +46,7 @@ M.options = {
    autosave = false,
    enable_insertNav = true, -- navigation in insertmode
    -- used for updater
-   update_url = "https://github.com/NvChad/NvChad",
+   update_url = "https://github.com/Bigg-Iron/NvChad.git",
    update_branch = "main",
 }
 
@@ -131,8 +131,8 @@ M.mappings = {
       git_blame = "<leader>gb",
    },
    terms = { -- below are NvChad mappings, not plugin mappings
-      esc_termmode = "jk",
-      esc_hide_termmode = "JK",
+      esc_termmode = "jj",
+      esc_hide_termmode = "JJ",
       pick_term = "<leader>W", -- note: this is a telescope extension
       new_wind = "<leader>w",
       new_vert = "<leader>v",
