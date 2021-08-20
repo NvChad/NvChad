@@ -1,4 +1,4 @@
-local global_theme = "themes/" .. require("utils").load_config().ui.theme
+local global_theme = "themes/" .. vim.g.nvchad_theme
 local colors = require(global_theme)
 
 local present1, gl = pcall(require, "galaxyline")
@@ -53,7 +53,7 @@ local icon_styles = {
    },
 }
 
-local user_statusline_style = require("utils").load_config().ui.statusline_style
+local user_statusline_style = require("utils").load_config().ui.statusline.style
 local statusline_style = icon_styles[user_statusline_style]
 
 local left_separator = statusline_style.left

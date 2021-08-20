@@ -25,12 +25,15 @@ g.dashboard_custom_header = {
 }
 
 g.dashboard_custom_section = {
+<<<<<<< HEAD
    a = { description = { "  Find File                 <Leader> f f" }, command = "Telescope find_files" },
    b = { description = { "  Recents                   <Leader> f o" }, command = "Telescope oldfiles" },
    c = { description = { "  Find Word                 <Leader> f w" }, command = "Telescope live_grep" },
    d = { description = { "洛 New File                  <Leader> f n" }, command = "DashboardNewFile" },
    e = { description = { "  Bookmarks                 <Leader> b m" }, command = "Telescope marks" },
-   f = { description = { "  Load Last Session         <Leader> s l" }, command = "SessionLoad" },
+   f = { description = { "  Load Last Session         <Leader> l" }, command = "SessionLoad" },
+=======
+>>>>>>> 6206a9e27b36ab252775aa339270f27b26597756
 }
 
 g.dashboard_custom_footer = {

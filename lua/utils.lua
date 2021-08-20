@@ -82,6 +82,7 @@ M.close_buffer = function(bufexpr, force)
 
    local buf = vim.fn.bufnr()
    if vim.fn.buflisted(buf) == 0 then -- exit if buffer number is invalid
+      vim.cmd "close"
       return
    end
 
@@ -180,6 +181,28 @@ M.file = function(mode, filepath, content)
    return data
 end
 
+-- hide statusline
+-- tables fetched from load_config function
+M.hide_statusline = function(values)
+   local hidden = require("utils").load_config().ui.statusline.hidden
+   local shown = require("utils").load_config().ui.statusline.shown
+   local api = vim.api
+   local buftype = api.nvim_buf_get_option("%", "ft")
+
+   -- shown table from config has the highest priority
+   if vim.tbl_contains(shown, buftype) then
+      api.nvim_set_option("laststatus", 2)
+      return
+   end
+
+   if vim.tbl_contains(hidden, buftype) then
+      api.nvim_set_option("laststatus", 0)
+      return
+   else
+      api.nvim_set_option("laststatus", 2)
+   end
+end
+
 -- return a table of available themes
 M.list_themes = function(return_type)
    local themes = {}
@@ -264,14 +287,22 @@ M.load_config = function(reload)
       return _G._NVCHAD_CONFIG_CONTENTS
    end
 
+   local default_config = "default_config"
+   local config_name = vim.g.nvchad_user_config or "chadrc"
+   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
+
+   -- unload the modules if force reload
+   if reload then
+      package.loaded[default_config or false] = nil
+      package.loaded[config_name or false] = nil
+   end
+
    -- don't enclose in pcall, it better break when default config is faulty
-   _G._NVCHAD_CONFIG_CONTENTS = require "default_config"
+   _G._NVCHAD_CONFIG_CONTENTS = require(default_config)
 
    -- user config is not required to run nvchad but a optional
    -- Make sure the config doesn't break the whole system if user config is not present or in bad state or not a table
    -- print warning texts if user config file is  present
-   local config_name = vim.g.nvchad_user_config or "chadrc"
-   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
    -- check if the user config is present
    if vim.fn.empty(vim.fn.glob(config_file)) < 1 then
       local present, config = pcall(require, config_name)
@@ -479,12 +510,12 @@ M.update_nvchad = function()
    end
 
    -- git commands that will executed, reset in case config was modfied
-   -- use --ff-only to not mess up if the local repo is outdated
+   -- use --rebase, to not mess up if the local repo is outdated
    local update_script = table.concat({
       "git reset --hard && git pull --set-upstream",
       update_url,
       update_branch,
-      "--ff-only",
+      "--rebase",
    }, " ")
 
    -- open a new buffer
