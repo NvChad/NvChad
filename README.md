@@ -152,18 +152,17 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
   <img src = "https://contrib.rocks/image?repo=siduck76/NvChad"/>
 </a>
 
-## :gift_heart: Support
-
-If you enjoy using NvChad and would like to show your appreciation, you may want to tip me here.
-
-It is never required but always appreciated.
-
-<p align="center">
-  <a href="https://www.buymeacoffee.com/siduck7" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/1.png"></a>
-  <a href="https://ko-fi.com/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/2.png"></a>
-  <a href="https://www.paypal.com/paypalme/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/3.png"></a>
-</p>
-
 ## Warning
 
 I get hearings from some plugin devs that nvchad users bring issues on discourse/reddit/matrix/gh repos etc. Please dont do that :/ . Bring NvChad related issues here ONLY and dont ever bother plugin devs, THIS IS A CLEAR WARNING! 😠
+
+## :gift_heart: Support
+
+I (siduck76) would happily accept donations but I would be upset and feel bad since Im not the only one who has worked on NvChad. NvChad has been made possible by many contributors so dividing the donations for just me feels very bad and thanks to all the plugin creators once again :'). If you enjoy using NvChad and would like to show your support trully and show your appreciation to my work then try to be a better you! Help the needy people whenever possible (in real life), do some charity.Be nice to your parents and loved ones.Do not be rude , always try to be helpful / caring to one another, stray animals. Its easier to hate now and harder to care , hate used to be rare but now you see it everywhere. Please be respectful to any software/work done by other people rather than making fun of them. Do not compare software (In a bad way). Im grateful to be even able to use neovim! But cant still be fully happy when I think there are people who barely get food to eat, starve for weeks, dont have access to proper education, comupters, basic health care facilities etc.
+
+The following links are some donation (gofundme) links for supporting needy people. Feel free to donate if you can :
+
+https://www.gofundme.com/f/WeCareAboutSyria
+https://www.gofundme.com/f/Burundi-Nutrition
+https://charity.gofundme.com/o/en/campaign/feedingyemen
+https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school
