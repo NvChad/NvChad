@@ -53,7 +53,7 @@ local icon_styles = {
    },
 }
 
-local user_statusline_style = require("utils").load_config().ui.statusline_style
+local user_statusline_style = require("utils").load_config().ui.statusline.style
 local statusline_style = icon_styles[user_statusline_style]
 
 local left_separator = statusline_style.left
