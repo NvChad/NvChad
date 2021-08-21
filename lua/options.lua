@@ -71,6 +71,8 @@ for _, plugin in pairs(disabled_built_ins) do
    g["loaded_" .. plugin] = 1
 end
 
+vim.cmd [[ autocmd BufEnter * if &buftype != "terminal" | lcd %:p:h | endif ]]
+
 -- Use relative & absolute line numbers in 'n' & 'i' modes respectively
 -- vim.cmd[[ au InsertEnter * set norelativenumber ]]
 -- vim.cmd[[ au InsertLeave * set relativenumber ]]
