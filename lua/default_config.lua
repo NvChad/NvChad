@@ -17,12 +17,17 @@ M.ui = {
    -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
    transparency = false,
 
-   hidden_statusline = {
+   -- statusline related options
+   statusline = {
       -- these are filetypes, not pattern matched
-      "NvimTree",
-      "terminal",
+      -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
+      hidden = {
+         "NvimTree",
+         "terminal",
+      },
+      shown = {},
+      style = "default", -- default, round , slant , block , arrow
    },
-   statusline_style = "default", -- default, round , slant , block , arrow
 }
 
 M.options = {
@@ -36,6 +41,7 @@ M.options = {
    timeoutlen = 300,
    clipboard = "unnamedplus",
    number = true,
+   -- relative numbers in normal mode tool at the bottom of options.lua
    relativenumber = false,
    numberwidth = 2,
    expandtab = true,
@@ -149,10 +155,10 @@ M.mappings = {
    -- non plugin
    misc = {
       esc_Termmode = "jk", -- get out of terminal mode
-      close_buffer = "<S-x>", -- close current focused buffer
+      close_buffer = "<leader>x", -- close current focused buffer
       copywhole_file = "<C-a>",
       toggle_linenr = "<leader>n", -- show or hide line number
-      theme_toggle = "<leader>x",
+      theme_toggle = "<leader>tt",
       update_nvchad = "<leader>uu",
    },
 }

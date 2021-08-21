@@ -82,6 +82,7 @@ M.close_buffer = function(bufexpr, force)
 
    local buf = vim.fn.bufnr()
    if vim.fn.buflisted(buf) == 0 then -- exit if buffer number is invalid
+      vim.cmd "close"
       return
    end
 
@@ -178,6 +179,28 @@ M.file = function(mode, filepath, content)
    end
    assert(vim.loop.fs_close(fd))
    return data
+end
+
+-- hide statusline
+-- tables fetched from load_config function
+M.hide_statusline = function(values)
+   local hidden = require("utils").load_config().ui.statusline.hidden
+   local shown = require("utils").load_config().ui.statusline.shown
+   local api = vim.api
+   local buftype = api.nvim_buf_get_option("%", "ft")
+
+   -- shown table from config has the highest priority
+   if vim.tbl_contains(shown, buftype) then
+      api.nvim_set_option("laststatus", 2)
+      return
+   end
+
+   if vim.tbl_contains(hidden, buftype) then
+      api.nvim_set_option("laststatus", 0)
+      return
+   else
+      api.nvim_set_option("laststatus", 2)
+   end
 end
 
 -- return a table of available themes
