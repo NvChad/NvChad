@@ -180,7 +180,6 @@ return packer.startup(function()
          {
             "sudormrfbin/cheatsheet.nvim",
             disable = not plugin_status.cheatsheet,
-            event = "VimEnter",
             after = "telescope.nvim",
             config = function()
                require "plugins.chadsheet"
