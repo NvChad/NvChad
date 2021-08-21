@@ -33,7 +33,7 @@ M.options = {
    mouse = "a",
    cmdheight = 1,
    updatetime = 250,
-   timeoutlen = 400,
+   timeoutlen = 300,
    clipboard = "unnamedplus",
    number = true,
    -- relative numbers in normal mode tool at the bottom of options.lua
@@ -60,6 +60,7 @@ M.plugin_status = {
    blankline = true,
    truezen_nvim = true,
    better_esc = true,
+   which_key = true,
    -- lsp stuff
    lspkind = true,
    lspsignature = true,
@@ -96,14 +97,14 @@ M.mappings = {
    dashboard = {
       open = "<leader>db",
       newfile = "<leader>fn",
-      bookmarks = "<leader>bm",
+      bookmarks = "<leader>dm",
       sessionload = "<leader>l",
       sessionsave = "<leader>s",
    },
    telescope = {
       live_grep = "<leader>fw",
       git_status = "<leader>gt",
-      git_commits = "<leader>cm",
+      git_commits = "<leader>gm",
       find_files = "<leader>ff",
       buffers = "<leader>fb",
       help_tags = "<leader>fh",

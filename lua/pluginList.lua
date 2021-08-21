@@ -161,10 +161,6 @@ return packer.startup(function()
       "nvim-lua/plenary.nvim",
       after = "nvim-bufferline.lua",
    }
-   use {
-      "nvim-lua/popup.nvim",
-      after = "plenary.nvim",
-   }
 
    use {
       "nvim-telescope/telescope.nvim",
@@ -236,6 +232,15 @@ return packer.startup(function()
       end,
       setup = function()
          require("mappings").comment_nvim()
+      end,
+   }
+
+   use {
+      "folke/which-key.nvim",
+      disable = not plugin_status.which_key,
+      keys = "<space>",
+      config = function()
+         require "plugins.which_key"
       end,
    }
 

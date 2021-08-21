@@ -54,7 +54,6 @@ end
 fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
--- fg_bg("Visual",light_grey, colors.lightbg)
 
 -- Pmenu
 bg("Pmenu", one_bg)
@@ -62,14 +61,14 @@ bg("PmenuSbar", one_bg2)
 bg("PmenuSel", pmenu_bg)
 bg("PmenuThumb", nord_blue)
 
--- inactive statuslines as thin splitlines
+-- Inactive statuslines as thin splitlines
 cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 
 -- line n.o
 cmd "hi clear CursorLine"
 fg("cursorlinenr", white)
 
--- git signs ---
+-- Git signs
 fg_bg("DiffAdd", nord_blue, "none")
 fg_bg("DiffChange", grey_fg, "none")
 fg_bg("DiffModified", nord_blue, "none")
@@ -90,11 +89,16 @@ bg("NvimTreeNormal", darker_black)
 fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
 
--- telescope
+-- Telescope
 fg("TelescopeBorder", line)
 fg("TelescopePromptBorder", line)
 fg("TelescopeResultsBorder", line)
 fg("TelescopePreviewBorder", grey)
+
+-- WhichKey
+fg("WhichKey", yellow)
+fg("WhichKeySeperator", green)
+fg("WhichKeyFloat", darker_black)
 
 -- LspDiagnostics ---
 

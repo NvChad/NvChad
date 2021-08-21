@@ -33,7 +33,7 @@ M.options = {
    mouse = "a",
    cmdheight = 1,
    updatetime = 250,
-   timeoutlen = 400,
+   timeoutlen = 300,
    clipboard = "unnamedplus",
    number = true,
    relativenumber = false,
@@ -59,6 +59,7 @@ M.plugin_status = {
    blankline = true,
    truezen_nvim = true,
    better_esc = true,
+   which_key = true,
    -- lsp stuff
    lspkind = true,
    lspsignature = true,
