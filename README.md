@@ -3,7 +3,7 @@
 <div align="center">
 	<a href="https://nvchad.netlify.app/">Home</a>
   <span> • </span>
-    	<a href="https://nvchad.netlify.app/docs/Getting%20started/Setup">Install</a>
+    	<a href="https://nvchad.netlify.app/getting-started/setup">Install</a>
   <span> • </span>
        	<a href="https://nvchad.netlify.app/docs/Contribute">Contribute</a>
   <span> • </span>
