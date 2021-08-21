@@ -30,6 +30,7 @@ M.ui = {
          hidden = {
             "NvimTree",
             "terminal",
+            "dashboard",
          },
          shown = {},
          -- default, round , slant , block , arrow
