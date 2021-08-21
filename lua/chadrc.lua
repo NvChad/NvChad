@@ -191,4 +191,17 @@ M.mappings.plugin = {
    },
 }
 
+M.userspace = function()
+  -- this is a space for any user to modify as much as they wish,
+  -- this function will be called upon the `VimEnter` event,
+  -- set any niche settings, commands or utilities personal to you here
+  -- this will 'likely' run after all configuration (though not guaranteed)
+
+  -- Keep free of bloat!
+
+  -- EG: set the cmd window height to something ridiculous
+  -- vim.cmd('set cmdheight=20')
+
+end
+
 return M
