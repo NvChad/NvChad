@@ -29,7 +29,7 @@ if not present then
    end
 end
 
-return packer.init {
+packer.init {
    display = {
       open_fn = function()
          return require("packer.util").float { border = "single" }
@@ -43,3 +43,5 @@ return packer.init {
    compile_on_sync = true,
    --    auto_reload_compiled = true
 }
+
+return packer

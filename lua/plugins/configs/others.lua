@@ -1,5 +1,21 @@
 local M = {}
 
+M.better_escape = function()
+   local config = require("core.utils").load_config()
+   vim.g.better_escape_interval = config.options.plugin.esc_insertmode_timeout or 300
+end
+
+M.blankline = function()
+   vim.g.indentLine_enabled = 1
+   vim.g.indent_blankline_char = "▏"
+
+   vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "dashboard", "packer" }
+   vim.g.indent_blankline_buftype_exclude = { "terminal" }
+
+   vim.g.indent_blankline_show_trailing_blankline_indent = false
+   vim.g.indent_blankline_show_first_indent_level = false
+end
+
 M.colorizer = function()
    local present, colorizer = pcall(require, "colorizer")
    if present then
@@ -15,11 +31,6 @@ M.comment = function()
    end
 end
 
-M.escape = function()
-   vim.g.better_escape_interval = 300
-   vim.g.better_escape_shortcut = { "jk" }
-end
-
 M.lspkind = function()
    local present, lspkind = pcall(require, "lspkind")
    if present then
@@ -31,17 +42,6 @@ M.neoscroll = function()
    pcall(function()
       require("neoscroll").setup()
    end)
-end
-
-M.blankline = function()
-   vim.g.indentLine_enabled = 1
-   vim.g.indent_blankline_char = "▏"
-
-   vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "dashboard", "packer" }
-   vim.g.indent_blankline_buftype_exclude = { "terminal" }
-
-   vim.g.indent_blankline_show_trailing_blankline_indent = false
-   vim.g.indent_blankline_show_first_indent_level = false
 end
 
 M.signature = function()

@@ -6,11 +6,11 @@ end
 true_zen.setup {
    ui = {
       bottom = {
+         cmdheight = 1,
          laststatus = 0,
          ruler = false,
          showmode = false,
          showcmd = false,
-         cmdheight = 1,
       },
       top = {
          showtabline = 0,
