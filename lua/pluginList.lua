@@ -35,7 +35,7 @@ return packer.startup(function()
       end,
    }
    use {
-      "akinsho/nvim-bufferline.lua",
+      "akinsho/bufferline.nvim",
       disable = not plugin_status.nvim_bufferline,
       after = "galaxyline.nvim",
       config = function()
@@ -159,7 +159,7 @@ return packer.startup(function()
 
    use {
       "nvim-lua/plenary.nvim",
-      after = "nvim-bufferline.lua",
+      after = "bufferline.nvim",
    }
 
    use {
