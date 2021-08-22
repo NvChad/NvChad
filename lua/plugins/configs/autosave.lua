@@ -5,7 +5,7 @@ if not present then
 end
 
 autosave.setup {
-   enabled = vim.g.auto_save, -- takes boolean value from init.lua
+   enabled = vim.g.auto_save or false, -- takes boolean value from init.lua
    execution_message = "autosaved at : " .. vim.fn.strftime "%H:%M:%S",
    events = { "InsertLeave", "TextChanged" },
    conditions = {
@@ -13,7 +13,7 @@ autosave.setup {
       filetype_is_not = {},
       modifiable = true,
    },
-   write_all_buffers = false,
-   on_off_commands = true,
    clean_command_line_interval = 2500,
+   on_off_commands = true,
+   write_all_buffers = false,
 }

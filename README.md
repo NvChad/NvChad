@@ -3,7 +3,7 @@
 <div align="center">
 	<a href="https://nvchad.netlify.app/">Home</a>
   <span> • </span>
-    	<a href="https://nvchad.netlify.app/docs/Getting%20started/Setup">Install</a>
+    	<a href="https://nvchad.netlify.app/getting-started/setup">Install</a>
   <span> • </span>
        	<a href="https://nvchad.netlify.app/docs/Contribute">Contribute</a>
   <span> • </span>
@@ -146,7 +146,20 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
 - Make NvChad more and more faster (reduce startup time as low as possible).
 - Add more themes.
 
-# Chad contributors 
+# Try in docker
+
+Try NvChad in a docker container. This will leave your current Neovim configuration untouched. Once you exit Neovim, the image is deleted.
+
+```zsh
+  docker run -w /root -it --rm alpine:edge sh -uelic '
+    apk add git nodejs neovim ripgrep alpine-sdk --update
+    git clone https://github.com/NvChad/NvChad ~/.config/nvim
+    nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"
+    nvim
+    '
+```
+
+# Chad contributors
 
 <a href = "https://github.com/NvChad/NvChad/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=siduck76/NvChad"/>
