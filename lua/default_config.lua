@@ -3,162 +3,190 @@
 local M = {}
 
 M.ui = {
+   italic_comments = false,
+
+   -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
    theme = "onedark",
 
-   -- theme toggle
-   theme_toggler = false,
-   fav_themes = {
-      "onedark",
-      "gruvchad",
+   -- theme toggler, toggle between two themes, see theme_toggleer mappings
+   theme_toggler = {
+      enabled = false,
+      fav_themes = {
+         "onedark",
+         "gruvchad",
+      },
    },
-   italic_comments = false,
 
    -- Enable this only if your terminal has the colorscheme set which nvchad uses
    -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
    transparency = false,
 
-   -- statusline related options
-   statusline = {
-      -- these are filetypes, not pattern matched
-      -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
-      hidden = {
-         "NvimTree",
-         "terminal",
+   -- plugin related ui options
+   plugin = {
+      -- statusline related options
+      statusline = {
+         -- these are filetypes, not pattern matched
+         -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
+         hidden = {
+            "NvimTree",
+            "terminal",
+         },
+         shown = {},
+         -- default, round , slant , block , arrow
+         style = "default",
       },
-      shown = {},
-      style = "default", -- default, round , slant , block , arrow
    },
 }
 
 M.options = {
-   permanent_undo = true,
-   ruler = false,
+   clipboard = "unnamedplus",
+   cmdheight = 1,
+   expandtab = true,
    hidden = true,
    ignorecase = true,
+   insert_nav = true, -- navigation in insertmode
+   mapleader = " ",
    mouse = "a",
-   cmdheight = 1,
-   updatetime = 250,
-   timeoutlen = 400,
-   clipboard = "unnamedplus",
    number = true,
    -- relative numbers in normal mode tool at the bottom of options.lua
-   relativenumber = false,
    numberwidth = 2,
-   expandtab = true,
+   permanent_undo = true,
    shiftwidth = 2,
    smartindent = true,
-   mapleader = " ",
-   autosave = false,
-   enable_insertNav = true, -- navigation in insertmode
+   timeoutlen = 400,
+   relativenumber = false,
+   ruler = false,
+   updatetime = 250,
    -- used for updater
    update_url = "https://github.com/NvChad/NvChad",
    update_branch = "main",
+
+   -- these are plugin related options
+   plugin = {
+      autosave = false, -- autosave on changed text or insert mode leave
+      -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
+      esc_insertmode_timeout = 300,
+   },
 }
 
 -- enable and disable plugins (false for disable)
 M.plugin_status = {
-   -- UI
-   nvim_bufferline = true,
-   galaxyline = true,
-   nvim_colorizer = true,
-   dashboard_nvim = true,
-   blankline = true,
-   truezen_nvim = true,
-   better_esc = true,
-   -- lsp stuff
-   lspkind = true,
-   lspsignature = true,
-   -- git stuff
-   gitsigns = true,
-   vim_fugitive = true,
-   -- misc
-   neoformat = true,
-   vim_matchup = true,
-   autosave_nvim = true,
-   nvim_comment = true,
-   neoscroll_nvim = true,
-   telescope_media = true,
-   cheatsheet = true,
+   autosave = true, -- to autosave files
+   blankline = true, -- beautified blank lines
+   bufferline = true, -- buffer shown as tabs
+   cheatsheet = true, -- fuzzy search your commands/keymappings
+   colorizer = true,
+   comment = true, -- universal commentor
+   dashboard = true, -- a nice looking dashboard
+   esc_insertmode = true, -- escape from insert mode using custom keys
+   galaxyline = true, -- statusline
+   gitsigns = true, -- gitsigns in statusline
+   lspkind = true, -- lsp enhancements
+   lspsignature = true, -- lsp enhancements
+   neoformat = true, -- universal formatter
+   neoscroll = true, -- smooth scroll
+   telescope_media = true, -- see media files in telescope picker
+   truezen = true, -- no distraction mode for nvim
+   vim_fugitive = true, -- git in nvim
+   vim_matchup = true, -- % magic, match it but improved
 }
 
 -- make sure you dont use same keys twice
 M.mappings = {
-   -- plugin specific
-   truezen = {
-      ataraxisMode = "<leader>zz",
-      minimalisticmode = "<leader>zm",
-      focusmode = "<leader>zf",
-   },
-   comment_nvim = {
-      comment_toggle = "<leader>/",
-   },
-   nvimtree = {
-      treetoggle = "<C-n>", -- file manager
-   },
-   neoformat = {
-      format = "<leader>fm",
-   },
-   dashboard = {
-      open = "<leader>db",
-      newfile = "<leader>fn",
-      bookmarks = "<leader>bm",
-      sessionload = "<leader>l",
-      sessionsave = "<leader>s",
-   },
-   telescope = {
-      live_grep = "<leader>fw",
-      git_status = "<leader>gt",
-      git_commits = "<leader>cm",
-      find_files = "<leader>ff",
-      buffers = "<leader>fb",
-      help_tags = "<leader>fh",
-      oldfiles = "<leader>fo",
-      themes = "<leader>th",
-   },
-   telescope_media = {
-      media_files = "<leader>fp",
-   },
-   chadsheet = {
-      default_keys = "<leader>dk",
-      user_keys = "<leader>uk",
-   },
-   bufferline = {
-      new_buffer = "<S-t>",
-      newtab = "<C-t>b",
-      close = "<S-x>", -- close a buffer with custom func in utils.lua
-      cycleNext = "<TAB>", -- next buffer
-      cyclePrev = "<S-Tab>", -- previous buffer
-   },
-   fugitive = {
-      Git = "<leader>gs",
-      diffget_2 = "<leader>gh",
-      diffget_3 = "<leader>gl",
-      git_blame = "<leader>gb",
-   },
-   terms = { -- below are NvChad mappings, not plugin mappings
-      esc_termmode = "jk",
-      esc_hide_termmode = "JK",
-      pick_term = "<leader>W", -- note: this is a telescope extension
-      new_wind = "<leader>w",
-      new_vert = "<leader>v",
-      new_hori = "<leader>h",
-   }, -- navigation in insert mode
+   -- close current focused buffer
+   close_buffer = "<leader>x",
+   copy_whole_file = "<C-a>", -- copy all contents of the current buffer
+
+   -- navigation in insert mode, only if enabled in options
    insert_nav = {
-      forward = "<C-l>",
       backward = "<C-h>",
-      top_of_line = "<C-a>",
       end_of_line = "<C-e>",
-      prev_line = "<C-j>",
+      forward = "<C-l>",
       next_line = "<C-k>",
+      prev_line = "<C-j>",
+      top_of_line = "<C-a>",
    },
-   -- non plugin
-   misc = {
-      esc_Termmode = "jk", -- get out of terminal mode
-      close_buffer = "<leader>x", -- close current focused buffer
-      copywhole_file = "<C-a>",
-      toggle_linenr = "<leader>n", -- show or hide line number
-      theme_toggle = "<leader>tt",
-      update_nvchad = "<leader>uu",
+
+   line_number_toggle = "<leader>n", -- show or hide line number
+   new_buffer = "<S-t>", -- open a new buffer
+   new_tab = "<C-t>b", -- open a new vim tab
+   save_file = "<C-s>", -- save file using :w
+   theme_toggler = "<leader>tt", -- for theme toggler, see in ui.theme_toggler
+
+   -- terminal related mappings
+   terminal = {
+      -- multiple mappings can be given for esc_termmode and esc_hide_termmode
+      -- get out of terminal mode
+      esc_termmode = { "jk" }, -- multiple mappings allowed
+      -- get out of terminal mode and hide it
+      -- it does not close it, see pick_term mapping to see hidden terminals
+      esc_hide_termmode = { "JK" }, -- multiple mappings allowed
+      -- show hidden terminal buffers in a telescope picker
+      pick_term = "<leader>W",
+      -- below three are for spawning terminals
+      new_horizontal = "<leader>h",
+      new_vertical = "<leader>v",
+      new_window = "<leader>w",
+   },
+
+   -- update nvchad from nvchad, chadness 101
+   update_nvchad = "<leader>uu",
+
+   -- all plugins related mappings
+   -- to get short info about a plugin, see the respective string in plugin_status, if not present, then info here
+   plugin = {
+      bufferline = {
+         next_buffer = "<TAB>", -- next buffer
+         prev_buffer = "<S-Tab>", -- previous buffer
+      },
+      chadsheet = {
+         default_keys = "<leader>dk",
+         user_keys = "<leader>uk",
+      },
+      comment = {
+         toggle = "<leader>/", -- trigger comment on a single/selected lines/number prefix
+      },
+      dashboard = {
+         bookmarks = "<leader>bm",
+         new_file = "<leader>fn", -- basically create a new buffer
+         open = "<leader>db", -- open dashboard
+         session_load = "<leader>l", -- load a saved session
+         session_save = "<leader>s", -- save a session
+      },
+      -- note: this is an edditional mapping to escape, escape key will still work
+      better_escape = {
+         esc_insertmode = { "jk" }, -- multiple mappings allowed
+      },
+      nvimtree = {
+         toggle = "<C-n>", -- file manager
+      },
+      neoformat = {
+         format = "<leader>fm",
+      },
+      telescope = {
+         buffers = "<leader>fb",
+         find_files = "<leader>ff",
+         git_commits = "<leader>cm",
+         git_status = "<leader>gt",
+         help_tags = "<leader>fh",
+         live_grep = "<leader>fw",
+         oldfiles = "<leader>fo",
+         themes = "<leader>th",
+      },
+      telescope_media = {
+         media_files = "<leader>fp",
+      },
+      truezen = { -- distraction free modes mapping, hide statusline, tabline, line numbers
+         ataraxis_mode = "<leader>zz", -- center
+         focus_mode = "<leader>zf",
+         minimalistic_mode = "<leader>zm", -- as it is
+      },
+      vim_fugitive = {
+         diff_get_2 = "<leader>gh",
+         diff_get_3 = "<leader>gl",
+         git = "<leader>gs",
+         git_blame = "<leader>gb",
+      },
    },
 }
 
