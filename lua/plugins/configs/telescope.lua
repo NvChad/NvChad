@@ -65,23 +65,24 @@ telescope.setup {
    },
 }
 
-if
-   not pcall(function()
-      -- NvChad pickers
-      -- load the theme_switcher extension
-      telescope.load_extension "themes"
-      -- load the term_picker extension
-      telescope.load_extension "terms"
+local extensions = { "themes", "terms", "fzf" }
+local packer_repos = [["core", "telescope-fzf-native.nvim"]]
 
-      telescope.load_extension "fzf"
-      telescope.load_extension "media_files"
-   end)
-then
+if vim.fn.executable "ueberzug" == 1 then
+   table.insert(extensions, "media_files")
+   packer_repos = packer_repos .. ', "telescope-media-files.nvim"'
+end
+
+if not pcall(function()
+   for _, ext in ipairs(extensions) do
+      telescope.load_extension(ext)
+   end
+end) then
    -- This should only trigger when in need of PackerSync, so better do it
    print "After completion of PackerCompile, restart neovim."
    -- Trigger packer compile on PackerComplete, so it properly waits for PackerSync
    vim.cmd 'autocmd User PackerComplete ++once lua print "Waiting for PackerCompile.." require("packer").compile()'
    vim.cmd 'autocmd User PackerCompileDone ++once echo "Packer Compile done, restart neovim."'
    require "plugins"
-   require("packer").update("core", "telescope-fzf-native.nvim", "telescope-media-files.nvim")
+   loadstring('require("packer").update(' .. packer_repos .. ")")()
 end
