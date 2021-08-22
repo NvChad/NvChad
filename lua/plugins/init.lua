@@ -73,41 +73,6 @@ return packer.startup(function()
       end,
    }
 
-   use {
-      "nvim-telescope/telescope.nvim",
-      after = "plenary.nvim",
-      requires = {
-         {
-            "sudormrfbin/cheatsheet.nvim",
-            disable = not plugin_status.cheatsheet,
-            after = "telescope.nvim",
-            config = function()
-               require "plugins.configs.chadsheet"
-            end,
-            setup = function()
-               require("core.mappings").chadsheet()
-            end,
-         },
-         {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "make",
-         },
-         {
-            "nvim-telescope/telescope-media-files.nvim",
-            disable = not plugin_status.telescope_media,
-            setup = function()
-               require("core.mappings").telescope_media()
-            end,
-         },
-      },
-      config = function()
-         require "plugins.configs.telescope"
-      end,
-      setup = function()
-         require("core.mappings").telescope()
-      end,
-   }
-
    -- load autosave only if its globally enabled
    use {
       disable = not plugin_status.autosave,
@@ -288,6 +253,43 @@ return packer.startup(function()
       end,
       setup = function()
          require("core.mappings").nvimtree()
+      end,
+   }
+
+   use {
+      "nvim-telescope/telescope.nvim",
+      cmd = "Telescope",
+      -- because cheatsheet is not activated by a teleacope command
+      module = "cheatsheet",
+      requires = {
+         {
+            "sudormrfbin/cheatsheet.nvim",
+            disable = not plugin_status.cheatsheet,
+            after = "telescope.nvim",
+            config = function()
+               require "plugins.configs.chadsheet"
+            end,
+            setup = function()
+               require("core.mappings").chadsheet()
+            end,
+         },
+         {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make",
+         },
+         {
+            "nvim-telescope/telescope-media-files.nvim",
+            disable = not plugin_status.telescope_media,
+            setup = function()
+               require("core.mappings").telescope_media()
+            end,
+         },
+      },
+      config = function()
+         require "plugins.configs.telescope"
+      end,
+      setup = function()
+         require("core.mappings").telescope()
       end,
    }
 
