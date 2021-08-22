@@ -66,7 +66,7 @@ telescope.setup {
 }
 
 local extensions = { "themes", "terms", "fzf" }
-local packer_repos = [["core", "telescope-fzf-native.nvim"]]
+local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
 
 if vim.fn.executable "ueberzug" == 1 then
    table.insert(extensions, "media_files")
