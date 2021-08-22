@@ -1,5 +1,4 @@
-local global_theme = "themes/" .. vim.g.nvchad_theme
-local colors = require(global_theme)
+local colors = require("colors").get()
 
 local present, bufferline = pcall(require, "bufferline")
 if not present then
@@ -43,54 +42,44 @@ bufferline.setup {
       end,
    },
    highlights = {
-      fill = {
-         guifg = colors.grey_fg,
-         guibg = colors.black2,
-      },
       background = {
          guifg = colors.grey_fg,
          guibg = colors.black2,
       },
+
       -- buffers
-      buffer_visible = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
-      },
       buffer_selected = {
          guifg = colors.white,
          guibg = colors.black,
          gui = "bold",
       },
-      -- tabs
-      tab = {
+      buffer_visible = {
          guifg = colors.light_grey,
-         guibg = colors.one_bg3,
+         guibg = colors.black2,
       },
-      tab_selected = {
-         guifg = colors.black2,
-         guibg = colors.nord_blue,
+
+      -- close buttons
+      close_button = {
+         guifg = colors.light_grey,
+         guibg = colors.black2,
       },
-      tab_close = {
+      close_button_visible = {
+         guifg = colors.light_grey,
+         guibg = colors.black2,
+      },
+      close_button_selected = {
          guifg = colors.red,
          guibg = colors.black,
+      },
+      fill = {
+         guifg = colors.grey_fg,
+         guibg = colors.black2,
       },
       indicator_selected = {
          guifg = colors.black,
          guibg = colors.black,
       },
-      -- separators
-      separator = {
-         guifg = colors.black2,
-         guibg = colors.black2,
-      },
-      separator_visible = {
-         guifg = colors.black2,
-         guibg = colors.black2,
-      },
-      separator_selected = {
-         guifg = colors.black2,
-         guibg = colors.black2,
-      },
+
       -- modified
       modified = {
          guifg = colors.red,
@@ -104,17 +93,30 @@ bufferline.setup {
          guifg = colors.green,
          guibg = colors.black,
       },
-      -- close buttons
 
-      close_button = {
-         guifg = colors.light_grey,
+      -- separators
+      separator = {
+         guifg = colors.black2,
          guibg = colors.black2,
       },
-      close_button_visible = {
-         guifg = colors.light_grey,
+      separator_visible = {
+         guifg = colors.black2,
          guibg = colors.black2,
       },
-      close_button_selected = {
+      separator_selected = {
+         guifg = colors.black2,
+         guibg = colors.black2,
+      },
+      -- tabs
+      tab = {
+         guifg = colors.light_grey,
+         guibg = colors.one_bg3,
+      },
+      tab_selected = {
+         guifg = colors.black2,
+         guibg = colors.nord_blue,
+      },
+      tab_close = {
          guifg = colors.red,
          guibg = colors.black,
       },

@@ -1,5 +1,4 @@
-local global_theme = "themes/" .. vim.g.nvchad_theme
-local colors = require(global_theme)
+local colors = require("colors").get()
 
 local present1, gl = pcall(require, "galaxyline")
 local present2, condition = pcall(require, "galaxyline.condition")
@@ -20,6 +19,22 @@ local icon_styles = {
       position_icon = " ",
    },
 
+   arrow = {
+      left = "",
+      right = "",
+      main_icon = "  ",
+      vi_mode_icon = " ",
+      position_icon = " ",
+   },
+
+   block = {
+      left = " ",
+      right = " ",
+      main_icon = "   ",
+      vi_mode_icon = "   ",
+      position_icon = "  ",
+   },
+
    round = {
       left = "",
       right = "",
@@ -35,25 +50,9 @@ local icon_styles = {
       vi_mode_icon = " ",
       position_icon = " ",
    },
-
-   block = {
-      left = " ",
-      right = " ",
-      main_icon = "   ",
-      vi_mode_icon = "   ",
-      position_icon = "  ",
-   },
-
-   arrow = {
-      left = "",
-      right = "",
-      main_icon = "  ",
-      vi_mode_icon = " ",
-      position_icon = " ",
-   },
 }
 
-local user_statusline_style = require("utils").load_config().ui.statusline.style
+local user_statusline_style = require("core.utils").load_config().ui.plugin.statusline.style
 local statusline_style = icon_styles[user_statusline_style]
 
 local left_separator = statusline_style.left
