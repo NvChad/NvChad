@@ -31,9 +31,11 @@ opt.ruler = options.ruler
 
 -- disable nvim intro
 opt.shortmess:append "sI"
+
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
+opt.tabstop = options.tabstop
 opt.termguicolors = true
 opt.timeoutlen = options.timeoutlen
 opt.undofile = options.permanent_undo
