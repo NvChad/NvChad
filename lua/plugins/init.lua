@@ -13,7 +13,7 @@ return packer.startup(function()
 
    -- this is the nvchad core repo containing utilities for some features like theme swticher, no need to lazy load
    use {
-      "Nvchad/core",
+      "Nvchad/extensions",
    }
 
    use {
