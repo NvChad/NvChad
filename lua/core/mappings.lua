@@ -13,12 +13,6 @@ local M = {}
 -- these mappings will only be called during initialization
 M.misc = function()
    local function non_config_mappings()
-      -- dont copy any deleted text , this is disabled by default so uncomment the below mappings if you want them
-      -- map("n", "dd", [=[ "_dd ]=])
-      -- map("v", "dd", [=[ "_dd ]=])
-      -- map("v", "x", [=[ "_x ]=])
-      -- todo: this should be configurable via chadrc
-
       -- Don't copy the replaced text after pasting in visual mode
       map("v", "p", '"_dP')
 
@@ -35,6 +29,16 @@ M.misc = function()
    end
 
    local function optional_mappings()
+      -- don't yank text on cut ( x )
+      if not config.options.copy_cut then
+         map({ "n", "v" }, "x", '"_x')
+      end
+
+      -- don't yank text on delete ( dd )
+      if not config.options.copy_del then
+         map({ "n", "v" }, "dd", '"_dd')
+      end
+
       -- navigation within insert mode
       if config.options.insert_nav then
          local inav = maps.insert_nav
