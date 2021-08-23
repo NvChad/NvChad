@@ -158,6 +158,7 @@ end
 
 M.nvimtree = function()
    map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>", opt)
+   map("n", plugin_maps.nvimtree.focus,  ":NvimTreeFocus <CR>", opt)
 end
 
 M.neoformat = function()

@@ -157,14 +157,16 @@ M.mappings.plugin = {
       new_file = "<leader>fn", -- basically create a new buffer
       open = "<leader>db", -- open dashboard
       session_load = "<leader>l", -- load a saved session
-      session_save = "<leader>s", -- save a session
+      session_save = "<leader>s",
    },
    -- note: this is an edditional mapping to escape, escape key will still work
    better_escape = {
       esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
    nvimtree = {
-      toggle = "<C-n>", -- file manager
+      -- file tree
+      toggle = "<C-n>",
+      focus = "<C-h>",
    },
    neoformat = {
       format = "<leader>fm",
