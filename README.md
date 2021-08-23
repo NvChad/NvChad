@@ -5,7 +5,7 @@
   <span> • </span>
     	<a href="https://nvchad.netlify.app/getting-started/setup">Install</a>
   <span> • </span>
-       	<a href="https://nvchad.netlify.app/docs/Contribute">Contribute</a>
+       	<a href="https://nvchad.netlify.app/contribute">Contribute</a>
   <span> • </span>
 	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
