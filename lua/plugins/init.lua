@@ -314,6 +314,11 @@ return packer.startup(function()
       disable = not plugin_status.vim_fugitive,
       cmd = {
          "Git",
+         "Gdiff",
+         "Gdiffsplit",
+         "Gvdiffsplit",
+         "Gwrite",
+         "Gw",
       },
       setup = function()
          require("core.mappings").vim_fugitive()
