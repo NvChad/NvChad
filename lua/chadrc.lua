@@ -47,7 +47,7 @@ M.options = {
    hidden = true,
    ignorecase = true,
    insert_nav = true, -- navigation in insertmode
-   mapleader = " ",
+   mapleader = ",",
    mouse = "a",
    number = true,
    -- relative numbers in normal mode tool at the bottom of options.lua
