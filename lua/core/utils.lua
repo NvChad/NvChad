@@ -169,7 +169,7 @@ M.load_config = function(reload)
    -- Make sure the config doesn't break the whole system if user config is not present or in bad state or not a table
    -- print warning texts if user config file is  present
    -- check if the user config is present
-   if vim.fn.empty(vim.fn.glob(config_file)) < 1 then
+   if vim.fn.filereadable(vim.fn.glob(config_file)) == 1 then
       local present, config = pcall(require, config_name)
       if present then
          -- make sure the returned value is table
