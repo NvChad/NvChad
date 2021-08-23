@@ -5,16 +5,16 @@ M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
 
 -- non plugin ui configs, available without any plugins
 M.ui = {
-   italic_comments = false,
+   italic_comments = true,
 
    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
    theme = "everforest",
 
    -- theme toggler, toggle between two themes, see theme_toggleer mappings
    theme_toggler = {
-      enabled = false,
+      enabled = true,
       fav_themes = {
-         "onedark",
+         "everforest",
          "gruvchad",
       },
    },
