@@ -90,7 +90,7 @@ lspinstall.post_install_hook = function()
 end
 
 -- replace the default lsp diagnostic symbols
-function lspSymbol(name, icon)
+local function lspSymbol(name, icon)
    vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "LspDiagnosticsDefaul" .. name })
 end
 
