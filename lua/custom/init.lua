@@ -1,0 +1,2 @@
+-- This is where you custom modules and plugins goes.
+-- See the wiki for a guide on how to extend NvChad
