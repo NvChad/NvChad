@@ -216,20 +216,30 @@ gls.right[3] = {
 }
 
 local mode_colors = {
-   [110] = { "NORMAL", colors.red },
-   [105] = { "INSERT", colors.dark_purple },
-   [99] = { "COMMAND", colors.pink },
-   [116] = { "TERMINAL", colors.green },
-   [118] = { "VISUAL", colors.cyan },
-   [22] = { "V-BLOCK", colors.cyan },
-   [86] = { "V_LINE", colors.cyan },
-   [82] = { "REPLACE", colors.orange },
-   [115] = { "SELECT", colors.nord_blue },
-   [83] = { "S-LINE", colors.nord_blue },
+   ['n'] = { "NORMAL", colors.red },
+   ['no'] = { "N-PENDING", colors.red },
+   ['i'] = { "INSERT", colors.dark_purple },
+   ['ic'] = { "INSERT", colors.dark_purple },
+   ['t'] = { "TERMINAL", colors.green },
+   ['v'] = { "VISUAL", colors.cyan },
+   ['V'] = { "V-LINE", colors.cyan },
+   [''] = { "V-BLOCK", colors.cyan },
+   ['R'] = { "REPLACE", colors.orange },
+   ['Rv'] = { "V-REPLACE", colors.orange },
+   ['s'] = { "SELECT", colors.nord_blue },
+   ['S'] = { "S-LINE", colors.nord_blue },
+   [''] = { "S-BLOCK", colors.nord_blue },
+   ['c'] = { "COMMAND", colors.pink },
+   ['cv'] = { "COMMAND", colors.pink },
+   ['ce'] = { "COMMAND", colors.pink },
+   ['r'] = { "PROMPT", colors.teal },
+   ['rm'] = { "MORE", colors.teal },
+   ['r?'] = { "CONFIRM", colors.teal },
+   ['!'] = { "SHELL", colors.green },
 }
 
 local mode = function(n)
-   return mode_colors[vim.fn.mode():byte()][n]
+   return mode_colors[vim.fn.mode()][n]
 end
 
 gls.right[4] = {
