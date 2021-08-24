@@ -31,6 +31,8 @@ local function on_attach(client, bufnr)
    vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
    vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
    vim.api.nvim_buf_set_keymap(bufnr, "n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+   vim.api.nvim_buf_set_keymap(bufnr, "n", '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+   vim.api.nvim_buf_set_keymap(bufnr, "v", '<space>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
 
    -- Set some keybinds conditional on server capabilities
    if client.resolved_capabilities.document_formatting then
