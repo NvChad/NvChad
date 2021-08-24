@@ -1,5 +1,6 @@
 local present1, lspconfig = pcall(require, "lspconfig")
 local present2, lspinstall = pcall(require, "lspinstall")
+
 if not (present1 or present2) then
    return
 end
@@ -110,10 +111,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
    update_in_insert = false, -- update diagnostics insert mode
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "single",
+   border = "single",
 })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "single",
+   border = "single",
 })
 
 -- suppress error messages from lang servers
