@@ -60,14 +60,15 @@ return packer.startup(function()
 
    use {
       "nvim-lua/plenary.nvim",
-      after = "bufferline.nvim",
    }
 
    -- git stuff
    use {
       "lewis6991/gitsigns.nvim",
       disable = not plugin_status.gitsigns,
-      after = "plenary.nvim",
+      cond = function()
+         return vim.fn.isdirectory ".git" == 1
+      end,
       config = function()
          require "plugins.configs.gitsigns"
       end,
@@ -247,7 +248,7 @@ return packer.startup(function()
    -- file managing , picker etc
    use {
       "kyazdani42/nvim-tree.lua",
-      cmd = {"NvimTreeToggle", "NvimTreeFocus"},
+      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
       config = function()
          require "plugins.configs.nvimtree"
       end,
