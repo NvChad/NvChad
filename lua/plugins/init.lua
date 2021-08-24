@@ -350,4 +350,6 @@ return packer.startup(function()
          require("core.mappings").vim_fugitive()
       end,
    }
+
+   require("core.hooks").run("install_plugins", use)
 end)
