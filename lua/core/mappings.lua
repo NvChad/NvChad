@@ -56,8 +56,7 @@ M.misc = function()
          map(
             "n",
             maps.theme_toggler,
-            ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler.fav_themes) <CR>",
-            opt
+            ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler.fav_themes) <CR>"
          )
       end
    end
@@ -80,12 +79,7 @@ M.misc = function()
       map("n", term_maps.pick_term, ":Telescope terms <CR>")
       -- Open terminals
       -- TODO this opens on top of an existing vert/hori term, fixme
-      map(
-         "n",
-         term_maps.new_horizontal,
-         ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>",
-         opt
-      )
+      map("n", term_maps.new_horizontal, ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>")
       map("n", term_maps.new_vertical, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>")
       map("n", term_maps.new_window, ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>")
       -- terminal mappings end --
@@ -104,7 +98,6 @@ M.misc = function()
 
       -- add ChadReload command and maping
       cmd "silent! command! NvChadReload lua require('chad_reload').Restart()"
-
    end
 
    local function user_config_mappings()
@@ -144,8 +137,7 @@ M.chadsheet = function()
    map(
       "n",
       m.user_keys,
-      ":lua require('cheatsheet').show_cheatsheet_telescope{bundled_cheatsheets = false, bundled_plugin_cheatsheets = false } <CR>",
-      opt
+      ":lua require('cheatsheet').show_cheatsheet_telescope{bundled_cheatsheets = false, bundled_plugin_cheatsheets = false } <CR>"
    )
 end
 
@@ -167,7 +159,7 @@ end
 
 M.nvimtree = function()
    map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>")
-   map("n", plugin_maps.nvimtree.focus,  ":NvimTreeFocus <CR>")
+   map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
 end
 
 M.neoformat = function()
@@ -179,7 +171,7 @@ M.telescope = function()
 
    map("n", m.buffers, ":Telescope buffers <CR>")
    map("n", m.find_files, ":Telescope find_files <CR>")
-   map("n", m.find_hiddenfiles, ":Telescope find_files hidden=true <CR>", opt)
+   map("n", m.find_hiddenfiles, ":Telescope find_files hidden=true <CR>")
    map("n", m.git_commits, ":Telescope git_commits <CR>")
    map("n", m.git_status, ":Telescope git_status <CR>")
    map("n", m.help_tags, ":Telescope help_tags <CR>")
