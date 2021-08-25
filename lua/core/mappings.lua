@@ -101,6 +101,10 @@ M.misc = function()
       -- add NvChadUpdate command and mapping
       cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
       map("n", maps.update_nvchad, ":NvChadUpdate <CR>")
+
+      -- add ChadReload command and maping
+      cmd "silent! command! NvChadReload lua require('chad_reload').Restart()"
+
    end
 
    local function user_config_mappings()
