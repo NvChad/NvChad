@@ -158,7 +158,7 @@ end
 
 M.nvimtree = function()
    map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>", opt)
-   map("n", plugin_maps.nvimtree.focus,  ":NvimTreeFocus <CR>", opt)
+   map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>", opt)
 end
 
 M.neoformat = function()
@@ -170,6 +170,7 @@ M.telescope = function()
 
    map("n", m.buffers, ":Telescope buffers <CR>", opt)
    map("n", m.find_files, ":Telescope find_files <CR>", opt)
+   map("n", m.find_hiddenfiles, ":Telescope find_files hidden=true <CR>", opt)
    map("n", m.git_commits, ":Telescope git_commits <CR>", opt)
    map("n", m.git_status, ":Telescope git_status <CR>", opt)
    map("n", m.help_tags, ":Telescope help_tags <CR>", opt)
