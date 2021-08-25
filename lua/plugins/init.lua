@@ -245,6 +245,12 @@ return packer.startup(function()
       end,
    }
 
+   use {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      disable = not plugin_status.comment,
+      after = "nvim-comment",
+   }
+
    -- file managing , picker etc
    use {
       "kyazdani42/nvim-tree.lua",

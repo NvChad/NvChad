@@ -27,7 +27,13 @@ end
 M.comment = function()
    local present, nvim_comment = pcall(require, "nvim_comment")
    if present then
-      nvim_comment.setup()
+      nvim_comment.setup {
+         create_mappings = false,
+         comment_empty = false,
+         hook = function()
+            require("ts_context_commentstring.internal").update_commentstring()
+         end,
+      }
    end
 end
 

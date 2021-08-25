@@ -11,4 +11,8 @@ ts_config.setup {
       enable = true,
       use_languagetree = true,
    },
+   context_commentstring = {
+      enable = require("core.utils").load_config().plugin_status.comment,
+      enable_autocmd = false,
+   },
 }
