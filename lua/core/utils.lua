@@ -136,6 +136,108 @@ M.hide_statusline = function()
    end
 end
 
+-- load config
+-- 1st arg = boolean - whether to force reload
+-- Modifies _G._NVCHAD_CONFIG global variable
+M.load_config = function(reload)
+   -- only do the stuff below one time, otherwise just return the set config
+   if _G._NVCHAD_CONFIG_CONTENTS ~= nil and not (reload or false) then
+      return _G._NVCHAD_CONFIG_CONTENTS
+   end
+
+   -- these are the table value which will be always prioritiezed to take user config value
+   local to_replace = {
+      "['mappings']['plugin']['esc_insertmode']",
+      "['mappings']['terminal']['esc_termmode']",
+      "['mappings']['terminal']['esc_hide_termmode']",
+   }
+
+   local default_config = "default_config"
+   local config_name = vim.g.nvchad_user_config or "chadrc"
+   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
+
+   -- unload the modules if force reload
+   if reload then
+      package.loaded[default_config or false] = nil
+      package.loaded[config_name or false] = nil
+   end
+
+   -- don't enclose in pcall, it better break when default config is faulty
+   _G._NVCHAD_CONFIG_CONTENTS = require(default_config)
+
+   -- user config is not required to run nvchad but a optional
+   -- Make sure the config doesn't break the whole system if user config is not present or in bad state or not a table
+   -- print warning texts if user config file is  present
+   -- check if the user config is present
+   if vim.fn.empty(vim.fn.glob(config_file)) < 1 then
+      local present, config = pcall(require, config_name)
+      if present then
+         -- make sure the returned value is table
+         if type(config) == "table" then
+            -- data = require(config_name)
+            _G._NVCHAD_CONFIG_CONTENTS = require("core.utils").merge_table(
+               _G._NVCHAD_CONFIG_CONTENTS,
+               config,
+               to_replace
+            )
+         else
+            print("Warning: " .. config_name .. " sourced successfully but did not return a lua table.")
+         end
+      else
+         print("Warning: " .. config_file .. " is present but sourcing failed.")
+      end
+   end
+   return _G._NVCHAD_CONFIG_CONTENTS
+end
+
+M.map = function(mode, keys, cmd, opt)
+   local options = { noremap = true, silent = true }
+   if opt then
+      options = vim.tbl_extend("force", options, opt)
+   end
+
+   -- all valid modes allowed for mappings
+   -- :h map-modes
+   local valid_modes = {
+      [""] = true,
+      ["n"] = true,
+      ["v"] = true,
+      ["s"] = true,
+      ["x"] = true,
+      ["o"] = true,
+      ["!"] = true,
+      ["i"] = true,
+      ["l"] = true,
+      ["c"] = true,
+      ["t"] = true,
+   }
+
+   -- helper function for M.map
+   -- can gives multiple modes and keys
+   local function map_wrapper(mode, lhs, rhs, options)
+      if type(lhs) == "table" then
+         for _, key in ipairs(lhs) do
+            map_wrapper(mode, key, rhs, options)
+         end
+      else
+         if type(mode) == "table" then
+            for _, m in ipairs(mode) do
+               map_wrapper(m, lhs, rhs, options)
+            end
+         else
+            if valid_modes[mode] and lhs and rhs then
+               vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+            else
+               mode, lhs, rhs = mode or "", lhs or "", rhs or ""
+               print("Cannot set mapping [ mode = '" .. mode .. "' | key = '" .. lhs .. "' | cmd = '" .. rhs .. "' ]")
+            end
+         end
+      end
+   end
+
+   map_wrapper(mode, keys, cmd, options)
+end
+
 -- Base code: https://gist.github.com/revolucas/184aec7998a6be5d2f61b984fac1d7f7
 -- Changes over it: preserving table 1 contents and also update with table b, without duplicating
 -- 1st arg - base table
@@ -206,60 +308,6 @@ end]]
       end
    end
    return into
-end
-
--- load config
--- 1st arg = boolean - whether to force reload
--- Modifies _G._NVCHAD_CONFIG global variable
-M.load_config = function(reload)
-   -- only do the stuff below one time, otherwise just return the set config
-   if _G._NVCHAD_CONFIG_CONTENTS ~= nil and not (reload or false) then
-      return _G._NVCHAD_CONFIG_CONTENTS
-   end
-
-   -- these are the table value which will be always prioritiezed to take user config value
-   local to_replace = {
-      "['mappings']['plugin']['esc_insertmode']",
-      "['mappings']['terminal']['esc_termmode']",
-      "['mappings']['terminal']['esc_hide_termmode']",
-   }
-
-   local default_config = "default_config"
-   local config_name = vim.g.nvchad_user_config or "chadrc"
-   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
-
-   -- unload the modules if force reload
-   if reload then
-      package.loaded[default_config or false] = nil
-      package.loaded[config_name or false] = nil
-   end
-
-   -- don't enclose in pcall, it better break when default config is faulty
-   _G._NVCHAD_CONFIG_CONTENTS = require(default_config)
-
-   -- user config is not required to run nvchad but a optional
-   -- Make sure the config doesn't break the whole system if user config is not present or in bad state or not a table
-   -- print warning texts if user config file is  present
-   -- check if the user config is present
-   if vim.fn.empty(vim.fn.glob(config_file)) < 1 then
-      local present, config = pcall(require, config_name)
-      if present then
-         -- make sure the returned value is table
-         if type(config) == "table" then
-            -- data = require(config_name)
-            _G._NVCHAD_CONFIG_CONTENTS = require("core.utils").merge_table(
-               _G._NVCHAD_CONFIG_CONTENTS,
-               config,
-               to_replace
-            )
-         else
-            print("Warning: " .. config_name .. " sourced successfully but did not return a lua table.")
-         end
-      else
-         print("Warning: " .. config_file .. " is present but sourcing failed.")
-      end
-   end
-   return _G._NVCHAD_CONFIG_CONTENTS
 end
 
 return M

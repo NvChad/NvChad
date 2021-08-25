@@ -1,37 +1,26 @@
-local config = require("core.utils").load_config()
+local utils = require "core.utils"
+
+local config = utils.load_config()
+local map = utils.map
+
 local maps = config.mappings
 local plugin_maps = maps.plugin
+
 local cmd = vim.cmd
 
-local function map(mode, lhs, rhs, opts)
-   local options = { noremap = true, silent = true }
-   if opts then
-      options = vim.tbl_extend("force", options, opts)
-   end
-
-   -- if list of keys provided then run set for all of them
-   if type(lhs) == "table" then
-      for _, key in ipairs(lhs) do
-         vim.api.nvim_set_keymap(mode, key, rhs, options)
-      end
-   else
-      vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-   end
-end
-
-local opt, M = {}, {}
+local M = {}
 
 -- these mappings will only be called during initialization
 M.misc = function()
    local function non_config_mappings()
       -- dont copy any deleted text , this is disabled by default so uncomment the below mappings if you want them
-      -- map("n", "dd", [=[ "_dd ]=], opt)
-      -- map("v", "dd", [=[ "_dd ]=], opt)
-      -- map("v", "x", [=[ "_x ]=], opt)
+      -- map("n", "dd", [=[ "_dd ]=])
+      -- map("v", "dd", [=[ "_dd ]=])
+      -- map("v", "x", [=[ "_x ]=])
       -- todo: this should be configurable via chadrc
 
       -- Don't copy the replaced text after pasting in visual mode
-      map("v", "p", '"_dP', opt)
+      map("v", "p", '"_dP')
 
       -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
       -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -42,7 +31,7 @@ M.misc = function()
       map("", "<Up>", 'v:count ? "k" : "gk"', { expr = true })
 
       -- use ESC to turn off search highlighting
-      map("n", "<Esc>", ":noh <CR>", opt)
+      map("n", "<Esc>", ":noh <CR>")
    end
 
    local function optional_mappings()
@@ -50,12 +39,12 @@ M.misc = function()
       if config.options.insert_nav then
          local inav = maps.insert_nav
 
-         map("i", inav.backward, "<Left>", opt)
-         map("i", inav.end_of_line, "<End>", opt)
-         map("i", inav.forward, "<Right>", opt)
-         map("i", inav.next_line, "<Up>", opt)
-         map("i", inav.prev_line, "<Down>", opt)
-         map("i", inav.top_of_line, "<ESC>^i", opt)
+         map("i", inav.backward, "<Left>")
+         map("i", inav.end_of_line, "<End>")
+         map("i", inav.forward, "<Right>")
+         map("i", inav.next_line, "<Up>")
+         map("i", inav.prev_line, "<Down>")
+         map("i", inav.top_of_line, "<ESC>^i")
       end
 
       -- check the theme toggler
@@ -70,21 +59,21 @@ M.misc = function()
    end
 
    local function required_mappings()
-      map("n", maps.close_buffer, ":lua require('core.utils').close_buffer() <CR>", opt) -- close  buffer
-      map("n", maps.copy_whole_file, ":%y+ <CR>", opt) -- copy whole file content
-      map("n", maps.new_buffer, ":enew <CR>", opt) -- new buffer
-      map("n", maps.new_tab, ":tabnew <CR>", opt) -- new tabs
-      map("n", maps.line_number_toggle, ":set nu! <CR>", opt) -- toggle numbers
-      map("n", maps.save_file, ":w <CR>", opt) -- ctrl + s to save file
+      map("n", maps.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
+      map("n", maps.copy_whole_file, ":%y+ <CR>") -- copy whole file content
+      map("n", maps.new_buffer, ":enew <CR>") -- new buffer
+      map("n", maps.new_tab, ":tabnew <CR>") -- new tabs
+      map("n", maps.line_number_toggle, ":set nu! <CR>") -- toggle numbers
+      map("n", maps.save_file, ":w <CR>") -- ctrl + s to save file
 
       -- terminal mappings --
       local term_maps = maps.terminal
       -- get out of terminal mode
-      map("t", term_maps.esc_termmode, "<C-\\><C-n>", opt)
+      map("t", term_maps.esc_termmode, "<C-\\><C-n>")
       -- hide a term from within terminal mode
-      map("t", term_maps.esc_hide_termmode, "<C-\\><C-n> :lua require('core.utils').close_buffer() <CR>", opt)
+      map("t", term_maps.esc_hide_termmode, "<C-\\><C-n> :lua require('core.utils').close_buffer() <CR>")
       -- pick a hidden term
-      map("n", term_maps.pick_term, ":Telescope terms <CR>", opt)
+      map("n", term_maps.pick_term, ":Telescope terms <CR>")
       -- Open terminals
       -- TODO this opens on top of an existing vert/hori term, fixme
       map(
@@ -93,8 +82,8 @@ M.misc = function()
          ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>",
          opt
       )
-      map("n", term_maps.new_vertical, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>", opt)
-      map("n", term_maps.new_window, ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>", opt)
+      map("n", term_maps.new_vertical, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>")
+      map("n", term_maps.new_window, ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>")
       -- terminal mappings end --
 
       -- Add Packer commands because we are not loading it at startup
@@ -107,12 +96,24 @@ M.misc = function()
 
       -- add NvChadUpdate command and mapping
       cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
-      map("n", maps.update_nvchad, ":NvChadUpdate <CR>", opt)
+      map("n", maps.update_nvchad, ":NvChadUpdate <CR>")
+   end
+
+   local function user_config_mappings()
+      local custom_maps = config.custom.mappings or ""
+      if type(custom_maps) ~= "table" then
+         return
+      end
+
+      for _, map_table in pairs(custom_maps) do
+         map(unpack(map_table))
+      end
    end
 
    non_config_mappings()
    optional_mappings()
    required_mappings()
+   user_config_mappings()
 end
 
 -- below are all plugin related mappinsg
@@ -124,14 +125,14 @@ end
 M.bufferline = function()
    local m = plugin_maps.bufferline
 
-   map("n", m.next_buffer, ":BufferLineCycleNext <CR>", opt)
-   map("n", m.prev_buffer, ":BufferLineCyclePrev <CR>", opt)
+   map("n", m.next_buffer, ":BufferLineCycleNext <CR>")
+   map("n", m.prev_buffer, ":BufferLineCyclePrev <CR>")
 end
 
 M.chadsheet = function()
    local m = plugin_maps.chadsheet
 
-   map("n", m.default_keys, ":lua require('cheatsheet').show_cheatsheet_telescope() <CR>", opt)
+   map("n", m.default_keys, ":lua require('cheatsheet').show_cheatsheet_telescope() <CR>")
    map(
       "n",
       m.user_keys,
@@ -142,64 +143,64 @@ end
 
 M.comment = function()
    local m = plugin_maps.comment.toggle
-   map("n", m, ":CommentToggle <CR>", opt)
-   map("v", m, ":CommentToggle <CR>", opt)
+   map("n", m, ":CommentToggle <CR>")
+   map("v", m, ":CommentToggle <CR>")
 end
 
 M.dashboard = function()
    local m = plugin_maps.dashboard
 
-   map("n", m.bookmarks, ":DashboardJumpMarks <CR>", opt)
-   map("n", m.new_file, ":DashboardNewFile <CR>", opt)
-   map("n", m.open, ":Dashboard <CR>", opt)
-   map("n", m.session_load, ":SessionLoad <CR>", opt)
-   map("n", m.session_save, ":SessionSave <CR>", opt)
+   map("n", m.bookmarks, ":DashboardJumpMarks <CR>")
+   map("n", m.new_file, ":DashboardNewFile <CR>")
+   map("n", m.open, ":Dashboard <CR>")
+   map("n", m.session_load, ":SessionLoad <CR>")
+   map("n", m.session_save, ":SessionSave <CR>")
 end
 
 M.nvimtree = function()
-   map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>", opt)
-   map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>", opt)
+   map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>")
+   map("n", plugin_maps.nvimtree.focus,  ":NvimTreeFocus <CR>")
 end
 
 M.neoformat = function()
-   map("n", plugin_maps.neoformat.format, ":Neoformat <CR>", opt)
+   map("n", plugin_maps.neoformat.format, ":Neoformat <CR>")
 end
 
 M.telescope = function()
    local m = plugin_maps.telescope
 
-   map("n", m.buffers, ":Telescope buffers <CR>", opt)
-   map("n", m.find_files, ":Telescope find_files <CR>", opt)
+   map("n", m.buffers, ":Telescope buffers <CR>")
+   map("n", m.find_files, ":Telescope find_files <CR>")
    map("n", m.find_hiddenfiles, ":Telescope find_files hidden=true <CR>", opt)
-   map("n", m.git_commits, ":Telescope git_commits <CR>", opt)
-   map("n", m.git_status, ":Telescope git_status <CR>", opt)
-   map("n", m.help_tags, ":Telescope help_tags <CR>", opt)
-   map("n", m.live_grep, ":Telescope live_grep <CR>", opt)
-   map("n", m.oldfiles, ":Telescope oldfiles <CR>", opt)
-   map("n", m.themes, ":Telescope themes <CR>", opt)
+   map("n", m.git_commits, ":Telescope git_commits <CR>")
+   map("n", m.git_status, ":Telescope git_status <CR>")
+   map("n", m.help_tags, ":Telescope help_tags <CR>")
+   map("n", m.live_grep, ":Telescope live_grep <CR>")
+   map("n", m.oldfiles, ":Telescope oldfiles <CR>")
+   map("n", m.themes, ":Telescope themes <CR>")
 end
 
 M.telescope_media = function()
    local m = plugin_maps.telescope_media
 
-   map("n", m.media_files, ":Telescope media_files <CR>", opt)
+   map("n", m.media_files, ":Telescope media_files <CR>")
 end
 
 M.truezen = function()
    local m = plugin_maps.truezen
 
-   map("n", m.ataraxis_mode, ":TZAtaraxis <CR>", opt)
-   map("n", m.focus_mode, ":TZFocus <CR>", opt)
-   map("n", m.minimalistic_mode, ":TZMinimalist <CR>", opt)
+   map("n", m.ataraxis_mode, ":TZAtaraxis <CR>")
+   map("n", m.focus_mode, ":TZFocus <CR>")
+   map("n", m.minimalistic_mode, ":TZMinimalist <CR>")
 end
 
 M.vim_fugitive = function()
    local m = plugin_maps.vim_fugitive
 
-   map("n", m.git, ":Git <CR>", opt)
-   map("n", m.git_blame, ":Git blame <CR>", opt)
-   map("n", m.diff_get_2, ":diffget //2 <CR>", opt)
-   map("n", m.diff_get_3, ":diffget //3 <CR>", opt)
+   map("n", m.git, ":Git <CR>")
+   map("n", m.git_blame, ":Git blame <CR>")
+   map("n", m.diff_get_2, ":diffget //2 <CR>")
+   map("n", m.diff_get_3, ":diffget //3 <CR>")
 end
 
 return M
