@@ -369,7 +369,7 @@ components.right.active[10] = {
          return " Bot "
       end
       local result, _ = math.modf((current_line / total_line) * 100)
-      return " " .. result .. " % "
+      return " " .. result .. " %% "
    end,
 
    hl = {
