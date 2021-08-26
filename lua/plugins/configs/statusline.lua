@@ -173,6 +173,34 @@ components.left.active[11] = {
    icon = "  ",
 }
 
+components.mid.active[1] = {
+   provider = function()
+      local Lsp = vim.lsp.util.get_progress_messages()[1]
+      if Lsp then
+         local msg = Lsp.message or ""
+         local percentage = Lsp.percentage or 0
+         local title = Lsp.title or ""
+         local spinners = {
+            "󰝦",
+            "󰪞",
+            "󰪟",
+            "󰪠",
+            "󰪡",
+            "󰪢",
+            "󰪣",
+            "󰪤",
+            "󰪥",
+         }
+
+         local ms = vim.loop.hrtime() / 1000000
+         local frame = math.floor(ms / 120) % #spinners
+         return string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
+      end
+      return ""
+   end,
+   hl = { fg = colors.green },
+}
+
 components.right.active[1] = {
    provider = function()
       if next(vim.lsp.buf_get_clients()) ~= nil then
