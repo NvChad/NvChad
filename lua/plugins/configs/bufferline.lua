@@ -5,11 +5,8 @@ if not present then
    return
 end
 
-vim.cmd [[
- function Quitvim(a,b,c,d)
-   q
- endfunction
-]]
+-- function executed for top right close button in bufferline
+vim.cmd "function! NvChad_bufferline_quitvim(a,b,c,d) \n qa \n endfunction"
 
 bufferline.setup {
    options = {
@@ -34,7 +31,10 @@ bufferline.setup {
       custom_areas = {
          right = function()
             local result = {}
-            table.insert(result, { text = "%@Quitvim@  %X", guifg = colors.red, guibg = colors.black })
+            table.insert(
+               result,
+               { text = "%@NvChad_bufferline_quitvim@  %X", guifg = colors.red, guibg = colors.black }
+            )
             return result
          end,
       },
