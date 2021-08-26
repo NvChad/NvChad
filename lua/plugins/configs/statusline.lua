@@ -175,8 +175,10 @@ components.left.active[11] = {
 
 components.right.active[1] = {
    provider = function()
-      if lsp.is_lsp_attached then
+      if next(vim.lsp.buf_get_clients()) ~= nil then
          return " " .. "  " .. " LSP"
+      else
+         return ""
       end
    end,
    hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
