@@ -204,10 +204,21 @@ components.mid.active[1] = {
 
 components.right.active[1] = {
    provider = function()
-      if lsp.is_lsp_attached then
-         return " " .. "  " .. " LSP"
+      local clients = vim.lsp.get_active_clients()
+      if next(clients) ~= nil then
+         local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+         for _, client in ipairs(clients) do
+            local filetypes = client.config.filetypes
+            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+               return " " .. "  " .. " LSP"
+            end
+         end
+         return ""
+      else
+         return ""
       end
    end,
+
    hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
 }
 
