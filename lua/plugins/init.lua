@@ -138,7 +138,7 @@ return packer.startup(function()
    use {
       "onsails/lspkind-nvim",
       disable = not plugin_status.lspkind,
-      event = "BufEnter",
+      event = "InsertEnter",
       config = function()
          require("plugins.configs.others").lspkind()
       end,
