@@ -6,8 +6,8 @@ if not present then
 end
 
 vim.cmd [[
- function MyFunc(a,b,c,d)
-   q!
+ function Quitvim(a,b,c,d)
+   q
  endfunction
 ]]
 
@@ -34,7 +34,7 @@ bufferline.setup {
       custom_areas = {
          right = function()
             local result = {}
-            table.insert(result, { text = "%@MyFunc@  %X", guifg = colors.red, guibg = colors.black })
+            table.insert(result, { text = "%@Quitvim@  %X", guifg = colors.red, guibg = colors.black })
             return result
          end,
       },
