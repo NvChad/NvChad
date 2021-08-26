@@ -26,7 +26,7 @@ bufferline.setup {
       show_buffer_close_icons = true,
       separator_style = "thin",
       always_show_bufferline = true,
-      diagnostics = false, -- "or nvim-lsp"
+      diagnostics = false, -- "or nvim_lsp"
 
       custom_areas = {
          right = function()
