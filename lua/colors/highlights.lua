@@ -22,14 +22,24 @@ local yellow = colors.yellow
 
 local ui = require("core.utils").load_config().ui
 
+-- Define bg color
+-- @param group Group
+-- @param color Color
 local function bg(group, color)
    cmd("hi " .. group .. " guibg=" .. color)
 end
 
+-- Define fg color
+-- @param group Group
+-- @param color Color
 local function fg(group, color)
    cmd("hi " .. group .. " guifg=" .. color)
 end
 
+-- Define bg and fg color
+-- @param group Group
+-- @param fgcol Fg Color
+-- @param bgcol Bg Color
 local function fg_bg(group, fgcol, bgcol)
    cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
@@ -41,8 +51,10 @@ else
    fg("Comment", grey_fg)
 end
 
-cmd "hi clear CursorLine" -- disable cusror line
-fg("cursorlinenr", white) -- line number
+-- Disable cusror line
+cmd "hi clear CursorLine"
+-- Line number
+fg("cursorlinenr", white)
 
 -- same it bg, so it doesn't appear
 fg("EndOfBuffer", black)
@@ -75,38 +87,43 @@ if ui.transparency then
    fg("Comment", grey)
 end
 
------ plugin related highlights -----
+-- [[ Plugin Highlights
 
--- dashboard --
+-- Dashboard
 fg("DashboardCenter", grey_fg)
 fg("DashboardFooter", grey_fg)
 fg("DashboardHeader", grey_fg)
 fg("DashboardShortcut", grey_fg)
 
--- git signs --
+-- Git signs
 fg_bg("DiffAdd", nord_blue, "none")
 fg_bg("DiffChange", grey_fg, "none")
 fg_bg("DiffModified", nord_blue, "none")
 
--- indent blankline plugin --
+-- Indent blankline plugin
 fg("IndentBlanklineChar", line)
 
--- LspDiagnostics --
--- error / warnings
+-- ]]
+
+-- [[ LspDiagnostics
+
+-- Errors
 fg("LspDiagnosticsSignError", red)
 fg("LspDiagnosticsSignWarning", yellow)
 fg("LspDiagnosticsVirtualTextError", red)
 fg("LspDiagnosticsVirtualTextWarning", yellow)
 
--- info
+-- Info
 fg("LspDiagnosticsSignInformation", green)
 fg("LspDiagnosticsVirtualTextInformation", green)
 
--- hints
+-- Hints
 fg("LspDiagnosticsSignHint", purple)
 fg("LspDiagnosticsVirtualTextHint", purple)
 
--- NvimTree --
+-- ]]
+
+-- NvimTree
 fg("NvimTreeEmptyFolderName", blue)
 fg("NvimTreeEndOfBuffer", darker_black)
 fg("NvimTreeFolderIcon", folder_bg)
@@ -120,7 +137,8 @@ fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
--- disable some highlight in nvim tree if transparency enabled
+
+-- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
    bg("NvimTreeNormal", "NONE")
    bg("NvimTreeStatusLineNC", "NONE")
@@ -128,7 +146,7 @@ if ui.transparency then
    fg("NvimTreeVertSplit", grey)
 end
 
--- telescope --
+-- Telescope
 fg("TelescopeBorder", line)
 fg("TelescopePreviewBorder", grey)
 fg("TelescopePromptBorder", line)
