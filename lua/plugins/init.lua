@@ -38,8 +38,8 @@ return packer.startup(function()
    }
 
    use {
-      "glepnir/galaxyline.nvim",
-      disable = not plugin_status.galaxyline,
+      "famiu/feline.nvim",
+      disable = not plugin_status.feline,
       after = "nvim-web-devicons",
       config = function()
          require "plugins.configs.statusline"
@@ -49,7 +49,7 @@ return packer.startup(function()
    use {
       "akinsho/bufferline.nvim",
       disable = not plugin_status.bufferline,
-      after = "galaxyline.nvim",
+      after = "feline.nvim",
       config = function()
          require "plugins.configs.bufferline"
       end,
