@@ -213,12 +213,60 @@ components.right.active[1] = {
 }
 
 components.right.active[2] = {
-   provider = "git_branch",
+   -- taken from: https://github.com/hoob3rt/lualine.nvim/blob/master/lua/lualine/components/branch.lua
+   provider = function()
+      local git_branch = ""
+
+      -- first try with gitsigns
+      local gs_dict = vim.b.gitsigns_status_dict
+      if gs_dict then
+         git_branch = (gs_dict.head and #gs_dict.head > 0 and gs_dict.head) or git_branch
+      else
+         -- get file dir so we can search from that dir
+         local file_dir = vim.fn.expand "%:p:h" .. ";"
+         -- find .git/ folder genaral case
+         local git_dir = vim.fn.finddir(".git", file_dir)
+         -- find .git file in case of submodules or any other case git dir is in
+         -- any other place than .git/
+         local git_file = vim.fn.findfile(".git", file_dir)
+         -- for some weird reason findfile gives relative path so expand it to fullpath
+         if #git_file > 0 then
+            git_file = vim.fn.fnamemodify(git_file, ":p")
+         end
+         if #git_file > #git_dir then
+            -- separate git-dir or submodule is used
+            local file = io.open(git_file)
+            git_dir = file:read()
+            git_dir = git_dir:match "gitdir: (.+)$"
+            file:close()
+            -- submodule / relative file path
+            if git_dir:sub(1, 1) ~= Branch.sep and not git_dir:match "^%a:.*$" then
+               git_dir = git_file:match "(.*).git" .. git_dir
+            end
+         end
+
+         if #git_dir > 0 then
+            branch_sep = package.config:sub(1, 1)
+            local head_file = git_dir .. branch_sep .. "HEAD"
+            local f_head = io.open(head_file)
+            if f_head then
+               local HEAD = f_head:read()
+               f_head:close()
+               local branch = HEAD:match "ref: refs/heads/(.+)$"
+               if branch then
+                  git_branch = branch
+               else
+                  git_branch = HEAD:sub(1, 6)
+               end
+            end
+         end
+      end
+      return (git_branch ~= "" and "  " .. git_branch) or git_branch
+   end,
    hl = {
       fg = colors.grey_fg2,
       bg = colors.statusline_bg,
    },
-   icon = "  ",
 }
 
 components.right.active[3] = {
