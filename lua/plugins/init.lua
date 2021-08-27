@@ -80,7 +80,6 @@ return packer.startup(function()
       end,
    }
 
-   -- lsp stuff
    use {
       "nvim-treesitter/nvim-treesitter",
       event = "BufRead",
@@ -115,6 +114,7 @@ return packer.startup(function()
       end,
    }
 
+   -- lsp stuff
    use {
       "kabouzeid/nvim-lspinstall",
       opt = true,
@@ -161,15 +161,6 @@ return packer.startup(function()
       end,
    }
 
-   --    use {
-   --       "onsails/lspkind-nvim",
-   --       disable = not plugin_status.lspkind,
-   --       after = "LuaSnip",
-   --       config = function()
-   --          require("plugins.configs.others").lspkind()
-   --       end,
-   --    }
-   --
    use {
       "jdhao/better-escape.vim",
       disable = not plugin_status.esc_insertmode,
