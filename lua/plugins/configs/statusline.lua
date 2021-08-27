@@ -181,20 +181,25 @@ components.mid.active[1] = {
          local percentage = Lsp.percentage or 0
          local title = Lsp.title or ""
          local spinners = {
-            "󰝦",
-            "󰪞",
-            "󰪟",
-            "󰪠",
-            "󰪡",
-            "󰪢",
-            "󰪣",
-            "󰪤",
-            "󰪥",
+            "",
+            "",
+            "",
+         }
+
+         local success_icon = {
+            "",
+            "",
+            "",
          }
 
          local ms = vim.loop.hrtime() / 1000000
          local frame = math.floor(ms / 120) % #spinners
-         return string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
+
+         if percentage >= 70 then
+            return string.format(" %%<%s %s %s (%s%%%%) ", success_icon[frame + 1], title, msg, percentage)
+         else
+            return string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
+         end
       end
       return ""
    end,
