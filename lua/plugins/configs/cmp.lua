@@ -1,6 +1,10 @@
-vim.opt.completeopt = "menuone,noselect"
+local present, cmp = pcall(require, "cmp")
 
-local cmp = require "cmp"
+if not present then
+   return
+end
+
+vim.opt.completeopt = "menuone,noselect"
 
 -- nvim-cmp setup
 cmp.setup {
