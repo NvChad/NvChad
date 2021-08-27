@@ -176,25 +176,25 @@ return packer.startup(function()
    -- load luasnips + cmp related in insert mode only
 
    use {
-      "L3MON4D3/LuaSnip",
+      "hrsh7th/nvim-cmp",
       event = "InsertEnter",
+      config = function()
+         require "plugins.configs.cmp"
+      end,
+   }
+
+   use {
+      "L3MON4D3/LuaSnip",
       wants = "friendly-snippets",
+      after = "nvim-cmp",
       config = function()
          require "plugins.configs.luasnip"
       end,
    }
 
    use {
-      "hrsh7th/nvim-cmp",
-      config = function()
-         require "plugins.configs.cmp"
-      end,
-      after = "LuaSnip",
-   }
-
-   use {
       "saadparwaiz1/cmp_luasnip",
-      after = "nvim-cmp",
+      after = "LuaSnip",
    }
 
    use {

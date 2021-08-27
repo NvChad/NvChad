@@ -1,10 +1,9 @@
 vim.opt.completeopt = "menuone,noselect"
 
 local lspkind = require "plugins.configs.lspkind_icons"
-local luasnip = require "luasnip"
+local cmp = require "cmp"
 
 -- nvim-cmp setup
-local cmp = require "cmp"
 cmp.setup {
    snippet = {
       expand = function(args)
