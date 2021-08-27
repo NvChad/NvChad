@@ -21,7 +21,7 @@ local icon_styles = {
       left = " ",
       right = " ",
       main_icon = "   ",
-      vi_mode_icon = "   ",
+      vi_mode_icon = "  ",
       position_icon = "  ",
    },
 
@@ -209,7 +209,7 @@ components.mid.active[1] = {
 components.right.active[1] = {
    provider = function()
       if next(vim.lsp.buf_get_clients()) ~= nil then
-         return "   LSP "
+         return "  LSP"
       else
          return ""
       end
