@@ -154,7 +154,7 @@ return packer.startup(function()
       disable = not plugin_status.autosave,
       "Pocco81/AutoSave.nvim",
       config = function()
-         require "plugins.configs.autosave"
+         require("plugins.configs.others").autosave()
       end,
       cond = function()
          return require("core.utils").load_config().options.plugin.autosave == true
@@ -164,7 +164,7 @@ return packer.startup(function()
    use {
       "onsails/lspkind-nvim",
       disable = not plugin_status.lspkind,
-      event = "InsertEnter",
+      after = "LuaSnip",
       config = function()
          require("plugins.configs.others").lspkind()
       end,
@@ -182,36 +182,56 @@ return packer.startup(function()
       end,
    }
 
-   -- load compe in insert mode only
+   -- load luasnips + cmp related in insert mode only
+
    use {
-      "hrsh7th/nvim-compe",
+      "L3MON4D3/LuaSnip",
       event = "InsertEnter",
+      wants = "friendly-snippets",
       config = function()
-         require "plugins.configs.compe"
+         require "plugins.configs.luasnip"
       end,
-      wants = "LuaSnip",
-      requires = {
-         {
-            "L3MON4D3/LuaSnip",
-            wants = "friendly-snippets",
-            event = "InsertCharPre",
-            config = function()
-               require "plugins.configs.luasnip"
-            end,
-         },
-         {
-            "rafamadriz/friendly-snippets",
-            event = "InsertCharPre",
-         },
-      },
+   }
+
+   use {
+      "hrsh7th/nvim-cmp",
+      config = function()
+         require "plugins.configs.cmp"
+      end,
+      after = "lspkind-nvim",
+   }
+
+   use {
+      "saadparwaiz1/cmp_luasnip",
+      after = "nvim-cmp",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lua",
+      after = "cmp_luasnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lsp",
+      after = "cmp-nvim-lua",
+   }
+
+   use {
+      "hrsh7th/cmp-buffer",
+      after = "cmp-nvim-lsp",
+   }
+
+   use {
+      "rafamadriz/friendly-snippets",
+      after = "cmp-buffer",
    }
 
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
-      after = "nvim-compe",
+      after = "nvim-cmp",
       config = function()
-         require "plugins.configs.autopairs"
+         require("plugins.configs.others").autopairs()
       end,
    }
 

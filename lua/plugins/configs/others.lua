@@ -1,5 +1,42 @@
 local M = {}
 
+M.autopairs = function()
+   local present1, autopairs = pcall(require, "nvim-autopairs")
+   local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.cmp")
+
+   if not (present1 or present2) then
+      return
+   end
+
+   autopairs.setup()
+   autopairs_completion.setup {
+      map_complete = true, -- insert () func completion
+      map_cr = true,
+   }
+end
+
+M.autosave = function()
+   -- autosave.nvim plugin is disabled by default
+   local present, autosave = pcall(require, "autosave")
+   if not present then
+      return
+   end
+
+   autosave.setup {
+      enabled = vim.g.auto_save or false, -- takes boolean value from init.lua
+      execution_message = "autosaved at : " .. vim.fn.strftime "%H:%M:%S",
+      events = { "InsertLeave", "TextChanged" },
+      conditions = {
+         exists = true,
+         filetype_is_not = {},
+         modifiable = true,
+      },
+      clean_command_line_interval = 2500,
+      on_off_commands = true,
+      write_all_buffers = false,
+   }
+end
+
 M.better_escape = function()
    local config = require("core.utils").load_config()
    vim.g.better_escape_interval = config.options.plugin.esc_insertmode_timeout or 300
