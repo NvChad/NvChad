@@ -2,8 +2,11 @@ name: format
 
 on:
   push:
-    paths: '**.lua'
-    branches: [main, dev]
+    branches: "**"
+  pull_request:
+    branches:
+      - "main"
+      - "develop"
 
 jobs:
   stylua:
