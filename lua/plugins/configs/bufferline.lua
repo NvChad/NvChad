@@ -13,8 +13,8 @@ bufferline.setup {
       offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
       buffer_close_icon = "",
       modified_icon = "",
-      close_icon = "",
-      show_close_icon = false,
+      close_icon = "%@NvChad_bufferline_quitvim@%X",
+      show_close_icon = true,
       left_trunc_marker = "",
       right_trunc_marker = "",
       max_name_length = 14,
@@ -27,17 +27,6 @@ bufferline.setup {
       separator_style = "thin",
       always_show_bufferline = true,
       diagnostics = false, -- "or nvim_lsp"
-
-      custom_areas = {
-         right = function()
-            local result = {}
-            table.insert(
-               result,
-               { text = "%@NvChad_bufferline_quitvim@  %X", guifg = colors.red, guibg = colors.black }
-            )
-            return result
-         end,
-      },
       custom_filter = function(buf_number)
          -- Func to filter out our managed/persistent split terms
          local present_type, type = pcall(function()
