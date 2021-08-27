@@ -227,6 +227,8 @@ components.right.active[2] = {
       if gs_dict then
          git_branch = (gs_dict.head and #gs_dict.head > 0 and gs_dict.head) or git_branch
       else
+         -- path seperator
+         local branch_sep = package.config:sub(1, 1)
          -- get file dir so we can search from that dir
          local file_dir = vim.fn.expand "%:p:h" .. ";"
          -- find .git/ folder genaral case
@@ -245,13 +247,12 @@ components.right.active[2] = {
             git_dir = git_dir:match "gitdir: (.+)$"
             file:close()
             -- submodule / relative file path
-            if git_dir:sub(1, 1) ~= Branch.sep and not git_dir:match "^%a:.*$" then
+            if git_dir:sub(1, 1) ~= branch_sep and not git_dir:match "^%a:.*$" then
                git_dir = git_file:match "(.*).git" .. git_dir
             end
          end
 
          if #git_dir > 0 then
-            branch_sep = package.config:sub(1, 1)
             local head_file = git_dir .. branch_sep .. "HEAD"
             local f_head = io.open(head_file)
             if f_head then
