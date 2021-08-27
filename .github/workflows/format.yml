@@ -1,12 +1,7 @@
 name: format
-
 on:
   push:
     branches: "**"
-  pull_request:
-    branches:
-      - "main"
-      - "develop"
 
 jobs:
   stylua:
