@@ -161,15 +161,15 @@ return packer.startup(function()
       end,
    }
 
-   use {
-      "onsails/lspkind-nvim",
-      disable = not plugin_status.lspkind,
-      after = "LuaSnip",
-      config = function()
-         require("plugins.configs.others").lspkind()
-      end,
-   }
-
+   --    use {
+   --       "onsails/lspkind-nvim",
+   --       disable = not plugin_status.lspkind,
+   --       after = "LuaSnip",
+   --       config = function()
+   --          require("plugins.configs.others").lspkind()
+   --       end,
+   --    }
+   --
    use {
       "jdhao/better-escape.vim",
       disable = not plugin_status.esc_insertmode,
@@ -198,7 +198,7 @@ return packer.startup(function()
       config = function()
          require "plugins.configs.cmp"
       end,
-      after = "lspkind-nvim",
+      after = "LuaSnip",
    }
 
    use {
