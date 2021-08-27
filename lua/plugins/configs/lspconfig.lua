@@ -68,12 +68,18 @@ local function setup_servers()
          lspconfig[lang].setup {
             on_attach = on_attach,
             capabilities = capabilities,
+            flags = {
+               debounce_text_changes = 500,
+            },
             -- root_dir = vim.loop.cwd,
          }
       elseif lang == "lua" then
          lspconfig[lang].setup {
             on_attach = on_attach,
             capabilities = capabilities,
+            flags = {
+               debounce_text_changes = 500,
+            },
             settings = {
                Lua = {
                   diagnostics = {
