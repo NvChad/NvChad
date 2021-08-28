@@ -97,7 +97,7 @@ components.left.active[3] = {
 components.left.active[4] = {
    provider = function()
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-      return " " .. dir_name .. " "
+      return "  " .. dir_name .. " "
    end,
 
    hl = {
