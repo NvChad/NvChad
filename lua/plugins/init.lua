@@ -192,7 +192,7 @@ return packer.startup(function()
       wants = "friendly-snippets",
       after = "nvim-cmp",
       config = function()
-         require "plugins.configs.luasnip"
+         require("plugins.configs.others").luasnip()
       end,
    }
 
