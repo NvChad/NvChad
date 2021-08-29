@@ -170,7 +170,7 @@ M.mappings.plugin = {
    nvimtree = {
       -- file tree
       toggle = "<C-n>",
-      focus = "<C-h>",
+      focus = "<leader>e",
    },
    neoformat = {
       format = "<leader>fm",
