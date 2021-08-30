@@ -92,6 +92,7 @@ M.plugin_status = {
    truezen = false, -- no distraction mode for nvim
    vim_fugitive = false, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
+   vim_terraform = true,
 }
 
 -- mappings -- don't use a single keymap twice --

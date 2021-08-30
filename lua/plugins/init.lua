@@ -350,4 +350,12 @@ return packer.startup(function()
          require("core.mappings").vim_fugitive()
       end,
    }
+
+   use {
+     "hashivim/vim-terraform",
+     disable = not plugin_status.vim_terraform,
+     config = function()
+       require "plugins.configs.vim_terraform"
+     end,
+   }
 end)
