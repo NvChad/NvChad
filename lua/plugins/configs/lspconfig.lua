@@ -125,7 +125,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
    virtual_text = {
       prefix = "✗",
       spacing = 4,
-      
    },
    signs = true,
    underline = true,
