@@ -5,8 +5,15 @@ if not present then
 end
 
 local use = packer.use
+require('impatient')
 
 return packer.startup(function()
+
+	use {
+		"lewis6991/impatient.nvim",
+		rocks = "mpack",
+	}
+
    local plugin_status = require("core.utils").load_config().plugin_status
 
    -- this is arranged on the basis of when a plugin starts
