@@ -189,7 +189,7 @@ return packer.startup(function()
 
    use {
       "L3MON4D3/LuaSnip",
-      wants = "friendly-snippets",
+      wants = "snippets",
       after = "nvim-cmp",
       config = function()
          require("plugins.configs.others").luasnip()
@@ -217,7 +217,7 @@ return packer.startup(function()
    }
 
    use {
-      "rafamadriz/friendly-snippets",
+      "hieunc-edu/snippets",
       after = "cmp-buffer",
    }
 
