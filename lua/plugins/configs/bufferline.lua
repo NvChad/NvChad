@@ -64,6 +64,16 @@ bufferline.setup {
          guifg = colors.light_grey,
          guibg = colors.black2,
       },
+      
+      -- for diagnostics = "nvim_lsp"
+      error = {
+         guifg = colors.light_grey,
+         guibg = colors.black2,
+      },
+      error_diagnostic = {
+         guifg = colors.light_grey,
+         guibg = colors.black2
+      },
 
       -- close buttons
       close_button = {
