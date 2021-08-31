@@ -4,6 +4,6 @@
 local hooks = require "core.hooks"
 
 hooks.override("lsp", "publish_diagnostics", function(current)
-  current.virtual_text = false;
-  return current;
+   current.virtual_text = false
+   return current
 end)

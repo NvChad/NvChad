@@ -1,6 +1,6 @@
 local present1, lspconfig = pcall(require, "lspconfig")
 local present2, lspinstall = pcall(require, "lspinstall")
-local overrides = require("core.hooks").createOverrides("lsp")
+local overrides = require("core.hooks").createOverrides "lsp"
 
 if not (present1 or present2) then
    return
@@ -122,7 +122,7 @@ lspSymbol("Information", "")
 lspSymbol("Hint", "")
 lspSymbol("Warning", "")
 
-local lsp_publish_diagnostics_options = overrides.get('publish_diagnostics', {
+local lsp_publish_diagnostics_options = overrides.get("publish_diagnostics", {
    virtual_text = {
       prefix = "",
       spacing = 0,
@@ -131,7 +131,10 @@ local lsp_publish_diagnostics_options = overrides.get('publish_diagnostics', {
    underline = true,
    update_in_insert = false, -- update diagnostics insert mode
 })
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, lsp_publish_diagnostics_options)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+   vim.lsp.diagnostic.on_publish_diagnostics,
+   lsp_publish_diagnostics_options
+)
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
    border = "single",
 })
