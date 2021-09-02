@@ -53,7 +53,7 @@
 ![gruvchad](https://user-images.githubusercontent.com/59060246/130129897-a68b1585-f42d-4325-8482-102dd2fe1e9e.png)
 ![everforest](https://user-images.githubusercontent.com/59060246/130129901-5e582f3e-b776-4d0c-9790-be5ae738b5a8.png)
 
-# Very Very Useful lua plugins used in my config
+# Very Very Useful Lua plugins used in my config
 
 #### Lspkind-nvim
 
@@ -95,14 +95,14 @@ Lua fork of vim devicons which lets me change icons of filetypes:
 
 ### Nvim-treesitter
 
-Better syntax highlighting for programming languages ( NvChad by default comes with lua/bash treesitter parsers ).
+Better syntax highlighting for programming languages ( NvChad by default comes with Lua/bash treesitter parsers ).
 
 without / with Treesitter:
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/woTree.png"></kbd>
 
 # Credits
 
-- [Elianiva](https://github.com/elianiva) helped me with neovim lua related issues many times, NvChad wouldnt exist without his help at all!
+- [Elianiva](https://github.com/elianiva) helped me with neovim Lua related issues many times, NvChad wouldnt exist without his help at all!
 - @lorvethe for making NvChad logo!
 
 # Features
