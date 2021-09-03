@@ -1,4 +1,4 @@
-local present, chadsheet = pcall(require, "cheatsheet")
+local present, cheatsheet = pcall(require, "cheatsheet")
 
 if not present then
    return
@@ -8,28 +8,28 @@ local mappings = require("core.utils").load_config().mappings
 
 -- add user mappings to the cheetsheet
 -- improve this function to not hardcode plugin
-local function add_to_chadsheet(section, keymap, desc)
+local function add_to_cheatsheet(section, keymap, desc)
    if section == "plugin" then
       for sec, key in pairs(mappings.plugin) do
-         add_to_chadsheet(sec, key, sec)
+         add_to_cheatsheet(sec, key, sec)
       end
    else
       if type(keymap) == "table" then
          for sec, key in pairs(keymap) do
             if type(sec) == "number" then
-               add_to_chadsheet(section, key, desc or section)
+               add_to_cheatsheet(section, key, desc or section)
             else
-               add_to_chadsheet(sec, key, desc or section)
+               add_to_cheatsheet(sec, key, desc or section)
             end
          end
       else
-         chadsheet.add_cheat(section, keymap, desc or "Misc")
+         cheatsheet.add_cheat(section, keymap, desc or "Misc")
       end
    end
 end
 
 for section, keymap in pairs(mappings) do
-   add_to_chadsheet(section, keymap)
+   add_to_cheatsheet(section, keymap)
 end
 
 require("cheatsheet").setup {

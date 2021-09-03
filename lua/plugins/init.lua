@@ -280,10 +280,10 @@ return packer.startup(function()
             disable = not plugin_status.cheatsheet,
             after = "telescope.nvim",
             config = function()
-               require "plugins.configs.chadsheet"
+               require "plugins.configs.cheatsheet"
             end,
             setup = function()
-               require("core.mappings").chadsheet()
+               require("core.mappings").cheatsheet()
             end,
          },
          {
