@@ -1,4 +1,5 @@
--- IMPORTANT NOTE : This is the user config, can be edited. Will be preserved if updated with internal updater
+-- IMPORTANT NOTE : This is default config, so dont change anything here.
+-- use custom/chadrc.lua instead
 
 local M = {}
 M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
@@ -30,7 +31,12 @@ M.ui.plugin = {
    statusline = {
       -- these are filetypes, not pattern matched
       -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
-      hidden = {},
+      hidden = {
+         "help",
+         "dashboard",
+         "NvimTree",
+         "terminal",
+      },
       shown = {},
       -- default, round , slant , block , arrow
       style = "default",
@@ -142,13 +148,14 @@ M.mappings.plugin = {
    bufferline = {
       next_buffer = "<TAB>", -- next buffer
       prev_buffer = "<S-Tab>", -- previous buffer
+      --TODO move out of bufferline
       --better window movement
       moveLeft = "<C-h>",
       moveRight = "<C-l>",
       moveUp = "<C-k>",
       moveDown = "<C-j>",
    },
-   chadsheet = {
+   cheatsheet = {
       default_keys = "<leader>dk",
       user_keys = "<leader>uk",
    },
@@ -167,7 +174,9 @@ M.mappings.plugin = {
       esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
    nvimtree = {
-      toggle = "<C-n>", -- file manager
+      -- file tree
+      toggle = "<C-n>",
+      focus = "<leader>e",
    },
    neoformat = {
       format = "<leader>fm",
@@ -175,6 +184,7 @@ M.mappings.plugin = {
    telescope = {
       buffers = "<leader>fb",
       find_files = "<leader>ff",
+      find_hiddenfiles = "<leader>fa",
       git_commits = "<leader>cm",
       git_status = "<leader>gt",
       help_tags = "<leader>fh",
@@ -220,5 +230,4 @@ M.plugins = {
       servers = {},
    },
 }
-
 return M

@@ -131,8 +131,8 @@ M.bufferline = function()
    map("n", m.moveDown, "<C-w>j")
 end
 
-M.chadsheet = function()
-   local m = plugin_maps.chadsheet
+M.cheatsheet = function()
+   local m = plugin_maps.cheatsheet
 
    map("n", m.default_keys, ":lua require('cheatsheet').show_cheatsheet_telescope() <CR>")
    map(
