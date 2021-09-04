@@ -255,7 +255,8 @@ M.merge_table = function(into, from, nodes_to_replace)
 
    if type(nodes_to_replace) == "table" then
       -- function that will be executed with loadstring
-      local base_fn = [[
+      local replace_fn = function(node)
+         local base_fn = [[
 return function(table1, table2)
    local t1, t2 = table1_node or false , table2_node or false
    if t1 and t2 then
@@ -263,11 +264,20 @@ return function(table1, table2)
    end
    return table1
 end]]
-      for _, node in ipairs(nodes_to_replace) do
+
          -- replace the _node in base_fn to actual given node value
          local fn = base_fn:gsub("_node", node)
-         -- if the node if found, it is replaced, otherwise table 1 is returned
-         table1 = loadstring(fn)()(table1, table2)
+         -- return the function created from the string base_fn
+         return loadstring(fn)()(table1, table2)
+       end
+
+      for _, node in ipairs(nodes_to_replace) do
+         -- pcall() is a poor workaround for if "['mappings']['plugin']['esc_insertmode']" 'plugin' sub-table does not exist
+         local ok, result = pcall(replace_fn, node)
+         if ok then
+            -- if the node is found then replace
+            table1 = result
+         end
       end
    end
 
