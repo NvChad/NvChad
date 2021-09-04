@@ -7,10 +7,8 @@ M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
 -- non plugin ui configs, available without any plugins
 M.ui = {
    italic_comments = false,
-
    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
    theme = "onedark",
-
    -- theme toggler, toggle between two themes, see theme_toggleer mappings
    theme_toggler = {
       enabled = false,
@@ -19,7 +17,6 @@ M.ui = {
          "one-light",
       },
    },
-
    -- Enable this only if your terminal has the colorscheme set which nvchad uses
    -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
    transparency = false,
@@ -53,6 +50,7 @@ M.options = {
    hidden = true,
    ignorecase = true,
    insert_nav = true, -- navigation in insertmode
+   window_nav = true,
    mapleader = " ",
    mouse = "a",
    number = true,
@@ -105,7 +103,6 @@ M.mappings = {
    -- close current focused buffer
    close_buffer = "<leader>x",
    copy_whole_file = "<C-a>", -- copy all contents of the current buffer
-
    -- navigation in insert mode, only if enabled in options
    insert_nav = {
       backward = "<C-h>",
@@ -115,13 +112,18 @@ M.mappings = {
       prev_line = "<C-j>",
       top_of_line = "<C-a>",
    },
-
+   window_nav = {
+      --better window movement
+      moveLeft = "<C-h>",
+      moveRight = "<C-l>",
+      moveUp = "<C-k>",
+      moveDown = "<C-j>",
+    },
    line_number_toggle = "<leader>n", -- show or hide line number
    new_buffer = "<S-t>", -- open a new buffer
    new_tab = "<C-t>b", -- open a new vim tab
    save_file = "<C-s>", -- save file using :w
    theme_toggler = "<leader>tt", -- for theme toggler, see in ui.theme_toggler
-
    -- terminal related mappings
    terminal = {
       -- multiple mappings can be given for esc_termmode and esc_hide_termmode
@@ -137,7 +139,6 @@ M.mappings = {
       new_vertical = "<leader>v",
       new_window = "<leader>w",
    },
-
    -- update nvchad from nvchad, chadness 101
    update_nvchad = "<leader>uu",
 }
@@ -148,12 +149,6 @@ M.mappings.plugin = {
    bufferline = {
       next_buffer = "<TAB>", -- next buffer
       prev_buffer = "<S-Tab>", -- previous buffer
-      --TODO move out of bufferline
-      --better window movement
-      moveLeft = "<C-h>",
-      moveRight = "<C-l>",
-      moveUp = "<C-k>",
-      moveDown = "<C-j>",
    },
    cheatsheet = {
       default_keys = "<leader>dk",
