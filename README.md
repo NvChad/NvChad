@@ -46,12 +46,14 @@
 <img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
 
-## Theme showcase
+<details><summary><h2>Theme Showcase (Click to expand!)</h2></summary>
 
 ![onedark](https://user-images.githubusercontent.com/59060246/130129880-59ab1ad5-9aa6-4f50-9ddd-d8dde0c16257.png)
 ![nord](https://user-images.githubusercontent.com/59060246/130129890-c01117df-ac3d-40dd-b95d-2681c2461bb4.png)
 ![gruvchad](https://user-images.githubusercontent.com/59060246/130129897-a68b1585-f42d-4325-8482-102dd2fe1e9e.png)
 ![everforest](https://user-images.githubusercontent.com/59060246/130129901-5e582f3e-b776-4d0c-9790-be5ae738b5a8.png)
+
+</details>
 
 ## Very useful plugins used
 
@@ -171,3 +173,12 @@ This will leave your current Neovim configuration untouched. Once you exit Neovi
 ## Warning
 
 If you have an issue with a plugin in NvChad, first you should report it to NvChad to see if it's an issue with it.
+
+## :gift_heart: Support
+
+If you want to donate, I (siduck76) would direct you to one of the donation links below, since NvChad wouldn't have been able without all of its great contributors, I don't feel comfortable taking donations for myself, so donate to one of these charities instead:
+
+- https://www.gofundme.com/f/WeCareAboutSyria
+- https://www.gofundme.com/f/Burundi-Nutrition
+- https://charity.gofundme.com/o/en/campaign/feedingyemen
+- https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school
