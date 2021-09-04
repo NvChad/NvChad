@@ -45,7 +45,6 @@
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
 
-
 # Some theme showcases :D
 
 ![onedark](https://user-images.githubusercontent.com/59060246/130129880-59ab1ad5-9aa6-4f50-9ddd-d8dde0c16257.png)
@@ -72,9 +71,9 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 adds indentline:
 <kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/blanklineNvim.png"></kbd>
 
-### Galaxyline
+### Feline.nvim
 
-fastest statusline plugin I've used so far:
+Highly configurable statusline plugin:
 <kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/statusline.png"></kbd><hr>
 
 ### Nvim-bufferline.lua
@@ -102,17 +101,16 @@ without / with Treesitter:
 # Features
 
 - File navigation with Nvimtree
-- Using plugins that are mouse friendly
 - Beautiful inbuilt themes
-- lazy loading 100% of plugins
+- lazy loading 90% of plugins
 - managing tabs, buffers with bufferline
 - autosave
 - icons on nvimtree, telescope, bufferline/statusline and almost everywhere! with nvim-web-devicons
-- minimal status line (galaxyline)
+- beautiful statusline (feline.nvim)
 - gitsigns (colored bars for git in my config)
 - nvim-lspconfig for nvim-lsp configuration
 - lspInstall for installing lsp servers easily
-- nvim-compe for autocompletion
+- nvim-cmp for autocompletion
 - telescope for file finding, picking, previewing (files and even images)
 - nvim-treesitter for syntax highlighting
 - nvim-autopairs for autolosing braces and stuffs
@@ -120,14 +118,17 @@ without / with Treesitter:
 - packer.nvim as package manager
 - indent-blankline.Nvim for indentlines
 - smooth scrolling
-- luasnip for snippet plugin and snip support from VSCode through vsnip supporting custom and predefined snips (friendly-snippets)
+- luasnip for snippet plugin and snip support from VSCode custom and predefined snippets (friendly-snippets)
 - Distraction free modes (modes in which statusline, tabline etc. stuff get disabled so its just the text visible in the buffer similar to goyo.vim)
-- Code formatting/prettifying
+- Code formatting via neoformat
 - gitsigns for git diffs
+- Hiding terminal buffers and unhiding + previewing them with Telescope-nvim  
+- Theme switcher
+- Theme toggler
 
 # Bloat
 	
--  To all those who think this is probably bloated, sure it is. Bloat means different to everyone. NvChad has like 30 ~ plugins but that doesn't mean those plugins are compromising neovim's speed, snappiness, or making it slow. No matter how many plugins I'd add on NvChad, it wouldn't compromise speed/snappiness/make it slow or whatever since it uses packer.nvim as plugin manager. packer.nvim lets you lazy load plugins i.e. loading plugins on certain events, mappings, sequentially loading them, etc, thus loading them only when needed. I have lazy loaded all the plugins so most plugins aren't loaded by default, hence not affecting neovim's startup/launch time.
+-  To all those who think this is probably bloated, sure it is. Bloat means different to everyone. NvChad has like 38 ~ plugins but that doesn't mean those plugins are compromising neovim's speed, snappiness, or making it slow. No matter how many plugins are added on NvChad, it wouldn't compromise speed/snappiness/make it slow or whatever since it uses packer.nvim as plugin manager. Packer.nvim lets you lazy load plugins i.e. loading plugins on certain events, mappings, sequentially loading them, etc, thus loading them only when needed. We have lazy loaded almost all the plugins so most plugins aren't loaded by default, hence not affecting neovim's startup/launch time. you can disable the plugins which you dont use in chadrc.lua 
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
@@ -152,7 +153,7 @@ Try NvChad in a docker container. This will leave your current Neovim configurat
     '
 ```
 
-# Chad contributors
+# Chadributors
 
 <a href = "https://github.com/NvChad/NvChad/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=siduck76/NvChad"/>
@@ -160,7 +161,7 @@ Try NvChad in a docker container. This will leave your current Neovim configurat
 
 ## Warning
 
-I get hearings from some plugin devs that nvchad users bring issues on discourse/reddit/matrix/gh repos etc. Please dont do that :/ . Bring NvChad related issues here ONLY and dont ever bother plugin devs, THIS IS A CLEAR WARNING! 😠
+I get hearings from some plugin devs that nvchad users bring issues on discourse/reddit/matrix/gh repos etc. Please dont do that :( . Bring NvChad related issues here ONLY and dont ever bother plugin devs, THIS IS A CLEAR WARNING! 😠
 
 ## :gift_heart: Support
 
