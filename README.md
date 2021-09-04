@@ -39,32 +39,33 @@
 	      
   </div>
 
-# Showcase
+## Showcase
+
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
 <img src ="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
 
-# Some theme showcases :D
+## Theme showcase
 
 ![onedark](https://user-images.githubusercontent.com/59060246/130129880-59ab1ad5-9aa6-4f50-9ddd-d8dde0c16257.png)
 ![nord](https://user-images.githubusercontent.com/59060246/130129890-c01117df-ac3d-40dd-b95d-2681c2461bb4.png)
 ![gruvchad](https://user-images.githubusercontent.com/59060246/130129897-a68b1585-f42d-4325-8482-102dd2fe1e9e.png)
 ![everforest](https://user-images.githubusercontent.com/59060246/130129901-5e582f3e-b776-4d0c-9790-be5ae738b5a8.png)
 
-# Very Very Useful Lua plugins used in our config
+## Very useful plugins used
 
-#### Nvim-tree.lua
+### Nvim-tree.lua
 
-fast file tree:
+Fast file tree:
 
-<kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
 
 ### Telescope-nvim
 
 A fuzzy file finder, picker, sorter, previewer and much more:
-<kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/tel.png"></kbd>
-<kbd> <img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/telmedia.png"></kbd><hr>
+<kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/tel.png"></kbd>
+<kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/telmedia.png"></kbd><hr>
 
 ### Indent-blankline.nvim
 
@@ -98,33 +99,27 @@ without / with Treesitter:
 - [Elianiva](https://github.com/elianiva) helped me with neovim Lua related issues many times, NvChad wouldnt exist without his help at all!
 - @lorvethe for making NvChad logo!
 
-# Features
+## Features
 
-- File navigation with Nvimtree
-- Beautiful inbuilt themes
-- lazy loading 90% of plugins
-- managing tabs, buffers with bufferline
-- autosave
-- icons on nvimtree, telescope, bufferline/statusline and almost everywhere! with nvim-web-devicons
-- beautiful statusline (feline.nvim)
-- gitsigns (colored bars for git in my config)
-- nvim-lspconfig for nvim-lsp configuration
-- lspInstall for installing lsp servers easily
-- nvim-cmp for autocompletion
-- telescope for file finding, picking, previewing (files and even images)
-- nvim-treesitter for syntax highlighting
-- nvim-autopairs for autolosing braces and stuffs
-- neoformat for prettifying/formatting code
-- packer.nvim as package manager
-- indent-blankline.Nvim for indentlines
-- smooth scrolling
-- luasnip for snippet plugin and snip support from VSCode custom and predefined snippets (friendly-snippets)
-- Distraction free modes (modes in which statusline, tabline etc. stuff get disabled so its just the text visible in the buffer similar to goyo.vim)
-- Code formatting via neoformat
-- gitsigns for git diffs
-- Hiding terminal buffers and unhiding + previewing them with Telescope-nvim  
-- Theme switcher
-- Theme toggler
+- Many beautiful themes to choose from
+- Distraction free modes
+- Fast plugin loading 
+- Smooth scrolling
+- Autosaving
+- File navigation with [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+- Managing tabs, buffers with [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+- Beautiful and configurable icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)
+- Pretty and functional statusline with [feline.nvim](https://github.com/Famiu/feline.nvim)
+- Git diffs and more with [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) 
+- NeoVim Lisp configuration with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- Easy Lisp server installation with [nvim-lspinstall](https://github.com/kabouzeid/nvim-lspinstall)
+- Autocompletion with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- File searching, previewing image and text files and more with [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- Autoclosing braces and html tags with [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
+- Formatting code with [neoformat](https://github.com/sbdchd/neoformat)
+- Indentlines with [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+- Useful snippets with [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 
 # Bloat
 	
