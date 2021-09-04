@@ -3,6 +3,7 @@ local hooks = require "core.hooks"
 
 local config = utils.load_config()
 local map = utils.map
+
 local maps = config.mappings
 local plugin_maps = maps.plugin
 
@@ -51,6 +52,16 @@ M.misc = function()
          map("i", inav.prev_line, "<Down>")
          map("i", inav.top_of_line, "<ESC>^i")
       end
+
+      -- easier navigation between windows
+      if config.options.window_nav then
+         local wnav = maps.window_nav
+
+         map("n", wnav.moveLeft, "<C-w>h")
+         map("n", wnav.moveRight, "<C-w>l")
+         map("n", wnav.moveUp, "<C-w>k")
+         map("n", wnav.moveDown, "<C-w>j")
+       end
 
       -- check the theme toggler
       if config.ui.theme_toggler.enabled then
@@ -126,10 +137,6 @@ M.bufferline = function()
 
    map("n", m.next_buffer, ":BufferLineCycleNext <CR>")
    map("n", m.prev_buffer, ":BufferLineCyclePrev <CR>")
-   map("n", m.moveLeft, "<C-w>h")
-   map("n", m.moveRight, "<C-w>l")
-   map("n", m.moveUp, "<C-w>k")
-   map("n", m.moveDown, "<C-w>j")
 end
 
 M.cheatsheet = function()
