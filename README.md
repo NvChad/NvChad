@@ -176,7 +176,7 @@ If you have an issue with a plugin in NvChad, first you should report it to NvCh
 
 ## :gift_heart: Support
 
-If you want to donate, I (siduck76) would direct you to one of the donation links below, since NvChad wouldn't have been able without all of its great contributors, I don't feel comfortable taking donations for myself, so donate to one of these charities instead:
+If you want to donate, I (siduck76) would direct you to one of the donation links below, since NvChad wouldn't have been able without all of its great contributors and plugin developers, I don't feel comfortable taking donations for myself, so donate to one of these charities instead:
 
 - https://www.gofundme.com/f/WeCareAboutSyria
 - https://www.gofundme.com/f/Burundi-Nutrition
