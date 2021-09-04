@@ -101,13 +101,6 @@ M.luasnip = function()
    require("luasnip/loaders/from_vscode").load()
 end
 
-M.lspkind = function()
-   local present, lspkind = pcall(require, "lspkind")
-   if present then
-      lspkind.init()
-   end
-end
-
 M.neoscroll = function()
    pcall(function()
       require("neoscroll").setup()

@@ -53,13 +53,7 @@
 ![gruvchad](https://user-images.githubusercontent.com/59060246/130129897-a68b1585-f42d-4325-8482-102dd2fe1e9e.png)
 ![everforest](https://user-images.githubusercontent.com/59060246/130129901-5e582f3e-b776-4d0c-9790-be5ae738b5a8.png)
 
-# Very Very Useful Lua plugins used in my config
-
-#### Lspkind-nvim
-
-This tiny plugin adds vscode-like pictograms to neovim built-in lsp completion items:
-
-<kbd><img src = "https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/lspkind.png"></kbd><hr>
+# Very Very Useful Lua plugins used in our config
 
 #### Nvim-tree.lua
 
@@ -119,7 +113,6 @@ without / with Treesitter:
 - nvim-lspconfig for nvim-lsp configuration
 - lspInstall for installing lsp servers easily
 - nvim-compe for autocompletion
-- lspkind to show pictograms on autocompletion items
 - telescope for file finding, picking, previewing (files and even images)
 - nvim-treesitter for syntax highlighting
 - nvim-autopairs for autolosing braces and stuffs
