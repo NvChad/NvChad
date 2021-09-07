@@ -180,8 +180,13 @@ return packer.startup(function()
    -- load luasnips + cmp related in insert mode only
 
    use {
-      "hrsh7th/nvim-cmp",
+      "rafamadriz/friendly-snippets",
       event = "InsertEnter",
+   }
+
+   use {
+      "hrsh7th/nvim-cmp",
+      after = "friendly-snippets",
       config = function()
          require "plugins.configs.cmp"
       end,
@@ -214,11 +219,6 @@ return packer.startup(function()
    use {
       "hrsh7th/cmp-buffer",
       after = "cmp-nvim-lsp",
-   }
-
-   use {
-      "rafamadriz/friendly-snippets",
-      after = "cmp-buffer",
    }
 
    -- misc plugins
