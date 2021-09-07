@@ -118,7 +118,6 @@ M.signature = function()
          hint_enable = true,
          hint_prefix = " ",
          hint_scheme = "String",
-         use_lspsaga = false,
          hi_parameter = "Search",
          max_height = 22,
          max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
