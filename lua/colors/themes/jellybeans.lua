@@ -25,9 +25,9 @@ local colors = {
    teal = "#668799",
    orange = "#e78a4e",
    cyan = "#8fbfdc",
-   statusline_bg = "#2c2c2c",
-   lightbg = "#353535",
-   lightbg2 = "#303030",
+   statusline_bg = "#222222",
+   lightbg = "#242424",
+   lightbg2 = "#262626",
    pmenu_bg = "#8197bf",
    folder_bg = "#8197bf",
 }
