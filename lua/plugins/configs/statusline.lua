@@ -47,8 +47,8 @@ local statusline_style = icon_styles[user_statusline_style]
 
 -- Initialize the components table
 local components = {
-    active = {},
-    inactive = {}
+   active = {},
+   inactive = {},
 }
 
 -- Initialize left, mid and right
