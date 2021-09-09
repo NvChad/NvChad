@@ -230,7 +230,7 @@ components.active[3][2] = {
       fg = colors.grey_fg2,
       bg = colors.statusline_bg,
    },
-   icon = "",
+   icon = "  ",
 }
 
 components.active[3][3] = {
