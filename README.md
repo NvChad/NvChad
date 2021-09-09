@@ -1,4 +1,4 @@
-<h1 align="center">NvChad</h1> 
+<h1 align="center">NvChad</h1>
 
 <div align="center">
 	<a href="https://nvchad.netlify.app/">Home</a>
@@ -14,13 +14,13 @@
 </div>
 
 <div align="center">
-	
+
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)](https://lua.org)
-	
+
 </div>
 
 <div align="center">
-	
+
 [![Super Linter](https://img.shields.io/github/workflow/status/siduck76/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&color=green)]()
 <a href="https://github.com/siduck76/NvChad"
         ><img
@@ -35,8 +35,8 @@
 [![Discord](https://img.shields.io/discord/869557815780470834?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/gADmkJb9Fb)
 [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
 [![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?style=flat-square&label=Issues&color=fc0330)](https://github.com/siduck76/NvChad/issues)
-[![Last Commit](https://img.shields.io/github/last-commit/siduck76/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck76/NvChad/pulse) 
-	      
+[![Last Commit](https://img.shields.io/github/last-commit/siduck76/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck76/NvChad/pulse)
+
   </div>
 
 ## Showcase
@@ -47,7 +47,7 @@
 <img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
 
 ## Theme Showcase
-	
+
 <details><summary> <b>Images (Click to expand!)</b></summary>
 
 ![onedark](https://user-images.githubusercontent.com/59060246/130129880-59ab1ad5-9aa6-4f50-9ddd-d8dde0c16257.png)
@@ -71,7 +71,6 @@ Fast file tree:
 
 A fuzzy file finder, picker, sorter, previewer and much more:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
 <kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/tel.png"></kbd>
 <kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/telmedia.png"></kbd><hr>
 
@@ -79,29 +78,25 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 Adds indentline:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/blanklineNvim.png"></kbd>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/blanklineNvim.png"></kbd><hr>
 
 <h3> Feline.nvim  </h3>
 
 Highly configurable statusline plugin:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
 <kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/statusline.png"></kbd><hr>
 
 <h3> Nvim-bufferline.lua </h3>
 
 Better tab implementation:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/bufferline.png"></kbd>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/bufferline.png"></kbd><hr>
 
 <h3> Nvim-web-devicons </h3>
 
 Lua fork of Vim Devicons which offers more file icon customisability:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/image.png"></kbd>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/image.png"></kbd><hr>
 
 <h3> Nvim-treesitter </h3
 
@@ -109,8 +104,7 @@ Better syntax highlighting for programming languages (NvChad by default comes wi
 
 Without/with Treesitter:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/woTree.png"></kbd>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/woTree.png"></kbd><hr>
 
 </details>
 
@@ -142,7 +136,7 @@ Without/with Treesitter:
 - Useful snippets with [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
 
 ## Bloat
-	
+
 To everyone who thinks that NvChad is bloat: Bloat means different things to everyone.
 
 NvChad has 38 plugins installed by default yet it is still very fast because it uses Packer plugin maanager. Packer.nvim allows you lets you lazy load plugins, meaning they get loaded only when absoloutely required. Furthermore, you can disable plugins you don't use in `chardrc.lua`.
