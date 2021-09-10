@@ -72,6 +72,10 @@ M.options.plugin = {
    esc_insertmode_timeout = 300,
 }
 
+M.plugins = {
+   
+}
+
 -- enable and disable plugins (false for disable)
 M.plugin_status = {
    autosave = false, -- to autosave files
