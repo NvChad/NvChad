@@ -116,21 +116,17 @@ return packer.startup(function()
    }
 
    -- lsp stuff
+
    use {
-      "kabouzeid/nvim-lspinstall",
+      "neovim/nvim-lspconfig",
       opt = true,
       setup = function()
-         require("core.utils").packer_lazy_load "nvim-lspinstall"
+         require("core.utils").packer_lazy_load "nvim-lspconfig"
          -- reload the current file so lsp actually starts for it
          vim.defer_fn(function()
             vim.cmd "silent! e %"
          end, 0)
       end,
-   }
-
-   use {
-      "neovim/nvim-lspconfig",
-      after = "nvim-lspinstall",
       config = function()
          require "plugins.configs.lspconfig"
       end,
