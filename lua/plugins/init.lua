@@ -166,11 +166,8 @@ return packer.startup(function()
       "jdhao/better-escape.vim",
       disable = not plugin_status.esc_insertmode,
       event = "InsertEnter",
-      config = function()
-         require("plugins.configs.others").better_escape()
-      end,
       setup = function()
-         require("core.mappings").better_escape()
+         require("plugins.configs.others").better_escape()
       end,
    }
 

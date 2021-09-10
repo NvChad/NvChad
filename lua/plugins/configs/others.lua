@@ -40,7 +40,10 @@ M.autosave = function()
 end
 
 M.better_escape = function()
+   local m = require("core.utils").load_config().mappings.plugin.better_escape.esc_insertmode
+
    vim.g.better_escape_interval = config.options.plugin.esc_insertmode_timeout or 300
+   vim.g.better_escape_shortcut = m
 end
 
 M.blankline = function()

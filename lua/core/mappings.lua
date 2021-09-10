@@ -120,10 +120,6 @@ end
 
 -- below are all plugin related mappings
 
-M.better_escape = function()
-   vim.g.better_escape_shortcut = plugin_maps.better_escape.esc_insertmode or { "" }
-end
-
 M.bufferline = function()
    local m = plugin_maps.bufferline
 
