@@ -126,7 +126,6 @@ Without/with Treesitter:
 - Pretty and functional statusline with [feline.nvim](https://github.com/Famiu/feline.nvim).
 - Git diffs and more with [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) .
 - NeoVim Lisp configuration with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
-- Easy Lisp server installation with [nvim-lspinstall](https://github.com/kabouzeid/nvim-lspinstall).
 - Autocompletion with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
 - File searching, previewing image and text files and more with [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 - Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
