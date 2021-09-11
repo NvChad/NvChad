@@ -167,7 +167,7 @@ M.mappings.plugin = {
       esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
    nvimtree = {
-      toggle = "<C-n>", -- file manager
+      toggle = "<F2>", -- file manager
    },
    neoformat = {
       format = "<leader>fm",
