@@ -5,7 +5,7 @@ cmd "packadd packer.nvim"
 local present, packer = pcall(require, "packer")
 
 if not present then
-   local packer_path = vim.fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
+   local packer_path = vim.g.project_site .. "/pack/packer/opt/packer.nvim"
 
    print "Cloning packer.."
    -- remove the dir before cloning
@@ -30,6 +30,8 @@ if not present then
 end
 
 packer.init {
+   package_root = vim.g.project_site .. '/pack',
+   compile_path = vim.g.project_config .. '/plugin/packer_compiled.lua',
    display = {
       open_fn = function()
          return require("packer.util").float { border = "single" }

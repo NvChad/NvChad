@@ -1,0 +1,19 @@
+#!/bin/sh -e
+
+# Helper script to start nvim with offset configuration by placing a
+# copied script in your ~/.local/bin/.
+
+# If you installed NvChad to ~/.config/nvim_NvChad, you can use this
+# script as is.
+
+# Otherwise, please edit to match your situation.
+
+HOME=~
+PROJECT_BIN="nvim"           # binary executable name for nvim
+PROJECT_NAME="nvim-NvChad"   # configuration data location (parent only)
+
+# If you put your configuration data elsewhere other than the normal
+# ~/.config, rewrite this to set it with the full path.
+GIT_CLONE_DIR=${XDG_CONFIG_HOME:-$HOME/.config/$PROJECT_NAME}
+
+exec "${PROJECT_BIN}" -u "${GIT_CLONE_DIR}/init.lua" "$@"

@@ -154,7 +154,7 @@ M.load_config = function(reload)
 
    local default_config = "default_config"
    local config_name = vim.g.nvchad_user_config or "chadrc"
-   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
+   local config_file = vim.g.project_config .. "/lua/" .. config_name .. ".lua"
 
    -- unload the modules if force reload
    if reload then
