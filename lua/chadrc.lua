@@ -8,7 +8,7 @@ M.ui = {
    italic_comments = false,
 
    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
-   theme = "onedark",
+   theme = "uwu",
 
    -- theme toggler, toggle between two themes, see theme_toggleer mappings
    theme_toggler = {
@@ -51,9 +51,9 @@ M.options = {
    mouse = "a",
    number = true,
    -- relative numbers in normal mode tool at the bottom of options.lua
-   numberwidth = 2,
+   numberwidth = 4,
    permanent_undo = true,
-   shiftwidth = 2,
+   shiftwidth = 4,
    smartindent = true,
    tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
    timeoutlen = 400,

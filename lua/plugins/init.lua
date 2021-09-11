@@ -16,6 +16,69 @@ return packer.startup(function()
       "Nvchad/extensions",
    }
 
+       -- 指示快捷键
+    use("folke/which-key.nvim")
+    -- 增强的状态栏
+    use("vim-airline/vim-airline")
+    -- 状态栏主题包
+    use("vim-airline/vim-airline-themes")
+    -- 增强标签页栏
+    use("akinsho/nvim-bufferline.lua")
+    -- 颜色主题
+    use("sainnhe/sonokai")
+    -- 显示文件类型图标
+    use("ryanoasis/vim-devicons")
+
+    -- 显示出尾部的无用空格
+    use("ntpeters/vim-better-whitespace")
+    -- 彩虹显示匹配的括号
+    use("luochen1990/rainbow")
+    -- 高亮光标下相同的单词
+    use("RRethy/vim-illuminate")
+
+    -- 管理 fcitx 状态
+    use({ "lilydjwg/fcitx.vim", branch = "fcitx5" })
+    -- 翻译插件
+    use("voldikss/vim-translate-me")
+    -- 拼写检查
+    use("kamykn/spelunker.vim")
+    -- 支持 editorconfig
+    use("editorconfig/editorconfig-vim")
+
+    -- 集成 git 支持
+    -- 信号槽显示来自版本控制的修改状态, diff 跳转与显示
+    use("mhinz/vim-signify")
+    -- 在状态栏下面显示 git 信息
+    use("zivyangll/git-blame.vim")
+    -- 在当前行显示 git 信息
+    use("APZelos/blamer.nvim")
+
+    -- 侧栏显示文件结构大纲
+    use("liuchengxu/vista.vim")
+    -- terminal 增强
+    use("voldikss/vim-floaterm")
+
+    -- 记忆上次文件位置
+    use("farmergreg/vim-lastplace")
+    -- 在所有的补全列表中使用 <tag> 导航
+    use("ervandew/supertab")
+    -- 提权保存文件
+    use("lambdalisue/suda.vim")
+    -- 快速移动
+    use("easymotion/vim-easymotion")
+    -- use "phaazon/hop.nvim"
+
+    -- 成对操作括号和引号等
+    use("tpope/vim-surround")
+    -- use "machakann/vim-sandwich"
+
+    -- 快捷注释文本
+    use("scrooloose/nerdcommenter")
+    -- 语法检查
+    use("w0rp/ale")
+    -- 自动补全, lsp-client
+    use({ "neoclide/coc.nvim", branch = "release" })
+
    use {
       "nvim-lua/plenary.nvim",
    }
