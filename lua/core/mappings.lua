@@ -43,16 +43,6 @@ M.misc = function()
       map("n", "<leader>j", ":m .+1<CR>==", opt)
       map("v", "J", ":m '>+1<CR>gv=gv", opt)
       map("v", "K", ":m '<-2<CR>gv=gv", opt)
-      map("n", "<leader>lf", ":Lspsaga lsp_finder<CR>", opt)
-      map("n", "ea", ":Lspsaga code_action<CR>", opt)
-      -- map("n", "er", ":<c-u>lspsaga range_code_action<CR>", opt)
-      map("n", "gh", ":Lspsaga hover_doc<CR>", opt)
-      map("n", "<leader>sh", ":Lspsaga signature_help<CR>", opt)
-      map("n", "<leader>rn", ":Lspsaga rename<CR>", opt)
-      map("n", "<leader>gp", ":Lspsaga preview_definition<CR>", opt)
-      map("n", "<leader>e", ":Lspsaga show_line_diagnostics<CR>", opt)
-      map("n", "e]", ":Lspsaga diagnostic_jump_next<CR>", opt)
-      map("n", "e[", ":Lspsaga diagnostic_jump_next<CR>", opt)
       -- Highlight on yank
       vim.api.nvim_exec(
        [[
