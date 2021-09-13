@@ -27,13 +27,12 @@ M.misc = function()
 
       -- use ESC to turn off search highlighting
       map("n", "<Esc>", ":noh <CR>")
-
-      ---- jump and allign in the midle
+       ---- jump and align in the middle
       map("n", "n", "nzzzv", opt)
       map("n", "N", "Nzzzv", opt)
-      -- do J withou moving cursor
+      -- do J without moving the cursor
       map("n", "J", "mzJ'z", opt)
-      -- add undoo break points
+      -- add undo break points
       map("i", ",", ",<c-g>u", opt)
       map("i", ".", ".<c-g>u", opt)
       map("i", "!", "!<cg>u", opt)
@@ -53,7 +52,6 @@ M.misc = function()
       ]],
         false
     )
--- these m
    end
 
    local function optional_mappings()
