@@ -10,6 +10,17 @@ M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
 --    relativenumber = true,
 -- }
 
+
+-- To change the Packer `config` of a plugin that comes with NvChad,
+-- add a table entry below matching the plugin github name
+--              '-' -> '_', remove any '.lua', '.nvim' extensions
+-- this string will be called in a `require`
+--              use "(custom.configs).my_func()" to call a function
+--              use "custom.blankline" to call a file
+M.custom.default_plugin_overrides = {
+  -- indent_blankline = "custom.blankline",
+}
+
 -- user custom mappings
 -- e.g: name = { "mode" , "keys" , "cmd" , "options"}
 -- name: can be empty or something unique with repect to other custom mappings
