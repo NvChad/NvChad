@@ -53,7 +53,7 @@ M.misc = function()
       end
 
       -- check the theme toggler
-      if config.ui.theme_toggler then
+      if config.ui.theme_toggler.enabled then
          map(
             "n",
             maps.theme_toggler,
