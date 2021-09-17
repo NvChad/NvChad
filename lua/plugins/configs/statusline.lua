@@ -102,10 +102,13 @@ components.active[1][3] = {
       fg = colors.grey_fg2,
       bg = colors.lightbg2,
    },
-   right_sep = { str = statusline_style.right, hi = {
-      fg = colors.lightbg2,
-      bg = colors.statusline_bg,
-   } },
+   right_sep = {
+      str = statusline_style.right,
+      hi = {
+         fg = colors.lightbg2,
+         bg = colors.statusline_bg,
+      },
+   },
 }
 
 components.active[1][4] = {
