@@ -1,7 +1,5 @@
 local M = {}
 
-local config = require("core.utils").load_config()
-
 M.autopairs = function()
    local present1, autopairs = pcall(require, "nvim-autopairs")
    local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.cmp")
@@ -25,7 +23,7 @@ M.autosave = function()
    end
 
    autosave.setup {
-      enabled = config.options.plugin.autosave, -- takes boolean value from chadrc.lua
+      enabled = config.plugins.options.autosave, -- takes boolean value from init.lua
       execution_message = "autosaved at : " .. vim.fn.strftime "%H:%M:%S",
       events = { "InsertLeave", "TextChanged" },
       conditions = {
@@ -40,10 +38,10 @@ M.autosave = function()
 end
 
 M.better_escape = function()
-   local m = require("core.utils").load_config().mappings.plugin.better_escape.esc_insertmode
+   local config = require("core.utils").load_config()
    require("better_escape").setup {
-      mapping = m,
-      timeout = config.options.plugin.esc_insertmode_timeout or 300,
+      mapping = config.mappings.plugins.better_escape.esc_insertmode,
+      timeout = config.plugins.options.esc_insertmode_timeout,
    }
 end
 

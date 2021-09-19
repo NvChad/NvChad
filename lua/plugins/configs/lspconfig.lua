@@ -57,7 +57,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
    },
 }
 
-local servers = require("core.utils").load_config().plugins.lspconfig.servers
+local servers = require("core.utils").load_config().plugins.options.lspconfig.servers
 
 for _, lsp in ipairs(servers) do
    nvim_lsp[lsp].setup {

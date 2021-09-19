@@ -7,16 +7,14 @@ end
 local use = packer.use
 
 return packer.startup(function()
-   local plugin_status = require("core.utils").load_config().plugin_status
-
-   -- local plugin_overrides = require("core.utils").load_config().custom.plugin_overrides
+   local plugin_status = require("core.utils").load_config().plugins.plugin_status
 
    -- FUNCTION: override_req, use `chadrc` plugin config override if present
    -- name = name inside `default_config` / `chadrc`
    -- default_req = run this if 'name' does not exist in `default_config` / `chadrc`
    -- if override or default_req start with `(`, then strip that and assume override calls a function, not a whole file
    local override_req = function(name, default_req)
-     local override = require("core.utils").load_config().custom.default_plugin_overrides[name]
+     local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
      local result
     
      if override == nil then
@@ -166,7 +164,7 @@ return packer.startup(function()
       "Pocco81/AutoSave.nvim",
       config = override_req("autosave", "(plugins.configs.others).autosave()"),
       cond = function()
-         return require("core.utils").load_config().options.plugin.autosave == true
+         return require("core.utils").load_config().plugins.options.autosave == true
       end,
    }
 

@@ -5,7 +5,8 @@ local config = utils.load_config()
 local map = utils.map
 
 local maps = config.mappings
-local plugin_maps = maps.plugin
+local plugin_maps = maps.plugins
+local nvChad_options = config.options.nvChad
 
 local cmd = vim.cmd
 
@@ -32,17 +33,17 @@ M.misc = function()
 
    local function optional_mappings()
       -- don't yank text on cut ( x )
-      if not config.options.copy_cut then
+      if not nvChad_options.copy_cut then
          map({ "n", "v" }, "x", '"_x')
       end
 
       -- don't yank text on delete ( dd )
-      if not config.options.copy_del then
+      if not nvChad_options.copy_del then
          map({ "n", "v" }, "dd", '"_dd')
       end
 
       -- navigation within insert mode
-      if config.options.insert_nav then
+      if nvChad_options.insert_nav then
          local inav = maps.insert_nav
 
          map("i", inav.backward, "<Left>")
@@ -54,7 +55,7 @@ M.misc = function()
       end
 
       -- easier navigation between windows
-      if config.options.window_nav then
+      if nvChad_options.window_nav then
          local wnav = maps.window_nav
 
          map("n", wnav.moveLeft, "<C-w>h")
@@ -64,11 +65,11 @@ M.misc = function()
        end
 
       -- check the theme toggler
-      if config.ui.theme_toggler.enabled then
+      if nvChad_options.theme_toggler then
          map(
             "n",
             maps.theme_toggler,
-            ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler.fav_themes) <CR>"
+            ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler) <CR>"
          )
       end
    end
@@ -113,7 +114,7 @@ M.misc = function()
    end
 
    local function user_config_mappings()
-      local custom_maps = config.custom.mappings or ""
+      local custom_maps = config.mappings.custom or ""
       if type(custom_maps) ~= "table" then
          return
       end
@@ -190,7 +191,7 @@ M.telescope = function()
 end
 
 M.telescope_media = function()
-   local m = plugin_maps.telescope_media
+   local m = plugin_maps.telescope.telescope_media
 
    map("n", m.media_files, ":Telescope media_files <CR>")
 end
