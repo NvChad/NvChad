@@ -2,107 +2,116 @@
 -- use custom/chadrc.lua instead
 
 local M = {}
-M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
-
--- non plugin ui configs, available without any plugins
-M.ui = {
-   italic_comments = false,
-   -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
-   theme = "onedark",
-   -- theme toggler, toggle between two themes, see theme_toggleer mappings
-   theme_toggler = {
-      enabled = false,
-      fav_themes = {
-         "onedark",
-         "one-light",
-      },
-   },
-   -- Enable this only if your terminal has the colorscheme set which nvchad uses
-   -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
-   transparency = false,
-}
-
--- plugin related ui options
-M.ui.plugin = {
-   -- statusline related options
-   statusline = {
-      -- these are filetypes, not pattern matched
-      -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
-      hidden = {
-         "help",
-         "dashboard",
-         "NvimTree",
-         "terminal",
-      },
-      shown = {},
-      -- default, round , slant , block , arrow
-      style = "default",
-   },
-}
+M.options, M.ui, M.mappings, M.plugin = {}, {}, {}, {}
 
 -- non plugin normal, available without any plugins
 M.options = {
+   -- NeoVim/Vim options
    clipboard = "unnamedplus",
    cmdheight = 1,
-   copy_cut = true, -- copy cut text ( x key ), visual and normal mode
-   copy_del = true, -- copy deleted text ( dd key ), visual and normal mode
-   expandtab = true,
+   ruler = false,
    hidden = true,
    ignorecase = true,
-   insert_nav = true, -- navigation in insertmode
-   window_nav = true,
    mapleader = " ",
    mouse = "a",
    number = true,
    -- relative numbers in normal mode tool at the bottom of options.lua
    numberwidth = 2,
-   permanent_undo = true,
+   relativenumber = false,
+   expandtab = true,
    shiftwidth = 2,
    smartindent = true,
    tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
    timeoutlen = 400,
-   relativenumber = false,
-   ruler = false,
+   -- interval for writing swap file to disk, also used by gitsigns
    updatetime = 250,
-   -- used for updater
-   update_url = "https://github.com/NvChad/NvChad",
-   update_branch = "main",
+   undofile = true, -- keep a permanent undo (across restarts)
+   -- NvChad options
+   nvChad = {
+      copy_cut = true, -- copy cut text ( x key ), visual and normal mode
+      copy_del = true, -- copy deleted text ( dd key ), visual and normal mode
+      insert_nav = true, -- navigation in insertmode
+      window_nav = true,
+      theme_toggler = false,
+      -- used for updater
+      update_url = "https://github.com/NvChad/NvChad",
+      update_branch = "main",
+   },
 }
 
+-- ui configs
+M.ui = {
+   italic_comments = false,
+   -- theme to be used, check available themes with `<leader> + t + h`
+   theme = "onedark",
+   -- toggle between two themes, see theme_toggler mappings
+   theme_toggler = {
+      "onedark",
+      "gruvchad",
+   },
+   -- Enable this only if your terminal has the colorscheme set which nvchad uses
+   -- For Ex : if you have onedark set in nvchad, set onedark's bg color on your terminal
+   transparency = false,
+}
+ 
 -- these are plugin related options
-M.options.plugin = {
-   autosave = false, -- autosave on changed text or insert mode leave
-   -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
-   esc_insertmode_timeout = 300,
-}
-
--- enable and disable plugins (false for disable)
-M.plugin_status = {
-   autosave = false, -- to autosave files
-   blankline = true, -- beautified blank lines
-   bufferline = true, -- buffer shown as tabs
-   cheatsheet = true, -- fuzzy search your commands/keymappings
-   colorizer = true,
-   comment = true, -- universal commentor
-   dashboard = false, -- a nice looking dashboard
-   esc_insertmode = true, -- escape from insert mode using custom keys
-   feline = true, -- statusline
-   gitsigns = true, -- gitsigns in statusline
-   lspsignature = true, -- lsp enhancements
-   neoformat = true, -- universal formatter
-   neoscroll = true, -- smooth scroll
-   telescope_media = false, -- see media files in telescope picker
-   truezen = false, -- no distraction mode for nvim
-   vim_fugitive = false, -- git in nvim
-   vim_matchup = true, -- % magic, match it but improved
+M.plugins = {
+    -- enable and disable plugins (false for disable)
+    plugin_status = {
+         autosave = false, -- to autosave files
+         blankline = true, -- show code scope with symbols
+         bufferline = true, -- list open buffers up the top, easy switching too
+         cheatsheet = true, -- search your commands/keymappings
+         colorizer = true, -- color RGB, HEX, CSS, NAME color codes
+         comment = true, -- easily (un)comment code, language aware
+         dashboard = false, -- NeoVim 'home screen' on open
+         esc_insertmode = true, -- map to <ESC> with no lag
+         feline = true, -- statusline
+         gitsigns = true, -- gitsigns in statusline
+         lspsignature = true, -- lsp enhancements
+         neoformat = true, -- universal code formatter
+         neoscroll = true, -- smooth scroll
+         telescope_media = false, -- media previews within telescope finders
+         truezen = false, -- distraction free & minimalist UI mode
+         vim_fugitive = false, -- git integration & tooling
+         vim_matchup = true, -- % operator enhancements
+   },
+  options = {
+    lspconfig = {
+      servers = {} -- eg: "HTML"
+    },
+    statusline = { -- statusline related options
+      -- these are filetypes, not pattern matched
+      -- shown filetypes will overrule hidden filetypes
+      hidden = {
+        "help",
+        "dashboard",
+        "NvimTree",
+        "terminal",
+      },
+      shown = {},
+      -- default, round , slant , block , arrow
+      style = "default",
+    },
+    autosave = false, -- autosave on changed text or insert mode leave
+    -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
+    esc_insertmode_timeout = 300,
+  },
+  default_plugin_config_replace = {},
 }
 
 -- mappings -- don't use a single keymap twice --
 -- non plugin mappings
 M.mappings = {
+   -- custom = {}, -- all custom user mappings
    -- close current focused buffer
    close_buffer = "<leader>x",
    copy_whole_file = "<C-a>", -- copy all contents of the current buffer
+   line_number_toggle = "<leader>n", -- show or hide line number
+   new_buffer = "<S-t>", -- open a new buffer
+   new_tab = "<C-t>b", -- open a new vim tab
+   save_file = "<C-s>", -- save file using :w
+   theme_toggler = "<leader>tt", -- for theme toggler, see in ui.theme_toggler
    -- navigation in insert mode, only if enabled in options
    insert_nav = {
       backward = "<C-h>",
@@ -112,27 +121,21 @@ M.mappings = {
       prev_line = "<C-j>",
       top_of_line = "<C-a>",
    },
+   --better window movement
    window_nav = {
-      --better window movement
       moveLeft = "<C-h>",
       moveRight = "<C-l>",
       moveUp = "<C-k>",
       moveDown = "<C-j>",
     },
-   line_number_toggle = "<leader>n", -- show or hide line number
-   new_buffer = "<S-t>", -- open a new buffer
-   new_tab = "<C-t>b", -- open a new vim tab
-   save_file = "<C-s>", -- save file using :w
-   theme_toggler = "<leader>tt", -- for theme toggler, see in ui.theme_toggler
    -- terminal related mappings
    terminal = {
       -- multiple mappings can be given for esc_termmode and esc_hide_termmode
       -- get out of terminal mode
       esc_termmode = { "jk" }, -- multiple mappings allowed
       -- get out of terminal mode and hide it
-      -- it does not close it, see pick_term mapping to see hidden terminals
       esc_hide_termmode = { "JK" }, -- multiple mappings allowed
-      -- show hidden terminal buffers in a telescope picker
+      -- show & recover hidden terminal buffers in a telescope picker
       pick_term = "<leader>W",
       -- below three are for spawning terminals
       new_horizontal = "<leader>h",
@@ -144,19 +147,22 @@ M.mappings = {
 }
 
 -- all plugins related mappings
--- to get short info about a plugin, see the respective string in plugin_status, if not present, then info here
-M.mappings.plugin = {
+M.mappings.plugins = {
+   -- list open buffers up the top, easy switching too
    bufferline = {
       next_buffer = "<TAB>", -- next buffer
       prev_buffer = "<S-Tab>", -- previous buffer
    },
+   -- search your commands/keymappings
    cheatsheet = {
       default_keys = "<leader>dk",
       user_keys = "<leader>uk",
    },
+   -- easily (un)comment code, language aware
    comment = {
-      toggle = "<leader>/", -- trigger comment on a single/selected lines/number prefix
+      toggle = "<leader>/", -- toggle comment (works on multiple lines)
    },
+   -- NeoVim 'home screen' on open
    dashboard = {
       bookmarks = "<leader>bm",
       new_file = "<leader>fn", -- basically create a new buffer
@@ -164,18 +170,20 @@ M.mappings.plugin = {
       session_load = "<leader>l", -- load a saved session
       session_save = "<leader>s", -- save a session
    },
-   -- note: this is an edditional mapping to escape, escape key will still work
-   better_escape = {
+   -- map to <ESC> with no lag
+   better_escape = { -- <ESC> will still work
       esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
+   -- file explorer/tree
    nvimtree = {
-      -- file tree
       toggle = "<C-n>",
       focus = "<leader>e",
    },
+   -- universal code formatter
    neoformat = {
       format = "<leader>fm",
    },
+   -- multitool for finding & picking things
    telescope = {
       buffers = "<leader>fb",
       find_files = "<leader>ff",
@@ -185,16 +193,19 @@ M.mappings.plugin = {
       help_tags = "<leader>fh",
       live_grep = "<leader>fw",
       oldfiles = "<leader>fo",
-      themes = "<leader>th",
+      themes = "<leader>th", -- NvChad theme picker
+      -- media previews within telescope finders
+      telescope_media = {
+         media_files = "<leader>fp",
+      },
    },
-   telescope_media = {
-      media_files = "<leader>fp",
-   },
-   truezen = { -- distraction free modes mapping, hide statusline, tabline, line numbers
+   -- distraction free & minimalist UI mode
+   truezen = {
       ataraxis_mode = "<leader>zz", -- center
       focus_mode = "<leader>zf",
       minimalistic_mode = "<leader>zm", -- as it is
    },
+   -- git integration & tooling
    vim_fugitive = {
       diff_get_2 = "<leader>gh",
       diff_get_3 = "<leader>gl",
@@ -203,26 +214,5 @@ M.mappings.plugin = {
    },
 }
 
--- user custom mappings
--- e.g: name = { "mode" , "keys" , "cmd" , "options"}
--- name: can be empty or something unique with repect to other custom mappings
---    { mode, key, cmd } or name = { mode, key, cmd }
--- mode: usage: mode or { mode1, mode2 }, multiple modes allowed, available modes => :h map-modes,
--- keys: multiple keys allowed, same synxtax as modes
--- cmd:  for vim commands, must use ':' at start and add <CR> at the end if want to execute
--- options: see :h nvim_set_keymap() opts section
-M.custom.mappings = {
-   -- clear_all = {
-   --    "n",
-   --    "<leader>cc",
-   --    "gg0vG$d",
-   -- },
-}
 
-M.plugins = {
-   lspconfig = {
-      -- servers = {"html", "cssls"}
-      servers = {},
-   },
-}
 return M

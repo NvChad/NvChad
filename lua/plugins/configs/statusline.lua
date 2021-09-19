@@ -42,7 +42,7 @@ local icon_styles = {
    },
 }
 
-local user_statusline_style = require("core.utils").load_config().ui.plugin.statusline.style
+local user_statusline_style = require("core.utils").load_config().plugins.options.statusline.style
 local statusline_style = icon_styles[user_statusline_style]
 
 -- Initialize the components table

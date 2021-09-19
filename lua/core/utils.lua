@@ -117,8 +117,8 @@ end
 -- hide statusline
 -- tables fetched from load_config function
 M.hide_statusline = function()
-   local hidden = require("core.utils").load_config().ui.plugin.statusline.hidden
-   local shown = require("core.utils").load_config().ui.plugin.statusline.shown
+   local hidden = require("core.utils").load_config().plugins.options.statusline.hidden
+   local shown = require("core.utils").load_config().plugins.options.statusline.shown
    local api = vim.api
    local buftype = api.nvim_buf_get_option("%", "ft")
 
