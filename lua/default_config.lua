@@ -15,7 +15,7 @@ M.ui = {
       enabled = false,
       fav_themes = {
          "onedark",
-         "gruvchad",
+         "one-light",
       },
    },
 
