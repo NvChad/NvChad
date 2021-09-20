@@ -27,6 +27,31 @@ M.misc = function()
 
       -- use ESC to turn off search highlighting
       map("n", "<Esc>", ":noh <CR>")
+       ---- jump and align in the middle
+      map("n", "n", "nzzzv", opt)
+      map("n", "N", "Nzzzv", opt)
+      -- do J without moving the cursor
+      map("n", "J", "mzJ'z", opt)
+      -- add undo break points
+      map("i", ",", ",<c-g>u", opt)
+      map("i", ".", ".<c-g>u", opt)
+      map("i", "!", "!<cg>u", opt)
+      map("i", "?", "?<c-g>u", opt)
+      -- draging lines up and down
+      map("n", "<leader>k", ":m .-2<CR>==", opt)
+      map("n", "<leader>j", ":m .+1<CR>==", opt)
+      map("v", "J", ":m '>+1<CR>gv=gv", opt)
+      map("v", "K", ":m '<-2<CR>gv=gv", opt)
+      -- Highlight on yank
+      vim.api.nvim_exec(
+       [[
+        augroup YankHighlight
+          autocmd!
+          autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+        augroup end
+      ]],
+        false
+    )
    end
 
    local function optional_mappings()
