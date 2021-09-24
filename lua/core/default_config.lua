@@ -80,7 +80,7 @@ M.plugins = {
       servers = {} -- eg: "html"
     },
     nvimtree = {
-      disable_git = 1
+      enable_git = 0
     },
     statusline = { -- statusline related options
       -- these are filetypes, not pattern matched
