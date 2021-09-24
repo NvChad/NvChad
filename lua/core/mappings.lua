@@ -131,17 +131,6 @@ M.bufferline = function()
    map("n", m.moveDown, "<C-w>j")
 end
 
-M.chadsheet = function()
-   local m = plugin_maps.chadsheet
-
-   map("n", m.default_keys, ":lua require('cheatsheet').show_cheatsheet_telescope() <CR>")
-   map(
-      "n",
-      m.user_keys,
-      ":lua require('cheatsheet').show_cheatsheet_telescope{bundled_cheatsheets = false, bundled_plugin_cheatsheets = false } <CR>"
-   )
-end
-
 M.comment = function()
    local m = plugin_maps.comment.toggle
    map("n", m, ":CommentToggle <CR>")
