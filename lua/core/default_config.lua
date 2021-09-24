@@ -61,7 +61,6 @@ M.plugins = {
          autosave = false, -- to autosave files
          blankline = true, -- show code scope with symbols
          bufferline = true, -- list open buffers up the top, easy switching too
-         cheatsheet = true, -- search your commands/keymappings
          colorizer = true, -- color RGB, HEX, CSS, NAME color codes
          comment = true, -- easily (un)comment code, language aware
          dashboard = false, -- NeoVim 'home screen' on open
@@ -152,11 +151,6 @@ M.mappings.plugins = {
    bufferline = {
       next_buffer = "<TAB>", -- next buffer
       prev_buffer = "<S-Tab>", -- previous buffer
-   },
-   -- search your commands/keymappings
-   cheatsheet = {
-      default_keys = "<leader>dk",
-      user_keys = "<leader>uk",
    },
    -- easily (un)comment code, language aware
    comment = {

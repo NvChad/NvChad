@@ -263,18 +263,7 @@ return packer.startup(function()
    use {
       "nvim-telescope/telescope.nvim",
       cmd = "Telescope",
-      -- because cheatsheet is not activated by a teleacope command
-      module = "cheatsheet",
       requires = {
-         {
-            "sudormrfbin/cheatsheet.nvim",
-            disable = not plugin_status.cheatsheet,
-            after = "telescope.nvim",
-            config = override_req("cheatsheet", "plugins.configs.cheatsheet"),
-            setup = function()
-               require("core.mappings").cheatsheet()
-            end,
-         },
          {
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "make",

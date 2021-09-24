@@ -62,7 +62,7 @@ M.misc = function()
          map("n", wnav.moveRight, "<C-w>l")
          map("n", wnav.moveUp, "<C-w>k")
          map("n", wnav.moveDown, "<C-w>j")
-       end
+      end
 
       -- check the theme toggler
       if nvChad_options.theme_toggler then
@@ -126,17 +126,6 @@ M.bufferline = function()
 
    map("n", m.next_buffer, ":BufferLineCycleNext <CR>")
    map("n", m.prev_buffer, ":BufferLineCyclePrev <CR>")
-end
-
-M.cheatsheet = function()
-   local m = plugin_maps.cheatsheet
-
-   map("n", m.default_keys, ":lua require('cheatsheet').show_cheatsheet_telescope() <CR>")
-   map(
-      "n",
-      m.user_keys,
-      ":lua require('cheatsheet').show_cheatsheet_telescope{bundled_cheatsheets = false, bundled_plugin_cheatsheets = false } <CR>"
-   )
 end
 
 M.comment = function()
