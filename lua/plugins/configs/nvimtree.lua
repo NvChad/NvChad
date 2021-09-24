@@ -1,4 +1,6 @@
 local present, tree_c = pcall(require, "nvim-tree.config")
+local git_status = require("core.utils").load_config().plugins.options.nvimtree.disable_git
+
 if not present then
    return
 end
@@ -15,8 +17,8 @@ g.nvim_tree_auto_ignore_ft = { "dashboard" } -- don't open tree on specific fiyp
 g.nvim_tree_auto_open = 0
 g.nvim_tree_disable_netrw = 1
 g.nvim_tree_follow = 1
-g.nvim_tree_git_hl = 1
-g.nvim_tree_gitignore = 1
+g.nvim_tree_git_hl = git_status
+g.nvim_tree_gitignore = git_status
 g.nvim_tree_hide_dotfiles = 0
 g.nvim_tree_highlight_opened_files = 0
 g.nvim_tree_hijack_netrw = 0
@@ -34,7 +36,7 @@ g.nvim_tree_show_icons = {
    folders = 1,
    -- folder_arrows= 1
    files = 1,
-   git = 1,
+   git = git_status,
 }
 
 g.nvim_tree_icons = {

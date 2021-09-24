@@ -77,7 +77,10 @@ M.plugins = {
    },
   options = {
     lspconfig = {
-      servers = {} -- eg: "HTML"
+      servers = {} -- eg: "html"
+    },
+    nvimtree = {
+      disable_git = 1
     },
     statusline = { -- statusline related options
       -- these are filetypes, not pattern matched
