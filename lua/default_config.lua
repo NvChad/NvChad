@@ -82,6 +82,7 @@ M.plugin_status = {
    autosave = false, -- to autosave files
    blankline = true, -- beautified blank lines
    bufferline = true, -- buffer shown as tabs
+   cheatsheet = true, -- fuzzy search your commands/keymappings
    colorizer = true,
    comment = true, -- universal commentor
    dashboard = false, -- a nice looking dashboard
@@ -146,6 +147,10 @@ M.mappings.plugin = {
    bufferline = {
       next_buffer = "<TAB>", -- next buffer
       prev_buffer = "<S-Tab>", -- previous buffer
+   },
+   chadsheet = {
+      default_keys = "<leader>dk",
+      user_keys = "<leader>uk",
    },
    comment = {
       toggle = "<leader>/", -- trigger comment on a single/selected lines/number prefix

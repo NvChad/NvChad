@@ -77,6 +77,7 @@ M.plugin_status = {
    autosave = false, -- to autosave files
    blankline = true, -- beautified blank lines
    bufferline = true, -- buffer shown as tabs
+   cheatsheet = true, -- fuzzy search your commands/keymappings
    colorizer = true,
    comment = true, -- universal commentor
    dashboard = false, -- a nice looking dashboard
@@ -146,6 +147,10 @@ M.mappings.plugin = {
       moveRight = "<C-l>",
       moveUp = "<C-k>",
       moveDown = "<C-j>",
+   },
+   chadsheet = {
+      default_keys = "<leader>dk",
+      user_keys = "<leader>uk",
    },
    comment = {
       toggle = "<leader>/", -- trigger comment on a single/selected lines/number prefix
