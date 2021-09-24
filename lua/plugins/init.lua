@@ -134,18 +134,14 @@ return packer.startup(function()
             vim.cmd "silent! e %"
          end, 0)
       end,
-      config = function()
-         require "plugins.configs.lspconfig"
-      end,
+      config = override_req("lspconfig", "plugins.configs.lspconfig"),
    }
 
    use {
       "ray-x/lsp_signature.nvim",
       disable = not plugin_status.lspsignature,
       after = "nvim-lspconfig",
-      config = function()
-         require("plugins.configs.others").signature()
-      end,
+      config = override_req("signature", "(plugins.configs.others).signature()"),
    }
 
    use {
