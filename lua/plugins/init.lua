@@ -14,22 +14,22 @@ return packer.startup(function()
    -- default_req = run this if 'name' does not exist in `default_config` / `chadrc`
    -- if override or default_req start with `(`, then strip that and assume override calls a function, not a whole file
    local override_req = function(name, default_req)
-     local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
-     local result
-    
-     if override == nil then
-       result = default_req
-     else
-       result = override
-     end
+      local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
+      local result
 
-     if string.match(result, '^%(') then
-       result = result:sub(2)
-       result = result:gsub("%)%.", "').", 1)
-       return "require('" .. result
-     else
-       return "require('" .. result .. "')"
-     end
+      if override == nil then
+         result = default_req
+      else
+         result = override
+      end
+
+      if string.match(result, "^%(") then
+         result = result:sub(2)
+         result = result:gsub("%)%.", "').", 1)
+         return "require('" .. result
+      else
+         return "require('" .. result .. "')"
+      end
    end
 
    -- this is arranged on the basis of when a plugin starts
@@ -78,7 +78,6 @@ return packer.startup(function()
          require("core.mappings").bufferline()
       end,
    }
-
 
    use {
       "lukas-reineke/indent-blankline.nvim",
