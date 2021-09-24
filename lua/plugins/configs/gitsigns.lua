@@ -28,7 +28,7 @@ gitsigns.setup {
    },
 
    status_formatter = nil, -- Use default
-   watch_index = {
+   watch_gitdir = {
       interval = 100,
    },
 }

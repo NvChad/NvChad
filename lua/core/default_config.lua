@@ -53,53 +53,53 @@ M.ui = {
    -- For Ex : if you have onedark set in nvchad, set onedark's bg color on your terminal
    transparency = false,
 }
- 
+
 -- these are plugin related options
 M.plugins = {
-    -- enable and disable plugins (false for disable)
-    plugin_status = {
-         autosave = false, -- to autosave files
-         blankline = true, -- show code scope with symbols
-         bufferline = true, -- list open buffers up the top, easy switching too
-         colorizer = false, -- color RGB, HEX, CSS, NAME color codes
-         comment = true, -- easily (un)comment code, language aware
-         dashboard = false, -- NeoVim 'home screen' on open
-         esc_insertmode = true, -- map to <ESC> with no lag
-         feline = true, -- statusline
-         gitsigns = true, -- gitsigns in statusline
-         lspsignature = true, -- lsp enhancements
-         neoformat = true, -- universal code formatter
-         neoscroll = false, -- smooth scroll
-         telescope_media = false, -- media previews within telescope finders
-         truezen = false, -- distraction free & minimalist UI mode
-         vim_fugitive = false, -- git integration & tooling
-         vim_matchup = false, -- % operator enhancements
+   -- enable and disable plugins (false for disable)
+   plugin_status = {
+      autosave = false, -- to autosave files
+      blankline = true, -- show code scope with symbols
+      bufferline = true, -- list open buffers up the top, easy switching too
+      colorizer = false, -- color RGB, HEX, CSS, NAME color codes
+      comment = true, -- easily (un)comment code, language aware
+      dashboard = false, -- NeoVim 'home screen' on open
+      esc_insertmode = true, -- map to <ESC> with no lag
+      feline = true, -- statusline
+      gitsigns = true, -- gitsigns in statusline
+      lspsignature = true, -- lsp enhancements
+      neoformat = true, -- universal code formatter
+      neoscroll = false, -- smooth scroll
+      telescope_media = false, -- media previews within telescope finders
+      truezen = false, -- distraction free & minimalist UI mode
+      vim_fugitive = false, -- git integration & tooling
+      vim_matchup = true, -- % operator enhancements
    },
-  options = {
-    lspconfig = {
-      servers = {} -- eg: "html"
-    },
-    nvimtree = {
-      enable_git = 0
-    },
-    statusline = { -- statusline related options
-      -- these are filetypes, not pattern matched
-      -- shown filetypes will overrule hidden filetypes
-      hidden = {
-        "help",
-        "dashboard",
-        "NvimTree",
-        "terminal",
+   options = {
+      lspconfig = {
+         servers = {}, -- eg: "html"
       },
-      shown = {},
-      -- default, round , slant , block , arrow
-      style = "default",
-    },
-    autosave = false, -- autosave on changed text or insert mode leave
-    -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
-    esc_insertmode_timeout = 300,
-  },
-  default_plugin_config_replace = {},
+      nvimtree = {
+         enable_git = 0,
+      },
+      statusline = { -- statusline related options
+         -- these are filetypes, not pattern matched
+         -- shown filetypes will overrule hidden filetypes
+         hidden = {
+            "help",
+            "dashboard",
+            "NvimTree",
+            "terminal",
+         },
+         shown = {},
+         -- default, round , slant , block , arrow
+         style = "default",
+      },
+      autosave = false, -- autosave on changed text or insert mode leave
+      -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
+      esc_insertmode_timeout = 300,
+   },
+   default_plugin_config_replace = {},
 }
 
 -- mappings -- don't use a single keymap twice --
@@ -129,7 +129,7 @@ M.mappings = {
       moveRight = "<C-l>",
       moveUp = "<C-k>",
       moveDown = "<C-j>",
-    },
+   },
    -- terminal related mappings
    terminal = {
       -- multiple mappings can be given for esc_termmode and esc_hide_termmode
@@ -210,6 +210,5 @@ M.mappings.plugins = {
       git_blame = "<leader>gb",
    },
 }
-
 
 return M
