@@ -113,21 +113,9 @@ M.misc = function()
       -- cmd "silent! command! NvChadReload lua require('nvchad').reload_config()"
    end
 
-   local function user_config_mappings()
-      local custom_maps = config.mappings.custom or ""
-      if type(custom_maps) ~= "table" then
-         return
-      end
-
-      for _, map_table in pairs(custom_maps) do
-         map(unpack(map_table))
-      end
-   end
-
    non_config_mappings()
    optional_mappings()
    required_mappings()
-   user_config_mappings()
    hooks.run("setup_mappings", map)
 end
 
