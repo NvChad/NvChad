@@ -292,21 +292,5 @@ return packer.startup(function()
       end,
    }
 
-   use {
-      "tpope/vim-fugitive",
-      disable = not plugin_status.vim_fugitive,
-      cmd = {
-         "Git",
-         "Gdiff",
-         "Gdiffsplit",
-         "Gvdiffsplit",
-         "Gwrite",
-         "Gw",
-      },
-      setup = function()
-         require("core.mappings").vim_fugitive()
-      end,
-   }
-
    require("core.hooks").run("install_plugins", use)
 end)

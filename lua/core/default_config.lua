@@ -72,7 +72,6 @@ M.plugins = {
       neoscroll = false, -- smooth scroll
       telescope_media = false, -- media previews within telescope finders
       truezen = false, -- distraction free & minimalist UI mode
-      vim_fugitive = false, -- git integration & tooling
       vim_matchup = true, -- % operator enhancements
    },
    options = {
@@ -201,13 +200,6 @@ M.mappings.plugins = {
       ataraxis_mode = "<leader>zz", -- center
       focus_mode = "<leader>zf",
       minimalistic_mode = "<leader>zm", -- as it is
-   },
-   -- git integration & tooling
-   vim_fugitive = {
-      diff_get_2 = "<leader>gh",
-      diff_get_3 = "<leader>gl",
-      git = "<leader>gs",
-      git_blame = "<leader>gb",
    },
 }
 

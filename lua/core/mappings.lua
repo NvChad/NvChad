@@ -181,13 +181,4 @@ M.truezen = function()
    map("n", m.minimalistic_mode, ":TZMinimalist <CR>")
 end
 
-M.vim_fugitive = function()
-   local m = plugin_maps.vim_fugitive
-
-   map("n", m.git, ":Git <CR>")
-   map("n", m.git_blame, ":Git blame <CR>")
-   map("n", m.diff_get_2, ":diffget //2 <CR>")
-   map("n", m.diff_get_3, ":diffget //3 <CR>")
-end
-
 return M
