@@ -6,6 +6,7 @@ g.nvchad_user_config = "chadrc"
 
 local options = require("core.utils").load_config().options
 
+opt.title = true
 opt.clipboard = options.clipboard
 opt.cmdheight = options.cmdheight
 opt.cul = true -- cursor line
