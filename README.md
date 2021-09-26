@@ -1,11 +1,11 @@
 <h1 align="center">NvChad</h1>
 
 <div align="center">
-	<a href="https://nvchad.netlify.app/">Home</a>
+	<a href="https://nvchad.github.io/">Home</a>
   <span> • </span>
-    	<a href="https://nvchad.netlify.app/getting-started/setup">Install</a>
+    	<a href="https://nvchad.github.io/getting-started/setup">Install</a>
   <span> • </span>
-       	<a href="https://nvchad.netlify.app/contribute">Contribute</a>
+       	<a href="https://nvchad.github.io/contribute">Contribute</a>
   <span> • </span>
 	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
