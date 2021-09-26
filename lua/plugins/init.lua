@@ -174,17 +174,20 @@ return packer.startup(function()
 
    use {
       "rafamadriz/friendly-snippets",
+      disable = not plugin_status.cmp,
       event = "InsertEnter",
    }
 
    use {
       "hrsh7th/nvim-cmp",
+      disable = not plugin_status.cmp,
       after = "friendly-snippets",
       config = override_req("nvim_cmp", "plugins.configs.cmp"),
    }
 
    use {
       "L3MON4D3/LuaSnip",
+      disable = not plugin_status.cmp,
       wants = "friendly-snippets",
       after = "nvim-cmp",
       config = override_req("luasnip", "(plugins.configs.others).luasnip()"),
@@ -192,27 +195,32 @@ return packer.startup(function()
 
    use {
       "saadparwaiz1/cmp_luasnip",
+      disable = not plugin_status.cmp,
       after = "LuaSnip",
    }
 
    use {
       "hrsh7th/cmp-nvim-lua",
+      disable = not plugin_status.cmp,
       after = "cmp_luasnip",
    }
 
    use {
       "hrsh7th/cmp-nvim-lsp",
+      disable = not plugin_status.cmp,
       after = "cmp-nvim-lua",
    }
 
    use {
       "hrsh7th/cmp-buffer",
+      disable = not plugin_status.cmp,
       after = "cmp-nvim-lsp",
    }
 
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
+      disable = not plugin_status.cmp,
       after = "nvim-cmp",
       config = override_req("nvim_autopairs", "(plugins.configs.others).autopairs()"),
    }

@@ -73,6 +73,7 @@ M.plugins = {
       telescope_media = false, -- media previews within telescope finders
       truezen = false, -- distraction free & minimalist UI mode
       vim_matchup = true, -- % operator enhancements
+      cmp = true,
    },
    options = {
       lspconfig = {
