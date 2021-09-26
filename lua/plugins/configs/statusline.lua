@@ -55,9 +55,6 @@ local components = {
 table.insert(components.active, {})
 table.insert(components.active, {})
 table.insert(components.active, {})
-table.insert(components.inactive, {})
-table.insert(components.inactive, {})
-table.insert(components.inactive, {})
 
 components.active[1][1] = {
    provider = statusline_style.main_icon,
@@ -363,6 +360,21 @@ components.active[3][10] = {
    hl = {
       fg = colors.green,
       bg = colors.one_bg,
+   },
+}
+
+local InactiveStatusHL = {
+   fg = colors.one_bg2,
+   bg = "NONE",
+   style = "underline",
+}
+
+components.inactive = {
+   {
+      {
+         provider = " ",
+         hl = InactiveStatusHL,
+      },
    },
 }
 
