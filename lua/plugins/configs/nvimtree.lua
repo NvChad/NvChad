@@ -22,7 +22,6 @@ g.nvim_tree_quit_on_open = 0 -- closes tree when file's opened
 g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
 g.nvim_tree_side = "left"
 g.nvim_tree_width = 25
-g.nvim_tree_lsp_diagnostics = 0
 
 g.nvim_tree_show_icons = {
    folders = 1,
@@ -91,6 +90,7 @@ g.nvim_tree_bindings = {
 }
 
 require("nvim-tree").setup {
+   lsp_diagnostics = false,
    disable_netrw = true,
    hijack_netrw = true,
    ignore_ft_on_setup = { "dashboard" },
