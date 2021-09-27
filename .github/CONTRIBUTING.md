@@ -37,6 +37,10 @@ If you wish to contribute to NvChad, you should:
 
 - When making a PR (pull request), please be very descriptive about what you've done!
 
+- PR titles should be formatted with 'fix', 'chore' or 'feat'. ex: `feat: add new plugin`
+
+- PRs should follow the pull request formats where applicable
+
 - We are open to all PRs, but may decline some for a myriad of reasons. Though don't be discouraged! We'll still be open to discussions.
 
 - PR's are always welcomed however NvChad aims to be less bloated. So PR's regarding existing plugin's enhancement and creating new features with existing plugins itself ( without adding a new plugin), bug fixes and corrections are more encouraged.
