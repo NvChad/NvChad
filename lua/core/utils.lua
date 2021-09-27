@@ -147,7 +147,7 @@ M.load_config = function(reload)
 
    -- these are the table value which will be always prioritiezed to take user config value
    local to_replace = {
-      "['mappings']['plugin']['esc_insertmode']",
+      "['mappings']['plugins']['esc_insertmode']",
       "['mappings']['terminal']['esc_termmode']",
       "['mappings']['terminal']['esc_hide_termmode']",
    }
@@ -243,7 +243,7 @@ end
 -- 1st arg - base table
 -- 2nd arg - table to merge
 -- 3rg arg - list of nodes as a table, if the node is found replace the from table2 to result, rather than adding the value
--- e.g: merge_table(t1, t2, { ['plugin']['truezen']['mappings'] })
+-- e.g: merge_table(t1, t2, { ['mappings']['plugins']['bufferline'] })
 M.merge_table = function(into, from, nodes_to_replace)
    -- make sure both are table
    if type(into) ~= "table" or type(from) ~= "table" then
@@ -272,7 +272,7 @@ end]]
        end
 
       for _, node in ipairs(nodes_to_replace) do
-         -- pcall() is a poor workaround for if "['mappings']['plugin']['esc_insertmode']" 'plugin' sub-table does not exist
+         -- pcall() is a poor workaround for if "['mappings']['plugins']['esc_insertmode']" 'plugins' sub-table does not exist
          local ok, result = pcall(replace_fn, node)
          if ok then
             -- if the node is found then replace
