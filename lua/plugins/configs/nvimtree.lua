@@ -68,7 +68,7 @@ require("nvim-tree").setup {
    view = {
       allow_resize = true,
       side = "left",
-      width = "25",
+      width = 25,
       mappings = {
          list = {
             { key = { "<CR>", "o", "<2-LeftMouse>" }, cb = tree_cb "edit" },
