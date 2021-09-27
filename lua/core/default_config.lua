@@ -2,7 +2,7 @@
 -- use custom/chadrc.lua instead
 
 local M = {}
-M.options, M.ui, M.mappings, M.plugin = {}, {}, {}, {}
+M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 
 -- non plugin normal, available without any plugins
 M.options = {
@@ -99,7 +99,7 @@ M.plugins = {
          style = "default",
       },
       autosave = false, -- autosave on changed text or insert mode leave
-      -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
+      -- timeout to be used for using escape with a key combination, see mappings.plugins.better_escape
       esc_insertmode_timeout = 300,
    },
    default_plugin_config_replace = {},
