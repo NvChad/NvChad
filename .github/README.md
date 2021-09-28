@@ -1,11 +1,11 @@
 <h1 align="center">NvChad</h1>
 
 <div align="center">
-	<a href="https://nvchad.netlify.app/">Home</a>
+	<a href="https://nvchad.github.io/">Home</a>
   <span> • </span>
-    	<a href="https://nvchad.netlify.app/getting-started/setup">Install</a>
+    	<a href="https://nvchad.github.io/getting-started/setup">Install</a>
   <span> • </span>
-       	<a href="https://nvchad.netlify.app/contribute">Contribute</a>
+       	<a href="https://nvchad.github.io/contribute">Contribute</a>
   <span> • </span>
 	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
@@ -41,10 +41,10 @@
 
 ## Showcase
 
-<img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
+<img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/dashboard-nvim.png"><hr>
 <img src="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
-<img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
-<img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
+<img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/initialNvim1.png"><hr>
+<img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/initialNvim.png"><hr>
 
 ## Theme Showcase
 
@@ -65,38 +65,38 @@
 
 Fast file tree:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/nvimtree.png"></kbd><hr>
 
 <h3> Telescope-nvim </h3>
 
 A fuzzy file finder, picker, sorter, previewer and much more:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/tel.png"></kbd>
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/telmedia.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/tel.png"></kbd>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/telmedia.png"></kbd><hr>
 
 <h3> Indent-blankline.nvim </h3>
 
 Adds indentline:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/blanklineNvim.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/blanklineNvim.png"></kbd><hr>
 
 <h3> Feline.nvim  </h3>
 
 Highly configurable statusline plugin:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/statusline.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/statusline.png"></kbd><hr>
 
 <h3> Nvim-bufferline.lua </h3>
 
 Better tab implementation:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/bufferline.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/bufferline.png"></kbd><hr>
 
 <h3> Nvim-web-devicons </h3>
 
 Lua fork of Vim Devicons which offers more file icon customisability:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/image.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/image.png"></kbd><hr>
 
 <h3> Nvim-treesitter </h3
 
@@ -104,7 +104,7 @@ Better syntax highlighting for programming languages (NvChad by default comes wi
 
 Without/with Treesitter:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/woTree.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/woTree.png"></kbd><hr>
 
 </details>
 

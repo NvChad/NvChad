@@ -1,10 +1,12 @@
 local utils = require "core.utils"
+local hooks = require "core.hooks"
 
 local config = utils.load_config()
 local map = utils.map
 
 local maps = config.mappings
-local plugin_maps = maps.plugin
+local plugin_maps = maps.plugins
+local nvChad_options = config.options.nvChad
 
 local cmd = vim.cmd
 
@@ -56,17 +58,17 @@ M.misc = function()
 
    local function optional_mappings()
       -- don't yank text on cut ( x )
-      if not config.options.copy_cut then
+      if not nvChad_options.copy_cut then
          map({ "n", "v" }, "x", '"_x')
       end
 
       -- don't yank text on delete ( dd )
-      if not config.options.copy_del then
+      if not nvChad_options.copy_del then
          map({ "n", "v" }, "dd", '"_dd')
       end
 
       -- navigation within insert mode
-      if config.options.insert_nav then
+      if nvChad_options.insert_nav then
          local inav = maps.insert_nav
 
          map("i", inav.backward, "<Left>")
@@ -77,12 +79,22 @@ M.misc = function()
          map("i", inav.top_of_line, "<ESC>^i")
       end
 
+      -- easier navigation between windows
+      if nvChad_options.window_nav then
+         local wnav = maps.window_nav
+
+         map("n", wnav.moveLeft, "<C-w>h")
+         map("n", wnav.moveRight, "<C-w>l")
+         map("n", wnav.moveUp, "<C-w>k")
+         map("n", wnav.moveDown, "<C-w>j")
+      end
+
       -- check the theme toggler
-      if config.ui.theme_toggler.enabled then
+      if nvChad_options.theme_toggler then
          map(
             "n",
             maps.theme_toggler,
-            ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler.fav_themes) <CR>"
+            ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler) <CR>"
          )
       end
    end
@@ -126,21 +138,10 @@ M.misc = function()
       -- cmd "silent! command! NvChadReload lua require('nvchad').reload_config()"
    end
 
-   local function user_config_mappings()
-      local custom_maps = config.custom.mappings or ""
-      if type(custom_maps) ~= "table" then
-         return
-      end
-
-      for _, map_table in pairs(custom_maps) do
-         map(unpack(map_table))
-      end
-   end
-
    non_config_mappings()
    optional_mappings()
    required_mappings()
-   user_config_mappings()
+   hooks.run("setup_mappings", map)
 end
 
 -- below are all plugin related mappings
@@ -150,21 +151,6 @@ M.bufferline = function()
 
    map("n", m.next_buffer, ":BufferLineCycleNext <CR>")
    map("n", m.prev_buffer, ":BufferLineCyclePrev <CR>")
-   map("n", m.moveLeft, "<C-w>h")
-   map("n", m.moveRight, "<C-w>l")
-   map("n", m.moveUp, "<C-w>k")
-   map("n", m.moveDown, "<C-w>j")
-end
-
-M.chadsheet = function()
-   local m = plugin_maps.chadsheet
-
-   map("n", m.default_keys, ":lua require('cheatsheet').show_cheatsheet_telescope() <CR>")
-   map(
-      "n",
-      m.user_keys,
-      ":lua require('cheatsheet').show_cheatsheet_telescope{bundled_cheatsheets = false, bundled_plugin_cheatsheets = false } <CR>"
-   )
 end
 
 M.comment = function()
@@ -207,7 +193,7 @@ M.telescope = function()
 end
 
 M.telescope_media = function()
-   local m = plugin_maps.telescope_media
+   local m = plugin_maps.telescope.telescope_media
 
    map("n", m.media_files, ":Telescope media_files <CR>")
 end
@@ -218,15 +204,6 @@ M.truezen = function()
    map("n", m.ataraxis_mode, ":TZAtaraxis <CR>")
    map("n", m.focus_mode, ":TZFocus <CR>")
    map("n", m.minimalistic_mode, ":TZMinimalist <CR>")
-end
-
-M.vim_fugitive = function()
-   local m = plugin_maps.vim_fugitive
-
-   map("n", m.git, ":Git <CR>")
-   map("n", m.git_blame, ":Git blame <CR>")
-   map("n", m.diff_get_2, ":diffget //2 <CR>")
-   map("n", m.diff_get_3, ":diffget //3 <CR>")
 end
 
 return M
