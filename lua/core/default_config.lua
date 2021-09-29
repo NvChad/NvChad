@@ -68,7 +68,6 @@ M.plugins = {
       feline = true, -- statusline
       gitsigns = true, -- gitsigns in statusline
       lspsignature = true, -- lsp enhancements
-      neoformat = true, -- universal code formatter
       neoscroll = false, -- smooth scroll
       telescope_media = false, -- media previews within telescope finders
       truezen = false, -- distraction free & minimalist UI mode
@@ -178,10 +177,6 @@ M.mappings.plugins = {
    nvimtree = {
       toggle = "<C-n>",
       focus = "<leader>e",
-   },
-   -- universal code formatter
-   neoformat = {
-      format = "<leader>fm",
    },
    -- multitool for finding & picking things
    telescope = {

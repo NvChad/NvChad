@@ -149,10 +149,6 @@ M.nvimtree = function()
    map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
 end
 
-M.neoformat = function()
-   map("n", plugin_maps.neoformat.format, ":Neoformat <CR>")
-end
-
 M.telescope = function()
    local m = plugin_maps.telescope
 
