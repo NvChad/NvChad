@@ -66,5 +66,6 @@ cmp.setup {
       { name = "luasnip" },
       { name = "buffer" },
       { name = "nvim_lua" },
+      { name = "path" },
    },
 }

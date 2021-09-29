@@ -217,6 +217,11 @@ return packer.startup(function()
       after = "cmp-nvim-lsp",
    }
 
+   use {
+      "hrsh7th/cmp-path",
+      disable = not plugin_status.cmp,
+      after = "cmp-buffer",
+   }
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
