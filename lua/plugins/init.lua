@@ -266,6 +266,7 @@ return packer.startup(function()
 
    use {
       "nvim-telescope/telescope.nvim",
+      module = "telescope",
       cmd = "Telescope",
       requires = {
          {
