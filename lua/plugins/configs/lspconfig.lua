@@ -57,21 +57,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
    },
 }
 
-local servers = require("core.utils").load_config().plugins.options.lspconfig.servers
-
-for _, lsp in ipairs(servers) do
-   nvim_lsp[lsp].setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      -- root_dir = vim.loop.cwd,
-      flags = {
-         debounce_text_changes = 150,
-      },
-   }
-end
-
--- require("anyfile").setup_luaLsp(on_attach, capabilities) -- this will be removed soon after the custom hooks PR
-
 -- replace the default lsp diagnostic symbols
 local function lspSymbol(name, icon)
    vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "LspDiagnosticsDefault" .. name })
@@ -112,4 +97,12 @@ vim.notify = function(msg, log_level, _opts)
    else
       vim.api.nvim_echo({ { msg } }, true, {})
    end
+end
+
+-- requires a file containing user's lspconfigs
+ 
+local addlsp_confs = require("core.utils").load_config().plugins.options.lspconfig.setup_lspconf
+
+if string.len(addlsp_confs) ~= 0 then
+   require(addlsp_confs).setup_lsp(on_attach, capabilities) 
 end

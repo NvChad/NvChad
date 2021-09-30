@@ -57,7 +57,7 @@ M.ui = {
 -- these are plugin related options
 M.plugins = {
    -- enable and disable plugins (false for disable)
-   plugin_status = {
+      status = {
       autosave = false, -- to autosave files
       blankline = true, -- show code scope with symbols
       bufferline = true, -- list open buffers up the top, easy switching too
@@ -76,7 +76,7 @@ M.plugins = {
    },
    options = {
       lspconfig = {
-         servers = {}, -- eg: "html"
+         setup_lspconf = "", -- path of file containing setups of different lsps
       },
       nvimtree = {
          enable_git = 0,
