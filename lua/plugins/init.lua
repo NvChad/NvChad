@@ -111,17 +111,6 @@ return packer.startup(function()
       end,
    }
 
-   -- smooth scroll
-   use {
-      "karb94/neoscroll.nvim",
-      disable = not status.neoscroll,
-      opt = true,
-      config = override_req("neoscroll", "(plugins.configs.others).neoscroll()"),
-      setup = function()
-         require("core.utils").packer_lazy_load "neoscroll.nvim"
-      end,
-   }
-
    -- lsp stuff
 
    use {
@@ -150,16 +139,6 @@ return packer.startup(function()
       opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "vim-matchup"
-      end,
-   }
-
-   -- load autosave only if its globally enabled
-   use {
-      disable = not status.autosave,
-      "Pocco81/AutoSave.nvim",
-      config = override_req("autosave", "(plugins.configs.others).autosave()"),
-      cond = function()
-         return require("core.utils").load_config().plugins.options.autosave == true
       end,
    }
 
@@ -280,20 +259,6 @@ return packer.startup(function()
       config = override_req("telescope", "plugins.configs.telescope"),
       setup = function()
          require("core.mappings").telescope()
-      end,
-   }
-
-   use {
-      "Pocco81/TrueZen.nvim",
-      disable = not status.truezen,
-      cmd = {
-         "TZAtaraxis",
-         "TZMinimalist",
-         "TZFocus",
-      },
-      config = override_req("truezen", "plugins.configs.zenmode"),
-      setup = function()
-         require("core.mappings").truezen()
       end,
    }
 

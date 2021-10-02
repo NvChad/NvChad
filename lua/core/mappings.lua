@@ -169,12 +169,4 @@ M.telescope_media = function()
    map("n", m.media_files, ":Telescope media_files <CR>")
 end
 
-M.truezen = function()
-   local m = plugin_maps.truezen
-
-   map("n", m.ataraxis_mode, ":TZAtaraxis <CR>")
-   map("n", m.focus_mode, ":TZFocus <CR>")
-   map("n", m.minimalistic_mode, ":TZMinimalist <CR>")
-end
-
 return M

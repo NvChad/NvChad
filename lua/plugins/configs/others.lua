@@ -16,28 +16,6 @@ M.autopairs = function()
    }
 end
 
-M.autosave = function()
-   -- autosave.nvim plugin is disabled by default
-   local present, autosave = pcall(require, "autosave")
-   if not present then
-      return
-   end
-
-   autosave.setup {
-      enabled = chadrc_config.plugins.options.autosave, -- takes boolean value from init.lua
-      execution_message = "autosaved at : " .. vim.fn.strftime "%H:%M:%S",
-      events = { "InsertLeave", "TextChanged" },
-      conditions = {
-         exists = true,
-         filetype_is_not = {},
-         modifiable = true,
-      },
-      clean_command_line_interval = 2500,
-      on_off_commands = true,
-      write_all_buffers = false,
-   }
-end
-
 M.better_escape = function()
    require("better_escape").setup {
       mapping = chadrc_config.mappings.plugins.better_escape.esc_insertmode,
@@ -102,12 +80,6 @@ M.luasnip = function()
       updateevents = "TextChanged,TextChangedI",
    }
    require("luasnip/loaders/from_vscode").load { path = { chadrc_config.plugins.options.luasnip.snippet_path } }
-end
-
-M.neoscroll = function()
-   pcall(function()
-      require("neoscroll").setup()
-   end)
 end
 
 M.signature = function()

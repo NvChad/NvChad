@@ -1,9 +1,4 @@
-local present1, nvim_lsp = pcall(require, "lspconfig")
 local overrides = require("core.hooks").createOverrides "lsp"
-
-if not present1 then
-   return
-end
 
 local function on_attach(_, bufnr)
    local function buf_set_keymap(...)
