@@ -39,7 +39,7 @@ M.misc = function()
 
       -- don't yank text on delete ( dd )
       if not nvChad_options.copy_del then
-         map({ "n", "v" }, "dd", '"_dd')
+         map({ "n", "v" }, "d", '"_d')
       end
 
       -- navigation within insert mode
