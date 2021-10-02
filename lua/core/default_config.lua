@@ -57,7 +57,7 @@ M.ui = {
 -- these are plugin related options
 M.plugins = {
    -- enable and disable plugins (false for disable)
-      status = {
+   status = {
       autosave = false, -- to autosave files
       blankline = true, -- show code scope with symbols
       bufferline = true, -- list open buffers up the top, easy switching too
@@ -73,6 +73,7 @@ M.plugins = {
       truezen = false, -- distraction free & minimalist UI mode
       vim_matchup = true, -- % operator enhancements
       cmp = true,
+      nvimtree = true,
    },
    options = {
       lspconfig = {
