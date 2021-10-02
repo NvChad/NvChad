@@ -91,6 +91,8 @@ M.plugins = {
             "NvimTree",
             "terminal",
          },
+         -- show short statusline on small screens
+         shortline = true,
          shown = {},
          -- default, round , slant , block , arrow
          style = "default",
