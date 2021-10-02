@@ -269,7 +269,7 @@ end]]
          local fn = base_fn:gsub("_node", node)
          -- return the function created from the string base_fn
          return loadstring(fn)()(table1, table2)
-       end
+      end
 
       for _, node in ipairs(nodes_to_replace) do
          -- pcall() is a poor workaround for if "['mappings']['plugins']['esc_insertmode']" 'plugins' sub-table does not exist

@@ -5,7 +5,7 @@ local core_modules = {
    "core.mappings",
 }
 
-local hooks = require('core.hooks');
+local hooks = require "core.hooks"
 
 for _, module in ipairs(core_modules) do
    local ok, err = pcall(require, module)
@@ -17,4 +17,4 @@ end
 -- set all the non plugin mappings
 require("core.mappings").misc()
 
-hooks.run("ready")
+hooks.run "ready"
