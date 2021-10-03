@@ -1,4 +1,4 @@
- local cmd = vim.cmd
+local cmd = vim.cmd
 
 local colors = require("colors").get()
 
