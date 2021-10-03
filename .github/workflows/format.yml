@@ -4,7 +4,7 @@ on:
     paths-ignore:
       - ".github/**"
       - "*.md"
-    branches: ["main"]
+    branches: [**]
 
 jobs:
   stylua:
