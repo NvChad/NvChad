@@ -27,7 +27,7 @@
             src="https://img.shields.io/github/repo-size/siduck76/NvChad?style=flat-square&label=Repo"
             alt="GitHub repository size"
     /></a>
-      <a href="https://github.com/siduck76/NvChad/blob/main/LICENSE"
+<a href="https://github.com/siduck76/NvChad/blob/main/LICENSE"
         ><img
             src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square&logo=GNU&label=License"
             alt="License"
@@ -181,3 +181,4 @@ I would happily accept donations but would feel awful since I'm not the only one
 - https://www.gofundme.com/f/Burundi-Nutrition
 - https://charity.gofundme.com/o/en/campaign/feedingyemen
 - https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school
+- https://www.isupportmyanmar.com
