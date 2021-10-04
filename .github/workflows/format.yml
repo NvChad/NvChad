@@ -19,8 +19,8 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          if ! [[ -z $(git status -s) ]]; then
-            git commit --all -m "chore: format with stylua" init.lua lua/**
+          if [[ -n $(git status -s) ]]; then
+            git commit --all --message "chore: format with stylua"
           fi
       - name: Push changes
         uses: ad-m/github-push-action@master
