@@ -159,6 +159,7 @@ return packer.startup(function()
 
    use {
       "hrsh7th/nvim-cmp",
+      module = "cmp",
       disable = not status.cmp,
       after = "friendly-snippets",
       config = override_req("nvim_cmp", "plugins.configs.cmp"),
@@ -187,7 +188,8 @@ return packer.startup(function()
    use {
       "hrsh7th/cmp-nvim-lsp",
       disable = not status.cmp,
-      after = "cmp-nvim-lua",
+      module = "cmp_nvim_lsp",
+      after = "nvim-lspconfig",
    }
 
    use {
