@@ -9,7 +9,7 @@
   <span> • </span>
 	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
-      	<a href="https://github.com/siduck76/NvChad/wiki/Chad-user-configs">Extras</a>
+        <a href="https://nvchad.github.io/Extras">Extras</a>
   <p></p>
 </div>
 
@@ -116,10 +116,7 @@ Without/with Treesitter:
 ## Features
 
 - Many beautiful themes to choose from.
-- Distraction free modes.
 - Fast plugin loading.
-- Smooth scrolling.
-- Autosaving.
 - File navigation with [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua).
 - Managing tabs, buffers with [bufferline.nvim](https://github.com/akinsho/bufferline.nvim).
 - Beautiful and configurable icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons).
@@ -130,7 +127,6 @@ Without/with Treesitter:
 - File searching, previewing image and text files and more with [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 - Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 - Autoclosing braces and html tags with [nvim-autopairs](https://github.com/windwp/nvim-autopairs).
-- Formatting code with [neoformat](https://github.com/sbdchd/neoformat).
 - Indentlines with [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).
 - Useful snippets with [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
 
