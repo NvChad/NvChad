@@ -87,6 +87,11 @@ icons.setup {
          color = colors.cyan,
          name = "py",
       },
+		  ["robots.txt"] = {
+    		icon = "ﮧ",
+    		color = colors.red,
+    		name = "robots"
+  		},
       toml = {
          icon = "",
          color = colors.blue,
