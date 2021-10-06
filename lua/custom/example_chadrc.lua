@@ -8,7 +8,7 @@ M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 
 --------------------------------------------------------------------
 
--- To use this file, copy the strucutre of `core/default_config.lua`,
+-- To use this file, copy the structure of `core/default_config.lua`,
 -- examples of setting relative number & changing theme:
 
 -- M.options = {
