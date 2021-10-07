@@ -1,4 +1,4 @@
--- This is where your custom modules and plugins goes.
+-- This is where your custom modules and plugins go.
 -- See the wiki for a guide on how to extend NvChad
 
 local hooks = require "core.hooks"
