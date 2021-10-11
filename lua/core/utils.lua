@@ -117,8 +117,8 @@ end
 -- hide statusline
 -- tables fetched from load_config function
 M.hide_statusline = function()
-   local hidden = require("core.utils").load_config().ui.plugin.statusline.hidden
-   local shown = require("core.utils").load_config().ui.plugin.statusline.shown
+   local hidden = require("core.utils").load_config().plugins.options.statusline.hidden
+   local shown = require("core.utils").load_config().plugins.options.statusline.shown
    local api = vim.api
    local buftype = api.nvim_buf_get_option("%", "ft")
 
@@ -147,14 +147,14 @@ M.load_config = function(reload)
 
    -- these are the table value which will be always prioritiezed to take user config value
    local to_replace = {
-      "['mappings']['plugin']['esc_insertmode']",
+      "['mappings']['plugins']['esc_insertmode']",
       "['mappings']['terminal']['esc_termmode']",
       "['mappings']['terminal']['esc_hide_termmode']",
    }
 
-   local default_config = "default_config"
+   local default_config = "core.default_config"
    local config_name = vim.g.nvchad_user_config or "chadrc"
-   local config_file = vim.fn.stdpath "config" .. "/lua/" .. config_name .. ".lua"
+   local config_file = vim.fn.stdpath "config" .. "/lua/custom/" .. config_name .. ".lua"
 
    -- unload the modules if force reload
    if reload then
@@ -170,7 +170,7 @@ M.load_config = function(reload)
    -- print warning texts if user config file is  present
    -- check if the user config is present
    if vim.fn.filereadable(vim.fn.glob(config_file)) == 1 then
-      local present, config = pcall(require, config_name)
+      local present, config = pcall(require, "custom/" .. config_name)
       if present then
          -- make sure the returned value is table
          if type(config) == "table" then
@@ -243,7 +243,7 @@ end
 -- 1st arg - base table
 -- 2nd arg - table to merge
 -- 3rg arg - list of nodes as a table, if the node is found replace the from table2 to result, rather than adding the value
--- e.g: merge_table(t1, t2, { ['plugin']['truezen']['mappings'] })
+-- e.g: merge_table(t1, t2, { ['mappings']['plugins']['bufferline'] })
 M.merge_table = function(into, from, nodes_to_replace)
    -- make sure both are table
    if type(into) ~= "table" or type(from) ~= "table" then
@@ -255,7 +255,8 @@ M.merge_table = function(into, from, nodes_to_replace)
 
    if type(nodes_to_replace) == "table" then
       -- function that will be executed with loadstring
-      local base_fn = [[
+      local replace_fn = function(node)
+         local base_fn = [[
 return function(table1, table2)
    local t1, t2 = table1_node or false , table2_node or false
    if t1 and t2 then
@@ -263,11 +264,20 @@ return function(table1, table2)
    end
    return table1
 end]]
-      for _, node in ipairs(nodes_to_replace) do
+
          -- replace the _node in base_fn to actual given node value
          local fn = base_fn:gsub("_node", node)
-         -- if the node if found, it is replaced, otherwise table 1 is returned
-         table1 = loadstring(fn)()(table1, table2)
+         -- return the function created from the string base_fn
+         return loadstring(fn)()(table1, table2)
+      end
+
+      for _, node in ipairs(nodes_to_replace) do
+         -- pcall() is a poor workaround for if "['mappings']['plugins']['esc_insertmode']" 'plugins' sub-table does not exist
+         local ok, result = pcall(replace_fn, node)
+         if ok then
+            -- if the node is found then replace
+            table1 = result
+         end
       end
    end
 

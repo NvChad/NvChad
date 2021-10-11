@@ -87,6 +87,11 @@ icons.setup {
          color = colors.cyan,
          name = "py",
       },
+		  ["robots.txt"] = {
+    		icon = "ﮧ",
+    		color = colors.red,
+    		name = "robots"
+  		},
       toml = {
          icon = "",
          color = colors.blue,
@@ -97,6 +102,11 @@ icons.setup {
          color = colors.teal,
          name = "ts",
       },
+			ttf = {
+				icon = "",
+				color = colors.white,
+				name = "TrueTypeFont"
+			},
       rb = {
          icon = "",
          color = colors.pink,
@@ -112,6 +122,16 @@ icons.setup {
          color = colors.vibrant_green,
          name = "vue",
       },
+			woff = {
+				icon = "",
+				color = colors.white,
+				name = "WebOpenFontFormat"
+			},
+			woff2 = {
+				icon = "",
+				color = colors.white,
+				name = "WebOpenFontFormat2"
+			},
       xz = {
          icon = "",
          color = colors.sun,

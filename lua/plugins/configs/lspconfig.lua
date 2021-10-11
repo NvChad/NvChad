@@ -1,8 +1,4 @@
-local present1, nvim_lsp = pcall(require, "lspconfig")
-
-if not present1 then
-   return
-end
+local overrides = require("core.hooks").createOverrides "lsp"
 
 local function on_attach(_, bufnr)
    local function buf_set_keymap(...)
@@ -31,11 +27,11 @@ local function on_attach(_, bufnr)
    buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
    buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
    buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-   buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+   buf_set_keymap("n", "ge", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
    buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
    buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
    buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+   buf_set_keymap("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
    buf_set_keymap("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 end
 
@@ -56,21 +52,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
    },
 }
 
-local servers = require("core.utils").load_config().plugins.lspconfig.servers
-
-for _, lsp in ipairs(servers) do
-   nvim_lsp[lsp].setup {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      -- root_dir = vim.loop.cwd,
-      flags = {
-         debounce_text_changes = 150,
-      },
-   }
-end
-
--- require("anyfile").setup_luaLsp(on_attach, capabilities) -- this will be removed soon after the custom hooks PR
-
 -- replace the default lsp diagnostic symbols
 local function lspSymbol(name, icon)
    vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "LspDiagnosticsDefault" .. name })
@@ -81,7 +62,7 @@ lspSymbol("Information", "")
 lspSymbol("Hint", "")
 lspSymbol("Warning", "")
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+local lsp_publish_diagnostics_options = overrides.get("publish_diagnostics", {
    virtual_text = {
       prefix = "",
       spacing = 0,
@@ -90,6 +71,10 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
    underline = true,
    update_in_insert = false, -- update diagnostics insert mode
 })
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+   vim.lsp.diagnostic.on_publish_diagnostics,
+   lsp_publish_diagnostics_options
+)
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
    border = "single",
 })
@@ -107,4 +92,12 @@ vim.notify = function(msg, log_level, _opts)
    else
       vim.api.nvim_echo({ { msg } }, true, {})
    end
+end
+
+-- requires a file containing user's lspconfigs
+
+local addlsp_confs = require("core.utils").load_config().plugins.options.lspconfig.setup_lspconf
+
+if string.len(addlsp_confs) ~= 0 then
+   require(addlsp_confs).setup_lsp(on_attach, capabilities)
 end
