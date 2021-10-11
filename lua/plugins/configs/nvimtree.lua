@@ -52,7 +52,15 @@ g.nvim_tree_icons = {
 }
 
 nvimtree.setup {
-   lsp_diagnostics = false,
+   diagnostics = {
+      enable = false,
+      icons = {
+         hint = "",
+         info = "",
+         warning = "",
+         error = "",
+      },
+   },
    disable_netrw = true,
    hijack_netrw = true,
    ignore_ft_on_setup = { "dashboard" },
