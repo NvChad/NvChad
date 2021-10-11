@@ -1,6 +1,9 @@
-name: format
+name: formatting
 on:
   push:
+    paths-ignore:
+      - ".github/**"
+      - "*.md"
     branches: "**"
 
 jobs:
@@ -8,20 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup and run stylua
-        uses: JohnnyMorganz/stylua-action@1.0.0
+      - uses: JohnnyMorganz/stylua-action@1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --config-path=./.stylua.toml -g *.lua -g !lua/core/**/*.lua -g !lua/modules/**/*.lua -g !lua/utils/*.lua -- .
+          args: --config-path=./.stylua.toml -g *.lua -g !lua/core/*.lua -g !lua/plugins/**/*.lua -g !lua/colors/*.lua -- .
       - name: Commit files
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          if [[ ! -z $(git status -s) ]]; then
-            git add .
-            git commit -m "chore: format source code"
+          if [[ -n $(git status -s) ]]; then
+            git commit --all --message "chore: format with stylua"
           fi
-      - name: Push formatted files
+      - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

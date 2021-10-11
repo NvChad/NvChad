@@ -1,15 +1,15 @@
 <h1 align="center">NvChad</h1>
 
 <div align="center">
-	<a href="https://nvchad.netlify.app/">Home</a>
+	<a href="https://nvchad.github.io/">Home</a>
   <span> • </span>
-    	<a href="https://nvchad.netlify.app/getting-started/setup">Install</a>
+    	<a href="https://nvchad.github.io/getting-started/setup">Install</a>
   <span> • </span>
-       	<a href="https://nvchad.netlify.app/contribute">Contribute</a>
+       	<a href="https://nvchad.github.io/contribute">Contribute</a>
   <span> • </span>
 	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
-      	<a href="https://github.com/siduck76/NvChad/wiki/Chad-user-configs">Extras</a>
+        <a href="https://nvchad.github.io/Extras">Extras</a>
   <p></p>
 </div>
 
@@ -27,7 +27,7 @@
             src="https://img.shields.io/github/repo-size/siduck76/NvChad?style=flat-square&label=Repo"
             alt="GitHub repository size"
     /></a>
-      <a href="https://github.com/siduck76/NvChad/blob/main/LICENSE"
+<a href="https://github.com/siduck76/NvChad/blob/main/LICENSE"
         ><img
             src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square&logo=GNU&label=License"
             alt="License"
@@ -41,10 +41,10 @@
 
 ## Showcase
 
-<img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/dashboard-nvim.png"><hr>
+<img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/dashboard-nvim.png"><hr>
 <img src="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
-<img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
-<img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
+<img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/initialNvim1.png"><hr>
+<img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/initialNvim.png"><hr>
 
 ## Theme Showcase
 
@@ -65,38 +65,38 @@
 
 Fast file tree:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/nvimtree.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/nvimtree.png"></kbd><hr>
 
 <h3> Telescope-nvim </h3>
 
 A fuzzy file finder, picker, sorter, previewer and much more:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/tel.png"></kbd>
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/telmedia.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/tel.png"></kbd>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/telmedia.png"></kbd><hr>
 
 <h3> Indent-blankline.nvim </h3>
 
 Adds indentline:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/blanklineNvim.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/blanklineNvim.png"></kbd><hr>
 
 <h3> Feline.nvim  </h3>
 
 Highly configurable statusline plugin:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/statusline.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/statusline.png"></kbd><hr>
 
 <h3> Nvim-bufferline.lua </h3>
 
 Better tab implementation:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/bufferline.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/bufferline.png"></kbd><hr>
 
 <h3> Nvim-web-devicons </h3>
 
 Lua fork of Vim Devicons which offers more file icon customisability:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/image.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/image.png"></kbd><hr>
 
 <h3> Nvim-treesitter </h3
 
@@ -104,7 +104,7 @@ Better syntax highlighting for programming languages (NvChad by default comes wi
 
 Without/with Treesitter:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/woTree.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/woTree.png"></kbd><hr>
 
 </details>
 
@@ -116,10 +116,7 @@ Without/with Treesitter:
 ## Features
 
 - Many beautiful themes to choose from.
-- Distraction free modes.
 - Fast plugin loading.
-- Smooth scrolling.
-- Autosaving.
 - File navigation with [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua).
 - Managing tabs, buffers with [bufferline.nvim](https://github.com/akinsho/bufferline.nvim).
 - Beautiful and configurable icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons).
@@ -130,7 +127,6 @@ Without/with Treesitter:
 - File searching, previewing image and text files and more with [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 - Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 - Autoclosing braces and html tags with [nvim-autopairs](https://github.com/windwp/nvim-autopairs).
-- Formatting code with [neoformat](https://github.com/sbdchd/neoformat).
 - Indentlines with [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).
 - Useful snippets with [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
 
@@ -138,7 +134,7 @@ Without/with Treesitter:
 
 To everyone who thinks that NvChad is bloat: Bloat means different things to everyone.
 
-NvChad has 38 plugins installed by default yet it is still very fast because it uses Packer plugin maanager. Packer.nvim allows you lets you lazy load plugins, meaning they get loaded only when absoloutely required. Furthermore, you can disable plugins you don't use in `chardrc.lua`.
+NvChad has 38 plugins installed by default, yet it is still very fast because it uses the Packer plugin manager. Packer.nvim allows you to lazy load plugins, meaning they only get loaded when absolutely required. Furthermore, you can disable plugins you don't use in `chardrc.lua`.
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
@@ -181,3 +177,4 @@ I would happily accept donations but would feel awful since I'm not the only one
 - https://www.gofundme.com/f/Burundi-Nutrition
 - https://charity.gofundme.com/o/en/campaign/feedingyemen
 - https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school
+- https://www.isupportmyanmar.com
