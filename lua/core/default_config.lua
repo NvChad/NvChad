@@ -121,7 +121,7 @@ M.mappings = {
       forward = "<C-l>",
       next_line = "<C-k>",
       prev_line = "<C-j>",
-      top_of_line = "<C-a>",
+      beginning_of_line = "<C-a>",
    },
    --better window movement
    window_nav = {
