@@ -76,6 +76,10 @@ fg("CmpItemKind", white)
 fg("CmpItemMenu", white)
 
 -- misc
+
+-- inactive statuslines as thin lines
+fg("StatusLineNC", one_bg2 .. " gui=underline")
+
 fg("LineNr", grey)
 fg("NvimInternalError", red)
 fg("VertSplit", one_bg2)
