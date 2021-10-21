@@ -87,7 +87,7 @@ M.signature = function()
    if present then
       lspsignature.setup {
          bind = true,
-         doc_lines = 2,
+         doc_lines = 0,
          floating_window = true,
          fix_pos = true,
          hint_enable = true,
