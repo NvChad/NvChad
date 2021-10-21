@@ -12,6 +12,7 @@ M.options = {
    ruler = false,
    hidden = true,
    ignorecase = true,
+   smartcase = true,
    mapleader = " ",
    mouse = "a",
    number = true,
