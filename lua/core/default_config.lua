@@ -72,6 +72,7 @@ M.plugins = {
       vim_matchup = true, -- % operator enhancements
       cmp = true,
       nvimtree = true,
+      autopairs = true,
    },
    options = {
       lspconfig = {

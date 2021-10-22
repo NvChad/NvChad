@@ -204,7 +204,7 @@ return packer.startup(function()
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
-      disable = not status.cmp,
+      disable = not status.autopairs,
       after = "nvim-cmp",
       config = override_req("nvim_autopairs", "(plugins.configs.others).autopairs()"),
    }

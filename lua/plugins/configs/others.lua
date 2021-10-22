@@ -10,6 +10,9 @@ M.autopairs = function()
    end
 
    autopairs.setup()
+
+   -- not needed if you disable cmp, the above var related to cmp tooo! override default config for autopairs
+
    autopairs_completion.setup {
       map_complete = true, -- insert () func completion
       map_cr = true,
