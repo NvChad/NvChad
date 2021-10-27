@@ -228,6 +228,13 @@ return packer.startup(function()
       end,
    }
 
+   use {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      disable = not status.comment,
+      before = "nvim-comment",
+      after = "nvim-treesitter",
+   }
+
    -- file managing , picker etc
    use {
       "kyazdani42/nvim-tree.lua",
