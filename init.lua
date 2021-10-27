@@ -14,4 +14,4 @@ vim.opt.listchars:append "extends:…"
 vim.opt.listchars:append "nbsp:␣"
 vim.opt.listchars:append "tab:>-"
 
-vim.cmd("hi Visual guifg=#FFFF00 guibg=#0000FF gui=none")
+vim.cmd "hi Visual guifg=#FFFF00 guibg=#0000FF gui=none"
