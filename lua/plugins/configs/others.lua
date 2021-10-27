@@ -10,6 +10,9 @@ M.autopairs = function()
    end
 
    autopairs.setup()
+
+   -- not needed if you disable cmp, the above var related to cmp tooo! override default config for autopairs
+
    autopairs_completion.setup {
       map_complete = true, -- insert () func completion
       map_cr = true,
@@ -87,7 +90,7 @@ M.signature = function()
    if present then
       lspsignature.setup {
          bind = true,
-         doc_lines = 2,
+         doc_lines = 0,
          floating_window = true,
          fix_pos = true,
          hint_enable = true,

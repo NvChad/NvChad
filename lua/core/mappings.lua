@@ -51,7 +51,7 @@ M.misc = function()
          map("i", inav.forward, "<Right>")
          map("i", inav.next_line, "<Up>")
          map("i", inav.prev_line, "<Down>")
-         map("i", inav.top_of_line, "<ESC>^i")
+         map("i", inav.beginning_of_line, "<ESC>^i")
       end
 
       -- easier navigation between windows
