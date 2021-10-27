@@ -20,9 +20,9 @@ M.options = {
    numberwidth = 2,
    relativenumber = false,
    expandtab = true,
-   shiftwidth = 2,
+   shiftwidth = 4,
    smartindent = true,
-   tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
+   tabstop = 4, -- Number of spaces that a <Tab> in the file counts for
    timeoutlen = 400,
    -- interval for writing swap file to disk, also used by gitsigns
    updatetime = 250,
