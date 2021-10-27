@@ -19,6 +19,7 @@ local purple = colors.purple
 local red = colors.red
 local white = colors.white
 local yellow = colors.yellow
+local one_bg3 = colors.one_bg3
 
 local ui = require("core.utils").load_config().ui
 
@@ -51,8 +52,6 @@ else
    fg("Comment", grey_fg)
 end
 
-fg_bg("MatchParen", black, red)
-
 -- Disable cusror line
 cmd "hi clear CursorLine"
 -- Line number
@@ -76,6 +75,10 @@ fg("CmpItemKind", white)
 fg("CmpItemMenu", white)
 
 -- misc
+
+-- inactive statuslines as thin lines
+fg("StatusLineNC", one_bg3 .. " gui=underline")
+
 fg("LineNr", grey)
 fg("NvimInternalError", red)
 fg("VertSplit", one_bg2)
@@ -148,7 +151,7 @@ if ui.transparency then
 end
 
 -- Telescope
-fg("TelescopeBorder", line)
-fg("TelescopePreviewBorder", grey)
-fg("TelescopePromptBorder", line)
-fg("TelescopeResultsBorder", line)
+fg("TelescopeBorder", one_bg)
+fg_bg("TelescopePreviewTitle", green, one_bg)
+fg_bg("TelescopePromptTitle", blue, one_bg)
+fg_bg("TelescopeResultsTitle", red, one_bg)
