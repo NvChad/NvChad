@@ -162,7 +162,7 @@ This will leave your current Neovim configuration untouched. Once you exit Neovi
 ## Chadributors
 
 <a href="https://github.com/NvChad/NvChad/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=siduck/NvChad"/>
+  <img src="https://contrib.rocks/image?repo=NvChad/NvChad"/>
 </a>
 
 ## Warning
