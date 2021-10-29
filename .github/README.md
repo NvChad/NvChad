@@ -29,7 +29,7 @@
     /></a>
 <a href="https://github.com/NvChad/NvChad/blob/main/LICENSE"
         ><img
-            src="https://img.shields.io/github/license/siduck/NvChad?style=flat-square&logo=GNU&label=License"
+            src="https://img.shields.io/github/license/NvChad/NvChad?style=flat-square&logo=GNU&label=License"
             alt="License"
     />
 [![Discord](https://img.shields.io/discord/869557815780470834?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/gADmkJb9Fb)
