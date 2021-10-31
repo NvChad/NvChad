@@ -7,7 +7,7 @@
   <span> • </span>
        	<a href="https://nvchad.github.io/contribute">Contribute</a>
   <span> • </span>
-	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
+	<a href="https://github.com/siduck/NvChad#gift_heart-support">Support</a>
   <span> • </span>
         <a href="https://nvchad.github.io/Extras">Extras</a>
   <p></p>
@@ -21,30 +21,30 @@
 
 <div align="center">
 
-[![Super Linter](https://img.shields.io/github/workflow/status/siduck76/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&color=green)]()
-<a href="https://github.com/siduck76/NvChad"
+[![Super Linter](https://img.shields.io/github/workflow/status/NvChad/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&color=green)]()
+<a href="https://github.com/NvChad/NvChad"
         ><img
-            src="https://img.shields.io/github/repo-size/siduck76/NvChad?style=flat-square&label=Repo"
+            src="https://img.shields.io/github/repo-size/NvChad/NvChad?style=flat-square&label=Repo"
             alt="GitHub repository size"
     /></a>
-<a href="https://github.com/siduck76/NvChad/blob/main/LICENSE"
+<a href="https://github.com/NvChad/NvChad/blob/main/LICENSE"
         ><img
-            src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square&logo=GNU&label=License"
+            src="https://img.shields.io/github/license/NvChad/NvChad?style=flat-square&logo=GNU&label=License"
             alt="License"
     />
 [![Discord](https://img.shields.io/discord/869557815780470834?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/gADmkJb9Fb)
 [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
-[![GitHub Issues](https://img.shields.io/github/issues/siduck76/NvChad.svg?style=flat-square&label=Issues&color=fc0330)](https://github.com/siduck76/NvChad/issues)
-[![Last Commit](https://img.shields.io/github/last-commit/siduck76/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck76/NvChad/pulse)
+[![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat-square&label=Issues&color=fc0330)](https://github.com/siduck/NvChad/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/NvChad/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck/NvChad/pulse)
 
   </div>
 
 ## Showcase
 
-<img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/dashboard-nvim.png"><hr>
+<img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/dashboard-nvim.png"><hr>
 <img src="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
-<img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/initialNvim1.png"><hr>
-<img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/initialNvim.png"><hr>
+<img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/initialNvim1.png"><hr>
+<img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/initialNvim.png"><hr>
 
 ## Theme Showcase
 
@@ -65,38 +65,38 @@
 
 Fast file tree:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/nvimtree.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/nvimtree.png"></kbd><hr>
 
 <h3> Telescope-nvim </h3>
 
 A fuzzy file finder, picker, sorter, previewer and much more:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/tel.png"></kbd>
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/telmedia.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/tel.png"></kbd>
+<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/telmedia.png"></kbd><hr>
 
 <h3> Indent-blankline.nvim </h3>
 
 Adds indentline:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/blanklineNvim.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/blanklineNvim.png"></kbd><hr>
 
 <h3> Feline.nvim  </h3>
 
 Highly configurable statusline plugin:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/statusline.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/statusline.png"></kbd><hr>
 
 <h3> Nvim-bufferline.lua </h3>
 
 Better tab implementation:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/bufferline.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/bufferline.png"></kbd><hr>
 
 <h3> Nvim-web-devicons </h3>
 
 Lua fork of Vim Devicons which offers more file icon customisability:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/image.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/image.png"></kbd><hr>
 
 <h3> Nvim-treesitter </h3
 
@@ -104,7 +104,7 @@ Better syntax highlighting for programming languages (NvChad by default comes wi
 
 Without/with Treesitter:
 
-<kbd><img src="https://raw.githubusercontent.com/siduck76/dotfiles/all/rice%20flex/woTree.png"></kbd><hr>
+<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/woTree.png"></kbd><hr>
 
 </details>
 
@@ -162,7 +162,7 @@ This will leave your current Neovim configuration untouched. Once you exit Neovi
 ## Chadributors
 
 <a href="https://github.com/NvChad/NvChad/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=siduck76/NvChad"/>
+  <img src="https://contrib.rocks/image?repo=NvChad/NvChad"/>
 </a>
 
 ## Warning
