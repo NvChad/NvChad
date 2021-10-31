@@ -345,15 +345,5 @@ return packer.startup(function()
       end,
    }
 
-   use {
-       'morhetz/gruvbox',
-       config = function()
-           vim.cmd [[colorscheme gruvbox]]
-           vim.g.background = 'dark'
-           -- set highlight groups right after colorscheme to avoid clear
-           require 'highlights'
-       end
-   }
-
    require("core.hooks").run("install_plugins", use)
 end)
