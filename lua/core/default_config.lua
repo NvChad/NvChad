@@ -75,6 +75,7 @@ M.plugins = {
       autopairs = true,
    },
    options = {
+      autopairs = { loadAfter = "nvim-cmp" },
       lspconfig = {
          setup_lspconf = "", -- path of file containing setups of different lsps
       },
