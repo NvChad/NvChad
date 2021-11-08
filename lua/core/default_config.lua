@@ -38,6 +38,7 @@ M.options = {
       update_url = "https://github.com/NvChad/NvChad",
       update_branch = "main",
    },
+  hl_override = false, --set this equal to "custom.some.file" (which contains highlights) in custom.chadrc to modify hl groups set by the colorscheme
 }
 
 -- ui configs

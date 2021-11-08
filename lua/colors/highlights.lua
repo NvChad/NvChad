@@ -1,3 +1,4 @@
+local override = require("core.utils").load_config().options.hl_override
 local cmd = vim.cmd
 
 local colors = require("colors").get()
@@ -155,3 +156,7 @@ fg("TelescopeBorder", one_bg)
 fg_bg("TelescopePreviewTitle", green, one_bg)
 fg_bg("TelescopePromptTitle", blue, one_bg)
 fg_bg("TelescopeResultsTitle", red, one_bg)
+
+if override then
+   require(override)
+end
