@@ -42,6 +42,7 @@ M.options = {
 
 -- ui configs
 M.ui = {
+   hl_override = "", -- path of your file which contains highlight stuffs
    italic_comments = false,
    -- theme to be used, check available themes with `<leader> + t + h`
    theme = "onedark",

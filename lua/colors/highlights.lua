@@ -1,3 +1,5 @@
+local override = require("core.utils").load_config().ui.hl_override
+
 local cmd = vim.cmd
 
 local colors = require("colors").get()
@@ -23,27 +25,9 @@ local one_bg3 = colors.one_bg3
 
 local ui = require("core.utils").load_config().ui
 
--- Define bg color
--- @param group Group
--- @param color Color
-local function bg(group, color)
-   cmd("hi " .. group .. " guibg=" .. color)
-end
-
--- Define fg color
--- @param group Group
--- @param color Color
-local function fg(group, color)
-   cmd("hi " .. group .. " guifg=" .. color)
-end
-
--- Define bg and fg color
--- @param group Group
--- @param fgcol Fg Color
--- @param bgcol Bg Color
-local function fg_bg(group, fgcol, bgcol)
-   cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
-end
+local fg = require("core.utils").fg
+local fg_bg = require("core.utils").fg_bg
+local bg = require("core.utils").bg
 
 -- Comments
 if ui.italic_comments then
@@ -155,3 +139,7 @@ fg("TelescopeBorder", one_bg)
 fg_bg("TelescopePreviewTitle", green, one_bg)
 fg_bg("TelescopePromptTitle", blue, one_bg)
 fg_bg("TelescopeResultsTitle", red, one_bg)
+
+if #override ~= 0 then
+   require(override)
+end
