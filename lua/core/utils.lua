@@ -356,4 +356,27 @@ M.fg_bg = function(group, fgcol, bgcol)
    cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
+-- Override default config of a plugin based on the path provided in the chadrc
+
+-- FUNCTION: override_req, use `chadrc` plugin config override if present
+-- name = name inside `default_config` / `chadrc`
+-- default_req = run this if 'name' does not exist in `default_config` / `chadrc`
+-- if override or default_req start with `(`, then strip that and assume override calls a function, not a whole file
+M.override_req = function(name, default_req)
+   local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
+   local result = default_req
+
+   if override ~= nil then
+      result = override
+   end
+
+   if string.match(result, "^%(") then
+      result = result:sub(2)
+      result = result:gsub("%)%.", "').", 1)
+      return "require('" .. result
+   else
+      return "require('" .. result .. "')"
+   end
+end
+
 return M
