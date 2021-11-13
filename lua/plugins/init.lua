@@ -15,11 +15,9 @@ return packer.startup(function()
    -- if override or default_req start with `(`, then strip that and assume override calls a function, not a whole file
    local override_req = function(name, default_req)
       local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
-      local result
+      local result = default_req
 
-      if override == nil then
-         result = default_req
-      else
+      if override ~= nil then
          result = override
       end
 
