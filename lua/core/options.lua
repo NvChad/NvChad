@@ -1,9 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 
--- export user config as a global varibale
-g.nvchad_user_config = "chadrc"
-
 local options = require("core.utils").load_config().options
 
 opt.title = true
