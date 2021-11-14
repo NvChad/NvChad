@@ -154,13 +154,12 @@ M.load_config = function(reload)
    }
 
    local default_config = "core.default_config"
-   local config_name = "chadrc"
-   local config_file = vim.fn.stdpath "config" .. "/lua/custom/" .. config_name .. ".lua"
+   local config_file = vim.fn.stdpath "config" .. "/lua/custom/" .. "chadrc.lua"
 
    -- unload the modules if force reload
    if reload then
       package.loaded[default_config or false] = nil
-      package.loaded[config_name or false] = nil
+      package.loaded["chadrc" or false] = nil
    end
 
    -- don't enclose in pcall, it better break when default config is faulty
@@ -171,7 +170,7 @@ M.load_config = function(reload)
    -- print warning texts if user config file is  present
    -- check if the user config is present
    if vim.fn.filereadable(vim.fn.glob(config_file)) == 1 then
-      local present, config = pcall(require, "custom/" .. config_name)
+      local present, config = pcall(require, "custom/chadrc")
       if present then
          -- make sure the returned value is table
          if type(config) == "table" then
@@ -182,7 +181,7 @@ M.load_config = function(reload)
                to_replace
             )
          else
-            print("Warning: " .. config_name .. " sourced successfully but did not return a lua table.")
+            print("Warning: chadrc " .. " sourced successfully but did not return a lua table.")
          end
       else
          print("Warning: " .. config_file .. " is present but sourcing failed.")

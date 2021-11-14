@@ -68,19 +68,19 @@ M.misc = function()
       if nvChad_options.theme_toggler then
          map(
             "n",
-            maps.theme_toggler,
+            maps.misc.theme_toggler,
             ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler) <CR>"
          )
       end
    end
 
    local function required_mappings()
-      map("n", maps.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
-      map("n", maps.copy_whole_file, ":%y+ <CR>") -- copy whole file content
-      map("n", maps.new_buffer, ":enew <CR>") -- new buffer
-      map("n", maps.new_tab, ":tabnew <CR>") -- new tabs
-      map("n", maps.line_number_toggle, ":set nu! <CR>") -- toggle numbers
-      map("n", maps.save_file, ":w <CR>") -- ctrl + s to save file
+      map("n", maps.misc.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
+      map("n", maps.misc.copy_whole_file, ":%y+ <CR>") -- copy whole file content
+      map("n", maps.misc.new_buffer, ":enew <CR>") -- new buffer
+      map("n", maps.misc.new_tab, ":tabnew <CR>") -- new tabs
+      map("n", maps.misc.line_number_toggle, ":set nu! <CR>") -- toggle numbers
+      map("n", maps.misc.save_file, ":w <CR>") -- ctrl + s to save file
 
       -- terminal mappings --
       local term_maps = maps.terminal
@@ -107,7 +107,7 @@ M.misc = function()
 
       -- add NvChadUpdate command and mapping
       cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
-      map("n", maps.update_nvchad, ":NvChadUpdate <CR>")
+      map("n", maps.misc.update_nvchad, ":NvChadUpdate <CR>")
 
       -- add ChadReload command and maping
       -- cmd "silent! command! NvChadReload lua require('nvchad').reload_config()"

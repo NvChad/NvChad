@@ -1,4 +1,5 @@
 local hooks, M = {}, {}
+
 local allowed_hooks = {
    "install_plugins",
    "setup_mappings",
