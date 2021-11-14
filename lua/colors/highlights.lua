@@ -1,8 +1,8 @@
-local override = require("core.utils").load_config().ui.hl_override
-
 local cmd = vim.cmd
 
+local override = require("core.utils").load_config().ui.hl_override
 local colors = require("colors").get()
+local ui = require("core.utils").load_config().ui
 
 local black = colors.black
 local black2 = colors.black2
@@ -23,8 +23,7 @@ local white = colors.white
 local yellow = colors.yellow
 local one_bg3 = colors.one_bg3
 
-local ui = require("core.utils").load_config().ui
-
+-- functions for setting highlights
 local fg = require("core.utils").fg
 local fg_bg = require("core.utils").fg_bg
 local bg = require("core.utils").bg
@@ -126,19 +125,19 @@ fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
 
+-- Telescope
+fg("TelescopeBorder", one_bg)
+fg_bg("TelescopePreviewTitle", green, one_bg)
+fg_bg("TelescopePromptTitle", blue, one_bg)
+fg_bg("TelescopeResultsTitle", red, one_bg)
+
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
    bg("NvimTreeNormal", "NONE")
    bg("NvimTreeStatusLineNC", "NONE")
    bg("NvimTreeVertSplit", "NONE")
    fg("NvimTreeVertSplit", grey)
-end
-
--- Telescope
-fg("TelescopeBorder", one_bg)
-fg_bg("TelescopePreviewTitle", green, one_bg)
-fg_bg("TelescopePromptTitle", blue, one_bg)
-fg_bg("TelescopeResultsTitle", red, one_bg)
+ end
 
 if #override ~= 0 then
    require(override)
