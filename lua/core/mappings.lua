@@ -169,4 +169,15 @@ M.telescope_media = function()
    map("n", m.media_files, ":Telescope media_files <CR>")
 end
 
+M.cheatsheet = function()
+   local m = plugin_maps.cheatsheet
+
+   map("n", m.default_keys, ":lua require('cheatsheet').show_cheatsheet_telescope() <CR>")
+   map(
+      "n",
+      m.user_keys,
+      ":lua require('cheatsheet').show_cheatsheet_telescope{bundled_cheatsheets = false, bundled_plugin_cheatsheets = false } <CR>"
+   )
+end
+
 return M

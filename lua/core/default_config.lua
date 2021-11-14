@@ -67,6 +67,7 @@ M.plugins = {
       bufferline = true, -- manage and preview opened buffers
       colorizer = false, -- color RGB, HEX, CSS, NAME color codes
       comment = true, -- easily (un)comment code, language aware
+      cheatsheet = true,
       dashboard = false,
       esc_insertmode = true, -- map to <ESC> with no lag
       feline = true, -- statusline
@@ -172,6 +173,12 @@ M.mappings.plugins = {
       next_buffer = "<TAB>",
       prev_buffer = "<S-Tab>",
    },
+
+   cheatsheet = {
+      default_keys = "<leader>dk",
+      user_keys = "<leader>uk",
+   },
+
    comment = {
       toggle = "<leader>/",
    },

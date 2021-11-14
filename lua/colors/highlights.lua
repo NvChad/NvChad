@@ -137,7 +137,7 @@ if ui.transparency then
    bg("NvimTreeStatusLineNC", "NONE")
    bg("NvimTreeVertSplit", "NONE")
    fg("NvimTreeVertSplit", grey)
- end
+end
 
 if #override ~= 0 then
    require(override)
