@@ -258,13 +258,13 @@ M.merge_table = function(into, from, nodes_to_replace)
       -- function that will be executed with loadstring
       local replace_fn = function(node)
          local base_fn = [[
-return function(table1, table2)
-   local t1, t2 = table1_node or false , table2_node or false
-   if t1 and t2 then
-      table1_node = table2_node
-   end
-   return table1
-end]]
+         return function(table1, table2)
+         local t1, t2 = table1_node or false , table2_node or false
+         if t1 and t2 then
+               table1_node = table2_node
+         end
+         return table1
+         end]]
 
          -- replace the _node in base_fn to actual given node value
          local fn = base_fn:gsub("_node", node)
@@ -374,9 +374,9 @@ M.override_req = function(name, default_req)
       result = result:sub(2)
       result = result:gsub("%)%.", "').", 1)
       return "require('" .. result
-   else
-      return "require('" .. result .. "')"
    end
+
+   return "require('" .. result .. "')"
 end
 
 return M
