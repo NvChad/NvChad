@@ -234,18 +234,6 @@ return packer.startup(function()
          require("core.mappings").telescope()
       end,
    }
-
-   use {
-      "sudormrfbin/cheatsheet.nvim",
-      disable = not plugin_settings.status.cheatsheet,
-      module = "cheatsheet",
-      config = function()
-         require "plugins.configs.cheatsheet"
-      end,
-      setup = function()
-         require("core.mappings").cheatsheet()
-      end,
-   }
-
+   -- load user defined plugins
    require("core.hooks").run("install_plugins", use)
 end)
