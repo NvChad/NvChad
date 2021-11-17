@@ -78,7 +78,7 @@ return packer.startup(function()
       "lewis6991/gitsigns.nvim",
       disable = not plugin_settings.status.gitsigns,
       opt = true,
-      config = override_req("gitsigns", "plugins.configs.gitsigns"),
+      config = override_req("gitsigns", "(plugins.configs.others).gitsigns()"),
       setup = function()
          require("core.utils").packer_lazy_load "gitsigns.nvim"
       end,

@@ -6,7 +6,6 @@ end
 
 vim.opt.completeopt = "menuone,noselect"
 
--- nvim-cmp setup
 cmp.setup {
    snippet = {
       expand = function(args)
@@ -15,12 +14,8 @@ cmp.setup {
    },
    formatting = {
       format = function(entry, vim_item)
-         -- load lspkind icons
-         vim_item.kind = string.format(
-            "%s %s",
-            require("plugins.configs.lspkind_icons").icons[vim_item.kind],
-            vim_item.kind
-         )
+         local icons = require "plugins.configs.lspkind_icons"
+         vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
 
          vim_item.menu = ({
             nvim_lsp = "[LSP]",

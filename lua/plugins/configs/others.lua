@@ -1,19 +1,17 @@
 local M = {}
 
 local chadrc_config = require("core.utils").load_config()
+
 M.autopairs = function()
    local present1, autopairs = pcall(require, "nvim-autopairs")
    local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 
-   if not (present1 or present2) then
-      return
+   if present1 and present2 then
+      autopairs.setup()
+
+      local cmp = require "cmp"
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
    end
-
-   autopairs.setup()
-
-   -- not needed if you disable cmp, the above var related to cmp tooo! override default config for autopairs
-   local cmp = require "cmp"
-   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 M.better_escape = function()
@@ -71,17 +69,15 @@ end
 
 M.luasnip = function()
    local present, luasnip = pcall(require, "luasnip")
-   if not present then
-      return
+   if present then
+      luasnip.config.set_config {
+         history = true,
+         updateevents = "TextChanged,TextChangedI",
+      }
+
+      require("luasnip/loaders/from_vscode").load { paths = chadrc_config.plugins.options.luasnip.snippet_path }
+      require("luasnip/loaders/from_vscode").load()
    end
-
-   luasnip.config.set_config {
-      history = true,
-      updateevents = "TextChanged,TextChangedI",
-   }
-
-   require("luasnip/loaders/from_vscode").load { paths = chadrc_config.plugins.options.luasnip.snippet_path }
-   require("luasnip/loaders/from_vscode").load()
 end
 
 M.signature = function()
@@ -114,8 +110,8 @@ M.lsp_handlers = function()
 
    lspSymbol("Error", "")
    lspSymbol("Information", "")
-   lspSymbol("Hint", "")
-   lspSymbol("Warning", "")
+   lspSymbol("Hint", "")
+   lspSymbol("Warning", "")
 
    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = {
@@ -143,6 +139,21 @@ M.lsp_handlers = function()
       else
          vim.api.nvim_echo({ { msg } }, true, {})
       end
+   end
+end
+
+M.gitsigns = function()
+   local present, gitsigns = pcall(require, "gitsigns")
+   if present then
+      gitsigns.setup {
+         signs = {
+            add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
+            change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
+            delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
+            topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+            changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+         },
+      }
    end
 end
 

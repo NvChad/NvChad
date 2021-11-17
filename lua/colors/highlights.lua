@@ -82,9 +82,11 @@ fg("DashboardHeader", grey_fg)
 fg("DashboardShortcut", grey_fg)
 
 -- Git signs
-fg_bg("DiffAdd", nord_blue, "none")
-fg_bg("DiffChange", grey_fg, "none")
-fg_bg("DiffModified", nord_blue, "none")
+fg_bg("DiffAdd", blue, "NONE")
+fg_bg("DiffChange", grey_fg, "NONE")
+fg_bg("DiffChangeDelete", red, "NONE")
+fg_bg("DiffModified", red, "NONE")
+fg_bg("DiffDelete", red, "NONE")
 
 -- Indent blankline plugin
 fg("IndentBlanklineChar", line)
@@ -137,7 +139,7 @@ if ui.transparency then
    bg("NvimTreeStatusLineNC", "NONE")
    bg("NvimTreeVertSplit", "NONE")
    fg("NvimTreeVertSplit", grey)
- end
+end
 
 if #override ~= 0 then
    require(override)

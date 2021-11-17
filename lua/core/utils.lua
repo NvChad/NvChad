@@ -132,25 +132,25 @@ M.hide_statusline = function()
    if vim.tbl_contains(hidden, buftype) then
       api.nvim_set_option("laststatus", 0)
       return
-   else
-      api.nvim_set_option("laststatus", 2)
    end
+
+   api.nvim_set_option("laststatus", 2)
 end
 
-M.load_config = function(reload)
+M.load_config = function()
    local conf = require "core.default_config"
 
    local chadrcExists, _ = pcall(require, "custom.chadrc")
 
--- if chadrc exists , then merge its table into the default config's
+   -- if chadrc exists , then merge its table into the default config's
 
-if chadrcExists then
-   local change = require "custom.chadrc"
-   conf = vim.tbl_deep_extend("force", conf, change)
-   return conf 
-end
+   if chadrcExists then
+      local change = require "custom.chadrc"
+      conf = vim.tbl_deep_extend("force", conf, change)
+      return conf
+   end
 
--- or load default config
+   -- or load default config
    return conf
 end
 

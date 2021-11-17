@@ -19,9 +19,7 @@ M.init = function(theme)
       package.loaded["colors.highlights" or false] = nil
       -- then load the highlights
       require "colors.highlights"
-   else
-      return false
-   end
+    end
 end
 
 -- returns a table of colors for givem or current theme
