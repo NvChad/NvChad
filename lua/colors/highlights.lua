@@ -136,6 +136,7 @@ fg_bg("TelescopeResultsTitle", red, one_bg)
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
    bg("NvimTreeNormal", "NONE")
+   bg("NvimTreeNormalNC", "NONE")
    bg("NvimTreeStatusLineNC", "NONE")
    bg("NvimTreeVertSplit", "NONE")
    fg("NvimTreeVertSplit", grey)
