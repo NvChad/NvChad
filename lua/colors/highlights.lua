@@ -128,10 +128,19 @@ bg("NvimTreeVertSplit", darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
 
 -- Telescope
-fg("TelescopeBorder", one_bg)
-fg_bg("TelescopePreviewTitle", green, one_bg)
-fg_bg("TelescopePromptTitle", blue, one_bg)
-fg_bg("TelescopeResultsTitle", red, one_bg)
+fg_bg("TelescopeBorder", darker_black, darker_black)
+fg_bg("TelescopePromptBorder", black2, black2)
+
+fg_bg("TelescopePromptNormal", white, black2)
+fg_bg("TelescopePromptPrefix", red, black2)
+
+bg("TelescopeNormal", darker_black)
+
+fg_bg("TelescopePreviewTitle", black, green)
+fg_bg("TelescopePromptTitle", black, red)
+fg_bg("TelescopeResultsTitle", darker_black,darker_black)
+
+bg("TelescopeSelection", black2)
 
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
