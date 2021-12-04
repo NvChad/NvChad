@@ -164,11 +164,22 @@ end
 
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
+   bg("NormalFloat", "NONE")
    bg("NvimTreeNormal", "NONE")
    bg("NvimTreeNormalNC", "NONE")
    bg("NvimTreeStatusLineNC", "NONE")
    bg("NvimTreeVertSplit", "NONE")
    fg("NvimTreeVertSplit", grey)
+
+   -- telescope
+   bg("TelescopeBorder", "NONE")
+   bg("TelescopePrompt", "NONE")
+   bg("TelescopeResults", "NONE")
+   bg("TelescopePromptBorder", "NONE")
+   bg("TelescopePromptNormal", "NONE")
+   bg("TelescopeNormal", "NONE")
+   bg("TelescopePromptPrefix", "NONE")
+   fg("TelescopeBorder", one_bg)
 end
 
 if #override ~= 0 then
