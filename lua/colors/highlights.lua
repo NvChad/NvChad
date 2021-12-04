@@ -21,6 +21,7 @@ local purple = colors.purple
 local red = colors.red
 local white = colors.white
 local yellow = colors.yellow
+local orange = colors.orange
 local one_bg3 = colors.one_bg3
 
 -- functions for setting highlights
@@ -45,7 +46,7 @@ fg("EndOfBuffer", black)
 
 -- For floating windows
 fg("FloatBorder", blue)
-bg("NormalFloat", one_bg)
+bg("NormalFloat", darker_black)
 
 -- Pmenu
 bg("Pmenu", one_bg)
@@ -138,9 +139,28 @@ bg("TelescopeNormal", darker_black)
 
 fg_bg("TelescopePreviewTitle", black, green)
 fg_bg("TelescopePromptTitle", black, red)
-fg_bg("TelescopeResultsTitle", darker_black,darker_black)
+fg_bg("TelescopeResultsTitle", darker_black, darker_black)
 
 bg("TelescopeSelection", black2)
+
+-- keybinds cheatsheet
+
+fg_bg("CheatsheetBorder", black, black)
+bg("CheatsheetSectionContent", black)
+fg("CheatsheetHeading", white)
+
+local section_title_colors = {
+   white,
+   blue,
+   red,
+   green,
+   yellow,
+   purple,
+   orange,
+}
+for i, color in ipairs(section_title_colors) do
+   vim.cmd("highlight CheatsheetTitle" .. i .. " guibg = " .. color .. " guifg=" .. black)
+end
 
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then

@@ -116,6 +116,7 @@ M.mappings = {
    -- custom = {}, -- custom user mappings
 
    misc = {
+      cheatsheet = "<leader>ch",
       close_buffer = "<leader>x",
       copy_whole_file = "<C-a>", -- copy all contents of current buffer
       line_number_toggle = "<leader>n", -- toggle line number

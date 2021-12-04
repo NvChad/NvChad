@@ -31,7 +31,6 @@ M.misc = function()
       map("n", "<Esc>", ":noh <CR>")
 
       -- center cursor when moving (goto_definition)
-     
 
       -- yank from current cursor to end of line
       map("n", "Y", "yg$")
@@ -81,6 +80,7 @@ M.misc = function()
    end
 
    local function required_mappings()
+      map("n", maps.misc.cheatsheet, ":lua require('nvchad.cheatsheet').show() <CR>") -- show keybinds
       map("n", maps.misc.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
       map("n", maps.misc.copy_whole_file, ":%y+ <CR>") -- copy whole file content
       map("n", maps.misc.new_buffer, ":enew <CR>") -- new buffer
