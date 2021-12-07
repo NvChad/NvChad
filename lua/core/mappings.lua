@@ -68,15 +68,6 @@ M.misc = function()
          map("n", wnav.moveUp, "<C-w>k")
          map("n", wnav.moveDown, "<C-w>j")
       end
-
-      -- check the theme toggler
-      if nvChad_options.theme_toggler then
-         map(
-            "n",
-            maps.misc.theme_toggler,
-            ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler) <CR>"
-         )
-      end
    end
 
    local function required_mappings()

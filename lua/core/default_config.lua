@@ -32,7 +32,6 @@ M.options = {
       copy_del = true, -- copy deleted text ( dd key ), visual and normal mode
       insert_nav = true, -- navigation in insertmode
       window_nav = true,
-      theme_toggler = false,
 
       -- updater
       update_url = "https://github.com/NvChad/NvChad",
@@ -46,11 +45,6 @@ M.ui = {
    hl_override = "", -- path of your file that contains highlights
    italic_comments = false,
    theme = "onedark", -- default theme
-   -- toggle between two themes, see theme_toggler mappings
-   theme_toggler = {
-      "onedark",
-      "gruvchad",
-   },
 
    -- Change terminal bg to nvim theme's bg color so it'll match well
    -- For Ex : if you have onedark set in nvchad, set onedark's bg color on your terminal
@@ -124,7 +118,6 @@ M.mappings = {
       new_buffer = "<S-t>",
       new_tab = "<C-t>b",
       save_file = "<C-s>", -- save file using :w
-      theme_toggler = "<leader>tt", -- see in ui.theme_toggler
    },
 
    -- navigation in insert mode, only if enabled in options
