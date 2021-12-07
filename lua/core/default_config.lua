@@ -2,11 +2,11 @@
 -- use custom/chadrc.lua instead
 
 local M = {}
-M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 
--- non plugin normal, available without any plugins
 M.options = {
-   -- NeoVim/Vim options
+   -- custom = {}
+   -- general nvim/vim options , check :h optionname to know more about an option
+
    clipboard = "unnamedplus",
    cmdheight = 1,
    ruler = false,
@@ -16,17 +16,16 @@ M.options = {
    mapleader = " ",
    mouse = "a",
    number = true,
-   -- relative numbers in normal mode tool at the bottom of options.lua
    numberwidth = 2,
    relativenumber = false,
    expandtab = true,
    shiftwidth = 2,
    smartindent = true,
-   tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
+   tabstop = 8,
    timeoutlen = 400,
-   -- interval for writing swap file to disk, also used by gitsigns
    updatetime = 250,
-   undofile = true, -- keep a permanent undo (across restarts)
+   undofile = true,
+
    -- NvChad options
    nvChad = {
       copy_cut = true, -- copy cut text ( x key ), visual and normal mode
@@ -34,43 +33,46 @@ M.options = {
       insert_nav = true, -- navigation in insertmode
       window_nav = true,
       theme_toggler = false,
-      -- used for updater
+
+      -- updater
       update_url = "https://github.com/NvChad/NvChad",
       update_branch = "main",
    },
 }
 
--- ui configs
+---- UI -----
+
 M.ui = {
-   hl_override = "", -- path of your file which contains highlight stuffs
+   hl_override = "", -- path of your file that contains highlights
    italic_comments = false,
-   -- theme to be used, check available themes with `<leader> + t + h`
-   theme = "onedark",
+   theme = "onedark", -- default theme
    -- toggle between two themes, see theme_toggler mappings
    theme_toggler = {
       "onedark",
       "gruvchad",
    },
-   -- Enable this only if your terminal has the colorscheme set which nvchad uses
+
+   -- Change terminal bg to nvim theme's bg color so it'll match well
    -- For Ex : if you have onedark set in nvchad, set onedark's bg color on your terminal
    transparency = false,
 }
 
--- these are plugin related options
+---- PLUGIN OPTIONS ----
+
 M.plugins = {
-   -- enable and disable plugins (false for disable)
+   -- enable/disable plugins (false for disable)
    status = {
-      blankline = true, -- show code scope with symbols
-      bufferline = true, -- list open buffers up the top, easy switching too
+      blankline = true, -- indentline stuff
+      bufferline = true, -- manage and preview opened buffers
       colorizer = false, -- color RGB, HEX, CSS, NAME color codes
       comment = true, -- easily (un)comment code, language aware
-      dashboard = false, -- NeoVim 'home screen' on open
+      dashboard = false,
       esc_insertmode = true, -- map to <ESC> with no lag
       feline = true, -- statusline
-      gitsigns = true, -- gitsigns in statusline
+      gitsigns = true,
       lspsignature = true, -- lsp enhancements
-      telescope_media = false, -- media previews within telescope finders
-      vim_matchup = true, -- % operator enhancements
+      telescope_media = false,
+      vim_matchup = true, -- improved matchit
       cmp = true,
       nvimtree = true,
       autopairs = true,
@@ -86,39 +88,47 @@ M.plugins = {
       luasnip = {
          snippet_path = {},
       },
-      statusline = { -- statusline related options
-         -- these are filetypes, not pattern matched
-         -- shown filetypes will overrule hidden filetypes
+      statusline = {
+         -- hide, show on specific filetypes
          hidden = {
             "help",
             "dashboard",
             "NvimTree",
             "terminal",
          },
-         -- show short statusline on small screens
-         shortline = true,
          shown = {},
-         -- default, round , slant , block , arrow
-         style = "default",
+
+         -- truncate statusline on small screens
+         shortline = true,
+         style = "default", -- default, round , slant , block , arrow
       },
       esc_insertmode_timeout = 300,
    },
    default_plugin_config_replace = {},
 }
 
--- mappings -- don't use a single keymap twice --
--- non plugin mappings
+-- Don't use a single keymap twice
+
+--- MAPPINGS ----
+
+-- non plugin
 M.mappings = {
-   -- custom = {}, -- all custom user mappings
-   -- close current focused buffer
-   close_buffer = "<leader>x",
-   copy_whole_file = "<C-a>", -- copy all contents of the current buffer
-   line_number_toggle = "<leader>n", -- show or hide line number
-   new_buffer = "<S-t>", -- open a new buffer
-   new_tab = "<C-t>b", -- open a new vim tab
-   save_file = "<C-s>", -- save file using :w
-   theme_toggler = "<leader>tt", -- for theme toggler, see in ui.theme_toggler
+   -- custom = {}, -- custom user mappings
+
+   misc = {
+      cheatsheet = "<leader>ch",
+      close_buffer = "<leader>x",
+      copy_whole_file = "<C-a>", -- copy all contents of current buffer
+      line_number_toggle = "<leader>n", -- toggle line number
+      update_nvchad = "<leader>uu",
+      new_buffer = "<S-t>",
+      new_tab = "<C-t>b",
+      save_file = "<C-s>", -- save file using :w
+      theme_toggler = "<leader>tt", -- see in ui.theme_toggler
+   },
+
    -- navigation in insert mode, only if enabled in options
+
    insert_nav = {
       backward = "<C-h>",
       end_of_line = "<C-e>",
@@ -127,60 +137,63 @@ M.mappings = {
       prev_line = "<C-j>",
       beginning_of_line = "<C-a>",
    },
-   --better window movement
+
+   -- better window movement
    window_nav = {
       moveLeft = "<C-h>",
       moveRight = "<C-l>",
       moveUp = "<C-k>",
       moveDown = "<C-j>",
    },
+
    -- terminal related mappings
    terminal = {
-      -- multiple mappings can be given for esc_termmode and esc_hide_termmode
+      -- multiple mappings can be given for esc_termmode, esc_hide_termmode
+
       -- get out of terminal mode
-      esc_termmode = { "jk" }, -- multiple mappings allowed
+      esc_termmode = { "jk" },
+
       -- get out of terminal mode and hide it
-      esc_hide_termmode = { "JK" }, -- multiple mappings allowed
+      esc_hide_termmode = { "JK" },
       -- show & recover hidden terminal buffers in a telescope picker
       pick_term = "<leader>W",
-      -- below three are for spawning terminals
+
+      -- spawn terminals
       new_horizontal = "<leader>h",
       new_vertical = "<leader>v",
       new_window = "<leader>w",
    },
-   -- update nvchad from nvchad, chadness 101
-   update_nvchad = "<leader>uu",
 }
 
--- all plugins related mappings
+-- plugins related mappings
+
 M.mappings.plugins = {
-   -- list open buffers up the top, easy switching too
    bufferline = {
-      next_buffer = "<TAB>", -- next buffer
-      prev_buffer = "<S-Tab>", -- previous buffer
+      next_buffer = "<TAB>",
+      prev_buffer = "<S-Tab>",
    },
-   -- easily (un)comment code, language aware
    comment = {
-      toggle = "<leader>/", -- toggle comment (works on multiple lines)
+      toggle = "<leader>/",
    },
-   -- NeoVim 'home screen' on open
+
    dashboard = {
       bookmarks = "<leader>bm",
       new_file = "<leader>fn", -- basically create a new buffer
       open = "<leader>db", -- open dashboard
-      session_load = "<leader>l", -- load a saved session
-      session_save = "<leader>s", -- save a session
+      session_load = "<leader>l",
+      session_save = "<leader>s",
    },
+
    -- map to <ESC> with no lag
    better_escape = { -- <ESC> will still work
       esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
-   -- file explorer/tree
+
    nvimtree = {
       toggle = "<C-n>",
       focus = "<leader>e",
    },
-   -- multitool for finding & picking things
+
    telescope = {
       buffers = "<leader>fb",
       find_files = "<leader>ff",
@@ -191,7 +204,7 @@ M.mappings.plugins = {
       live_grep = "<leader>fw",
       oldfiles = "<leader>fo",
       themes = "<leader>th", -- NvChad theme picker
-      -- media previews within telescope finders
+
       telescope_media = {
          media_files = "<leader>fp",
       },

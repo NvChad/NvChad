@@ -1,5 +1,3 @@
-local overrides = require("core.hooks").createOverrides "lsp"
-
 local function on_attach(_, bufnr)
    local function buf_set_keymap(...)
       vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -52,52 +50,11 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
    },
 }
 
--- replace the default lsp diagnostic symbols
-local function lspSymbol(name, icon)
-   vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "LspDiagnosticsDefault" .. name })
-end
-
-lspSymbol("Error", "")
-lspSymbol("Information", "")
-lspSymbol("Hint", "")
-lspSymbol("Warning", "")
-
-local lsp_publish_diagnostics_options = overrides.get("publish_diagnostics", {
-   virtual_text = {
-      prefix = "",
-      spacing = 0,
-   },
-   signs = true,
-   underline = true,
-   update_in_insert = false, -- update diagnostics insert mode
-})
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-   vim.lsp.diagnostic.on_publish_diagnostics,
-   lsp_publish_diagnostics_options
-)
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-   border = "single",
-})
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-   border = "single",
-})
-
--- suppress error messages from lang servers
-vim.notify = function(msg, log_level, _opts)
-   if msg:match "exit code" then
-      return
-   end
-   if log_level == vim.log.levels.ERROR then
-      vim.api.nvim_err_writeln(msg)
-   else
-      vim.api.nvim_echo({ { msg } }, true, {})
-   end
-end
-
 -- requires a file containing user's lspconfigs
-
 local addlsp_confs = require("core.utils").load_config().plugins.options.lspconfig.setup_lspconf
 
 if #addlsp_confs ~= 0 then
    require(addlsp_confs).setup_lsp(on_attach, capabilities)
 end
+
+require("plugins.configs.others").lsp_handlers()

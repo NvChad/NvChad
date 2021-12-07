@@ -8,40 +8,13 @@ local use = packer.use
 
 return packer.startup(function()
    local plugin_settings = require("core.utils").load_config().plugins
-
-   -- FUNCTION: override_req, use `chadrc` plugin config override if present
-   -- name = name inside `default_config` / `chadrc`
-   -- default_req = run this if 'name' does not exist in `default_config` / `chadrc`
-   -- if override or default_req start with `(`, then strip that and assume override calls a function, not a whole file
-   local override_req = function(name, default_req)
-      local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
-      local result
-
-      if override == nil then
-         result = default_req
-      else
-         result = override
-      end
-
-      if string.match(result, "^%(") then
-         result = result:sub(2)
-         result = result:gsub("%)%.", "').", 1)
-         return "require('" .. result
-      else
-         return "require('" .. result .. "')"
-      end
-   end
+   local override_req = require("core.utils").override_req
 
    -- this is arranged on the basis of when a plugin starts
 
    -- this is the nvchad core repo containing utilities for some features like theme swticher, no need to lazy load
-   use {
-      "Nvchad/extensions",
-   }
-
-   use {
-      "nvim-lua/plenary.nvim",
-   }
+   use "Nvchad/extensions"
+   use "nvim-lua/plenary.nvim"
 
    use {
       "wbthomason/packer.nvim",
@@ -95,7 +68,6 @@ return packer.startup(function()
 
    use {
       "nvim-treesitter/nvim-treesitter",
-      branch = "0.5-compat",
       event = "BufRead",
       config = override_req("nvim_treesitter", "plugins.configs.treesitter"),
    }
@@ -105,7 +77,7 @@ return packer.startup(function()
       "lewis6991/gitsigns.nvim",
       disable = not plugin_settings.status.gitsigns,
       opt = true,
-      config = override_req("gitsigns", "plugins.configs.gitsigns"),
+      config = override_req("gitsigns", "(plugins.configs.others).gitsigns()"),
       setup = function()
          require("core.utils").packer_lazy_load "gitsigns.nvim"
       end,
@@ -261,6 +233,6 @@ return packer.startup(function()
          require("core.mappings").telescope()
       end,
    }
-
+   -- load user defined plugins
    require("core.hooks").run("install_plugins", use)
 end)
