@@ -106,13 +106,14 @@ end
 
 M.lsp_handlers = function()
    local function lspSymbol(name, icon)
-      vim.fn.sign_define("LspDiagnosticsSign" .. name, { text = icon, numhl = "LspDiagnosticsDefault" .. name })
+      local hl = "DiagnosticSign" .. name
+      vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
    end
 
    lspSymbol("Error", "")
-   lspSymbol("Information", "")
-   lspSymbol("Hint", "")
-   lspSymbol("Warning", "")
+   lspSymbol("Info", "")
+   lspSymbol("Hint", "")
+   lspSymbol("Warn", "")
 
    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       virtual_text = {
