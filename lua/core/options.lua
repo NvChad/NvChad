@@ -14,7 +14,7 @@ opt.shiftwidth = options.shiftwidth
 opt.smartindent = options.smartindent
 
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = { eob = " " }
+opt.fillchars =  options.fillchars 
 
 opt.hidden = options.hidden
 opt.ignorecase = options.ignorecase

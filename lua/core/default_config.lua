@@ -25,6 +25,7 @@ M.options = {
    timeoutlen = 400,
    updatetime = 250,
    undofile = true,
+   fillchars = { eob = " " },
 
    -- NvChad options
    nvChad = {
