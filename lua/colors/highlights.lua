@@ -167,6 +167,7 @@ if ui.transparency then
    bg("TelescopeNormal", "NONE")
    bg("TelescopePromptPrefix", "NONE")
    fg("TelescopeBorder", one_bg)
+   fg_bg("TelescopeResultsTitle", black, blue)
 end
 
 if #override ~= 0 then
