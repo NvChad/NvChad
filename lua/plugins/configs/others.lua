@@ -132,7 +132,7 @@ M.lsp_handlers = function()
    })
 
    -- suppress error messages from lang servers
-   vim.notify = function(msg, log_level, _opts)
+   vim.notify = function(msg, log_level)
       if msg:match "exit code" then
          return
       end
