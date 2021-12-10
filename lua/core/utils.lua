@@ -1,7 +1,7 @@
 local M = {}
 
 local cmd = vim.cmd
-M.close_buffer = function(bufexpr, force)
+M.close_buffer = function(force)
    -- This is a modification of a NeoVim plugin from
    -- Author: ojroques - Olivier Roques
    -- Src: https://github.com/ojroques/nvim-bufdel
@@ -63,7 +63,7 @@ M.close_buffer = function(bufexpr, force)
          return
       end
 
-      local chad_term, type = pcall(function()
+      local chad_term, _ = pcall(function()
          return vim.api.nvim_buf_get_var(buf, "term_type")
       end)
 
@@ -140,21 +140,18 @@ end
 M.load_config = function()
    local conf = require "core.default_config"
 
-   local chadrcExists, _ = pcall(require, "custom.chadrc")
+   local chadrcExists, change = pcall(require, "custom.chadrc")
 
    -- if chadrc exists , then merge its table into the default config's
 
    if chadrcExists then
-      local change = require "custom.chadrc"
       conf = vim.tbl_deep_extend("force", conf, change)
-      return conf
    end
 
-   -- or load default config
    return conf
 end
 
-M.map = function(mode, keys, cmd, opt)
+M.map = function(mode, keys, command, opt)
    local options = { noremap = true, silent = true }
    if opt then
       options = vim.tbl_extend("force", options, opt)
@@ -178,28 +175,30 @@ M.map = function(mode, keys, cmd, opt)
 
    -- helper function for M.map
    -- can gives multiple modes and keys
-   local function map_wrapper(mode, lhs, rhs, options)
+   local function map_wrapper(sub_mode, lhs, rhs, sub_options)
       if type(lhs) == "table" then
          for _, key in ipairs(lhs) do
-            map_wrapper(mode, key, rhs, options)
+            map_wrapper(sub_mode, key, rhs, sub_options)
          end
       else
-         if type(mode) == "table" then
-            for _, m in ipairs(mode) do
-               map_wrapper(m, lhs, rhs, options)
+         if type(sub_mode) == "table" then
+            for _, m in ipairs(sub_mode) do
+               map_wrapper(m, lhs, rhs, sub_options)
             end
          else
-            if valid_modes[mode] and lhs and rhs then
-               vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+            if valid_modes[sub_mode] and lhs and rhs then
+               vim.api.nvim_set_keymap(sub_mode, lhs, rhs, sub_options)
             else
-               mode, lhs, rhs = mode or "", lhs or "", rhs or ""
-               print("Cannot set mapping [ mode = '" .. mode .. "' | key = '" .. lhs .. "' | cmd = '" .. rhs .. "' ]")
+               sub_mode, lhs, rhs = sub_mode or "", lhs or "", rhs or ""
+               print(
+                  "Cannot set mapping [ mode = '" .. sub_mode .. "' | key = '" .. lhs .. "' | cmd = '" .. rhs .. "' ]"
+               )
             end
          end
       end
    end
 
-   map_wrapper(mode, keys, cmd, options)
+   map_wrapper(mode, keys, command, options)
 end
 
 -- load plugin after entering vim ui
