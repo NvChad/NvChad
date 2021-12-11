@@ -191,11 +191,12 @@ return packer.startup(function()
    }
 
    use {
-      "terrortylor/nvim-comment",
+      "numToStr/Comment.nvim",
       disable = not plugin_settings.status.comment,
-      cmd = "CommentToggle",
+      module = "Comment",
       config = override_req("nvim_comment", "(plugins.configs.others).comment()"),
       setup = function()
+         require("core.utils").packer_lazy_load "Comment.nvim"
          require("core.mappings").comment()
       end,
    }
