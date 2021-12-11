@@ -1,4 +1,4 @@
--- try to call cuatom init
+-- try to call custom init
 pcall(require, "custom")
 
 local core_modules = {
