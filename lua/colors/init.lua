@@ -19,8 +19,6 @@ M.init = function(theme)
       package.loaded["colors.highlights" or false] = nil
       -- then load the highlights
       require "colors.highlights"
-   else
-      return false
    end
 end
 

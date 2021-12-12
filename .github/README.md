@@ -178,3 +178,9 @@ I would happily accept donations but would feel awful since I'm not the only one
 - https://charity.gofundme.com/o/en/campaign/feedingyemen
 - https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school
 - https://www.isupportmyanmar.com
+- https://www.justgiving.com/campaign/somaliawater
+- https://www.justgiving.com/crowdfunding/acaappeal
+- https://www.justgiving.com/fundraising/muslim-chat
+- https://www.gofundme.com/f/help-kids-in-mali-have-warm-clothing-in-winter
+- https://www.justgiving.com/crowdfunding/carevenezuela
+- https://www.justgiving.com/campaign/yemen

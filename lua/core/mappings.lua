@@ -29,6 +29,11 @@ M.misc = function()
 
       -- use ESC to turn off search highlighting
       map("n", "<Esc>", ":noh <CR>")
+
+      -- center cursor when moving (goto_definition)
+
+      -- yank from current cursor to end of line
+      map("n", "Y", "yg$")
    end
 
    local function optional_mappings()
@@ -63,24 +68,16 @@ M.misc = function()
          map("n", wnav.moveUp, "<C-w>k")
          map("n", wnav.moveDown, "<C-w>j")
       end
-
-      -- check the theme toggler
-      if nvChad_options.theme_toggler then
-         map(
-            "n",
-            maps.theme_toggler,
-            ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler) <CR>"
-         )
-      end
    end
 
    local function required_mappings()
-      map("n", maps.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
-      map("n", maps.copy_whole_file, ":%y+ <CR>") -- copy whole file content
-      map("n", maps.new_buffer, ":enew <CR>") -- new buffer
-      map("n", maps.new_tab, ":tabnew <CR>") -- new tabs
-      map("n", maps.line_number_toggle, ":set nu! <CR>") -- toggle numbers
-      map("n", maps.save_file, ":w <CR>") -- ctrl + s to save file
+      map("n", maps.misc.cheatsheet, ":lua require('nvchad.cheatsheet').show() <CR>") -- show keybinds
+      map("n", maps.misc.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
+      map("n", maps.misc.copy_whole_file, ":%y+ <CR>") -- copy whole file content
+      map("n", maps.misc.new_buffer, ":enew <CR>") -- new buffer
+      map("n", maps.misc.new_tab, ":tabnew <CR>") -- new tabs
+      map("n", maps.misc.line_number_toggle, ":set nu! <CR>") -- toggle numbers
+      map("n", maps.misc.save_file, ":w <CR>") -- ctrl + s to save file
 
       -- terminal mappings --
       local term_maps = maps.terminal
@@ -107,10 +104,7 @@ M.misc = function()
 
       -- add NvChadUpdate command and mapping
       cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
-      map("n", maps.update_nvchad, ":NvChadUpdate <CR>")
-
-      -- add ChadReload command and maping
-      -- cmd "silent! command! NvChadReload lua require('nvchad').reload_config()"
+      map("n", maps.misc.update_nvchad, ":NvChadUpdate <CR>")
    end
 
    non_config_mappings()
@@ -130,8 +124,8 @@ end
 
 M.comment = function()
    local m = plugin_maps.comment.toggle
-   map("n", m, ":CommentToggle <CR>")
-   map("v", m, ":CommentToggle <CR>")
+   map("n", m, ":lua require('Comment.api').toggle()<CR>")
+   map("v", m, ":lua require('Comment.api').gc(vim.fn.visualmode())<CR>")
 end
 
 M.dashboard = function()
@@ -153,7 +147,7 @@ M.telescope = function()
    local m = plugin_maps.telescope
 
    map("n", m.buffers, ":Telescope buffers <CR>")
-   map("n", m.find_files, ":Telescope find_files <CR>")
+   map("n", m.find_files, ":Telescope find_files no_ignore=true <CR>")
    map("n", m.find_hiddenfiles, ":Telescope find_files hidden=true <CR>")
    map("n", m.git_commits, ":Telescope git_commits <CR>")
    map("n", m.git_status, ":Telescope git_status <CR>")

@@ -1,9 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 
--- export user config as a global varibale
-g.nvchad_user_config = "chadrc"
-
 local options = require("core.utils").load_config().options
 
 opt.title = true
@@ -17,7 +14,7 @@ opt.shiftwidth = options.shiftwidth
 opt.smartindent = options.smartindent
 
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = { eob = " " }
+opt.fillchars = options.fillchars
 
 opt.hidden = options.hidden
 opt.ignorecase = options.ignorecase
