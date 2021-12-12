@@ -79,6 +79,12 @@ M.plugins = {
       },
       nvimtree = {
          enable_git = 0,
+
+         ui = {
+            allow_resize = true,
+            side = "left",
+            width = 25,
+         },
       },
       luasnip = {
          snippet_path = {},

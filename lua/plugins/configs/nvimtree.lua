@@ -1,5 +1,9 @@
 local present, nvimtree = pcall(require, "nvim-tree")
-local git_status = require("core.utils").load_config().plugins.options.nvimtree.enable_git
+
+local conf = require("core.utils").load_config().plugins.options.nvimtree
+
+local git_status = conf.enable_git
+local ui = conf.ui
 
 if not present then
    return
@@ -62,12 +66,7 @@ nvimtree.setup {
       enable = true,
       update_cwd = false,
    },
-   view = {
-      allow_resize = true,
-      side = "left",
-      width = 25,
-   },
-
+   view = ui,
    git = {
       ignore = false,
    },
