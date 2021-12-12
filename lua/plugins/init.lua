@@ -345,5 +345,8 @@ return packer.startup(function()
       end,
    }
 
+   use {
+        "github/copilot.vim"
+   }
    require("core.hooks").run("install_plugins", use)
 end)
