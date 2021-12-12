@@ -1,6 +1,4 @@
-local cmd = vim.cmd
-
-cmd "packadd packer.nvim"
+vim.cmd "packadd packer.nvim"
 
 local present, packer = pcall(require, "packer")
 
@@ -19,7 +17,7 @@ if not present then
       packer_path,
    }
 
-   cmd "packadd packer.nvim"
+   vim.cmd "packadd packer.nvim"
    present, packer = pcall(require, "packer")
 
    if present then
@@ -37,11 +35,10 @@ packer.init {
       prompt_border = "single",
    },
    git = {
-      clone_timeout = 600, -- Timeout, in seconds, for git clones
+      clone_timeout = 6000, -- seconds
    },
    auto_clean = true,
    compile_on_sync = true,
-   --    auto_reload_compiled = true
 }
 
 return packer

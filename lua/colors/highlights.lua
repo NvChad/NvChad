@@ -1,6 +1,8 @@
 local cmd = vim.cmd
 
+local override = require("core.utils").load_config().ui.hl_override
 local colors = require("colors").get()
+local ui = require("core.utils").load_config().ui
 
 local black = colors.black
 local black2 = colors.black2
@@ -19,31 +21,13 @@ local purple = colors.purple
 local red = colors.red
 local white = colors.white
 local yellow = colors.yellow
+local orange = colors.orange
 local one_bg3 = colors.one_bg3
 
-local ui = require("core.utils").load_config().ui
-
--- Define bg color
--- @param group Group
--- @param color Color
-local function bg(group, color)
-   cmd("hi " .. group .. " guibg=" .. color)
-end
-
--- Define fg color
--- @param group Group
--- @param color Color
-local function fg(group, color)
-   cmd("hi " .. group .. " guifg=" .. color)
-end
-
--- Define bg and fg color
--- @param group Group
--- @param fgcol Fg Color
--- @param bgcol Bg Color
-local function fg_bg(group, fgcol, bgcol)
-   cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
-end
+-- functions for setting highlights
+local fg = require("core.utils").fg
+local fg_bg = require("core.utils").fg_bg
+local bg = require("core.utils").bg
 
 -- Comments
 if ui.italic_comments then
@@ -62,7 +46,7 @@ fg("EndOfBuffer", black)
 
 -- For floating windows
 fg("FloatBorder", blue)
-bg("NormalFloat", one_bg)
+bg("NormalFloat", darker_black)
 
 -- Pmenu
 bg("Pmenu", one_bg)
@@ -99,32 +83,21 @@ fg("DashboardHeader", grey_fg)
 fg("DashboardShortcut", grey_fg)
 
 -- Git signs
-fg_bg("DiffAdd", nord_blue, "none")
-fg_bg("DiffChange", grey_fg, "none")
-fg_bg("DiffModified", nord_blue, "none")
+fg_bg("DiffAdd", blue, "NONE")
+fg_bg("DiffChange", grey_fg, "NONE")
+fg_bg("DiffChangeDelete", red, "NONE")
+fg_bg("DiffModified", red, "NONE")
+fg_bg("DiffDelete", red, "NONE")
 
 -- Indent blankline plugin
 fg("IndentBlanklineChar", line)
 
--- ]]
+-- Lsp diagnostics
 
--- [[ LspDiagnostics
-
--- Errors
-fg("LspDiagnosticsSignError", red)
-fg("LspDiagnosticsSignWarning", yellow)
-fg("LspDiagnosticsVirtualTextError", red)
-fg("LspDiagnosticsVirtualTextWarning", yellow)
-
--- Info
-fg("LspDiagnosticsSignInformation", green)
-fg("LspDiagnosticsVirtualTextInformation", green)
-
--- Hints
-fg("LspDiagnosticsSignHint", purple)
-fg("LspDiagnosticsVirtualTextHint", purple)
-
--- ]]
+fg("DiagnosticHint", purple)
+fg("DiagnosticError", red)
+fg("DiagnosticWarn", yellow)
+fg("DiagnosticInformation", green)
 
 -- NvimTree
 fg("NvimTreeEmptyFolderName", blue)
@@ -142,16 +115,61 @@ fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
 
+-- Telescope
+fg_bg("TelescopeBorder", darker_black, darker_black)
+fg_bg("TelescopePromptBorder", black2, black2)
+
+fg_bg("TelescopePromptNormal", white, black2)
+fg_bg("TelescopePromptPrefix", red, black2)
+
+bg("TelescopeNormal", darker_black)
+
+fg_bg("TelescopePreviewTitle", black, green)
+fg_bg("TelescopePromptTitle", black, red)
+fg_bg("TelescopeResultsTitle", darker_black, darker_black)
+
+bg("TelescopeSelection", black2)
+
+-- keybinds cheatsheet
+
+fg_bg("CheatsheetBorder", black, black)
+bg("CheatsheetSectionContent", black)
+fg("CheatsheetHeading", white)
+
+local section_title_colors = {
+   white,
+   blue,
+   red,
+   green,
+   yellow,
+   purple,
+   orange,
+}
+for i, color in ipairs(section_title_colors) do
+   vim.cmd("highlight CheatsheetTitle" .. i .. " guibg = " .. color .. " guifg=" .. black)
+end
+
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
+   bg("NormalFloat", "NONE")
    bg("NvimTreeNormal", "NONE")
+   bg("NvimTreeNormalNC", "NONE")
    bg("NvimTreeStatusLineNC", "NONE")
    bg("NvimTreeVertSplit", "NONE")
    fg("NvimTreeVertSplit", grey)
+
+   -- telescope
+   bg("TelescopeBorder", "NONE")
+   bg("TelescopePrompt", "NONE")
+   bg("TelescopeResults", "NONE")
+   bg("TelescopePromptBorder", "NONE")
+   bg("TelescopePromptNormal", "NONE")
+   bg("TelescopeNormal", "NONE")
+   bg("TelescopePromptPrefix", "NONE")
+   fg("TelescopeBorder", one_bg)
+   fg_bg("TelescopeResultsTitle", black, blue)
 end
 
--- Telescope
-fg("TelescopeBorder", one_bg)
-fg_bg("TelescopePreviewTitle", green, one_bg)
-fg_bg("TelescopePromptTitle", blue, one_bg)
-fg_bg("TelescopeResultsTitle", red, one_bg)
+if #override ~= 0 then
+   require(override)
+end

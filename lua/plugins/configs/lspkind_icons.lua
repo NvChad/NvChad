@@ -1,6 +1,4 @@
-local M = {}
-
-M.icons = {
+local icons = {
    Text = "",
    Method = "",
    Function = "",
@@ -28,4 +26,4 @@ M.icons = {
    TypeParameter = "",
 }
 
-return M
+return icons
