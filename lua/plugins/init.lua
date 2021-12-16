@@ -116,7 +116,7 @@ return packer.startup(function()
 
    use {
       "max397574/better-escape.nvim",
-      disable = not plugin_settings.status.esc_insertmode,
+      disable = not plugin_settings.status.better_escape,
       event = "InsertEnter",
       config = override_req("better_escape", "(plugins.configs.others).better_escape()"),
    }
