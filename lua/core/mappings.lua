@@ -124,8 +124,8 @@ end
 
 M.comment = function()
    local m = plugin_maps.comment.toggle
-   map("n", m, ":lua require('Comment.api').toggle()<CR>")
-   map("v", m, ":lua require('Comment.api').gc(vim.fn.visualmode())<CR>")
+   map("n", m, ":lua require('Comment.api').toggle_current_linewise()<CR>")
+   map("v", m, ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 end
 
 M.dashboard = function()
