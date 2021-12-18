@@ -190,6 +190,27 @@ M.mappings.plugins = {
       esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
 
+   lspconfig = {
+      declaration = "gD",
+      definition = "gd",
+      hover = "K",
+      implementation = "gi",
+      signature_help = "gk",
+      add_workspace_folder = "<leader>wa",
+      remove_workspace_folder = "<leader>wr",
+      list_workspace_folders = "<leader>wl",
+      type_definition = "<leader>D",
+      rename = "<leader>rn",
+      code_action = "<leader>ca",
+      references = "gr",
+      show_line_diagnostics = "ge",
+      goto_prev = "[d",
+      goto_next = "]d",
+      set_loclist = "<leader>q",
+      formatting = "<leader>fm",
+      range_code_action = "<leader>ca",
+   },
+
    nvimtree = {
       toggle = "<C-n>",
       focus = "<leader>e",
