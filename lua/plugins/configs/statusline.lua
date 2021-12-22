@@ -372,7 +372,7 @@ components.active[3][10] = {
 }
 
 require("feline").setup {
-   colors = {
+   theme = {
       bg = colors.statusline_bg,
       fg = colors.fg,
    },
