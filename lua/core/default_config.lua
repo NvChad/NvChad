@@ -203,12 +203,11 @@ M.mappings.plugins = {
       rename = "<leader>rn",
       code_action = "<leader>ca",
       references = "gr",
-      show_line_diagnostics = "ge",
+      float_diagnostics = "ge",
       goto_prev = "[d",
       goto_next = "]d",
       set_loclist = "<leader>q",
       formatting = "<leader>fm",
-      range_code_action = "<leader>ca",
    },
 
    nvimtree = {
