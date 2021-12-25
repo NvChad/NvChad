@@ -127,7 +127,7 @@ components.active[1][4] = {
       fg = colors.grey_fg2,
       bg = colors.statusline_bg,
    },
-   icon = " ",
+   icon = "  ",
 }
 -- diffModfified
 components.active[1][5] = {
@@ -136,7 +136,7 @@ components.active[1][5] = {
       fg = colors.grey_fg2,
       bg = colors.statusline_bg,
    },
-   icon = "   ",
+   icon = "  ",
 }
 -- diffRemove
 components.active[1][6] = {
