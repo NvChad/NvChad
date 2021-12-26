@@ -205,7 +205,8 @@ return packer.startup(function()
    use {
       "kyazdani42/nvim-tree.lua",
       disable = not plugin_settings.status.nvimtree,
-      -- only set cmd if lazy load is enabled
+      -- only set "after" if lazy load is disabled and vice versa for "cmd"
+      after = not plugin_settings.options.nvimtree.lazy_load and "nvim-web-devicons",
       cmd = plugin_settings.options.nvimtree.lazy_load and { "NvimTreeToggle", "NvimTreeFocus" },
       config = override_req("nvim_tree", "plugins.configs.nvimtree"),
       setup = function()
