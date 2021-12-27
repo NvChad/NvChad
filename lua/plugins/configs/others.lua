@@ -34,6 +34,7 @@ M.blankline = function()
          "TelescopePrompt",
          "TelescopeResults",
          "nvchad_cheatsheet",
+         "",
       },
       buftype_exclude = { "terminal" },
       show_trailing_blankline_indent = false,
