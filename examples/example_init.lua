@@ -18,7 +18,7 @@ end)
 -- you can remove it if you dont have any custom options
 
 -- Install plugins
--- To add new plugins, use the "install_plugin" hook,
+-- To add new plugins, use the "install_plugins" hook,
 
 -- examples below:
 
