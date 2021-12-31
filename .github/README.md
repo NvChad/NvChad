@@ -7,7 +7,7 @@
   <span> • </span>
        	<a href="https://nvchad.github.io/contribute">Contribute</a>
   <span> • </span>
-	<a href="https://github.com/siduck/NvChad#gift_heart-support">Support</a>
+	<a href="https://github.com/NvChad/NvChad#gift_heart-support">Support</a>
   <span> • </span>
         <a href="https://nvchad.github.io/Extras">Extras</a>
   <p></p>
@@ -34,8 +34,8 @@
     />
 [![Discord](https://img.shields.io/discord/869557815780470834?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/gADmkJb9Fb)
 [![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.6+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
-[![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat-square&label=Issues&color=fc0330)](https://github.com/siduck/NvChad/issues)
-[![Last Commit](https://img.shields.io/github/last-commit/NvChad/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck/NvChad/pulse)
+[![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat-square&label=Issues&color=fc0330)](https://github.com/NvChad/NvChad/issues)
+[![Last Commit](https://img.shields.io/github/last-commit/NvChad/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/NvChad/NvChad/pulse)
 
   </div>
 
