@@ -216,20 +216,13 @@ return packer.startup(function()
 
    use {
       "nvim-telescope/telescope.nvim",
-      module = "telescope",
       cmd = "Telescope",
       requires = {
-         {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "make",
-         },
-         {
-            "nvim-telescope/telescope-media-files.nvim",
-            disable = not plugin_settings.status.telescope_media,
-            setup = function()
-               require("core.mappings").telescope_media()
-            end,
-         },
+         "nvim-telescope/telescope-media-files.nvim",
+         disable = not plugin_settings.status.telescope_media,
+         setup = function()
+            require("core.mappings").telescope_media()
+         end,
       },
       config = override_req("telescope", "plugins.configs.telescope"),
       setup = function()
