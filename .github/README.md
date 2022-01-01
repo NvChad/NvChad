@@ -72,7 +72,6 @@ Fast file tree:
 A fuzzy file finder, picker, sorter, previewer and much more:
 
 <kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/tel.png"></kbd>
-<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/telmedia.png"></kbd><hr>
 
 <h3> Indent-blankline.nvim </h3>
 

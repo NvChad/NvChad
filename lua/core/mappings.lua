@@ -180,10 +180,4 @@ M.telescope = function()
    map("n", m.themes, ":Telescope themes <CR>")
 end
 
-M.telescope_media = function()
-   local m = plugin_maps.telescope.telescope_media
-
-   map("n", m.media_files, ":Telescope media_files <CR>")
-end
-
 return M

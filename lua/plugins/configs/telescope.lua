@@ -51,21 +51,9 @@ telescope.setup {
       -- Developer configurations: Not meant for general override
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
    },
-   extensions = {
-      media_files = {
-         filetypes = { "png", "webp", "jpg", "jpeg" },
-         find_cmd = "rg", -- find command (defaults to `fd`)
-      },
-   },
 }
 
 local extensions = { "themes", "terms" }
-local packer_repos = [["extensions"]]
-
-if vim.fn.executable "ueberzug" == 1 then
-   table.insert(extensions, "media_files")
-   packer_repos = packer_repos .. ', "telescope-media-files.nvim"'
-end
 
 pcall(function()
    for _, ext in ipairs(extensions) do

@@ -66,7 +66,6 @@ M.plugins = {
       feline = true, -- statusline
       gitsigns = true,
       lspsignature = true, -- lsp enhancements
-      telescope_media = false,
       vim_matchup = true, -- improved matchit
       cmp = true,
       nvimtree = true,
@@ -227,10 +226,6 @@ M.mappings.plugins = {
       live_grep = "<leader>fw",
       oldfiles = "<leader>fo",
       themes = "<leader>th", -- NvChad theme picker
-
-      telescope_media = {
-         media_files = "<leader>fp",
-      },
    },
 }
 
