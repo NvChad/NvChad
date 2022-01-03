@@ -22,7 +22,7 @@ M.init = function(theme)
    end
 end
 
--- returns a table of colors for givem or current theme
+-- returns a table of colors for given or current theme
 M.get = function(theme)
    if not theme then
       theme = vim.g.nvchad_theme
