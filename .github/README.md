@@ -109,7 +109,7 @@ Without/with Treesitter:
 
 ## Credits
 
-- [Elianiva](https://github.com/elianiva) helped me with NeoVim Lua related issues many times, NvChad wouldnt exist without his help at all.
+- [Elianiva](https://github.com/elianiva) helped me with NeoVim Lua related issues many times, NvChad wouldn't exist without his help at all.
 - @lorvethe for making the beautiful NvChad logo.
 
 ## Features
@@ -170,7 +170,7 @@ If you have an issue with a plugin in NvChad, first you should report it to NvCh
 
 ## :gift_heart: Support
 
-I would happily accept donations but would feel awful since I'm not the only one who has worked on NvChad. The project has only been made possible by the many great contributors and plugin developers, thus taking the donations just for me feels unjustified. If you enjoy using NvChad and would like to show your support then try to be a better you! Help the people in need whenever possible and do charity work. Be nice to loved ones and strangers alike. Do not be rude, always try to be helpful and caring for one another. It's easy to hate but hard to care. Be respectful to any software/work done by other people rather than making fun of them. Do not compare software (In a bad way). I'm grateful to even be able to use NeoVim! But I still cannot be fully happy when I know that there are people who barely have any food to eat, starve for weeks, dont have access to proper education, comupters, basic health care facilities and more. Here are some charites and gofundme links you can donate to instead:
+I would happily accept donations but would feel awful since I'm not the only one who has worked on NvChad. The project has only been made possible by the many great contributors and plugin developers, thus taking the donations just for me feels unjustified. If you enjoy using NvChad and would like to show your support then try to be a better you! Help the people in need whenever possible and do charity work. Be nice to loved ones and strangers alike. Do not be rude, always try to be helpful and caring for one another. It's easy to hate but hard to care. Be respectful to any software/work done by other people rather than making fun of them. Do not compare software (In a bad way). I'm grateful to even be able to use NeoVim! But I still cannot be fully happy when I know that there are people who barely have any food to eat, starve for weeks, don't have access to proper education, computers, basic health care facilities and more. Here are some charities and gofundme links you can donate to instead:
 
 - https://www.gofundme.com/f/WeCareAboutSyria
 - https://www.gofundme.com/f/Burundi-Nutrition

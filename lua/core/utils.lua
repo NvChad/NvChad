@@ -92,8 +92,8 @@ M.close_buffer = function(force)
          if type == "wind" then
             -- hide from bufferline
             vim.cmd(string.format("%d bufdo setlocal nobl", buf))
-            -- swtich to another buff
-            -- TODO switch to next bufffer, this works too
+            -- switch to another buff
+            -- TODO switch to next buffer, this works too
             vim.cmd "BufferLineCycleNext"
          else
             local cur_win = vim.fn.winnr()
