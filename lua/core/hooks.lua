@@ -3,7 +3,6 @@ local hooks, M = {}, {}
 local allowed_hooks = {
    ["install_plugins"] = true,
    ["setup_mappings"] = true,
-   ["ready"] = true,
 }
 
 M.add = function(name, fn)
