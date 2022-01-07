@@ -1,5 +1,4 @@
 local utils = require "core.utils"
-local hooks = require "core.hooks"
 
 local config = utils.load_config()
 local map = utils.map
@@ -110,7 +109,6 @@ M.misc = function()
    non_config_mappings()
    optional_mappings()
    required_mappings()
-   hooks.run("setup_mappings", map)
 end
 
 -- below are all plugin related mappings

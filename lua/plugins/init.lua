@@ -223,5 +223,5 @@ return packer.startup(function()
       end,
    }
    -- load user defined plugins
-   require("core.hooks").run("install_plugins", use)
+   require("core.customPlugins").run(use)
 end)
