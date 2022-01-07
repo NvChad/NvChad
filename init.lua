@@ -1,6 +1,3 @@
--- try to call custom init
-pcall(require, "custom")
-
 local core_modules = {
    "core.options",
    "core.autocmds",
@@ -16,3 +13,6 @@ end
 
 -- non plugin mappings
 require("core.mappings").misc()
+
+-- try to call custom init
+pcall(require, "custom")
