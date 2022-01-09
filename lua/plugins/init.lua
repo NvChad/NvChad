@@ -1,4 +1,5 @@
-local present, packer = pcall(require, "plugins.packerInit")
+local plugin_settings = require("core.utils").load_config().plugins
+local present, packer = pcall(require, plugin_settings.options.packer.init_file)
 
 if not present then
    return false
@@ -7,7 +8,6 @@ end
 local use = packer.use
 
 return packer.startup(function()
-   local plugin_settings = require("core.utils").load_config().plugins
    local override_req = require("core.utils").override_req
 
    -- this is arranged on the basis of when a plugin starts
