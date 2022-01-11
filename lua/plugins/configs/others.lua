@@ -119,7 +119,6 @@ M.lsp_handlers = function()
    vim.diagnostic.config {
       virtual_text = {
          prefix = "",
-         spacing = 0,
       },
       signs = true,
       underline = true,
