@@ -215,6 +215,7 @@ return packer.startup(function()
 
    use {
       "nvim-telescope/telescope.nvim",
+      module = "telescope",
       cmd = "Telescope",
       config = override_req("telescope", "plugins.configs.telescope"),
       setup = function()
