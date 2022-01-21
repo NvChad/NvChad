@@ -4,9 +4,7 @@ if not present then
    return
 end
 
-local M = {}
-
-local chad_defaults = {
+local default = {
    ensure_installed = {
       "lua",
       "vim",
@@ -17,11 +15,12 @@ local chad_defaults = {
    },
 }
 
-M.setup = function (override_flag)
+local M = {}
+M.setup = function(override_flag)
    if override_flag then
-      chad_defaults = require("core.utils").tbl_override_req("nvim_treesitter", chad_defaults)
+      default = require("core.utils").tbl_override_req("nvim_treesitter", default)
    end
-   ts_config.setup(chad_defaults)
+   ts_config.setup(default)
 end
 
 return M

@@ -4,11 +4,9 @@ if not present then
    return
 end
 
-local M = {}
-
 vim.opt.completeopt = "menuone,noselect"
 
-local chad_defaults = {
+local default = {
    snippet = {
       expand = function(args)
          require("luasnip").lsp_expand(args.body)
@@ -67,11 +65,12 @@ local chad_defaults = {
    },
 }
 
-M.setup = function (override_flag)
+local M = {}
+M.setup = function(override_flag)
    if override_flag then
-      chad_defaults = require("core.utils").tbl_override_req("nvim_cmp", chad_defaults)
+      default = require("core.utils").tbl_override_req("nvim_cmp", default)
    end
-   cmp.setup(chad_defaults)
+   cmp.setup(default)
 end
 
 return M

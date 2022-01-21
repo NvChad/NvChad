@@ -1,13 +1,12 @@
-local colors = require("colors").get()
-
 local present, bufferline = pcall(require, "bufferline")
 if not present then
    return
 end
 
-local M = {}
-
-local chad_defaults = {
+local default = {
+   colors = require("colors").get(),
+}
+default = {
    options = {
       offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
       buffer_close_icon = "",
@@ -47,102 +46,103 @@ local chad_defaults = {
 
    highlights = {
       background = {
-         guifg = colors.grey_fg,
-         guibg = colors.black2,
+         guifg = default.colors.grey_fg,
+         guibg = default.colors.black2,
       },
 
       -- buffers
       buffer_selected = {
-         guifg = colors.white,
-         guibg = colors.black,
+         guifg = default.colors.white,
+         guibg = default.colors.black,
          gui = "bold",
       },
       buffer_visible = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
+         guifg = default.colors.light_grey,
+         guibg = default.colors.black2,
       },
 
       -- for diagnostics = "nvim_lsp"
       error = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
+         guifg = default.colors.light_grey,
+         guibg = default.colors.black2,
       },
       error_diagnostic = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
+         guifg = default.colors.light_grey,
+         guibg = default.colors.black2,
       },
 
       -- close buttons
       close_button = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
+         guifg = default.colors.light_grey,
+         guibg = default.colors.black2,
       },
       close_button_visible = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
+         guifg = default.colors.light_grey,
+         guibg = default.colors.black2,
       },
       close_button_selected = {
-         guifg = colors.red,
-         guibg = colors.black,
+         guifg = default.colors.red,
+         guibg = default.colors.black,
       },
       fill = {
-         guifg = colors.grey_fg,
-         guibg = colors.black2,
+         guifg = default.colors.grey_fg,
+         guibg = default.colors.black2,
       },
       indicator_selected = {
-         guifg = colors.black,
-         guibg = colors.black,
+         guifg = default.colors.black,
+         guibg = default.colors.black,
       },
 
       -- modified
       modified = {
-         guifg = colors.red,
-         guibg = colors.black2,
+         guifg = default.colors.red,
+         guibg = default.colors.black2,
       },
       modified_visible = {
-         guifg = colors.red,
-         guibg = colors.black2,
+         guifg = default.colors.red,
+         guibg = default.colors.black2,
       },
       modified_selected = {
-         guifg = colors.green,
-         guibg = colors.black,
+         guifg = default.colors.green,
+         guibg = default.colors.black,
       },
 
       -- separators
       separator = {
-         guifg = colors.black2,
-         guibg = colors.black2,
+         guifg = default.colors.black2,
+         guibg = default.colors.black2,
       },
       separator_visible = {
-         guifg = colors.black2,
-         guibg = colors.black2,
+         guifg = default.colors.black2,
+         guibg = default.colors.black2,
       },
       separator_selected = {
-         guifg = colors.black2,
-         guibg = colors.black2,
+         guifg = default.colors.black2,
+         guibg = default.colors.black2,
       },
 
       -- tabs
       tab = {
-         guifg = colors.light_grey,
-         guibg = colors.one_bg3,
+         guifg = default.colors.light_grey,
+         guibg = default.colors.one_bg3,
       },
       tab_selected = {
-         guifg = colors.black2,
-         guibg = colors.nord_blue,
+         guifg = default.colors.black2,
+         guibg = default.colors.nord_blue,
       },
       tab_close = {
-         guifg = colors.red,
-         guibg = colors.black,
+         guifg = default.colors.red,
+         guibg = default.colors.black,
       },
    },
 }
 
+local M = {}
 M.setup = function(override_flag)
    if override_flag then
-      chad_defaults = require("core.utils").tbl_override_req("bufferline", chad_defaults)
+      default = require("core.utils").tbl_override_req("bufferline", default)
    end
-   bufferline.setup(chad_defaults)
+   bufferline.setup(default)
 end
 
 return M

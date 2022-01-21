@@ -238,30 +238,32 @@ M.fg_bg = function(group, fgcol, bgcol)
 end
 
 -- Override default config of a plugin based on the path provided in the chadrc
-
--- FUNCTION: override_req, use `chadrc` plugin config override if present
--- name = name inside `default_config` / `chadrc`
--- default_req = run this if 'name' does not exist in `default_config` / `chadrc`
--- if override or default_req start with `(`, then strip that and assume override calls a function, not a whole file
+-- Arguments:
+--   1st - name of plugin
+--   2nd - default config path
+--   3rd - optional function name which will called from default_config path
+--   e.g: if given args - "telescope", "plugins.configs.telescope", "setup"
+--        then return "require('plugins.configs.telescope').setup()"
+--        if 3rd arg not given, then return "require('plugins.configs.telescope')"
 -- if override is a table, mark set the override flag for the default config to true
 -- override flag being true tells the plugin to call tbl_override_req as part of configuration
-M.override_req = function(name, default_req)
-   local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
-   local result = default_req
-   if type(override) == "string" then
+M.override_req = function(name, default_config, config_function)
+   local override, apply_table_override =
+      require("core.utils").load_config().plugins.default_plugin_config_replace[name], "false"
+   local result = default_config
+   if type(override) == "string" and override ~= "" then
       result = override
+   elseif type(override) == "table" then
+      apply_table_override = "true"
    end
 
-   if string.match(result, "^%(") then
-      result = result:sub(2)
-      result = result:gsub("%)%.", "').", 1)
-      if type(override) == "table" then
-         result = result:gsub("%(%)", "(true)", 1)
-      end
-      return "require('" .. result
+   result = "('" .. result .. "')"
+   if type(config_function) == "string" and config_function ~= "" then
+      -- add the . to call the functions and concatenate true or false as argument
+      result = result .. "." .. config_function .. "(" .. apply_table_override .. ")"
    end
 
-   return "require('" .. result .. "')"
+   return "require" .. result
 end
 
 -- Override parts of default config of a plugin based on the table provided in the chadrc
@@ -271,7 +273,7 @@ end
 -- default_table = the default configuration table of the plugin
 -- returns the modified configuration table
 M.tbl_override_req = function(name, default_table)
-   local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
+   local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name] or {}
    return vim.tbl_deep_extend("force", default_table, override)
 end
 

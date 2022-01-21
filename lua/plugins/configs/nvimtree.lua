@@ -1,18 +1,20 @@
 local present, nvimtree = pcall(require, "nvim-tree")
-
-local conf = require("core.utils").load_config().plugins.options.nvimtree
-
-local git_status = conf.enable_git
-local ui = conf.ui
-
 if not present then
    return
 end
 
 local g = vim.g
+local default = {
+   conf = require("core.utils").load_config().plugins.options.nvimtree,
+}
+
+default = {
+   git_status = default.conf.enable_git,
+   ui = default.conf.ui,
+}
 
 g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
-g.nvim_tree_git_hl = git_status
+g.nvim_tree_git_hl = default.git_status
 g.nvim_tree_highlight_opened_files = 0
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_quit_on_open = 0 -- closes tree when file's opened
@@ -26,7 +28,7 @@ g.nvim_tree_window_picker_exclude = {
 g.nvim_tree_show_icons = {
    folders = 1,
    files = 1,
-   git = git_status,
+   git = default.git_status,
 }
 
 g.nvim_tree_icons = {
@@ -51,7 +53,7 @@ g.nvim_tree_icons = {
    },
 }
 
-local chad_defaults = {
+default = {
    filters = {
       dotfiles = false,
    },
@@ -66,17 +68,18 @@ local chad_defaults = {
       enable = true,
       update_cwd = false,
    },
-   view = ui,
+   view = default.ui,
    git = {
       ignore = false,
    },
 }
 
-M.setup = function (override_flag)
+local M = {}
+M.setup = function(override_flag)
    if override_flag then
-      chad_defaults = require("core.utils").tbl_override_req("nvim_tree", chad_defaults)
+      default = require("core.utils").tbl_override_req("nvim_tree", default)
    end
-   nvimtree.setup(chad_defaults)
+   nvimtree.setup(default)
 end
 
 return M
