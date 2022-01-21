@@ -247,14 +247,17 @@ end
 --        if 3rd arg not given, then return "require('plugins.configs.telescope')"
 -- if override is a table, mark set the override flag for the default config to true
 -- override flag being true tells the plugin to call tbl_override_req as part of configuration
+
 M.override_req = function(name, default_config, config_function)
    local override, apply_table_override =
       require("core.utils").load_config().plugins.default_plugin_config_replace[name], "false"
    local result = default_config
    if type(override) == "string" and override ~= "" then
-      result = override
+      return "require('" .. override .. "')"
    elseif type(override) == "table" then
       apply_table_override = "true"
+   elseif type(override) == "function" then
+      return override
    end
 
    result = "('" .. result .. "')"
