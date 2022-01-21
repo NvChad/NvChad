@@ -32,7 +32,7 @@ return packer.startup(function()
    use {
       "kyazdani42/nvim-web-devicons",
       after = "nvim-base16.lua",
-      config = override_req("nvim_web_devicons", "plugins.configs.icons"),
+      config = override_req("nvim_web_devicons", "(plugins.configs.icons).setup()"),
    }
 
    use {
@@ -46,7 +46,7 @@ return packer.startup(function()
       "akinsho/bufferline.nvim",
       disable = not plugin_settings.status.bufferline,
       after = "nvim-web-devicons",
-      config = override_req("bufferline", "plugins.configs.bufferline"),
+      config = override_req("bufferline", "(plugins.configs.bufferline).setup()"),
       setup = function()
          require("core.mappings").bufferline()
       end,
@@ -69,7 +69,7 @@ return packer.startup(function()
    use {
       "nvim-treesitter/nvim-treesitter",
       event = "BufRead",
-      config = override_req("nvim_treesitter", "plugins.configs.treesitter"),
+      config = override_req("nvim_treesitter", "(plugins.configs.treesitter).setup()"),
    }
 
    -- git stuff
@@ -133,7 +133,7 @@ return packer.startup(function()
       "hrsh7th/nvim-cmp",
       disable = not plugin_settings.status.cmp,
       after = plugin_settings.options.cmp.lazy_load and "friendly-snippets",
-      config = override_req("nvim_cmp", "plugins.configs.cmp"),
+      config = override_req("nvim_cmp", "(plugins.configs.cmp).setup()"),
    }
 
    use {
@@ -207,7 +207,7 @@ return packer.startup(function()
       -- only set "after" if lazy load is disabled and vice versa for "cmd"
       after = not plugin_settings.options.nvimtree.lazy_load and "nvim-web-devicons",
       cmd = plugin_settings.options.nvimtree.lazy_load and { "NvimTreeToggle", "NvimTreeFocus" },
-      config = override_req("nvim_tree", "plugins.configs.nvimtree"),
+      config = override_req("nvim_tree", "(plugins.configs.nvimtree).setup()"),
       setup = function()
          require("core.mappings").nvimtree()
       end,
@@ -217,7 +217,7 @@ return packer.startup(function()
       "nvim-telescope/telescope.nvim",
       module = "telescope",
       cmd = "Telescope",
-      config = override_req("telescope", "plugins.configs.telescope"),
+      config = override_req("telescope", "(plugins.configs.telescope).setup()"),
       setup = function()
          require("core.mappings").telescope()
       end,
