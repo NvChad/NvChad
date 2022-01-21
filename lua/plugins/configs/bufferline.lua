@@ -5,7 +5,9 @@ if not present then
    return
 end
 
-bufferline.setup {
+local M = {}
+
+local chad_defaults = {
    options = {
       offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
       buffer_close_icon = "",
@@ -135,3 +137,12 @@ bufferline.setup {
       },
    },
 }
+
+M.setup = function(override_flag)
+   if override_flag then
+      chad_defaults = require("core.utils").tbl_override_req("bufferline", chad_defaults)
+   end
+   bufferline.setup(chad_defaults)
+end
+
+return M
