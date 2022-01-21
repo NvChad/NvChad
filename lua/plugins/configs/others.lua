@@ -7,11 +7,11 @@ M.autopairs = function(override_flag)
    local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 
    if present1 and present2 then
-      local chad_defaults = {fast_wrap = {}}
+      local default = { fast_wrap = {} }
       if override_flag then
-         chad_defaults = require("core.utils").tbl_override_req("nvim_autopairs", chad_defaults)
+         default = require("core.utils").tbl_override_req("nvim_autopairs", default)
       end
-      autopairs.setup(chad_defaults)
+      autopairs.setup(default)
 
       local cmp = require "cmp"
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
@@ -26,7 +26,7 @@ M.better_escape = function()
 end
 
 M.blankline = function(override_flag)
-   local chad_defaults = {
+   local default = {
       indentLine_enabled = 1,
       char = "▏",
       filetype_exclude = {
@@ -45,17 +45,17 @@ M.blankline = function(override_flag)
       show_first_indent_level = false,
    }
    if override_flag then
-      chad_defaults = require("core.utils").tbl_override_req("indent_blankline", chad_defaults)
+      default = require("core.utils").tbl_override_req("indent_blankline", default)
    end
-   require("indent_blankline").setup(chad_defaults)
+   require("indent_blankline").setup(default)
 end
 
 M.colorizer = function(override_flag)
    local present, colorizer = pcall(require, "colorizer")
    if present then
-      local chad_defaults = {
+      local default = {
          filetypes = {
-            "*"
+            "*",
          },
          user_default_options = {
             RGB = true, -- #RGB hex codes
@@ -72,9 +72,9 @@ M.colorizer = function(override_flag)
          },
       }
       if override_flag then
-         chad_defaults = require("core.utils").tbl_override_req("nvim_colorizer", chad_defaults)
+         default = require("core.utils").tbl_override_req("nvim_colorizer", default)
       end
-      colorizer.setup(chad_defaults["filetypes"], chad_defaults["user_default_options"])
+      colorizer.setup(default["filetypes"], default["user_default_options"])
       vim.cmd "ColorizerReloadAllBuffers"
    end
 end
@@ -82,25 +82,25 @@ end
 M.comment = function(override_flag)
    local present, nvim_comment = pcall(require, "Comment")
    if present then
-      local chad_defaults = {}
+      local default = {}
       if override_flag then
-         chad_defaults = require("core.utils").tbl_override_req("nvim_comment", chad_defaults)
+         default = require("core.utils").tbl_override_req("nvim_comment", default)
       end
-      nvim_comment.setup(chad_defaults)
+      nvim_comment.setup(default)
    end
 end
 
 M.luasnip = function(override_flag)
    local present, luasnip = pcall(require, "luasnip")
    if present then
-      local chad_defaults = {
+      local default = {
          history = true,
          updateevents = "TextChanged,TextChangedI",
       }
       if override_flag then
-         chad_defaults = require("core.utils").tbl_override_req("luasnip", chad_defaults)
+         default = require("core.utils").tbl_override_req("luasnip", default)
       end
-      luasnip.config.set_config(chad_defaults)
+      luasnip.config.set_config(default)
       require("luasnip/loaders/from_vscode").load { paths = chadrc_config.plugins.options.luasnip.snippet_path }
       require("luasnip/loaders/from_vscode").load()
    end
@@ -109,7 +109,7 @@ end
 M.signature = function(override_flag)
    local present, lspsignature = pcall(require, "lsp_signature")
    if present then
-      local chad_defaults = {
+      local default = {
          bind = true,
          doc_lines = 0,
          floating_window = true,
@@ -127,9 +127,9 @@ M.signature = function(override_flag)
          padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
       }
       if override_flag then
-         chad_defaults = require("core.utils").tbl_override_req("signature", chad_defaults)
+         default = require("core.utils").tbl_override_req("signature", default)
       end
-      lspsignature.setup(chad_defaults)
+      lspsignature.setup(default)
    end
 end
 
@@ -176,7 +176,7 @@ end
 M.gitsigns = function(override_flag)
    local present, gitsigns = pcall(require, "gitsigns")
    if present then
-      local chad_defaults = {
+      local default = {
          signs = {
             add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
             change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
@@ -186,9 +186,9 @@ M.gitsigns = function(override_flag)
          },
       }
       if override_flag then
-         chad_defaults = require("core.utils").tbl_override_req("gitsigns", chad_defaults)
+         default = require("core.utils").tbl_override_req("gitsigns", default)
       end
-      gitsigns.setup(chad_defaults)
+      gitsigns.setup(default)
    end
 end
 

@@ -4,9 +4,7 @@ if not present then
    return
 end
 
-local M = {}
-
-local chad_defaults = {
+local default = {
    defaults = {
       vimgrep_arguments = {
          "rg",
@@ -55,12 +53,13 @@ local chad_defaults = {
    },
 }
 
-function M.setup(override_flag)
+local M = {}
+M.setup = function(override_flag)
    if override_flag then
-      chad_defaults = require("core.utils").tbl_override_req("telescope", chad_defaults)
+      default = require("core.utils").tbl_override_req("telescope", default)
    end
 
-   telescope.setup(chad_defaults)
+   telescope.setup(default)
 
    local extensions = { "themes", "terms" }
 
