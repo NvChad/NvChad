@@ -243,21 +243,36 @@ end
 -- name = name inside `default_config` / `chadrc`
 -- default_req = run this if 'name' does not exist in `default_config` / `chadrc`
 -- if override or default_req start with `(`, then strip that and assume override calls a function, not a whole file
+-- if override is a table, mark set the override flag for the default config to true
+-- override flag being true tells the plugin to call tbl_override_req as part of configuration
 M.override_req = function(name, default_req)
    local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
    local result = default_req
-
-   if override ~= nil then
+   if type(override) == "string" then
       result = override
    end
 
    if string.match(result, "^%(") then
       result = result:sub(2)
       result = result:gsub("%)%.", "').", 1)
+      if type(override) == "table" then
+         result = result:gsub("%(%)", "(true)", 1)
+      end
       return "require('" .. result
    end
 
    return "require('" .. result .. "')"
+end
+
+-- Override parts of default config of a plugin based on the table provided in the chadrc
+
+-- FUNCTION: tbl_override_req, use `chadrc` plugin config override to modify default config if present
+-- name = name inside `default_config` / `chadrc`
+-- default_table = the default configuration table of the plugin
+-- returns the modified configuration table
+M.tbl_override_req = function(name, default_table)
+   local override = require("core.utils").load_config().plugins.default_plugin_config_replace[name]
+   return vim.tbl_deep_extend("force", default_table, override)
 end
 
 return M
