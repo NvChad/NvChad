@@ -3,9 +3,11 @@ if not present then
    return
 end
 
+local M = {}
+
 local colors = require("colors").get()
 
-icons.setup {
+local chad_defaults = {
    override = {
       c = {
          icon = "",
@@ -142,5 +144,15 @@ icons.setup {
          color = colors.sun,
          name = "zip",
       },
-   },
+   }
 }
+
+
+M.setup = function(override_flag)
+   if override_flag then
+      chad_defaults = require("core.utils").tbl_override_req("nvim_web_devicons", chad_defaults)
+   end
+   icons.setup(chad_defaults)
+end
+
+return M

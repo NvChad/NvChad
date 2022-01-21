@@ -51,7 +51,7 @@ g.nvim_tree_icons = {
    },
 }
 
-nvimtree.setup {
+local chad_defaults = {
    filters = {
       dotfiles = false,
    },
@@ -71,3 +71,12 @@ nvimtree.setup {
       ignore = false,
    },
 }
+
+M.setup = function (override_flag)
+   if override_flag then
+      chad_defaults = require("core.utils").tbl_override_req("nvim_tree", chad_defaults)
+   end
+   nvimtree.setup(chad_defaults)
+end
+
+return M
