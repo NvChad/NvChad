@@ -143,7 +143,7 @@ default.diff = {
          fg = default.colors.grey_fg2,
          bg = default.colors.statusline_bg,
       },
-      icon = "   ",
+      icon = "  ",
    },
 
    remove = {
