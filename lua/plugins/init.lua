@@ -87,6 +87,7 @@ return packer.startup(function()
 
    use {
       "neovim/nvim-lspconfig",
+      module = "lspconfig",
       opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "nvim-lspconfig"
