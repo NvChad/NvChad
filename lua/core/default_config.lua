@@ -166,7 +166,7 @@ M.mappings = {
 }
 
 -- plugins related mappings
-
+-- To disable a mapping, equate the variable to "" or false or nil in chadrc
 M.mappings.plugins = {
    bufferline = {
       next_buffer = "<TAB>",
