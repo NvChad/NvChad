@@ -15,4 +15,7 @@ end
 require("core.mappings").misc()
 
 -- try to call custom init
-pcall(require, "custom")
+local ok, err = pcall(require, "custom")
+if not ok then
+   vim.notify("Error loading custom/init.lua\n\n" .. err)
+end
