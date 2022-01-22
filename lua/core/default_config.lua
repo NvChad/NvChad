@@ -83,16 +83,8 @@ M.plugins = {
          setup_lspconf = "", -- path of file containing setups of different lsps
       },
       nvimtree = {
-         enable_git = 0,
          -- packerCompile required after changing lazy_load
          lazy_load = true,
-
-         ui = {
-            allow_resize = true,
-            side = "left",
-            width = 25,
-            hide_root_folder = true,
-         },
       },
       luasnip = {
          snippet_path = {},
