@@ -1,6 +1,13 @@
 local plugin_settings = require("core.utils").load_config().plugins
 local present, packer = pcall(require, plugin_settings.options.packer.init_file)
 
+-- if cmp isnt lazy loaded -> load lspconfig after it
+local loadAfter_cmp = false
+
+if not plugin_settings.options.cmp.lazy_load then
+   loadAfter_cmp = "cmp-nvim-lsp"
+end
+
 if not present then
    return false
 end
@@ -89,6 +96,7 @@ return packer.startup(function()
       "neovim/nvim-lspconfig",
       module = "lspconfig",
       opt = true,
+      after = loadAfter_cmp,
       setup = function()
          require("core.utils").packer_lazy_load "nvim-lspconfig"
          -- reload the current file so lsp actually starts for it
