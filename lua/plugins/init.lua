@@ -5,7 +5,7 @@ local present, packer = pcall(require, plugin_settings.options.packer.init_file)
 local loadAfter_cmp = false
 
 if not plugin_settings.options.cmp.lazy_load then
-   loadAfter_cmp = "cmp-nvim-lsp"
+   loadAfter_cmp = "nvim-cmp"
 end
 
 if not present then
