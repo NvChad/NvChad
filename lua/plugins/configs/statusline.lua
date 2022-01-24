@@ -387,6 +387,7 @@ local function add_table(a, b)
 end
 
 local M = {}
+
 M.setup = function(override_flag)
    if override_flag then
       default = require("core.utils").tbl_override_req("feline", default)

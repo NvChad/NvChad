@@ -148,6 +148,7 @@ default = {
 }
 
 local M = {}
+
 M.setup = function(override_flag)
    if override_flag then
       default = require("core.utils").tbl_override_req("nvim_web_devicons", default)

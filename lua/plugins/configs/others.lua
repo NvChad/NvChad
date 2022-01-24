@@ -2,22 +2,6 @@ local M = {}
 
 local chadrc_config = require("core.utils").load_config()
 
-M.autopairs = function(override_flag)
-   local present1, autopairs = pcall(require, "nvim-autopairs")
-   local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
-
-   if present1 and present2 then
-      local default = { fast_wrap = {} }
-      if override_flag then
-         default = require("core.utils").tbl_override_req("nvim_autopairs", default)
-      end
-      autopairs.setup(default)
-
-      local cmp = require "cmp"
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-   end
-end
-
 M.better_escape = function()
    require("better_escape").setup {
       mapping = chadrc_config.mappings.plugins.better_escape.esc_insertmode,
@@ -87,49 +71,6 @@ M.comment = function(override_flag)
          default = require("core.utils").tbl_override_req("nvim_comment", default)
       end
       nvim_comment.setup(default)
-   end
-end
-
-M.luasnip = function(override_flag)
-   local present, luasnip = pcall(require, "luasnip")
-   if present then
-      local default = {
-         history = true,
-         updateevents = "TextChanged,TextChangedI",
-      }
-      if override_flag then
-         default = require("core.utils").tbl_override_req("luasnip", default)
-      end
-      luasnip.config.set_config(default)
-      require("luasnip/loaders/from_vscode").load { paths = chadrc_config.plugins.options.luasnip.snippet_path }
-      require("luasnip/loaders/from_vscode").load()
-   end
-end
-
-M.signature = function(override_flag)
-   local present, lspsignature = pcall(require, "lsp_signature")
-   if present then
-      local default = {
-         bind = true,
-         doc_lines = 0,
-         floating_window = true,
-         fix_pos = true,
-         hint_enable = true,
-         hint_prefix = " ",
-         hint_scheme = "String",
-         hi_parameter = "Search",
-         max_height = 22,
-         max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-         handler_opts = {
-            border = "single", -- double, single, shadow, none
-         },
-         zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
-         padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
-      }
-      if override_flag then
-         default = require("core.utils").tbl_override_req("signature", default)
-      end
-      lspsignature.setup(default)
    end
 end
 
