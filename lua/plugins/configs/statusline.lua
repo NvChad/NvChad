@@ -169,7 +169,7 @@ default.git_branch = {
 }
 
 default.diagnostic = {
-   errors = {
+   error = {
       provider = "diagnostic_errors",
       enabled = function()
          return default.lsp.diagnostics_exist(default.lsp_severity.ERROR)
