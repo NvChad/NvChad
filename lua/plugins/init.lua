@@ -1,13 +1,6 @@
 local plugin_settings = require("core.utils").load_config().plugins
 local present, packer = pcall(require, plugin_settings.options.packer.init_file)
 
--- if cmp isnt lazy loaded -> load lspconfig after it
-local loadAfter_cmp = false
-
-if not plugin_settings.options.cmp.lazy_load then
-   loadAfter_cmp = "nvim-cmp"
-end
-
 if not present then
    return false
 end
@@ -96,7 +89,6 @@ return packer.startup(function()
       "neovim/nvim-lspconfig",
       module = "lspconfig",
       opt = true,
-      after = loadAfter_cmp,
       setup = function()
          require("core.utils").packer_lazy_load "nvim-lspconfig"
          -- reload the current file so lsp actually starts for it
@@ -134,6 +126,7 @@ return packer.startup(function()
 
    use {
       "rafamadriz/friendly-snippets",
+      module = 'cmp_nvim_lsp',
       disable = not plugin_settings.status.cmp,
       event = "InsertEnter",
    }
@@ -141,7 +134,7 @@ return packer.startup(function()
    use {
       "hrsh7th/nvim-cmp",
       disable = not plugin_settings.status.cmp,
-      after = plugin_settings.options.cmp.lazy_load and "friendly-snippets",
+      after ="friendly-snippets",
       config = override_req("nvim_cmp", "plugins.configs.cmp", "setup"),
    }
 
@@ -149,7 +142,7 @@ return packer.startup(function()
       "L3MON4D3/LuaSnip",
       disable = not plugin_settings.status.cmp,
       wants = "friendly-snippets",
-      after = plugin_settings.options.cmp.lazy_load and "nvim-cmp",
+      after =  "nvim-cmp",
       config = override_req("luasnip", "plugins.configs.others", "luasnip"),
    }
 
@@ -162,31 +155,31 @@ return packer.startup(function()
    use {
       "hrsh7th/cmp-nvim-lua",
       disable = not plugin_settings.status.cmp,
-      after = plugin_settings.options.cmp.lazy_load and "cmp_luasnip",
+      after = "cmp_luasnip",
    }
 
    use {
       "hrsh7th/cmp-nvim-lsp",
       disable = not plugin_settings.status.cmp,
-      after = plugin_settings.options.cmp.lazy_load and "cmp-nvim-lua",
+      after =  "cmp-nvim-lua",
    }
 
    use {
       "hrsh7th/cmp-buffer",
       disable = not plugin_settings.status.cmp,
-      after = plugin_settings.options.cmp.lazy_load and "cmp-nvim-lsp",
+      after = "cmp-nvim-lsp",
    }
 
    use {
       "hrsh7th/cmp-path",
       disable = not plugin_settings.status.cmp,
-      after = plugin_settings.options.cmp.lazy_load and "cmp-buffer",
+      after =  "cmp-buffer",
    }
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
       disable = not plugin_settings.status.autopairs,
-      after = plugin_settings.options.cmp.lazy_load and plugin_settings.options.autopairs.loadAfter,
+      after = plugin_settings.options.autopairs.loadAfter,
       config = override_req("nvim_autopairs", "plugins.configs.others", "autopairs"),
    }
 
