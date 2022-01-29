@@ -126,18 +126,17 @@ return packer.startup(function()
 
    use {
       "rafamadriz/friendly-snippets",
-      module = 'cmp_nvim_lsp',
-      disable = not plugin_settings.status.cmp,
+      module = "cmp_nvim_lsp",
       disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
       event = "InsertEnter",
    }
-   
-  -- cmp by default loads after friendly snippets 
-  -- if snippets are disabled -> cmp loads on insertEnter!
+
+   -- cmp by default loads after friendly snippets
+   -- if snippets are disabled -> cmp loads on insertEnter!
    use {
       "hrsh7th/nvim-cmp",
       disable = not plugin_settings.status.cmp,
-      event = plugin_settings.status.snippets and 'InsertEnter',
+      event = not plugin_settings.status.snippets and "InsertEnter",
       after = plugin_settings.status.snippets and "friendly-snippets",
       config = override_req("nvim_cmp", "plugins.configs.cmp", "setup"),
    }
@@ -146,7 +145,7 @@ return packer.startup(function()
       "L3MON4D3/LuaSnip",
       disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
       wants = "friendly-snippets",
-      after =  "nvim-cmp",
+      after = "nvim-cmp",
       config = override_req("luasnip", "plugins.configs.others", "luasnip"),
    }
 
@@ -165,7 +164,7 @@ return packer.startup(function()
    use {
       "hrsh7th/cmp-nvim-lsp",
       disable = not plugin_settings.status.cmp,
-      after =  "cmp-nvim-lua",
+      after = "cmp-nvim-lua",
    }
 
    use {
@@ -177,7 +176,7 @@ return packer.startup(function()
    use {
       "hrsh7th/cmp-path",
       disable = not plugin_settings.status.cmp,
-      after =  "cmp-buffer",
+      after = "cmp-buffer",
    }
    -- misc plugins
    use {
