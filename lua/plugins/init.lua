@@ -131,10 +131,13 @@ return packer.startup(function()
       disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
       event = "InsertEnter",
    }
-
+   
+  -- cmp by default loads after friendly snippets 
+  -- if snippets are disabled -> cmp loads on insertEnter!
    use {
       "hrsh7th/nvim-cmp",
       disable = not plugin_settings.status.cmp,
+      event = plugin_settings.status.snippets and 'InsertEnter',
       after = plugin_settings.status.snippets and "friendly-snippets",
       config = override_req("nvim_cmp", "plugins.configs.cmp", "setup"),
    }
