@@ -280,4 +280,14 @@ M.tbl_override_req = function(name, default_table)
    return vim.tbl_deep_extend("force", default_table, override)
 end
 
+
+--Remove keys from plugin init table if plugin_config_remove[key] is true
+M.default_tbl_remove = function(plugin_table)
+   local removals = require("core.utils").load_config().plugins.default_plugin_remove
+   for k,v in pairs(removals) do
+      plugin_table[k] = not v and plugin_table[k] or nil
+   end
+   return plugin_table
+end
+
 return M

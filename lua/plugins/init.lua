@@ -8,6 +8,7 @@ end
 local use = packer.use
 
 return packer.startup(function()
+   local plugintable = require("core.utils").default_tbl_remove(require("plugins.plugintable"))
    for _,plugin in pairs(plugintable) do
       use(plugin)
    end
