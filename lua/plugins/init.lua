@@ -15,6 +15,8 @@ return packer.startup(function()
    -- this is the nvchad core repo containing utilities for some features like theme swticher, no need to lazy load
    use "Nvchad/extensions"
    use "nvim-lua/plenary.nvim"
+   use "lewis6991/impatient.nvim"
+   use "nathom/filetype.nvim"
 
    use {
       "wbthomason/packer.nvim",
