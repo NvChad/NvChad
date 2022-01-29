@@ -128,19 +128,20 @@ return packer.startup(function()
       "rafamadriz/friendly-snippets",
       module = 'cmp_nvim_lsp',
       disable = not plugin_settings.status.cmp,
+      disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
       event = "InsertEnter",
    }
 
    use {
       "hrsh7th/nvim-cmp",
       disable = not plugin_settings.status.cmp,
-      after ="friendly-snippets",
+      after = plugin_settings.status.snippets and "friendly-snippets",
       config = override_req("nvim_cmp", "plugins.configs.cmp", "setup"),
    }
 
    use {
       "L3MON4D3/LuaSnip",
-      disable = not plugin_settings.status.cmp,
+      disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
       wants = "friendly-snippets",
       after =  "nvim-cmp",
       config = override_req("luasnip", "plugins.configs.others", "luasnip"),
@@ -148,14 +149,14 @@ return packer.startup(function()
 
    use {
       "saadparwaiz1/cmp_luasnip",
-      disable = not plugin_settings.status.cmp,
+      disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
       after = plugin_settings.options.cmp.lazy_load and "LuaSnip",
    }
 
    use {
       "hrsh7th/cmp-nvim-lua",
       disable = not plugin_settings.status.cmp,
-      after = "cmp_luasnip",
+      after = (plugin_settings.status.snippets and "cmp_luasnip") or "nvim-cmp",
    }
 
    use {
