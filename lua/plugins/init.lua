@@ -8,8 +8,14 @@ end
 local use = packer.use
 
 return packer.startup(function()
-   local plugintable = require("core.utils").default_tbl_remove(require("plugins.plugintable"))
-   for _,plugin in pairs(plugintable) do
+   --get the default plugin table
+   local plugin_table = require("plugins.plugin_table")
+   --merge changes from plugins.default_plugin_override in chadrc
+   plugin_table = require("core.utils").default_tbl_override(plugin_table)
+   --remove plugins from plugins.default_plugin_remove in chadrc
+   plugin_table = require("core.utils").default_tbl_remove(plugin_table)
+   --initialize packer with the new plugin table
+   for _,plugin in pairs(plugin_table) do
       use(plugin)
    end
    -- load user defined plugins

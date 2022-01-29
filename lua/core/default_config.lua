@@ -108,6 +108,7 @@ M.plugins = {
    },
    default_plugin_config_replace = {},
    default_plugin_remove = {},
+   default_plugin_override = {},
 }
 
 -- Don't use a single keymap twice
