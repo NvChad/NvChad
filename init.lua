@@ -1,3 +1,18 @@
+local present, impatient = pcall(require, "impatient")
+
+
+if present then
+   impatient.enable_profile()
+end
+
+vim.opt.shadafile = "NONE"
+vim.defer_fn(function()
+   vim.opt.shadafile = vim.fn.expand("$HOME") .. "/.local/share/nvim/shada/main.shada"
+   vim.cmd[[ rsh ]]
+end, 0)
+
+vim.o.lazyredraw = true
+
 local core_modules = {
    "core.options",
    "core.autocmds",
@@ -23,3 +38,4 @@ if vim.fn.filereadable(vim.fn.stdpath "config" .. "/lua/custom/init.lua") == 1 t
    end
    return
 end
+
