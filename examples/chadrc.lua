@@ -9,4 +9,15 @@ M.ui = {
    theme = "onedark",
 }
 
+-- Install plugins
+local userPlugins = require "custom.plugins" -- path to table
+
+M.plugins = {
+   install = userPlugins,
+}
+
+-- NOTE: we heavily suggest using Packer's lazy loading (with the 'event','cmd' fields)
+-- see: https://github.com/wbthomason/packer.nvim
+-- https://nvchad.github.io/config/walkthrough
+
 return M
