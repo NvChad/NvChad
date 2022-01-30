@@ -39,6 +39,9 @@ packer.init {
    },
    auto_clean = true,
    compile_on_sync = true,
+   profile = {
+      enable = true,
+   }
 }
 
 return packer
