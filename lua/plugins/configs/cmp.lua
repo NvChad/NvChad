@@ -9,9 +9,12 @@ local snippets_status = require("core.utils").load_config().plugins.status.snipp
 vim.opt.completeopt = "menuone,noselect"
 
 local default = {
-   snippet = snippets_status and {
+   snippet = (snippets_status and {
       expand = function(args)
          require("luasnip").lsp_expand(args.body)
+      end,
+   }) or {
+      expand = function(args)
       end,
    },
    formatting = {
