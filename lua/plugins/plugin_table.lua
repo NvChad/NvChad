@@ -115,7 +115,7 @@ local plugin_table = {
    cmp_luasnip = {
       "saadparwaiz1/cmp_luasnip",
       disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
-      after = plugin_settings.options.cmp.lazy_load and "LuaSnip",
+      after = "LuaSnip",
    },
 
    cmp_nvim_lua = {
@@ -145,7 +145,7 @@ local plugin_table = {
    autopairs = {
       "windwp/nvim-autopairs",
       disable = not plugin_settings.status.autopairs,
-      after = plugin_settings.options.autopairs.loadAfter,
+      after = "nvim_cmp",
       config = override_req("nvim_autopairs", "plugins.configs.others", "autopairs"),
    },
    dashboard_nvim = {
@@ -170,8 +170,8 @@ local plugin_table = {
       "kyazdani42/nvim-tree.lua",
       disable = not plugin_settings.status.nvimtree,
       -- only set "after" if lazy load is disabled and vice versa for "cmd"
-      after = not plugin_settings.options.nvimtree.lazy_load and "nvim-web-devicons",
-      cmd = plugin_settings.options.nvimtree.lazy_load and { "NvimTreeToggle", "NvimTreeFocus" },
+      after = "nvim-web-devicons",
+      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
       config = override_req("nvim_tree", "plugins.configs.nvimtree", "setup"),
       setup = function()
          require("core.mappings").nvimtree()
