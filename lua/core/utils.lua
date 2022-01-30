@@ -192,7 +192,7 @@ M.map = function(mode, keys, command, opt)
             else
                sub_mode, lhs, rhs = sub_mode or "", lhs or "", rhs or ""
                print(
-                  "Cannot set mapping [ mode = '" .. sub_mode .. "' | key = '" .. lhs .. "' | cmd = '" .. rhs .. "' ]"
+               "Cannot set mapping [ mode = '" .. sub_mode .. "' | key = '" .. lhs .. "' | cmd = '" .. rhs .. "' ]"
                )
             end
          end
@@ -250,7 +250,7 @@ end
 
 M.override_req = function(name, default_config, config_function)
    local override, apply_table_override =
-      require("core.utils").load_config().plugins.default_plugin_config_replace[name], "false"
+   require("core.utils").load_config().plugins.default_plugin_config_replace[name], "false"
    local result = default_config
    if type(override) == "string" and override ~= "" then
       return "require('" .. override .. "')"
@@ -285,7 +285,10 @@ end
 M.default_tbl_override = function(plugin_table)
    local override = require("core.utils").load_config().plugins.default_plugin_override or {}
    if not vim.tbl_isempty(override) then 
-      plugin_table = vim.tbl_deep_extend("force", plugin_table, override)
+      for _, plugin in ipairs(override) do
+         plugin_key = plugin[1]
+         plugin_table[plugin_key] = vim.tbl_deep_extend("force", plugin_table[plugin_key], plugin)
+      end
    end
    return plugin_table
 end
@@ -293,8 +296,8 @@ end
 M.default_tbl_remove = function(plugin_table)
    local removals = require("core.utils").load_config().plugins.default_plugin_remove or {}
    if not vim.tbl_isempty(removals) then 
-      for k,v in pairs(removals) do
-         plugin_table[k] = not v and plugin_table[k] or nil
+      for _,plugin in ipairs(removals) do
+         plugin_table[plugin] = nil
       end
    end
    return plugin_table
