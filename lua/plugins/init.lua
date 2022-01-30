@@ -229,6 +229,12 @@ local plugins = {
 
 -- append user plugins to default plugins
 local user_Plugins = plugin_settings.install
-plugins[#plugins + 1] = user_Plugins
+if type(user_Plugins) == "table" then
+   if table.maxn(user_Plugins) == 1 then
+      plugins[#plugins + 1] = user_Plugins[1]
+   else
+      plugins[#plugins + 1] = user_Plugins
+   end
+end
 
 return packer.startup { plugins }
