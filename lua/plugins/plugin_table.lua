@@ -145,7 +145,7 @@ local plugin_table = {
    autopairs = {
       "windwp/nvim-autopairs",
       disable = not plugin_settings.status.autopairs,
-      after = "nvim_cmp",
+      after = "nvim-cmp",
       config = override_req("nvim_autopairs", "plugins.configs.others", "autopairs"),
    },
    dashboard_nvim = {
