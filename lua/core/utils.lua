@@ -280,13 +280,14 @@ M.tbl_override_req = function(name, default_table)
    return vim.tbl_deep_extend("force", default_table, override)
 end
 
-
 M.remove_default_plugins = function(plugin_table)
    local removals = require("core.utils").load_config().plugins.default_plugin_remove or {}
-   if vim.tbl_isempty(removals) then return plugin_table end
-   newtable = {}
+   if vim.tbl_isempty(removals) then
+      return plugin_table
+   end
+   local newtable = {}
    local i = 1
-   for index, value in ipairs(plugin_table) do
+   for _, value in ipairs(plugin_table) do
       local removed = false
       for _, removal in ipairs(removals) do
          if value[1] == removal then
@@ -295,7 +296,7 @@ M.remove_default_plugins = function(plugin_table)
       end
       if not removed then
          newtable[i] = value
-         i = i+1
+         i = i + 1
       end
    end
    return newtable
