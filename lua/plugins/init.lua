@@ -228,8 +228,10 @@ local plugins = {
 }
 --remove plugins specified in chadrc
 plugins = require("core.utils").remove_default_plugins(plugins)
+
 -- append user plugins to default plugins
 local user_Plugins = plugin_settings.install
+
 if type(user_Plugins) == "table" then
    if table.maxn(user_Plugins) == 1 then
       plugins[#plugins + 1] = user_Plugins[1]
