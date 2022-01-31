@@ -107,7 +107,6 @@ M.plugins = {
       esc_insertmode_timeout = 300,
    },
    default_plugin_config_replace = {},
-   default_plugin_edit = {},
    default_plugin_remove = {},
    install = nil,
 }

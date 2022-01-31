@@ -226,8 +226,7 @@ local plugins = {
       end,
    },
 }
---Merge changes to plugin fields from chadrc
-plugins = require("core.utils").edit_default_plugins(plugins)
+--remove plugins specified in chadrc
 plugins = require("core.utils").remove_default_plugins(plugins)
 -- append user plugins to default plugins
 local user_Plugins = plugin_settings.install
