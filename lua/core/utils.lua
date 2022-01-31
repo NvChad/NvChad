@@ -280,23 +280,25 @@ M.tbl_override_req = function(name, default_table)
    return vim.tbl_deep_extend("force", default_table, override)
 end
 
---Helper function to get key from default plugin table
-local get_plugin_index = function(plugin_table, plugin_name)
-   for index, plugin in ipairs(plugin_table) do
-      if plugin[1] == plugin_name then
-         return index
-      end
-   end
-end
 
 M.remove_default_plugins = function(plugin_table)
    local removals = require("core.utils").load_config().plugins.default_plugin_remove or {}
    if vim.tbl_isempty(removals) then return plugin_table end
-   for _, plugin_removal in ipairs(removals) do
-      index = get_plugin_index(plugin_table, plugin_removal)
-      plugin_table[index] = nil
+   newtable = {}
+   local i = 1
+   for index, value in ipairs(plugin_table) do
+      local removed = false
+      for _, removal in ipairs(removals) do
+         if value[1] == removal then
+            removed = true
+         end
+      end
+      if not removed then
+         newtable[i] = value
+         i = i+1
+      end
    end
-   return plugin_table
+   return newtable
 end
 
 return M
