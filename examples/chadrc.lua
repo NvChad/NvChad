@@ -1,5 +1,14 @@
 -- This is an example chadrc file , its supposed to be placed in /lua/custom/
 
+-- Will fix Error detected while processing VimEnter Autocommands for "*":
+-- Feline needs 'termguicolors' to be enabled to work properly
+vim.o.termguicolors = true
+
+-- Displays line numbers
+vim.o.number = true                                                                                 
+
+-- Makes line numbers relative to cursor position
+vim.o.relativenumber = true
 local M = {}
 
 -- make sure you maintain the structure of `core/default_config.lua` here,
