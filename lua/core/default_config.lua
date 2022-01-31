@@ -26,6 +26,7 @@ M.options = {
    updatetime = 250,
    undofile = true,
    fillchars = { eob = " " },
+   shadafile = vim.opt.shadafile,
 
    -- NvChad options
    nvChad = {
