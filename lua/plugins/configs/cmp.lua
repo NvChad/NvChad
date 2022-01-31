@@ -14,8 +14,7 @@ local default = {
          require("luasnip").lsp_expand(args.body)
       end,
    }) or {
-      expand = function(args)
-      end,
+      expand = function(args) end,
    },
    formatting = {
       format = function(entry, vim_item)
