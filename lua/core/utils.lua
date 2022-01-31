@@ -285,21 +285,14 @@ M.remove_default_plugins = function(plugin_table)
    if vim.tbl_isempty(removals) then
       return plugin_table
    end
-   local newtable = {}
-   local i = 1
-   for _, value in ipairs(plugin_table) do
-      local removed = false
-      for _, removal in ipairs(removals) do
-         if value[1] == removal then
-            removed = true
+   for key, val in ipairs(plugin_table) do
+      for _, value in ipairs(removals) do
+         if val[1] == value then
+            plugin_table[key] = {}
          end
       end
-      if not removed then
-         newtable[i] = value
-         i = i + 1
-      end
    end
-   return newtable
+   return plugin_table
 end
 
 return M
