@@ -3,6 +3,13 @@ local g = vim.g
 
 local options = require("core.utils").load_config().options
 
+--Defer loading shada until after startup
+vim.opt.shadafile = "NONE"
+vim.defer_fn(function()
+   vim.opt.shadafile = vim.fn.expand("$HOME") .. "/.local/share/nvim/shada/main.shada"
+   vim.cmd[[ rsh ]]
+end, 0)
+
 opt.title = true
 opt.clipboard = options.clipboard
 opt.cmdheight = options.cmdheight
