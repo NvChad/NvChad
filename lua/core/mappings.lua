@@ -84,8 +84,8 @@ M.misc = function()
       map("n", maps.misc.cheatsheet, ":lua require('nvchad.cheatsheet').show() <CR>") -- show keybinds
       map("n", maps.misc.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
       map("n", maps.misc.copy_whole_file, ":%y+ <CR>") -- copy whole file content
-      map("v", maps.misc.copy_to_system_clipboard, "\"+y") 
-      map("n", maps.misc.copy_to_system_clipboard, "\"+yy") -- copy curent line in normal mode
+      map("v", maps.misc.copy_to_system_clipboard, '"+y')
+      map("n", maps.misc.copy_to_system_clipboard, '"+yy') -- copy curent line in normal mode
       map("n", maps.misc.new_buffer, ":enew <CR>") -- new buffer
       map("n", maps.misc.new_tab, ":tabnew <CR>") -- new tabs
       map("n", maps.misc.line_number_toggle, ":set nu! <CR>") -- toggle numbers
