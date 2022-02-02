@@ -49,7 +49,6 @@ g.mapleader = options.mapleader
 
 -- disable some builtin vim plugins
 local disabled_built_ins = {
-   "did_load_filetypes",
    "2html_plugin",
    "getscript",
    "getscriptPlugin",
