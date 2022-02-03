@@ -27,8 +27,28 @@ M.get = function(theme)
    if not theme then
       theme = vim.g.nvchad_theme
    end
-
-   return require("hl_themes." .. theme)
+   local path = "lua/hl_themes/" .. theme .. ".lua"
+   local files = vim.api.nvim_get_runtime_file(path, true)
+   local color_table
+   if #files == 0 then
+      error("lua/hl_themes/" .. theme .. ".lua" .. " not found")
+   elseif #files == 1 then
+      color_table = dofile(files[1])
+   else
+      local nvim_base_pattern = "nvim-base16.lua/lua/hl_themes"
+      local valid_file = false
+      for _, file in ipairs(files) do
+         if not file:find(nvim_base_pattern) then
+            color_table = dofile(file)
+            valid_file = true
+         end
+      end
+      if not valid_file then
+         -- multiple files but in startup repo shouldn't happen so just use first one
+         color_table = dofile(files[1])
+      end
+   end
+   return color_table
 end
 
 return M
