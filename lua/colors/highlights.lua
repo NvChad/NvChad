@@ -111,8 +111,7 @@ bg("NvimTreeNormalNC", darker_black)
 fg("NvimTreeOpenedFolderName", folder_bg)
 fg("NvimTreeRootFolder", red .. " gui=underline") -- enable underline for root folder in nvim tree
 fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
-fg("NvimTreeVertSplit", darker_black)
-bg("NvimTreeVertSplit", darker_black)
+fg_bg("NvimTreeVertSplit", darker_black, darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
 
 -- Telescope
@@ -155,8 +154,7 @@ if ui.transparency then
    bg("NvimTreeNormal", "NONE")
    bg("NvimTreeNormalNC", "NONE")
    bg("NvimTreeStatusLineNC", "NONE")
-   bg("NvimTreeVertSplit", "NONE")
-   fg("NvimTreeVertSplit", grey)
+   fg_bg("NvimTreeVertSplit", grey, "NONE")
 
    -- telescope
    bg("TelescopeBorder", "NONE")
