@@ -69,7 +69,7 @@ M.plugins = {
       lspsignature = true, -- lsp enhancements
       vim_matchup = true, -- improved matchit
       cmp = true,
-      snippets = false,
+      snippets = true,
       nvimtree = true,
       autopairs = true,
    },
