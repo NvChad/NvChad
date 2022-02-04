@@ -8,7 +8,7 @@ end
 local override_req = require("core.utils").override_req
 
 local plugins = {
-   { "Nvchad/extensions" },
+   { "NvChad/extensions" },
    { "nvim-lua/plenary.nvim" },
    { "lewis6991/impatient.nvim" },
    { "nathom/filetype.nvim" },
