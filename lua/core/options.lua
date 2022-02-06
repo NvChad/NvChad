@@ -77,5 +77,5 @@ end
 vim.opt.shadafile = "NONE"
 vim.schedule(function()
    vim.opt.shadafile = require("core.utils").load_config().options.shadafile
-   vim.cmd [[ rsh ]]
+   vim.cmd [[ silent! rsh ]]
 end)
