@@ -57,7 +57,7 @@ local plugins = {
    },
 
    {
-      "norcalli/nvim-colorizer.lua",
+      "NvChad/nvim-colorizer.lua",
       disable = not plugin_settings.status.colorizer,
       event = "BufRead",
       config = override_req("nvim_colorizer", "plugins.configs.others", "colorizer"),
@@ -197,7 +197,7 @@ local plugins = {
       "numToStr/Comment.nvim",
       disable = not plugin_settings.status.comment,
       module = "Comment",
-      keys = {"gcc"},
+      keys = { "gcc" },
       config = override_req("nvim_comment", "plugins.configs.others", "comment"),
       setup = function()
          require("core.mappings").comment()
