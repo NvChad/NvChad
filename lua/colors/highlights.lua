@@ -91,6 +91,7 @@ fg_bg("DiffDelete", red, "NONE")
 
 -- Indent blankline plugin
 fg("IndentBlanklineChar", line)
+fg("IndentBlanklineSpaceChar", line)
 
 -- Lsp diagnostics
 
