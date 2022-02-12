@@ -4,21 +4,13 @@ if not present then
    return
 end
 
-local snippets_status = require("core.utils").load_config().plugins.status.snippets
+vim.opt.completeopt = "menuone,noselect"
 
 local default = {
-   completion = {
-      completeopt = "menuone,noselect",
-   },
-   documentation = {
-      border = "single",
-   },
-   snippet = (snippets_status and {
+   snippet = {
       expand = function(args)
          require("luasnip").lsp_expand(args.body)
       end,
-   }) or {
-      expand = function(_) end,
    },
    formatting = {
       format = function(entry, vim_item)
@@ -26,10 +18,9 @@ local default = {
          vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
 
          vim_item.menu = ({
-            buffer = "[BUF]",
             nvim_lsp = "[LSP]",
             nvim_lua = "[Lua]",
-            path = "[Path]",
+            buffer = "[BUF]",
          })[entry.source.name]
 
          return vim_item
@@ -46,24 +37,24 @@ local default = {
          behavior = cmp.ConfirmBehavior.Replace,
          select = true,
       },
-      ["<Tab>"] = cmp.mapping(function(fallback)
+      ["<Tab>"] = function(fallback)
          if cmp.visible() then
             cmp.select_next_item()
-         elseif snippets_status and require("luasnip").expand_or_jumpable() then
-            require("luasnip").expand_or_jump()
+         elseif require("luasnip").expand_or_jumpable() then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
          else
             fallback()
          end
-      end, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
+      end,
+      ["<S-Tab>"] = function(fallback)
          if cmp.visible() then
             cmp.select_prev_item()
          elseif require("luasnip").jumpable(-1) then
-            require("luasnip").jump(-1)
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
          else
             fallback()
          end
-      end, { "i", "s" }),
+      end,
    },
    sources = {
       { name = "nvim_lsp" },
