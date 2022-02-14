@@ -282,7 +282,7 @@ end
 
 --provide labels to plugins instead of integers
 M.label_plugins = function(plugins)
-   plugins_labeled = {}
+   local plugins_labeled = {}
    for _, plugin in ipairs(plugins) do
       plugins_labeled[plugin[1]] = plugin
    end

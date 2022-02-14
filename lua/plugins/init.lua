@@ -233,7 +233,7 @@ plugins = require("core.utils").remove_default_plugins(plugins)
 plugins = require("core.utils").add_user_plugins(plugins)
 
 return packer.startup(function(use)
-   for _, v in pairs(plugins_labeled) do
+   for _, v in pairs(plugins) do
       use(v)
    end
 end)
