@@ -56,6 +56,7 @@ local default = {
    auto_close = false,
    open_on_tab = false,
    hijack_cursor = true,
+   hijack_unnamed_buffer_when_opening = false,
    update_cwd = true,
    update_focused_file = {
       enable = true,
