@@ -7,7 +7,7 @@ local settings=require("core.utils").load_config().options.nvChad
 -- vim.cmd[[ au InsertLeave * set relativenumber ]]
 
 -- Don't show any numbers inside terminals
-if not settings.terminal_numbers then
+if not settings.terminal_linenr then
    vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
 end
 
