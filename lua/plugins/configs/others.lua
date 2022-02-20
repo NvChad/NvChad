@@ -32,7 +32,7 @@ M.blankline = function(override_flag)
       filetype_exclude = {
          "help",
          "terminal",
-         "dashboard",
+         "alpha",
          "packer",
          "lspinfo",
          "TelescopePrompt",
