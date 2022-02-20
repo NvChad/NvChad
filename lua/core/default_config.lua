@@ -34,7 +34,7 @@ M.options = {
       copy_del = true, -- copy deleted text ( dd key ), visual and normal mode
       insert_nav = true, -- navigation in insertmode
       window_nav = true,
-      terminal_numbers = false,
+      terminal_linenr = true,
 
       -- updater
       update_url = "https://github.com/NvChad/NvChad",
