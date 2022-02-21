@@ -133,7 +133,7 @@ Without/with Treesitter:
 
 To everyone who thinks that NvChad is bloat: Bloat means different things to everyone.
 
-NvChad has 38 plugins installed by default, yet it is still very fast because it uses the Packer plugin manager. Packer.nvim allows you to lazy load plugins, meaning they only get loaded when absolutely required. Furthermore, you can disable plugins you don't use in `chardrc.lua`.
+NvChad has 38 plugins installed by default, yet it is still very fast because it uses the Packer plugin manager. Packer.nvim allows you to lazy load plugins, meaning they only get loaded when absolutely required. Furthermore, you can disable plugins you don't use in `chadrc.lua`.
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
