@@ -1,4 +1,5 @@
 require("plugins.configs.others").lsp_handlers()
+require("core.mappings").lspconfig()
 
 local function on_attach(_, bufnr)
    local function buf_set_option(...)
@@ -7,8 +8,6 @@ local function on_attach(_, bufnr)
 
    -- Enable completion triggered by <c-x><c-o>
    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-   require("core.mappings").lspconfig()
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
