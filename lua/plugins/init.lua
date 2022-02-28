@@ -65,7 +65,7 @@ local plugins = {
 
    {
       "nvim-treesitter/nvim-treesitter",
-      event = "BufRead",
+      event = {"BufRead", "BufNewFile"},
       config = override_req("nvim_treesitter", "plugins.configs.treesitter", "setup"),
       run = ":TSUpdate",
    },
