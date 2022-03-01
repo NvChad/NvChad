@@ -65,7 +65,7 @@ local plugins = {
 
    {
       "nvim-treesitter/nvim-treesitter",
-      event = {"BufRead", "BufNewFile"},
+      event = { "BufRead", "BufNewFile" },
       config = override_req("nvim_treesitter", "plugins.configs.treesitter", "setup"),
       run = ":TSUpdate",
    },
@@ -126,7 +126,7 @@ local plugins = {
       "rafamadriz/friendly-snippets",
       module = "cmp_nvim_lsp",
       disable = not plugin_settings.status.cmp,
-      event = "InsertCharPre",
+      event = "InsertEnter",
    },
 
    {
