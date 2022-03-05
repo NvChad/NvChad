@@ -9,6 +9,8 @@ local nvChad_options = config.options.nvChad
 
 local cmd = vim.cmd
 
+vim.g.mapleader = maps.mapleader
+
 -- This is a wrapper function made to disable a plugin mapping from chadrc
 -- If keys are nil, false or empty string, then the mapping will be not applied
 -- Useful when one wants to use that keymap for any other purpose

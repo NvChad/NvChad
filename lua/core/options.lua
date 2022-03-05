@@ -1,51 +1,30 @@
-local opt = vim.opt
-local g = vim.g
+local opt, g = vim.opt, vim.g
+local opts = require("core.utils").load_config().options
 
-local options = require("core.utils").load_config().options
+local function load_nvim_opts(nvim_opts)
+   for nvim_opt, set in pairs(nvim_opts) do
+      opt[nvim_opt] = set
+   end
+end
 
-opt.title = true
-opt.clipboard = options.clipboard
-opt.cmdheight = options.cmdheight
-opt.cul = true -- cursor line
-
--- Indentline
-opt.expandtab = options.expandtab
-opt.shiftwidth = options.shiftwidth
-opt.smartindent = options.smartindent
-
--- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = options.fillchars
-
-opt.hidden = options.hidden
-opt.ignorecase = options.ignorecase
-opt.smartcase = options.smartcase
-opt.mouse = options.mouse
-
--- Numbers
-opt.number = options.number
-opt.numberwidth = options.numberwidth
-opt.relativenumber = options.relativenumber
-opt.ruler = options.ruler
-
--- disable nvim intro
+-- options that cannot be set by the user
 opt.shortmess:append "sI"
-
-opt.signcolumn = "yes"
-opt.splitbelow = true
-opt.splitright = true
-opt.tabstop = options.tabstop
-opt.termguicolors = true
-opt.timeoutlen = options.timeoutlen
-opt.undofile = options.undofile
-
--- interval for writing swap file to disk, also used by gitsigns
-opt.updatetime = options.updatetime
-
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
+opt.shadafile = "NONE"
 
-g.mapleader = options.mapleader
+-- if there is an error with the user config, fallback onto the default config
+-- and print an error message
+local nvim_opts_status, _ = pcall(load_nvim_opts, opts.nvim)
+if not nvim_opts_status then
+   opts = require("core.default_config").options
+   load_nvim_opts(opts.nvim)
+   print "Error: user config - `options` - `nvim`"
+end
+
+vim.schedule(function()
+   opt.shadafile = require("core.utils").load_config().options.nvim.shadafile
+   vim.cmd [[ silent! rsh ]]
+end)
 
 -- disable some builtin vim plugins
 local disabled_built_ins = {
@@ -72,10 +51,3 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
    g["loaded_" .. plugin] = 1
 end
-
---Defer loading shada until after startup_
-vim.opt.shadafile = "NONE"
-vim.schedule(function()
-   vim.opt.shadafile = require("core.utils").load_config().options.shadafile
-   vim.cmd [[ silent! rsh ]]
-end)

@@ -4,29 +4,34 @@
 local M = {}
 
 M.options = {
-   -- custom = {}
-   -- general nvim/vim options , check :h optionname to know more about an option
-
-   clipboard = "unnamedplus",
-   cmdheight = 1,
-   ruler = false,
-   hidden = true,
-   ignorecase = true,
-   smartcase = true,
-   mapleader = " ",
-   mouse = "a",
-   number = true,
-   numberwidth = 2,
-   relativenumber = false,
-   expandtab = true,
-   shiftwidth = 2,
-   smartindent = true,
-   tabstop = 8,
-   timeoutlen = 400,
-   updatetime = 250,
-   undofile = true,
-   fillchars = { eob = " " },
-   shadafile = vim.opt.shadafile,
+   -- general nvim/vim options, check :h optionname to know more about an option
+   nvim = {
+      clipboard = "unnamedplus",
+      cmdheight = 1,
+      cursorline = true, -- recommended to not change
+      expandtab = true,
+      fillchars = { eob = " " },
+      hidden = true,
+      ignorecase = true,
+      mouse = "a",
+      number = true,
+      numberwidth = 2,
+      relativenumber = false,
+      ruler = false,
+      shadafile = "NONE",
+      shiftwidth = 2,
+      signcolumn = "yes", -- recommended to not change
+      smartcase = true,
+      smartindent = true,
+      splitbelow = true, -- recommended to not change
+      splitright = true, -- recommended to not change
+      tabstop = 8, -- recommended to not change
+      termguicolors = true, -- recommended to not change
+      timeoutlen = 400,
+      title = true, -- recommended to not change
+      undofile = true,
+      updatetime = 250,
+   },
 
    -- NvChad options
    nvChad = {
@@ -119,6 +124,8 @@ M.plugins = {
 -- non plugin
 M.mappings = {
    -- custom = {}, -- custom user mappings
+
+   mapleader = " ", -- sets the leader key for mappings - <leader>
 
    misc = {
       cheatsheet = "<leader>ch",
