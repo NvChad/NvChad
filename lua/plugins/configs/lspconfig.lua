@@ -1,6 +1,7 @@
+local M = {}
 require("plugins.configs.others").lsp_handlers()
 
-local function on_attach(client, bufnr)
+function M.on_attach(client, bufnr)
    local function buf_set_option(...)
       vim.api.nvim_buf_set_option(bufnr, ...)
    end
@@ -34,5 +35,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 local addlsp_confs = require("core.utils").load_config().plugins.options.lspconfig.setup_lspconf
 
 if #addlsp_confs ~= 0 then
-   require(addlsp_confs).setup_lsp(on_attach, capabilities)
+   require(addlsp_confs).setup_lsp(M.on_attach, capabilities)
 end
+
+return M
