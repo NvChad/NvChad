@@ -72,22 +72,18 @@ default.buttons = {
    },
 }
 
-default.section = {
-   header = default.header,
-   buttons = default.buttons,
-}
-
 local M = {}
+
 M.setup = function(override_flag)
    if override_flag then
       default = require("core.utils").tbl_override_req("alpha", default)
    end
    alpha.setup {
       layout = {
-         { type = "padding", val = 5 },
-         default.section.header,
+         { type = "padding", val = 9 },
+         default.header,
          { type = "padding", val = 2 },
-         default.section.buttons,
+         default.buttons,
       },
       opts = {},
    }
