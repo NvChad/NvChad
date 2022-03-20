@@ -80,7 +80,7 @@ M.setup = function(override_flag)
    end
    alpha.setup {
       layout = {
-         { type = "padding", val = 9 },
+         { type = "padding", val = 4 },
          default.header,
          { type = "padding", val = 2 },
          default.buttons,
