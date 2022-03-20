@@ -6,6 +6,7 @@ local map_wrapper = utils.map
 local maps = config.mappings
 local plugin_maps = maps.plugins
 local nvChad_options = config.options.nvChad
+local terminal_options = config.options.terminal
 
 local cmd = vim.cmd
 
@@ -95,14 +96,26 @@ M.misc = function()
       -- get out of terminal mode
       map("t", term_maps.esc_termmode, "<C-\\><C-n>")
       -- hide a term from within terminal mode
-      map("t", term_maps.esc_hide_termmode, "<C-\\><C-n> :lua require('core.utils').close_buffer() <CR>")
+      map("t", term_maps.esc_hide_termmode, "<CMD>lua require('nvchad.terminal').hide() <CR>")
       -- pick a hidden term
       map("n", term_maps.pick_term, ":Telescope terms <CR>")
       -- Open terminals
       -- TODO this opens on top of an existing vert/hori term, fixme
-      map("n", term_maps.new_horizontal, ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>")
-      map("n", term_maps.new_vertical, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>")
-      map("n", term_maps.new_window, ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>")
+      map(
+         { "n", "t" },
+         term_maps.new_horizontal,
+         "<CMD>lua require('nvchad.terminal').new_or_toggle('horizontal', "
+            .. tostring(terminal_options.window.split_height)
+            .. ")<CR>"
+      )
+      map(
+         { "n", "t" },
+         term_maps.new_vertical,
+         "<CMD>lua require('nvchad.terminal').new_or_toggle('vertical', "
+            .. tostring(terminal_options.window.vsplit_width)
+            .. ")<CR>"
+      )
+      --map("n", term_maps.new_window, "") not supported yet
       -- terminal mappings end --
 
       -- Add Packer commands because we are not loading it at startup
