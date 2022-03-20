@@ -40,6 +40,15 @@ M.options = {
       update_url = "https://github.com/NvChad/NvChad",
       update_branch = "main",
    },
+   terminal = {
+      behavior = {
+         close_on_exit = true,
+      },
+      window = {
+         vsplit_ratio = 0.5,
+         split_ratio = 0.3,
+      },
+   },
 }
 
 ---- UI -----
