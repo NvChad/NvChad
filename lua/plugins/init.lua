@@ -150,11 +150,23 @@ return packer.startup(function()
       config = override_req("nvim_colorizer", "(plugins.configs.others).colorizer()"),
    }
 
-   use {
-      "nvim-treesitter/nvim-treesitter",
-      event = "BufRead",
+  -- Syntax highlighting
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    event = "BufRead",
+    cmd = {
+      "TSInstall",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+      "TSDisableAll",
+      "TSEnableAll",
+    },
       config = override_req("nvim_treesitter", "plugins.configs.treesitter"),
-   }
+  }
 
    -- git stuff
    use {
@@ -168,6 +180,22 @@ return packer.startup(function()
    }
 
    -- lsp stuff
+
+    -- LSP manager
+  use {
+    "williamboman/nvim-lsp-installer",
+    event = "BufRead",
+    cmd = {
+      "LspInstall",
+      "LspInstallInfo",
+      "LspPrintInstalled",
+      "LspRestart",
+      "LspStart",
+      "LspStop",
+      "LspUninstall",
+      "LspUninstallAll",
+    },
+  }
 
    use {
       "neovim/nvim-lspconfig",
