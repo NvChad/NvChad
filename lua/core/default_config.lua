@@ -46,6 +46,7 @@ M.options = {
 
 M.ui = {
    hl_override = "", -- path of your file that contains highlights
+   colors = "", -- path of your file that contains colors
    italic_comments = false,
    theme = "onedark", -- default theme
 
