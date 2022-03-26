@@ -1,3 +1,6 @@
+local colors = require("core.utils").load_config().ui.colors
+local override = require("core.utils").load_config().ui.hl_override
+
 local M = {}
 
 -- if theme given, load given theme if given, otherwise nvchad_theme
@@ -27,12 +30,15 @@ M.init = function(theme)
    else
       pcall(vim.cmd, "colo " .. theme)
    end
+
+   if #override ~= 0 then
+      package.loaded[override] = nil
+      require(override)
+   end
 end
 
 -- returns a table of colors for given or current theme
 M.get = function(theme)
-   local colors = require("core.utils").load_config().ui.colors
-
    if #colors ~= 0 then
       return require(colors)
    else

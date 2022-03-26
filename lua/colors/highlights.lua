@@ -1,6 +1,5 @@
 local cmd = vim.cmd
 
-local override = require("core.utils").load_config().ui.hl_override
 local colors = require("colors").get()
 local ui = require("core.utils").load_config().ui
 
@@ -166,8 +165,4 @@ if ui.transparency then
    bg("TelescopePromptPrefix", "NONE")
    fg("TelescopeBorder", one_bg)
    fg_bg("TelescopeResultsTitle", black, blue)
-end
-
-if #override ~= 0 then
-   require(override)
 end
