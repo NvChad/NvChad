@@ -15,7 +15,6 @@ local plugins = {
 
    {
       "wbthomason/packer.nvim",
-      event = "VimEnter",
    },
 
    {
