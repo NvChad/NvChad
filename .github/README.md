@@ -11,31 +11,21 @@
   <span> • </span>
         <a href="https://nvchad.github.io/Extras">Extras</a>
   <p></p>
-</div>
+</div> 
 
 <div align="center">
-
-[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)](https://lua.org)
-
-</div>
-
-<div align="center">
-
-[![Super Linter](https://img.shields.io/github/workflow/status/NvChad/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&color=green)]()
-<a href="https://github.com/NvChad/NvChad"
-        ><img
-            src="https://img.shields.io/github/repo-size/NvChad/NvChad?style=flat-square&label=Repo"
-            alt="GitHub repository size"
-    /></a>
+ 
+[![Super Linter](https://img.shields.io/github/workflow/status/NvChad/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&color=8DBBE9)]()
 <a href="https://github.com/NvChad/NvChad/blob/main/LICENSE"
         ><img
-            src="https://img.shields.io/github/license/NvChad/NvChad?style=flat-square&logo=GNU&label=License"
+            src="https://img.shields.io/github/license/NvChad/NvChad?style=flat-square&logo=GNU&label=License&color=df967f"
             alt="License"
     />
+[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.6.1-blueviolet.svg?style=flat-square&logo=Neovim&color=90E59A&logoColor=white)](https://github.com/neovim/neovim)
+[![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat-square&label=Issues&color=d77982)](https://github.com/NvChad/NvChad/issues)
 [![Discord](https://img.shields.io/discord/869557815780470834?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/gADmkJb9Fb)
-[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.6.1-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
-[![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat-square&label=Issues&color=fc0330)](https://github.com/NvChad/NvChad/issues)
-[![Last Commit](https://img.shields.io/github/last-commit/NvChad/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/NvChad/NvChad/pulse)
+[![Matrix](https://img.shields.io/badge/Matrix-40aa8b.svg?style=flat-square&logo=Matrix&logoColor=white)](https://matrix.to/#/#nvchad:matrix.org)
+[![Telegram](https://img.shields.io/badge/Telegram-blue.svg?style=flat-square&logo=Telegram&logoColor=white)](https://t.me/DE_WM)
 
   </div>
 
