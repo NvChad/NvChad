@@ -67,6 +67,29 @@ M.ui = {
 ---- PLUGIN OPTIONS ----
 
 M.plugins = {
+
+   -- builtin nvim plugins are disabled
+   builtins = {
+      "2html_plugin",
+      "getscript",
+      "getscriptPlugin",
+      "gzip",
+      "logipat",
+      "netrw",
+      "netrwPlugin",
+      "netrwSettings",
+      "netrwFileHandlers",
+      "matchit",
+      "tar",
+      "tarPlugin",
+      "rrhelper",
+      "spellfile_plugin",
+      "vimball",
+      "vimballPlugin",
+      "zip",
+      "zipPlugin",
+   },
+
    -- enable/disable plugins (false for disable)
    status = {
       blankline = true, -- indentline stuff

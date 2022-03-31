@@ -48,26 +48,7 @@ opt.whichwrap:append "<>[]hl"
 g.mapleader = options.mapleader
 
 -- disable some builtin vim plugins
-local disabled_built_ins = {
-   "2html_plugin",
-   "getscript",
-   "getscriptPlugin",
-   "gzip",
-   "logipat",
-   "netrw",
-   "netrwPlugin",
-   "netrwSettings",
-   "netrwFileHandlers",
-   "matchit",
-   "tar",
-   "tarPlugin",
-   "rrhelper",
-   "spellfile_plugin",
-   "vimball",
-   "vimballPlugin",
-   "zip",
-   "zipPlugin",
-}
+local disabled_built_ins = require("core.utils").load_config().plugins.builtins
 
 for _, plugin in pairs(disabled_built_ins) do
    g["loaded_" .. plugin] = 1
@@ -75,6 +56,7 @@ end
 
 --Defer loading shada until after startup_
 vim.opt.shadafile = "NONE"
+
 vim.schedule(function()
    vim.opt.shadafile = require("core.utils").load_config().options.shadafile
    vim.cmd [[ silent! rsh ]]
