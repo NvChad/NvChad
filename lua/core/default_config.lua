@@ -196,10 +196,15 @@ M.mappings = {
       -- show & recover hidden terminal buffers in a telescope picker
       pick_term = "<leader>W",
 
-      -- spawn terminals
+      -- spawn a single terminal and toggle it
+      -- this just works like toggleterm kinda
       new_horizontal = "<leader>h",
       new_vertical = "<leader>v",
-      new_window = "<leader>w",
+
+      -- spawn new terminals
+      spawn_horizontal = "<leader>H",
+      spawn_vertical = "<leader>V",
+      spawn_window = "<leader>w",
    },
 }
 
