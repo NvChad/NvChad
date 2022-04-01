@@ -46,7 +46,7 @@ M.options = {
       },
       window = {
          vsplit_ratio = 0.5,
-         split_ratio = 0.3,
+         split_ratio = 0.4,
       },
    },
 }
