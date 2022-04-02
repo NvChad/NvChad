@@ -48,6 +48,10 @@ M.options = {
          vsplit_ratio = 0.5,
          split_ratio = 0.4,
       },
+      location = {
+         horizontal = "rightbelow",
+         vertical = "rightbelow",
+      },
    },
 }
 
