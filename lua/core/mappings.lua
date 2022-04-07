@@ -42,9 +42,6 @@ M.misc = function()
       map_wrapper("n", "<Esc>", ":noh <CR>")
 
       -- center cursor when moving (goto_definition)
-
-      -- yank from current cursor to end of line
-      map_wrapper("n", "Y", "yg$")
    end
 
    local function optional_mappings()
