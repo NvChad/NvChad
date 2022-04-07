@@ -146,6 +146,7 @@ local plugins = {
       "L3MON4D3/LuaSnip",
       disable = not plugin_settings.status.cmp,
       after = "nvim-cmp",
+      requires = "rafamadriz/friendly-snippets",
       config = override_req("luasnip", "plugins.configs.others", "luasnip"),
    },
 
