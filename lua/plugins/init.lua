@@ -19,9 +19,9 @@ local plugins = {
 
    {
       "NvChad/extensions",
-      config = function ()
+      config = function()
          vim.schedule_wrap(require("nvchad.terminal").init())
-      end
+      end,
    },
 
    {
@@ -131,14 +131,14 @@ local plugins = {
    {
       "rafamadriz/friendly-snippets",
       module = "cmp_nvim_lsp",
-      disable = not plugin_settings.status.cmp,
+      disable = not (plugin_settings.status.cmp and plugin_settings.status.friendly_snippets),
       event = "InsertEnter",
    },
 
    {
       "hrsh7th/nvim-cmp",
       disable = not plugin_settings.status.cmp,
-      after = "friendly-snippets",
+      after = plugin_settings.status.friendly_snippets and "friendly-snippets",
       config = override_req("nvim_cmp", "plugins.configs.cmp", "setup"),
    },
 

@@ -109,6 +109,7 @@ M.plugins = {
       cmp = true,
       nvimtree = true,
       autopairs = true,
+      friendly_snippets = true, -- set of preconfigured snippets for different languages
    },
    options = {
       packer = {
