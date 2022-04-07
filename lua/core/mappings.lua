@@ -41,6 +41,10 @@ M.misc = function()
       -- use ESC to turn off search highlighting
       map_wrapper("n", "<Esc>", ":noh <CR>")
 
+      -- center cursor when moving through search results
+      map_wrapper("n", "n", "nzzzv")
+      map_wrapper("n", "N", "Nzzzv")
+
       -- center cursor when moving (goto_definition)
 
       -- yank from current cursor to end of line
