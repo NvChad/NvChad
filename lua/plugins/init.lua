@@ -19,9 +19,9 @@ local plugins = {
 
    {
       "NvChad/extensions",
-      config = function ()
+      config = function()
          vim.schedule_wrap(require("nvchad.terminal").init())
-      end
+      end,
    },
 
    {
@@ -145,7 +145,6 @@ local plugins = {
    {
       "L3MON4D3/LuaSnip",
       disable = not plugin_settings.status.cmp,
-      wants = "friendly-snippets",
       after = "nvim-cmp",
       config = override_req("luasnip", "plugins.configs.others", "luasnip"),
    },
