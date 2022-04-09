@@ -47,6 +47,7 @@ local plugins = {
 
    {
       "akinsho/bufferline.nvim",
+      branch = "main",
       disable = not plugin_settings.status.bufferline,
       after = "nvim-web-devicons",
       config = override_req("bufferline", "plugins.configs.bufferline", "setup"),
