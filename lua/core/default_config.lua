@@ -51,6 +51,14 @@ M.options = {
       location = {
          horizontal = "rightbelow",
          vertical = "rightbelow",
+         float = {
+           relative = 'editor',
+           row = 0.3,
+           col = 0.25,
+           width = 0.5,
+           height = 0.4,
+           border = "single",
+         }
       },
    },
 }
@@ -205,6 +213,7 @@ M.mappings = {
       -- this just works like toggleterm kinda
       new_horizontal = "<leader>h",
       new_vertical = "<leader>v",
+      new_float = "<A-i>",
 
       -- spawn new terminals
       spawn_horizontal = "<leader>H",
