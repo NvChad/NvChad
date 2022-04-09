@@ -129,6 +129,7 @@ M.plugins = {
          snippet_path = {},
       },
       statusline = {
+         hide_disable = false,
          -- hide, show on specific filetypes
          hidden = {
             "help",
