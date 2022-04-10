@@ -62,8 +62,8 @@ M.misc = function()
          map("i", inav.backward, "<Left>")
          map("i", inav.end_of_line, "<End>")
          map("i", inav.forward, "<Right>")
-         map("i", inav.next_line, "<Up>")
-         map("i", inav.prev_line, "<Down>")
+         map("i", inav.next_line, "<Down>")
+         map("i", inav.prev_line, "<Up>")
          map("i", inav.beginning_of_line, "<ESC>^i")
       end
 

@@ -184,8 +184,8 @@ M.mappings = {
       backward = "<C-h>",
       end_of_line = "<C-e>",
       forward = "<C-l>",
-      next_line = "<C-k>",
-      prev_line = "<C-j>",
+      next_line = "<C-j>",
+      prev_line = "<C-k>",
       beginning_of_line = "<C-a>",
    },
 
