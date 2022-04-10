@@ -216,8 +216,8 @@ M.mappings = {
       new_float = "<A-i>",
 
       -- spawn new terminals
-      spawn_horizontal = "<leader>H",
-      spawn_vertical = "<leader>V",
+      spawn_horizontal = "<A-h>",
+      spawn_vertical = "<A-v>",
       spawn_window = "<leader>w",
    },
 }
