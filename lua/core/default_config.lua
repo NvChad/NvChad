@@ -147,6 +147,8 @@ M.plugins = {
          },
          shown = {},
 
+         -- global statusline (if set to 3)
+         laststatus = 2,
          -- truncate statusline on small screens
          shortline = true,
          style = "default", -- default, round , slant , block , arrow

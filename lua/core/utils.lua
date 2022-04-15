@@ -121,12 +121,13 @@ end
 M.hide_statusline = function()
    local hidden = require("core.utils").load_config().plugins.options.statusline.hidden
    local shown = require("core.utils").load_config().plugins.options.statusline.shown
+   local last = require("core.utils").load_config().plugins.options.statusline.laststatus
    local api = vim.api
    local buftype = api.nvim_buf_get_option(0, "ft")
 
    -- shown table from config has the highest priority
    if vim.tbl_contains(shown, buftype) then
-      api.nvim_set_option("laststatus", 2)
+      api.nvim_set_option("laststatus", last)
       return
    end
 
@@ -135,7 +136,7 @@ M.hide_statusline = function()
       return
    end
 
-   api.nvim_set_option("laststatus", 2)
+   api.nvim_set_option("laststatus", last)
 end
 
 M.load_config = function()
