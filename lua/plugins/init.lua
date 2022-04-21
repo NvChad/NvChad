@@ -36,14 +36,17 @@ return require("packer").startup(function()
    use {
       "kyazdani42/nvim-web-devicons",
       after = "nvim-base16.lua",
-      config = override_req("nvim_web_devicons", "plugins.configs.icons", "setup"),
+      config = function()
+         require "plugins.configs.icons"
+      end,
    }
 
    use {
       "feline-nvim/feline.nvim",
-      disable = not plugin_settings.status.feline,
       after = "nvim-web-devicons",
-      config = override_req("feline", "plugins.configs.statusline", "setup"),
+      config = function()
+        require "plugins.configs.feline"
+      end 
    }
 
    use {
