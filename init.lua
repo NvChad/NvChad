@@ -1,3 +1,6 @@
+-- REMOVE THIS LATER 
+print("EMERGENCY: GUYS CHECK THE PINNED ISSUE ASAP!")
+
 local present, impatient = pcall(require, "impatient")
 
 if present then
