@@ -1,4 +1,3 @@
-local plugin_settings = require("core.utils").load_config().plugins
 local present, packer = pcall(require, "plugins.packerInit")
 
 if not present then
@@ -45,16 +44,16 @@ return require("packer").startup(function()
       "feline-nvim/feline.nvim",
       after = "nvim-web-devicons",
       config = function()
-        require "plugins.configs.feline"
-      end 
+         require "plugins.configs.feline"
+      end,
    }
 
    use {
       "akinsho/bufferline.nvim",
-      branch = "main",
-      disable = not plugin_settings.status.bufferline,
       after = "nvim-web-devicons",
-      config = override_req("bufferline", "plugins.configs.bufferline", "setup"),
+      config = function()
+         require "plugins.configs.bufferline"
+      end,
       setup = function()
          require("core.mappings").bufferline()
       end,
@@ -62,31 +61,36 @@ return require("packer").startup(function()
 
    use {
       "lukas-reineke/indent-blankline.nvim",
-      disable = not plugin_settings.status.blankline,
       event = "BufRead",
-      config = override_req("indent_blankline", "plugins.configs.others", "blankline"),
+      config = function()
+         require("plugins.configs.others").blankline()
+      end,
    }
 
    use {
       "NvChad/nvim-colorizer.lua",
-      disable = not plugin_settings.status.colorizer,
       event = "BufRead",
-      config = override_req("nvim_colorizer", "plugins.configs.others", "colorizer"),
+      config = function()
+         require("plugins.configs.others").colorizer()
+      end,
    }
 
    use {
       "nvim-treesitter/nvim-treesitter",
       event = { "BufRead", "BufNewFile" },
-      config = override_req("nvim_treesitter", "plugins.configs.treesitter", "setup"),
+      config = function()
+         require "plugins.configs.treesitter"
+      end,
       run = ":TSUpdate",
    }
 
    -- git stuff
    use {
       "lewis6991/gitsigns.nvim",
-      disable = not plugin_settings.status.gitsigns,
       opt = true,
-      config = override_req("gitsigns", "plugins.configs.others", "gitsigns"),
+      config = function()
+         require("plugins.configs.others").gitsigns()
+      end,
       setup = function()
          require("core.utils").packer_lazy_load "gitsigns.nvim"
       end,
@@ -110,14 +114,14 @@ return require("packer").startup(function()
 
    use {
       "ray-x/lsp_signature.nvim",
-      disable = not plugin_settings.status.lspsignature,
       after = "nvim-lspconfig",
-      config = override_req("signature", "plugins.configs.others", "signature"),
+      config = function()
+         require("plugins.configs.others").signature()
+      end,
    }
 
    use {
       "andymass/vim-matchup",
-      disable = not plugin_settings.status.vim_matchup,
       opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "vim-matchup"
@@ -126,9 +130,10 @@ return require("packer").startup(function()
 
    use {
       "max397574/better-escape.nvim",
-      disable = not plugin_settings.status.better_escape,
       event = "InsertCharPre",
-      config = override_req("better_escape", "plugins.configs.others", "better_escape"),
+      config = function()
+         require("plugins.configs.others").better_escape()
+      end,
    }
 
    -- load luasnips + cmp related in insert mode only
@@ -136,88 +141,91 @@ return require("packer").startup(function()
    use {
       "rafamadriz/friendly-snippets",
       module = "cmp_nvim_lsp",
-      disable = not plugin_settings.status.cmp,
       event = "InsertEnter",
    }
 
    use {
       "hrsh7th/nvim-cmp",
-      disable = not plugin_settings.status.cmp,
       after = "friendly-snippets",
-      config = override_req("nvim_cmp", "plugins.configs.cmp", "setup"),
+      config = function()
+         require "plugins.configs.cmp"
+      end,
    }
 
    use {
       "L3MON4D3/LuaSnip",
-      disable = not plugin_settings.status.cmp,
       wants = "friendly-snippets",
       after = "nvim-cmp",
-      config = override_req("luasnip", "plugins.configs.others", "luasnip"),
+      config = function()
+         require("plugins.configs.others").luasnip()
+      end,
    }
 
    use {
       "saadparwaiz1/cmp_luasnip",
-      disable = not plugin_settings.status.cmp,
-      after = plugin_settings.options.cmp.lazy_load and "LuaSnip",
+      after = "LuaSnip",
    }
 
    use {
       "hrsh7th/cmp-nvim-lua",
-      disable = not plugin_settings.status.cmp,
       after = "cmp_luasnip",
    }
 
    use {
       "hrsh7th/cmp-nvim-lsp",
-      disable = not plugin_settings.status.cmp,
       after = "cmp-nvim-lua",
    }
 
    use {
       "hrsh7th/cmp-buffer",
-      disable = not plugin_settings.status.cmp,
       after = "cmp-nvim-lsp",
    }
 
    use {
       "hrsh7th/cmp-path",
-      disable = not plugin_settings.status.cmp,
       after = "cmp-buffer",
    }
 
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
-      disable = not plugin_settings.status.autopairs,
-      after = plugin_settings.options.autopairs.loadAfter,
-      config = override_req("nvim_autopairs", "plugins.configs.others", "autopairs"),
+      after = "nvim-cmp",
+      config = function()
+         require("plugins.configs.others").autopairs()
+      end,
    }
 
    use {
-      disable = not plugin_settings.status.alpha,
       "goolord/alpha-nvim",
-      config = override_req("alpha", "plugins.configs.alpha", "setup"),
+      disable = false,
+      config = function()
+         require "plugins.configs.alpha"
+      end,
    }
 
    use {
       "numToStr/Comment.nvim",
-      disable = not plugin_settings.status.comment,
       module = "Comment",
       keys = { "gcc" },
-      config = override_req("nvim_comment", "plugins.configs.others", "comment"),
+
       setup = function()
          require("core.mappings").comment()
+      end,
+
+      config = function()
+         require("plugins.configs.others").comment()
       end,
    }
 
    -- file managing , picker etc
    use {
       "kyazdani42/nvim-tree.lua",
-      disable = not plugin_settings.status.nvimtree,
-      -- only set "after" if lazy load is disabled and vice versa for "cmd"
-      after = not plugin_settings.options.nvimtree.lazy_load and "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-      config = override_req("nvim_tree", "plugins.configs.nvimtree", "setup"),
+
+      config = function()
+         require "plugins.configs.nvimtree"
+      end,
+
       setup = function()
          require("core.mappings").nvimtree()
       end,
@@ -227,7 +235,11 @@ return require("packer").startup(function()
       "nvim-telescope/telescope.nvim",
       module = "telescope",
       cmd = "Telescope",
-      config = override_req("telescope", "plugins.configs.telescope", "setup"),
+
+      config = function()
+         require "plugins.configs.telescope"
+      end,
+
       setup = function()
          require("core.mappings").telescope()
       end,

@@ -30,10 +30,10 @@ map_wrapper("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr =
 map_wrapper("n", "<Esc>", ":noh <CR>")
 
 -- don't yank text on cut ( x )
-map_wrapper({ "n", "v" }, "x", '"_x')
+-- map_wrapper({ "n", "v" }, "x", '"_x')
 
 -- don't yank text on delete ( dd )
-map_wrapper({ "n", "v" }, "d", '"_d')
+-- map_wrapper({ "n", "v" }, "d", '"_d')
 
 -- move cursor within insert mode
 map("i", "<C-h>", "<Left>")

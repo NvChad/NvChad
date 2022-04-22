@@ -1,3 +1,9 @@
+local present, nvimtree = pcall(require, "nvim-tree")
+
+if not present then
+   return
+end
+
 -- globals must be set prior to requiring nvim-tree to function
 local g = vim.g
 
@@ -34,13 +40,7 @@ g.nvim_tree_icons = {
    },
 }
 
-local present, nvimtree = pcall(require, "nvim-tree")
-
-if not present then
-   return
-end
-
-local default = {
+local options = {
    filters = {
       dotfiles = false,
    },
@@ -74,17 +74,8 @@ local default = {
    renderer = {
       indent_markers = {
          enable = true,
-      }
-   }
+      },
+   },
 }
 
-local M = {}
-
-M.setup = function(override_flag)
-   if override_flag then
-      default = require("core.utils").tbl_override_req("nvim_tree", default)
-   end
-   nvimtree.setup(default)
-end
-
-return M
+nvimtree.setup(options)
