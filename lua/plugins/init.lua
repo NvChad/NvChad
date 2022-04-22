@@ -4,7 +4,6 @@ if not present then
    return false
 end
 
-local override_req = require("core.utils").override_req
 local use = packer.use
 
 return require("packer").startup(function()
@@ -109,7 +108,9 @@ return require("packer").startup(function()
             vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
          end, 0)
       end,
-      config = override_req("lspconfig", "plugins.configs.lspconfig"),
+      config = function()
+        require("plugins.configs.lspconfig")
+      end
    }
 
    use {
@@ -197,7 +198,7 @@ return require("packer").startup(function()
 
    use {
       "goolord/alpha-nvim",
-      disable = false,
+      disable = true,
       config = function()
          require "plugins.configs.alpha"
       end,
