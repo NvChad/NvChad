@@ -9,7 +9,6 @@ local use = packer.use
 return require("packer").startup(function()
    use { "nvim-lua/plenary.nvim" }
    use { "lewis6991/impatient.nvim" }
-   use { "nathom/filetype.nvim" }
 
    use {
       "wbthomason/packer.nvim",

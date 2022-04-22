@@ -51,9 +51,6 @@ local icon_styles = {
 
 local separator_style = icon_styles.default
 
--- setting false will trunacate some components of statusline
-local shortline = false
-
 -- Initialize the components table
 local components = {
    active = {},
@@ -87,9 +84,6 @@ local file_name = {
       end
       return " " .. icon .. " " .. filename .. " "
    end,
-   enabled = shortline or function(winid)
-      return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
-   end,
    hl = {
       fg = colors.white,
       bg = colors.lightbg,
@@ -105,10 +99,6 @@ local dir_name = {
    provider = function()
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       return "  " .. dir_name .. " "
-   end,
-
-   enabled = shortline or function(winid)
-      return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 80
    end,
 
    hl = {
@@ -155,9 +145,6 @@ local diff = {
 
 local git_branch = {
    provider = "git_branch",
-   enabled = shortline or function(winid)
-      return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
-   end,
    hl = {
       fg = colors.grey_fg2,
       bg = colors.statusline_bg,
@@ -236,9 +223,6 @@ local lsp_progress = {
 
       return ""
    end,
-   enabled = shortline or function(winid)
-      return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 80
-   end,
    hl = { fg = colors.green },
 }
 
@@ -249,9 +233,6 @@ local lsp_icon = {
       else
          return ""
       end
-   end,
-   enabled = shortline or function(winid)
-      return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 70
    end,
    hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
 }
@@ -324,9 +305,6 @@ local empty_space2 = {
 
 local separator_right = {
    provider = separator_style.left,
-   enabled = shortline or function(winid)
-      return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
-   end,
    hl = {
       fg = colors.grey,
       bg = colors.one_bg,
@@ -335,9 +313,6 @@ local separator_right = {
 
 local separator_right2 = {
    provider = separator_style.left,
-   enabled = shortline or function(winid)
-      return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
-   end,
    hl = {
       fg = colors.green,
       bg = colors.grey,
@@ -346,9 +321,6 @@ local separator_right2 = {
 
 local position_icon = {
    provider = separator_style.position_icon,
-   enabled = shortline or function(winid)
-      return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
-   end,
    hl = {
       fg = colors.black,
       bg = colors.green,
@@ -367,10 +339,6 @@ local current_line = {
       end
       local result, _ = math.modf((current_line / total_line) * 100)
       return " " .. result .. "%% "
-   end,
-
-   enabled = shortline or function(winid)
-      return vim.api.nvim_win_get_width(tonumber(winid) or 0) > 90
    end,
 
    hl = {
