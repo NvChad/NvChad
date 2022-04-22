@@ -18,6 +18,7 @@ return require("packer").startup(function()
 
    use {
       "NvChad/extensions",
+      branch = "customless",
       config = function()
          vim.schedule_wrap(require("nvchad.terminal").init())
       end,

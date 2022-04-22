@@ -1,6 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
+opt.laststatus = 3 -- global statusline
 opt.title = true
 opt.clipboard = "unnamedplus"
 opt.cmdheight = 1

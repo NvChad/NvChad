@@ -117,46 +117,6 @@ M.close_buffer = function(force)
    end
 end
 
--- hide statusline
--- tables fetched from load_config function
-M.hide_statusline = function()
-   local hidden = require("core.utils").load_config().plugins.options.statusline.hidden
-   local shown = require("core.utils").load_config().plugins.options.statusline.shown
-   local api = vim.api
-   local buftype = api.nvim_buf_get_option(0, "ft")
-
-   -- shown table from config has the highest priority
-   if vim.tbl_contains(shown, buftype) then
-      api.nvim_set_option("laststatus", 2)
-      return
-   end
-
-   if vim.tbl_contains(hidden, buftype) then
-      api.nvim_set_option("laststatus", 0)
-      return
-   end
-
-   api.nvim_set_option("laststatus", 2)
-end
-
-M.load_config = function()
-   local conf = require "core.default_config"
-
-   -- attempt to load and merge a user config
-   local chadrc_exists = vim.fn.filereadable(vim.fn.stdpath "config" .. "/lua/custom/chadrc.lua") == 1
-   if chadrc_exists then
-      -- merge user config if it exists and is a table; otherwise display an error
-      local user_config = require "custom.chadrc"
-      if type(user_config) == 'table' then
-         conf = vim.tbl_deep_extend("force", conf, user_config)
-      else
-         error("User config (chadrc.lua) *must* return a table!")
-      end
-   end
-
-   return conf
-end
-
 M.map = function(mode, keys, command, opt)
    local options = { noremap = true, silent = true }
    if opt then
