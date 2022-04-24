@@ -3,6 +3,7 @@ local utils = require "core.utils"
 local config = utils.load_config()
 local map_wrapper = utils.map
 
+local user_cmd = vim.api.nvim_create_user_command
 local maps = config.mappings
 local plugin_maps = maps.plugins
 local nvChad_options = config.options.nvChad
@@ -79,8 +80,12 @@ M.misc = function()
    end
 
    local function required_mappings()
-      map("n", maps.misc.cheatsheet, function () require('nvchad.cheatsheet').show()  end) -- show keybinds
-      map("n", maps.misc.close_buffer, function () require('core.utils').close_buffer()  end) -- close  buffer
+      map("n", maps.misc.cheatsheet, function()
+         require("nvchad.cheatsheet").show()
+      end) -- show keybinds
+      map("n", maps.misc.close_buffer, function()
+         require("core.utils").close_buffer()
+      end) -- close  buffer
       map("n", maps.misc.cp_whole_file, ":%y+ <CR>") -- copy whole file content
       map("n", maps.misc.new_buffer, ":enew <CR>") -- new buffer
       map("n", maps.misc.new_tab, ":tabnew <CR>") -- new tabs
@@ -93,19 +98,21 @@ M.misc = function()
       -- get out of terminal mode
       map("t", term_maps.esc_termmode, "<C-\\><C-n>")
       -- hide a term from within terminal mode
-      map("t", term_maps.esc_hide_termmode, function() require('nvchad.terminal').hide() end)
+      map("t", term_maps.esc_hide_termmode, function()
+         require("nvchad.terminal").hide()
+      end)
       -- pick a hidden term
       map("n", term_maps.pick_term, ":Telescope terms <CR>")
       -- Open terminals
       -- TODO this opens on top of an existing vert/hori term, fixme
-      map({ "n", "t" }, term_maps.new_horizontal, function ()
-            require('nvchad.terminal').new_or_toggle('horizontal', terminal_options.window.split_height)
+      map({ "n", "t" }, term_maps.new_horizontal, function()
+         require("nvchad.terminal").new_or_toggle("horizontal", terminal_options.window.split_height)
       end)
-      map({ "n", "t" }, term_maps.new_vertical, function ()
-           require('nvchad.terminal').new_or_toggle('vertical', terminal_options.window.vsplit_width)
+      map({ "n", "t" }, term_maps.new_vertical, function()
+         require("nvchad.terminal").new_or_toggle("vertical", terminal_options.window.vsplit_width)
       end)
-      map({ "n", "t" }, term_maps.new_float, function ()
-           require('nvchad.terminal').new_or_toggle('float')
+      map({ "n", "t" }, term_maps.new_float, function()
+         require("nvchad.terminal").new_or_toggle "float"
       end)
 
       -- spawns terminals
@@ -120,33 +127,33 @@ M.misc = function()
       -- terminal mappings end --
 
       -- Add Packer commands because we are not loading it at startup
-      vim.api.nvim_create_user_command("PackerClean", function ()
-        require('plugins')
-        require('packer').clean()
+      user_cmd("PackerClean", function()
+         require "plugins"
+         require("packer").clean()
       end, {})
-      vim.api.nvim_create_user_command("PackerClean", function ()
-        require 'plugins'
-        require('packer').clean()
+      user_cmd("PackerClean", function()
+         require "plugins"
+         require("packer").clean()
       end, {})
-      vim.api.nvim_create_user_command("PackerCompile", function ()
-        require 'plugins'
-        require('packer').compile()
+      user_cmd("PackerCompile", function()
+         require "plugins"
+         require("packer").compile()
       end, {})
-      vim.api.nvim_create_user_command("PackerInstall", function ()
-        require 'plugins'
-        require('packer').install()
+      user_cmd("PackerInstall", function()
+         require "plugins"
+         require("packer").install()
       end, {})
-      vim.api.nvim_create_user_command("PackerStatus", function ()
-        require 'plugins'
-        require('packer').status()
+      user_cmd("PackerStatus", function()
+         require "plugins"
+         require("packer").status()
       end, {})
-      vim.api.nvim_create_user_command("PackerSync", function ()
-        require 'plugins'
-        require('packer').sync()
+      user_cmd("PackerSync", function()
+         require "plugins"
+         require("packer").sync()
       end, {})
-      vim.api.nvim_create_user_command("PackerUpdate", function ()
-        require 'plugins'
-        require('packer').update()
+      user_cmd("PackerUpdate", function()
+         require "plugins"
+         require("packer").update()
       end, {})
 
       -- add NvChadUpdate command and mapping
@@ -170,35 +177,63 @@ end
 
 M.comment = function()
    local m = plugin_maps.comment.toggle
-   map("n", m, function () require('Comment.api').toggle_current_linewise() end)
-   map("v", m, function () require('Comment.api').toggle_linewise_op(vim.fn.visualmode()) end)
+   map("n", m, ":lua require('Comment.api').toggle_current_linewise()<CR>")
+   map("v", m, ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 end
 
 M.lspconfig = function()
    local m = plugin_maps.lspconfig
    -- See `:help vim.lsp.*` for documentation on any of the below functions
-   map("n", m.declaration, function () vim.lsp.buf.declaration() end)
-   map("n", m.definition, function () vim.lsp.buf.definition() end)
-   map("n", m.hover, function () vim.lsp.buf.hover() end)
-   map("n", m.implementation, function () vim.lsp.buf.implementation() end)
-   map("n", m.signature_help, function () vim.lsp.buf.signature_help() end)
-   map("n", m.type_definition, function () vim.lsp.buf.type_definition() end)
-   map("n", m.rename, function () vim.lsp.buf.rename() end)
-   map("n", m.code_action, function () vim.lsp.buf.code_action() end)
-   map("n", m.references, function () vim.lsp.buf.references() end)
-   map("n", m.float_diagnostics, function () vim.diagnostic.open_float() end)
-   map("n", m.goto_prev, function () vim.diagnostic.goto_prev() end)
-   map("n", m.goto_next, function () vim.diagnostic.goto_next() end)
-   map("n", m.set_loclist, function () vim.diagnostic.setloclist() end)
-   map("n", m.formatting, function () vim.lsp.buf.formatting() end)
-   map("n", m.add_workspace_folder, function ()
-     vim.lsp.buf.add_workspace_folder()
+   map("n", m.declaration, function()
+      vim.lsp.buf.declaration()
    end)
-   map("n", m.remove_workspace_folder, function ()
-     vim.lsp.buf.remove_workspace_folder()
+   map("n", m.definition, function()
+      vim.lsp.buf.definition()
    end)
-   map("n", m.list_workspace_folders, function ()
-     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+   map("n", m.hover, function()
+      vim.lsp.buf.hover()
+   end)
+   map("n", m.implementation, function()
+      vim.lsp.buf.implementation()
+   end)
+   map("n", m.signature_help, function()
+      vim.lsp.buf.signature_help()
+   end)
+   map("n", m.type_definition, function()
+      vim.lsp.buf.type_definition()
+   end)
+   map("n", m.rename, function()
+      vim.lsp.buf.rename()
+   end)
+   map("n", m.code_action, function()
+      vim.lsp.buf.code_action()
+   end)
+   map("n", m.references, function()
+      vim.lsp.buf.references()
+   end)
+   map("n", m.float_diagnostics, function()
+      vim.diagnostic.open_float()
+   end)
+   map("n", m.goto_prev, function()
+      vim.diagnostic.goto_prev()
+   end)
+   map("n", m.goto_next, function()
+      vim.diagnostic.goto_next()
+   end)
+   map("n", m.set_loclist, function()
+      vim.diagnostic.setloclist()
+   end)
+   map("n", m.formatting, function()
+      vim.lsp.buf.formatting()
+   end)
+   map("n", m.add_workspace_folder, function()
+      vim.lsp.buf.add_workspace_folder()
+   end)
+   map("n", m.remove_workspace_folder, function()
+      vim.lsp.buf.remove_workspace_folder()
+   end)
+   map("n", m.list_workspace_folders, function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
    end)
 end
 
