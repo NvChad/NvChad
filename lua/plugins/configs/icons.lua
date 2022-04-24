@@ -144,4 +144,4 @@ local icons = {
    },
 }
 
-devicons.setup(icons)
+devicons.setup { override = icons }

@@ -168,7 +168,7 @@ local plugins = {
 
    -- misc plugins
    ["windwp/nvim-autopairs"] = {
-      after = plugin_settings.options.autopairs.loadAfter,
+      after = "nvim-cmp",
       config = function()
          require("plugins.configs.others").autopairs()
       end,
