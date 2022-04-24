@@ -4,7 +4,6 @@ local config = utils.load_config()
 local map = utils.map
 
 local user_cmd = vim.api.nvim_create_user_command
-local maps = config.mappings
 
 local nvChad_options = config.options.nvChad
 local terminal_options = config.options.terminal
@@ -57,7 +56,7 @@ map("n", "<C-l>", "<C-w>l")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-j>", "<C-w>j")
 
-map("n", maps.misc.close_buffer, function()
+map("n", "<leader>x", function()
    require("core.utils").close_buffer()
 end) -- close  buffer
 
@@ -86,7 +85,7 @@ map({ "n", "t" }, "<leader>h", function()
    require("nvchad.terminal").new_or_toggle("horizontal", terminal_options.window.split_height)
 end)
 
-map({ "n", "t" }, "<leader>x", function()
+map({ "n", "t" }, "<leader>v", function()
    require("nvchad.terminal").new_or_toggle("vertical", terminal_options.window.vsplit_width)
 end)
 
@@ -138,7 +137,9 @@ map("n", "<leader>uu", ":NvChadUpdate <CR>")
 
 -- load overriden misc mappings
 
--- print(mappings.misc())
+if mappings.misc ~= nil and type(mappings.misc) == "function" then
+   mappings.misc()
+end
 
 local M = {}
 

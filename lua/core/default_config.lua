@@ -4,10 +4,8 @@
 local M = {}
 
 M.options = {
-   -- custom = {}
-   -- general nvim/vim options , check :h optionname to know more about an option
 
-   path = "",
+   path = "", -- path to your file that overrides core.options!
 
    -- NvChad options
    nvChad = {
@@ -49,15 +47,9 @@ M.options = {
 M.ui = {
    hl_override = "", -- path of your file that contains highlights
    colors = "", -- path of your file that contains colors
-   italic_comments = false,
    theme = "onedark", -- default theme
-
-   -- Change terminal bg to nvim theme's bg color so it'll match well
-   -- For Ex : if you have onedark set in nvchad, set onedark's bg color on your terminal
    transparency = false,
 }
-
----- PLUGIN OPTIONS ----
 
 M.plugins = {
    override = {},
@@ -67,22 +59,21 @@ M.plugins = {
          init_file = "plugins.packerInit",
       },
       lspconfig = {
-         setup_lspconf = "", -- path of file containing setups of different lsps
+         setup_lspconf = "", -- path of file linked to lspconfig
       },
       statusline = {
-         style = "default", -- default, round , slant , block , arrow
+         style = "default", -- default/round/slant/block/arrow
       },
    },
 
-   -- define/modify/remove plugins here :p
+   -- define/modify/remove plugins and  here :p
+   -- you can change their mappings too
    user = {},
 }
 
--- Don't use a single keymap twice
-
---- MAPPINGS ----
-
--- non plugin
-M.mappings = {}
+-- non plugin only
+M.mappings = {
+   misc = nil,
+}
 
 return M
