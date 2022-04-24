@@ -32,6 +32,8 @@ local function button(sc, txt, keybind)
    }
 end
 
+local options = {}
+
 local ascii = {
    "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
    "    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
@@ -46,7 +48,7 @@ local ascii = {
    "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
 }
 
-local header = {
+options.header = {
    type = "text",
    val = ascii,
    opts = {
@@ -55,7 +57,7 @@ local header = {
    },
 }
 
-local buttons = {
+options.buttons = {
    type = "group",
    val = {
       button("SPC f f", "  Find File  ", ":Telescope find_files<CR>"),
@@ -70,12 +72,14 @@ local buttons = {
    },
 }
 
+options = require("core.utils").load_override(options, "goolord/alpha-nvim")
+
 alpha.setup {
    layout = {
       { type = "padding", val = 9 },
-      header,
+      options.header,
       { type = "padding", val = 2 },
-      buttons,
+      options.buttons,
    },
    opts = {},
 }

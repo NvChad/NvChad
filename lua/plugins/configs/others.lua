@@ -25,12 +25,15 @@ M.better_escape = function()
       return
    end
 
-   escape.setup {
+   local options = {
       mapping = { "jk" }, -- a table with mappings to use
       timeout = vim.o.timeoutlen,
       clear_empty_lines = false, -- clear line after escaping if there is only whitespace
       keys = "<Esc>",
    }
+
+   options = require("core.utils").load_override(options, "max397574/better-escape.nvim")
+   escape.setup(options)
 end
 
 M.blankline = function()
@@ -60,6 +63,7 @@ M.blankline = function()
       show_first_indent_level = false,
    }
 
+   options = require("core.utils").load_override(options, "lukas-reineke/indent-blankline.nvim")
    blankline.setup(options)
 end
 
@@ -88,6 +92,8 @@ M.colorizer = function()
          mode = "background", -- Set the display mode.
       },
    }
+
+   options = require("core.utils").load_override(options, "NvChad/nvim-colorizer.lua")
 
    colorizer.setup(options["filetypes"], options["user_default_options"])
    vim.cmd "ColorizerReloadAllBuffers"
@@ -127,7 +133,7 @@ M.signature = function()
       return
    end
 
-   lsp_signature.setup {
+   local options = {
       bind = true,
       doc_lines = 0,
       floating_window = true,
@@ -144,6 +150,9 @@ M.signature = function()
       zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
       padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
    }
+
+   options = require("core.utils").load_override(options, "ray-x/lsp_signature.nvim")
+   lsp_signature.setup(options)
 end
 
 M.lsp_handlers = function()

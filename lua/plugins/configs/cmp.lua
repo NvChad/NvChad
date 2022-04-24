@@ -71,4 +71,7 @@ local options = {
    },
 }
 
+-- check for any override
+-- options = require("core.utils").load_override(options, "cmp")
+
 cmp.setup(options)

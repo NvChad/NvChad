@@ -4,7 +4,7 @@ if not present then
    return
 end
 
-telescope.setup {
+local options = {
    defaults = {
       vimgrep_arguments = {
          "rg",
@@ -52,6 +52,10 @@ telescope.setup {
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
    },
 }
+
+-- check for any override
+options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
+telescope.setup(options)
 
 -- load extensions
 local extensions = { "themes", "terms" }

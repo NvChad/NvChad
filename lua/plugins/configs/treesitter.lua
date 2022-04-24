@@ -4,7 +4,7 @@ if not present then
    return
 end
 
-treesitter.setup {
+local options = {
    ensure_installed = {
       "lua",
       "vim",
@@ -14,3 +14,8 @@ treesitter.setup {
       use_languagetree = true,
    },
 }
+
+-- check for any override
+options = require("core.utils").load_override(options, "nvim-treesitter/nvim-treesitter")
+
+treesitter.setup(options)

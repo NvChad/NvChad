@@ -60,6 +60,7 @@ M.ui = {
 ---- PLUGIN OPTIONS ----
 
 M.plugins = {
+   override = {},
 
    options = {
       packer = {
@@ -73,8 +74,8 @@ M.plugins = {
       },
    },
 
-   default_plugin_config_replace = {},
-   install = nil,
+   -- define/modify/remove plugins here :p
+   user = {},
 }
 
 -- Don't use a single keymap twice

@@ -195,7 +195,6 @@ local plugins = {
 
    -- file managing , picker etc
    ["kyazdani42/nvim-tree.lua"] = {
-      after = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 
       setup = function()
@@ -221,20 +220,11 @@ local plugins = {
    },
 }
 
-local user_plugins = require("core.utils").load_config().plugins.install or {}
-
--- merge default + user plugin table
-plugins = vim.tbl_deep_extend("force", plugins, user_plugins)
-
-local final_table = {}
-
-for key, _ in pairs(plugins) do
-   plugins[key][1] = key
-   final_table[#final_table + 1] = plugins[key]
-end
+-- merge user plugin table & default plugin table
+plugins = require("core.utils").plugin_list(plugins)
 
 return packer.startup(function(use)
-   for _, v in pairs(final_table) do
+   for _, v in pairs(plugins) do
       use(v)
    end
 end)
