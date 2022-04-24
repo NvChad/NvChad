@@ -146,10 +146,10 @@ M.load_config = function()
    if chadrc_exists then
       -- merge user config if it exists and is a table; otherwise display an error
       local user_config = require "custom.chadrc"
-      if type(user_config) == 'table' then
+      if type(user_config) == "table" then
          conf = vim.tbl_deep_extend("force", conf, user_config)
       else
-         error("User config (chadrc.lua) *must* return a table!")
+         error "User config (chadrc.lua) *must* return a table!"
       end
    end
 
@@ -296,26 +296,43 @@ end
 -- remove plugins specified by user from the plugins table
 M.remove_default_plugins = function(plugins)
    local removals = require("core.utils").load_config().plugins.default_plugin_remove or {}
+
    if not vim.tbl_isempty(removals) then
       for _, plugin in pairs(removals) do
          plugins[plugin] = nil
       end
    end
+
    return plugins
 end
 
 -- append user plugins to default plugins
 M.add_user_plugins = function(plugins)
    local user_Plugins = require("core.utils").load_config().plugins.install or {}
-   if type(user_Plugins) == "string"
-      then user_Plugins=require(user_Plugins)
+
+   if type(user_Plugins) == "string" then
+      user_Plugins = require(user_Plugins)
    end
+
    if not vim.tbl_isempty(user_Plugins) then
       for _, v in pairs(user_Plugins) do
          plugins[v[1]] = v
       end
    end
+
    return plugins
+end
+
+M.load_ifExists = function(module)
+   if #module ~= 0 then
+      if type(module) == "string" then
+         require(module)
+
+         -- file[1] = module & file[2] = function
+      elseif type(module) == "table" then
+         require(module[1])[module[2]]()
+      end
+   end
 end
 
 return M

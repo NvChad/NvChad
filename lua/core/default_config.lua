@@ -7,26 +7,7 @@ M.options = {
    -- custom = {}
    -- general nvim/vim options , check :h optionname to know more about an option
 
-   clipboard = "unnamedplus",
-   cmdheight = 1,
-   ruler = false,
-   hidden = true,
-   ignorecase = true,
-   smartcase = true,
-   mapleader = " ",
-   mouse = "a",
-   number = true,
-   numberwidth = 2,
-   relativenumber = false,
-   expandtab = true,
-   shiftwidth = 2,
-   smartindent = true,
-   tabstop = 8,
-   timeoutlen = 400,
-   updatetime = 250,
-   undofile = true,
-   fillchars = { eob = " " },
-   shadafile = vim.opt.shadafile,
+   path = "",
 
    -- NvChad options
    nvChad = {
@@ -52,13 +33,13 @@ M.options = {
          horizontal = "rightbelow",
          vertical = "rightbelow",
          float = {
-           relative = 'editor',
-           row = 0.3,
-           col = 0.25,
-           width = 0.5,
-           height = 0.4,
-           border = "single",
-         }
+            relative = "editor",
+            row = 0.3,
+            col = 0.25,
+            width = 0.5,
+            height = 0.4,
+            border = "single",
+         },
       },
    },
 }
