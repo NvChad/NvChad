@@ -6,7 +6,8 @@ end
 local default = {
    colors = require("colors").get(),
 }
-default = {
+
+bufferline.setup {
    options = {
       offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
       buffer_close_icon = "",
@@ -136,13 +137,3 @@ default = {
       },
    },
 }
-
-local M = {}
-M.setup = function(override_flag)
-   if override_flag then
-      default = require("core.utils").tbl_override_req("bufferline", default)
-   end
-   bufferline.setup(default)
-end
-
-return M
