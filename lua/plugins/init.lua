@@ -6,48 +6,42 @@ if not present then
 end
 
 local plugins = {
-   { "nvim-lua/plenary.nvim" },
-   { "lewis6991/impatient.nvim" },
-   { "nathom/filetype.nvim" },
+   ["nvim-lua/plenary.nvim"] = {},
+   ["lewis6991/impatient.nvim"] = {},
+   ["nathom/filetype.nvim"] = {},
 
-   {
-      "wbthomason/packer.nvim",
+   ["wbthomason/packer.nvim"] = {
       event = "VimEnter",
    },
 
-   {
-      "NvChad/extensions",
+   ["NvChad/extensions"] = {
       config = function()
          vim.schedule_wrap(require("nvchad.terminal").init())
       end,
    },
 
-   {
-      "NvChad/nvim-base16.lua",
+   ["NvChad/nvim-base16.lua"] = {
       after = "packer.nvim",
       config = function()
          require("colors").init()
       end,
    },
 
-   {
-      "kyazdani42/nvim-web-devicons",
+   ["kyazdani42/nvim-web-devicons"] = {
       after = "nvim-base16.lua",
       config = function()
          require "plugins.configs.icons"
       end,
    },
 
-   {
-      "feline-nvim/feline.nvim",
+   ["feline-nvim/feline.nvim"] = {
       after = "nvim-web-devicons",
       config = function()
          require "plugins.configs.statusline"
       end,
    },
 
-   {
-      "akinsho/bufferline.nvim",
+   ["akinsho/bufferline.nvim"] = {
       after = "nvim-web-devicons",
 
       setup = function()
@@ -59,24 +53,21 @@ local plugins = {
       end,
    },
 
-   {
-      "lukas-reineke/indent-blankline.nvim",
+   ["lukas-reineke/indent-blankline.nvim"] = {
       event = "BufRead",
       config = function()
          require("plugins.configs.others").blankline()
       end,
    },
 
-   {
-      "NvChad/nvim-colorizer.lua",
+   ["NvChad/nvim-colorizer.lua"] = {
       event = "BufRead",
       config = function()
          require("plugins.configs.others").colorizer()
       end,
    },
 
-   {
-      "nvim-treesitter/nvim-treesitter",
+   ["nvim-treesitter/nvim-treesitter"] = {
       event = { "BufRead", "BufNewFile" },
       run = ":TSUpdate",
       config = function()
@@ -85,8 +76,7 @@ local plugins = {
    },
 
    -- git stuff
-   {
-      "lewis6991/gitsigns.nvim",
+   ["lewis6991/gitsigns.nvim"] = {
       opt = true,
       config = function()
          require("plugins.configs.others").gitsigns()
@@ -98,8 +88,7 @@ local plugins = {
 
    -- lsp stuff
 
-   {
-      "neovim/nvim-lspconfig",
+   ["neovim/nvim-lspconfig"] = {
       module = "lspconfig",
       opt = true,
       setup = function()
@@ -114,24 +103,21 @@ local plugins = {
       end,
    },
 
-   {
-      "ray-x/lsp_signature.nvim",
+   ["ray-x/lsp_signature.nvim"] = {
       after = "nvim-lspconfig",
       config = function()
          require("plugins.configs.others").signature()
       end,
    },
 
-   {
-      "andymass/vim-matchup",
+   ["andymass/vim-matchup"] = {
       opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "vim-matchup"
       end,
    },
 
-   {
-      "max397574/better-escape.nvim",
+   ["max397574/better-escape.nvim"] = {
       event = "InsertCharPre",
       config = function()
          require("plugins.configs.others").better_escape()
@@ -140,22 +126,19 @@ local plugins = {
 
    -- load luasnips + cmp related in insert mode only
 
-   {
-      "rafamadriz/friendly-snippets",
+   ["rafamadriz/friendly-snippets"] = {
       module = "cmp_nvim_lsp",
       event = "InsertEnter",
    },
 
-   {
-      "hrsh7th/nvim-cmp",
+   ["hrsh7th/nvim-cmp"] = {
       after = "friendly-snippets",
       config = function()
          require "plugins.configs.cmp"
       end,
    },
 
-   {
-      "L3MON4D3/LuaSnip",
+   ["L3MON4D3/LuaSnip"] = {
       wants = "friendly-snippets",
       after = "nvim-cmp",
       config = function()
@@ -163,50 +146,42 @@ local plugins = {
       end,
    },
 
-   {
-      "saadparwaiz1/cmp_luasnip",
+   ["saadparwaiz1/cmp_luasnip"] = {
       after = "LuaSnip",
    },
 
-   {
-      "hrsh7th/cmp-nvim-lua",
+   ["hrsh7th/cmp-nvim-lua"] = {
       after = "cmp_luasnip",
    },
 
-   {
-      "hrsh7th/cmp-nvim-lsp",
+   ["hrsh7th/cmp-nvim-lsp"] = {
       after = "cmp-nvim-lua",
    },
 
-   {
-      "hrsh7th/cmp-buffer",
+   ["hrsh7th/cmp-buffer"] = {
       after = "cmp-nvim-lsp",
    },
 
-   {
-      "hrsh7th/cmp-path",
+   ["hrsh7th/cmp-path"] = {
       after = "cmp-buffer",
    },
 
    -- misc plugins
-   {
-      "windwp/nvim-autopairs",
+   ["windwp/nvim-autopairs"] = {
       after = plugin_settings.options.autopairs.loadAfter,
       config = function()
          require("plugins.configs.others").autopairs()
       end,
    },
 
-   {
-      "goolord/alpha-nvim",
+   ["goolord/alpha-nvim"] = {
       disable = true,
       config = function()
          require "plugins.configs.alpha"
       end,
    },
 
-   {
-      "numToStr/Comment.nvim",
+   ["numToStr/Comment.nvim"] = {
       module = "Comment",
       keys = { "gcc" },
 
@@ -220,8 +195,7 @@ local plugins = {
    },
 
    -- file managing , picker etc
-   {
-      "kyazdani42/nvim-tree.lua",
+   ["kyazdani42/nvim-tree.lua"] = {
       after = "nvim-web-devicons",
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
 
@@ -234,8 +208,7 @@ local plugins = {
       end,
    },
 
-   {
-      "nvim-telescope/telescope.nvim",
+   ["nvim-telescope/telescope.nvim"] = {
       module = "telescope",
       cmd = "Telescope",
 
@@ -249,15 +222,20 @@ local plugins = {
    },
 }
 
---label plugins for operational assistance
-plugins = require("core.utils").label_plugins(plugins)
---remove plugins specified in chadrc
-plugins = require("core.utils").remove_default_plugins(plugins)
---add plugins specified in chadrc
-plugins = require("core.utils").add_user_plugins(plugins)
+local user_plugins = require("core.utils").load_config().plugins.install or {}
+
+-- merge default + user plugin table
+plugins = vim.tbl_deep_extend("force", plugins, user_plugins)
+
+local final_table = {}
+
+for key, _ in pairs(plugins) do
+   plugins[key][1] = key
+   final_table[#final_table + 1] = plugins[key]
+end
 
 return packer.startup(function(use)
-   for _, v in pairs(plugins) do
+   for _, v in pairs(final_table) do
       use(v)
    end
 end)
