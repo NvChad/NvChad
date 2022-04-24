@@ -8,7 +8,6 @@ end
 local plugins = {
    ["nvim-lua/plenary.nvim"] = {},
    ["lewis6991/impatient.nvim"] = {},
-   ["nathom/filetype.nvim"] = {},
 
    ["wbthomason/packer.nvim"] = {
       event = "VimEnter",

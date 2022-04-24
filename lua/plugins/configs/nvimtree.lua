@@ -47,7 +47,6 @@ local options = {
    disable_netrw = true,
    hijack_netrw = true,
    ignore_ft_on_setup = { "dashboard" },
-   auto_close = false,
    open_on_tab = false,
    hijack_cursor = true,
    hijack_unnamed_buffer_when_opening = false,
@@ -57,7 +56,6 @@ local options = {
       update_cwd = false,
    },
    view = {
-      allow_resize = true,
       side = "left",
       width = 25,
       hide_root_folder = true,
