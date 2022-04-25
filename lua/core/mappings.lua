@@ -20,8 +20,8 @@ local cmd = vim.cmd
 map("v", "p", "p:let @+=@0<CR>")
 
 -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
--- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
--- empty mode is same as using :map
+-- http<cmd> ://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+-- empty mode is same as using <cmd> :map
 -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
 
 map({ "n", "x", "o" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
@@ -30,7 +30,7 @@ map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true 
 map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 
 -- use ESC to turn off search highlighting
-map("n", "<Esc>", ":noh <CR>")
+map("n", "<Esc>", "<cmd> :noh <CR>")
 
 -- don't yank text on cut ( x )
 if not nvChad_options.copy_cut then
@@ -60,12 +60,12 @@ map("n", "<leader>x", function()
    require("core.utils").close_buffer()
 end) -- close  buffer
 
-map("n", "<C-c>", ":%y+ <CR>") -- copy whole file content
-map("n", "<S-t>", ":enew <CR>") -- new buffer
-map("n", "<C-t>b", ":tabnew <CR>") -- new tabs
-map("n", "<leader>n", ":set nu! <CR>")
-map("n", "<leader>rn", ":set rnu! <CR>") -- relative line numbers
-map("n", "<C-s>", ":w <CR>") -- ctrl + s to save file
+map("n", "<C-c>", "<cmd> :%y+ <CR>") -- copy whole file content
+map("n", "<S-t>", "<cmd> :enew <CR>") -- new buffer
+map("n", "<C-t>b", "<cmd> :tabnew <CR>") -- new tabs
+map("n", "<leader>n", "<cmd> :set nu! <CR>")
+map("n", "<leader>rn", "<cmd> :set rnu! <CR>") -- relative line numbers
+map("n", "<C-s>", "<cmd> :w <CR>") -- ctrl + s to save file
 
 -- terminal mappings
 
@@ -78,7 +78,7 @@ map("t", { "JK" }, function()
 end)
 
 -- pick a hidden term
-map("n", "<leader>W", ":Telescope terms <CR>")
+map("n", "<leader>W", "<cmd> :Telescope terms <CR>")
 
 -- TODO this opens on top of an existing vert/hori term, fixme
 map({ "n", "t" }, "<leader>h", function()
@@ -93,47 +93,31 @@ map({ "n", "t" }, "<A-i>", function()
    require("nvchad.terminal").new_or_toggle "float"
 end)
 
-map("n", "<A-h>", ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>")
-map("n", "<A-v>", ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>")
-map("n", "<leader>w", ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>")
+map("n", "<A-h>", "<cmd> :execute 15 .. 'new +terminal' | let b<cmd> :term_type = 'hori' | startinsert <CR>")
+map("n", "<A-v>", "<cmd> :execute 'vnew +terminal' | let b<cmd> :term_type = 'vert' | startinsert <CR>")
+map("n", "<leader>w", "<cmd> :execute 'terminal' | let b<cmd> :term_type = 'wind' | startinsert <CR>")
 
 -- terminal mappings end --
 
 -- Add Packer commands because we are not loading it at startup
 
-user_cmd("PackerClean", function()
-   require "plugins"
-   require("packer").clean()
-end, {})
+local packer_cmd = function(callback)
+   return function()
+      require "plugins"
+      require("packer")[callback]()
+   end
+end
 
-user_cmd("PackerCompile", function()
-   require "plugins"
-   require("packer").compile()
-end, {})
-
-user_cmd("PackerInstall", function()
-   require "plugins"
-   require("packer").install()
-end, {})
-
-user_cmd("PackerStatus", function()
-   require "plugins"
-   require("packer").status()
-end, {})
-
-user_cmd("PackerSync", function()
-   require "plugins"
-   require("packer").sync()
-end, {})
-
-user_cmd("PackerUpdate", function()
-   require "plugins"
-   require("packer").update()
-end, {})
+user_cmd("PackerClean", packer_cmd "clean", {})
+user_cmd("PackerCompile", packer_cmd "compile", {})
+user_cmd("PackerInstall", packer_cmd "install", {})
+user_cmd("PackerStatus", packer_cmd "status", {})
+user_cmd("PackerSync", packer_cmd "sync", {})
+user_cmd("PackerUpdate", packer_cmd "update", {})
 
 -- add NvChadUpdate command and mapping
 cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
-map("n", "<leader>uu", ":NvChadUpdate <CR>")
+map("n", "<leader>uu", "<cmd> :NvChadUpdate <CR>")
 
 -- load overriden misc mappings
 
@@ -146,17 +130,17 @@ local M = {}
 -- below are all plugin related mappings
 
 M.bufferline = function()
-   map("n", "<TAB>", ":BufferLineCycleNext <CR>")
-   map("n", "<S-Tab>", ":BufferLineCyclePrev <CR>")
+   map("n", "<TAB>", "<cmd> :BufferLineCycleNext <CR>")
+   map("n", "<S-Tab>", "<cmd> :BufferLineCyclePrev <CR>")
 end
 
 M.comment = function()
-   map("n", "<leader>/", ":lua require('Comment.api').toggle_current_linewise()<CR>")
-   map("v", "<leader>/", ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
+   map("n", "<leader>/", "<cmd> :lua require('Comment.api').toggle_current_linewise()<CR>")
+   map("v", "<leader>/", "<cmd> :lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 end
 
 M.lspconfig = function()
-   -- See `:help vim.lsp.*` for documentation on any of the below functions
+   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
    map("n", "gD", function()
       vim.lsp.buf.declaration()
    end)
@@ -227,20 +211,20 @@ M.lspconfig = function()
 end
 
 M.nvimtree = function()
-   map("n", "<C-n>", ":NvimTreeToggle <CR>")
-   map("n", "<leader>e", ":NvimTreeFocus <CR>")
+   map("n", "<C-n>", "<cmd> :NvimTreeToggle <CR>")
+   map("n", "<leader>e", "<cmd> :NvimTreeFocus <CR>")
 end
 
 M.telescope = function()
-   map("n", "<leader>fb", ":Telescope buffers <CR>")
-   map("n", "<leader>ff", ":Telescope find_files <CR>")
-   map("n", "<leader>fa", ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-   map("n", "<leader>cm", ":Telescope git_commits <CR>")
-   map("n", "<leader>gt", ":Telescope git_status <CR>")
-   map("n", "<leader>fh", ":Telescope help_tags <CR>")
-   map("n", "<leader>fw", ":Telescope live_grep <CR>")
-   map("n", "<leader>fo", ":Telescope oldfiles <CR>")
-   map("n", "<leader>th", ":Telescope themes <CR>")
+   map("n", "<leader>fb", "<cmd> :Telescope buffers <CR>")
+   map("n", "<leader>ff", "<cmd> :Telescope find_files <CR>")
+   map("n", "<leader>fa", "<cmd> :Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+   map("n", "<leader>cm", "<cmd> :Telescope git_commits <CR>")
+   map("n", "<leader>gt", "<cmd> :Telescope git_status <CR>")
+   map("n", "<leader>fh", "<cmd> :Telescope help_tags <CR>")
+   map("n", "<leader>fw", "<cmd> :Telescope live_grep <CR>")
+   map("n", "<leader>fo", "<cmd> :Telescope oldfiles <CR>")
+   map("n", "<leader>th", "<cmd> :Telescope themes <CR>")
 end
 
 return M
