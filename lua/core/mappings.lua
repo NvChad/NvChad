@@ -40,7 +40,7 @@ M.misc = function()
       map_wrapper("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 
       -- use ESC to turn off search highlighting
-      map_wrapper("n", "<Esc>", ":noh <CR>")
+      map_wrapper("n", "<Esc>", "<cmd>:noh <CR>")
 
       -- center cursor when moving (goto_definition)
    end
@@ -86,12 +86,12 @@ M.misc = function()
       map("n", maps.misc.close_buffer, function()
          require("core.utils").close_buffer()
       end) -- close  buffer
-      map("n", maps.misc.cp_whole_file, ":%y+ <CR>") -- copy whole file content
-      map("n", maps.misc.new_buffer, ":enew <CR>") -- new buffer
-      map("n", maps.misc.new_tab, ":tabnew <CR>") -- new tabs
-      map("n", maps.misc.lineNR_toggle, ":set nu! <CR>")
-      map("n", maps.misc.lineNR_rel_toggle, ":set rnu! <CR>") -- relative line numbers
-      map("n", maps.misc.save_file, ":w <CR>") -- ctrl + s to save file
+      map("n", maps.misc.cp_whole_file, "<cmd>:%y+ <CR>") -- copy whole file content
+      map("n", maps.misc.new_buffer, "<cmd>:enew <CR>") -- new buffer
+      map("n", maps.misc.new_tab, "<cmd>:tabnew <CR>") -- new tabs
+      map("n", maps.misc.lineNR_toggle, "<cmd>:set nu! <CR>")
+      map("n", maps.misc.lineNR_rel_toggle, "<cmd>:set rnu! <CR>") -- relative line numbers
+      map("n", maps.misc.save_file, "<cmd>:w <CR>") -- ctrl + s to save file
 
       -- terminal mappings --
       local term_maps = maps.terminal
@@ -102,7 +102,7 @@ M.misc = function()
          require("nvchad.terminal").hide()
       end)
       -- pick a hidden term
-      map("n", term_maps.pick_term, ":Telescope terms <CR>")
+      map("n", term_maps.pick_term, "<cmd>:Telescope terms <CR>")
       -- Open terminals
       -- TODO this opens on top of an existing vert/hori term, fixme
       map({ "n", "t" }, term_maps.new_horizontal, function()
@@ -119,10 +119,10 @@ M.misc = function()
       map(
          "n",
          term_maps.spawn_horizontal,
-         ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>"
+         "<cmd>:execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>"
       )
-      map("n", term_maps.spawn_vertical, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>")
-      map("n", term_maps.spawn_window, ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>")
+      map("n", term_maps.spawn_vertical, "<cmd>:execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>")
+      map("n", term_maps.spawn_window, "<cmd>:execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>")
 
       -- terminal mappings end --
 
@@ -142,7 +142,7 @@ M.misc = function()
 
       -- add NvChadUpdate command and mapping
       cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
-      map("n", maps.misc.update_nvchad, ":NvChadUpdate <CR>")
+      map("n", maps.misc.update_nvchad, "<cmd>:NvChadUpdate <CR>")
    end
 
    non_config_mappings()
@@ -155,14 +155,14 @@ end
 M.bufferline = function()
    local m = plugin_maps.bufferline
 
-   map("n", m.next_buffer, ":BufferLineCycleNext <CR>")
-   map("n", m.prev_buffer, ":BufferLineCyclePrev <CR>")
+   map("n", m.next_buffer, "<cmd>:BufferLineCycleNext <CR>")
+   map("n", m.prev_buffer, "<cmd>:BufferLineCyclePrev <CR>")
 end
 
 M.comment = function()
    local m = plugin_maps.comment.toggle
-   map("n", m, "<cmd>:lua require('Comment.api').toggle_current_linewise()<CR>")
-   map("v", m, "<cmd>:lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
+   map("n", m, ":lua require('Comment.api').toggle_current_linewise()")
+   map('v', m, "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 end
 
 M.lspconfig = function()
@@ -192,22 +192,22 @@ M.lspconfig = function()
 end
 
 M.nvimtree = function()
-   map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>")
-   map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
+   map("n", plugin_maps.nvimtree.toggle, "<cmd>:NvimTreeToggle <CR>")
+   map("n", plugin_maps.nvimtree.focus, "<cmd>:NvimTreeFocus <CR>")
 end
 
 M.telescope = function()
    local m = plugin_maps.telescope
 
-   map("n", m.buffers, ":Telescope buffers <CR>")
-   map("n", m.find_files, ":Telescope find_files <CR>")
-   map("n", m.find_hiddenfiles, ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
-   map("n", m.git_commits, ":Telescope git_commits <CR>")
-   map("n", m.git_status, ":Telescope git_status <CR>")
-   map("n", m.help_tags, ":Telescope help_tags <CR>")
-   map("n", m.live_grep, ":Telescope live_grep <CR>")
-   map("n", m.oldfiles, ":Telescope oldfiles <CR>")
-   map("n", m.themes, ":Telescope themes <CR>")
+   map("n", m.buffers, "<cmd>:Telescope buffers <CR>")
+   map("n", m.find_files, "<cmd>:Telescope find_files <CR>")
+   map("n", m.find_hiddenfiles, "<cmd>:Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+   map("n", m.git_commits, "<cmd>:Telescope git_commits <CR>")
+   map("n", m.git_status, "<cmd>:Telescope git_status <CR>")
+   map("n", m.help_tags, "<cmd>:Telescope help_tags <CR>")
+   map("n", m.live_grep, "<cmd>:Telescope live_grep <CR>")
+   map("n", m.oldfiles, "<cmd>:Telescope oldfiles <CR>")
+   map("n", m.themes, "<cmd>:Telescope themes <CR>")
 end
 
 return M

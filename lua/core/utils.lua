@@ -163,7 +163,7 @@ M.map = function(mode, keys, command, opt)
      for _, keymap in ipairs(keys) do M.map(mode, keymap, command, opt) end
      return
    end
-  vim.keymap.set(mode, keys, command, opt)
+   vim.keymap.set(mode, keys, command, opt)
 end
 
 -- load plugin after entering vim ui
