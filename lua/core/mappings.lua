@@ -127,34 +127,18 @@ M.misc = function()
       -- terminal mappings end --
 
       -- Add Packer commands because we are not loading it at startup
-      user_cmd("PackerClean", function()
-         require "plugins"
-         require("packer").clean()
-      end, {})
-      user_cmd("PackerClean", function()
-         require "plugins"
-         require("packer").clean()
-      end, {})
-      user_cmd("PackerCompile", function()
-         require "plugins"
-         require("packer").compile()
-      end, {})
-      user_cmd("PackerInstall", function()
-         require "plugins"
-         require("packer").install()
-      end, {})
-      user_cmd("PackerStatus", function()
-         require "plugins"
-         require("packer").status()
-      end, {})
-      user_cmd("PackerSync", function()
-         require "plugins"
-         require("packer").sync()
-      end, {})
-      user_cmd("PackerUpdate", function()
-         require "plugins"
-         require("packer").update()
-      end, {})
+      local packer_cmd = function(callback)
+        return function()
+          require "plugins"
+          require("packer")[callback]()
+        end
+      end
+      user_cmd("PackerClean", packer_cmd("clean"), {})
+      user_cmd("PackerCompile", packer_cmd("compile"), {})
+      user_cmd("PackerInstall", packer_cmd("install"), {})
+      user_cmd("PackerStatus", packer_cmd("status"), {})
+      user_cmd("PackerSync", packer_cmd("sync"), {})
+      user_cmd("PackerUpdate", packer_cmd("update"), {})
 
       -- add NvChadUpdate command and mapping
       cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
@@ -177,63 +161,33 @@ end
 
 M.comment = function()
    local m = plugin_maps.comment.toggle
-   map("n", m, ":lua require('Comment.api').toggle_current_linewise()<CR>")
-   map("v", m, ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
+   map("n", m, "<cmd>:lua require('Comment.api').toggle_current_linewise()<CR>")
+   map("v", m, "<cmd>:lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 end
 
 M.lspconfig = function()
+  local buf = vim.lsp.buf
+  local diagnostic = vim.diagnostic
    local m = plugin_maps.lspconfig
    -- See `:help vim.lsp.*` for documentation on any of the below functions
-   map("n", m.declaration, function()
-      vim.lsp.buf.declaration()
-   end)
-   map("n", m.definition, function()
-      vim.lsp.buf.definition()
-   end)
-   map("n", m.hover, function()
-      vim.lsp.buf.hover()
-   end)
-   map("n", m.implementation, function()
-      vim.lsp.buf.implementation()
-   end)
-   map("n", m.signature_help, function()
-      vim.lsp.buf.signature_help()
-   end)
-   map("n", m.type_definition, function()
-      vim.lsp.buf.type_definition()
-   end)
-   map("n", m.rename, function()
-      vim.lsp.buf.rename()
-   end)
-   map("n", m.code_action, function()
-      vim.lsp.buf.code_action()
-   end)
-   map("n", m.references, function()
-      vim.lsp.buf.references()
-   end)
-   map("n", m.float_diagnostics, function()
-      vim.diagnostic.open_float()
-   end)
-   map("n", m.goto_prev, function()
-      vim.diagnostic.goto_prev()
-   end)
-   map("n", m.goto_next, function()
-      vim.diagnostic.goto_next()
-   end)
-   map("n", m.set_loclist, function()
-      vim.diagnostic.setloclist()
-   end)
-   map("n", m.formatting, function()
-      vim.lsp.buf.formatting()
-   end)
-   map("n", m.add_workspace_folder, function()
-      vim.lsp.buf.add_workspace_folder()
-   end)
-   map("n", m.remove_workspace_folder, function()
-      vim.lsp.buf.remove_workspace_folder()
-   end)
+   map("n", m.declaration, function() buf.declaration() end)
+   map("n", m.definition, function() buf.definition() end)
+   map("n", m.hover, function() buf.hover() end)
+   map("n", m.implementation, function() buf.implementation() end)
+   map("n", m.signature_help, function() buf.signature_help() end)
+   map("n", m.type_definition, function() buf.type_definition() end)
+   map("n", m.rename, function() buf.rename() end)
+   map("n", m.code_action, function() buf.code_action() end)
+   map("n", m.references, function() buf.references() end)
+   map("n", m.float_diagnostics, function() diagnostic.open_float() end)
+   map("n", m.goto_prev, function() diagnostic.goto_prev() end)
+   map("n", m.goto_next, function() diagnostic.goto_next() end)
+   map("n", m.set_loclist, function() diagnostic.setloclist() end)
+   map("n", m.formatting, function() buf.formatting() end)
+   map("n", m.add_workspace_folder, function() buf.add_workspace_folder() end)
+   map("n", m.remove_workspace_folder, function() buf.remove_workspace_folder() end)
    map("n", m.list_workspace_folders, function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      print(vim.inspect(buf.list_workspace_folders()))
    end)
 end
 
