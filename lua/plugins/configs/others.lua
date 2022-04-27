@@ -1,36 +1,49 @@
 local M = {}
 
-local chadrc_config = require("core.utils").load_config()
-
-M.autopairs = function(override_flag)
+M.autopairs = function()
    local present1, autopairs = pcall(require, "nvim-autopairs")
-   local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+   local present2, cmp = pcall(require, "cmp")
 
-   if present1 and present2 then
-      local default = { fast_wrap = {} }
-      if override_flag then
-         default = require("core.utils").tbl_override_req("nvim_autopairs", default)
-      end
-      autopairs.setup(default)
-
-      local cmp = require "cmp"
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+   if not present1 and present2 then
+      return
    end
-end
 
-M.better_escape = function(override_flag)
-   local default = {
-     mapping = chadrc_config.mappings.plugins.better_escape.esc_insertmode,
-     timeout = chadrc_config.plugins.options.esc_insertmode_timeout,
+   autopairs.setup {
+      fast_wrap = {},
+      disable_filetype = { "TelescopePrompt", "vim" },
    }
-   if override_flag then
-     default = require("core.utils").tbl_override_req("better_escape", default)
-   end
-   require("better_escape").setup(default)
+
+   local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+
+   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
-M.blankline = function(override_flag)
-   local default = {
+M.better_escape = function()
+   local present, escape = pcall(require, "better_escape")
+
+   if not present then
+      return
+   end
+
+   local options = {
+      mapping = { "jk" }, -- a table with mappings to use
+      timeout = vim.o.timeoutlen,
+      clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+      keys = "<Esc>",
+   }
+
+   options = require("core.utils").load_override(options, "max397574/better-escape.nvim")
+   escape.setup(options)
+end
+
+M.blankline = function()
+   local present, blankline = pcall(require, "indent_blankline")
+
+   if not present then
+      return
+   end
+
+   local options = {
       indentLine_enabled = 1,
       char = "▏",
       filetype_exclude = {
@@ -49,93 +62,97 @@ M.blankline = function(override_flag)
       show_trailing_blankline_indent = false,
       show_first_indent_level = false,
    }
-   if override_flag then
-      default = require("core.utils").tbl_override_req("indent_blankline", default)
-   end
-   require("indent_blankline").setup(default)
+
+   options = require("core.utils").load_override(options, "lukas-reineke/indent-blankline.nvim")
+   blankline.setup(options)
 end
 
-M.colorizer = function(override_flag)
+M.colorizer = function()
    local present, colorizer = pcall(require, "colorizer")
-   if present then
-      local default = {
-         filetypes = {
-            "*",
-         },
-         user_default_options = {
-            RGB = true, -- #RGB hex codes
-            RRGGBB = true, -- #RRGGBB hex codes
-            names = false, -- "Name" codes like Blue
-            RRGGBBAA = false, -- #RRGGBBAA hex codes
-            rgb_fn = false, -- CSS rgb() and rgba() functions
-            hsl_fn = false, -- CSS hsl() and hsla() functions
-            css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-            css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
 
-            -- Available modes: foreground, background
-            mode = "background", -- Set the display mode.
-         },
-      }
-      if override_flag then
-         default = require("core.utils").tbl_override_req("nvim_colorizer", default)
-      end
-      colorizer.setup(default["filetypes"], default["user_default_options"])
-      vim.cmd "ColorizerReloadAllBuffers"
+   if not present then
+      return
    end
+
+   local options = {
+      filetypes = {
+         "*",
+      },
+      user_default_options = {
+         RGB = true, -- #RGB hex codes
+         RRGGBB = true, -- #RRGGBB hex codes
+         names = false, -- "Name" codes like Blue
+         RRGGBBAA = false, -- #RRGGBBAA hex codes
+         rgb_fn = false, -- CSS rgb() and rgba() functions
+         hsl_fn = false, -- CSS hsl() and hsla() functions
+         css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+         css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+
+         -- Available modes: foreground, background
+         mode = "background", -- Set the display mode.
+      },
+   }
+
+   options = require("core.utils").load_override(options, "NvChad/nvim-colorizer.lua")
+
+   colorizer.setup(options["filetypes"], options["user_default_options"])
+   vim.cmd "ColorizerReloadAllBuffers"
 end
 
-M.comment = function(override_flag)
+M.comment = function()
    local present, nvim_comment = pcall(require, "Comment")
-   if present then
-      local default = {}
-      if override_flag then
-         default = require("core.utils").tbl_override_req("nvim_comment", default)
-      end
-      nvim_comment.setup(default)
+
+   if not present then
+      return
    end
+
+   nvim_comment.setup()
 end
 
-M.luasnip = function(override_flag)
+M.luasnip = function()
    local present, luasnip = pcall(require, "luasnip")
+
    if present then
-      local default = {
-         history = true,
-         updateevents = "TextChanged,TextChangedI",
-      }
-      if override_flag then
-         default = require("core.utils").tbl_override_req("luasnip", default)
-      end
-      luasnip.config.set_config(default)
-      require("luasnip/loaders/from_vscode").load { paths = chadrc_config.plugins.options.luasnip.snippet_path }
-      require("luasnip/loaders/from_vscode").load()
+      return
    end
+
+   luasnip.config.set_config {
+      history = true,
+      updateevents = "TextChanged,TextChangedI",
+   }
+
+   -- add snippet path here!
+   require("luasnip/loaders/from_vscode").load { paths = {} }
+   require("luasnip/loaders/from_vscode").load()
 end
 
-M.signature = function(override_flag)
-   local present, lspsignature = pcall(require, "lsp_signature")
-   if present then
-      local default = {
-         bind = true,
-         doc_lines = 0,
-         floating_window = true,
-         fix_pos = true,
-         hint_enable = true,
-         hint_prefix = " ",
-         hint_scheme = "String",
-         hi_parameter = "Search",
-         max_height = 22,
-         max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
-         handler_opts = {
-            border = "single", -- double, single, shadow, none
-         },
-         zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
-         padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
-      }
-      if override_flag then
-         default = require("core.utils").tbl_override_req("signature", default)
-      end
-      lspsignature.setup(default)
+M.signature = function()
+   local present, lsp_signature = pcall(require, "lsp_signature")
+
+   if not present then
+      return
    end
+
+   local options = {
+      bind = true,
+      doc_lines = 0,
+      floating_window = true,
+      fix_pos = true,
+      hint_enable = true,
+      hint_prefix = " ",
+      hint_scheme = "String",
+      hi_parameter = "Search",
+      max_height = 22,
+      max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+      handler_opts = {
+         border = "single", -- double, single, shadow, none
+      },
+      zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
+      padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
+   }
+
+   options = require("core.utils").load_override(options, "ray-x/lsp_signature.nvim")
+   lsp_signature.setup(options)
 end
 
 M.lsp_handlers = function()
@@ -178,23 +195,22 @@ M.lsp_handlers = function()
    end
 end
 
-M.gitsigns = function(override_flag)
+M.gitsigns = function()
    local present, gitsigns = pcall(require, "gitsigns")
-   if present then
-      local default = {
-         signs = {
-            add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
-            change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
-            delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
-            topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-            changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
-         },
-      }
-      if override_flag then
-         default = require("core.utils").tbl_override_req("gitsigns", default)
-      end
-      gitsigns.setup(default)
+
+   if not present then
+      return
    end
+
+   gitsigns.setup {
+      signs = {
+         add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
+         change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
+         delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
+         topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+         changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+      },
+   }
 end
 
 return M
