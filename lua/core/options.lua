@@ -82,8 +82,4 @@ vim.schedule(function()
 end)
 
 -- load user options if the file exists
-
-local load_ifExists = require("core.utils").load_ifExists
-local user_options = require("core.utils").load_config().options.path
-
-load_ifExists(user_options)
+require("core.utils").load_config().options.user()

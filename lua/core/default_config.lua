@@ -5,9 +5,9 @@ local M = {}
 
 M.options = {
 
-   path = "", -- path to file that overrides core.options
+   -- load your options here or load module with options1
+   user = function() end,
 
-   -- NvChad options
    nvChad = {
       -- updater
       update_url = "https://github.com/NvChad/NvChad",
