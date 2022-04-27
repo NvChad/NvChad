@@ -45,7 +45,7 @@ M.plugins = {
 
 -- non plugin only
 M.mappings = {
-   misc = nil,
+   misc = function() end,
 }
 
 return M

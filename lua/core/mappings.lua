@@ -1,15 +1,8 @@
 local utils = require "core.utils"
 
-local config = utils.load_config()
 local map = utils.map
-
-local user_cmd = vim.api.nvim_create_user_command
-
-local nvChad_options = config.options.nvChad
-
-local mappings = config.mappings
-
 local cmd = vim.cmd
+local user_cmd = vim.api.nvim_create_user_command
 
 -- This is a wrapper function made to disable a plugin mapping from chadrc
 -- If keys are nil, false or empty string, then the mapping will be not applied
@@ -87,10 +80,7 @@ cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
 map("n", "<leader>uu", "<cmd> :NvChadUpdate <CR>")
 
 -- load overriden misc mappings
-
-if mappings.misc ~= nil and type(mappings.misc) == "function" then
-   mappings.misc()
-end
+require("core.utils").load_config().mappings.misc()
 
 local M = {}
 
