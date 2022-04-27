@@ -147,6 +147,6 @@ local options = {
 }
 
 -- check for any override
--- options = require("core.utils").load_override(options, "nvim_web_devicons")
+options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons")
 
 devicons.setup(options)
