@@ -6,7 +6,6 @@ local map = utils.map
 local user_cmd = vim.api.nvim_create_user_command
 
 local nvChad_options = config.options.nvChad
-local terminal_options = config.options.terminal
 
 local mappings = config.mappings
 
@@ -32,16 +31,6 @@ map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 -- use ESC to turn off search highlighting
 map("n", "<Esc>", "<cmd> :noh <CR>")
 
--- don't yank text on cut ( x )
-if not nvChad_options.copy_cut then
-   map({ "n", "v" }, "x", '"_x')
-end
-
--- don't yank text on delete ( dd )
-if not nvChad_options.copy_del then
-   map({ "n", "v" }, "d", '"_d')
-end
-
 -- move cursor within insert mode
 map("i", "<C-h>", "<Left>")
 map("i", "<C-e>", "<End>")
@@ -58,7 +47,7 @@ map("n", "<C-j>", "<C-w>j")
 
 map("n", "<leader>x", function()
    require("core.utils").close_buffer()
-end) -- close  buffer
+end)
 
 map("n", "<C-c>", "<cmd> :%y+ <CR>") -- copy whole file content
 map("n", "<S-t>", "<cmd> :enew <CR>") -- new buffer
@@ -76,28 +65,6 @@ map("t", { "jk" }, "<C-\\><C-n>")
 map("t", { "JK" }, function()
    require("nvchad.terminal").hide()
 end)
-
--- pick a hidden term
-map("n", "<leader>W", "<cmd> :Telescope terms <CR>")
-
--- TODO this opens on top of an existing vert/hori term, fixme
-map({ "n", "t" }, "<leader>h", function()
-   require("nvchad.terminal").new_or_toggle("horizontal", terminal_options.window.split_height)
-end)
-
-map({ "n", "t" }, "<leader>v", function()
-   require("nvchad.terminal").new_or_toggle("vertical", terminal_options.window.vsplit_width)
-end)
-
-map({ "n", "t" }, "<A-i>", function()
-   require("nvchad.terminal").new_or_toggle "float"
-end)
-
-map("n", "<A-h>", "<cmd> :execute 15 .. 'new +terminal' | let b<cmd> :term_type = 'hori' | startinsert <CR>")
-map("n", "<A-v>", "<cmd> :execute 'vnew +terminal' | let b<cmd> :term_type = 'vert' | startinsert <CR>")
-map("n", "<leader>w", "<cmd> :execute 'terminal' | let b<cmd> :term_type = 'wind' | startinsert <CR>")
-
--- terminal mappings end --
 
 -- Add Packer commands because we are not loading it at startup
 
@@ -225,6 +192,9 @@ M.telescope = function()
    map("n", "<leader>fw", "<cmd> :Telescope live_grep <CR>")
    map("n", "<leader>fo", "<cmd> :Telescope oldfiles <CR>")
    map("n", "<leader>th", "<cmd> :Telescope themes <CR>")
+
+   -- pick a hidden term
+   map("n", "<leader>W", "<cmd> :Telescope terms <CR>")
 end
 
 return M

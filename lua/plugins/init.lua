@@ -13,16 +13,18 @@ local plugins = {
       event = "VimEnter",
    },
 
-   ["NvChad/extensions"] = {
-      config = function()
-         vim.schedule_wrap(require("nvchad.terminal").init())
-      end,
-   },
+   ["NvChad/extensions"] = {},
 
    ["NvChad/nvim-base16.lua"] = {
       after = "packer.nvim",
       config = function()
          require("colors").init()
+      end,
+   },
+
+   ["NvChad/nvterm"] = {
+      config = function()
+         require "plugins.configs.nvterm"
       end,
    },
 
