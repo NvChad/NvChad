@@ -192,7 +192,7 @@ local plugins = {
       "numToStr/Comment.nvim",
       disable = not plugin_settings.status.comment,
       module = "Comment",
-      keys = { "gcc" },
+      keys = { "gc", "gb" },
       config = override_req("nvim_comment", "plugins.configs.others", "comment"),
       setup = function()
          require("core.mappings").comment()
