@@ -1,31 +1,34 @@
 local opt = vim.opt
 local g = vim.g
 
-local options = require("core.utils").load_config().options
+-- use filetype.lua instead of filetype.vim
+g.did_load_filetypes = 0
+g.do_filetype_lua = 1
 
+opt.laststatus = 3 -- global statusline
 opt.title = true
-opt.clipboard = options.clipboard
-opt.cmdheight = options.cmdheight
+opt.clipboard = "unnamedplus"
+opt.cmdheight = 1
 opt.cul = true -- cursor line
 
 -- Indentline
-opt.expandtab = options.expandtab
-opt.shiftwidth = options.shiftwidth
-opt.smartindent = options.smartindent
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.smartindent = true
 
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = options.fillchars
+opt.fillchars = { eob = " " }
 
-opt.hidden = options.hidden
-opt.ignorecase = options.ignorecase
-opt.smartcase = options.smartcase
-opt.mouse = options.mouse
+opt.hidden = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.mouse = "a"
 
 -- Numbers
-opt.number = options.number
-opt.numberwidth = options.numberwidth
-opt.relativenumber = options.relativenumber
-opt.ruler = options.ruler
+opt.number = true
+opt.numberwidth = 2
+opt.relativenumber = false
+opt.ruler = false
 
 -- disable nvim intro
 opt.shortmess:append "sI"
@@ -33,22 +36,22 @@ opt.shortmess:append "sI"
 opt.signcolumn = "yes"
 opt.splitbelow = true
 opt.splitright = true
-opt.tabstop = options.tabstop
+opt.tabstop = 8
 opt.termguicolors = true
-opt.timeoutlen = options.timeoutlen
-opt.undofile = options.undofile
+opt.timeoutlen = 400
+opt.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
-opt.updatetime = options.updatetime
+opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
-
-g.mapleader = options.mapleader
+g.mapleader = " "
 
 -- disable some builtin vim plugins
-local disabled_built_ins = {
+
+local default_plugins = {
    "2html_plugin",
    "getscript",
    "getscriptPlugin",
@@ -69,13 +72,14 @@ local disabled_built_ins = {
    "zipPlugin",
 }
 
-for _, plugin in pairs(disabled_built_ins) do
+for _, plugin in pairs(default_plugins) do
    g["loaded_" .. plugin] = 1
 end
 
---Defer loading shada until after startup_
-vim.opt.shadafile = "NONE"
 vim.schedule(function()
-   vim.opt.shadafile = require("core.utils").load_config().options.shadafile
+   vim.opt.shadafile = "NONE"
    vim.cmd [[ silent! rsh ]]
 end)
+
+-- load user options if the file exists
+require("core.utils").load_config().options.user()

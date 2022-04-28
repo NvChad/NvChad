@@ -4,7 +4,7 @@ if not present then
    return
 end
 
-local default = {
+local options = {
    defaults = {
       vimgrep_arguments = {
          "rg",
@@ -53,21 +53,15 @@ local default = {
    },
 }
 
-local M = {}
-M.setup = function(override_flag)
-   if override_flag then
-      default = require("core.utils").tbl_override_req("telescope", default)
+-- check for any override
+options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
+telescope.setup(options)
+
+-- load extensions
+local extensions = { "themes", "terms" }
+
+pcall(function()
+   for _, ext in ipairs(extensions) do
+      telescope.load_extension(ext)
    end
-
-   telescope.setup(default)
-
-   local extensions = { "themes", "terms" }
-
-   pcall(function()
-      for _, ext in ipairs(extensions) do
-         telescope.load_extension(ext)
-      end
-   end)
-end
-
-return M
+end)

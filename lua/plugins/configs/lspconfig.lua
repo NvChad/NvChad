@@ -1,4 +1,5 @@
 local M = {}
+
 require("plugins.configs.others").lsp_handlers()
 
 function M.on_attach(client, bufnr)

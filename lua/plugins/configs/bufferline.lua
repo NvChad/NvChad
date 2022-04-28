@@ -3,10 +3,9 @@ if not present then
    return
 end
 
-local default = {
-   colors = require("colors").get(),
-}
-default = {
+local colors = require("colors").get()
+
+local options = {
    options = {
       offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
       buffer_close_icon = "",
@@ -46,103 +45,98 @@ default = {
 
    highlights = {
       background = {
-         guifg = default.colors.grey_fg,
-         guibg = default.colors.black2,
+         guifg = colors.grey_fg,
+         guibg = colors.black2,
       },
 
       -- buffers
       buffer_selected = {
-         guifg = default.colors.white,
-         guibg = default.colors.black,
+         guifg = colors.white,
+         guibg = colors.black,
          gui = "bold",
       },
       buffer_visible = {
-         guifg = default.colors.light_grey,
-         guibg = default.colors.black2,
+         guifg = colors.light_grey,
+         guibg = colors.black2,
       },
 
       -- for diagnostics = "nvim_lsp"
       error = {
-         guifg = default.colors.light_grey,
-         guibg = default.colors.black2,
+         guifg = colors.light_grey,
+         guibg = colors.black2,
       },
       error_diagnostic = {
-         guifg = default.colors.light_grey,
-         guibg = default.colors.black2,
+         guifg = colors.light_grey,
+         guibg = colors.black2,
       },
 
       -- close buttons
       close_button = {
-         guifg = default.colors.light_grey,
-         guibg = default.colors.black2,
+         guifg = colors.light_grey,
+         guibg = colors.black2,
       },
       close_button_visible = {
-         guifg = default.colors.light_grey,
-         guibg = default.colors.black2,
+         guifg = colors.light_grey,
+         guibg = colors.black2,
       },
       close_button_selected = {
-         guifg = default.colors.red,
-         guibg = default.colors.black,
+         guifg = colors.red,
+         guibg = colors.black,
       },
       fill = {
-         guifg = default.colors.grey_fg,
-         guibg = default.colors.black2,
+         guifg = colors.grey_fg,
+         guibg = colors.black2,
       },
       indicator_selected = {
-         guifg = default.colors.black,
-         guibg = default.colors.black,
+         guifg = colors.black,
+         guibg = colors.black,
       },
 
       -- modified
       modified = {
-         guifg = default.colors.red,
-         guibg = default.colors.black2,
+         guifg = colors.red,
+         guibg = colors.black2,
       },
       modified_visible = {
-         guifg = default.colors.red,
-         guibg = default.colors.black2,
+         guifg = colors.red,
+         guibg = colors.black2,
       },
       modified_selected = {
-         guifg = default.colors.green,
-         guibg = default.colors.black,
+         guifg = colors.green,
+         guibg = colors.black,
       },
 
       -- separators
       separator = {
-         guifg = default.colors.black2,
-         guibg = default.colors.black2,
+         guifg = colors.black2,
+         guibg = colors.black2,
       },
       separator_visible = {
-         guifg = default.colors.black2,
-         guibg = default.colors.black2,
+         guifg = colors.black2,
+         guibg = colors.black2,
       },
       separator_selected = {
-         guifg = default.colors.black2,
-         guibg = default.colors.black2,
+         guifg = colors.black2,
+         guibg = colors.black2,
       },
 
       -- tabs
       tab = {
-         guifg = default.colors.light_grey,
-         guibg = default.colors.one_bg3,
+         guifg = colors.light_grey,
+         guibg = colors.one_bg3,
       },
       tab_selected = {
-         guifg = default.colors.black2,
-         guibg = default.colors.nord_blue,
+         guifg = colors.black2,
+         guibg = colors.nord_blue,
       },
       tab_close = {
-         guifg = default.colors.red,
-         guibg = default.colors.black,
+         guifg = colors.red,
+         guibg = colors.black,
       },
    },
 }
 
-local M = {}
-M.setup = function(override_flag)
-   if override_flag then
-      default = require("core.utils").tbl_override_req("bufferline", default)
-   end
-   bufferline.setup(default)
-end
+-- check for any override
+options = require("core.utils").load_override(options, "akinsho/bufferline.nvim")
 
-return M
+bufferline.setup(options)
