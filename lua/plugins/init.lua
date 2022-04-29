@@ -222,6 +222,7 @@ local plugins = {
    },
 }
 
+plugins = require("core.utils").remove_default_plugins(plugins)
 -- merge user plugin table & default plugin table
 plugins = require("core.utils").plugin_list(plugins)
 

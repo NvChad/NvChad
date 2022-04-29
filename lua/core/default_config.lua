@@ -26,6 +26,7 @@ M.ui = {
 
 M.plugins = {
    override = {},
+   remove = {},
 
    options = {
       packer = {
