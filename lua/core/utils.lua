@@ -3,12 +3,11 @@ local M = {}
 local cmd = vim.cmd
 
 M.close_buffer = function(force)
-   if force or not vim.bo.buflisted or vim.bo.buftype == "nofile" then
-      cmd ":bd!"
-   else
-      -- switch to previous buffer then close current buffer
-      vim.cmd(":bp | bd" .. vim.fn.bufnr())
-   end
+  if vim.bo.buftype == "terminal" then vim.api.nvim_win_hide(0) return end
+  force = force or not vim.bo.buflisted or vim.bo.buftype == "nofile"
+  -- if not force, change to prev buf and then close current
+  local close_cmd = force and ":bd!" or ":bp | bd" .. vim.fn.bufnr()
+  vim.cmd(close_cmd)
 end
 
 M.load_config = function()
