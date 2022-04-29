@@ -96,73 +96,79 @@ M.comment = function()
    map("v", "<leader>/", "<esc><cmd> :lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 end
 
-M.lspconfig = function()
+M.lspconfig = function(bufnr)
    -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
-   map("n", "gD", function()
+
+   local buf_map = function(...)
+      local key, lhs, rhs = ...
+      map(key, lhs, rhs, { buffer = bufnr })
+   end
+
+   buf_map("n", "gD", function()
       vim.lsp.buf.declaration()
    end)
 
-   map("n", "gd", function()
+   buf_map("n", "gd", function()
       vim.lsp.buf.definition()
    end)
 
-   map("n", "K", function()
+   buf_map("n", "K", function()
       vim.lsp.buf.hover()
    end)
 
-   map("n", "gi", function()
+   buf_map("n", "gi", function()
       vim.lsp.buf.implementation()
    end)
 
-   map("n", "<C-k>", function()
+   buf_map("n", "<C-k>", function()
       vim.lsp.buf.signature_help()
    end)
 
-   map("n", "<space>D", function()
+   buf_map("n", "<space>D", function()
       vim.lsp.buf.type_definition()
    end)
 
-   map("n", "<space>ra", function()
+   buf_map("n", "<space>ra", function()
       vim.lsp.buf.rename()
    end)
 
-   map("n", "<space>ca", function()
+   buf_map("n", "<space>ca", function()
       vim.lsp.buf.code_action()
    end)
 
-   map("n", "gr", function()
+   buf_map("n", "gr", function()
       vim.lsp.buf.references()
    end)
 
-   map("n", "<space>f", function()
+   buf_map("n", "<space>f", function()
       vim.diagnostic.open_float()
    end)
 
-   map("n", "[d", function()
+   buf_map("n", "[d", function()
       vim.diagnostic.goto_prev()
    end)
 
-   map("n", "d]", function()
+   buf_map("n", "d]", function()
       vim.diagnostic.goto_next()
    end)
 
-   map("n", "<space>q", function()
+   buf_map("n", "<space>q", function()
       vim.diagnostic.setloclist()
    end)
 
-   map("n", "<space>fm", function()
+   buf_map("n", "<space>fm", function()
       vim.lsp.buf.formatting()
    end)
 
-   map("n", "<space>wa", function()
+   buf_map("n", "<space>wa", function()
       vim.lsp.buf.add_workspace_folder()
    end)
 
-   map("n", "<space>wr", function()
+   buf_map("n", "<space>wr", function()
       vim.lsp.buf.remove_workspace_folder()
    end)
 
-   map("n", "<space>wl", function()
+   buf_map("n", "<space>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
    end)
 end
