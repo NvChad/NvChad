@@ -49,7 +49,8 @@ local icon_styles = {
    },
 }
 
-local separator_style = icon_styles.default
+local separator = require("core.utils").load_config().plugins.options.statusline.separator_style
+local separator_style = icon_styles[separator]
 
 -- Initialize the components table
 local components = {

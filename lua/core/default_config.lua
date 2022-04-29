@@ -36,7 +36,7 @@ M.plugins = {
          setup_lspconf = "", -- path of lspconfig file
       },
       statusline = {
-         style = "default", -- default/round/slant/block/arrow
+         separator_style = "default", -- default/round/slant/block/arrow
       },
    },
 
