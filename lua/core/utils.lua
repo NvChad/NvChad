@@ -92,6 +92,15 @@ M.load_ifExists = function(module)
    end
 end
 
+-- remove plugins defined in chadrc
+M.remove_default_plugins = function(plugins)
+   local removals = require("core.utils").load_config().plugins.remove or {}
+   if not vim.tbl_isempty(removals) then
+      for _, plugin in pairs(removals) do plugins[plugin] = nil end
+   end
+   return plugins
+end
+
 -- merge default/user plugin tables
 
 M.plugin_list = function(default_plugins)
