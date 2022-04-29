@@ -302,6 +302,7 @@ return packer.startup(function()
       end,
    }
 
+   --[[
    use {
       "numToStr/Comment.nvim",
       disable = not plugin_settings.status.comment,
@@ -312,6 +313,7 @@ return packer.startup(function()
          require("core.mappings").comment()
       end,
    }
+   --]]
 
    -- file managing , picker etc
    use {
