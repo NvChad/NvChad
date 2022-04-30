@@ -68,6 +68,22 @@ local packer_cmd = function(callback)
    end
 end
 
+-- snapshot stuff
+user_cmd("PackerSnapshot", function(info)
+   require "plugins"
+   require("packer").snapshot(info.args)
+end, { nargs = "+" })
+
+user_cmd("PackerSnapshotDelete", function(info)
+   require "plugins"
+   require("packer.snapshot").delete(info.args)
+end, { nargs = "+" })
+
+user_cmd("PackerSnapshotRollback", function(info)
+   require "plugins"
+   require("packer").rollback(info.args)
+end, { nargs = "+" })
+
 user_cmd("PackerClean", packer_cmd "clean", {})
 user_cmd("PackerCompile", packer_cmd "compile", {})
 user_cmd("PackerInstall", packer_cmd "install", {})

@@ -31,6 +31,7 @@ M.plugins = {
    options = {
       packer = {
          init_file = "plugins.packerInit",
+         snapshot = nil,
       },
       lspconfig = {
          setup_lspconf = "", -- path of lspconfig file
