@@ -112,7 +112,7 @@ end
 M.luasnip = function()
    local present, luasnip = pcall(require, "luasnip")
 
-   if present then
+   if not present then
       return
    end
 
@@ -121,9 +121,7 @@ M.luasnip = function()
       updateevents = "TextChanged,TextChangedI",
    }
 
-   -- add snippet path here!
-   require("luasnip/loaders/from_vscode").load { paths = {} }
-   require("luasnip/loaders/from_vscode").load()
+   require("luasnip.loaders.from_vscode").lazy_load()
 end
 
 M.signature = function()
