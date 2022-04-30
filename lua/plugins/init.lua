@@ -78,6 +78,7 @@ local plugins = {
 
    -- git stuff
    ["lewis6991/gitsigns.nvim"] = {
+      opt = true,
       config = function()
          require("plugins.configs.others").gitsigns()
       end,
@@ -90,6 +91,7 @@ local plugins = {
 
    ["neovim/nvim-lspconfig"] = {
       module = "lspconfig",
+      opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "nvim-lspconfig"
          -- reload the current file so lsp actually starts for it
@@ -110,6 +112,7 @@ local plugins = {
    },
 
    ["andymass/vim-matchup"] = {
+      opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "vim-matchup"
       end,
