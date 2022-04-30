@@ -77,7 +77,7 @@ for _, plugin in pairs(default_plugins) do
 end
 
 vim.schedule(function()
-   vim.opt.shadafile = "NONE"
+   vim.opt.shadafile = vim.fn.expand "$HOME" .. "/.local/share/nvim/shada/main.shada"
    vim.cmd [[ silent! rsh ]]
 end)
 
