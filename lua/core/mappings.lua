@@ -24,6 +24,12 @@ map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 -- use ESC to turn off search highlighting
 map("n", "<Esc>", "<cmd> :noh <CR>")
 
+-- Swap booleans with <leader>sb
+-- S: Swap B: Boolean
+map("n", "<leader>sb", function()
+   require("core.utils").swap_boolean()
+end)
+
 -- move cursor within insert mode
 map("i", "<C-h>", "<Left>")
 map("i", "<C-e>", "<End>")

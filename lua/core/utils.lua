@@ -150,4 +150,11 @@ M.load_override = function(default_table, plugin_name)
    return default_table
 end
 
+-- Swap boolean with ease
+M.swap_boolean = function()
+   local c = vim.api.nvim_get_current_line()
+   local subs = c:match "true" and c:gsub("true", "false") or c:gsub("false", "true")
+   vim.api.nvim_set_current_line(subs)
+end
+
 return M
