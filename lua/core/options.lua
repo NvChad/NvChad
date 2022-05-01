@@ -5,6 +5,7 @@ local g = vim.g
 g.did_load_filetypes = 0
 g.do_filetype_lua = 1
 
+opt.confirm = true
 opt.laststatus = 3 -- global statusline
 opt.title = true
 opt.clipboard = "unnamedplus"
