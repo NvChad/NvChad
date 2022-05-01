@@ -54,11 +54,6 @@ map("n", "<C-s>", "<cmd> :w <CR>") -- ctrl + s to save file
 -- get out of terminal mode
 map("t", { "jk" }, "<C-\\><C-n>")
 
--- hide a term from within terminal mode
-map("t", { "JK" }, function()
-   require("nvchad.terminal").hide()
-end)
-
 -- Add Packer commands because we are not loading it at startup
 
 local packer_cmd = function(callback)
