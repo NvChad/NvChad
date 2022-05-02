@@ -18,7 +18,11 @@ local plugins = {
    ["NvChad/nvim-base16.lua"] = {
       after = "packer.nvim",
       config = function()
-         require("colors").init()
+         local ok, base16 = pcall(require, "base16")
+
+         if ok then
+            base16.load_theme()
+         end
       end,
    },
 

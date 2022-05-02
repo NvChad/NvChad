@@ -19,6 +19,7 @@ M.options = {
 
 M.ui = {
    hl_override = {},
+   changed_themes = {},
    colors = "", -- path of your file that contains colors
    theme = "onedark", -- default theme
    transparency = false,

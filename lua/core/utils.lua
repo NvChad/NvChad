@@ -1,7 +1,5 @@
 local M = {}
 
-local cmd = vim.cmd
-
 M.close_buffer = function(force)
    if vim.bo.buftype == "terminal" then
       vim.api.nvim_win_hide(0)
@@ -66,43 +64,6 @@ M.packer_lazy_load = function(plugin, timer)
       vim.defer_fn(function()
          require("packer").loader(plugin)
       end, timer)
-   end
-end
-
--- Highlights functions
-
--- Define bg color
--- @param group Group
--- @param color Color
-
-M.bg = function(group, col)
-   cmd("hi " .. group .. " guibg=" .. col)
-end
-
--- Define fg color
--- @param group Group
--- @param color Color
-M.fg = function(group, col)
-   cmd("hi " .. group .. " guifg=" .. col)
-end
-
--- Define bg and fg color
--- @param group Group
--- @param fgcol Fg Color
--- @param bgcol Bg Color
-M.fg_bg = function(group, fgcol, bgcol)
-   cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
-end
-
-M.load_ifExists = function(module)
-   if #module ~= 0 then
-      if type(module) == "string" then
-         require(module)
-
-         -- file[1] = module & file[2] = function
-      elseif type(module) == "table" then
-         require(module[1])[module[2]]()
-      end
    end
 end
 
