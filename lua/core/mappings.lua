@@ -129,15 +129,15 @@ M.lspconfig = function()
       vim.lsp.buf.signature_help()
    end)
 
-   map("n", "<space>D", function()
+   map("n", "<leader>D", function()
       vim.lsp.buf.type_definition()
    end)
 
-   map("n", "<space>ra", function()
+   map("n", "<leader>ra", function()
       vim.lsp.buf.rename()
    end)
 
-   map("n", "<space>ca", function()
+   map("n", "<leader>ca", function()
       vim.lsp.buf.code_action()
    end)
 
@@ -145,7 +145,7 @@ M.lspconfig = function()
       vim.lsp.buf.references()
    end)
 
-   map("n", "<space>f", function()
+   map("n", "<leader>f", function()
       vim.diagnostic.open_float()
    end)
 
@@ -157,23 +157,23 @@ M.lspconfig = function()
       vim.diagnostic.goto_next()
    end)
 
-   map("n", "<space>q", function()
+   map("n", "<leader>q", function()
       vim.diagnostic.setloclist()
    end)
 
-   map("n", "<space>fm", function()
+   map("n", "<leader>fm", function()
       vim.lsp.buf.formatting()
    end)
 
-   map("n", "<space>wa", function()
+   map("n", "<leader>wa", function()
       vim.lsp.buf.add_workspace_folder()
    end)
 
-   map("n", "<space>wr", function()
+   map("n", "<leader>wr", function()
       vim.lsp.buf.remove_workspace_folder()
    end)
 
-   map("n", "<space>wl", function()
+   map("n", "<leader>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
    end)
 end
