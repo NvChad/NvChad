@@ -15,7 +15,7 @@ local plugins = {
 
    ["NvChad/extensions"] = {},
 
-   ["NvChad/nvim-base16.lua"] = {
+   ["NvChad/base46"] = {
       after = "packer.nvim",
       config = function()
          local ok, base16 = pcall(require, "base16")
@@ -33,7 +33,7 @@ local plugins = {
    },
 
    ["kyazdani42/nvim-web-devicons"] = {
-      after = "nvim-base16.lua",
+      after = "base46",
       config = function()
          require "plugins.configs.icons"
       end,
