@@ -1,7 +1,7 @@
 local icons = {
    Text = "",
    Method = "",
-   Function = "",
+   Function = "",
    Constructor = "",
    Field = "ﰠ",
    Variable = "",
