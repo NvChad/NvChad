@@ -93,17 +93,22 @@ local plugins = {
 
    -- lsp stuff
 
-   ["neovim/nvim-lspconfig"] = {
-      module = "lspconfig",
+   ["williamboman/nvim-lsp-installer"] = {
       opt = true,
       setup = function()
-         require("core.utils").packer_lazy_load "nvim-lspconfig"
+         require("core.utils").packer_lazy_load "nvim-lsp-installer"
          -- reload the current file so lsp actually starts for it
          vim.defer_fn(function()
             vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
          end, 0)
       end,
+   },
+
+   ["neovim/nvim-lspconfig"] = {
+      after = "nvim-lsp-installer",
+      module = "lspconfig",
       config = function()
+         require "plugins.configs.lsp_installer"
          require "plugins.configs.lspconfig"
       end,
    },
@@ -202,7 +207,6 @@ local plugins = {
    -- file managing , picker etc
    ["kyazdani42/nvim-tree.lua"] = {
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-
       setup = function()
          require("core.mappings").nvimtree()
       end,

@@ -1,3 +1,9 @@
+local present, lspconfig = pcall(require, "lspconfig")
+
+if not present then
+   return
+end
+
 local M = {}
 
 require("plugins.configs.others").lsp_handlers()
@@ -23,6 +29,27 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
       "documentation",
       "detail",
       "additionalTextEdits",
+   },
+}
+
+lspconfig.sumneko_lua.setup {
+   on_attach = M.on_attach,
+   capabilities = capabilities,
+
+   settings = {
+      Lua = {
+         diagnostics = {
+            globals = { "vim" },
+         },
+         workspace = {
+            library = {
+               [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+               [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+            },
+            maxPreload = 100000,
+            preloadFileSize = 10000,
+         },
+      },
    },
 }
 
