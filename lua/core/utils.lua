@@ -79,9 +79,23 @@ M.remove_default_plugins = function(plugins)
 end
 
 -- merge default/user plugin tables
-
 M.plugin_list = function(default_plugins)
    local user_plugins = require("core.utils").load_config().plugins.user
+
+   -- require if string is present
+   local ok
+   if type(user_plugins) == "string" then
+      ok, user_plugins = pcall(require, user_plugins)
+      if ok and not type(user_plugins) == "table" then
+         user_plugins = {}
+      end
+   end
+   if type(plug_override) == "string" then
+      ok, plug_override = pcall(require, plug_override)
+      if ok and not type(plug_override) == "table" then
+         plug_override = {}
+      end
+   end
 
    -- merge default + user plugin table
    default_plugins = vim.tbl_deep_extend("force", default_plugins, user_plugins)
@@ -99,13 +113,11 @@ end
 
 M.load_override = function(default_table, plugin_name)
    local user_table = require("core.utils").load_config().plugins.override[plugin_name]
-
    if type(user_table) == "table" then
       default_table = vim.tbl_deep_extend("force", default_table, user_table)
    else
       default_table = default_table
    end
-
    return default_table
 end
 
