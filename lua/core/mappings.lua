@@ -193,6 +193,7 @@ M.telescope = function()
    map("n", "<leader>fw", "<cmd> :Telescope live_grep <CR>")
    map("n", "<leader>fo", "<cmd> :Telescope oldfiles <CR>")
    map("n", "<leader>th", "<cmd> :Telescope themes <CR>")
+   map("n", "<leader>tk", "<cmd> :Telescope keymaps <CR>")
 
    -- pick a hidden term
    map("n", "<leader>W", "<cmd> :Telescope terms <CR>")
