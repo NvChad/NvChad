@@ -1,9 +1,8 @@
 local present, bufferline = pcall(require, "bufferline")
+
 if not present then
    return
 end
-
-local colors = require("base16").get_colors "base_30"
 
 local options = {
    options = {
@@ -24,6 +23,7 @@ local options = {
       separator_style = "thin",
       always_show_bufferline = true,
       diagnostics = false,
+      themable = true,
       custom_filter = function(buf_number)
          -- Func to filter out our managed/persistent split terms
          local present_type, type = pcall(function()
@@ -41,98 +41,6 @@ local options = {
 
          return true
       end,
-   },
-
-   highlights = {
-      background = {
-         guifg = colors.grey_fg,
-         guibg = colors.black2,
-      },
-
-      -- buffers
-      buffer_selected = {
-         guifg = colors.white,
-         guibg = colors.black,
-         gui = "bold",
-      },
-      buffer_visible = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
-      },
-
-      -- for diagnostics = "nvim_lsp"
-      error = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
-      },
-      error_diagnostic = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
-      },
-
-      -- close buttons
-      close_button = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
-      },
-      close_button_visible = {
-         guifg = colors.light_grey,
-         guibg = colors.black2,
-      },
-      close_button_selected = {
-         guifg = colors.red,
-         guibg = colors.black,
-      },
-      fill = {
-         guifg = colors.grey_fg,
-         guibg = colors.black2,
-      },
-      indicator_selected = {
-         guifg = colors.black,
-         guibg = colors.black,
-      },
-
-      -- modified
-      modified = {
-         guifg = colors.red,
-         guibg = colors.black2,
-      },
-      modified_visible = {
-         guifg = colors.red,
-         guibg = colors.black2,
-      },
-      modified_selected = {
-         guifg = colors.green,
-         guibg = colors.black,
-      },
-
-      -- separators
-      separator = {
-         guifg = colors.black2,
-         guibg = colors.black2,
-      },
-      separator_visible = {
-         guifg = colors.black2,
-         guibg = colors.black2,
-      },
-      separator_selected = {
-         guifg = colors.black2,
-         guibg = colors.black2,
-      },
-
-      -- tabs
-      tab = {
-         guifg = colors.light_grey,
-         guibg = colors.one_bg3,
-      },
-      tab_selected = {
-         guifg = colors.black2,
-         guibg = colors.nord_blue,
-      },
-      tab_close = {
-         guifg = colors.red,
-         guibg = colors.black,
-      },
    },
 }
 
