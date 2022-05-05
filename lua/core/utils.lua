@@ -82,7 +82,6 @@ end
 
 M.plugin_list = function(default_plugins)
    local user_plugins = require("core.utils").load_config().plugins.user
-   local plug_override = require("core.default_config").plugins.override
 
    -- merge default + user plugin table
    default_plugins = vim.tbl_deep_extend("force", default_plugins, user_plugins)
@@ -93,7 +92,6 @@ M.plugin_list = function(default_plugins)
       default_plugins[key][1] = key
 
       final_table[#final_table + 1] = default_plugins[key]
-      plug_override[#plug_override + 1] = default_plugins[key]
    end
 
    return final_table
