@@ -3,7 +3,7 @@ if not present then
    return
 end
 
-local colors = require("base16").get_colors("base_30")
+local colors = require("base16").get_colors "base_30"
 
 local options = {
    options = {
