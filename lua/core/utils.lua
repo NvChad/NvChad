@@ -84,16 +84,11 @@ M.plugin_list = function(default_plugins)
 
    -- require if string is present
    local ok
+
    if type(user_plugins) == "string" then
       ok, user_plugins = pcall(require, user_plugins)
       if ok and not type(user_plugins) == "table" then
          user_plugins = {}
-      end
-   end
-   if type(plug_override) == "string" then
-      ok, plug_override = pcall(require, plug_override)
-      if ok and not type(plug_override) == "table" then
-         plug_override = {}
       end
    end
 
