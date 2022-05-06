@@ -69,7 +69,6 @@ local options = {
       end, {
          "i",
          "s",
-         "c",
       }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
          if cmp.visible() then
@@ -82,7 +81,6 @@ local options = {
       end, {
          "i",
          "s",
-         "c",
       }),
    },
    sources = {
