@@ -4,6 +4,7 @@ local g = vim.g
 -- use filetype.lua instead of filetype.vim
 g.did_load_filetypes = 0
 g.do_filetype_lua = 1
+g.toggle_theme_icon = "   "
 
 opt.confirm = true
 opt.laststatus = 3 -- global statusline

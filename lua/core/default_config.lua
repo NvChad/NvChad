@@ -20,7 +20,8 @@ M.options = {
 M.ui = {
    hl_override = {},
    changed_themes = {},
-   colors = "", -- path of your file that contains colors
+   colors = {}, -- dynamically generated, never edit this in chadrc
+   theme_toggle = { "onedark", "one_light" },
    theme = "onedark", -- default theme
    transparency = false,
 }
