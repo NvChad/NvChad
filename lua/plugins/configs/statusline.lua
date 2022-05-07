@@ -4,12 +4,13 @@ if not present then
    return
 end
 
-local colors = require("base46").get_colors "base_30"
+local options = {
+   colors = require("base46").get_colors "base_30",
+   lsp = require "feline.providers.lsp",
+   lsp_severity = vim.diagnostic.severity,
+}
 
-local lsp = require "feline.providers.lsp"
-local lsp_severity = vim.diagnostic.severity
-
-local icon_styles = {
+options.icon_styles = {
    default = {
       left = "",
       right = " ",
@@ -50,32 +51,26 @@ local icon_styles = {
    },
 }
 
-local separator = require("core.utils").load_config().plugins.options.statusline.separator_style
-local separator_style = icon_styles[separator]
+options.separator_style = options.icon_styles[require("core.utils").load_config().plugins.options.statusline.style]
 
--- Initialize the components table
-local components = {
-   active = {},
-}
-
-local main_icon = {
-   provider = separator_style.main_icon,
+options.main_icon = {
+   provider = options.separator_style.main_icon,
 
    hl = {
-      fg = colors.statusline_bg,
-      bg = colors.nord_blue,
+      fg = options.colors.statusline_bg,
+      bg = options.colors.nord_blue,
    },
 
    right_sep = {
-      str = separator_style.right,
+      str = options.separator_style.right,
       hl = {
-         fg = colors.nord_blue,
-         bg = colors.lightbg,
+         fg = options.colors.nord_blue,
+         bg = options.colors.lightbg,
       },
    },
 }
 
-local file_name = {
+options.file_name = {
    provider = function()
       local filename = vim.fn.expand "%:t"
       local extension = vim.fn.expand "%:e"
@@ -87,41 +82,41 @@ local file_name = {
       return " " .. icon .. " " .. filename .. " "
    end,
    hl = {
-      fg = colors.white,
-      bg = colors.lightbg,
+      fg = options.colors.white,
+      bg = options.colors.lightbg,
    },
 
    right_sep = {
-      str = separator_style.right,
-      hl = { fg = colors.lightbg, bg = colors.lightbg2 },
+      str = options.separator_style.right,
+      hl = { fg = options.colors.lightbg, bg = options.colors.lightbg2 },
    },
 }
 
-local dir_name = {
+options.dir_name = {
    provider = function()
       local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
       return "  " .. dir_name .. " "
    end,
 
    hl = {
-      fg = colors.grey_fg2,
-      bg = colors.lightbg2,
+      fg = options.colors.grey_fg2,
+      bg = options.colors.lightbg2,
    },
    right_sep = {
-      str = separator_style.right,
+      str = options.separator_style.right,
       hi = {
-         fg = colors.lightbg2,
-         bg = colors.statusline_bg,
+         fg = options.colors.lightbg2,
+         bg = options.colors.statusline_bg,
       },
    },
 }
 
-local diff = {
+options.diff = {
    add = {
       provider = "git_diff_added",
       hl = {
-         fg = colors.grey_fg2,
-         bg = colors.statusline_bg,
+         fg = options.colors.grey_fg2,
+         bg = options.colors.statusline_bg,
       },
       icon = " ",
    },
@@ -129,8 +124,8 @@ local diff = {
    change = {
       provider = "git_diff_changed",
       hl = {
-         fg = colors.grey_fg2,
-         bg = colors.statusline_bg,
+         fg = options.colors.grey_fg2,
+         bg = options.colors.statusline_bg,
       },
       icon = "  ",
    },
@@ -138,62 +133,62 @@ local diff = {
    remove = {
       provider = "git_diff_removed",
       hl = {
-         fg = colors.grey_fg2,
-         bg = colors.statusline_bg,
+         fg = options.colors.grey_fg2,
+         bg = options.colors.statusline_bg,
       },
       icon = "  ",
    },
 }
 
-local git_branch = {
+options.git_branch = {
    provider = "git_branch",
    hl = {
-      fg = colors.grey_fg2,
-      bg = colors.statusline_bg,
+      fg = options.colors.grey_fg2,
+      bg = options.colors.statusline_bg,
    },
    icon = "  ",
 }
 
-local diagnostic = {
+options.diagnostic = {
    error = {
       provider = "diagnostic_errors",
       enabled = function()
-         return lsp.diagnostics_exist(lsp_severity.ERROR)
+         return options.lsp.diagnostics_exist(options.lsp_severity.ERROR)
       end,
 
-      hl = { fg = colors.red },
+      hl = { fg = options.colors.red },
       icon = "  ",
    },
 
    warning = {
       provider = "diagnostic_warnings",
       enabled = function()
-         return lsp.diagnostics_exist(lsp_severity.WARN)
+         return options.lsp.diagnostics_exist(options.lsp_severity.WARN)
       end,
-      hl = { fg = colors.yellow },
+      hl = { fg = options.colors.yellow },
       icon = "  ",
    },
 
    hint = {
       provider = "diagnostic_hints",
       enabled = function()
-         return lsp.diagnostics_exist(lsp_severity.HINT)
+         return options.lsp.diagnostics_exist(options.lsp_severity.HINT)
       end,
-      hl = { fg = colors.grey_fg2 },
+      hl = { fg = options.colors.grey_fg2 },
       icon = "  ",
    },
 
    info = {
       provider = "diagnostic_info",
       enabled = function()
-         return lsp.diagnostics_exist(lsp_severity.INFO)
+         return options.lsp.diagnostics_exist(options.lsp_severity.INFO)
       end,
-      hl = { fg = colors.green },
+      hl = { fg = options.colors.green },
       icon = "  ",
    },
 }
 
-local lsp_progress = {
+options.lsp_progress = {
    provider = function()
       local Lsp = vim.lsp.util.get_progress_messages()[1]
 
@@ -225,111 +220,111 @@ local lsp_progress = {
 
       return ""
    end,
-   hl = { fg = colors.green },
+   hl = { fg = options.colors.green },
 }
 
-local lsp_icon = {
+options.lsp_icon = {
    provider = function()
       if next(vim.lsp.buf_get_clients()) ~= nil then
-         return "  LSP"
+         return "   LSP"
       else
          return ""
       end
    end,
-   hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
+   hl = { fg = options.colors.grey_fg2, bg = options.colors.statusline_bg },
 }
 
-local mode_colors = {
-   ["n"] = { "NORMAL", colors.red },
-   ["no"] = { "N-PENDING", colors.red },
-   ["i"] = { "INSERT", colors.dark_purple },
-   ["ic"] = { "INSERT", colors.dark_purple },
-   ["t"] = { "TERMINAL", colors.green },
-   ["v"] = { "VISUAL", colors.cyan },
-   ["V"] = { "V-LINE", colors.cyan },
-   [""] = { "V-BLOCK", colors.cyan },
-   ["R"] = { "REPLACE", colors.orange },
-   ["Rv"] = { "V-REPLACE", colors.orange },
-   ["s"] = { "SELECT", colors.nord_blue },
-   ["S"] = { "S-LINE", colors.nord_blue },
-   [""] = { "S-BLOCK", colors.nord_blue },
-   ["c"] = { "COMMAND", colors.pink },
-   ["cv"] = { "COMMAND", colors.pink },
-   ["ce"] = { "COMMAND", colors.pink },
-   ["r"] = { "PROMPT", colors.teal },
-   ["rm"] = { "MORE", colors.teal },
-   ["r?"] = { "CONFIRM", colors.teal },
-   ["!"] = { "SHELL", colors.green },
+options.mode_colors = {
+   ["n"] = { "NORMAL", options.colors.red },
+   ["no"] = { "N-PENDING", options.colors.red },
+   ["i"] = { "INSERT", options.colors.dark_purple },
+   ["ic"] = { "INSERT", options.colors.dark_purple },
+   ["t"] = { "TERMINAL", options.colors.green },
+   ["v"] = { "VISUAL", options.colors.cyan },
+   ["V"] = { "V-LINE", options.colors.cyan },
+   [""] = { "V-BLOCK", options.colors.cyan },
+   ["R"] = { "REPLACE", options.colors.orange },
+   ["Rv"] = { "V-REPLACE", options.colors.orange },
+   ["s"] = { "SELECT", options.colors.nord_blue },
+   ["S"] = { "S-LINE", options.colors.nord_blue },
+   [""] = { "S-BLOCK", options.colors.nord_blue },
+   ["c"] = { "COMMAND", options.colors.pink },
+   ["cv"] = { "COMMAND", options.colors.pink },
+   ["ce"] = { "COMMAND", options.colors.pink },
+   ["r"] = { "PROMPT", options.colors.teal },
+   ["rm"] = { "MORE", options.colors.teal },
+   ["r?"] = { "CONFIRM", options.colors.teal },
+   ["!"] = { "SHELL", options.colors.green },
 }
 
-local chad_mode_hl = function()
+options.chad_mode_hl = function()
    return {
-      fg = mode_colors[vim.fn.mode()][2],
-      bg = colors.one_bg,
+      fg = options.mode_colors[vim.fn.mode()][2],
+      bg = options.colors.one_bg,
    }
 end
 
-local empty_space = {
-   provider = " " .. separator_style.left,
+options.empty_space = {
+   provider = " " .. options.separator_style.left,
    hl = {
-      fg = colors.one_bg2,
-      bg = colors.statusline_bg,
+      fg = options.colors.one_bg2,
+      bg = options.colors.statusline_bg,
    },
 }
 
 -- this matches the vi mode color
-local empty_spaceColored = {
-   provider = separator_style.left,
+options.empty_spaceColored = {
+   provider = options.separator_style.left,
    hl = function()
       return {
-         fg = mode_colors[vim.fn.mode()][2],
-         bg = colors.one_bg2,
+         fg = options.mode_colors[vim.fn.mode()][2],
+         bg = options.colors.one_bg2,
       }
    end,
 }
 
-local mode_icon = {
-   provider = separator_style.vi_mode_icon,
+options.mode_icon = {
+   provider = options.separator_style.vi_mode_icon,
    hl = function()
       return {
-         fg = colors.statusline_bg,
-         bg = mode_colors[vim.fn.mode()][2],
+         fg = options.colors.statusline_bg,
+         bg = options.mode_colors[vim.fn.mode()][2],
       }
    end,
 }
 
-local empty_space2 = {
+options.empty_space2 = {
    provider = function()
-      return " " .. mode_colors[vim.fn.mode()][1] .. " "
+      return " " .. options.mode_colors[vim.fn.mode()][1] .. " "
    end,
-   hl = chad_mode_hl,
+   hl = options.chad_mode_hl,
 }
 
-local separator_right = {
-   provider = separator_style.left,
+options.separator_right = {
+   provider = options.separator_style.left,
    hl = {
-      fg = colors.grey,
-      bg = colors.one_bg,
+      fg = options.colors.grey,
+      bg = options.colors.one_bg,
    },
 }
 
-local separator_right2 = {
-   provider = separator_style.left,
+options.separator_right2 = {
+   provider = options.separator_style.left,
    hl = {
-      fg = colors.green,
-      bg = colors.grey,
+      fg = options.colors.green,
+      bg = options.colors.grey,
    },
 }
 
-local position_icon = {
-   provider = separator_style.position_icon,
+options.position_icon = {
+   provider = options.separator_style.position_icon,
    hl = {
-      fg = colors.black,
-      bg = colors.green,
+      fg = options.colors.black,
+      bg = options.colors.green,
    },
 }
 
-local current_line = {
+options.current_line = {
    provider = function()
       local current_line = vim.fn.line "."
       local total_line = vim.fn.line "$"
@@ -344,54 +339,63 @@ local current_line = {
    end,
 
    hl = {
-      fg = colors.green,
-      bg = colors.one_bg,
+      fg = options.colors.green,
+      bg = options.colors.one_bg,
    },
 }
 
-local function add_table(a, b)
-   table.insert(a, b)
+options = require("core.utils").load_override(options, "feline-nvim/feline.nvim")
+
+local function add_table(tbl, inject)
+   if inject then
+      table.insert(tbl, inject)
+   end
 end
 
 -- components are divided in 3 sections
-local left = {}
-local middle = {}
-local right = {}
+options.left = {}
+options.middle = {}
+options.right = {}
 
 -- left
-add_table(left, main_icon)
-add_table(left, file_name)
-add_table(left, dir_name)
-add_table(left, diff.add)
-add_table(left, diff.change)
-add_table(left, diff.remove)
-add_table(left, diagnostic.error)
-add_table(left, diagnostic.warning)
-add_table(left, diagnostic.hint)
-add_table(left, diagnostic.info)
+add_table(options.left, options.main_icon)
+add_table(options.left, options.file_name)
+add_table(options.left, options.dir_name)
+add_table(options.left, options.diff.add)
+add_table(options.left, options.diff.change)
+add_table(options.left, options.diff.remove)
+add_table(options.left, options.diagnostic.error)
+add_table(options.left, options.diagnostic.warning)
+add_table(options.left, options.diagnostic.hint)
+add_table(options.left, options.diagnostic.info)
 
-add_table(middle, lsp_progress)
+add_table(options.middle, options.lsp_progress)
 
 -- right
-add_table(right, lsp_icon)
-add_table(right, git_branch)
-add_table(right, empty_space)
-add_table(right, empty_spaceColored)
-add_table(right, mode_icon)
-add_table(right, empty_space2)
-add_table(right, separator_right)
-add_table(right, separator_right2)
-add_table(right, position_icon)
-add_table(right, current_line)
+add_table(options.right, options.lsp_icon)
+add_table(options.right, options.git_branch)
+add_table(options.right, options.empty_space)
+add_table(options.right, options.empty_spaceColored)
+add_table(options.right, options.mode_icon)
+add_table(options.right, options.empty_space2)
+add_table(options.right, options.separator_right)
+add_table(options.right, options.separator_right2)
+add_table(options.right, options.position_icon)
+add_table(options.right, options.current_line)
 
-components.active[1] = left
-components.active[2] = middle
-components.active[3] = right
+-- Initialize the components table
+options.components = { active = {} }
+
+options.components.active[1] = options.left
+options.components.active[2] = options.middle
+options.components.active[3] = options.right
+
+options.theme = {
+   bg = options.colors.statusline_bg,
+   fg = options.colors.fg,
+}
 
 feline.setup {
-   theme = {
-      bg = colors.statusline_bg,
-      fg = colors.fg,
-   },
-   components = components,
+   theme = options.theme,
+   components = options.components,
 }
