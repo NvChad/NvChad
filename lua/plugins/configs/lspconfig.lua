@@ -9,8 +9,8 @@ local M = {}
 require("plugins.configs.others").lsp_handlers()
 
 function M.on_attach(client, _)
-   client.resolved_capabilities.document_formatting = false
-   client.resolved_capabilities.document_range_formatting = false
+   client.server_capabilities.document_formatting = false
+   client.server_capabilities.document_range_formatting = false
 
    require("core.mappings").lspconfig()
 end
