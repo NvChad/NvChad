@@ -1,166 +1,203 @@
 local utils = require "core.utils"
-local hooks = require "core.hooks"
 
-local config = utils.load_config()
 local map = utils.map
-
-local maps = config.mappings
-local plugin_maps = maps.plugins
-local nvChad_options = config.options.nvChad
-
 local cmd = vim.cmd
+local user_cmd = vim.api.nvim_create_user_command
+
+-- This is a wrapper function made to disable a plugin mapping from chadrc
+-- If keys are nil, false or empty string, then the mapping will be not applied
+-- Useful when one wants to use that keymap for any other purpose
+
+-- Don't copy the replaced text after pasting in visual mode
+-- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+map("v", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { silent = true })
+
+-- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
+-- http<cmd> ://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+-- empty mode is same as using <cmd> :map
+-- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
+
+map({ "n", "x", "o" }, "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+map({ "n", "x", "o" }, "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+
+-- use ESC to turn off search highlighting
+map("n", "<Esc>", "<cmd> :noh <CR>")
+
+-- move cursor within insert mode
+map("i", "<C-h>", "<Left>")
+map("i", "<C-e>", "<End>")
+map("i", "<C-l>", "<Right>")
+map("i", "<C-j>", "<Down>")
+map("i", "<C-k>", "<Up>")
+map("i", "<C-a>", "<ESC>^i")
+
+-- navigation between windows
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-l>", "<C-w>l")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-j>", "<C-w>j")
+
+map("n", "<leader>x", function()
+   require("core.utils").close_buffer()
+end)
+
+map("n", "<C-c>", "<cmd> :%y+ <CR>") -- copy whole file content
+map("n", "<S-t>", "<cmd> :enew <CR>") -- new buffer
+map("n", "<C-t>b", "<cmd> :tabnew <CR>") -- new tabs
+map("n", "<leader>n", "<cmd> :set nu! <CR>")
+map("n", "<leader>rn", "<cmd> :set rnu! <CR>") -- relative line numbers
+map("n", "<C-s>", "<cmd> :w <CR>") -- ctrl + s to save file
+
+-- terminal mappings
+
+-- get out of terminal mode
+map("t", { "jk" }, "<C-\\><C-n>")
+
+-- Add Packer commands because we are not loading it at startup
+
+local packer_cmd = function(callback)
+   return function()
+      require "plugins"
+      require("packer")[callback]()
+   end
+end
+
+-- snapshot stuff
+user_cmd("PackerSnapshot", function(info)
+   require "plugins"
+   require("packer").snapshot(info.args)
+end, { nargs = "+" })
+
+user_cmd("PackerSnapshotDelete", function(info)
+   require "plugins"
+   require("packer.snapshot").delete(info.args)
+end, { nargs = "+" })
+
+user_cmd("PackerSnapshotRollback", function(info)
+   require "plugins"
+   require("packer").rollback(info.args)
+end, { nargs = "+" })
+
+user_cmd("PackerClean", packer_cmd "clean", {})
+user_cmd("PackerCompile", packer_cmd "compile", {})
+user_cmd("PackerInstall", packer_cmd "install", {})
+user_cmd("PackerStatus", packer_cmd "status", {})
+user_cmd("PackerSync", packer_cmd "sync", {})
+user_cmd("PackerUpdate", packer_cmd "update", {})
+
+-- add NvChadUpdate command and mapping
+cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
+map("n", "<leader>uu", "<cmd> :NvChadUpdate <CR>")
+
+-- load overriden misc mappings
+require("core.utils").load_config().mappings.misc()
 
 local M = {}
-
--- these mappings will only be called during initialization
-M.misc = function()
-   local function non_config_mappings()
-      -- Don't copy the replaced text after pasting in visual mode
-      map("v", "p", '"_dP')
-
-      -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-      -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-      -- empty mode is same as using :map
-      -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-      map("", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-      map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
-      map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
-      map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
-
-      -- use ESC to turn off search highlighting
-      map("n", "<Esc>", ":noh <CR>")
-
-      -- center cursor when moving (goto_definition)
-
-      -- yank from current cursor to end of line
-      map("n", "Y", "yg$")
-   end
-
-   local function optional_mappings()
-      -- don't yank text on cut ( x )
-      if not nvChad_options.copy_cut then
-         map({ "n", "v" }, "x", '"_x')
-      end
-
-      -- don't yank text on delete ( dd )
-      if not nvChad_options.copy_del then
-         map({ "n", "v" }, "d", '"_d')
-      end
-
-      -- navigation within insert mode
-      if nvChad_options.insert_nav then
-         local inav = maps.insert_nav
-
-         map("i", inav.backward, "<Left>")
-         map("i", inav.end_of_line, "<End>")
-         map("i", inav.forward, "<Right>")
-         map("i", inav.next_line, "<Up>")
-         map("i", inav.prev_line, "<Down>")
-         map("i", inav.beginning_of_line, "<ESC>^i")
-      end
-
-      -- easier navigation between windows
-      if nvChad_options.window_nav then
-         local wnav = maps.window_nav
-
-         map("n", wnav.moveLeft, "<C-w>h")
-         map("n", wnav.moveRight, "<C-w>l")
-         map("n", wnav.moveUp, "<C-w>k")
-         map("n", wnav.moveDown, "<C-w>j")
-      end
-   end
-
-   local function required_mappings()
-      map("n", maps.misc.cheatsheet, ":lua require('nvchad.cheatsheet').show() <CR>") -- show keybinds
-      map("n", maps.misc.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
-      map("n", maps.misc.copy_whole_file, ":%y+ <CR>") -- copy whole file content
-      map("n", maps.misc.new_buffer, ":enew <CR>") -- new buffer
-      map("n", maps.misc.new_tab, ":tabnew <CR>") -- new tabs
-      map("n", maps.misc.line_number_toggle, ":set nu! <CR>") -- toggle numbers
-      map("n", maps.misc.save_file, ":w <CR>") -- ctrl + s to save file
-
-      -- terminal mappings --
-      local term_maps = maps.terminal
-      -- get out of terminal mode
-      map("t", term_maps.esc_termmode, "<C-\\><C-n>")
-      -- hide a term from within terminal mode
-      map("t", term_maps.esc_hide_termmode, "<C-\\><C-n> :lua require('core.utils').close_buffer() <CR>")
-      -- pick a hidden term
-      map("n", term_maps.pick_term, ":Telescope terms <CR>")
-      -- Open terminals
-      -- TODO this opens on top of an existing vert/hori term, fixme
-      map("n", term_maps.new_horizontal, ":execute 15 .. 'new +terminal' | let b:term_type = 'hori' | startinsert <CR>")
-      map("n", term_maps.new_vertical, ":execute 'vnew +terminal' | let b:term_type = 'vert' | startinsert <CR>")
-      map("n", term_maps.new_window, ":execute 'terminal' | let b:term_type = 'wind' | startinsert <CR>")
-      -- terminal mappings end --
-
-      -- Add Packer commands because we are not loading it at startup
-      cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
-      cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
-      cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
-      cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
-      cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
-      cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
-
-      -- add NvChadUpdate command and mapping
-      cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
-      map("n", maps.misc.update_nvchad, ":NvChadUpdate <CR>")
-   end
-
-   non_config_mappings()
-   optional_mappings()
-   required_mappings()
-   hooks.run("setup_mappings", map)
-end
 
 -- below are all plugin related mappings
 
 M.bufferline = function()
-   local m = plugin_maps.bufferline
-
-   map("n", m.next_buffer, ":BufferLineCycleNext <CR>")
-   map("n", m.prev_buffer, ":BufferLineCyclePrev <CR>")
+   map("n", "<TAB>", "<cmd> :BufferLineCycleNext <CR>")
+   map("n", "<S-Tab>", "<cmd> :BufferLineCyclePrev <CR>")
 end
 
 M.comment = function()
-   local m = plugin_maps.comment.toggle
-   map("n", m, ":lua require('Comment.api').toggle()<CR>")
-   map("v", m, ":lua require('Comment.api').gc(vim.fn.visualmode())<CR>")
+   map("n", "<leader>/", "<cmd> :lua require('Comment.api').toggle_current_linewise()<CR>")
+   map("v", "<leader>/", "<esc><cmd> :lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
 end
 
-M.dashboard = function()
-   local m = plugin_maps.dashboard
+M.lspconfig = function()
+   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
+   map("n", "gD", function()
+      vim.lsp.buf.declaration()
+   end)
 
-   map("n", m.bookmarks, ":DashboardJumpMarks <CR>")
-   map("n", m.new_file, ":DashboardNewFile <CR>")
-   map("n", m.open, ":Dashboard <CR>")
-   map("n", m.session_load, ":SessionLoad <CR>")
-   map("n", m.session_save, ":SessionSave <CR>")
+   map("n", "gd", function()
+      vim.lsp.buf.definition()
+   end)
+
+   map("n", "K", function()
+      vim.lsp.buf.hover()
+   end)
+
+   map("n", "gi", function()
+      vim.lsp.buf.implementation()
+   end)
+
+   map("n", "<C-k>", function()
+      vim.lsp.buf.signature_help()
+   end)
+
+   map("n", "<leader>D", function()
+      vim.lsp.buf.type_definition()
+   end)
+
+   map("n", "<leader>ra", function()
+      vim.lsp.buf.rename()
+   end)
+
+   map("n", "<leader>ca", function()
+      vim.lsp.buf.code_action()
+   end)
+
+   map("n", "gr", function()
+      vim.lsp.buf.references()
+   end)
+
+   map("n", "<leader>f", function()
+      vim.diagnostic.open_float()
+   end)
+
+   map("n", "[d", function()
+      vim.diagnostic.goto_prev()
+   end)
+
+   map("n", "d]", function()
+      vim.diagnostic.goto_next()
+   end)
+
+   map("n", "<leader>q", function()
+      vim.diagnostic.setloclist()
+   end)
+
+   map("n", "<leader>fm", function()
+      vim.lsp.buf.formatting()
+   end)
+
+   map("n", "<leader>wa", function()
+      vim.lsp.buf.add_workspace_folder()
+   end)
+
+   map("n", "<leader>wr", function()
+      vim.lsp.buf.remove_workspace_folder()
+   end)
+
+   map("n", "<leader>wl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+   end)
 end
 
 M.nvimtree = function()
-   map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>")
-   map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
+   map("n", "<C-n>", "<cmd> :NvimTreeToggle <CR>")
+   map("n", "<leader>e", "<cmd> :NvimTreeFocus <CR>")
 end
 
 M.telescope = function()
-   local m = plugin_maps.telescope
+   map("n", "<leader>fb", "<cmd> :Telescope buffers <CR>")
+   map("n", "<leader>ff", "<cmd> :Telescope find_files <CR>")
+   map("n", "<leader>fa", "<cmd> :Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+   map("n", "<leader>cm", "<cmd> :Telescope git_commits <CR>")
+   map("n", "<leader>gt", "<cmd> :Telescope git_status <CR>")
+   map("n", "<leader>fh", "<cmd> :Telescope help_tags <CR>")
+   map("n", "<leader>fw", "<cmd> :Telescope live_grep <CR>")
+   map("n", "<leader>fo", "<cmd> :Telescope oldfiles <CR>")
+   map("n", "<leader>th", "<cmd> :Telescope themes <CR>")
+   map("n", "<leader>tk", "<cmd> :Telescope keymaps <CR>")
 
-   map("n", m.buffers, ":Telescope buffers <CR>")
-   map("n", m.find_files, ":Telescope find_files no_ignore=true <CR>")
-   map("n", m.find_hiddenfiles, ":Telescope find_files hidden=true <CR>")
-   map("n", m.git_commits, ":Telescope git_commits <CR>")
-   map("n", m.git_status, ":Telescope git_status <CR>")
-   map("n", m.help_tags, ":Telescope help_tags <CR>")
-   map("n", m.live_grep, ":Telescope live_grep <CR>")
-   map("n", m.oldfiles, ":Telescope oldfiles <CR>")
-   map("n", m.themes, ":Telescope themes <CR>")
-end
-
-M.telescope_media = function()
-   local m = plugin_maps.telescope.telescope_media
-
-   map("n", m.media_files, ":Telescope media_files <CR>")
+   -- pick a hidden term
+   map("n", "<leader>W", "<cmd> :Telescope terms <CR>")
 end
 
 return M

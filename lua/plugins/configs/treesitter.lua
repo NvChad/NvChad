@@ -1,10 +1,10 @@
-local present, ts_config = pcall(require, "nvim-treesitter.configs")
+local present, treesitter = pcall(require, "nvim-treesitter.configs")
 
 if not present then
    return
 end
 
-ts_config.setup {
+local options = {
    ensure_installed = {
       "lua",
       "vim",
@@ -14,3 +14,8 @@ ts_config.setup {
       use_languagetree = true,
    },
 }
+
+-- check for any override
+options = require("core.utils").load_override(options, "nvim-treesitter/nvim-treesitter")
+
+treesitter.setup(options)
