@@ -61,7 +61,7 @@ options = nvchad.load_override(options, "nvim-telescope/telescope.nvim")
 telescope.setup(options)
 
 -- load extensions
-local extensions = { "themes", "terms" }
+local extensions = nvchad.load_config().plugins.options.telescope.extensions
 
 pcall(function()
    for _, ext in ipairs(extensions) do
