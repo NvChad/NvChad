@@ -7,35 +7,25 @@
   <span> • </span>
        	<a href="https://nvchad.github.io/contribute">Contribute</a>
   <span> • </span>
-	<a href="https://github.com/siduck/NvChad#gift_heart-support">Support</a>
+	<a href="https://github.com/NvChad/NvChad#gift_heart-support">Support</a>
   <span> • </span>
         <a href="https://nvchad.github.io/Extras">Extras</a>
   <p></p>
-</div>
+</div> 
 
 <div align="center">
-
-[![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)](https://lua.org)
-
-</div>
-
-<div align="center">
-
-[![Super Linter](https://img.shields.io/github/workflow/status/NvChad/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&color=green)]()
-<a href="https://github.com/NvChad/NvChad"
-        ><img
-            src="https://img.shields.io/github/repo-size/NvChad/NvChad?style=flat-square&label=Repo"
-            alt="GitHub repository size"
-    /></a>
+ 
+[![Super Linter](https://img.shields.io/github/workflow/status/NvChad/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&color=8DBBE9)]()
 <a href="https://github.com/NvChad/NvChad/blob/main/LICENSE"
         ><img
-            src="https://img.shields.io/github/license/NvChad/NvChad?style=flat-square&logo=GNU&label=License"
+            src="https://img.shields.io/github/license/NvChad/NvChad?style=flat-square&logo=GNU&label=License&color=df967f"
             alt="License"
     />
+[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.7.0-blueviolet.svg?style=flat-square&logo=Neovim&color=90E59A&logoColor=white)](https://github.com/neovim/neovim)
+[![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat-square&label=Issues&color=d77982)](https://github.com/NvChad/NvChad/issues)
 [![Discord](https://img.shields.io/discord/869557815780470834?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/gADmkJb9Fb)
-[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.5+-blueviolet.svg?style=flat-square&logo=Neovim&logoColor=white)](https://github.com/neovim/neovim)
-[![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat-square&label=Issues&color=fc0330)](https://github.com/siduck/NvChad/issues)
-[![Last Commit](https://img.shields.io/github/last-commit/NvChad/NvChad.svg?style=flat-square&label=Last%20Commit&color=58eb34)](https://github.com/siduck/NvChad/pulse)
+[![Matrix](https://img.shields.io/badge/Matrix-40aa8b.svg?style=flat-square&logo=Matrix&logoColor=white)](https://matrix.to/#/#nvchad:matrix.org)
+[![Telegram](https://img.shields.io/badge/Telegram-blue.svg?style=flat-square&logo=Telegram&logoColor=white)](https://t.me/DE_WM)
 
   </div>
 
@@ -72,7 +62,6 @@ Fast file tree:
 A fuzzy file finder, picker, sorter, previewer and much more:
 
 <kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/tel.png"></kbd>
-<kbd><img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/telmedia.png"></kbd><hr>
 
 <h3> Indent-blankline.nvim </h3>
 
@@ -110,7 +99,7 @@ Without/with Treesitter:
 
 ## Credits
 
-- [Elianiva](https://github.com/elianiva) helped me with NeoVim Lua related issues many times, NvChad wouldnt exist without his help at all.
+- [Elianiva](https://github.com/elianiva) helped me with NeoVim Lua related issues many times, NvChad wouldn't exist without his help at all.
 - @lorvethe for making the beautiful NvChad logo.
 
 ## Features
@@ -134,7 +123,7 @@ Without/with Treesitter:
 
 To everyone who thinks that NvChad is bloat: Bloat means different things to everyone.
 
-NvChad has 38 plugins installed by default, yet it is still very fast because it uses the Packer plugin manager. Packer.nvim allows you to lazy load plugins, meaning they only get loaded when absolutely required. Furthermore, you can disable plugins you don't use in `chardrc.lua`.
+NvChad has 38 plugins installed by default, yet it is still very fast because it uses the Packer plugin manager. Packer.nvim allows you to lazy load plugins, meaning they only get loaded when absolutely required. Furthermore, you can disable plugins you don't use in `chadrc.lua`.
 
 <img src = "https://chadpaste.com/f/kdmxdabxbk.png">
 
@@ -171,16 +160,9 @@ If you have an issue with a plugin in NvChad, first you should report it to NvCh
 
 ## :gift_heart: Support
 
-I would happily accept donations but would feel awful since I'm not the only one who has worked on NvChad. The project has only been made possible by the many great contributors and plugin developers, thus taking the donations just for me feels unjustified. If you enjoy using NvChad and would like to show your support then try to be a better you! Help the people in need whenever possible and do charity work. Be nice to loved ones and strangers alike. Do not be rude, always try to be helpful and caring for one another. It's easy to hate but hard to care. Be respectful to any software/work done by other people rather than making fun of them. Do not compare software (In a bad way). I'm grateful to even be able to use NeoVim! But I still cannot be fully happy when I know that there are people who barely have any food to eat, starve for weeks, dont have access to proper education, comupters, basic health care facilities and more. Here are some charites and gofundme links you can donate to instead:
+I'm (@siduck) really very sorry to remove the previous charity links but I had to do it for various reasons. A lot has been going here regarding financial issues and I do need some support if it's possible from your end. I haven't graduated yet and it would be great to earn some stuff as that'd help me with daily minor expenses. If you like NvChad and would like to support it via donation then I'll gladly accept it. Dont worry! NvChad will still stay alive & active without your donations! I will remove the sponsor button and re-add the charity links once I get a job, probably a year or two.   
 
-- https://www.gofundme.com/f/WeCareAboutSyria
-- https://www.gofundme.com/f/Burundi-Nutrition
-- https://charity.gofundme.com/o/en/campaign/feedingyemen
-- https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school
-- https://www.isupportmyanmar.com
-- https://www.justgiving.com/campaign/somaliawater
-- https://www.justgiving.com/crowdfunding/acaappeal
-- https://www.justgiving.com/fundraising/muslim-chat
-- https://www.gofundme.com/f/help-kids-in-mali-have-warm-clothing-in-winter
-- https://www.justgiving.com/crowdfunding/carevenezuela
-- https://www.justgiving.com/campaign/yemen
+[![kofi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/siduck)
+[![paypal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/siduck76)
+[![buymeacoffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/siduck)
+[![patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/siduck)

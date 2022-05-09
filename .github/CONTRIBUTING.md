@@ -45,7 +45,7 @@ If you wish to contribute to NvChad, you should:
 
 - PR's are always welcomed however NvChad aims to be less bloated. So PR's regarding existing plugin's enhancement and creating new features with existing plugins itself ( without adding a new plugin), bug fixes and corrections are more encouraged.
 
-- NvChad wont keep adding more and more features (like adding new plugins most likely) as requested if they feel unneeded and arent usable by the majority!! If you think the plugin you want to be added is very useful and many NvChaders would find it useful, then such feature's PR is welcomed!
+- NvChad won't keep adding more and more features (like adding new plugins most likely) as requested if they feel unneeded and aren't usable by the majority!! If you think the plugin you want to be added is very useful and many NvChaders would find it useful, then such feature's PR is welcomed!
 
 - But adding specific features like adding config for [wakatime](https://github.com/wakatime/vim-wakatime) etc will be added in this [chad user configs](https://github.com/NvChad/NvChad/wiki/Chad-user-configs). This lets the user select the things only they want ( adding configs from extra configs ).
 

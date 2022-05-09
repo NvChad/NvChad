@@ -1,5 +1,4 @@
--- This is an example chadrc file , its supposed to be placed in /lua/custom dir
--- lua/custom/chadrc.lua
+-- Just an example, supposed to be placed in /lua/custom/
 
 local M = {}
 

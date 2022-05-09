@@ -1,7 +1,7 @@
 local icons = {
    Text = "",
    Method = "",
-   Function = "",
+   Function = "",
    Constructor = "",
    Field = "ﰠ",
    Variable = "",
@@ -23,7 +23,7 @@ local icons = {
    Struct = "פּ",
    Event = "",
    Operator = "",
-   TypeParameter = "",
+   TypeParameter = "",
 }
 
 return icons
