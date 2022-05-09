@@ -41,6 +41,9 @@ M.plugins = {
       statusline = {
          separator_style = "default", -- default/round/slant/block/arrow
       },
+      telescope = {
+         extensions = { "themes", "terms" }
+      }
    },
 
    -- add, modify, remove plugins
