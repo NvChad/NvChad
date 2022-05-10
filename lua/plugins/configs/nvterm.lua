@@ -38,6 +38,6 @@ local options = {
    enable_new_mappings = true,
 }
 
-options = require("core.utils").load_override(options, "NvChad/nvterm")
+options = nvchad.load_override(options, "NvChad/nvterm")
 
 nvterm.setup(options)

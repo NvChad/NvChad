@@ -27,7 +27,7 @@ if not present then
    end
 end
 
-local user_snapshot = require("core.utils").load_config().snapshot
+local user_snapshot = nvchad.load_config().snapshot
 
 packer.init {
    display = {

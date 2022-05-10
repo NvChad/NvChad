@@ -80,6 +80,6 @@ local options = {
 }
 
 -- check for any override
-options = require("core.utils").load_override(options, "kyazdani42/nvim-tree.lua")
+options = nvchad.load_override(options, "kyazdani42/nvim-tree.lua")
 
 nvimtree.setup(options)
