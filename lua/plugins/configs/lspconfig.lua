@@ -54,7 +54,7 @@ lspconfig.sumneko_lua.setup {
 }
 
 -- requires a file containing user's lspconfigs
-local addlsp_confs = require("core.utils").load_config().plugins.options.lspconfig.setup_lspconf
+local addlsp_confs = nvchad.load_config().plugins.options.lspconfig.setup_lspconf
 
 if #addlsp_confs ~= 0 then
    require(addlsp_confs).setup_lsp(M.on_attach, capabilities)

@@ -72,7 +72,7 @@ options.buttons = {
    },
 }
 
-options = require("core.utils").load_override(options, "goolord/alpha-nvim")
+options = nvchad.load_override(options, "goolord/alpha-nvim")
 
 -- dynamic header padding
 local fn = vim.fn

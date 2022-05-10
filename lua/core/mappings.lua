@@ -1,6 +1,4 @@
-local utils = require "core.utils"
-
-local map = utils.map
+local map = nvchad.map
 local cmd = vim.cmd
 local user_cmd = vim.api.nvim_create_user_command
 
@@ -40,7 +38,7 @@ map("n", "<C-k>", "<C-w>k")
 map("n", "<C-j>", "<C-w>j")
 
 map("n", "<leader>x", function()
-   require("core.utils").close_buffer()
+   nvchad.close_buffer()
 end)
 
 map("n", "<C-c>", "<cmd> :%y+ <CR>") -- copy whole file content
@@ -92,7 +90,7 @@ cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
 map("n", "<leader>uu", "<cmd> :NvChadUpdate <CR>")
 
 -- load overriden misc mappings
-require("core.utils").load_config().mappings.misc()
+nvchad.load_config().mappings.misc()
 
 local M = {}
 

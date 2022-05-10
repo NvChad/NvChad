@@ -84,4 +84,4 @@ vim.schedule(function()
 end)
 
 -- load user options if the file exists
-require("core.utils").load_config().options.user()
+nvchad.load_config().options.user()
