@@ -1,8 +1,8 @@
 local M = {}
 
 M.autopairs = function()
-   local present1, autopairs = pcall(require, "nvim-autopairs")
-   local present2, cmp = pcall(require, "cmp")
+   local present1, autopairs = nvchad.prequire "nvim-autopairs"
+   local present2, cmp = nvchad.prequire "cmp"
 
    if not present1 and present2 then
       return
@@ -19,7 +19,7 @@ M.autopairs = function()
 end
 
 M.better_escape = function()
-   local present, escape = pcall(require, "better_escape")
+   local present, escape = nvchad.prequire "better_escape"
 
    if not present then
       return
@@ -37,7 +37,7 @@ M.better_escape = function()
 end
 
 M.blankline = function()
-   local present, blankline = pcall(require, "indent_blankline")
+   local present, blankline = nvchad.prequire "indent_blankline"
 
    if not present then
       return
@@ -68,7 +68,7 @@ M.blankline = function()
 end
 
 M.colorizer = function()
-   local present, colorizer = pcall(require, "colorizer")
+   local present, colorizer = nvchad.prequire "colorizer"
 
    if not present then
       return
@@ -100,7 +100,7 @@ M.colorizer = function()
 end
 
 M.comment = function()
-   local present, nvim_comment = pcall(require, "Comment")
+   local present, nvim_comment = nvchad.prequire "Comment"
 
    if not present then
       return
@@ -110,7 +110,7 @@ M.comment = function()
 end
 
 M.luasnip = function()
-   local present, luasnip = pcall(require, "luasnip")
+   local present, luasnip = nvchad.prequire "luasnip"
 
    if not present then
       return
@@ -125,7 +125,7 @@ M.luasnip = function()
 end
 
 M.signature = function()
-   local present, lsp_signature = pcall(require, "lsp_signature")
+   local present, lsp_signature = nvchad.prequire "lsp_signature"
 
    if not present then
       return
@@ -194,7 +194,7 @@ M.lsp_handlers = function()
 end
 
 M.gitsigns = function()
-   local present, gitsigns = pcall(require, "gitsigns")
+   local present, gitsigns = nvchad.prequire "gitsigns"
 
    if not present then
       return

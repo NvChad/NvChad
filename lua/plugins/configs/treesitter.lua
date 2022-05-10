@@ -1,4 +1,4 @@
-local present, treesitter = pcall(require, "nvim-treesitter.configs")
+local present, treesitter = nvchad.prequire "nvim-treesitter.configs"
 
 if not present then
    return

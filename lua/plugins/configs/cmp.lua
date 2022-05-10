@@ -1,4 +1,4 @@
-local present, cmp = pcall(require, "cmp")
+local present, cmp = nvchad.prequire "cmp"
 
 if not present then
    return

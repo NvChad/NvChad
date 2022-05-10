@@ -18,7 +18,7 @@ if not present then
    }
 
    vim.cmd "packadd packer.nvim"
-   present, packer = pcall(require, "packer")
+   present, packer = nvchad.prequire "packer"
 
    if present then
       print "Packer cloned successfully."

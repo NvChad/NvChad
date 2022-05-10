@@ -1,4 +1,4 @@
-local present, telescope = pcall(require, "telescope")
+local present, telescope = nvchad.prequire "telescope"
 
 if not present then
    return

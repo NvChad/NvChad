@@ -1,4 +1,4 @@
-local present, bufferline = pcall(require, "bufferline")
+local present, bufferline = nvchad.prequire "bufferline"
 
 if not present then
    return

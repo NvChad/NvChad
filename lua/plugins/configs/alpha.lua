@@ -1,4 +1,4 @@
-local present, alpha = pcall(require, "alpha")
+local present, alpha = nvchad.prequire "alpha"
 
 if not present then
    return

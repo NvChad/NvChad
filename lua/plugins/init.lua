@@ -1,5 +1,5 @@
 local plugin_settings = nvchad.load_config().plugins
-local present, packer = pcall(require, plugin_settings.options.packer.init_file)
+local present, packer = nvchad.prequire(plugin_settings.options.packer.init_file)
 
 if not present then
    return false

@@ -1,4 +1,4 @@
-local present, feline = pcall(require, "feline")
+local present, feline = nvchad.prequire "feline"
 
 if not present then
    return

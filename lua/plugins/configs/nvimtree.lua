@@ -1,4 +1,4 @@
-local present, nvimtree = pcall(require, "nvim-tree")
+local present, nvimtree = nvchad.prequire "nvim-tree"
 
 if not present then
    return

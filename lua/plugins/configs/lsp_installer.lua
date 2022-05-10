@@ -1,4 +1,4 @@
-local present, lsp_installer = pcall(require, "nvim-lsp-installer")
+local present, lsp_installer = nvchad.prequire "nvim-lsp-installer"
 
 if not present then
    return

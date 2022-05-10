@@ -86,7 +86,7 @@ nvchad.plugin_list = function(default_plugins)
    local ok
 
    if type(user_plugins) == "string" then
-      ok, user_plugins = pcall(require, user_plugins)
+      ok, user_plugins = nvchad.prequire(user_plugins)
       if ok and not type(user_plugins) == "table" then
          user_plugins = {}
       end
@@ -114,4 +114,12 @@ nvchad.load_override = function(default_table, plugin_name)
       default_table = default_table
    end
    return default_table
+end
+
+nvchad.prequire = function(module)
+   local ok, res = pcall(require, module)
+   if not ok then
+      return nil, res
+   end
+   return res
 end

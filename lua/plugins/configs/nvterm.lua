@@ -1,4 +1,4 @@
-local present, nvterm = pcall(require, "nvterm")
+local present, nvterm = nvchad.prequire "nvterm"
 
 if not present then
    return

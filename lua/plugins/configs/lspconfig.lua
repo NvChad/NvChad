@@ -1,4 +1,4 @@
-local present, lspconfig = pcall(require, "lspconfig")
+local present, lspconfig = nvchad.prequire "lspconfig"
 
 if not present then
    return
