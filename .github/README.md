@@ -31,23 +31,35 @@
 
 ## Showcase
 
-<img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/dashboard-nvim.png"><hr>
-<img src="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png"><hr>
-<img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/initialNvim1.png"><hr>
-<img src="https://raw.githubusercontent.com/siduck/dotfiles/all/rice%20flex/initialNvim.png"><hr>
+<img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/dashboard.png">
+<img src="https://cdn.discordapp.com/attachments/610012460828852229/853933487295299584/unknown.png">
+
+( Zoom in the screenshot )
+
+<img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/main.png"> 
+<img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/rxyhn1.png">
+
+## What is it?
+
+- NvChad is a neovim config written in lua aiming to provide a base configuration with very beautiful UI and blazing fast startuptime (around 0.02 secs ~ 0.07 secs). We tweak UI plugins such as telescope, nvim-tree, bufferline etc well to provide an asethetic UI experience. 
+
+- Lazy loading is done 93% of the time meaning that plugins will not be loaded by default, they will be loaded only when required also at specific commands, events etc. This lowers the startuptime and it was like 0.07~ secs tested on an old pentium machine 1.4ghz + 4gb ram & HDD.
+
+- NvChad isnt a framework! Its supposed to be used as a "base" config, so users could tweak the defaults well, can also remove the things they dont like in the default config and build their config on top of it. Users can tweak the entire default config while staying in their custom config (lua/custom dir). This is the control center of the user's config and gitignored so the users can stay update to-date with NvChad's latest config (main branch) while still controlling it with their chadrc (file that controls entire custom dir)
 
 ## Theme Showcase
 
 <details><summary> <b>Images (Click to expand!)</b></summary>
 
-![onedark](https://user-images.githubusercontent.com/59060246/130129880-59ab1ad5-9aa6-4f50-9ddd-d8dde0c16257.png)
-![nord](https://user-images.githubusercontent.com/59060246/130129890-c01117df-ac3d-40dd-b95d-2681c2461bb4.png)
-![gruvchad](https://user-images.githubusercontent.com/59060246/130129897-a68b1585-f42d-4325-8482-102dd2fe1e9e.png)
-![everforest](https://user-images.githubusercontent.com/59060246/130129901-5e582f3e-b776-4d0c-9790-be5ae738b5a8.png)
+![main themes](https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/four_Themes.png)
+![radium](https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/radium1.png)
+![radium](https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/radium2.png)
+![radium](https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/radium3.png)
 
+(Note: these are just 4-5 themes, NvChad has around 27+ themes)
 </details>
 
-## Very useful plugins used
+## UI related plugins used
 
 <details><summary> <b>Images (Click to expand!)</b></summary>
 
@@ -97,67 +109,31 @@ Without/with Treesitter:
 
 </details>
 
-## Credits
+## Plugins list
 
-- [Elianiva](https://github.com/elianiva) helped me with NeoVim Lua related issues many times, NvChad wouldn't exist without his help at all.
-- @lorvethe for making the beautiful NvChad logo.
-
-## Features
-
-- Many beautiful themes to choose from.
-- Fast plugin loading.
-- File navigation with [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua).
-- Managing tabs, buffers with [bufferline.nvim](https://github.com/akinsho/bufferline.nvim).
-- Beautiful and configurable icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons).
-- Pretty and functional statusline with [feline.nvim](https://github.com/Famiu/feline.nvim).
-- Git diffs and more with [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) .
-- NeoVim Lsp configuration with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
-- Autocompletion with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
+- Many beautiful themes, theme toggler by [our base46 plugin](https://github.com/NvChad/base46)
+- Inbuilt terminal toggling & management with [Nvterm](https://github.com/NvChad/nvterm)
+- NvChad updater, hide & unhide terminal buffers with [NvChad extensions](https://github.com/NvChad/extensions)
+- File navigation with [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+- Managing tabs, buffers with [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+- Beautiful and configurable icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)
+- Pretty and functional statusline with [feline.nvim](https://github.com/Famiu/feline.nvim)
+- Git diffs and more with [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) 
+- NeoVim Lsp configuration with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [lsp-installer](https://github.com/williamboman/nvim-lsp-installer/)
+- Autocompletion with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - File searching, previewing image and text files and more with [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
-- Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
-- Autoclosing braces and html tags with [nvim-autopairs](https://github.com/windwp/nvim-autopairs).
-- Indentlines with [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).
-- Useful snippets with [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
+- Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- Autoclosing braces and html tags with [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
+- Indentlines with [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+- Useful snippets with [friendly snippets](https://github.com/rafamadriz/friendly-snippets) + [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
+- Popup mappings keysheet [whichkey.nvim](https://github.com/folke/which-key.nvim)
 
-## Bloat
+## History
 
-To everyone who thinks that NvChad is bloat: Bloat means different things to everyone.
+- I (@siduck i.e creator of NvChad) in my initial days of learning to program wanted a lightweight IDE for writing code, I had a very low end system, which was like 1.4ghz pentium + 4gb ram & HDD. I was into web dev so many suggested vscode but that thing was very heavy on my system, It took more ram than my browser! ( minimal ungoogled chromium ) so I never tried it again, sublime text was nice but the fear of using proprietary software XD for a linux user bugged me a lot. Then I tried doom-emacs which looked pretty but it was slow and emacs was kinda hard, I tried lunarvim but too lazy to read the docs which got me into vim and got into neovim lua stuff real quick. I wanted to make the config ery pretty and fast.
 
-NvChad has 38 plugins installed by default, yet it is still very fast because it uses the Packer plugin manager. Packer.nvim allows you to lazy load plugins, meaning they only get loaded when absolutely required. Furthermore, you can disable plugins you don't use in `chadrc.lua`.
-
-<img src = "https://chadpaste.com/f/kdmxdabxbk.png">
-
-# TODO
-
-NvChad is focusing more on improving its already existing plugins and features instead of adding more plugins. Things you can do to help currently are:
-
-- Improving base plugins configurations
-- Debloating the config.
-- Adding more themes.
-
-## Try NvChad in a Docker container
-
-This will leave your current Neovim configuration untouched. Once you exit Neovim, the image is deleted.
-
-```zsh
-  docker run -w /root -it --rm alpine:edge sh -uelic '
-    apk add git nodejs neovim ripgrep alpine-sdk --update
-    git clone https://github.com/NvChad/NvChad ~/.config/nvim
-    nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"
-    nvim
-    '
-```
-
-## Chadributors
-
-<a href="https://github.com/NvChad/NvChad/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=NvChad/NvChad"/>
-</a>
-
-## Warning
-
-If you have an issue with a plugin in NvChad, first you should report it to NvChad to see if it's an issue with it.
-
+- I'm decent at ricing i.e customizing system and making it look pretty so I posted my neovim rice on [neovim subreddit](https://www.reddit.com/r/neovim/comments/m3xl4f/neovim_rice/), my neovim-dotfiles github repo blew up and then I had to come up with a name, I was amazed by the chad meme lol so I put NvChad as the name, the chad word in the name doesnt literally mean the chad guy but in the sense such as chad linux vs windows i.e meaning superior,best etc. I 
+ 
 ## :gift_heart: Support
 
 I'm (@siduck) really very sorry to remove the previous charity links but I had to do it for various reasons. A lot has been going here regarding financial issues and I do need some support if it's possible from your end. I haven't graduated yet and it would be great to earn some stuff as that'd help me with daily minor expenses. If you like NvChad and would like to support it via donation then I'll gladly accept it. Dont worry! NvChad will still stay alive & active without your donations! I will remove the sponsor button and re-add the charity links once I get a job, probably a year or two.   
@@ -166,3 +142,8 @@ I'm (@siduck) really very sorry to remove the previous charity links but I had t
 [![paypal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/siduck76)
 [![buymeacoffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/siduck)
 [![patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/siduck)
+
+## Credits
+
+- [Elianiva](https://github.com/elianiva) helped me with NeoVim Lua related issues many times, NvChad wouldn't exist without his help at all as he helped me in my initial neovim journey!
+- @lorvethe for making the beautiful NvChad logo.
