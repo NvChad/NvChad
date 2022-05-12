@@ -54,6 +54,8 @@ local options = {
          n = { ["q"] = require("telescope.actions").close },
       },
    },
+
+   extensions_list = { "themes", "terms" },
 }
 
 -- check for any override
@@ -61,10 +63,8 @@ options = nvchad.load_override(options, "nvim-telescope/telescope.nvim")
 telescope.setup(options)
 
 -- load extensions
-local extensions = nvchad.load_config().plugins.options.telescope.extensions
-
 pcall(function()
-   for _, ext in ipairs(extensions) do
+   for _, ext in ipairs(options.extensions_list) do
       telescope.load_extension(ext)
    end
 end)

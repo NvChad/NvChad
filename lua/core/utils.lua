@@ -57,6 +57,25 @@ nvchad.map = function(mode, keys, command, opt)
    vim.keymap.set(mode, keys, command, opt)
 end
 
+-- For those who disabled whichkey
+
+nvchad.no_WhichKey_map = function()
+   local mappings = nvchad.load_config().mappings
+
+   for key, _ in pairs(mappings) do
+      for mode, _ in pairs(mappings[key]) do
+         for keybind, cmd in pairs(mappings[key][mode]) do
+            -- disabled keys will not have cmd set
+            if cmd ~= "" then
+               nvchad.map(mode, keybind, cmd[1])
+            end
+         end
+      end
+   end
+
+   require("plugins.configs.others").misc_mappings()
+end
+
 -- load plugin after entering vim ui
 nvchad.packer_lazy_load = function(plugin, timer)
    if plugin then

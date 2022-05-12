@@ -15,7 +15,7 @@ autocmd("BufUnload", {
    end,
 })
 
--- Uncomment this if you want to open nvim with a dir
+-- open nvim with a dir while still lazy loading nvimtree
 -- autocmd("BufEnter", {
 --    callback = function()
 --       if vim.api.nvim_buf_get_option(0, "buftype") ~= "terminal" then
