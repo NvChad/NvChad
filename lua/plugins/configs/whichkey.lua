@@ -61,9 +61,10 @@ local mappings = nvchad.load_config().mappings
 
 -- register mappings
 for mode, opt in pairs(options.mode_opts) do
-   for key, _ in pairs(mappings) do
-      if mappings[key][mode] then
-         wk.register(mappings[key][mode], opt)
+   for _, value in pairs(mappings) do
+      if value[mode] then
+         local mode_opts = value["mode_opts"] and vim.tbl_deep_extend("force", opt, value["mode_opts"]) or opt
+         wk.register(value[mode], mode_opts)
       end
    end
 end

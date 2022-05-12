@@ -224,11 +224,11 @@ M.telescope = {
       -- find
       ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "  find files" },
       ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "  find all" },
-      ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "  live grep" },
+      ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "   live grep" },
       ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "  find buffers" },
       ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "  help page" },
-      ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "  find oldfiles" },
-      ["<leader>tk"] = { "<cmd> Telescope keys <CR>", "   show keys" },
+      ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "   find oldfiles" },
+      ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "   show keys" },
 
       -- git
       ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "   git commits" },
@@ -283,6 +283,22 @@ M.nvterm = {
          "   new vertical term",
       },
    },
+}
+
+M.whichkey = {
+   n = {
+      ["<leader>wK"] = {
+         function()
+            vim.cmd("WhichKey")
+         end, "   which-key all keymaps",
+      },
+      ["<leader>wk"] = {
+         function()
+            local input = vim.fn.input("WhichKey: ")
+            vim.cmd("WhichKey " .. input)
+         end, "   which-key query lookup",
+      },
+   }
 }
 
 return M
