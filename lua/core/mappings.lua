@@ -52,7 +52,7 @@ M.bufferline = {
 
    n = {
       -- new buffer
-      ["<TAB>n"] = { "<cmd> enew <CR>", "烙 new buffer" },
+      ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
 
       -- cycle through buffers
       ["<TAB>"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
