@@ -31,6 +31,7 @@ nvchad.load_config = function()
       -- merge user config if it exists and is a table; otherwise display an error
       local user_config = require "custom.chadrc"
       if type(user_config) == "table" then
+         conf.mappings = nvchad.prune_key_map(conf.mappings, user_config.mappings, { "mode_opts" })
          conf = vim.tbl_deep_extend("force", conf, user_config)
       else
          error "User config (chadrc.lua) *must* return a table!"
@@ -38,6 +39,46 @@ nvchad.load_config = function()
    end
 
    return conf
+end
+
+-- reduces a given keymap to a table of modes each containing a list of key maps for that mode
+nvchad.reduce_key_map = function(key_map, ignore_modes)
+   local prune_keys = {}
+   for _, modes in pairs(key_map) do
+      for mode, mappings in pairs(modes) do
+         if not vim.tbl_contains(ignore_modes, mode) then
+            prune_keys[mode] = prune_keys[mode] and prune_keys[mode] or {}
+            prune_keys[mode] = vim.list_extend(prune_keys[mode], vim.tbl_keys(mappings))
+         end
+      end
+   end
+   return prune_keys
+end
+
+-- prune keys from a key map table by matching against another key map table
+nvchad.prune_key_map = function(key_map, prune_map, ignore_modes)
+   if not prune_map then return key_map end
+   if not key_map then return prune_map end
+   local prune_keys = nvchad.reduce_key_map(prune_map, ignore_modes)
+
+   for ext, modes in pairs(key_map) do
+      for mode, mappings in pairs(modes) do
+         if not vim.tbl_contains(ignore_modes, mode) then
+            if prune_keys[mode] then
+               -- filter mappings table so that only keys that are not in user_mappings are left
+               local filtered_mappings = {}
+               for k, v in pairs(mappings) do
+                  if not vim.tbl_contains(prune_keys[mode], k) then
+                     filtered_mappings[k] = v
+                  end
+               end
+               key_map[ext][mode] = filtered_mappings
+            end
+         end
+      end
+   end
+
+   return key_map
 end
 
 nvchad.map = function(mode, keys, command, opt)
@@ -58,16 +99,18 @@ nvchad.map = function(mode, keys, command, opt)
 end
 
 -- For those who disabled whichkey
-
 nvchad.no_WhichKey_map = function()
    local mappings = nvchad.load_config().mappings
+   local ignore_modes = { "mode_opts" }
 
-   for key, _ in pairs(mappings) do
-      for mode, _ in pairs(mappings[key]) do
-         for keybind, cmd in pairs(mappings[key][mode]) do
-            -- disabled keys will not have cmd set
-            if cmd ~= "" then
-               nvchad.map(mode, keybind, cmd[1])
+   for _, value in pairs(mappings) do
+      for mode, keymap in pairs(value) do
+         if not vim.tbl_contains(ignore_modes, mode) then
+            for keybind, cmd in pairs(keymap) do
+               -- disabled keys will not have cmd set
+               if cmd ~= "" then
+                  nvchad.map(mode, keybind, cmd[1])
+               end
             end
          end
       end
