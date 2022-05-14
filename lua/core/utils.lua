@@ -24,6 +24,7 @@ end
 
 nvchad.load_config = function()
    local conf = require "core.default_config"
+   local ignore_modes = { "mode_opts" }
 
    -- attempt to load and merge a user config
    local chadrc_exists = vim.fn.filereadable(vim.fn.stdpath "config" .. "/lua/custom/chadrc.lua") == 1
@@ -31,7 +32,8 @@ nvchad.load_config = function()
       -- merge user config if it exists and is a table; otherwise display an error
       local user_config = require "custom.chadrc"
       if type(user_config) == "table" then
-         conf.mappings = nvchad.prune_key_map(conf.mappings, user_config.mappings, { "mode_opts" })
+         conf.mappings = nvchad.prune_key_map(conf.mappings, user_config.mappings, ignore_modes)
+         user_config.mappings = nvchad.prune_key_map(user_config.mappings, "rm_disabled", ignore_modes)
          conf = vim.tbl_deep_extend("force", conf, user_config)
       else
          error "User config (chadrc.lua) *must* return a table!"
@@ -41,7 +43,7 @@ nvchad.load_config = function()
    return conf
 end
 
--- reduces a given keymap to a table of modes each containing a list of key maps for that mode
+-- reduces a given keymap to a table of modes each containing a list of key maps
 nvchad.reduce_key_map = function(key_map, ignore_modes)
    local prune_keys = {}
    for _, modes in pairs(key_map) do
@@ -55,11 +57,23 @@ nvchad.reduce_key_map = function(key_map, ignore_modes)
    return prune_keys
 end
 
+-- remove disabled mappings from a given key map
+nvchad.remove_disabled_mappings = function(key_map)
+   local clean_map = {}
+   if type(key_map) == "table" then
+      for k, v in pairs(key_map) do
+         if v ~= nil and v ~= "" then clean_map[k] = v end
+      end
+   end
+   return clean_map
+end
+
 -- prune keys from a key map table by matching against another key map table
 nvchad.prune_key_map = function(key_map, prune_map, ignore_modes)
    if not prune_map then return key_map end
    if not key_map then return prune_map end
-   local prune_keys = nvchad.reduce_key_map(prune_map, ignore_modes)
+   local prune_keys = type(prune_map) == "table" and nvchad.reduce_key_map(prune_map, ignore_modes)
+       or { n = {}, v = {}, i = {}, t = {} }
 
    for ext, modes in pairs(key_map) do
       for mode, mappings in pairs(modes) do
@@ -69,7 +83,7 @@ nvchad.prune_key_map = function(key_map, prune_map, ignore_modes)
                local filtered_mappings = {}
                for k, v in pairs(mappings) do
                   if not vim.tbl_contains(prune_keys[mode], k) then
-                     filtered_mappings[k] = v
+                     filtered_mappings[k] = nvchad.remove_disabled_mappings(v)
                   end
                end
                key_map[ext][mode] = filtered_mappings
@@ -171,3 +185,4 @@ nvchad.load_override = function(default_table, plugin_name)
 
    return default_table
 end
+
