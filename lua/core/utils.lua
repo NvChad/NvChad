@@ -32,8 +32,8 @@ nvchad.load_config = function()
       -- merge user config if it exists and is a table; otherwise display an error
       local user_config = require "custom.chadrc"
       if type(user_config) == "table" then
-         conf.mappings = nvchad.prune_key_map(conf.mappings, user_config.mappings, ignore_modes)
-         user_config.mappings = nvchad.prune_key_map(user_config.mappings, "rm_disabled", ignore_modes)
+         conf.mappings = conf.mappings and nvchad.prune_key_map(conf.mappings, user_config.mappings, ignore_modes) or {}
+         user_config.mappings = user_config.mappings and nvchad.prune_key_map(user_config.mappings, "rm_disabled", ignore_modes) or {}
          conf = vim.tbl_deep_extend("force", conf, user_config)
       else
          error "User config (chadrc.lua) *must* return a table!"
@@ -187,4 +187,3 @@ nvchad.load_override = function(default_table, plugin_name)
 
    return default_table
 end
-
