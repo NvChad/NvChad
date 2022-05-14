@@ -243,9 +243,32 @@ M.telescope = {
 }
 
 M.nvterm = {
+   t = {
+      -- toggle in terminal mode
+      ["<A-i>"] = {
+         function()
+            require("nvterm.terminal").toggle "float"
+         end,
+         "   toggle floating term",
+      },
 
+      ["<A-h>"] = {
+         function()
+            require("nvterm.terminal").toggle "horizontal"
+         end,
+         "   toggle horizontal term",
+      },
+
+      ["<A-v>"] = {
+         function()
+            require("nvterm.terminal").toggle "vertical"
+         end,
+         "   toggle vertical term",
+      },
+   },
+   
    n = {
-      -- toggle
+      -- toggle in normal mode
       ["<A-i>"] = {
          function()
             require("nvterm.terminal").toggle "float"
