@@ -344,6 +344,17 @@ options.current_line = {
    },
 }
 
+options.mouse_mode = {
+   provider = function()
+      local mouse = vim.api.nvim_get_option("mouse")
+      if mouse == "" then
+         return " ⤯ "
+      else
+         return ""
+     end
+   end,
+}
+
 options = nvchad.load_override(options, "feline-nvim/feline.nvim")
 
 local function add_table(tbl, inject)
@@ -372,6 +383,7 @@ add_table(options.left, options.diagnostic.info)
 add_table(options.middle, options.lsp_progress)
 
 -- right
+add_table(options.right, options.mouse_mode)
 add_table(options.right, options.lsp_icon)
 add_table(options.right, options.git_branch)
 add_table(options.right, options.empty_space)
