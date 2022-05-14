@@ -225,8 +225,5 @@ M.misc_mappings = function()
    map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
    map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
    map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
-
-   -- esscape from terminal mode
-   map("t", "jk", "<C-\\><C-n>")
 end
 return M

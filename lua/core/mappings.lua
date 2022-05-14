@@ -1,5 +1,9 @@
 -- n, v, i are mode names
 
+local function termcodes(str)
+   return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
 local M = {}
 
 M.general = {
@@ -45,6 +49,10 @@ M.general = {
 
          "   toggle theme",
       },
+   },
+
+   t = {
+      ["jk"] = { termcodes "<C-\\><C-N>", "   escape terminal mode" },
    },
 }
 
@@ -266,7 +274,7 @@ M.nvterm = {
          "   toggle vertical term",
       },
    },
-   
+
    n = {
       -- toggle in normal mode
       ["<A-i>"] = {
@@ -312,16 +320,18 @@ M.whichkey = {
    n = {
       ["<leader>wK"] = {
          function()
-            vim.cmd("WhichKey")
-         end, "   which-key all keymaps",
+            vim.cmd "WhichKey"
+         end,
+         "   which-key all keymaps",
       },
       ["<leader>wk"] = {
          function()
-            local input = vim.fn.input("WhichKey: ")
+            local input = vim.fn.input "WhichKey: "
             vim.cmd("WhichKey " .. input)
-         end, "   which-key query lookup",
+         end,
+         "   which-key query lookup",
       },
-   }
+   },
 }
 
 return M
