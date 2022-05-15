@@ -124,7 +124,7 @@ nvchad.no_WhichKey_map = function()
          if not vim.tbl_contains(ignore_modes, mode) then
             for keybind, cmd in pairs(keymap) do
                -- disabled keys will not have cmd set
-               if cmd ~= "" then
+               if cmd ~= "" and cmd[1] then
                   nvchad.map(mode, keybind, cmd[1])
                end
             end
