@@ -60,12 +60,13 @@ end
 -- remove disabled mappings from a given key map
 nvchad.remove_disabled_mappings = function(key_map)
    local clean_map = {}
+   if key_map == nil or key_map == "" then
+      return key_map
+   end
    if type(key_map) == "table" then
       for k, v in pairs(key_map) do
          if v ~= nil and v ~= "" then clean_map[k] = v end
       end
-   elseif not key_map == nil and not key_map == "" then
-      return key_map
    end
    return clean_map
 end
@@ -80,17 +81,14 @@ nvchad.prune_key_map = function(key_map, prune_map, ignore_modes)
    for ext, modes in pairs(key_map) do
       for mode, mappings in pairs(modes) do
          if not vim.tbl_contains(ignore_modes, mode) then
-            if prune_keys[mode] then
-               -- filter mappings table so that only keys that are not in user_mappings are left
-               local filtered_mappings = {}
-               for k, v in pairs(mappings) do
-                  if not vim.tbl_contains(prune_keys[mode], k) then
-                     filtered_mappings[k] = nvchad.remove_disabled_mappings(v)
-                  end
+            -- filter mappings table so that only keys that are not in user_mappings are left
+            for b, _ in pairs(mappings) do
+               if prune_keys[mode] and vim.tbl_contains(prune_keys[mode], b) then
+                  key_map[ext][mode][b] = nil
                end
-               key_map[ext][mode] = filtered_mappings
             end
          end
+         key_map[ext][mode] = nvchad.remove_disabled_mappings(mappings)
       end
    end
 
