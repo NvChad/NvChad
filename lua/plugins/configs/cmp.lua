@@ -55,7 +55,7 @@ local options = {
       ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-e>"] = cmp.mapping.close(),
       ["<CR>"] = cmp.mapping.confirm {
-         behavior = cmp.ConfirmBehavior.Replace,
+         behavior = cmp.ConfirmBehavior.Insert,
          select = true,
       },
       ["<Tab>"] = cmp.mapping(function(fallback)
