@@ -3,8 +3,9 @@ local M = {}
 M.autopairs = function()
    local present1, autopairs = pcall(require, "nvim-autopairs")
    local present2, cmp = pcall(require, "cmp")
+   local present3, ts_utils = pcall(require, "nvim-treesitter.ts_utils")
 
-   if not present1 and present2 then
+   if not present1 and present2 and present3 then
       return
    end
 
@@ -15,7 +16,19 @@ M.autopairs = function()
 
    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
-   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+   cmp.event:on("confirm_done", function(evt)
+      local filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" }
+      local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+
+      if vim.tbl_contains(filetypes, filetype) then
+         local node_type = ts_utils.get_node_at_cursor():type()
+         if node_type ~= "named_imports" then
+            cmp_autopairs.on_confirm_done()(evt)
+         end
+      else
+         cmp_autopairs.on_confirm_done()(evt)
+      end
+   end)
 end
 
 M.better_escape = function()

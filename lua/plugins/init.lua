@@ -172,7 +172,7 @@ local plugins = {
 
    -- misc plugins
    ["windwp/nvim-autopairs"] = {
-      after = "nvim-cmp",
+      after = { "nvim-cmp", "nvim-treesitter" },
       config = function()
          require("plugins.configs.others").autopairs()
       end,
