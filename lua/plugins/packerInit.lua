@@ -30,7 +30,7 @@ end
 local options = {
    display = {
       open_fn = function()
-         return require("packer.util").float { border = "double" }
+         return require("packer.util").float { border = "single" }
       end,
    },
    git = {
