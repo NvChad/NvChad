@@ -264,13 +264,15 @@ options.empty_spaceColored = {
 options.mode_icon = {
    provider = options.separator_style.vi_mode_icon,
 
-   hl = {
-      fg = get_color("Feline", "bg#"),
-      bg = get_color(options.mode_colors[vim.fn.mode()][2], "fg#"),
-   },
+   hl = function()
+      return {
+         fg = get_color("Feline", "bg#"),
+         bg = get_color(options.mode_colors[vim.fn.mode()][2], "fg#"),
+      }
+   end,
 }
 
-options.empty_space2 = {
+options.mode_name = {
    provider = function()
       return " " .. options.mode_colors[vim.fn.mode()][1] .. " "
    end,
@@ -349,7 +351,7 @@ add_table(options.right, options.git_branch)
 add_table(options.right, options.empty_space)
 add_table(options.right, options.empty_spaceColored)
 add_table(options.right, options.mode_icon)
-add_table(options.right, options.empty_space2)
+add_table(options.right, options.mode_name)
 add_table(options.right, options.separator_right)
 add_table(options.right, options.separator_right2)
 add_table(options.right, options.position_icon)
