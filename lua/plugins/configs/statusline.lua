@@ -265,7 +265,7 @@ options.mode_icon = {
    provider = options.separator_style.vi_mode_icon,
 
    hl = {
-      fg = get_color("Normal", "bg#"),
+      fg = get_color("Feline", "bg#"),
       bg = get_color(options.mode_colors[vim.fn.mode()][2], "fg#"),
    },
 }
