@@ -55,10 +55,9 @@ local options = {
    },
 }
 
-require("plugins.configs.others").misc_mappings()
-
 local mappings = nvchad.load_config().mappings
 local mapping_groups = { groups = vim.deepcopy(mappings.groups) }
+
 mappings.disabled = nil
 mappings.groups = nil
 

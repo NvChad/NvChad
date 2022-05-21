@@ -129,8 +129,6 @@ nvchad.no_WhichKey_map = function()
          end
       end
    end
-
-   require("plugins.configs.others").misc_mappings()
 end
 
 -- load plugin after entering vim ui
