@@ -94,7 +94,7 @@ options.dir_name = {
 
    right_sep = {
       str = options.separator_style.right,
-      hi = "FelineDirName_Separator",
+      hl = "FelineDirName_Separator",
    },
 }
 
