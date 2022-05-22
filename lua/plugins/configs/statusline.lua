@@ -5,7 +5,6 @@ if not present then
 end
 
 local options = {
-   colors = require("base46").get_colors "base_30",
    lsp = require "feline.providers.lsp",
    lsp_severity = vim.diagnostic.severity,
 }
@@ -216,7 +215,7 @@ options.lsp_progress = {
 
 -- MODES
 
-options.mode_colors = {
+options.mode_hlgroups = {
    ["n"] = { "NORMAL", "Feline_NormalMode" },
    ["no"] = { "N-PENDING", "Feline_NormalMode" },
    ["i"] = { "INSERT", "Feline_InsertMode" },
@@ -255,7 +254,7 @@ options.empty_spaceColored = {
    provider = options.separator_style.left,
    hl = function()
       return {
-         fg = get_color(options.mode_colors[vim.fn.mode()][2], "fg#"),
+         fg = get_color(options.mode_hlgroups[vim.fn.mode()][2], "fg#"),
          bg = get_color("Feline_EmptySpace", "fg#"),
       }
    end,
@@ -267,17 +266,17 @@ options.mode_icon = {
    hl = function()
       return {
          fg = get_color("Feline", "bg#"),
-         bg = get_color(options.mode_colors[vim.fn.mode()][2], "fg#"),
+         bg = get_color(options.mode_hlgroups[vim.fn.mode()][2], "fg#"),
       }
    end,
 }
 
 options.mode_name = {
    provider = function()
-      return " " .. options.mode_colors[vim.fn.mode()][1] .. " "
+      return " " .. options.mode_hlgroups[vim.fn.mode()][1] .. " "
    end,
    hl = function()
-      return options.mode_colors[vim.fn.mode()][2]
+      return options.mode_hlgroups[vim.fn.mode()][2]
    end,
 }
 
