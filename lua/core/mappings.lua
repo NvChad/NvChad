@@ -52,7 +52,7 @@ M.general = {
    },
 
    t = {
-      ["jk"] = { termcodes "<C-\\><C-N>", "   escape terminal mode" },
+      ["<C-x>"] = { termcodes "<C-\\><C-N>", "   escape terminal mode" },
    },
 }
 
