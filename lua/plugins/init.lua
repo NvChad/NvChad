@@ -1,21 +1,12 @@
-local present, packer = pcall(require, "plugins.packerInit")
-
-if not present then
-   return false
-end
-
 local plugins = {
+
    ["nvim-lua/plenary.nvim"] = {},
    ["lewis6991/impatient.nvim"] = {},
-
-   ["wbthomason/packer.nvim"] = {
-      event = "VimEnter",
-   },
-
+   ["wbthomason/packer.nvim"] = {},
    ["NvChad/extensions"] = {},
 
    ["NvChad/base46"] = {
-      after = "packer.nvim",
+      after = "plenary.nvim",
       config = function()
          local ok, base46 = pcall(require, "base46")
 
@@ -219,13 +210,4 @@ local plugins = {
    },
 }
 
-plugins = nvchad.remove_default_plugins(plugins)
-
--- merge user plugin table & default plugin table
-plugins = nvchad.plugin_list(plugins)
-
-return packer.startup(function(use)
-   for _, v in pairs(plugins) do
-      use(v)
-   end
-end)
+require("core.packer").run(plugins)
