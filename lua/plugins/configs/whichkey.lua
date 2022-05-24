@@ -63,21 +63,7 @@ local mapping_groups = { groups = vim.deepcopy(mappings.groups) }
 mappings.disabled = nil
 mappings.groups = nil
 
--- register mappings
-local function register_mappings(maps, opts)
-   for mode, opt in pairs(opts.mode_opts) do
-      for key, value in pairs(maps) do
-         if key ~= "lspconfig" then
-            if value[mode] then
-               local mode_opts = value["mode_opts"] and vim.tbl_deep_extend("force", opt, value["mode_opts"]) or opt
-               wk.register(value[mode], mode_opts)
-            end
-         end
-      end
-   end
-end
-
-register_mappings(mappings, options)
-register_mappings(mapping_groups, options)
+nvchad.whichKey_map(mappings, options)
+nvchad.whichKey_map(mapping_groups, options)
 
 wk.setup(options)
