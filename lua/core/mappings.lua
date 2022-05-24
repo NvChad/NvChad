@@ -102,6 +102,8 @@ M.comment = {
 M.lspconfig = {
    -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
+   ignore = { "/lua/plugins/configs/whichkey.lua" },
+
    n = {
       ["gD"] = {
          function()
