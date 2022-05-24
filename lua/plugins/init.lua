@@ -186,7 +186,7 @@ local plugins = {
 
    -- file managing , picker etc
    ["kyazdani42/nvim-tree.lua"] = {
-      ft = 'alpha',
+      ft = "alpha",
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
       config = function()
          require "plugins.configs.nvimtree"
