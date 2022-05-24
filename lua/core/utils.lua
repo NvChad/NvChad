@@ -36,8 +36,8 @@ nvchad.load_config = function()
       if type(user_config) == "table" then
          conf.mappings = conf.mappings and nvchad.prune_key_map(conf.mappings, user_config.mappings, ignore_modes) or {}
          user_config.mappings = user_config.mappings
-               and nvchad.prune_key_map(user_config.mappings, "rm_disabled", ignore_modes)
-            or {}
+             and nvchad.prune_key_map(user_config.mappings, "rm_disabled", ignore_modes)
+             or {}
          conf = vim.tbl_deep_extend("force", conf, user_config)
       else
          error "User config (chadrc.lua) *must* return a table!"
@@ -90,7 +90,7 @@ nvchad.prune_key_map = function(key_map, prune_map, ignore_modes)
       return prune_map
    end
    local prune_keys = type(prune_map) == "table" and nvchad.reduce_key_map(prune_map, ignore_modes)
-      or { n = {}, v = {}, i = {}, t = {} }
+       or { n = {}, v = {}, i = {}, t = {} }
 
    for ext, modes in pairs(key_map) do
       for mode, mappings in pairs(modes) do
@@ -126,9 +126,33 @@ nvchad.map = function(mode, keys, command, opt)
    vim.keymap.set(mode, keys, command, opt)
 end
 
--- For those who disabled whichkey
-nvchad.no_WhichKey_map = function()
-   local mappings = nvchad.load_config().mappings
+-- register mappings through which-key
+nvchad.whichKey_map = function(maps, opts)
+   local present, wk = pcall(require, "which-key")
+   local caller_path = nvchad.get_caller_file_path()
+
+   if not present then
+      return false
+   end
+
+   for mode, opt in pairs(opts.mode_opts) do
+      for _, value in pairs(maps) do
+         if value[mode] then
+            -- check if caller_path is in the ignore list
+            if not value["ignore"] or not vim.tbl_contains(value["ignore"], caller_path) then
+               local mode_opts = value["mode_opts"] and
+                   vim.tbl_deep_extend("force", opt, value["mode_opts"]) or opt
+               wk.register(value[mode], mode_opts)
+            end
+         end
+      end
+   end
+
+   return true
+end
+
+-- for those who disabled whichkey and want to add specific mapping tables
+nvchad.no_WhichKey_table_map = function(mappings)
    local ignore_modes = { "mode_opts" }
 
    for _, value in pairs(mappings) do
@@ -143,6 +167,13 @@ nvchad.no_WhichKey_map = function()
          end
       end
    end
+end
+
+-- for those who disabled whichkey
+nvchad.no_WhichKey_map = function()
+   local mappings = nvchad.load_config().mappings
+
+   nvchad.no_WhichKey_table_map(mappings)
 end
 
 -- load plugin after entering vim ui
@@ -196,4 +227,14 @@ nvchad.load_override = function(default_table, plugin_name)
    end
 
    return default_table
+end
+
+nvchad.get_caller_file_path = function()
+   local success, result = pcall(debug.getinfo, 4, "S")
+
+   if success then
+      return result.source:match("@(.*)"):gsub(vim.fn.stdpath("config"), "")
+   else
+      return ""
+   end
 end
