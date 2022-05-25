@@ -206,7 +206,7 @@ local plugins = {
          nvchad.packer_lazy_load "which-key.nvim"
       end,
       config = function()
-         require "plugins.configs.whichkey"
+         require("plugins.configs.whichkey").setup()
       end,
    },
 }
