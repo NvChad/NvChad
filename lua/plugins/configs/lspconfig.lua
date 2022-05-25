@@ -22,60 +22,9 @@ M.on_attach = function(client, bufnr)
    client.resolved_capabilities.document_formatting = false
    client.resolved_capabilities.document_range_formatting = false
 
-   local options = {
-
-      -- NOTE : this mode_opts table isnt in the default whichkey config
-      --  Its added here so you could configure it in chadrc
-
-      mode_opts = {
-         n = {
-            mode = "n",
-         },
-
-         v = {
-            mode = "v",
-         },
-
-         i = {
-            mode = "i",
-         },
-
-         t = {
-            mode = "t",
-         },
-      },
-
-      icons = {
-         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-         separator = "  ", -- symbol used between a key and it's label
-         group = "+", -- symbol prepended to a group
-      },
-
-      popup_mappings = {
-         scroll_down = "<c-d>", -- binding to scroll down inside the popup
-         scroll_up = "<c-u>", -- binding to scroll up inside the popup
-      },
-
-      window = {
-         border = "none", -- none/single/double/shadow
-      },
-
-      layout = {
-         spacing = 6, -- spacing between columns
-      },
-
-      hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
-
-      triggers_blacklist = {
-         -- list of mode / prefixes that should never be hooked by WhichKey
-         i = { "j", "k" },
-         v = { "j", "k" },
-      },
-   }
-
-   options = nvchad.load_override(options, "folke/which-key.nvim")
-
+   local options = require("plugins.configs.whichkey").options
    local lsp_mappings = { nvchad.load_config().mappings.lspconfig }
+
    lsp_mappings[1]["mode_opts"] = { buffer = bufnr }
 
    if not nvchad.whichKey_map(lsp_mappings, options) then

@@ -4,7 +4,9 @@ if not present then
    return
 end
 
-local options = {
+local M = {}
+
+M.options = {
 
    -- NOTE : this mode_opts table isnt in the default whichkey config
    --  Its added here so you could configure it in chadrc
@@ -55,15 +57,19 @@ local options = {
    },
 }
 
-options = nvchad.load_override(options, "folke/which-key.nvim")
+M.options = nvchad.load_override(M.options, "folke/which-key.nvim")
 
-local mappings = nvchad.load_config().mappings
-local mapping_groups = { groups = vim.deepcopy(mappings.groups) }
+M.setup = function()
+   local mappings = nvchad.load_config().mappings
+   local mapping_groups = { groups = vim.deepcopy(mappings.groups) }
 
-mappings.disabled = nil
-mappings.groups = nil
+   mappings.disabled = nil
+   mappings.groups = nil
 
-nvchad.whichKey_map(mappings, options)
-nvchad.whichKey_map(mapping_groups, options)
+   nvchad.whichKey_map(mappings, M.options)
+   nvchad.whichKey_map(mapping_groups, M.options)
 
-wk.setup(options)
+   wk.setup(M.options)
+end
+
+return M
