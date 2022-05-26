@@ -28,7 +28,7 @@ M.on_attach = function(client, bufnr)
    lsp_mappings[1]["mode_opts"] = { buffer = bufnr }
 
    if not nvchad.whichKey_map(lsp_mappings, options) then
-      nvchad.no_WhichKey_table_map(lsp_mappings)
+      nvchad.no_WhichKey_map(lsp_mappings)
    end
 end
 

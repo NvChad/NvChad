@@ -1,9 +1,3 @@
-local present, wk = pcall(require, "which-key")
-
-if not present then
-   return
-end
-
 local M = {}
 
 M.options = {
@@ -60,6 +54,12 @@ M.options = {
 M.options = nvchad.load_override(M.options, "folke/which-key.nvim")
 
 M.setup = function()
+   local present, wk = pcall(require, "which-key")
+
+   if not present then
+      return
+   end
+
    local mappings = nvchad.load_config().mappings
    local mapping_groups = { groups = vim.deepcopy(mappings.groups) }
 
