@@ -14,14 +14,14 @@ options.icon_styles = {
       left = "",
       right = " ",
       main_icon = "  ",
-      vi_mode_icon = " ",
+      vi_mode_icon = " ",
       position_icon = " ",
    },
    arrow = {
       left = "",
       right = "",
       main_icon = "  ",
-      vi_mode_icon = " ",
+      vi_mode_icon = " ",
       position_icon = " ",
    },
 
@@ -29,7 +29,7 @@ options.icon_styles = {
       left = " ",
       right = " ",
       main_icon = "   ",
-      vi_mode_icon = "  ",
+      vi_mode_icon = "  ",
       position_icon = "  ",
    },
 
@@ -37,7 +37,7 @@ options.icon_styles = {
       left = "",
       right = "",
       main_icon = "  ",
-      vi_mode_icon = " ",
+      vi_mode_icon = " ",
       position_icon = " ",
    },
 
@@ -45,7 +45,7 @@ options.icon_styles = {
       left = " ",
       right = " ",
       main_icon = "  ",
-      vi_mode_icon = " ",
+      vi_mode_icon = " ",
       position_icon = " ",
    },
 }
