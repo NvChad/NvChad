@@ -13,8 +13,6 @@ M.bootstrap = function()
 
       fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
 
-      print "Packer cloned successfully!"
-
       -- install plugins + compile their configs
       vim.cmd "packadd packer.nvim"
       require "plugins"
