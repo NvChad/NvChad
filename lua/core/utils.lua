@@ -1,8 +1,8 @@
-_G.nvchad = {}
+local M = {}
 
 local merge_tb = vim.tbl_deep_extend
 
-nvchad.close_buffer = function(force)
+M.close_buffer = function(force)
    if vim.bo.buftype == "terminal" then
       vim.api.nvim_win_hide(0)
       return
@@ -24,14 +24,14 @@ nvchad.close_buffer = function(force)
    vim.cmd(close_cmd)
 end
 
-nvchad.load_config = function()
+M.load_config = function()
    local config = require "core.default_config"
    local chadrc_exists, chadrc = pcall(require, "custom.chadrc")
 
    if chadrc_exists then
       -- merge user config if it exists and is a table; otherwise display an error
       if type(chadrc) == "table" then
-         nvchad.remove_default_keys()
+         M.remove_default_keys()
          config = merge_tb("force", config, chadrc)
       else
          error "chadrc must return a table!"
@@ -42,7 +42,7 @@ nvchad.load_config = function()
    return config
 end
 
-nvchad.remove_default_keys = function()
+M.remove_default_keys = function()
    local chadrc = require "custom.chadrc"
    local user_mappings = chadrc.mappings or {}
    local user_keys = {}
@@ -73,8 +73,8 @@ nvchad.remove_default_keys = function()
    end
 end
 
-nvchad.load_mappings = function(mappings, mapping_opt)
-   mappings = mappings or nvchad.load_config().mappings
+M.load_mappings = function(mappings, mapping_opt)
+   mappings = mappings or M.load_config().mappings
 
    -- set mapping function with/without whichkye
    local map_func
@@ -114,7 +114,7 @@ nvchad.load_mappings = function(mappings, mapping_opt)
 end
 
 -- load plugin after entering vim ui
-nvchad.packer_lazy_load = function(plugin, timer)
+M.packer_lazy_load = function(plugin, timer)
    if plugin then
       timer = timer or 0
       vim.defer_fn(function()
@@ -124,8 +124,8 @@ nvchad.packer_lazy_load = function(plugin, timer)
 end
 
 -- remove plugins defined in chadrc
-nvchad.remove_default_plugins = function(plugins)
-   local removals = nvchad.load_config().plugins.remove or {}
+M.remove_default_plugins = function(plugins)
+   local removals = M.load_config().plugins.remove or {}
 
    if not vim.tbl_isempty(removals) then
       for _, plugin in pairs(removals) do
@@ -137,8 +137,8 @@ nvchad.remove_default_plugins = function(plugins)
 end
 
 -- merge default/user plugin tables
-nvchad.merge_plugins = function(default_plugins)
-   local user_plugins = nvchad.load_config().plugins.user
+M.merge_plugins = function(default_plugins)
+   local user_plugins = M.load_config().plugins.user
 
    -- merge default + user plugin table
    default_plugins = merge_tb("force", default_plugins, user_plugins)
@@ -154,8 +154,8 @@ nvchad.merge_plugins = function(default_plugins)
    return final_table
 end
 
-nvchad.load_override = function(default_table, plugin_name)
-   local user_table = nvchad.load_config().plugins.override[plugin_name]
+M.load_override = function(default_table, plugin_name)
+   local user_table = M.load_config().plugins.override[plugin_name]
 
    if type(user_table) == "table" then
       default_table = merge_tb("force", default_table, user_table)
@@ -165,3 +165,5 @@ nvchad.load_override = function(default_table, plugin_name)
 
    return default_table
 end
+
+return M

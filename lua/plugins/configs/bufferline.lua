@@ -65,6 +65,6 @@ local options = {
 }
 
 -- check for any override
-options = nvchad.load_override(options, "akinsho/bufferline.nvim")
+options = require("core.utils").load_override(options, "akinsho/bufferline.nvim")
 
 bufferline.setup(options)

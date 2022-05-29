@@ -71,7 +71,7 @@ M.bufferline = {
       -- close buffer + hide terminal buffer
       ["<leader>x"] = {
          function()
-            nvchad.close_buffer()
+            require("core.utils").close_buffer()
          end,
          "   close buffer",
       },

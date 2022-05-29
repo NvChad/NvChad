@@ -37,7 +37,7 @@ M.options = {
 }
 
 -- merge overrides if there are any
-M.options = nvchad.load_override(M.options, "wbthomason/packer.nvim")
+M.options = require("core.utils").load_override(M.options, "wbthomason/packer.nvim")
 
 M.run = function(plugins)
    local present, packer = pcall(require, "packer")
@@ -47,8 +47,8 @@ M.run = function(plugins)
    end
 
    -- Override with chadrc values
-   plugins = nvchad.remove_default_plugins(plugins)
-   plugins = nvchad.merge_plugins(plugins)
+   plugins = require("core.utils").remove_default_plugins(plugins)
+   plugins = require("core.utils").merge_plugins(plugins)
 
    packer.init(M.options)
 
