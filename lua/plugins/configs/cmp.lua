@@ -96,6 +96,6 @@ local options = {
 }
 
 -- check for any override
-options = nvchad.load_override(options, "hrsh7th/nvim-cmp")
+options = require("core.utils").load_override(options, "hrsh7th/nvim-cmp")
 
 cmp.setup(options)

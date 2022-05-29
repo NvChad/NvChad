@@ -51,7 +51,7 @@ M.options = {
    },
 }
 
-M.options = nvchad.load_override(M.options, "folke/which-key.nvim")
+M.options = require("core.utils").load_override(M.options, "folke/which-key.nvim")
 
 M.setup = function()
    local present, wk = pcall(require, "which-key")
@@ -60,14 +60,14 @@ M.setup = function()
       return
    end
 
-   local mappings = nvchad.load_config().mappings
+   local mappings = require("core.utils").load_config().mappings
    local mapping_groups = { groups = vim.deepcopy(mappings.groups) }
 
    mappings.disabled = nil
    mappings.groups = nil
 
-   nvchad.whichKey_map(mappings, M.options)
-   nvchad.whichKey_map(mapping_groups, M.options)
+   require("core.utils").whichKey_map(mappings, M.options)
+   require("core.utils").whichKey_map(mapping_groups, M.options)
 
    wk.setup(M.options)
 end

@@ -16,6 +16,6 @@ local options = {
 }
 
 -- check for any override
-options = nvchad.load_override(options, "nvim-treesitter/nvim-treesitter")
+options = require("core.utils").load_override(options, "nvim-treesitter/nvim-treesitter")
 
 treesitter.setup(options)

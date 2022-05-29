@@ -31,6 +31,6 @@ local options = {
    max_concurrent_installers = 20,
 }
 
-options = nvchad.load_override(options, "williamboman/nvim-lsp-installer")
+options = require("core.utils").load_override(options, "williamboman/nvim-lsp-installer")
 
 lsp_installer.setup(options)

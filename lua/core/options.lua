@@ -1,7 +1,7 @@
 local opt = vim.opt
 local g = vim.g
 
-g.nvchad_theme = nvchad.load_config().ui.theme
+g.nvchad_theme = require("core.utils").load_config().ui.theme
 
 -- use filetype.lua instead of filetype.vim
 g.did_load_filetypes = 0
@@ -86,4 +86,4 @@ vim.schedule(function()
 end)
 
 -- load user options if the file exists
-nvchad.load_config().options.user()
+require("core.utils").load_config().options.user()

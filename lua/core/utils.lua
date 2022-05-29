@@ -1,4 +1,4 @@
-_G.nvchad = {}
+local nvchad = {}
 
 nvchad.close_buffer = function(force)
    if vim.bo.buftype == "terminal" then
@@ -234,3 +234,5 @@ nvchad.get_caller_file_path = function(call_stack_depth)
       return ""
    end
 end
+
+return nvchad
