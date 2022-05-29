@@ -1,4 +1,3 @@
-local lazy_load = require("core.utils").packer_lazy_load
 
 local plugins = {
 
@@ -73,7 +72,9 @@ local plugins = {
       config = function()
          require("plugins.configs.others").gitsigns()
       end,
-      setup = lazy_load "gitsigns.nvim",
+      setup = function()
+         require("core.utils").packer_lazy_load "gitsigns.nvim"
+      end
    },
 
    -- lsp stuff
@@ -107,7 +108,9 @@ local plugins = {
 
    ["andymass/vim-matchup"] = {
       opt = true,
-      setup = lazy_load "vim-matchup",
+      setup = function()
+         require("core.utils").packer_lazy_load "vim-matchup"
+      end
    },
 
    ["max397574/better-escape.nvim"] = {
