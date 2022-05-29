@@ -13,9 +13,9 @@ local options = {
 
    ui = {
       icons = {
-         server_installed = "",
-         server_pending = "",
-         server_uninstalled = "ﮊ",
+         server_installed = " ",
+         server_pending = " ",
+         server_uninstalled = " ﮊ",
       },
       keymaps = {
          toggle_server_expand = "<CR>",
