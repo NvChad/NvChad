@@ -10,10 +10,13 @@ M.autopairs = function()
       return
    end
 
-   autopairs.setup {
+   local options = {
       fast_wrap = {},
       disable_filetype = { "TelescopePrompt", "vim" },
    }
+
+   options = load_override(options, "windwp/nvim-autopairs")
+   autopairs.setup(options)
 
    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
