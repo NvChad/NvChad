@@ -196,7 +196,7 @@ M.lspconfig = {
 
       ["<leader>fm"] = {
          function()
-            vim.lsp.buf.formatting()
+            vim.lsp.buf.format({async=true})
          end,
          "   lsp formatting",
       },
