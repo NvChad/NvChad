@@ -44,7 +44,6 @@ local mapping_groups = { groups = vim.deepcopy(mappings.groups) }
 mappings.disabled = nil
 mappings.groups = nil
 
-utils.load_mappings()
 utils.load_mappings(mapping_groups)
 
 wk.setup(options)

@@ -1,4 +1,3 @@
-
 local plugins = {
 
    ["nvim-lua/plenary.nvim"] = {},
@@ -74,7 +73,7 @@ local plugins = {
       end,
       setup = function()
          require("core.utils").packer_lazy_load "gitsigns.nvim"
-      end
+      end,
    },
 
    -- lsp stuff
@@ -110,7 +109,7 @@ local plugins = {
       opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "vim-matchup"
-      end
+      end,
    },
 
    ["max397574/better-escape.nvim"] = {
