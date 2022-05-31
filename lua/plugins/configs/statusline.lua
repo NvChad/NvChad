@@ -50,7 +50,8 @@ options.icon_styles = {
    },
 }
 
-options.separator_style = options.icon_styles[require("core.utils").load_config().plugins.options.statusline.separator_style]
+options.separator_style =
+   options.icon_styles[require("core.utils").load_config().plugins.options.statusline.separator_style]
 
 options.main_icon = {
    provider = options.separator_style.main_icon,
@@ -124,6 +125,11 @@ options.git_branch = {
    provider = "git_branch",
    hl = "Feline_diffIcons",
    icon = "  ",
+}
+
+options.empty_space_git = {
+   provider = " " .. options.separator_style.left,
+   hl = "Feline_EmptySpace_git",
 }
 
 -- lsp
@@ -255,7 +261,7 @@ options.empty_spaceColored = {
    hl = function()
       return {
          fg = get_color(options.mode_hlgroups[vim.fn.mode()][2], "fg#"),
-         bg = get_color("Feline_EmptySpace", "fg#"),
+         bg = get_color("Feline_EmptySpace", "bg#"),
       }
    end,
 }
@@ -346,8 +352,8 @@ add_table(options.right, options.diff.add)
 add_table(options.right, options.diff.change)
 add_table(options.right, options.diff.remove)
 add_table(options.right, options.git_branch)
+add_table(options.right, options.empty_space_git)
 
-add_table(options.right, options.empty_space)
 add_table(options.right, options.empty_spaceColored)
 add_table(options.right, options.mode_icon)
 add_table(options.right, options.mode_name)

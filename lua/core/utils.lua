@@ -74,9 +74,7 @@ M.remove_default_keys = function()
 end
 
 M.load_mappings = function(mappings, mapping_opt)
-   mappings = mappings or M.load_config().mappings
-
-   -- set mapping function with/without whichkye
+   -- set mapping function with/without whichkey
    local map_func
    local whichkey_exists, wk = pcall(require, "which-key")
 
@@ -92,35 +90,33 @@ M.load_mappings = function(mappings, mapping_opt)
       end
    end
 
-   for section, section_mappings in pairs(mappings) do
-      if section ~= "lspconfig" then
-         -- skip mapping this as its mapppings are loaded in lspconfiguti
-         for mode, mode_mappings in pairs(section_mappings) do
-            for keybind, mapping_info in pairs(mode_mappings) do
-               -- merge default + user opts
+   mappings = mappings or vim.deepcopy(M.load_config().mappings)
+   mappings.lspconfig = nil
 
-               local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
-               local opts = merge_tb("force", default_opts, mapping_info.opts or {})
+   for _, section_mappings in pairs(mappings) do
+      -- skip mapping this as its mapppings are loaded in lspconfig
+      for mode, mode_mappings in pairs(section_mappings) do
+         for keybind, mapping_info in pairs(mode_mappings) do
+            -- merge default + user opts
 
-               if mapping_info.opts then
-                  mapping_info.opts = nil
-               end
+            local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
+            local opts = merge_tb("force", default_opts, mapping_info.opts or {})
 
-               map_func(keybind, mapping_info, opts)
+            if mapping_info.opts then
+               mapping_info.opts = nil
             end
+
+            map_func(keybind, mapping_info, opts)
          end
       end
    end
 end
 
 -- load plugin after entering vim ui
-M.packer_lazy_load = function(plugin, timer)
-   if plugin then
-      timer = timer or 0
-      vim.defer_fn(function()
-         require("packer").loader(plugin)
-      end, timer)
-   end
+M.packer_lazy_load = function(plugin)
+   vim.defer_fn(function()
+      require("packer").loader(plugin)
+   end, 0)
 end
 
 -- remove plugins defined in chadrc
