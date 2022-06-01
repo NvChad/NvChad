@@ -147,7 +147,7 @@ M.lspconfig = {
 
       ["<leader>ra"] = {
          function()
-            vim.lsp.buf.rename()
+            vim.lsp.buf.rename.float()
          end,
          "   lsp rename",
       },
