@@ -123,11 +123,13 @@ M.luasnip = function()
       return
    end
 
-   luasnip.config.set_config {
+   local options = {
       history = true,
       updateevents = "TextChanged,TextChangedI",
    }
+   options = load_override(options, "L3MON4D3/LuaSnip")
 
+   luasnip.config.set_config(options)
    require("luasnip.loaders.from_vscode").lazy_load()
 end
 
