@@ -105,13 +105,6 @@ local plugins = {
       end,
    },
 
-   ["andymass/vim-matchup"] = {
-      opt = true,
-      setup = function()
-         require("core.utils").packer_lazy_load "vim-matchup"
-      end,
-   },
-
    ["max397574/better-escape.nvim"] = {
       event = "InsertCharPre",
       config = function()
