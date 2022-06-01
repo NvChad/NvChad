@@ -111,7 +111,9 @@ M.comment = function()
       return
    end
 
-   nvim_comment.setup()
+   local options = {}
+   options = load_override(options, "numToStr/Comment.nvim")
+   nvim_comment.setup(options)
 end
 
 M.luasnip = function()
@@ -261,8 +263,7 @@ M.gitsigns = function()
    if not present then
       return
    end
-
-   gitsigns.setup {
+   local options = {
       signs = {
          add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
          change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
@@ -271,6 +272,9 @@ M.gitsigns = function()
          changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
       },
    }
+   options = load_override(options, "lewis6991/gitsigns.nvim")
+
+   gitsigns.setup(options)
 end
 
 return M
