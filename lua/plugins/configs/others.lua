@@ -127,9 +127,10 @@ M.luasnip = function()
       history = true,
       updateevents = "TextChanged,TextChangedI",
    }
-   options = load_override(options, "L3MON4D3/LuaSnip")
 
+   options = load_override(options, "L3MON4D3/LuaSnip")
    luasnip.config.set_config(options)
+
    require("luasnip.loaders.from_vscode").lazy_load()
 end
 
@@ -205,10 +206,10 @@ M.lsp_handlers = function()
    -- This is modified version of the above snippet
    vim.lsp.buf.rename = {
       float = function()
-         local currName = vim.fn.expand "<cword>"
+         local currName = vim.fn.expand "<cword>" .. " "
 
-         local win = require("plenary.popup").create("  ", {
-            title = currName,
+         local win = require("plenary.popup").create(currName, {
+            title = "Renamer",
             style = "minimal",
             borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
             relative = "cursor",
@@ -223,6 +224,7 @@ M.lsp_handlers = function()
 
          local map_opts = { noremap = true, silent = true }
 
+         vim.cmd "normal w"
          vim.cmd "startinsert"
 
          vim.api.nvim_buf_set_keymap(0, "i", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
@@ -265,6 +267,7 @@ M.gitsigns = function()
    if not present then
       return
    end
+
    local options = {
       signs = {
          add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },

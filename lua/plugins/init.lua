@@ -36,6 +36,13 @@ local plugins = {
       end,
    },
 
+   ["SmiteshP/nvim-gps"] = {
+      event = "CursorMoved",
+      config = function()
+         require "plugins.configs.gps"
+      end,
+   },
+
    ["akinsho/bufferline.nvim"] = {
       after = "nvim-web-devicons",
       config = function()

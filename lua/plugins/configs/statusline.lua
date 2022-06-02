@@ -1,4 +1,9 @@
 local present, feline = pcall(require, "feline")
+local fn = vim.fn
+
+local function get_color(group, attr)
+   return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
+end
 
 if not present then
    return
@@ -9,131 +14,124 @@ local options = {
    lsp_severity = vim.diagnostic.severity,
 }
 
+options.icons = {
+   mode_icon = "  ",
+   position_icon = " ",
+   empty_file = " Empty ",
+   dir = " ",
+   clock = " ",
+}
+
 options.icon_styles = {
+
+   -- mix of slant + round
    default = {
       left = "",
       right = " ",
-      main_icon = "  ",
-      vi_mode_icon = " ",
-      position_icon = " ",
-   },
-   arrow = {
-      left = "",
-      right = "",
-      main_icon = "  ",
-      vi_mode_icon = " ",
-      position_icon = " ",
-   },
-
-   block = {
-      left = " ",
-      right = " ",
-      main_icon = "   ",
-      vi_mode_icon = "  ",
-      position_icon = "  ",
    },
 
    round = {
       left = "",
       right = "",
-      main_icon = "  ",
-      vi_mode_icon = " ",
-      position_icon = " ",
    },
 
-   slant = {
-      left = " ",
-      right = " ",
-      main_icon = "  ",
-      vi_mode_icon = " ",
-      position_icon = " ",
+   block = {
+      left = "█",
+      right = "█",
    },
-}
 
-options.separator_style =
-   options.icon_styles[require("core.utils").load_config().plugins.options.statusline.separator_style]
-
-options.main_icon = {
-   provider = options.separator_style.main_icon,
-
-   hl = "FelineIcon",
-
-   right_sep = {
-      str = options.separator_style.right,
-      hl = "FelineIconSeparator",
+   arrow = {
+      left = "",
+      right = "",
    },
 }
 
-options.file_name = {
-   provider = function()
-      local filename = vim.fn.expand "%:t"
-      local extension = vim.fn.expand "%:e"
-      local icon = require("nvim-web-devicons").get_icon(filename, extension)
-      if icon == nil then
-         icon = " "
-         return icon
-      end
-      return " " .. icon .. " " .. filename .. " "
+local statusline_opt = require("core.utils").load_config().plugins.options.statusline.separator_style
+options.separator_style = options.icon_styles[statusline_opt]
+
+options.mode_icon = {
+   provider = options.icons.mode_icon,
+
+   hl = function()
+      return {
+         fg = get_color("Feline", "bg#"),
+         bg = get_color(options.mode_hlgroups[fn.mode()][2], "fg#"),
+      }
    end,
 
-   hl = "FelineFileName",
-
    right_sep = {
       str = options.separator_style.right,
-      hl = "FelineFileName_Separator",
+      hl = function()
+         return {
+            fg = get_color(options.mode_hlgroups[fn.mode()][2], "fg#"),
+            bg = get_color("Feline_EmptySpace", "fg#"),
+         }
+      end,
    },
 }
 
-options.dir_name = {
+-- MODES
+
+options.mode_hlgroups = {
+   ["n"] = { "Normal", "Feline_NormalMode" },
+   ["no"] = { "N-PENDING", "Feline_NormalMode" },
+   ["i"] = { "INSERT", "Feline_InsertMode" },
+   ["ic"] = { "INSERT", "Feline_InsertMode" },
+   ["t"] = { "TERMINAL", "Feline_TerminalMode" },
+   ["v"] = { "VISUAL", "Feline_VisualMode" },
+   ["V"] = { "V-LINE", "Feline_VisualMode" },
+   [""] = { "V-BLOCK", "Feline_VisualMode" },
+   ["R"] = { "REPLACE", "Feline_ReplaceMode" },
+   ["Rv"] = { "V-REPLACE", "Feline_ReplaceMode" },
+   ["s"] = { "SELECT", "Feline_SelectMode" },
+   ["S"] = { "S-LINE", "Feline_SelectMode" },
+   [""] = { "S-BLOCK", "Feline_SelectMode" },
+   ["c"] = { "COMMAND", "Feline_CommandMode" },
+   ["cv"] = { "COMMAND", "Feline_CommandMode" },
+   ["ce"] = { "COMMAND", "Feline_CommandMode" },
+   ["r"] = { "PROMPT", "Feline_ConfirmMode" },
+   ["rm"] = { "MORE", "Feline_ConfirmMode" },
+   ["r?"] = { "CONFIRM", "Feline_ConfirmMode" },
+   ["!"] = { "SHELL", "Feline_TerminalMode" },
+}
+
+options.vi_mode = {
    provider = function()
-      local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-      return "  " .. dir_name .. " "
+      return " " .. options.mode_hlgroups[fn.mode()][1] .. " "
    end,
 
-   hl = "FelineDirName",
+   hl = function()
+      return options.mode_hlgroups[fn.mode()][2]
+   end,
 
    right_sep = {
       str = options.separator_style.right,
-      hl = "FelineDirName_Separator",
+      hl = function()
+         return {
+            fg = get_color("Feline_EmptySpace", "bg#"),
+            bg = get_color("Feline_nvim_gps", "bg#"),
+         }
+      end,
    },
 }
 
---  Git
-
-options.diff = {
-   add = {
-      provider = "git_diff_added",
-      hl = "Feline_diffIcons",
-      icon = " ",
+options.cwd = {
+   -- icon
+   left_sep = {
+      str = " " .. options.icons.dir,
+      hl = "FelineCwd",
    },
 
-   change = {
-      provider = "git_diff_changed",
-      hl = "Feline_diffIcons",
+   -- dirname
+   provider = function()
+      local dir_name = fn.fnamemodify(fn.getcwd(), ":t")
+      return " " .. dir_name .. " "
+   end,
 
-      icon = "  ",
-   },
-
-   remove = {
-      provider = "git_diff_removed",
-      hl = "Feline_diffIcons",
-      icon = "  ",
-   },
-}
-
-options.git_branch = {
-   provider = "git_branch",
-   hl = "Feline_diffIcons",
-   icon = "  ",
-}
-
-options.empty_space_git = {
-   provider = " " .. options.separator_style.left,
-   hl = "Feline_EmptySpace_git",
+   hl = "FelineCwd",
 }
 
 -- lsp
-
 options.diagnostic = {
    error = {
       provider = "diagnostic_errors",
@@ -174,7 +172,7 @@ options.diagnostic = {
    },
 }
 
-options.lsp_icon = {
+options.lsp_status = {
    provider = function()
       if next(vim.lsp.buf_get_clients()) ~= nil then
          local lsp_name = vim.lsp.get_active_clients()[1].name
@@ -192,98 +190,129 @@ options.lsp_progress = {
    provider = function()
       local Lsp = vim.lsp.util.get_progress_messages()[1]
 
-      if Lsp then
-         local msg = Lsp.message or ""
-         local percentage = Lsp.percentage or 0
-         local title = Lsp.title or ""
-         local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-
-         local success_icon = {
-            "",
-            "",
-            "",
-         }
-
-         local ms = vim.loop.hrtime() / 1000000
-         local frame = math.floor(ms / 120) % #spinners
-
-         if percentage >= 70 then
-            return string.format(" %%<%s %s %s (%s%%%%) ", success_icon[frame + 1], title, msg, percentage)
-         end
-
-         return string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
+      if not Lsp then
+         return ""
       end
 
-      return ""
+      local msg = Lsp.message or ""
+      local percentage = Lsp.percentage or 0
+      local title = Lsp.title or ""
+      local spinners = { "", "" }
+
+      local ms = vim.loop.hrtime() / 1000000
+      local frame = math.floor(ms / 120) % #spinners
+
+      return string.format(" %%<%s %s %s (%s%%%%) ", spinners[frame + 1], title, msg, percentage)
    end,
+
    hl = "Feline_LspProgress",
 }
 
--- MODES
+--  Git
 
-options.mode_hlgroups = {
-   ["n"] = { "NORMAL", "Feline_NormalMode" },
-   ["no"] = { "N-PENDING", "Feline_NormalMode" },
-   ["i"] = { "INSERT", "Feline_InsertMode" },
-   ["ic"] = { "INSERT", "Feline_InsertMode" },
-   ["t"] = { "TERMINAL", "Feline_TerminalMode" },
-   ["v"] = { "VISUAL", "Feline_VisualMode" },
-   ["V"] = { "V-LINE", "Feline_VisualMode" },
-   [""] = { "V-BLOCK", "Feline_VisualMode" },
-   ["R"] = { "REPLACE", "Feline_ReplaceMode" },
-   ["Rv"] = { "V-REPLACE", "Feline_ReplaceMode" },
-   ["s"] = { "SELECT", "Feline_SelectMode" },
-   ["S"] = { "S-LINE", "Feline_SelectMode" },
-   [""] = { "S-BLOCK", "Feline_SelectMode" },
-   ["c"] = { "COMMAND", "Feline_CommandMode" },
-   ["cv"] = { "COMMAND", "Feline_CommandMode" },
-   ["ce"] = { "COMMAND", "Feline_CommandMode" },
-   ["r"] = { "PROMPT", "Feline_ConfirmMode" },
-   ["rm"] = { "MORE", "Feline_ConfirmMode" },
-   ["r?"] = { "CONFIRM", "Feline_ConfirmMode" },
-   ["!"] = { "SHELL", "Feline_TerminalMode" },
+options.diff = {
+   add = {
+      provider = "git_diff_added",
+      hl = "Feline_diffIcons",
+      icon = "   ",
+   },
+
+   change = {
+      provider = "git_diff_changed",
+      hl = "Feline_diffIcons",
+      icon = "   ",
+   },
+
+   remove = {
+      provider = "git_diff_removed",
+      hl = "Feline_diffIcons",
+      icon = "   ",
+   },
 }
 
-local fn = vim.fn
+options.git_branch = {
+   provider = "git_branch",
+   hl = "Feline_diffIcons",
+   icon = "    ",
 
-local function get_color(group, attr)
-   return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), attr)
-end
-
-options.empty_space = {
-   provider = " " .. options.separator_style.left,
-   hl = "Feline_EmptySpace",
+   right_sep = {
+      str = " ",
+      hl = "Feline_diffIcons",
+   },
 }
 
--- this matches the vi mode color
-options.empty_spaceColored = {
-   provider = options.separator_style.left,
-   hl = function()
-      return {
-         fg = get_color(options.mode_hlgroups[vim.fn.mode()][2], "fg#"),
-         bg = get_color("Feline_EmptySpace", "bg#"),
-      }
-   end,
-}
+options.file_info = {
+   left_sep = {
+      str = options.separator_style.left,
+      hl = "Feline_file_info_sep",
+   },
 
-options.mode_icon = {
-   provider = options.separator_style.vi_mode_icon,
-
-   hl = function()
-      return {
-         fg = get_color("Feline", "bg#"),
-         bg = get_color(options.mode_hlgroups[vim.fn.mode()][2], "fg#"),
-      }
-   end,
-}
-
-options.mode_name = {
+   -- file icon
    provider = function()
-      return " " .. options.mode_hlgroups[vim.fn.mode()][1] .. " "
+      local filename = fn.expand "%:t"
+      local extension = fn.expand "%:e"
+
+      local icon = require("nvim-web-devicons").get_icon(filename, extension)
+
+      if icon == nil and fn.expand "%:t" == "" then
+         return options.icons.empty_file
+      else
+         icon = icon .. " " or " "
+         return icon
+      end
    end,
-   hl = function()
-      return options.mode_hlgroups[vim.fn.mode()][2]
+
+   hl = "Feline_file_info",
+
+   -- file name
+   right_sep = {
+      str = function()
+         local filename = fn.expand "%:t"
+         return " " .. fn.fnamemodify(filename, ":r") .. " "
+      end,
+
+      hl = function()
+         return {
+            fg = get_color("Feline_file_info", "bg#"),
+            bg = get_color("Feline_file_info", "fg#"),
+         }
+      end,
+   },
+}
+
+options.nvim_gps = {
+   provider = function()
+      -- nvim-gps loads at cursorMoved so need to handle this
+      local gps_loaded, gps = pcall(require, "nvim-gps")
+
+      if not gps_loaded then
+         return
+      end
+
+      return " " .. gps.get_location()
    end,
+
+   enabled = function()
+      local gps_loaded, gps = pcall(require, "nvim-gps")
+
+      if not gps_loaded then
+         return false
+      end
+
+      return gps.is_available()
+   end,
+
+   right_sep = {
+      str = " ",
+      hl = "Feline_nvim_gps",
+   },
+
+   hl = "Feline_nvim_gps",
+}
+
+options.separator_left = {
+   provider = options.separator_style.right,
+   hl = "Feline_EmptySpace",
 }
 
 options.separator_right = {
@@ -291,24 +320,63 @@ options.separator_right = {
    hl = "Feline_EmptySpace",
 }
 
-options.separator_right2 = {
+options.separator_right_file = {
    provider = options.separator_style.left,
-   hl = "Feline_PositionSeparator",
+   hl = function()
+      return {
+         fg = get_color("Feline_EmptySpace", "fg#"),
+         bg = get_color("Feline_nvim_gps", "bg#"),
+      }
+   end,
 }
 
-options.position_icon = {
-   provider = options.separator_style.position_icon,
-   hl = "Feline_PositionIcon",
+options.time = {
+   left_sep = {
+      str = options.separator_style.left,
+      hl = function()
+         return {
+            fg = get_color("Feline_time", "fg#"),
+            bg = get_color("Feline_EmptySpace", "fg#"),
+         }
+      end,
+   },
+
+   icon = {
+      str = options.icons.clock,
+      hl = function()
+         return {
+            fg = get_color("Feline_time", "bg#"),
+            bg = get_color("Feline_time", "fg#"),
+         }
+      end,
+   },
+
+   provider = function()
+      return " " .. fn.strftime "%H:%M" .. " "
+   end,
+
+   hl = "Feline_time",
 }
 
 options.current_line = {
+
+   left_sep = {
+      str = options.separator_style.left,
+      hl = "Feline_PositionSeparator",
+   },
+
+   icon = {
+      str = options.icons.position_icon,
+      hl = "Feline_PositionIcon",
+   },
+
    provider = function()
-      local current_line = vim.fn.line "."
-      local total_line = vim.fn.line "$"
+      local current_line = fn.line "."
+      local total_line = fn.line "$"
 
       if current_line == 1 then
          return " Top "
-      elseif current_line == vim.fn.line "$" then
+      elseif current_line == fn.line "$" then
          return " Bot "
       end
       local result, _ = math.modf((current_line / total_line) * 100)
@@ -332,34 +400,33 @@ options.middle = {}
 options.right = {}
 
 -- left
-add_table(options.left, options.main_icon)
-add_table(options.left, options.file_name)
-add_table(options.left, options.dir_name)
+add_table(options.left, options.mode_icon)
+add_table(options.left, options.separator_left)
+add_table(options.left, options.vi_mode)
+add_table(options.left, options.cwd)
 
 -- lsp
-add_table(options.left, options.lsp_icon)
+add_table(options.left, options.lsp_status)
 add_table(options.left, options.diagnostic.error)
 add_table(options.left, options.diagnostic.warning)
 add_table(options.left, options.diagnostic.hint)
 add_table(options.left, options.diagnostic.info)
 
 add_table(options.middle, options.lsp_progress)
-
--- right
+add_table(options.middle, options.nvim_gps)
 
 -- git diffs
 add_table(options.right, options.diff.add)
 add_table(options.right, options.diff.change)
 add_table(options.right, options.diff.remove)
 add_table(options.right, options.git_branch)
-add_table(options.right, options.empty_space_git)
 
-add_table(options.right, options.empty_spaceColored)
-add_table(options.right, options.mode_icon)
-add_table(options.right, options.mode_name)
+add_table(options.right, options.separator_right_file)
+add_table(options.right, options.file_info)
+
 add_table(options.right, options.separator_right)
-add_table(options.right, options.separator_right2)
-add_table(options.right, options.position_icon)
+add_table(options.right, options.time)
+add_table(options.right, options.separator_right)
 add_table(options.right, options.current_line)
 
 -- Initialize the components table
