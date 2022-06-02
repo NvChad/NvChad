@@ -79,10 +79,14 @@ local default_plugins = {
    "zipPlugin",
 }
 
+local overridden_opts = config.options.disable_default_plugins
+default_plugins = vim.tbl_deep_extend("force", default_plugins, overridden_opts or default_plugins)
+
 for _, plugin in pairs(default_plugins) do
    g["loaded_" .. plugin] = 1
 end
 
+-- set shada path
 vim.schedule(function()
    vim.opt.shadafile = vim.fn.expand "$HOME" .. "/.local/share/nvim/shada/main.shada"
    vim.cmd [[ silent! rsh ]]
