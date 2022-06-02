@@ -252,14 +252,19 @@ options.file_info = {
       local filename = fn.expand "%:t"
       local extension = fn.expand "%:e"
 
+      if filename == "" then
+         return options.icons.empty_file
+      end
+
       local icon = require("nvim-web-devicons").get_icon(filename, extension)
 
-      if icon == nil and fn.expand "%:t" == "" then
-         return options.icons.empty_file
+      if icon == nil then
+         icon = " "
       else
-         icon = icon .. " " or " "
-         return icon
+         icon = icon .. " "
       end
+
+      return icon
    end,
 
    hl = "Feline_file_info",
