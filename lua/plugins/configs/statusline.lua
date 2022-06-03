@@ -307,11 +307,6 @@ options.nvim_gps = {
       return gps.is_available()
    end,
 
-   right_sep = {
-      str = " ",
-      hl = "Feline_nvim_gps",
-   },
-
    hl = "Feline_nvim_gps",
 }
 
