@@ -7,6 +7,7 @@ end
 local icons = require "plugins.configs.lspkind_icons"
 
 local options = {
+   depth = 5,
 
    icons = {
       ["class-name"] = "%#GpsItemKindClass#" .. icons.Class .. "%*" .. " ",

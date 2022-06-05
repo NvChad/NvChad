@@ -34,11 +34,8 @@ M.plugins = {
          setup_lspconf = "", -- path of lspconfig file
       },
       statusline = {
-         separator_style = "default", -- default/round/slant/block/arrow
+         separator_style = "default", -- default/round/block
       },
-      telescope = {
-         extensions = { "themes", "terms" }
-      }
    },
 
    -- add, modify, remove plugins
