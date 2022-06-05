@@ -1,15 +1,17 @@
 local M = {}
+local api = vim.api
+local fn = vim.fn
 
 local merge_tb = vim.tbl_deep_extend
 
 M.close_buffer = function(force)
    if vim.bo.buftype == "terminal" then
-      vim.api.nvim_win_hide(0)
+      api.nvim_win_hide(0)
       return
    end
 
-   local fileExists = vim.fn.filereadable(vim.fn.expand "%p")
-   local modified = vim.api.nvim_buf_get_option(vim.fn.bufnr(), "modified")
+   local fileExists = fn.filereadable(fn.expand "%p")
+   local modified = api.nvim_buf_get_option(fn.bufnr(), "modified")
 
    -- if file doesnt exist & its modified
    if fileExists == 0 and modified then
@@ -20,7 +22,7 @@ M.close_buffer = function(force)
    force = force or not vim.bo.buflisted or vim.bo.buftype == "nofile"
 
    -- if not force, change to prev buf and then close current
-   local close_cmd = force and ":bd!" or ":bp | bd" .. vim.fn.bufnr()
+   local close_cmd = force and ":bd!" or ":bp | bd" .. fn.bufnr()
    vim.cmd(close_cmd)
 end
 

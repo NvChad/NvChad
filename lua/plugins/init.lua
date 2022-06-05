@@ -17,6 +17,7 @@ local plugins = {
    },
 
    ["NvChad/nvterm"] = {
+      module = "nvterm",
       config = function()
          require "plugins.configs.nvterm"
       end,
@@ -26,13 +27,6 @@ local plugins = {
       after = "base46",
       config = function()
          require "plugins.configs.icons"
-      end,
-   },
-
-   ["feline-nvim/feline.nvim"] = {
-      after = "nvim-web-devicons",
-      config = function()
-         require "plugins.configs.statusline"
       end,
    },
 

@@ -16,3 +16,6 @@ autocmd("BufUnload", {
       vim.opt.laststatus = 3
    end,
 })
+
+-- load statusline
+vim.opt.statusline = "%!v:lua.require'ui.statusline'.run()"
