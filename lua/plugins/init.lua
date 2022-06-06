@@ -38,6 +38,7 @@ local plugins = {
    },
 
    ["akinsho/bufferline.nvim"] = {
+      tag = "v2.*",
       after = "nvim-web-devicons",
       config = function()
          require "plugins.configs.bufferline"
