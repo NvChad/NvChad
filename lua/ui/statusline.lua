@@ -71,7 +71,13 @@ M.fileInfo = function()
       filename = " " .. filename .. " "
    end
 
-   local ft_icon = require("nvim-web-devicons").get_icon(filename, extension)
+   local devicons_present, devicons = pcall(require, "nvim-web-devicons")
+
+   if not devicons_present then
+      return " "
+   end
+
+   local ft_icon = devicons.get_icon(filename, extension)
    icon = (ft_icon ~= nil and " " .. ft_icon) or icon
 
    return "%#St_file_info#" .. icon .. filename .. "%#St_file_sep#" .. sep_r
