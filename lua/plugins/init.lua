@@ -204,6 +204,14 @@ local plugins = {
          require "plugins.configs.whichkey"
       end,
    },
+
+   -- nvim-lsp's progress handler
+   ['j-hui/fidget.nvim'] = {
+      config = function()
+        require "plugins.configs.fidget"
+      end,
+    },
+
 }
 
 require("core.packer").run(plugins)
