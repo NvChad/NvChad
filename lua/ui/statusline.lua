@@ -15,6 +15,11 @@ local sep_style = {
       left = "█",
       right = "█",
    },
+
+   arrow = {
+      left = "",
+      right = "",
+   },
 }
 
 local user_sep_style = require("core.utils").load_config().plugins.options.statusline.separator_style
