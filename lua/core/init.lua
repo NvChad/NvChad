@@ -23,5 +23,11 @@ autocmd('BufEnter', {
   command = 'set fo-=c fo-=r fo-=o'
 })
 
+-- Remove whitespace on save
+autocmd('BufWritePre', {
+  pattern = '*',
+  command = ":%s/\\s\\+$//e"
+})
+
 -- load statusline
 vim.opt.statusline = "%!v:lua.require'ui.statusline'.run()"
