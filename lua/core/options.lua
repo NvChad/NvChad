@@ -12,7 +12,11 @@ g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
 
 opt.confirm = true
+
 opt.laststatus = 3 -- global statusline
+opt.statusline = config.plugins.options.statusline.config
+opt.showmode = false
+
 opt.title = true
 opt.clipboard = "unnamedplus"
 opt.cmdheight = 1

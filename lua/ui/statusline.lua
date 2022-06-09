@@ -152,14 +152,14 @@ M.LSP_status = function()
 end
 
 M.cwd = function()
-   local left_sep = "%#ST_EmptySpace2#" .. sep_l .. "%#St_cwd_sep#" .. sep_l
-   local dir_icon = "%#St_cwd_icon#" .. " "
+   local left_sep = "%#St_cwd_sep#" .. sep_l
+   local dir_icon = "%#St_cwd_icon#" .. " "
    local dir_name = "%#St_cwd_text#" .. " " .. fn.fnamemodify(fn.getcwd(), ":t") .. " "
    return (vim.o.columns > 120 and left_sep .. dir_icon .. dir_name) or ""
 end
 
 M.cursor_position = function()
-   local left_sep = "%#ST_EmptySpace#" .. sep_l .. "%#St_pos_sep#" .. sep_l
+   local left_sep = "%#St_pos_sep#" .. sep_l
    local icon = "%#St_pos_icon#" .. " "
 
    local current_line = fn.line "."
