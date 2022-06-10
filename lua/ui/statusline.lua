@@ -22,6 +22,20 @@ local sep_style = {
    },
 }
 
+local file_info_styles = {
+  default = function()
+    return fn.fnamemodify(fn.expand "%:t", ":r")
+  end,
+
+  full_path = function ()
+    return fn.expand "%"
+  end
+}
+
+local user_file_info_style = require("core.utils").load_config().plugins.options.statusline.file_info_style
+local file_info_style = file_info_styles[user_file_info_style]
+
+
 local user_sep_style = require("core.utils").load_config().plugins.options.statusline.separator_style
 local sep_l = sep_style[user_sep_style]["left"]
 local sep_r = sep_style[user_sep_style]["right"]
@@ -62,7 +76,7 @@ end
 
 M.fileInfo = function()
    local icon = ""
-   local filename = fn.fnamemodify(fn.expand "%:t", ":r")
+   local filename = file_info_style()
    local extension = fn.expand "%:e"
 
    if filename == "" then

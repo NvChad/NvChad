@@ -35,6 +35,7 @@ M.plugins = {
       },
       statusline = {
          separator_style = "default", -- default/round/block
+         file_info_style = "default", -- default/full_path
          config = "%!v:lua.require'ui.statusline'.run()",
       },
    },
