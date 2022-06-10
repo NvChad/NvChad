@@ -28,9 +28,13 @@ local sep_r = sep_style[user_sep_style]["right"]
 
 local modes = {
    ["n"] = { "NORMAL", "St_NormalMode" },
+   ["niI"] = { "NORMAL i", "St_NormalMode" },
+   ["niR"] = { "NORMAL r", "St_NormalMode" },
+   ["niV"] = { "NORMAL v", "St_NormalMode" },
    ["no"] = { "N-PENDING", "St_NormalMode" },
    ["i"] = { "INSERT", "St_InsertMode" },
    ["ic"] = { "INSERT", "St_InsertMode" },
+   ["ix"] = { "INSERT completion", "St_InsertMode" },
    ["t"] = { "TERMINAL", "St_TerminalMode" },
    ["nt"] = { "NTERMINAL", "St_NTerminalMode" },
    ["v"] = { "VISUAL", "St_VisualMode" },

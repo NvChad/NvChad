@@ -11,15 +11,12 @@ g.do_filetype_lua = 1
 g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
 
-opt.confirm = true
-
 opt.laststatus = 3 -- global statusline
 opt.statusline = config.plugins.options.statusline.config
 opt.showmode = false
 
 opt.title = true
 opt.clipboard = "unnamedplus"
-opt.cmdheight = 1
 opt.cul = true -- cursor line
 
 -- Indentline
@@ -30,7 +27,6 @@ opt.smartindent = true
 -- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
 opt.fillchars = { eob = " " }
 
-opt.hidden = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
@@ -38,7 +34,6 @@ opt.mouse = "a"
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
-opt.relativenumber = false
 opt.ruler = false
 
 -- disable nvim intro
