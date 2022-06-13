@@ -30,10 +30,10 @@ local plugins = {
       end,
    },
 
-   ["SmiteshP/nvim-gps"] = {
+   ["SmiteshP/nvim-navic"] = {
       event = "CursorMoved",
       config = function()
-         require "plugins.configs.gps"
+         require "plugins.configs.navic"
       end,
    },
 

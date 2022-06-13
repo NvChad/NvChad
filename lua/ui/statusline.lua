@@ -87,13 +87,13 @@ M.fileInfo = function()
    return "%#St_file_info#" .. icon .. filename .. "%#St_file_sep#" .. sep_r
 end
 
-M.gps = function()
-   if vim.o.columns < 140 or not package.loaded["nvim-gps"] then
+M.navic = function()
+   if vim.o.columns < 140 or not package.loaded["nvim-navic"] then
       return ""
    end
 
-   local gps = require "nvim-gps"
-   return (gps.is_available() and gps.get_location()) or ""
+   local navic = require "nvim-navic"
+   return (navic.is_available() and navic.get_location()) or ""
 end
 
 M.git = function()
@@ -194,7 +194,7 @@ M.run = function()
 
       "%=",
       M.LSP_progress(),
-      M.gps(),
+      M.navic(),
       "%=",
 
       M.LSP_Diagnostics(),
