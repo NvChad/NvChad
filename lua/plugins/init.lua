@@ -4,7 +4,7 @@ local plugins = {
 
    ["nvim-lua/plenary.nvim"] = {},
    ["wbthomason/packer.nvim"] = {},
-   ["NvChad/extensions"] = { module = "nvchad", cmd = "Telescope" },
+   ["NvChad/extensions"] = {},
 
    ["NvChad/base46"] = {
       after = "plenary.nvim",
