@@ -4,6 +4,8 @@ if not present then
    return
 end
 
+require("base46").load_highlight "bufferline"
+
 vim.cmd [[
  function! Toggle_theme(a,b,c,d)
    lua require('base46').toggle_theme()

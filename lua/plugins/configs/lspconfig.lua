@@ -4,20 +4,12 @@ if not present then
    return
 end
 
+require("base46").load_highlight "lsp"
+
 local M = {}
 local utils = require "core.utils"
 
-require("plugins.configs.others").lsp_handlers()
-
--- Borders for LspInfo winodw
-local win = require "lspconfig.ui.windows"
-local _default_opts = win.default_opts
-
-win.default_opts = function(options)
-   local opts = _default_opts(options)
-   opts.border = "single"
-   return opts
-end
+require "ui.lsp"
 
 M.on_attach = function(client, bufnr)
    client.resolved_capabilities.document_formatting = false
@@ -25,6 +17,16 @@ M.on_attach = function(client, bufnr)
 
    local lsp_mappings = utils.load_config().mappings.lspconfig
    utils.load_mappings({ lsp_mappings }, { buffer = bufnr })
+
+   if client.supports_method "textDocument/signatureHelp" then
+      vim.api.nvim_create_autocmd({ "CursorHoldI" }, {
+         pattern = "*",
+         group = vim.api.nvim_create_augroup("LspSignature", {}),
+         callback = function()
+            vim.lsp.buf.signature_help()
+         end,
+      })
+   end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

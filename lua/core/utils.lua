@@ -114,13 +114,6 @@ M.load_mappings = function(mappings, mapping_opt)
    end
 end
 
--- load plugin after entering vim ui
-M.packer_lazy_load = function(plugin)
-   vim.defer_fn(function()
-      require("packer").loader(plugin)
-   end, 0)
-end
-
 -- remove plugins defined in chadrc
 M.remove_default_plugins = function(plugins)
    local removals = M.load_config().plugins.remove or {}

@@ -1,9 +1,12 @@
+vim.cmd "packadd packer.nvim"
+
+local lazy_load = require "core.lazy_load"
+
 local plugins = {
 
    ["nvim-lua/plenary.nvim"] = {},
-   ["lewis6991/impatient.nvim"] = {},
    ["wbthomason/packer.nvim"] = {},
-   ["NvChad/extensions"] = {},
+   ["NvChad/extensions"] = { module = "nvchad", cmd = "Telescope" },
 
    ["NvChad/base46"] = {
       after = "plenary.nvim",
@@ -24,43 +27,40 @@ local plugins = {
    },
 
    ["kyazdani42/nvim-web-devicons"] = {
-      after = "base46",
+      module = "nvim-web-devicons",
       config = function()
-         require "plugins.configs.icons"
-      end,
-   },
-
-   ["SmiteshP/nvim-gps"] = {
-      event = "CursorMoved",
-      config = function()
-         require "plugins.configs.gps"
+         require("plugins.configs.others").devicons()
       end,
    },
 
    ["akinsho/bufferline.nvim"] = {
       tag = "v2.*",
-      after = "nvim-web-devicons",
+      opt = true,
+      setup = lazy_load.bufferline(),
       config = function()
          require "plugins.configs.bufferline"
       end,
    },
 
    ["lukas-reineke/indent-blankline.nvim"] = {
-      event = "BufRead",
+      opt = true,
       config = function()
          require("plugins.configs.others").blankline()
       end,
    },
 
    ["NvChad/nvim-colorizer.lua"] = {
-      event = "BufRead",
+      opt = true,
+      setup = lazy_load.colorizer(),
       config = function()
          require("plugins.configs.others").colorizer()
       end,
    },
 
    ["nvim-treesitter/nvim-treesitter"] = {
-      event = { "BufRead", "BufNewFile" },
+      module = "nvim-treesitter",
+      cmd = { "TSInstall", "TSUninstall" },
+      setup = lazy_load.treesitter(),
       run = ":TSUpdate",
       config = function()
          require "plugins.configs.treesitter"
@@ -70,11 +70,9 @@ local plugins = {
    -- git stuff
    ["lewis6991/gitsigns.nvim"] = {
       opt = true,
+      setup = lazy_load.gitsigns(),
       config = function()
          require("plugins.configs.others").gitsigns()
-      end,
-      setup = function()
-         require("core.utils").packer_lazy_load "gitsigns.nvim"
       end,
    },
 
@@ -82,13 +80,7 @@ local plugins = {
 
    ["williamboman/nvim-lsp-installer"] = {
       opt = true,
-      setup = function()
-         require("core.utils").packer_lazy_load "nvim-lsp-installer"
-         -- reload the current file so lsp actually starts for it
-         vim.defer_fn(function()
-            vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-         end, 0)
-      end,
+      setup = lazy_load.on_file_open(),
    },
 
    ["neovim/nvim-lspconfig"] = {
@@ -99,15 +91,6 @@ local plugins = {
          require "plugins.configs.lspconfig"
       end,
    },
-
-   ["ray-x/lsp_signature.nvim"] = {
-      after = "nvim-lspconfig",
-      config = function()
-         require("plugins.configs.others").signature()
-      end,
-   },
-
- 
 
    -- load luasnips + cmp related in insert mode only
 
@@ -190,11 +173,9 @@ local plugins = {
       end,
    },
 
+   -- Only load whichkey after all the gui
    ["folke/which-key.nvim"] = {
-      opt = true,
-      setup = function()
-         require("core.utils").packer_lazy_load "which-key.nvim"
-      end,
+      module = "which-key",
       config = function()
          require "plugins.configs.whichkey"
       end,

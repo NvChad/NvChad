@@ -1,15 +1,15 @@
 local opt = vim.opt
 local g = vim.g
-
 local config = require("core.utils").load_config()
 
 g.nvchad_theme = config.ui.theme
+g.toggle_theme_icon = "   "
+g.transparency = config.ui.transparency
+g.theme_switcher_loaded = false
 
 -- use filetype.lua instead of filetype.vim
 g.did_load_filetypes = 0
 g.do_filetype_lua = 1
-g.toggle_theme_icon = "   "
-g.transparency = config.ui.transparency
 
 opt.laststatus = 3 -- global statusline
 opt.statusline = config.plugins.options.statusline.config
@@ -76,6 +76,19 @@ local default_plugins = {
    "vimballPlugin",
    "zip",
    "zipPlugin",
+   "python3_provider",
+   "python_provider",
+   "node_provider",
+   "ruby_provider",
+   "perl_provider",
+   "tutor",
+   "rplugin",
+   "syntax",
+   "synmenu",
+   "optwin",
+   "compiler",
+   "bugreport",
+   "ftplugin",
 }
 
 for _, plugin in pairs(default_plugins) do

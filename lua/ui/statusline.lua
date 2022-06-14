@@ -64,36 +64,34 @@ M.mode = function()
    return current_mode .. mode_sep1 .. "%#ST_EmptySpace#" .. sep_r
 end
 
-M.fileInfo = function()
-   local icon = ""
+M.fileicon = function()
+   local icon = "  "
+
    local filename = fn.fnamemodify(fn.expand "%:t", ":r")
    local extension = fn.expand "%:e"
 
+   if filename ~= "" then
+      local devicons_present, devicons = pcall(require, "nvim-web-devicons")
+
+      if devicons_present then
+         local ft_icon = devicons.get_icon(filename, extension)
+         icon = (ft_icon ~= nil and " " .. ft_icon) or ""
+      end
+   end
+
+   return "%#St_file_info#" .. icon
+end
+
+M.filename = function()
+   local filename = fn.fnamemodify(fn.expand "%:t", ":r")
+
    if filename == "" then
-      icon = icon .. "  Empty "
+      filename = "Empty "
    else
       filename = " " .. filename .. " "
    end
 
-   local devicons_present, devicons = pcall(require, "nvim-web-devicons")
-
-   if not devicons_present then
-      return " "
-   end
-
-   local ft_icon = devicons.get_icon(filename, extension)
-   icon = (ft_icon ~= nil and " " .. ft_icon) or icon
-
-   return "%#St_file_info#" .. icon .. filename .. "%#St_file_sep#" .. sep_r
-end
-
-M.gps = function()
-   if vim.o.columns < 140 or not package.loaded["nvim-gps"] then
-      return ""
-   end
-
-   local gps = require "nvim-gps"
-   return (gps.is_available() and gps.get_location()) or ""
+   return "%#St_file_info#" .. filename .. "%#St_file_sep#" .. sep_r
 end
 
 M.git = function()
@@ -153,10 +151,10 @@ M.LSP_status = function()
    local clients = vim.lsp.get_active_clients()
    local name = false
    for _, client in ipairs(clients) do
-     if client.attached_buffers[vim.api.nvim_get_current_buf()] then
-       name = client.name
-       break
-     end
+      if client.attached_buffers[vim.api.nvim_get_current_buf()] then
+         name = client.name
+         break
+      end
    end
    local content = name and "   LSP ~ " .. name .. " " or false
    return content and ("%#St_LspStatus#" .. content) or ""
@@ -189,12 +187,12 @@ end
 M.run = function()
    return table.concat {
       M.mode(),
-      M.fileInfo(),
+      M.fileicon(),
+      M.filename(),
       M.git(),
 
       "%=",
       M.LSP_progress(),
-      M.gps(),
       "%=",
 
       M.LSP_Diagnostics(),
