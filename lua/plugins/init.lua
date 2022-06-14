@@ -1,7 +1,5 @@
 vim.cmd "packadd packer.nvim"
 
-local lazy_load = require "core.lazy_load"
-
 local plugins = {
 
    ["nvim-lua/plenary.nvim"] = {},
@@ -36,7 +34,9 @@ local plugins = {
    ["akinsho/bufferline.nvim"] = {
       tag = "v2.*",
       opt = true,
-      setup = lazy_load.bufferline(),
+      setup = function()
+         require("core.lazy_load").bufferline()
+      end,
       config = function()
          require "plugins.configs.bufferline"
       end,
@@ -51,7 +51,9 @@ local plugins = {
 
    ["NvChad/nvim-colorizer.lua"] = {
       opt = true,
-      setup = lazy_load.colorizer(),
+      setup = function()
+         require("core.lazy_load").colorizer()
+      end,
       config = function()
          require("plugins.configs.others").colorizer()
       end,
@@ -60,7 +62,9 @@ local plugins = {
    ["nvim-treesitter/nvim-treesitter"] = {
       module = "nvim-treesitter",
       cmd = { "TSInstall", "TSUninstall" },
-      setup = lazy_load.treesitter(),
+      setup = function()
+         require("core.lazy_load").treesitter()
+      end,
       run = ":TSUpdate",
       config = function()
          require "plugins.configs.treesitter"
@@ -70,7 +74,9 @@ local plugins = {
    -- git stuff
    ["lewis6991/gitsigns.nvim"] = {
       opt = true,
-      setup = lazy_load.gitsigns(),
+      setup = function()
+         require("core.lazy_load").gitsigns()
+      end,
       config = function()
          require("plugins.configs.others").gitsigns()
       end,
@@ -80,7 +86,9 @@ local plugins = {
 
    ["williamboman/nvim-lsp-installer"] = {
       opt = true,
-      setup = lazy_load.on_file_open(),
+      setup = function()
+         require("core.lazy_load").on_file_open()
+      end,
    },
 
    ["neovim/nvim-lspconfig"] = {
