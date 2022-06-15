@@ -158,7 +158,7 @@ M.LSP_status = function()
   
    local name = false
    if names ~= {} then
-      name = table.concat(names, '/')
+      name = table.concat(names, '|')
    end
    
    local content = name and "   LSP ~ " .. name .. " " or false
