@@ -148,6 +148,10 @@ end
 M.load_override = function(default_table, plugin_name)
    local user_table = M.load_config().plugins.override[plugin_name]
 
+   if type(user_table) == "function" then
+      user_table = user_table()
+   end
+
    if type(user_table) == "table" then
       default_table = merge_tb("force", default_table, user_table)
    else
