@@ -5,19 +5,18 @@ local M = {}
 
 M.options = {
 
-   -- load your options here or load module with options1
+   -- load your options here or load module with options
    user = function() end,
 
    nvChad = {
-      -- updater
       update_url = "https://github.com/NvChad/NvChad",
       update_branch = "main",
    },
 }
 
----- UI -----
-
 M.ui = {
+   -- hl = highlights
+   hl_add = {},
    hl_override = {},
    changed_themes = {},
    theme_toggle = { "onedark", "one_light" },
@@ -28,19 +27,17 @@ M.ui = {
 M.plugins = {
    override = {},
    remove = {},
+   user = {},
 
    options = {
       lspconfig = {
          setup_lspconf = "", -- path of lspconfig file
       },
       statusline = {
-         separator_style = "default", -- default/round/block
+         separator_style = "default", -- default/round/block/arrow
          config = "%!v:lua.require'ui.statusline'.run()",
       },
    },
-
-   -- add, modify, remove plugins
-   user = {},
 }
 
 -- check core.mappings for table structure
