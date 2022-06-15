@@ -149,13 +149,18 @@ end
 
 M.LSP_status = function()
    local clients = vim.lsp.get_active_clients()
-   local name = false
+   local names = {}
    for _, client in ipairs(clients) do
       if client.attached_buffers[vim.api.nvim_get_current_buf()] then
-         name = client.name
-         break
+         table.insert(names, client.name)
       end
    end
+  
+   local name = false
+   if names ~= {} then
+      name = table.concat(names, '/')
+   end
+   
    local content = name and "   LSP ~ " .. name .. " " or false
    return content and ("%#St_LspStatus#" .. content) or ""
 end
