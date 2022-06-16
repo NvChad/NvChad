@@ -25,7 +25,7 @@ local M = {}
 
 M.bufferline = function()
    lazy_load {
-      events = { "BufNewFile", "BufAdd", "TabEnter" },
+      events = { "BufNewFile", "BufRead", "TabEnter" },
       augroup_name = "BufferLineLazy",
       plugins = "bufferline.nvim",
 
