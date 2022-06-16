@@ -157,7 +157,7 @@ M.LSP_status = function()
    end
   
    local name = false
-   if names ~= {} then
+   if next(names) then
       name = table.concat(names, '|')
    end
    
