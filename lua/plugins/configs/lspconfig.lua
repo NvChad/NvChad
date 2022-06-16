@@ -12,8 +12,8 @@ local utils = require "core.utils"
 require "ui.lsp"
 
 M.on_attach = function(client, bufnr)
-   client.resolved_capabilities.document_formatting = false
-   client.resolved_capabilities.document_range_formatting = false
+   client.server_capabilities.documentFormattingProvider = false
+   client.server_capabilities.documentRangeFormattingProvider = false
 
    local lsp_mappings = utils.load_config().mappings.lspconfig
    utils.load_mappings({ lsp_mappings }, { buffer = bufnr })
