@@ -23,6 +23,8 @@ end
 
 local M = {}
 
+M.lazy_load = lazy_load
+
 M.bufferline = function()
    lazy_load {
       events = { "BufNewFile", "BufRead", "TabEnter" },
