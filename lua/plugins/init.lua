@@ -44,6 +44,9 @@ local plugins = {
 
    ["lukas-reineke/indent-blankline.nvim"] = {
       opt = true,
+      setup = function()
+         require("core.lazy_load").on_file_open "indent-blankline.nvim"
+      end,
       config = function()
          require("plugins.configs.others").blankline()
       end,
@@ -61,9 +64,8 @@ local plugins = {
 
    ["nvim-treesitter/nvim-treesitter"] = {
       module = "nvim-treesitter",
-      cmd = { "TSInstall", "TSUninstall" },
       setup = function()
-         require("core.lazy_load").treesitter()
+         require("core.lazy_load").on_file_open "nvim-treesitter"
       end,
       run = ":TSUpdate",
       config = function()
@@ -87,7 +89,7 @@ local plugins = {
    ["williamboman/nvim-lsp-installer"] = {
       opt = true,
       setup = function()
-         require("core.lazy_load").on_file_open()
+         require("core.lazy_load").on_file_open "nvim-lsp-installer"
       end,
    },
 

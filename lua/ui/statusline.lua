@@ -149,18 +149,14 @@ end
 
 M.LSP_status = function()
    local clients = vim.lsp.get_active_clients()
-   local names = {}
+   local name = false
    for _, client in ipairs(clients) do
       if client.attached_buffers[vim.api.nvim_get_current_buf()] then
-         table.insert(names, client.name)
+         name = client.name
+         break
       end
    end
-  
-   local name = false
-   if next(names) then
-      name = table.concat(names, '|')
-   end
-   
+
    local content = name and "   LSP ~ " .. name .. " " or false
    return content and ("%#St_LspStatus#" .. content) or ""
 end
@@ -174,19 +170,19 @@ end
 
 M.cursor_position = function()
    local left_sep = "%#St_pos_sep#" .. sep_l
-   local icon = "%#St_pos_icon#" .. " "
+   local icon = "%#St_pos_icon#" .. " "
 
    local current_line = fn.line "."
    local total_line = fn.line "$"
    local text = math.modf((current_line / total_line) * 100) .. tostring "%%"
 
    if current_line == 1 then
-      text = "Top "
+      text = "Top"
    elseif current_line == total_line then
-      text = "Bot "
+      text = "Bot"
    end
 
-   return left_sep .. icon .. "%#St_pos_text#" .. " " .. text
+   return left_sep .. icon .. "%#St_pos_text#" .. " " .. text .. " "
 end
 
 M.run = function()

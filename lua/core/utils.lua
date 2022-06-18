@@ -21,6 +21,7 @@ M.close_buffer = function(force)
    end
 
    force = force or not vim.bo.buflisted or vim.bo.buftype == "nofile"
+
    -- if not force, change to prev buf and then close current
    local close_cmd = force and ":bd!" or ":bp | bd" .. fn.bufnr()
    vim.cmd(close_cmd)
@@ -150,9 +151,7 @@ M.load_override = function(default_table, plugin_name)
 
    if type(user_table) == "function" then
       user_table = user_table()
-   end
-
-   if type(user_table) == "table" then
+   elseif type(user_table) == "table" then
       default_table = merge_tb("force", default_table, user_table)
    else
       default_table = default_table

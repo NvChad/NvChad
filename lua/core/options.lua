@@ -19,14 +19,12 @@ opt.title = true
 opt.clipboard = "unnamedplus"
 opt.cul = true -- cursor line
 
--- Indentline
+-- Indenting
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 
--- disable tilde on end of buffer: https://github.com/neovim/neovim/pull/8546#issuecomment-643643758
 opt.fillchars = { eob = " " }
-
 opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
@@ -53,10 +51,10 @@ opt.updatetime = 250
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
+
 g.mapleader = " "
 
 -- disable some builtin vim plugins
-
 local default_plugins = {
    "2html_plugin",
    "getscript",
@@ -101,5 +99,5 @@ vim.schedule(function()
    vim.cmd [[ silent! rsh ]]
 end)
 
--- load user options if the file exists
+-- load user options
 config.options.user()

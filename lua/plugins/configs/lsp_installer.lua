@@ -28,7 +28,7 @@ local options = {
       },
    },
 
-   max_concurrent_installers = 20,
+   max_concurrent_installers = 10,
 }
 
 options = require("core.utils").load_override(options, "williamboman/nvim-lsp-installer")

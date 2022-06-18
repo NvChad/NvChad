@@ -1,5 +1,7 @@
--- https://github.com/max397574/omega-nvim/blob/master/lua/omega/modules/ui/bufferline.lua
-local lazy_load = function(tb)
+-- thx to https://github.com/max397574/omega-nvim/blob/master/lua/omega/modules/ui/bufferline.lua
+local M = {}
+
+M.lazy_load = function(tb)
    vim.api.nvim_create_autocmd(tb.events, {
       pattern = "*",
       group = vim.api.nvim_create_augroup(tb.augroup_name, {}),
@@ -21,12 +23,8 @@ local lazy_load = function(tb)
    })
 end
 
-local M = {}
-
-M.lazy_load = lazy_load
-
 M.bufferline = function()
-   lazy_load {
+   M.lazy_load {
       events = { "BufNewFile", "BufRead", "TabEnter" },
       augroup_name = "BufferLineLazy",
       plugins = "bufferline.nvim",
@@ -38,13 +36,13 @@ M.bufferline = function()
 end
 
 M.colorizer = function()
-   lazy_load {
+   M.lazy_load {
       events = { "BufRead", "BufNewFile" },
       augroup_name = "ColorizerLazy",
       plugins = "nvim-colorizer.lua",
 
       condition = function()
-         local items = { "#", "rgb", "hsl" }
+         local items = { "#", "rgb", "hsl", "rgba", "hsla" }
 
          for _, val in ipairs(items) do
             if vim.fn.search(val) ~= 0 then
@@ -56,28 +54,14 @@ M.colorizer = function()
 end
 
 -- load certain plugins only when there's a file opened in the buffer
--- if "nvim-file" is executed -> load the plugin after nvim gui loads
+-- if "nvim filename" is executed -> load the plugin after nvim gui loads
 -- This gives an instant preview of nvim with the file opened
 
-M.on_file_open = function()
-   lazy_load {
+M.on_file_open = function(plugin_name)
+   M.lazy_load {
       events = { "BufRead", "BufWinEnter", "BufNewFile" },
-      augroup_name = "BeLazyOnFileOpen",
-      plugins = "nvim-lsp-installer indent-blankline.nvim",
-
-      condition = function()
-         local file = vim.fn.expand "%"
-         return file ~= "NvimTree_1" and file ~= "[packer]" and file ~= ""
-      end,
-   }
-end
-
-M.treesitter = function()
-   lazy_load {
-      events = { "BufRead", "BufWinEnter", "BufNewFile" },
-      augroup_name = "Treesitter_lazy",
-      plugins = "nvim-treesitter",
-
+      augroup_name = "BeLazyOnFileOpen" .. plugin_name,
+      plugins = plugin_name,
       condition = function()
          local file = vim.fn.expand "%"
          return file ~= "NvimTree_1" and file ~= "[packer]" and file ~= ""

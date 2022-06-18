@@ -45,13 +45,3 @@ win.default_opts = function(options)
    opts.border = "single"
    return opts
 end
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-   border = "single",
-   silent = true,
-   focusable = false,
-   close_events = { "InsertCharPre", "CursorMoved" },
-   anchor = "SW",
-   relative = "cursor",
-   row = -1,
-})

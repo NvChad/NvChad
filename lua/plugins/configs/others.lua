@@ -48,6 +48,8 @@ M.blankline = function()
       buftype_exclude = { "terminal" },
       show_trailing_blankline_indent = false,
       show_first_indent_level = false,
+      show_current_context = true,
+      show_current_context_start = true,
    }
 
    options = load_override(options, "lukas-reineke/indent-blankline.nvim")
@@ -74,8 +76,6 @@ M.colorizer = function()
          hsl_fn = false, -- CSS hsl() and hsla() functions
          css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
          css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-
-         -- Available modes: foreground, background
          mode = "background", -- Set the display mode.
       },
    }
@@ -146,6 +146,7 @@ M.devicons = function()
 
       local options = { override = require("ui.icons").devicons }
       options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons")
+
       devicons.setup(options)
    end
 end

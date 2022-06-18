@@ -1,5 +1,4 @@
 require "core"
-require "core.utils"
 require "core.options"
 
 vim.defer_fn(function()
