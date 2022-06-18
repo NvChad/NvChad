@@ -2,12 +2,11 @@ vim.cmd "packadd packer.nvim"
 
 local plugins = {
 
-   ["nvim-lua/plenary.nvim"] = {},
+   ["nvim-lua/plenary.nvim"] = { module = "plenary" },
    ["wbthomason/packer.nvim"] = {},
    ["NvChad/extensions"] = {},
 
    ["NvChad/base46"] = {
-      after = "plenary.nvim",
       config = function()
          local ok, base46 = pcall(require, "base46")
 
