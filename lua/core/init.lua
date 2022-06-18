@@ -27,3 +27,14 @@ autocmd("BufEnter", {
    pattern = "*",
    command = "set fo-=c fo-=r fo-=o",
 })
+
+autocmd("InsertLeave", {
+   callback = function()
+      if
+         require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+         and not require("luasnip").session.jump_active
+      then
+         require("luasnip").unlink_current()
+      end
+   end,
+})
