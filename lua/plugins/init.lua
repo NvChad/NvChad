@@ -66,6 +66,7 @@ local plugins = {
       setup = function()
          require("core.lazy_load").on_file_open "nvim-treesitter"
       end,
+      cmd = require("core.lazy_load").treesitter_cmds,
       run = ":TSUpdate",
       config = function()
          require "plugins.configs.treesitter"
@@ -87,6 +88,7 @@ local plugins = {
 
    ["williamboman/nvim-lsp-installer"] = {
       opt = true,
+      cmd = require("core.lazy_load").lsp_cmds,
       setup = function()
          require("core.lazy_load").on_file_open "nvim-lsp-installer"
       end,

@@ -69,6 +69,31 @@ M.on_file_open = function(plugin_name)
    }
 end
 
+-- lspinstaller & lspconfig cmds for lazyloading
+M.lsp_cmds = {
+   "LspInfo",
+   "LspStart",
+   "LspRestart",
+   "LspStop",
+   "LspInstall",
+   "LspUnInstall",
+   "LspUnInstallAll",
+   "LspInstall",
+   "LspInstallInfo",
+   "LspInstallLog",
+   "LspLog",
+   "LspPrintInstalled",
+}
+
+M.treesitter_cmds = {
+   "TSInstall",
+   "TSBufEnable",
+   "TSBufDisable",
+   "TSEnable",
+   "TSDisable",
+   "TSModuleInhfo",
+}
+
 M.gitsigns = function()
    -- taken from https://github.com/max397574
    vim.api.nvim_create_autocmd({ "BufRead" }, {
