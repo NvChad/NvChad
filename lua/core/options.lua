@@ -99,5 +99,14 @@ vim.schedule(function()
    vim.cmd [[ silent! rsh ]]
 end)
 
+-- Keep the cursor position while forward-searching a word.
+-- Reference: https://github.com/NvChad/NvChad/issues/1224
+-- TODO: map # key as well and activate backward search
+local function shine_forward()
+    vim.fn.setreg("/", "\\<" .. vim.fn.expand("<cword>") .. "\\>")
+    vim.opt.hlsearch = true
+end
+vim.keymap.set('n', '*', shine_forward, { silent = true, noremap = true })
+
 -- load user options
 config.options.user()
