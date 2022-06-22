@@ -119,7 +119,7 @@ end
 M.cwd = function()
    local dir_icon = "%#St_cwd_icon#" .. " "
    local dir_name = "%#St_cwd_text#" .. " " .. fn.fnamemodify(fn.getcwd(), ":t") .. " "
-   return (vim.o.columns > 120 and ("%#St_cwd_sep#" .. sep_l .. dir_icon .. dir_name))
+   return (vim.o.columns > 120 and ("%#St_cwd_sep#" .. sep_l .. dir_icon .. dir_name)) or ""
 end
 
 M.cursor_position = function()
