@@ -28,6 +28,7 @@ M.plugins = {
     override = {
         ["kyazdani42/nvim-tree.lua"] = plugins_configs.custom_nvimtree_config,
         ["lewis6991/gitsigns.nvim"] = plugins_configs.custom_gitsigns_config,
+        ["nvim-treesitter/nvim-treesitter"] = plugins_configs.custom_treesitter_config,
     }
 }
 
