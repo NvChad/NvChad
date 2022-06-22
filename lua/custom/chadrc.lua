@@ -33,8 +33,8 @@ M.plugins = {
 
 
 -- safe load highlights
-local highlights_add_ok, highlights_add = pcall(require, "custom.highlights_add")
-local highlights_override_ok, highlights_override = pcall(require, "custom.highlights_override")
+local highlights_add_ok, highlights_add = pcall(require, "custom.highlights.highlights_add")
+local highlights_override_ok, highlights_override = pcall(require, "custom.highlights.highlights_override")
 if not highlights_add_ok then print(highlights_add) return end
 if not highlights_override_ok then print(highlights_override) return end
 

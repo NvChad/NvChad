@@ -5,7 +5,7 @@ M.setup_lsp = function(on_attach, capabilities)
     local lsp_settings = require("custom.lsp")
 
     -- lspservers with default config
-    local servers = { "sumneko_lua", "html", "cssls", "clangd", "pyright", "tsserver" }
+    local servers = { "sumneko_lua", "html", "cssls", "clangd", "pyright", "tsserver", "jsonls" }
 
     for _, lsp in ipairs(servers) do
 
