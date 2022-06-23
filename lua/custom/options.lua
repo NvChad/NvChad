@@ -18,3 +18,4 @@ opt.shiftwidth = 4
 
 -- sneak vim plugin
 g["sneak#label"] = 1
+g["sneak#target_labels"] = ";sftunq/SFGHLTUNRMQZ"
