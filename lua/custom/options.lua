@@ -7,9 +7,9 @@ opt.fileformat = "unix"
 opt.wildmenu = true
 opt.wildmode = "longest:full,full"
 
-opt.expandtab = true
-opt.tabstop = 4
-opt.shiftwidth = 4
+opt.expandtab = true -- convert tabs to spaces
+opt.tabstop = 4 --  each tab is 4 spaces
+opt.shiftwidth = 4 -- use 4 spaces for autoindent
 
 -- [[ indent-blankine plugin]]
 opt.list = true
