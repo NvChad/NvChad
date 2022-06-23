@@ -9,6 +9,7 @@ M.additional_plugins = {
     ["goolord/alpha-nvim"] = {
         disable = false,
     },
+    ["vimwiki/vimwiki"] = {},
 }
 
 return M
