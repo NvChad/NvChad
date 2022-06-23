@@ -6,12 +6,9 @@ local sources = {
     -- b.formatting.prettierd.with { filetypes = { "html", "markdown", "css" } },
     -- b.formatting.deno_fmt,
 
-    -- python
-    b.formatting.autopep8, -- Lua
-    -- b.formatting.stylua,
-    b.formatting.lua_format, -- shell
-    b.formatting.shfmt,
-    b.diagnostics.shellcheck.with {diagnostics_format = "#{m} [#{c}]"}
+    b.formatting.autopep8, -- python
+    b.formatting.lua_format.with({extra_args = {"--column-limit", "120"}}), -- lua
+    b.formatting.shfmt, b.diagnostics.shellcheck.with {diagnostics_format = "#{m} [#{c}]"} -- shell
 }
 
 local M = {}

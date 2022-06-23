@@ -1,24 +1,18 @@
 return function()
     return {
-        git = {
-            enable = true,
-            ignore = false,
-            timeout = 1000,
-        },
+        git = {enable = true, ignore = false, timeout = 1000},
         view = {
             -- adaptive_size = true,
             side = "left",
-            width = 30,
+            width = 30
         },
         renderer = {
             highlight_git = true,
-            special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+            special_files = {"Cargo.toml", "Makefile", "README.md", "readme.md"},
             icons = {
                 padding = " ",
                 git_placement = "after",
-                show = {
-                    git = true,
-                },
+                show = {git = true},
                 glyphs = {
                     folder = {
                         arrow_closed = "",
@@ -28,7 +22,7 @@ return function()
                         empty = "",
                         empty_open = "",
                         symlink = "",
-                        symlink_open = "",
+                        symlink_open = ""
                     },
                     git = {
                         -- unstaged = "✗",
@@ -47,7 +41,7 @@ return function()
                         -- deleted = "⊖",
                         deleted = "",
                         -- ignored = "◌",
-                        ignored = "",
+                        ignored = ""
                     }
                 }
             }

@@ -12,9 +12,7 @@ M.additional_plugins = {
     ["vimwiki/vimwiki"] = {},
     ["jose-elias-alvarez/null-ls.nvim"] = {
         after = "nvim-lspconfig",
-        config = function()
-            require("custom.plugins.configs.null-ls").setup()
-        end
+        config = function() require("custom.plugins.configs.null-ls").setup() end
     }
 }
 

@@ -28,8 +28,4 @@ vim.cmd([[
     let g:vimwiki_ext2syntax = {}
 ]])
 -- g.vimwiki_ext2syntax = {[".md"] = "markdown"}
-g.vimwiki_list = {
-    {
-        path = "~/vimwiki",
-    }
-}
+g.vimwiki_list = {{path = "~/vimwiki"}}

@@ -6,50 +6,29 @@
 local schemas = {
     {
         description = "TypeScript compiler configuration file",
-        fileMatch = {
-            "tsconfig.json",
-            "tsconfig.*.json",
-        },
-        url = "https://json.schemastore.org/tsconfig.json",
-    },
-    {
+        fileMatch = {"tsconfig.json", "tsconfig.*.json"},
+        url = "https://json.schemastore.org/tsconfig.json"
+    }, {
         description = "ESLint config",
-        fileMatch = {
-            ".eslintrc.json",
-            ".eslintrc",
-        },
-        url = "https://json.schemastore.org/eslintrc.json",
-    },
-    {
+        fileMatch = {".eslintrc.json", ".eslintrc"},
+        url = "https://json.schemastore.org/eslintrc.json"
+    }, {
         description = "Prettier config",
-        fileMatch = {
-            ".prettierrc",
-            ".prettierrc.json",
-            "prettier.config.json",
-        },
-        url = "https://json.schemastore.org/prettierrc",
-    },
-    {
+        fileMatch = {".prettierrc", ".prettierrc.json", "prettier.config.json"},
+        url = "https://json.schemastore.org/prettierrc"
+    }, {
         description = "LLVM compilation database",
-        fileMatch = {
-            "compile_commands.json",
-        },
-        url = "https://json.schemastore.org/compile-commands.json",
-    },
-    {
+        fileMatch = {"compile_commands.json"},
+        url = "https://json.schemastore.org/compile-commands.json"
+    }, {
         description = "Packer template JSON configuration",
-        fileMatch = {
-            "packer.json",
-        },
-        url = "https://json.schemastore.org/packer.json",
-    },
-    {
+        fileMatch = {"packer.json"},
+        url = "https://json.schemastore.org/packer.json"
+    }, {
         description = "NPM configuration file",
-        fileMatch = {
-            "package.json",
-        },
-        url = "https://json.schemastore.org/package.json",
-    },
+        fileMatch = {"package.json"},
+        url = "https://json.schemastore.org/package.json"
+    }
 }
 
 -- local function extend(tab1, tab2)
@@ -72,20 +51,8 @@ M.create_config = function(attach, capabilities)
             client.resolved_capabilities.document_range_formatting = true
         end,
         capabilities = vim.tbl_deep_extend("force", capabilities, local_capabilities),
-        settings = {
-            json = {
-                schemas = schemas,
-            },
-        },
-        setup = {
-            commands = {
-                Format = {
-                    function()
-                        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line "$", 0 })
-                    end,
-                },
-            },
-        },
+        settings = {json = {schemas = schemas}},
+        setup = {commands = {Format = {function() vim.lsp.buf.range_formatting({}, {0, 0}, {vim.fn.line "$", 0}) end}}}
     }
 end
 
