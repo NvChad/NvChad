@@ -8,10 +8,14 @@ M.treesitter_config = require("custom.plugins.configs.treesitter")
 M.additional_plugins = {
     ["justinmk/vim-sneak"] = {},
     ["tpope/vim-fugitive"] = {},
-    ["goolord/alpha-nvim"] = {
-        disable = false,
-    },
+    ["goolord/alpha-nvim"] = {disable = false},
     ["vimwiki/vimwiki"] = {},
+    ["jose-elias-alvarez/null-ls.nvim"] = {
+        after = "nvim-lspconfig",
+        config = function()
+            require("custom.plugins.configs.null-ls").setup()
+        end
+    }
 }
 
 return M
