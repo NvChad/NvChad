@@ -29,3 +29,10 @@ vim.cmd([[
 ]])
 -- g.vimwiki_ext2syntax = {[".md"] = "markdown"}
 g.vimwiki_list = {{path = "~/vimwiki"}}
+
+g.slime_target = "neovim"
+-- g.slime_target = "tmux"
+-- g.slime_default_config = {socket_name = "default", target_pane= "{last}"}
+-- g.slime_dont_ask_default = 1
+-- g.slime_cell_delimiter = "###"
+

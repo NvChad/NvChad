@@ -3,7 +3,8 @@ local M = {}
 M.disabled = {n = {["<leader>h"] = "", ["<leader>f"] = ""}}
 
 M.general = {
-    i = {["jj"] = {"<ESC>", "better escape"}}
+    i = {["jj"] = {"<ESC>", "better escape"}},
+    t = {["<Esc><Esc>"] = {"<C-Bslash><C-n>", "back to normal"}, {noremap = true, expr=true}}
     -- n = { ["<ESC><ESC>"] = { "<cmd> set hlsearch! <CR>", "toggle search highlight" } }
 }
 
