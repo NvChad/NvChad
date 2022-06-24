@@ -9,10 +9,12 @@ lspSymbol("Hint", "")
 lspSymbol("Warn", "")
 
 vim.diagnostic.config {
-   virtual_text = {
-      prefix = "",
+   virtual_text = false,
+   float = {
+       source = "always",
+       border = "single",
    },
-   signs = true,
+   signs = false,
    underline = true,
    update_in_insert = false,
 }
