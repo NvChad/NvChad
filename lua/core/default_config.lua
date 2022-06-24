@@ -4,7 +4,6 @@
 local M = {}
 
 M.options = {
-
    -- load your options here or load module with options
    user = function() end,
 
@@ -25,9 +24,11 @@ M.ui = {
 
    statusline = {
       separator_style = "default", -- default/round/block/arrow
-      config = "%!v:lua.require'ui.statusline'.run()",
+      config = "%!v:lua.require('ui.statusline').run()",
       override = {},
    },
+
+   tabufline_enabled = true,
 }
 
 M.plugins = {

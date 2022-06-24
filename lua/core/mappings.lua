@@ -58,15 +58,19 @@ M.general = {
    },
 }
 
-M.bufferline = {
+M.tabufline = {
 
    n = {
       -- new buffer
       ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
 
       -- cycle through buffers
-      ["<TAB>"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
-      ["<S-Tab>"] = { "<cmd> BufferLineCyclePrev <CR>", "  cycle prev buffer" },
+      ["<TAB>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
+      ["<S-Tab>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
+
+      -- cycle through tabs
+      ["<leader>tp"] = { "<cmd> tabprevious <CR>", "  goto next tab" },
+      ["<leader>tn"] = { "<cmd> tabnext <CR> ", "  goto prev tab" },
 
       -- close buffer + hide terminal buffer
       ["<leader>x"] = {
