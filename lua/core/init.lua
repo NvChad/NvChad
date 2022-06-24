@@ -4,9 +4,9 @@ vim.cmd "silent! command! NvChadSnapshotCreate lua require('nvchad').snap_create
 vim.cmd "silent! command! NvChadSnapshotDelete lua require('nvchad').snap_delete()"
 vim.cmd "silent! command! NvChadSnapshotCheckout lua require('nvchad').snap_checkout()"
 
-
 -- autocmds
 local autocmd = vim.api.nvim_create_autocmd
+local api = vim.api
 
 -- wrap the PackerSync command to warn people before using it in NvChadSnapshots
 autocmd("VimEnter", {
@@ -36,12 +36,45 @@ autocmd("BufEnter", {
    command = "set fo-=c fo-=r fo-=o",
 })
 
-autocmd("InsertLeave", {
-   callback = function()
-      if require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-          and not require("luasnip").session.jump_active
-      then
-         require("luasnip").unlink_current()
+vim.t.bufs = vim.api.nvim_list_bufs()
+
+-- thx to https://github.com/ii14 && stores buffer per tab -> table
+autocmd({ "BufAdd" }, {
+   callback = function(args)
+      if vim.t.bufs == nil then
+         vim.t.bufs = { args.buf }
+      else
+         local bufs = vim.t.bufs
+
+         -- check for duplicates
+         if not vim.tbl_contains(bufs, args.buf) then
+            table.insert(bufs, args.buf)
+            vim.t.bufs = bufs
+         end
       end
    end,
 })
+
+autocmd("BufDelete", {
+   callback = function(args)
+      for _, tab in ipairs(api.nvim_list_tabpages()) do
+         local bufs = vim.t[tab].bufs
+         if bufs then
+            for i, bufnr in ipairs(bufs) do
+               if bufnr == args.buf then
+                  table.remove(bufs, i)
+                  vim.t[tab].bufs = bufs
+                  break
+               end
+            end
+         end
+      end
+   end,
+})
+
+if require("core.utils").load_config().ui.tabufline_enabled then
+   require("core.lazy_load").tabufline()
+else
+   vim.opt.showtabline = 2
+   vim.opt.tabline = "%!v:lua.require('ui.tabline').run()"
+end

@@ -1,30 +1,28 @@
 local M = {}
 local api = vim.api
-local fn = vim.fn
 
 local merge_tb = vim.tbl_deep_extend
 
-M.close_buffer = function(force)
+M.close_buffer = function(bufnr)
    if vim.bo.buftype == "terminal" then
-      force = force or #api.nvim_list_wins() < 2 and ":bd!"
-      local swap = force and #api.nvim_list_bufs() > 1 and ":bp | bd!" .. fn.bufnr()
-      return vim.cmd(swap or force or "hide")
-   end
-
-   local fileExists = fn.filereadable(fn.expand "%p")
-   local modified = api.nvim_buf_get_option(fn.bufnr(), "modified")
-
-   -- if file doesnt exist & its modified
-   if fileExists == 0 and modified then
-      print "no file name? add it now!"
+      if vim.bo.buflisted then
+         vim.bo.buflisted = false
+         vim.cmd "enew"
+      else
+         vim.cmd "hide"
+      end
       return
    end
 
-   force = force or not vim.bo.buflisted or vim.bo.buftype == "nofile"
+   -- if file doesnt exist & its modified
+   if vim.bo.modified then
+      print "save the file!"
+      return
+   end
 
-   -- if not force, change to prev buf and then close current
-   local close_cmd = force and ":bd!" or ":bp | bd" .. fn.bufnr()
-   vim.cmd(close_cmd)
+   bufnr = bufnr or api.nvim_get_current_buf()
+   require("core.utils").tabuflinePrev()
+   vim.cmd("bd" .. bufnr)
 end
 
 M.load_config = function()
@@ -151,9 +149,7 @@ M.load_override = function(default_table, plugin_name)
 
    if type(user_table) == "function" then
       user_table = user_table()
-   end
-
-   if type(user_table) == "table" then
+   elseif type(user_table) == "table" then
       default_table = merge_tb("force", default_table, user_table)
    else
       default_table = default_table
@@ -175,13 +171,16 @@ M.packer_sync = function(...)
          vim.api.nvim_echo({
             { "WARNING: You are trying to use ", "WarningMsg" },
             { "PackerSync" },
-            { " on a NvChadSnapshot. This will cause issues if NvChad dependencies contain "
-                .. "any breaking changes! Plugin updates will not be included in this "
-                .. "snapshot, so they will be lost after switching between snapshots! Would "
-                .. "you still like to continue? [y/N]\n", "WarningMsg" }
+            {
+               " on a NvChadSnapshot. This will cause issues if NvChad dependencies contain "
+                  .. "any breaking changes! Plugin updates will not be included in this "
+                  .. "snapshot, so they will be lost after switching between snapshots! Would "
+                  .. "you still like to continue? [y/N]\n",
+               "WarningMsg",
+            },
          }, false, {})
 
-         local ans = vim.trim(string.lower(vim.fn.input("-> ")))
+         local ans = vim.trim(string.lower(vim.fn.input "-> "))
 
          if ans ~= "y" then
             return
@@ -192,7 +191,39 @@ M.packer_sync = function(...)
    if packer_exists then
       packer.sync(...)
    else
-      error("Packer could not be loaded!")
+      error "Packer could not be loaded!"
+   end
+end
+
+M.tabuflineNext = function()
+   local bufs = vim.t.bufs or {}
+
+   for i, v in ipairs(bufs) do
+      if api.nvim_get_current_buf() == v then
+         vim.cmd(i == #bufs and "b" .. bufs[1] or "b" .. bufs[i + 1])
+         break
+      end
+   end
+end
+
+M.tabuflinePrev = function()
+   local bufs = vim.t.bufs or {}
+
+   for i, v in ipairs(bufs) do
+      if api.nvim_get_current_buf() == v then
+         vim.cmd(i == 1 and "b" .. bufs[#bufs] or "b" .. bufs[i - 1])
+         break
+      end
+   end
+end
+-- closes tab + all of its buffers
+M.tabuflineCloseTab = function()
+   local bufs = vim.t.bufs or {}
+
+   vim.cmd "tabclose"
+
+   for _, buf in ipairs(bufs) do
+      vim.cmd("bd" .. buf)
    end
 end
 

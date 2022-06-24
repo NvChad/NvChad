@@ -1,8 +1,8 @@
--- thx to https://github.com/max397574/omega-nvim/blob/master/lua/omega/modules/ui/bufferline.lua
 local M = {}
+local autocmd = vim.api.nvim_create_autocmd
 
 M.lazy_load = function(tb)
-   vim.api.nvim_create_autocmd(tb.events, {
+   autocmd(tb.events, {
       pattern = "*",
       group = vim.api.nvim_create_augroup(tb.augroup_name, {}),
       callback = function()
@@ -21,18 +21,6 @@ M.lazy_load = function(tb)
          end
       end,
    })
-end
-
-M.bufferline = function()
-   M.lazy_load {
-      events = { "BufNewFile", "BufRead", "TabEnter" },
-      augroup_name = "BufferLineLazy",
-      plugins = "bufferline.nvim",
-
-      condition = function()
-         return #vim.fn.getbufinfo { buflisted = 1 } >= 2
-      end,
-   }
 end
 
 M.colorizer = function()
@@ -96,7 +84,7 @@ M.treesitter_cmds = {
 
 M.gitsigns = function()
    -- taken from https://github.com/max397574
-   vim.api.nvim_create_autocmd({ "BufRead" }, {
+   autocmd({ "BufRead" }, {
       callback = function()
          local function onexit(code, _)
             if code == 0 then
@@ -114,6 +102,22 @@ M.gitsigns = function()
                   vim.fn.expand "%:p:h",
                },
             }, onexit)
+         end
+      end,
+   })
+end
+
+M.tabufline = function()
+   autocmd({ "BufNewFile", "BufRead", "TabEnter" }, {
+      pattern = "*",
+      group = vim.api.nvim_create_augroup("TabuflineLazyLoad", {}),
+      callback = function()
+         if #vim.fn.getbufinfo { buflisted = 1 } >= 2 then
+            vim.opt.showtabline = 2
+            vim.opt.tabline = "%!v:lua.require('ui.tabline').run()"
+            vim.api.nvim_del_augroup_by_name "TabuflineLazyLoad"
+         else
+            return ""
          end
       end,
    })

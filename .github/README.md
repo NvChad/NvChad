@@ -88,11 +88,11 @@ Adds indentline:
 <kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/statusline.png"></kbd><hr>
 <kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/statusline_modes.png"></kbd><hr>
 
-<h3> Nvim-bufferline.lua </h3>
+<h3> Tabufline (our own pertab bufferline) </h3>
 
-A snazzy bufferline for Neovim
-
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/bufferline.png"></kbd><hr>
+<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/tabufline1.png"></kbd><hr>
+<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/tabufline2.png"></kbd><hr>
+<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/tabufline3.png"></kbd><hr>
 
 <h3> Nvim-web-devicons </h3>
 
