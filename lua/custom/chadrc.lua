@@ -45,7 +45,7 @@ if not highlights_override_ok then
 end
 
 M.ui = {
-    theme = "onedark",
+    theme = "darker_one",
     hl_override = highlights_override,
     hl_add = highlights_add,
     statusline = {separator_style = "block"}
