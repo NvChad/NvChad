@@ -1,5 +1,4 @@
--- IMPORTANT NOTE : This is default config, so dont change anything here.
--- chadrc overrides this file
+-- Chadrc overrides this file
 
 local M = {}
 
@@ -28,7 +27,8 @@ M.ui = {
       override = {},
    },
 
-   tabufline_enabled = true,
+   -- lazyload it when there are 1+ buffers
+   tabufline_lazyloaded = true,
 }
 
 M.plugins = {
