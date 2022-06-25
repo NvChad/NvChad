@@ -8,22 +8,26 @@ lspSymbol("Info", "")
 lspSymbol("Hint", "")
 lspSymbol("Warn", "")
 
+-- @!:manual_change vitual_text and sings are changed and float is added
 vim.diagnostic.config {
    virtual_text = false,
    float = {
        source = "always",
-       border = "single",
+       border = "none",
    },
    signs = false,
    underline = true,
    update_in_insert = false,
 }
 
+-- @!:manual_change border is changed
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-   border = "single",
+   border = "none",
 })
+
+-- @!:manual_change border is changed
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-   border = "single",
+   border = "none",
 })
 
 -- suppress error messages from lang servers
@@ -42,8 +46,9 @@ end
 local win = require "lspconfig.ui.windows"
 local _default_opts = win.default_opts
 
+-- @!:manual_change border is changed
 win.default_opts = function(options)
    local opts = _default_opts(options)
-   opts.border = "single"
+   opts.border = "none"
    return opts
 end
