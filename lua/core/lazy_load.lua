@@ -116,8 +116,6 @@ M.tabufline = function()
             vim.opt.showtabline = 2
             vim.opt.tabline = "%!v:lua.require('ui.tabline').run()"
             vim.api.nvim_del_augroup_by_name "TabuflineLazyLoad"
-         else
-            return ""
          end
       end,
    })
