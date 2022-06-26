@@ -9,6 +9,7 @@ require("base46").load_highlight "nvimtree"
 local options = {
    filters = {
       dotfiles = false,
+      exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
    },
    disable_netrw = true,
    hijack_netrw = true,
@@ -22,6 +23,7 @@ local options = {
       update_cwd = false,
    },
    view = {
+      adaptive_size = true,
       side = "left",
       width = 25,
       hide_root_folder = true,

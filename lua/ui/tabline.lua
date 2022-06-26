@@ -74,20 +74,24 @@ local function bufferlist()
    local buffers = ""
 
    for _, nr in ipairs(vim.t.bufs or {}) do -- buf = bufnr
-      local name = (#api.nvim_buf_get_name(nr) ~= 0) and fn.fnamemodify(api.nvim_buf_get_name(nr), ":t") or " No Name "
-      local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
-      name = "%" .. nr .. "@TbGoToBuf@" .. add_fileInfo(name, nr) .. "%X"
+      if api.nvim_buf_is_loaded(nr) then
+         local name = (#api.nvim_buf_get_name(nr) ~= 0) and fn.fnamemodify(api.nvim_buf_get_name(nr), ":t")
+            or " No Name "
+         local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
+         name = "%" .. nr .. "@TbGoToBuf@" .. add_fileInfo(name, nr) .. "%X"
 
-      -- color close btn for focused / hidden  buffers
-      if nr == api.nvim_get_current_buf() then
-         close_btn = (vim.bo[0].modified and "%#TbLineBufOnModified# ") or ("%#TbLineBufOnClose#" .. close_btn)
-         name = "%#TbLineBufOn#" .. name .. close_btn
-      else
-         close_btn = (vim.bo[nr].modified and "%#TbBufLineBufOffModified# ") or ("%#TbLineBufOffClose#" .. close_btn)
-         name = "%#TbLineBufOff#" .. name .. close_btn
+         -- color close btn for focused / hidden  buffers
+         if nr == api.nvim_get_current_buf() then
+            close_btn = (vim.bo[0].modified and "%#TbLineBufOnModified# ") or ("%#TbLineBufOnClose#" .. close_btn)
+            name = "%#TbLineBufOn#" .. name .. close_btn
+         else
+            close_btn = (vim.bo[nr].modified and "%#TbBufLineBufOffModified# ")
+               or ("%#TbLineBufOffClose#" .. close_btn)
+            name = "%#TbLineBufOff#" .. name .. close_btn
+         end
+
+         buffers = buffers .. name
       end
-
-      buffers = buffers .. name
    end
 
    return buffers .. "%#TblineFill#" .. "%=" -- buffers + empty space
