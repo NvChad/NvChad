@@ -13,21 +13,19 @@ vim.diagnostic.config {
    virtual_text = false,
    float = {
        source = "always",
-       border = "none",
+       border = "single",
    },
    signs = false,
    underline = true,
    update_in_insert = false,
 }
 
--- @!:manual_change border is changed
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-   border = "none",
+   border = "signle",
 })
 
--- @!:manual_change border is changed
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-   border = "none",
+   border = "single",
 })
 
 -- suppress error messages from lang servers
