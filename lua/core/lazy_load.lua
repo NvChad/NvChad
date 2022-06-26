@@ -114,7 +114,7 @@ M.tabufline = function()
       callback = function()
          if #vim.fn.getbufinfo { buflisted = 1 } >= 2 then
             vim.opt.showtabline = 2
-            vim.opt.tabline = "%!v:lua.require('ui.tabline').run()"
+            vim.opt.tabline = "%!v:lua.require'ui.tabline'.run()"
             vim.api.nvim_del_augroup_by_name "TabuflineLazyLoad"
          end
       end,

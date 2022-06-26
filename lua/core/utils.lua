@@ -195,8 +195,20 @@ M.packer_sync = function(...)
    end
 end
 
+M.bufilter = function()
+   local bufs = vim.t.bufs
+
+   for i = #bufs, 1, -1 do
+      if not vim.api.nvim_buf_is_loaded(bufs[i]) then
+         table.remove(bufs, i)
+      end
+   end
+
+   return bufs
+end
+
 M.tabuflineNext = function()
-   local bufs = vim.t.bufs or {}
+   local bufs = M.bufilter() or {}
 
    for i, v in ipairs(bufs) do
       if api.nvim_get_current_buf() == v then
@@ -207,7 +219,7 @@ M.tabuflineNext = function()
 end
 
 M.tabuflinePrev = function()
-   local bufs = vim.t.bufs or {}
+   local bufs = M.bufilter() or {}
 
    for i, v in ipairs(bufs) do
       if api.nvim_get_current_buf() == v then
