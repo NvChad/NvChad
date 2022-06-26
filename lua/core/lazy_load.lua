@@ -79,7 +79,7 @@ M.treesitter_cmds = {
    "TSBufDisable",
    "TSEnable",
    "TSDisable",
-   "TSModuleInhfo",
+   "TSModuleInfo",
 }
 
 M.gitsigns = function()
