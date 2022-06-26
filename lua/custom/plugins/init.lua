@@ -14,7 +14,8 @@ M.additional_plugins = {
         after = "nvim-lspconfig",
         config = function() require("custom.plugins.configs.null-ls").setup() end
     },
-    ["jpalardy/vim-slime"] = {}
+    ["jpalardy/vim-slime"] = {},
+    ["editorconfig/editorconfig-vim"] = {}
 }
 
 return M
