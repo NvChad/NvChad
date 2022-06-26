@@ -1,6 +1,7 @@
 local null_ls = require "null-ls"
 local b = null_ls.builtins
 
+-- these are binary that must be installed separatly on system
 local sources = {
 
     -- b.formatting.prettierd.with { filetypes = { "html", "markdown", "css" } },
@@ -8,7 +9,11 @@ local sources = {
 
     b.formatting.autopep8, -- python
     b.formatting.lua_format.with({extra_args = {"--column-limit", "120"}}), -- lua
-    b.formatting.shfmt, b.diagnostics.shellcheck.with {diagnostics_format = "#{m} [#{c}]"} -- shell
+    b.formatting.shfmt, -- shell
+    -- b.diagnostics.shellcheck.with {diagnostics_format = "#{m} [#{c}]"}, -- shell
+    b.diagnostics.eslint_d,
+    b.formatting.prettier,
+
 }
 
 local M = {}
