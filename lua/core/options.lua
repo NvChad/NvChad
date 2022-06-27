@@ -91,7 +91,6 @@ end
 local default_providers = {
    "node",
    "perl",
-   "python",
    "python3",
    "ruby",
 }
