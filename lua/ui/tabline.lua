@@ -78,7 +78,7 @@ M.bufferlist = function()
    local buffers = ""
 
    for _, nr in ipairs(vim.t.bufs or {}) do -- buf = bufnr
-      if api.nvim_buf_is_loaded(nr) then
+      if api.nvim_buf_is_valid(nr) then
          local name = (#api.nvim_buf_get_name(nr) ~= 0) and fn.fnamemodify(api.nvim_buf_get_name(nr), ":t")
             or " No Name "
          local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
