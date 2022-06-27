@@ -199,7 +199,7 @@ M.bufilter = function()
    local bufs = vim.t.bufs
 
    for i = #bufs, 1, -1 do
-      if not vim.api.nvim_buf_is_loaded(bufs[i]) then
+      if not vim.api.nvim_buf_is_valid(bufs[i]) then
          table.remove(bufs, i)
       end
    end
