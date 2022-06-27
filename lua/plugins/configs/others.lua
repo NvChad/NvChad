@@ -114,6 +114,7 @@ M.luasnip = function()
    options = load_override(options, "L3MON4D3/LuaSnip")
    luasnip.config.set_config(options)
    snippet_paths = load_config().plugins.options.luasnip.snippet_paths
+   require("luasnip.loaders.from_vscode").lazy_load()
    require("luasnip.loaders.from_vscode").lazy_load({ paths = snippet_paths })
 
    vim.api.nvim_create_autocmd("InsertLeave", {
