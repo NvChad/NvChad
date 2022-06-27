@@ -9,7 +9,7 @@
   <span> • </span>
 	<a href="https://github.com/NvChad/NvChad#gift_heart-support">Support</a>
   <span> • </span>
-        <a href="[https://nvchad.github.io/Extras](https://nvchad.github.io/Features)">Features</a>
+        <a href="https://nvchad.github.io/Features">Features</a>
   <p></p>
 </div> 
 
