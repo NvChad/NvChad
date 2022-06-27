@@ -3,13 +3,13 @@
 <div align="center">
 	<a href="https://nvchad.github.io/">Home</a>
   <span> • </span>
-    	<a href="https://nvchad.github.io/getting-started/setup">Install</a>
+    	<a href="https://nvchad.github.io/quickstart/install">Install</a>
   <span> • </span>
        	<a href="https://nvchad.github.io/contribute">Contribute</a>
   <span> • </span>
 	<a href="https://github.com/NvChad/NvChad#gift_heart-support">Support</a>
   <span> • </span>
-        <a href="https://nvchad.github.io/Extras">Extras</a>
+        <a href="[https://nvchad.github.io/Extras](https://nvchad.github.io/Features)">Features</a>
   <p></p>
 </div> 
 
