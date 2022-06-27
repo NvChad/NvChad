@@ -228,15 +228,16 @@ M.tabuflinePrev = function()
       end
    end
 end
+
 -- closes tab + all of its buffers
-M.tabuflineCloseTab = function()
+M.closeAllBufs = function(action)
    local bufs = vim.t.bufs or {}
 
-   vim.cmd "tabclose"
-
    for _, buf in ipairs(bufs) do
-      vim.cmd("bd" .. buf)
+      M.close_buffer(buf)
    end
+
+   vim.cmd(action == "closeTab" and "tabclose" or "enew")
 end
 
 return M

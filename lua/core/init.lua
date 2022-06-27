@@ -72,9 +72,11 @@ autocmd("BufDelete", {
    end,
 })
 
-if require("core.utils").load_config().ui.tabufline_lazyloaded then
+local tabufline_opts = require("core.utils").load_config().ui.tabufline
+
+if tabufline_opts.enabled and tabufline_opts.lazyload then
    require("core.lazy_load").tabufline()
-else
+elseif tabufline_opts.enabled then
    vim.opt.showtabline = 2
    vim.opt.tabline = "%!v:lua.require'ui.tabline'.run()"
 end

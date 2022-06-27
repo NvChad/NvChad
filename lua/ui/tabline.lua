@@ -11,7 +11,8 @@ vim.cmd [[
 
 vim.cmd "function! TbNewTab(a,b,c,d) \n tabnew \n endfunction"
 vim.cmd "function! TbGotoTab(tabnr,b,c,d) \n execute a:tabnr ..'tabnext' \n endfunction"
-vim.cmd "function! TbTabClose(a,b,c,d) \n lua require('core.utils').tabuflineCloseTab() \n endfunction"
+vim.cmd "function! TbTabClose(a,b,c,d) \n lua require('core.utils').closeAllBufs('closeTab') \n endfunction"
+vim.cmd "function! TbCloseAllBufs(a,b,c,d) \n lua require('core.utils').closeAllBufs() \n endfunction"
 vim.cmd "function! TbToggle_theme(a,b,c,d) \n lua require('base46').toggle_theme() \n endfunction"
 vim.cmd "function! TbToggleTabs(a,b,c,d) \n let g:TbTabsToggled = !g:TbTabsToggled | redrawtabline \n endfunction"
 
@@ -38,7 +39,10 @@ local function new_hl(group1, group2)
    return "%#" .. "Tbline" .. group1 .. group2 .. "#"
 end
 
-local function Offset()
+local M = {}
+
+-- covers area of nvimtree on tabufline
+M.Offset = function()
    for _, win in pairs(api.nvim_tabpage_list_wins(0)) do
       if vim.bo[api.nvim_win_get_buf(win)].ft == "NvimTree" then
          return "%#NvimTreeNormal#" .. string.rep(" ", api.nvim_win_get_width(win) + 1)
@@ -70,7 +74,7 @@ local function add_fileInfo(name, bufnr)
    end
 end
 
-local function bufferlist()
+M.bufferlist = function()
    local buffers = ""
 
    for _, nr in ipairs(vim.t.bufs or {}) do -- buf = bufnr
@@ -99,7 +103,7 @@ end
 
 vim.g.TbTabsToggled = 0
 
-local function tablist()
+M.tablist = function()
    local result, number_of_tabs = "", fn.tabpagenr "$"
 
    if number_of_tabs > 1 then
@@ -119,12 +123,16 @@ local function tablist()
    end
 end
 
-local function buttons()
-   return "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. vim.g.toggle_theme_icon .. "%X"
+M.buttons = function()
+   local toggle_themeBtn = "%@TbToggle_theme@%#TbLineThemeToggleBtn#" .. vim.g.toggle_theme_icon .. "%X"
+   local CloseAllBufsBtn = "%@TbCloseAllBufs@%#TbLineCloseAllBufsBtn#" .. "  " .. "%X"
+   return toggle_themeBtn .. CloseAllBufsBtn
 end
 
-return {
-   run = function()
-      return (Offset() or "") .. bufferlist() .. (tablist() or "") .. buttons()
-   end,
-}
+M.run = function()
+   return (M.Offset() or "") .. M.bufferlist() .. (M.tablist() or "") .. M.buttons()
+end
+
+M = vim.tbl_deep_extend("force", M, require("core.utils").load_config().ui.tabufline.override)
+
+return M
