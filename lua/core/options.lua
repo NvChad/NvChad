@@ -74,11 +74,6 @@ local default_plugins = {
    "vimballPlugin",
    "zip",
    "zipPlugin",
-   "python3_provider",
-   "python_provider",
-   "node_provider",
-   "ruby_provider",
-   "perl_provider",
    "tutor",
    "rplugin",
    "syntax",
@@ -91,6 +86,18 @@ local default_plugins = {
 
 for _, plugin in pairs(default_plugins) do
    g["loaded_" .. plugin] = 1
+end
+
+local default_providers = {
+   "node",
+   "perl",
+   "python",
+   "python3",
+   "ruby",
+}
+
+for _, provider in ipairs(default_providers) do
+   vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
 -- set shada path
