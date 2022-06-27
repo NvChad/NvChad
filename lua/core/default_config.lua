@@ -43,9 +43,6 @@ M.plugins = {
       lspconfig = {
          setup_lspconf = "", -- path of lspconfig file
       },
-      luasnip = {
-         snippet_paths = {""}, -- list of custom snippet locations
-      },
    },
 }
 
