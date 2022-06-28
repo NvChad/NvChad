@@ -4,7 +4,7 @@ M.disabled = {n = {["<leader>h"] = "", ["<leader>f"] = ""}}
 
 M.general = {
     i = {["jj"] = {"<ESC>", "better escape"}},
-    t = {["<Esc><Esc>"] = {"<C-Bslash><C-n>", "back to normal"}, {noremap = true, expr=true}}
+    t = {["<Esc><Esc>"] = {"<C-Bslash><C-n>", "back to normal"}, {noremap = true, expr = true}}
     -- n = { ["<ESC><ESC>"] = { "<cmd> set hlsearch! <CR>", "toggle search highlight" } }
 }
 
@@ -62,13 +62,23 @@ M.lspconfig = {
         ["<leader>wl"] = {
             function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, "   list workspace folders"
         }
-    }
+    },
+    v = {["<leader>fm"] = {function() vim.lsp.buf.range_formatting() end, "   lsp range formatting"}}
 }
 
 M.vimwiki = {
     n = {
         ["<leader>wf"] = {"<Plug>VimwikiNextLink", "vimwiki next link"}
         -- ["<cr>"] = { "<Plug>VimwikiFollowLink", "vimwiki follow link" },
+    }
+}
+
+M.telescope = {
+    n = {
+        -- git
+        ["<leader>gc"] = {"<cmd> Telescope git_commits <CR>", "   git commits"},
+        ["<leader>gs"] = {"<cmd> Telescope git_status <CR>", "  git status"},
+        ["<leader>ct"] = {"<cmd> Telescope tags <CR>", "show ctags"}
     }
 }
 
