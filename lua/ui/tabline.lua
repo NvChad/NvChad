@@ -39,15 +39,20 @@ local function new_hl(group1, group2)
    return "%#" .. "Tbline" .. group1 .. group2 .. "#"
 end
 
+local function getNvimTreeWidth()
+   for _, win in pairs(api.nvim_tabpage_list_wins(0)) do
+      if vim.bo[api.nvim_win_get_buf(win)].ft == "NvimTree" then
+         return api.nvim_win_get_width(win) + 1
+      end
+   end
+   return 0
+end
+
 local M = {}
 
 -- covers area of nvimtree on tabufline
-M.Offset = function()
-   for _, win in pairs(api.nvim_tabpage_list_wins(0)) do
-      if vim.bo[api.nvim_win_get_buf(win)].ft == "NvimTree" then
-         return "%#NvimTreeNormal#" .. string.rep(" ", api.nvim_win_get_width(win) + 1)
-      end
-   end
+M.NvimTreeOffset = function()
+   return "%#NvimTreeNormal#" .. string.rep(" ", getNvimTreeWidth())
 end
 
 local function add_fileInfo(name, bufnr)
@@ -66,7 +71,7 @@ local function add_fileInfo(name, bufnr)
          or new_hl(icon_hl, "TbLineBufOff") .. " " .. icon
       )
 
-      name = (#name > 20 and string.sub(name, 1, 15) .. "...") or name
+      name = (#name > 15 and string.sub(name, 1, 13) .. "..") or name
       name = (api.nvim_get_current_buf() == bufnr and "%#TbLineBufOn# " .. name .. " ")
          or ("%#TbLineBufOff# " .. name .. " ")
 
@@ -77,24 +82,28 @@ end
 M.bufferlist = function()
    local buffers = ""
 
-   for _, nr in ipairs(vim.t.bufs or {}) do -- buf = bufnr
+   for index, nr in ipairs(vim.t.bufs or {}) do -- buf = bufnr
       if api.nvim_buf_is_valid(nr) then
+         local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
          local name = (#api.nvim_buf_get_name(nr) ~= 0) and fn.fnamemodify(api.nvim_buf_get_name(nr), ":t")
             or " No Name "
-         local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
+
          name = "%" .. nr .. "@TbGoToBuf@" .. add_fileInfo(name, nr) .. "%X"
 
          -- color close btn for focused / hidden  buffers
          if nr == api.nvim_get_current_buf() then
-            close_btn = (vim.bo[0].modified and "%#TbLineBufOnModified# ") or ("%#TbLineBufOnClose#" .. close_btn)
+            close_btn = (vim.bo[0].modified and "%" .. nr .. "@TbKillBuf@%#TbLineBufOnModified# ")
+               or ("%#TbLineBufOnClose#" .. close_btn)
             name = "%#TbLineBufOn#" .. name .. close_btn
          else
-            close_btn = (vim.bo[nr].modified and "%#TbBufLineBufOffModified# ")
+            close_btn = (vim.bo[nr].modified and "%" .. nr .. "@TbKillBuf@%#TbBufLineBufOffModified# ")
                or ("%#TbLineBufOffClose#" .. close_btn)
             name = "%#TbLineBufOff#" .. name .. close_btn
          end
 
-         buffers = buffers .. name
+         -- 1 buffer tab = 21 whitespaces
+         buffers = (21 * index + getNvimTreeWidth() < vim.o.columns - getNvimTreeWidth()) and buffers .. name
+            or buffers .. ""
       end
    end
 
@@ -130,7 +139,7 @@ M.buttons = function()
 end
 
 M.run = function()
-   return (M.Offset() or "") .. M.bufferlist() .. (M.tablist() or "") .. M.buttons()
+   return M.NvimTreeOffset() .. M.bufferlist() .. (M.tablist() or "") .. M.buttons()
 end
 
 M = vim.tbl_deep_extend("force", M, require("core.utils").load_config().ui.tabufline.override)

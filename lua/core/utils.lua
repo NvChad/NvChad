@@ -5,24 +5,14 @@ local merge_tb = vim.tbl_deep_extend
 
 M.close_buffer = function(bufnr)
    if vim.bo.buftype == "terminal" then
-      if vim.bo.buflisted then
-         vim.bo.buflisted = false
-         vim.cmd "enew"
-      else
-         vim.cmd "hide"
-      end
-      return
+      vim.cmd(vim.bo.buflisted and "set nobl | enew" or "hide")
+   elseif vim.bo.modified then
+      print "save the file bruh"
+   else
+      bufnr = bufnr or api.nvim_get_current_buf()
+      require("core.utils").tabuflinePrev()
+      vim.cmd("bd" .. bufnr)
    end
-
-   -- if file doesnt exist & its modified
-   if vim.bo.modified then
-      print "save the file!"
-      return
-   end
-
-   bufnr = bufnr or api.nvim_get_current_buf()
-   require("core.utils").tabuflinePrev()
-   vim.cmd("bd" .. bufnr)
 end
 
 M.load_config = function()
@@ -144,7 +134,6 @@ M.merge_plugins = function(default_plugins)
    return final_table
 end
 
-
 M.load_override = function(default_table, plugin_name)
    local user_table = M.load_config().plugins.override[plugin_name] or {}
    user_table = type(user_table) == "table" and user_table or user_table()
@@ -225,13 +214,19 @@ end
 
 -- closes tab + all of its buffers
 M.closeAllBufs = function(action)
-   local bufs = vim.t.bufs or {}
+   local bufs = vim.t.bufs
+
+   if action == "closeTab" then
+      vim.cmd "tabclose"
+   end
 
    for _, buf in ipairs(bufs) do
       M.close_buffer(buf)
    end
 
-   vim.cmd(action == "closeTab" and "tabclose" or "enew")
+   if action ~= "closeTab" then
+      vim.cmd "enew"
+   end
 end
 
 return M
