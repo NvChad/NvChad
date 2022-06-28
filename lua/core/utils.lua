@@ -144,19 +144,12 @@ M.merge_plugins = function(default_plugins)
    return final_table
 end
 
+
 M.load_override = function(default_table, plugin_name)
-   local user_table = M.load_config().plugins.override[plugin_name]
+   local user_table = M.load_config().plugins.override[plugin_name] or {}
+   user_table = type(user_table) == "table" and user_table or user_table()
 
-   if type(user_table) == "function" then
-      user_table = user_table()
-   end
-   if type(user_table) == "table" then
-      default_table = merge_tb("force", default_table, user_table)
-   else
-      default_table = default_table
-   end
-
-   return default_table
+   return user_table and merge_tb("force", default_table, user_table)
 end
 
 M.packer_sync = function(...)
