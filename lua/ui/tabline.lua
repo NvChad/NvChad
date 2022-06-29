@@ -1,7 +1,12 @@
-require("base46").load_highlight "tbline"
 local api = vim.api
+local devicons_present, devicons = pcall(require, "nvim-web-devicons")
+local fn = vim.fn
+local new_cmd = api.nvim_create_user_command
 
--- btn click functions
+require("base46").load_highlight "tbline"
+
+---------------------------------------------------------- btn onclick functions ----------------------------------------------
+
 vim.cmd "function! TbGoToBuf(bufnr,b,c,d) \n execute 'b'..a:bufnr \n endfunction"
 
 vim.cmd [[
@@ -16,10 +21,7 @@ vim.cmd "function! TbCloseAllBufs(a,b,c,d) \n lua require('core.utils').closeAll
 vim.cmd "function! TbToggle_theme(a,b,c,d) \n lua require('base46').toggle_theme() \n endfunction"
 vim.cmd "function! TbToggleTabs(a,b,c,d) \n let g:TbTabsToggled = !g:TbTabsToggled | redrawtabline \n endfunction"
 
-local devicons_present, devicons = pcall(require, "nvim-web-devicons")
-local fn = vim.fn
-local new_cmd = api.nvim_create_user_command
-
+---------------------------------------------------------- commands ------------------------------------------------------------
 new_cmd("Tbufnext", function()
    require("core.utils").tabuflineNext()
 end, {})
@@ -32,6 +34,7 @@ new_cmd("Tbufclose", function()
    require("core.utils").close_buffer()
 end, {})
 
+-------------------------------------------------------- functions ------------------------------------------------------------
 local function new_hl(group1, group2)
    local fg = fn.synIDattr(fn.synIDtrans(fn.hlID(group1)), "fg#")
    local bg = fn.synIDattr(fn.synIDtrans(fn.hlID(group2)), "bg#")
@@ -48,11 +51,13 @@ local function getNvimTreeWidth()
    return 0
 end
 
-local M = {}
-
--- covers area of nvimtree on tabufline
-M.NvimTreeOffset = function()
-   return "%#NvimTreeNormal#" .. string.rep(" ", getNvimTreeWidth())
+local function getBtnsWidth()
+   local width = 6
+   if fn.tabpagenr "$" ~= 1 then
+      width = width + ((3 * fn.tabpagenr "$") + 2) + 10
+      width = not vim.g.TbTabsToggled and 8 or width
+   end
+   return width
 end
 
 local function add_fileInfo(name, bufnr)
@@ -79,35 +84,54 @@ local function add_fileInfo(name, bufnr)
    end
 end
 
+local function styleBufferTab(nr)
+   local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
+   local name = (#api.nvim_buf_get_name(nr) ~= 0) and fn.fnamemodify(api.nvim_buf_get_name(nr), ":t") or " No Name "
+   name = "%" .. nr .. "@TbGoToBuf@" .. add_fileInfo(name, nr) .. "%X"
+
+   -- color close btn for focused / hidden  buffers
+   if nr == api.nvim_get_current_buf() then
+      close_btn = (vim.bo[0].modified and "%" .. nr .. "@TbKillBuf@%#TbLineBufOnModified# ")
+         or ("%#TbLineBufOnClose#" .. close_btn)
+      name = "%#TbLineBufOn#" .. name .. close_btn
+   else
+      close_btn = (vim.bo[nr].modified and "%" .. nr .. "@TbKillBuf@%#TbBufLineBufOffModified# ")
+         or ("%#TbLineBufOffClose#" .. close_btn)
+      name = "%#TbLineBufOff#" .. name .. close_btn
+   end
+
+   return name
+end
+
+---------------------------------------------------------- components ------------------------------------------------------------
+local M = {}
+
+M.CoverNvimTree = function()
+   return "%#NvimTreeNormal#" .. string.rep(" ", getNvimTreeWidth())
+end
+
 M.bufferlist = function()
-   local buffers = ""
+   local buffers = {} -- buffersults
+   local available_space = vim.o.columns - getNvimTreeWidth() - getBtnsWidth()
+   local current_buf = api.nvim_get_current_buf()
+   local has_current = false -- have we seen current buffer yet?
 
-   for index, nr in ipairs(vim.t.bufs or {}) do -- buf = bufnr
-      if api.nvim_buf_is_valid(nr) then
-         local close_btn = "%" .. nr .. "@TbKillBuf@ %X"
-         local name = (#api.nvim_buf_get_name(nr) ~= 0) and fn.fnamemodify(api.nvim_buf_get_name(nr), ":t")
-            or " No Name "
+   for _, bufnr in ipairs(vim.t.bufs) do
+      if api.nvim_buf_is_valid(bufnr) then
+         if ((#buffers + 1) * 21) > available_space then
+            if has_current then
+               break
+            end
 
-         name = "%" .. nr .. "@TbGoToBuf@" .. add_fileInfo(name, nr) .. "%X"
-
-         -- color close btn for focused / hidden  buffers
-         if nr == api.nvim_get_current_buf() then
-            close_btn = (vim.bo[0].modified and "%" .. nr .. "@TbKillBuf@%#TbLineBufOnModified# ")
-               or ("%#TbLineBufOnClose#" .. close_btn)
-            name = "%#TbLineBufOn#" .. name .. close_btn
-         else
-            close_btn = (vim.bo[nr].modified and "%" .. nr .. "@TbKillBuf@%#TbBufLineBufOffModified# ")
-               or ("%#TbLineBufOffClose#" .. close_btn)
-            name = "%#TbLineBufOff#" .. name .. close_btn
+            table.remove(buffers, 1)
          end
 
-         -- 1 buffer tab = 21 whitespaces
-         buffers = (21 * index + getNvimTreeWidth() < vim.o.columns - getNvimTreeWidth()) and buffers .. name
-            or buffers .. ""
+         has_current = (bufnr == current_buf and true) or has_current
+         table.insert(buffers, styleBufferTab(bufnr))
       end
    end
 
-   return buffers .. "%#TblineFill#" .. "%=" -- buffers + empty space
+   return table.concat(buffers) .. "%#TblineFill#" .. "%=" -- buffers + empty space
 end
 
 vim.g.TbTabsToggled = 0
@@ -125,10 +149,8 @@ M.tablist = function()
       local new_tabtn = "%#TblineTabNewBtn#" .. "%@TbNewTab@  %X"
       local tabstoggleBtn = "%@TbToggleTabs@ %#TBTabTitle# TABS %X"
 
-      result = (vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [36] = " " }))
+      return vim.g.TbTabsToggled == 1 and tabstoggleBtn:gsub("()", { [36] = " " })
          or new_tabtn .. tabstoggleBtn .. result
-
-      return result
    end
 end
 
@@ -139,7 +161,7 @@ M.buttons = function()
 end
 
 M.run = function()
-   return M.NvimTreeOffset() .. M.bufferlist() .. (M.tablist() or "") .. M.buttons()
+   return M.CoverNvimTree() .. M.bufferlist() .. (M.tablist() or "") .. M.buttons()
 end
 
 M = vim.tbl_deep_extend("force", M, require("core.utils").load_config().ui.tabufline.override)
