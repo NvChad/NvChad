@@ -55,7 +55,6 @@ local options = {
       buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
       mappings = {
          n = { ["q"] = require("telescope.actions").close },
-         i = { ["<Esc>"] = require("telescope.actions").close }
       },
    },
 
