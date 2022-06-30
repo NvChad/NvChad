@@ -15,7 +15,8 @@ M.additional_plugins = {
         config = function() require("custom.plugins.configs.null-ls").setup() end
     },
     ["jpalardy/vim-slime"] = {},
-    ["editorconfig/editorconfig-vim"] = {}
+    ["editorconfig/editorconfig-vim"] = {},
+    ["alvan/vim-closetag"] = {}
 }
 
 return M

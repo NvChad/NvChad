@@ -36,3 +36,10 @@ g.slime_target = "neovim"
 -- g.slime_dont_ask_default = 1
 -- g.slime_cell_delimiter = "###"
 
+g.closetag_filetypes = "html,xhtml,phtml,vue"
+g.closetag_regions = {
+    ['typescript.tsx'] = 'jsxRegion,tsxRegion',
+    ['javascript.jsx'] = 'jsxRegion',
+    ['typescriptreact'] = 'jsxRegion,tsxRegion',
+    ['javascriptreact'] = 'jsxRegion'
+}
