@@ -28,7 +28,11 @@ M.ui = {
    },
 
    -- lazyload it when there are 1+ buffers
-   tabufline_lazyloaded = true,
+   tabufline = {
+      enabled = true,
+      lazyload = true,
+      override = {},
+   },
 }
 
 M.plugins = {
