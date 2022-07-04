@@ -135,23 +135,4 @@ M.cursor_position = function()
    return left_sep .. "%#St_pos_text#" .. " " .. text .. " "
 end
 
-M.run = function()
-   return table.concat {
-      M.mode(),
-      M.fileInfo(),
-      M.git(),
-
-      "%=",
-      M.LSP_progress(),
-      "%=",
-
-      M.LSP_Diagnostics(),
-      M.LSP_status() or "",
-      M.cwd(),
-      M.cursor_position(),
-   }
-end
-
-M = vim.tbl_deep_extend("force", M, require("core.utils").load_config().ui.statusline.override)
-
 return M

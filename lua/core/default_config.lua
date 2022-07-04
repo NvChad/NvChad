@@ -23,7 +23,7 @@ M.ui = {
 
    statusline = {
       separator_style = "default", -- default/round/block/arrow
-      config = "%!v:lua.require('ui.statusline').run()",
+      config = "%!v:lua.require('ui.statusline')",
       override = {},
    },
 
