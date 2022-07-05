@@ -12,8 +12,8 @@ vim.cmd([[
         " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
         new
         setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
-        :nnoremap <buffer> q ZQ 
-        :nnoremap <buffer> <Esc> ZQ 
+        :nnoremap <buffer> q ZQ
+        :nnoremap <buffer> <Esc> ZQ
         let message = trim(message)
         silent put=message
         silent execute "normal" "gg"
@@ -23,9 +23,9 @@ vim.cmd([[
     command! -nargs=+ -complete=command CommandBuffer call CommandBuffer(<q-args>)
 ]])
 
-vim.cmd([[ 
+vim.cmd([[
     function! CommandRegister(cmd)
-      redir => message 
+      redir => message
       silent execute a:cmd
       redir END
       let @" = trim(message)
@@ -43,4 +43,3 @@ vim.api.nvim_set_keymap('n', '<space>cb', ':CommandBuffer ', {expr = false, nore
 vim.api.nvim_set_keymap('n', '<space>cr', ':CommandRegister ', {expr = false, noremap = true}) -- command to register
 vim.api.nvim_set_keymap('n', '<space>ub', ':CommandBuffer !', {expr = false, noremap = true}) -- unix to buffer
 vim.api.nvim_set_keymap('n', '<space>ur', ':CommandRegister !', {expr = false, noremap = true}) -- unix to register
-
