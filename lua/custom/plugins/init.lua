@@ -3,6 +3,7 @@ M.nvimtree_config = require("custom.plugins.configs.nvimtree")
 M.gitsigns_config = require("custom.plugins.configs.gitsigns")
 M.telescope_config = require("custom.plugins.configs.telescope")
 M.treesitter_config = require("custom.plugins.configs.treesitter")
+M.whichkey_config = require("custom.plugins.configs.whichkey")
 
 -- note: lspconfig file (custom.plugins.configs.lspconfig) is used in "option" in chadrc file
 M.additional_plugins = {

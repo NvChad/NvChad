@@ -28,7 +28,8 @@ M.plugins = {
         ["kyazdani42/nvim-tree.lua"] = plugins_configs.nvimtree_config,
         ["lewis6991/gitsigns.nvim"] = plugins_configs.gitsigns_config,
         ["nvim-treesitter/nvim-treesitter"] = plugins_configs.treesitter_config,
-        ["nvim-telescope/telescope.nvim"] = plugins_configs.telescope_config
+        ["nvim-telescope/telescope.nvim"] = plugins_configs.telescope_config,
+        ["folke/which-key.nvim"] = plugins_configs.whichkey_config
     }
 }
 
