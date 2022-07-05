@@ -8,7 +8,7 @@ local sources = {
     -- b.formatting.deno_fmt,
 
     b.formatting.autopep8, -- python
-    b.formatting.lua_format.with({extra_args = {"--column-limit", "120"}}), -- lua
+    b.formatting.lua_format, -- lua
     b.formatting.shfmt, -- shell
     -- b.diagnostics.shellcheck.with {diagnostics_format = "#{m} [#{c}]"}, -- shell
     b.diagnostics.eslint_d,
