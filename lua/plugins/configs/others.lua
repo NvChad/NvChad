@@ -112,8 +112,17 @@ M.luasnip = function()
 
    options = load_override(options, "L3MON4D3/LuaSnip")
    luasnip.config.set_config(options)
-   require("luasnip.loaders.from_vscode").lazy_load()
+
+   -- @!:manual change (very bad vue snippets)
+   require("luasnip.loaders.from_vscode").lazy_load({ exclude = { "vue" } })
    require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.g.luasnippets_path or "" })
+
+   -- @!:manual change
+   local custom_snips_ok, _ = pcall(require, "custom/snips")
+   if not custom_snips_ok then
+     print("can not load custom snippets")
+   end
+
 
    vim.api.nvim_create_autocmd("InsertLeave", {
       callback = function()
