@@ -11,6 +11,8 @@ M.additional_plugins = {
   ["tpope/vim-fugitive"] = {},
   ["goolord/alpha-nvim"] = {disable = false},
   ["vimwiki/vimwiki"] = {},
+  -- null-ls is not part of the nvChad but it is recommended in docs
+  -- see: https://nvchad.github.io/config/Format%20&%20lint
   ["jose-elias-alvarez/null-ls.nvim"] = {
     after = "nvim-lspconfig",
     config = function() require("custom.plugins.configs.null-ls").setup() end
