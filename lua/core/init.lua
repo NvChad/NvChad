@@ -8,6 +8,14 @@ vim.cmd "silent! command! NvChadSnapshotCheckout lua require('nvchad').snap_chec
 local autocmd = vim.api.nvim_create_autocmd
 local api = vim.api
 
+-- dont list quickfix buffers
+autocmd("FileType", {
+   pattern = "qf",
+   callback = function()
+      vim.opt_local.buflisted = false
+   end,
+})
+
 -- wrap the PackerSync command to warn people before using it in NvChadSnapshots
 autocmd("VimEnter", {
    callback = function()
