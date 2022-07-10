@@ -11,8 +11,7 @@ local sources = {
   b.formatting.lua_format, -- lua
   b.formatting.shfmt, -- shell
   -- b.diagnostics.shellcheck.with {diagnostics_format = "#{m} [#{c}]"}, -- shell
-  b.diagnostics.eslint_d, b.formatting.prettier
-
+  b.diagnostics.eslint, b.code_actions.eslint, b.formatting.prettier
 }
 
 local M = {}
