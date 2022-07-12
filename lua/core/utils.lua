@@ -90,7 +90,10 @@ M.load_mappings = function(mappings, mapping_opt)
             -- merge default + user opts
             local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
             local opts = merge_tb("force", default_opts, mapping_info.opts or {})
-            mapping_info.opts = nil
+
+            if mapping_info.opts then
+               mapping_info.opts = nil
+            end
 
             set_maps(keybind, mapping_info, opts)
          end
@@ -149,9 +152,9 @@ M.packer_sync = function(...)
             { "PackerSync" },
             {
                " on a NvChadSnapshot. This will cause issues if NvChad dependencies contain "
-                  .. "any breaking changes! Plugin updates will not be included in this "
-                  .. "snapshot, so they will be lost after switching between snapshots! Would "
-                  .. "you still like to continue? [y/N]\n",
+                   .. "any breaking changes! Plugin updates will not be included in this "
+                   .. "snapshot, so they will be lost after switching between snapshots! Would "
+                   .. "you still like to continue? [y/N]\n",
                "WarningMsg",
             },
          }, false, {})
