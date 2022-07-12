@@ -21,7 +21,7 @@ opt.cul = true -- cursor line
 
 -- Indenting
 opt.expandtab = true
-opt.shiftwidth = 2
+opt.shiftwidth = 3
 opt.smartindent = true
 
 opt.fillchars = { eob = " " }
