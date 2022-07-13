@@ -64,7 +64,7 @@ local plugins = {
 
    -- git stuff
    ["lewis6991/gitsigns.nvim"] = {
-      opt = true,
+      ft = "gitcommit",
       setup = function()
          require("core.lazy_load").gitsigns()
       end,

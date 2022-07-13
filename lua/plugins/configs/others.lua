@@ -33,7 +33,6 @@ M.blankline = function()
 
    local options = {
       indentLine_enabled = 1,
-      char = "▏",
       filetype_exclude = {
          "help",
          "terminal",
