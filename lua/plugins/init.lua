@@ -16,6 +16,8 @@ local plugins = {
       end,
    },
 
+   ["Nvchad/ui"] = {},
+
    ["NvChad/nvterm"] = {
       module = "nvterm",
       config = function()

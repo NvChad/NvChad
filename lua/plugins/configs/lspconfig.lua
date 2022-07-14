@@ -28,7 +28,7 @@ M.on_attach = function(client, bufnr)
    utils.load_mappings({ lsp_mappings }, { buffer = bufnr })
 
    if client.server_capabilities.signatureHelpProvider then
-      require("nvchad.ui.signature").setup(client)
+      require("nvchad_ui.signature").setup(client)
    end
 end
 
