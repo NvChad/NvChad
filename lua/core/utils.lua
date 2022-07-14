@@ -152,9 +152,9 @@ M.packer_sync = function(...)
             { "PackerSync" },
             {
                " on a NvChadSnapshot. This will cause issues if NvChad dependencies contain "
-                   .. "any breaking changes! Plugin updates will not be included in this "
-                   .. "snapshot, so they will be lost after switching between snapshots! Would "
-                   .. "you still like to continue? [y/N]\n",
+                  .. "any breaking changes! Plugin updates will not be included in this "
+                  .. "snapshot, so they will be lost after switching between snapshots! Would "
+                  .. "you still like to continue? [y/N]\n",
                "WarningMsg",
             },
          }, false, {})
