@@ -34,7 +34,7 @@ local options = {
    },
    filesystem_watchers = {
       enable = true,
-    },
+   },
    actions = {
       open_file = {
          resize_window = true,
