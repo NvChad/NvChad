@@ -10,7 +10,7 @@ M.additional_plugins = {
   ["justinmk/vim-sneak"] = {},
   ["tpope/vim-fugitive"] = {},
   ["goolord/alpha-nvim"] = {disable = false},
-  ["vimwiki/vimwiki"] = {},
+  ["vimwiki/vimwiki"] = {branch = "dev"},
   -- null-ls is not part of the nvChad but it is recommended in docs
   -- see: https://nvchad.github.io/config/Format%20&%20lint
   ["jose-elias-alvarez/null-ls.nvim"] = {
