@@ -83,7 +83,7 @@ Adds indentline:
 
 <h3> Our own statusline written from scratch  </h3>
 
-[link](https://github.com/NvChad/NvChad/blob/main/lua/ui/statusline.lua)
+[NvChad UI](https://github.com/NvChad/ui)
 
 <kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/statusline.png"></kbd><hr>
 <kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/statusline_modes.png"></kbd><hr>
