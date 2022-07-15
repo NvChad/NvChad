@@ -12,7 +12,6 @@ g.did_load_filetypes = 0
 g.do_filetype_lua = 1
 
 opt.laststatus = 3 -- global statusline
-opt.statusline = config.ui.statusline.config
 opt.showmode = false
 
 opt.title = true
@@ -21,7 +20,7 @@ opt.cul = true -- cursor line
 
 -- Indenting
 opt.expandtab = true
-opt.shiftwidth = 2
+opt.shiftwidth = 3
 opt.smartindent = true
 
 opt.fillchars = { eob = " " }

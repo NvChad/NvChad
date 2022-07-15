@@ -8,6 +8,14 @@ vim.cmd "silent! command! NvChadSnapshotCheckout lua require('nvchad').snap_chec
 local autocmd = vim.api.nvim_create_autocmd
 local api = vim.api
 
+-- dont list quickfix buffers
+autocmd("FileType", {
+   pattern = "qf",
+   callback = function()
+      vim.opt_local.buflisted = false
+   end,
+})
+
 -- wrap the PackerSync command to warn people before using it in NvChadSnapshots
 autocmd("VimEnter", {
    callback = function()
@@ -36,8 +44,10 @@ autocmd("BufEnter", {
    command = "set fo-=c fo-=r fo-=o",
 })
 
+-- store listed buffers in tab local var
 vim.t.bufs = vim.api.nvim_list_bufs()
 
+-- autocmds for tabufline -> store bufnrs on bufadd, bufenter events
 -- thx to https://github.com/ii14 & stores buffer per tab -> table
 autocmd({ "BufAdd", "BufEnter" }, {
    callback = function(args)
@@ -71,12 +81,3 @@ autocmd("BufDelete", {
       end
    end,
 })
-
-local tabufline_opts = require("core.utils").load_config().ui.tabufline
-
-if tabufline_opts.enabled and tabufline_opts.lazyload then
-   require("core.lazy_load").tabufline()
-elseif tabufline_opts.enabled then
-   vim.opt.showtabline = 2
-   vim.opt.tabline = "%!v:lua.require'ui.tabline'.run()"
-end

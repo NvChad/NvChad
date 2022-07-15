@@ -33,7 +33,6 @@ M.blankline = function()
 
    local options = {
       indentLine_enabled = 1,
-      char = "▏",
       filetype_exclude = {
          "help",
          "terminal",
@@ -165,7 +164,7 @@ M.devicons = function()
    if present then
       require("base46").load_highlight "devicons"
 
-      local options = { override = require("ui.icons").devicons }
+      local options = { override = require("nvchad_ui.icons").devicons }
       options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons")
 
       devicons.setup(options)

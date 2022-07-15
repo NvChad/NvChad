@@ -16,6 +16,13 @@ local plugins = {
       end,
    },
 
+   ["NvChad/ui"] = {
+      after = "base46",
+      config = function()
+         require("plugins.configs.nvchad_ui").load_ui_plugins()
+      end,
+   },
+
    ["NvChad/nvterm"] = {
       module = "nvterm",
       config = function()
@@ -64,7 +71,7 @@ local plugins = {
 
    -- git stuff
    ["lewis6991/gitsigns.nvim"] = {
-      opt = true,
+      ft = "gitcommit",
       setup = function()
          require("core.lazy_load").gitsigns()
       end,
