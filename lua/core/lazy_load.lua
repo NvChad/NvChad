@@ -1,6 +1,8 @@
 local M = {}
 local autocmd = vim.api.nvim_create_autocmd
 
+-- This must be used for plugins that need to be loaded just after a file
+-- ex : treesitter, lspconfig etc
 M.lazy_load = function(tb)
    autocmd(tb.events, {
       pattern = "*",
@@ -102,20 +104,6 @@ M.gitsigns = function()
                   vim.fn.expand "%:p:h",
                },
             }, onexit)
-         end
-      end,
-   })
-end
-
-M.tabufline = function()
-   autocmd({ "BufNewFile", "BufRead", "TabEnter" }, {
-      pattern = "*",
-      group = vim.api.nvim_create_augroup("TabuflineLazyLoad", {}),
-      callback = function()
-         if #vim.fn.getbufinfo { buflisted = 1 } >= 2 then
-            vim.opt.showtabline = 2
-            vim.opt.tabline = "%!v:lua.require'ui.tabline'.run()"
-            vim.api.nvim_del_augroup_by_name "TabuflineLazyLoad"
          end
       end,
    })

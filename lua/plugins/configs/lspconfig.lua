@@ -5,11 +5,10 @@ if not present then
 end
 
 require("base46").load_highlight "lsp"
+require "nvchad_ui.lsp"
 
 local M = {}
 local utils = require "core.utils"
-
-require "ui.lsp"
 
 M.on_attach = function(client, bufnr)
    local vim_version = vim.version()

@@ -16,7 +16,12 @@ local plugins = {
       end,
    },
 
-   ["Nvchad/ui"] = {},
+   ["NvChad/ui"] = {
+      after = "base46",
+      config = function()
+         require("plugins.configs.nvchad_ui").load_ui_plugins()
+      end,
+   },
 
    ["NvChad/nvterm"] = {
       module = "nvterm",
