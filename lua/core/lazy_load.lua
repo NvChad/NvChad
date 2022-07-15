@@ -32,13 +32,7 @@ M.colorizer = function()
       plugins = "nvim-colorizer.lua",
 
       condition = function()
-         local items = { "#", "rgb", "hsl", "rgba", "hsla" }
-
-         for _, val in ipairs(items) do
-            if vim.fn.search(val) ~= 0 then
-               return true
-            end
-         end
+         return true
       end,
    }
 end
