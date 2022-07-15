@@ -29,7 +29,9 @@ M.plugins = {
     ["lewis6991/gitsigns.nvim"] = plugins_configs.gitsigns_config,
     ["nvim-treesitter/nvim-treesitter"] = plugins_configs.treesitter_config,
     ["nvim-telescope/telescope.nvim"] = plugins_configs.telescope_config,
-    ["folke/which-key.nvim"] = plugins_configs.whichkey_config
+    ["folke/which-key.nvim"] = plugins_configs.whichkey_config,
+    -- TODO: make it separate file
+    ["NvChad/ui"] = {statusline = {separator_style = "block"}}
   }
 }
 
@@ -49,7 +51,6 @@ M.ui = {
   theme = "darker_one",
   hl_override = highlights_override,
   hl_add = highlights_add,
-  statusline = {separator_style = "block"}
 }
 
 M.mappings = require("custom.mappings")
