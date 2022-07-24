@@ -2,6 +2,14 @@ local M = {}
 
 local load_override = require("core.utils").load_override
 
+M.nvchad_ui = function()
+  local present, nvchad_ui = pcall(require, "nvchad_ui")
+
+  if present then
+    nvchad_ui.setup()
+  end
+end
+
 M.autopairs = function()
   local present1, autopairs = pcall(require, "nvim-autopairs")
   local present2, cmp = pcall(require, "cmp")
