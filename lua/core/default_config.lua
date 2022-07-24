@@ -23,11 +23,6 @@ M.plugins = {
   override = {},
   remove = {},
   user = {},
-  options = {
-    lspconfig = {
-      setup_lspconf = "", -- path of lspconfig file
-    },
-  },
 }
 
 -- check core.mappings for table structure

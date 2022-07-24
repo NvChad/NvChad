@@ -83,7 +83,6 @@ local plugins = {
   -- lsp stuff
 
   ["williamboman/nvim-lsp-installer"] = {
-    opt = true,
     cmd = require("core.lazy_load").lsp_cmds,
     setup = function()
       require("core.lazy_load").on_file_open "nvim-lsp-installer"
@@ -94,7 +93,6 @@ local plugins = {
     after = "nvim-lsp-installer",
     module = "lspconfig",
     config = function()
-      require "plugins.configs.lsp_installer"
       require "plugins.configs.lspconfig"
     end,
   },
