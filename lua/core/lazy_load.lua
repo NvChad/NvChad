@@ -25,18 +25,6 @@ M.lazy_load = function(tb)
   })
 end
 
-M.colorizer = function()
-  M.lazy_load {
-    events = { "BufRead", "BufNewFile" },
-    augroup_name = "ColorizerLazy",
-    plugins = "nvim-colorizer.lua",
-
-    condition = function()
-      return true
-    end,
-  }
-end
-
 -- load certain plugins only when there's a file opened in the buffer
 -- if "nvim filename" is executed -> load the plugin after nvim gui loads
 -- This gives an instant preview of nvim with the file opened
