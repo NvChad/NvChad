@@ -1,3 +1,6 @@
+-- add binaries installed by mason.nvim to path
+vim.env.PATH = vim.env.PATH .. ":" .. vim.fn.stdpath "data" .. "/mason/bin"
+
 -- commands
 vim.cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
 vim.cmd "silent! command! NvChadSnapshotCreate lua require('nvchad').snap_create()"

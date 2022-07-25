@@ -6,7 +6,6 @@ end
 
 require("base46").load_highlight "lsp"
 require "nvchad_ui.lsp"
-require "plugins.configs.lsp_installer"
 
 local M = {}
 local utils = require "core.utils"

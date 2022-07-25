@@ -49,7 +49,7 @@ M.blankline = function()
       "lspinfo",
       "TelescopePrompt",
       "TelescopeResults",
-      "lsp-installer",
+      "Mason",
       "",
     },
     buftype_exclude = { "terminal" },

@@ -1,11 +1,11 @@
 local M = {}
 local autocmd = vim.api.nvim_create_autocmd
 
+-- require("packer").loader(tb.plugins)
 -- This must be used for plugins that need to be loaded just after a file
 -- ex : treesitter, lspconfig etc
 M.lazy_load = function(tb)
   autocmd(tb.events, {
-    pattern = "*",
     group = vim.api.nvim_create_augroup(tb.augroup_name, {}),
     callback = function()
       if tb.condition() then
@@ -13,12 +13,15 @@ M.lazy_load = function(tb)
 
         -- dont defer for treesitter as it will show slow highlighting
         -- This deferring only happens only when we do "nvim filename"
-        if tb.plugins ~= "nvim-treesitter" then
+        if tb.plugin ~= "nvim-treesitter" then
           vim.defer_fn(function()
-            vim.cmd("PackerLoad " .. tb.plugins)
+            require("packer").loader(tb.plugin)
+            if tb.plugin == "nvim-lspconfig" then
+              vim.cmd "silent! e %"
+            end
           end, 0)
         else
-          vim.cmd("PackerLoad " .. tb.plugins)
+          require("packer").loader(tb.plugin)
         end
       end
     end,
@@ -33,29 +36,13 @@ M.on_file_open = function(plugin_name)
   M.lazy_load {
     events = { "BufRead", "BufWinEnter", "BufNewFile" },
     augroup_name = "BeLazyOnFileOpen" .. plugin_name,
-    plugins = plugin_name,
+    plugin = plugin_name,
     condition = function()
       local file = vim.fn.expand "%"
       return file ~= "NvimTree_1" and file ~= "[packer]" and file ~= ""
     end,
   }
 end
-
--- lspinstaller & lspconfig cmds for lazyloading
-M.lsp_cmds = {
-  "LspInfo",
-  "LspStart",
-  "LspRestart",
-  "LspStop",
-  "LspInstall",
-  "LspUnInstall",
-  "LspUnInstallAll",
-  "LspInstall",
-  "LspInstallInfo",
-  "LspInstallLog",
-  "LspLog",
-  "LspPrintInstalled",
-}
 
 M.treesitter_cmds = {
   "TSInstall",
@@ -64,6 +51,14 @@ M.treesitter_cmds = {
   "TSEnable",
   "TSDisable",
   "TSModuleInfo",
+}
+
+M.mason_cmds = {
+  "Mason",
+  "MasonInstall",
+  "MasonUninstall",
+  "MasonUninstallAll",
+  "MasonLog",
 }
 
 M.gitsigns = function()
