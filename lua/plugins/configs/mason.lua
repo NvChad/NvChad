@@ -7,7 +7,7 @@ end
 require("base46").load_highlight "mason"
 
 local options = {
-  ensure_installed = { "pyright" },
+  ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim
 
   ui = {
     icons = {
@@ -32,5 +32,9 @@ local options = {
 }
 
 options = require("core.utils").load_override(options, "williamboman/mason")
+
+vim.api.nvim_create_user_command("MasonInstallAll", function()
+  vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
+end, {})
 
 mason.setup(options)
