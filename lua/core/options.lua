@@ -1,15 +1,15 @@
 local opt = vim.opt
 local g = vim.g
 local config = require("core.utils").load_config()
-local vim_version = vim.version()
 
+g.vim_version = vim.version().minor
 g.nvchad_theme = config.ui.theme
 g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
 g.theme_switcher_loaded = false
 
 -- use filetype.lua instead of filetype.vim. it's enabled by default in neovim 0.8 (nightly)
-if vim_version.minor < 8 then
+if g.vim_version < 8 then
   g.did_load_filetypes = 0
   g.do_filetype_lua = 1
 end
