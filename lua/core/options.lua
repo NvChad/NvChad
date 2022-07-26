@@ -14,7 +14,6 @@ if g.vim_version < 8 then
   g.do_filetype_lua = 1
 end
 
-
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
 
@@ -105,6 +104,6 @@ end
 
 -- set shada path
 vim.schedule(function()
-  vim.opt.shadafile = vim.fn.expand "$HOME" .. "/.local/share/nvim/shada/main.shada"
+  vim.opt.shadafile = vim.fn.stdpath(g.vim_version > 7 and "state" or "data") .. "/shada/main.shada"
   vim.cmd [[ silent! rsh ]]
 end)
