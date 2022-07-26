@@ -1,10 +1,10 @@
 local M = {}
 
-M.disabled = {n = {["<leader>h"] = "", ["<leader>f"] = ""}}
+M.disabled = {n = {["<leader>h"] = "", ["<leader>f"] = "", ["<leader>uu"] = ""}}
 
 M.general = {
   i = {["jj"] = {"<ESC>", "better escape"}},
-  t = {["<Esc><Esc>"] = {"<C-Bslash><C-n>", "back to normal"}, {noremap = true, expr = true}}
+  t = {["<Esc><Esc>"] = {"<C-Bslash><C-n>", "back to normal", opts = {noremap = true, expr = true}}}
   -- n = { ["<ESC><ESC>"] = { "<cmd> set hlsearch! <CR>", "toggle search highlight" } }
 }
 
@@ -80,6 +80,37 @@ M.telescope = {
     ["<leader>gs"] = {"<cmd> Telescope git_status <CR>", "  git status"},
     ["<leader>ct"] = {"<cmd> Telescope tags <CR>", "show ctags"}
   }
+}
+
+M.slime = {
+  x = {["<c-c><c-c>"] = {"<Plug>SlimeRegionSend", "slime region send"}},
+  n = {
+    ["<leader><leader>s"] = {"<Plug>SlimeSendCell", "slime send cell"},
+    ["<c-c><c-c>"] = {"<Plug>SlimeParagraphSend", "slime paragraph send"},
+    ["<c-c>v"] = {"<Plug>SlimeConfig", "slime config"}
+  }
+}
+
+-- {
+--   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+--   silent = true,
+--   noremap = true,
+--   nowait = false,
+--   -- all standard key binding opts are supported
+-- }
+
+local buf_opts = {buffer = 0}
+M.jupyter_vim = {
+  n = {
+    ["<leader>R"] = {"<cmd> JupyterRunFile<CR>", "jupyter run file", opts = buf_opts},
+    ["<leader>I"] = {"<cmd> PythonImportThisFile<CR>", "jupyter import this file", opts = buf_opts},
+    ["<leader>d"] = {"<cmd> JupyterCd %:p:h<CR>", "change dir to current file", opts = buf_opts},
+    ["<leader>s"] = {"<cmd> JupyterSendCell<CR>", "jupyter send cell", opts = buf_opts},
+    ["<leader>E"] = {"<cmd> JupyterSendRange<CR>", "jupyter send range", opts = buf_opts},
+    ["<leader>b"] = {"<cmd>PythonSetBreak<CR>", "juyter set break", opts = buf_opts},
+    ["<leader>e"] = {"<Plug>JupyterRunTextObj", "jupyter run textObj", opts = {buffer = 0, noremap = false}}
+  },
+  v = {["<leader>e"] = {"<Plug>JupyterRunVisual", "jupyter run visual", opts = {buffer = 0, noremap = false}}}
 }
 
 return M

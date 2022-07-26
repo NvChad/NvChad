@@ -19,7 +19,8 @@ M.additional_plugins = {
   },
   ["jpalardy/vim-slime"] = {},
   ["editorconfig/editorconfig-vim"] = {},
-  ["alvan/vim-closetag"] = {}
+  ["alvan/vim-closetag"] = {},
+  ["jupyter-vim/jupyter-vim"] = {}
 }
 
 return M
