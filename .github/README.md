@@ -83,7 +83,7 @@ Adds indentline:
 
 <h3> Our own statusline written from scratch  </h3>
 
-[link](https://github.com/NvChad/NvChad/blob/main/lua/ui/statusline.lua)
+[NvChad UI](https://github.com/NvChad/ui)
 
 <kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/statusline.png"></kbd><hr>
 <kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/statusline_modes.png"></kbd><hr>
@@ -111,11 +111,12 @@ NeoVim Treesitter configurations and abstraction layer. We mostly use this for s
 - Many beautiful themes, theme toggler by [our base46 plugin](https://github.com/NvChad/base46)
 - Inbuilt terminal toggling & management with [Nvterm](https://github.com/NvChad/nvterm)
 - NvChad updater, hide & unhide terminal buffers with [NvChad extensions](https://github.com/NvChad/extensions)
+- Lightweight & performant ui plugin with [NvChad UI](https://github.com/NvChad/ui)
 - File navigation with [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
 - Managing tabs, buffers with [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 - Beautiful and configurable icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)
 - Git diffs and more with [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) 
-- NeoVim Lsp configuration with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [lsp-installer](https://github.com/williamboman/nvim-lsp-installer/)
+- NeoVim Lsp configuration with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [mason.nvim](https://github.com/williamboman/mason.nvim)
 - Autocompletion with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - File searching, previewing image and text files and more with [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 - Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
