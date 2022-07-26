@@ -2,17 +2,6 @@
 local M = {}
 
 -- make sure you maintain the structure of `core/default_config.lua` here,
--- example of changing theme:
-M.options = {
-  user = function()
-    local options_ok, options = pcall(require, "custom.options")
-    if not options_ok then
-      print(options)
-      return {}
-    end
-  end
-}
-
 -- safe load plugins
 local plugins_configs_ok, plugins_configs = pcall(require, "custom.plugins")
 if not plugins_configs_ok then
@@ -23,15 +12,29 @@ end
 M.plugins = {
   user = plugins_configs.additional_plugins,
   remove = {"NvChad/nvterm"},
-  options = {lspconfig = {setup_lspconf = "custom.plugins.configs.lspconfig"}},
+  options = {},
   override = {
+    ["neovim/nvim-lspconfig"] = {
+      config = function()
+        require "plugins.configs.lspconfig"
+        require "custom.plugins.lspconfig"
+      end
+    },
     ["kyazdani42/nvim-tree.lua"] = plugins_configs.nvimtree_config,
     ["lewis6991/gitsigns.nvim"] = plugins_configs.gitsigns_config,
     ["nvim-treesitter/nvim-treesitter"] = plugins_configs.treesitter_config,
     ["nvim-telescope/telescope.nvim"] = plugins_configs.telescope_config,
     ["folke/which-key.nvim"] = plugins_configs.whichkey_config,
     -- TODO: make it separate file
-    ["NvChad/ui"] = {statusline = {separator_style = "block"}}
+    ["NvChad/ui"] = {
+      statusline = {
+        separator_style = "block", -- default/round/block/arrow
+        overriden_modules = nil
+      },
+
+      -- lazyload it when there are 1+ buffers
+      tabufline = {enabled = true, lazyload = true, overriden_modules = nil}
+    }
   }
 }
 
@@ -47,11 +50,7 @@ if not highlights_override_ok then
   return {}
 end
 
-M.ui = {
-  theme = "darker_one",
-  hl_override = highlights_override,
-  hl_add = highlights_add,
-}
+M.ui = {theme = "darker_one", hl_override = highlights_override, hl_add = highlights_add}
 
 M.mappings = require("custom.mappings")
 
