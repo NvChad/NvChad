@@ -83,12 +83,12 @@ M.telescope = {
 }
 
 M.slime = {
-  x = {["<c-c><c-c>"] = {"<Plug>SlimeRegionSend", "slime region send"}},
   n = {
-    ["<leader><leader>s"] = {"<Plug>SlimeSendCell", "slime send cell"},
+    ["<leader><leader>a"] = {"<Plug>SlimeSendCell", "slime send cell"},
     ["<c-c><c-c>"] = {"<Plug>SlimeParagraphSend", "slime paragraph send"},
     ["<c-c>v"] = {"<Plug>SlimeConfig", "slime config"}
-  }
+  },
+  x = {["<c-c><c-c>"] = {"<Plug>SlimeRegionSend", "slime region send"}}
 }
 
 -- {
@@ -99,17 +99,18 @@ M.slime = {
 --   -- all standard key binding opts are supported
 -- }
 
-M.jupyter_vim = {
+M.jupyter = {
   n = {
-    ["<leader>R"] = {":JupyterRunFile<CR>", "jupyter run file", opts = {buffer = 0}},
-    ["<leader>I"] = {":PythonImportThisFile<CR>", "jupyter import this file", opts = {buffer = 0}},
-    ["<leader>d"] = {":JupyterCd %:p:h<CR>", "change dir to current file", opts = {buffer = 0}},
-    ["<leader>s"] = {":JupyterSendCell<CR>", "jupyter send cell", opts = {buffer = 0}},
-    ["<leader>E"] = {":JupyterSendRange<CR>", "jupyter send range", opts = {buffer = 0}},
-    ["<leader>b"] = {":PythonSetBreak<CR>", "juyter set break", opts = {buffer = 0}},
-    ["<leader>e"] = {"<Plug>JupyterRunTextObj", "jupyter run textObj", opts = {buffer = 0, noremap = false}}
+    ["<leader><leader>R"] = {":JupyterRunFile <CR>", "jupyter run file"},
+    ["<leader><leader>I"] = {":PythonImportThisFile <CR>", "jupyter import this file"},
+    ["<leader><leader>d"] = {":JupyterCd %:p:h <CR>", "change dir to current file"},
+    ["<leader><leader>s"] = {":JupyterSendCell <CR>", "jupyter send cell"},
+    ["<leader><leader>E"] = {":JupyterSendRange <CR>", "jupyter send range"},
+    ["<leader><leader>b"] = {":PythonSetBreak <CR>", "juyter set break"},
+    ["<leader><leader>e"] = {"<Plug>JupyterRunTextObj", "jupyter run textObj"}
   },
-  v = {["<leader>e"] = {"<Plug>JupyterRunVisual", "jupyter run visual", opts = {buffer = 0, noremap = false}}}
+  v = {["<leader><leader>e"] = {"<Plug>JupyterRunVisual", "jupyter run visual"}}
 }
+
 
 return M
