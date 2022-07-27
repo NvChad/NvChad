@@ -7,6 +7,8 @@ assignees: ''
 
 ---
 
+<!-- Before reporting: update nvchad to the latest version,read breaking changes page,search existing issues. -->
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 
