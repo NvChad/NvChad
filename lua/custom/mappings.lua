@@ -4,10 +4,10 @@ M.disabled = {n = {["<leader>h"] = "", ["<leader>f"] = "", ["<leader>uu"] = ""}}
 
 M.general = {
   i = {["jj"] = {"<ESC>", "better escape"}},
-  t = {["<Esc><Esc>"] = {"<C-Bslash><C-n>", "back to normal", opts = {noremap = true, expr = true}}}
+  t = {["<Esc><Esc>"] = {"<C-Bslash><C-n>", "back to normal", opts = {noremap = true, expr = true}}},
+  n = {["<leader>cc"] = {'i#%%<CR>', "create cell"}}
   -- n = { ["<ESC><ESC>"] = { "<cmd> set hlsearch! <CR>", "toggle search highlight" } }
 }
-
 M.comment = {
   -- toggle comment in both modes
   n = {["<C-_>"] = {function() require("Comment.api").toggle_current_linewise() end, "蘒  toggle comment"}},
@@ -99,15 +99,14 @@ M.slime = {
 --   -- all standard key binding opts are supported
 -- }
 
-local buf_opts = {buffer = 0}
 M.jupyter_vim = {
   n = {
-    ["<leader>R"] = {"<cmd> JupyterRunFile<CR>", "jupyter run file", opts = buf_opts},
-    ["<leader>I"] = {"<cmd> PythonImportThisFile<CR>", "jupyter import this file", opts = buf_opts},
-    ["<leader>d"] = {"<cmd> JupyterCd %:p:h<CR>", "change dir to current file", opts = buf_opts},
-    ["<leader>s"] = {"<cmd> JupyterSendCell<CR>", "jupyter send cell", opts = buf_opts},
-    ["<leader>E"] = {"<cmd> JupyterSendRange<CR>", "jupyter send range", opts = buf_opts},
-    ["<leader>b"] = {"<cmd>PythonSetBreak<CR>", "juyter set break", opts = buf_opts},
+    ["<leader>R"] = {":JupyterRunFile<CR>", "jupyter run file", opts = {buffer = 0}},
+    ["<leader>I"] = {":PythonImportThisFile<CR>", "jupyter import this file", opts = {buffer = 0}},
+    ["<leader>d"] = {":JupyterCd %:p:h<CR>", "change dir to current file", opts = {buffer = 0}},
+    ["<leader>s"] = {":JupyterSendCell<CR>", "jupyter send cell", opts = {buffer = 0}},
+    ["<leader>E"] = {":JupyterSendRange<CR>", "jupyter send range", opts = {buffer = 0}},
+    ["<leader>b"] = {":PythonSetBreak<CR>", "juyter set break", opts = {buffer = 0}},
     ["<leader>e"] = {"<Plug>JupyterRunTextObj", "jupyter run textObj", opts = {buffer = 0, noremap = false}}
   },
   v = {["<leader>e"] = {"<Plug>JupyterRunVisual", "jupyter run visual", opts = {buffer = 0, noremap = false}}}

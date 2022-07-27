@@ -50,7 +50,7 @@ g.closetag_regions = {
 }
 
 -- [[ Plugin: juypter-vim ]] --
-g.jupyter_mapkeys = 0
+-- g.jupyter_mapkeys = 0
 
 -- [[ Setting: providers ]]
 -- see: https://neovim.io/doc/user/provider.html
