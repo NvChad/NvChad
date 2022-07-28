@@ -16,9 +16,6 @@ M.lazy_load = function(tb)
         if tb.plugin ~= "nvim-treesitter" then
           vim.defer_fn(function()
             require("packer").loader(tb.plugin)
-            if tb.plugin == "nvim-lspconfig" then
-              vim.cmd "silent! e %"
-            end
           end, 0)
         else
           require("packer").loader(tb.plugin)

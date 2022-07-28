@@ -18,6 +18,7 @@ local plugins = {
 
   ["NvChad/ui"] = {
     after = "base46",
+    module = "nvchad_ui",
     config = function()
       require("plugins.configs.others").nvchad_ui()
     end,
@@ -90,7 +91,7 @@ local plugins = {
   },
 
   ["neovim/nvim-lspconfig"] = {
-    opt = true,
+    event = "BufEnter",
     setup = function()
       require("core.lazy_load").on_file_open "nvim-lspconfig"
     end,
