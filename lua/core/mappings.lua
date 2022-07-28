@@ -74,6 +74,11 @@ M.general = {
     -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
   },
+
+  c = {
+    ["<C-j>"] = { "<C-n>", " select next" },
+    ["<C-k>"] = { "<C-p>", " select previous" },
+  },
 }
 
 M.tabufline = {
