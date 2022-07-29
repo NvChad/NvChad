@@ -36,16 +36,8 @@ local options = {
   },
 }
 
-options = require("core.utils").load_override(options, "folke/which-key.nvim")
+options = require("core.utils").load_override(options, "folke/which-key.nvim") or {}
 
-local utils = require "core.utils"
-
-local mappings = utils.load_config().mappings
-local mapping_groups = { groups = vim.deepcopy(mappings.groups) }
-
-mappings.disabled = nil
-mappings.groups = nil
-
-utils.load_mappings(mapping_groups)
+require("core.utils").load_mappings "whichkey"
 
 wk.setup(options)

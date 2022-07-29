@@ -23,7 +23,7 @@ M.load_config = function()
     -- merge user config if it exists and is a table; otherwise display an error
     if type(chadrc) == "table" then
       M.remove_default_keys()
-      config = merge_tb("force", config, chadrc)
+      config = merge_tb("force", config, chadrc) or {}
     else
       error "chadrc must return a table!"
     end
@@ -41,7 +41,7 @@ M.remove_default_keys = function()
 
   -- push user_map keys in user_keys table
   for _, section in ipairs(user_sections) do
-    user_keys = vim.tbl_deep_extend("force", user_keys, user_mappings[section])
+    user_keys = vim.tbl_deep_extend("force", user_keys, user_mappings[section]) or {}
   end
 
   local function disable_key(mode, keybind, mode_mapping)
@@ -64,7 +64,11 @@ M.remove_default_keys = function()
   end
 end
 
-M.load_mappings = function(mappings, mapping_opt)
+M.load_mappings = function(section, mapping_opt)
+  if not section then
+    return
+  end
+
   -- set mapping function with/without whichkey
   local set_maps
   local whichkey_exists, wk = pcall(require, "which-key")
@@ -81,11 +85,9 @@ M.load_mappings = function(mappings, mapping_opt)
     end
   end
 
-  mappings = mappings or vim.deepcopy(M.load_config().mappings)
-  mappings.lspconfig = nil
-
-  for _, section in pairs(mappings) do
-    for mode, mode_values in pairs(section) do
+  local mappings = require("core.utils").load_config().mappings[section]
+  for mode, mode_values in pairs(mappings) do
+    if mode and type(mode_values) == "table" then
       for keybind, mapping_info in pairs(mode_values) do
         -- merge default + user opts
         local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
@@ -119,7 +121,7 @@ M.merge_plugins = function(default_plugins)
   local user_plugins = M.load_config().plugins.user
 
   -- merge default + user plugin table
-  default_plugins = merge_tb("force", default_plugins, user_plugins)
+  default_plugins = merge_tb("force", default_plugins, user_plugins) or {}
 
   local final_table = {}
 

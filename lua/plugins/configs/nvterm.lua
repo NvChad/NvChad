@@ -32,3 +32,4 @@ local options = {
 options = require("core.utils").load_override(options, "NvChad/nvterm")
 
 nvterm.setup(options)
+require("core.utils").load_mappings "nvterm"

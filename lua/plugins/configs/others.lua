@@ -7,6 +7,9 @@ M.nvchad_ui = function()
 
   if present then
     nvchad_ui.setup()
+    if load_override({}, "NvChad/ui")["tabufline"]["enabled"] then
+      require("core.utils").load_mappings "tabufline"
+    end
   end
 end
 
@@ -23,7 +26,7 @@ M.autopairs = function()
     disable_filetype = { "TelescopePrompt", "vim" },
   }
 
-  options = load_override(options, "windwp/nvim-autopairs")
+  options = load_override(options, "windwp/nvim-autopairs") or {}
   autopairs.setup(options)
 
   local cmp_autopairs = require "nvim-autopairs.completion.cmp"
@@ -59,8 +62,9 @@ M.blankline = function()
     show_current_context_start = true,
   }
 
-  options = load_override(options, "lukas-reineke/indent-blankline.nvim")
+  options = load_override(options, "lukas-reineke/indent-blankline.nvim") or {}
   blankline.setup(options)
+  require("core.utils").load_mappings "blankline"
 end
 
 M.colorizer = function()
@@ -87,7 +91,7 @@ M.colorizer = function()
     },
   }
 
-  options = load_override(options, "NvChad/nvim-colorizer.lua")
+  options = load_override(options, "NvChad/nvim-colorizer.lua") or {}
   colorizer.setup(options["filetypes"], options["user_default_options"])
 
   vim.cmd "ColorizerAttachToBuffer"
@@ -101,8 +105,9 @@ M.comment = function()
   end
 
   local options = {}
-  options = load_override(options, "numToStr/Comment.nvim")
+  options = load_override(options, "numToStr/Comment.nvim") or {}
   nvim_comment.setup(options)
+  require("core.utils").load_mappings "comment"
 end
 
 M.luasnip = function()
@@ -117,7 +122,7 @@ M.luasnip = function()
     updateevents = "TextChanged,TextChangedI",
   }
 
-  options = load_override(options, "L3MON4D3/LuaSnip")
+  options = load_override(options, "L3MON4D3/LuaSnip") or {}
   luasnip.config.set_config(options)
   require("luasnip.loaders.from_vscode").lazy_load()
   require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.luasnippets_path or "" }
@@ -153,7 +158,7 @@ M.gitsigns = function()
     },
   }
 
-  options = load_override(options, "lewis6991/gitsigns.nvim")
+  options = load_override(options, "lewis6991/gitsigns.nvim") or {}
   gitsigns.setup(options)
 end
 
@@ -164,7 +169,7 @@ M.devicons = function()
     require("base46").load_highlight "devicons"
 
     local options = { override = require("nvchad_ui.icons").devicons }
-    options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons")
+    options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons") or {}
 
     devicons.setup(options)
   end

@@ -8,7 +8,6 @@ local M = {}
 
 M.general = {
   i = {
-
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "論 beginning of line" },
     ["<C-e>"] = { "<End>", "壟 end of line" },
@@ -21,7 +20,6 @@ M.general = {
   },
 
   n = {
-
     ["<ESC>"] = { "<cmd> noh <CR>", "  no highlight" },
 
     -- switch between windows
@@ -47,7 +45,6 @@ M.general = {
       function()
         require("base46").toggle_theme()
       end,
-
       "   toggle theme",
     },
 
@@ -59,11 +56,20 @@ M.general = {
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+
+    -- new buffer
+    ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
+
+    -- close buffer + hide terminal buffer
+    ["<leader>x"] = {
+      function()
+        require("core.utils").close_buffer()
+      end,
+      "   close buffer",
+    },
   },
 
-  t = {
-    ["<C-x>"] = { termcodes "<C-\\><C-N>", "   escape terminal mode" },
-  },
+  t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "   escape terminal mode" } },
 
   v = {
     ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
@@ -77,11 +83,7 @@ M.general = {
 }
 
 M.tabufline = {
-
   n = {
-    -- new buffer
-    ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
-
     -- cycle through buffers
     ["<TAB>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
     ["<S-Tab>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
@@ -89,26 +91,16 @@ M.tabufline = {
     -- cycle through tabs
     ["<leader>tp"] = { "<cmd> tabprevious <CR>", "  goto next tab" },
     ["<leader>tn"] = { "<cmd> tabnext <CR> ", "  goto prev tab" },
-
-    -- close buffer + hide terminal buffer
-    ["<leader>x"] = {
-      function()
-        require("core.utils").close_buffer()
-      end,
-      "   close buffer",
-    },
   },
 }
 
 M.comment = {
-
   -- toggle comment in both modes
   n = {
     ["<leader>/"] = {
       function()
         require("Comment.api").toggle_current_linewise()
       end,
-
       "蘒  toggle comment",
     },
   },
@@ -183,7 +175,7 @@ M.lspconfig = {
 
     ["gr"] = {
       function()
-        vim.lsp.buf.references()
+        vim.lsp.buf.references {}
       end,
       "   lsp references",
     },
@@ -218,7 +210,7 @@ M.lspconfig = {
 
     ["<leader>fm"] = {
       function()
-        vim.lsp.buf.formatting()
+        vim.lsp.buf.formatting {}
       end,
       "   lsp formatting",
     },
@@ -247,7 +239,6 @@ M.lspconfig = {
 }
 
 M.nvimtree = {
-
   n = {
     -- toggle
     ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },

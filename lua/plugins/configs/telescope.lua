@@ -65,6 +65,7 @@ local options = {
 -- check for any override
 options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
 telescope.setup(options)
+require("core.utils").load_mappings "telescope"
 
 -- load extensions
 pcall(function()

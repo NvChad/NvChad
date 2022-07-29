@@ -159,7 +159,7 @@ local plugins = {
 
   ["numToStr/Comment.nvim"] = {
     module = "Comment",
-    keys = { "gc", "gb" },
+    keys = { "gc", "gb", "<leader>/" },
     config = function()
       require("plugins.configs.others").comment()
     end,
