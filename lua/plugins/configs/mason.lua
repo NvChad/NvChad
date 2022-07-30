@@ -4,7 +4,14 @@ if not present then
   return
 end
 
-require("base46").load_highlight "mason"
+vim.api.nvim_create_augroup("_mason", { clear = true })
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "mason.nvim",
+  callback = function()
+    require("base46").load_highlight "mason"
+  end,
+  group = "_mason",
+})
 
 local options = {
   ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim
