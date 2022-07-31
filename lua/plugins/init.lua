@@ -18,6 +18,7 @@ local plugins = {
 
   ["NvChad/ui"] = {
     after = "base46",
+    module = "nvchad_ui",
     config = function()
       require("plugins.configs.others").nvchad_ui()
     end,
