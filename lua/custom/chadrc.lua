@@ -14,14 +14,6 @@ M.plugins = {
   remove = {"NvChad/nvterm"},
   options = {},
   override = {
-    ["neovim/nvim-lspconfig"] = {
-      config = function()
-        require "plugins.configs.lspconfig"
-        print("before require")
-        require "custom.plugins.configs.lspconfig"
-        print("after require")
-      end
-    },
     ["kyazdani42/nvim-tree.lua"] = plugins_configs.nvimtree_config,
     ["lewis6991/gitsigns.nvim"] = plugins_configs.gitsigns_config,
     ["nvim-treesitter/nvim-treesitter"] = plugins_configs.treesitter_config,
@@ -37,21 +29,9 @@ M.plugins = {
       -- lazyload it when there are 1+ buffers
       tabufline = {enabled = true, lazyload = true, overriden_modules = nil}
     },
- ["williamboman/mason.nvim"] = {
-      ensure_installed = {
-        -- lua stuff
-        "lua-language-server",
-
-        -- web dev
-        "css-lsp",
-        "html-lsp",
-        "typescript-language-server",
-
-        -- python
-        "pyright"
-
-      },
-    },
+    ["williamboman/mason.nvim"] = {
+      ensure_installed = {"lua-language-server", "css-lsp", "html-lsp", "typescript-language-server", "pyright"}
+    }
   }
 }
 

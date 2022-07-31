@@ -7,6 +7,12 @@ M.whichkey_config = require("custom.plugins.configs.whichkey")
 
 -- note: lspconfig file (custom.plugins.configs.lspconfig) is used in "option" in chadrc file
 M.additional_plugins = {
+  ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.configs.lspconfig"
+    end
+  },
   ["justinmk/vim-sneak"] = {},
   ["tpope/vim-fugitive"] = {},
   ["goolord/alpha-nvim"] = {disable = false},
