@@ -104,6 +104,9 @@ M.tabufline = {
       end,
       "   close buffer",
     },
+
+    -- pick buffers via numbers
+    ["<Bslash>"] = { "<cmd> TbufPick <CR>", "  Pick buffer" },
   },
 }
 
