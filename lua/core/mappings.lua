@@ -83,12 +83,19 @@ M.tabufline = {
     ["<S-b>"] = { "<cmd> enew <CR>", "烙 new buffer" },
 
     -- cycle through buffers
-    ["<TAB>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
-    ["<S-Tab>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
+    ["<TAB>"] = {
+      function()
+        require("core.utils").tabuflineNext()
+      end,
+      "  goto next buffer",
+    },
 
-    -- cycle through tabs
-    ["<leader>tp"] = { "<cmd> tabprevious <CR>", "  goto next tab" },
-    ["<leader>tn"] = { "<cmd> tabnext <CR> ", "  goto prev tab" },
+    ["<S-Tab>"] = {
+      function()
+        require("core.utils").tabuflinePrev()
+      end,
+      "  goto prev buffer",
+    },
 
     -- close buffer + hide terminal buffer
     ["<leader>x"] = {
