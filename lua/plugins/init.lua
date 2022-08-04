@@ -21,6 +21,12 @@ local plugins = {
     config = function()
       require("plugins.configs.others").nvchad_ui()
     end,
+    setup = function()
+      local load_override = require("core.utils").load_override
+      if load_override({}, "NvChad/ui")["tabufline"]["enabled"] then
+        require("core.utils").load_mappings "tabufline"
+      end
+    end,
   },
 
   ["NvChad/nvterm"] = {
@@ -28,10 +34,13 @@ local plugins = {
     config = function()
       require "plugins.configs.nvterm"
     end,
+    setup = function()
+      require("core.utils").load_mappings "nvterm"
+    end,
   },
 
   ["kyazdani42/nvim-web-devicons"] = {
-    after = 'ui',
+    after = "ui",
     module = "nvim-web-devicons",
     config = function()
       require("plugins.configs.others").devicons()
@@ -42,6 +51,7 @@ local plugins = {
     opt = true,
     setup = function()
       require("core.lazy_load").on_file_open "indent-blankline.nvim"
+      require("core.utils").load_mappings "blankline"
     end,
     config = function()
       require("plugins.configs.others").blankline()
@@ -164,6 +174,9 @@ local plugins = {
     config = function()
       require("plugins.configs.others").comment()
     end,
+    setup = function()
+      require("core.utils").load_mappings "comment"
+    end,
   },
 
   -- file managing , picker etc
@@ -173,12 +186,18 @@ local plugins = {
     config = function()
       require "plugins.configs.nvimtree"
     end,
+    setup = function()
+      require("core.utils").load_mappings "nvimtree"
+    end,
   },
 
   ["nvim-telescope/telescope.nvim"] = {
     cmd = "Telescope",
     config = function()
       require "plugins.configs.telescope"
+    end,
+    setup = function()
+      require("core.utils").load_mappings "telescope"
     end,
   },
 
@@ -187,6 +206,9 @@ local plugins = {
     module = "which-key",
     config = function()
       require "plugins.configs.whichkey"
+    end,
+    setup = function()
+      require("core.utils").load_mappings "whichkey"
     end,
   },
 }
