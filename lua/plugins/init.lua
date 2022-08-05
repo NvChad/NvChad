@@ -31,6 +31,7 @@ local plugins = {
   },
 
   ["kyazdani42/nvim-web-devicons"] = {
+    after = 'ui',
     module = "nvim-web-devicons",
     config = function()
       require("plugins.configs.others").devicons()
