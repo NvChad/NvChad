@@ -1,0 +1,3 @@
+[submodule "lua/custom"]
+	path = lua/custom
+	url = git@github.com:tonekk/nvchad-config.git
