@@ -22,8 +22,8 @@ M.load_config = function()
   if chadrc_exists then
     -- merge user config if it exists and is a table; otherwise display an error
     if type(chadrc) == "table" then
-      M.remove_default_keys()
-      config = merge_tb("force", config, chadrc)
+      config.mappings = M.remove_default_keys(chadrc.mappings.disabled or nil, config.mappings)
+      config = merge_tb("force", config, chadrc) or {}
     else
       error "chadrc must return a table!"
     end
@@ -33,35 +33,35 @@ M.load_config = function()
   return config
 end
 
-M.remove_default_keys = function()
-  local chadrc = require "custom.chadrc"
-  local user_mappings = chadrc.mappings or {}
-  local user_keys = {}
-  local user_sections = vim.tbl_keys(user_mappings)
-
-  -- push user_map keys in user_keys table
-  for _, section in ipairs(user_sections) do
-    user_keys = vim.tbl_deep_extend("force", user_keys, user_mappings[section])
+M.remove_default_keys = function(disabled_mappings, default_mappings)
+  if not disabled_mappings then
+    return default_mappings
   end
 
-  local function disable_key(mode, keybind, mode_mapping)
-    local keys_in_mode = vim.tbl_keys(user_keys[mode] or {})
-
-    if vim.tbl_contains(keys_in_mode, keybind) then
-      mode_mapping[keybind] = nil
-    end
-  end
-
-  local default_mappings = require("core.default_config").mappings
-
-  -- remove user_maps from default mapping table
-  for _, section_mappings in pairs(default_mappings) do
-    for mode, mode_mapping in pairs(section_mappings) do
-      for keybind, _ in pairs(mode_mapping) do
-        disable_key(mode, keybind, mode_mapping)
+  -- store keys in a array with true value to compare
+  local keys_to_disable = {}
+  for _, section_keys in pairs(disabled_mappings) do
+    if type(section_keys) == "table" then
+      for k, _ in pairs(section_keys) do
+        keys_to_disable[k] = true
       end
     end
   end
+
+  -- make a copy as we need to modify default_mappings
+  for section_name, section_mappings in pairs(default_mappings) do
+    section_mappings.plugin = nil
+    for mode, mode_mapping in pairs(section_mappings) do
+      for k, _ in pairs(mode_mapping) do
+        -- if key if found then remove from default_mappings
+        if keys_to_disable[k] then
+          default_mappings[section_name][mode][k] = nil
+        end
+      end
+    end
+  end
+
+  return default_mappings
 end
 
 M.load_mappings = function(mappings, mapping_opt)
