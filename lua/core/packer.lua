@@ -2,7 +2,7 @@ local M = {}
 
 M.bootstrap = function()
   local fn = vim.fn
-  local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+  local install_path = fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e222a" })
 

@@ -7,6 +7,5 @@ end, 0)
 
 -- setup packer + plugins
 require("core.packer").bootstrap()
-require "plugins"
 
 pcall(require, "custom")
