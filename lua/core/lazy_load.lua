@@ -63,25 +63,12 @@ M.mason_cmds = {
 }
 
 M.gitsigns = function()
-  -- taken from https://github.com/max397574
   autocmd({ "BufRead" }, {
     callback = function()
-      local function onexit(code, _)
-        if code == 0 then
-          vim.schedule(function()
-            require("packer").loader "gitsigns.nvim"
-          end)
-        end
-      end
-      local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-      if lines ~= { "" } then
-        vim.loop.spawn("git", {
-          args = {
-            "ls-files",
-            "--error-unmatch",
-            vim.fn.expand "%:p:h",
-          },
-        }, onexit)
+      if vim.fn.isdirectory ".git" ~= 0 then
+        vim.schedule(function()
+          require("packer").loader "gitsigns.nvim"
+        end)
       end
     end,
   })
