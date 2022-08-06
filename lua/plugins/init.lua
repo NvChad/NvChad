@@ -228,10 +228,7 @@ local plugins = {
   ["lewis6991/impatient.nvim"] = {
     event = "VimEnter",
     config = function()
-      vim.defer_fn(function()
-        local present, impatient = pcall(require, "impatient")
-        if present then impatient.enable_profile() end
-      end, 0)
+      vim.defer_fn(function() require "impatient" end, 0)
     end,
   },
 }
