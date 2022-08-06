@@ -3,7 +3,24 @@ vim.cmd "packadd packer.nvim"
 local plugins = {
 
   ["nvim-lua/plenary.nvim"] = { module = "plenary" },
-  ["wbthomason/packer.nvim"] = {},
+  ["wbthomason/packer.nvim"] = {
+    cmd = {
+      "PackerSnapshot",
+      "PackerSnapshotRollback",
+      "PackerSnapshotDelete",
+      "PackerInstall",
+      "PackerUpdate",
+      "PackerSync",
+      "PackerClean",
+      "PackerCompile",
+      "PackerStatus",
+      "PackerProfile",
+      "PackerLoad"
+    },
+    config = function()
+      require "plugins"
+    end
+  },
   ["NvChad/extensions"] = { module = { "telescope", "nvchad" } },
 
   ["NvChad/base46"] = {
@@ -204,6 +221,17 @@ local plugins = {
     end,
     setup = function()
       require("core.utils").load_mappings "whichkey"
+    end,
+  },
+
+  -- Speed up deffered plugins
+  ["lewis6991/impatient.nvim"] = {
+    event = "VimEnter",
+    config = function()
+      vim.defer_fn(function()
+        local present, impatient = pcall(require, "impatient")
+        if present then impatient.enable_profile() end
+      end, 0)
     end,
   },
 }
