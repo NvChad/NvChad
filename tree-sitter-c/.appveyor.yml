@@ -1,0 +1,22 @@
+image: Visual Studio 2015
+
+environment:
+  nodejs_version: "8"
+
+platform:
+  - x64
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - node --version
+  - npm --version
+  - npm install
+
+test_script:
+  - npm run test-windows
+
+build: off
+
+branches:
+  only:
+    - master

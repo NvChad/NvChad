@@ -226,10 +226,7 @@ local plugins = {
 
   -- Speed up deffered plugins
   ["lewis6991/impatient.nvim"] = {
-    event = "VimEnter",
-    config = function()
-      vim.defer_fn(function() require "impatient" end, 0)
-    end,
+    module = "impatient"
   },
 }
 
