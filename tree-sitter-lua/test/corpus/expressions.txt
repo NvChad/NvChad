@@ -1,0 +1,591 @@
+================================================================================
+nil
+================================================================================
+
+exp(nil)
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (function_call
+    name: (identifier)
+    arguments: (arguments
+      (nil))))
+
+================================================================================
+false
+================================================================================
+
+exp(false)
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (function_call
+    name: (identifier)
+    arguments: (arguments
+      (false))))
+
+================================================================================
+true
+================================================================================
+
+exp(true)
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (function_call
+    name: (identifier)
+    arguments: (arguments
+      (true))))
+
+================================================================================
+number
+================================================================================
+
+exp(
+  3,
+  345,
+  0xff,
+  0xBEBADA,
+  3.0,
+  3.1416,
+  314.16e-2,
+  0.31416E1,
+  34e1,
+  0x0.1E,
+  0xA23p-4,
+  0X1.921FB54442D18P+1
+)
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (function_call
+    name: (identifier)
+    arguments: (arguments
+      (number)
+      (number)
+      (number)
+      (number)
+      (number)
+      (number)
+      (number)
+      (number)
+      (number)
+      (number)
+      (number)
+      (number))))
+
+================================================================================
+string
+================================================================================
+
+exp(
+  "string",
+  'string',
+  "a\
+  b",
+  'a\z',
+  'a\z
+  ',
+  'a\z
+  b',
+  "'a\z\
+  b'",
+  "c",
+  'c',
+  "0",
+  [[ string ]],
+  [[
+    string
+    string
+  ]],
+  [=[
+    string
+    string
+  ]=],
+  [=[[string]]=],
+  [=[
+    [string]
+  ]=],
+  [=[
+    [string
+  ]=],
+  [=[
+    string]
+  ]=],
+  [=[
+    [[string
+  ]=],
+  [=[
+    string]]
+  ]=]
+)
+
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (function_call
+    name: (identifier)
+    arguments: (arguments
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string)
+      (string))))
+
+================================================================================
+vararg_expression
+================================================================================
+
+exp(...)
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (function_call
+    name: (identifier)
+    arguments: (arguments
+      (vararg_expression))))
+
+================================================================================
+function_definition
+================================================================================
+
+f1 = function() end
+
+f2 = function() return end
+
+f3 = function(...)
+  return ...
+end
+
+f4 = function(a1, ...)
+  print(...)
+  return a1
+end
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (function_definition
+        parameters: (parameters))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (function_definition
+        parameters: (parameters)
+        body: (block
+          (return_statement)))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (function_definition
+        parameters: (parameters
+          (vararg_expression))
+        body: (block
+          (return_statement
+            (expression_list
+              (vararg_expression)))))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (function_definition
+        parameters: (parameters
+          name: (identifier)
+          (vararg_expression))
+        body: (block
+          (function_call
+            name: (identifier)
+            arguments: (arguments
+              (vararg_expression)))
+          (return_statement
+            (expression_list
+              (identifier))))))))
+
+================================================================================
+variable ::: identifier
+================================================================================
+
+v1 = n1
+
+v2, v3 = n2, n3
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (identifier)))
+  (assignment_statement
+    (variable_list
+      name: (identifier)
+      name: (identifier))
+    (expression_list
+      value: (identifier)
+      value: (identifier))))
+
+================================================================================
+variable ::: bracket_index_expression
+================================================================================
+
+v1 = tbl[k1]
+
+v2, v3[v] = tbl[k1]["k2"]
+
+v4 = tbk[getK1()][getK2()]
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (bracket_index_expression
+        table: (identifier)
+        field: (identifier))))
+  (assignment_statement
+    (variable_list
+      name: (identifier)
+      name: (bracket_index_expression
+        table: (identifier)
+        field: (identifier)))
+    (expression_list
+      value: (bracket_index_expression
+        table: (bracket_index_expression
+          table: (identifier)
+          field: (identifier))
+        field: (string))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (bracket_index_expression
+        table: (bracket_index_expression
+          table: (identifier)
+          field: (function_call
+            name: (identifier)
+            arguments: (arguments)))
+        field: (function_call
+          name: (identifier)
+          arguments: (arguments))))))
+
+================================================================================
+variable ::: dot_index_expression
+================================================================================
+
+v1 = tbl.k1
+
+v2 = tbl.k1.k2
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (dot_index_expression
+        table: (identifier)
+        field: (identifier))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (dot_index_expression
+        table: (dot_index_expression
+          table: (identifier)
+          field: (identifier))
+        field: (identifier)))))
+
+================================================================================
+function_call ::: bracket_index_expression | dot_index_expression
+================================================================================
+
+v1 = tbl[k1].k2(a1, "a2", a3())
+
+v2 = tbl[k1] { f1 = true }
+
+v3 = tbl[k1] "a1"
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (function_call
+        name: (dot_index_expression
+          table: (bracket_index_expression
+            table: (identifier)
+            field: (identifier))
+          field: (identifier))
+        arguments: (arguments
+          (identifier)
+          (string)
+          (function_call
+            name: (identifier)
+            arguments: (arguments))))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (function_call
+        name: (bracket_index_expression
+          table: (identifier)
+          field: (identifier))
+        arguments: (arguments
+          (table_constructor
+            (field
+              name: (identifier)
+              value: (true)))))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (function_call
+        name: (bracket_index_expression
+          table: (identifier)
+          field: (identifier))
+        arguments: (arguments
+          (string))))))
+
+================================================================================
+function_call ::: method_index_expression
+================================================================================
+
+tbl.k1:m1(a1, "a2")
+
+tbl[k1]:m1 { f1, "f2" }
+
+tbl:m1 "a1"
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (function_call
+    name: (method_index_expression
+      table: (dot_index_expression
+        table: (identifier)
+        field: (identifier))
+      method: (identifier))
+    arguments: (arguments
+      (identifier)
+      (string)))
+  (function_call
+    name: (method_index_expression
+      table: (bracket_index_expression
+        table: (identifier)
+        field: (identifier))
+      method: (identifier))
+    arguments: (arguments
+      (table_constructor
+        (field
+          value: (identifier))
+        (field
+          value: (string)))))
+  (function_call
+    name: (method_index_expression
+      table: (identifier)
+      method: (identifier))
+    arguments: (arguments
+      (string))))
+
+================================================================================
+parenthesized_expression
+================================================================================
+
+v = ( true )
+
+v = ( ( false ) )
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (parenthesized_expression
+        (true))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (parenthesized_expression
+        (parenthesized_expression
+          (false))))))
+
+================================================================================
+table_constructor
+================================================================================
+
+tbl1 = {
+  ["k1"] = {
+    ['k2'] = true,
+    k3 = false
+  }
+}
+
+local tbl2 = {
+  k1 = {
+    { 'v1', "v2" }
+  }
+}
+
+local tbl3 = { "v1", k1 = "v2" }
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (table_constructor
+        (field
+          name: (string)
+          value: (table_constructor
+            (field
+              name: (string)
+              value: (true))
+            (field
+              name: (identifier)
+              value: (false)))))))
+  local_declaration: (variable_declaration
+    (assignment_statement
+      (variable_list
+        name: (identifier))
+      (expression_list
+        value: (table_constructor
+          (field
+            name: (identifier)
+            value: (table_constructor
+              (field
+                value: (table_constructor
+                  (field
+                    value: (string))
+                  (field
+                    value: (string))))))))))
+  local_declaration: (variable_declaration
+    (assignment_statement
+      (variable_list
+        name: (identifier))
+      (expression_list
+        value: (table_constructor
+          (field
+            value: (string))
+          (field
+            name: (identifier)
+            value: (string)))))))
+
+================================================================================
+binary_expression
+================================================================================
+
+a = i + j * 3 - k % 5
+
+b = i + j % 3 ^ 2
+
+c = i * 2 ^ j
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (binary_expression
+        left: (binary_expression
+          left: (identifier)
+          right: (binary_expression
+            left: (identifier)
+            right: (number)))
+        right: (binary_expression
+          left: (identifier)
+          right: (number)))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (binary_expression
+        left: (identifier)
+        right: (binary_expression
+          left: (identifier)
+          right: (binary_expression
+            left: (number)
+            right: (number))))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (binary_expression
+        left: (identifier)
+        right: (binary_expression
+          left: (number)
+          right: (identifier))))))
+
+================================================================================
+unary_expression
+================================================================================
+
+v1 = #l
+
+v2 = -n
+
+v3 = not c1 and r1 or r2
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (unary_expression
+        operand: (identifier))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (unary_expression
+        operand: (identifier))))
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (binary_expression
+        left: (binary_expression
+          left: (unary_expression
+            operand: (identifier))
+          right: (identifier))
+        right: (identifier)))))
