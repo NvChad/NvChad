@@ -21,12 +21,6 @@ local plugins = {
     config = function()
       require("plugins.configs.others").nvchad_ui()
     end,
-    setup = function()
-      local load_override = require("core.utils").load_override
-      if load_override({}, "NvChad/ui")["tabufline"]["enabled"] then
-        require("core.utils").load_mappings "tabufline"
-      end
-    end,
   },
 
   ["NvChad/nvterm"] = {
