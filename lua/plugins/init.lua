@@ -15,11 +15,11 @@ local plugins = {
       "PackerCompile",
       "PackerStatus",
       "PackerProfile",
-      "PackerLoad"
+      "PackerLoad",
     },
     config = function()
       require "plugins"
-    end
+    end,
   },
   ["NvChad/extensions"] = { module = { "telescope", "nvchad" } },
 
@@ -226,7 +226,7 @@ local plugins = {
 
   -- Speed up deffered plugins
   ["lewis6991/impatient.nvim"] = {
-    module = "impatient"
+    module = "impatient",
   },
 }
 
