@@ -15,9 +15,26 @@ M.close_buffer = function(bufnr)
   end
 end
 
+-- store mapping section names which have plugin key = true
+local lazyload_mappings_list = {}
+
+local add_mappingSection_toList = function()
+  local default_mappings = require("core.default_config").mappings
+
+  -- store mapping section name into a table
+  for section_name, section_mappings in pairs(default_mappings) do
+    if section_mappings.plugin then
+      lazyload_mappings_list[section_name] = true
+      section_mappings.plugin = nil
+    end
+  end
+end
+
 M.load_config = function()
   local config = require "core.default_config"
   local chadrc_exists, chadrc = pcall(require, "custom.chadrc")
+
+  add_mappingSection_toList()
 
   if chadrc_exists then
     -- merge user config if it exists and is a table; otherwise display an error
@@ -32,9 +49,6 @@ M.load_config = function()
   config.mappings.disabled = nil
   return config
 end
-
--- store mapping section names which have plugin key = true
-local lazyload_mappings_list = {}
 
 M.remove_default_keys = function(user_mappings)
   local user_keys = {}
@@ -54,13 +68,7 @@ M.remove_default_keys = function(user_mappings)
   local default_mappings = require("core.default_config").mappings
 
   -- remove user_maps from default mapping table
-  for section_name, section_mappings in pairs(default_mappings) do
-    -- store mapping section name into a table
-    if section_mappings.plugin then
-      lazyload_mappings_list[section_name] = true
-      section_mappings.plugin = nil
-    end
-
+  for _, section_mappings in pairs(default_mappings) do
     for mode, mode_mapping in pairs(section_mappings) do
       for keybind, _ in pairs(mode_mapping) do
         disable_key(mode, keybind, mode_mapping)
