@@ -23,8 +23,7 @@ M.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_range_formatting = false
   end
 
-  local lsp_mappings = utils.load_config().mappings.lspconfig
-  utils.load_mappings({ lsp_mappings }, { buffer = bufnr })
+  utils.load_mappings("lspconfig", { buffer = bufnr })
 
   if client.server_capabilities.signatureHelpProvider then
     require("nvchad_ui.signature").setup(client)
