@@ -1,0 +1,530 @@
+============================================
+Struct declarations
+============================================
+
+struct s1;
+
+struct s2 {
+  int x;
+  float y : 5;
+};
+
+---
+
+(translation_unit
+  (struct_specifier
+    name: (type_identifier))
+  (struct_specifier
+    name: (type_identifier)
+    body: (field_declaration_list
+    (field_declaration
+      type: (primitive_type)
+      declarator: (field_identifier))
+    (field_declaration
+      type: (primitive_type)
+      declarator: (field_identifier)
+      (bitfield_clause (number_literal))))))
+
+============================================
+Union declarations
+============================================
+
+union u1;
+
+union s2 {
+  int x;
+  float y;
+};
+
+---
+
+(translation_unit
+  (union_specifier
+    name: (type_identifier))
+  (union_specifier
+    name: (type_identifier)
+    body: (field_declaration_list
+      (field_declaration
+        type: (primitive_type)
+        declarator: (field_identifier))
+      (field_declaration
+        type: (primitive_type)
+        declarator: (field_identifier)))))
+
+============================================
+Enum declarations
+============================================
+
+enum e1;
+
+enum e2 {
+  val1,
+  val2 = 5,
+  val3
+};
+
+enum e3 {
+  val1,
+};
+
+---
+
+(translation_unit
+  (enum_specifier
+    name: (type_identifier))
+  (enum_specifier
+    name: (type_identifier)
+    body: (enumerator_list
+      (enumerator name: (identifier))
+      (enumerator name: (identifier) value: (number_literal))
+      (enumerator name: (identifier))))
+  (enum_specifier
+    name: (type_identifier)
+    body: (enumerator_list
+      (enumerator name: (identifier)))))
+
+======================================================
+Struct declarations containing preprocessor directives
+======================================================
+
+struct s {
+  #define A 5
+  int b[a];
+  #undef A
+};
+
+---
+
+(translation_unit
+  (struct_specifier
+    (type_identifier)
+    (field_declaration_list
+      (preproc_def (identifier) (preproc_arg))
+      (field_declaration (primitive_type) (array_declarator (field_identifier) (identifier)))
+      (preproc_call (preproc_directive) (preproc_arg)))))
+
+============================================
+Primitive-typed variable declarations
+============================================
+
+unsigned short int a;
+long int b, c = 5, d;
+float d, e;
+unsigned f;
+short g, h;
+
+---
+
+(translation_unit
+  (declaration
+    type: (sized_type_specifier type: (primitive_type))
+    declarator: (identifier))
+  (declaration
+    type: (sized_type_specifier type: (primitive_type))
+    declarator: (identifier)
+    declarator: (init_declarator
+      declarator: (identifier)
+      value: (number_literal))
+    declarator: (identifier))
+  (declaration
+    type: (primitive_type)
+    declarator: (identifier)
+    declarator: (identifier))
+  (declaration
+    type: (sized_type_specifier)
+    declarator: (identifier))
+  (declaration
+    type: (sized_type_specifier)
+    declarator: (identifier)
+    declarator: (identifier)))
+
+============================================
+Variable storage classes
+============================================
+
+int a;
+extern int b, c;
+auto int d;
+register int e;
+static int f;
+
+---
+
+(translation_unit
+  (declaration (primitive_type) (identifier))
+  (declaration (storage_class_specifier) (primitive_type) (identifier) (identifier))
+  (declaration (storage_class_specifier) (primitive_type) (identifier))
+  (declaration (storage_class_specifier) (primitive_type) (identifier))
+  (declaration (storage_class_specifier) (primitive_type) (identifier)))
+
+============================================
+Composite-typed variable declarations
+============================================
+
+struct b c;
+union { int e; } f;
+enum { g, h } i;
+
+---
+
+(translation_unit
+  (declaration
+    type: (struct_specifier name: (type_identifier))
+    declarator: (identifier))
+  (declaration
+    type: (union_specifier
+      body: (field_declaration_list
+        (field_declaration
+          type: (primitive_type)
+          declarator: (field_identifier))))
+    declarator: (identifier))
+  (declaration
+    type: (enum_specifier body: (enumerator_list
+      (enumerator name: (identifier))
+      (enumerator name: (identifier))))
+    declarator: (identifier)))
+
+============================================
+Pointer variable declarations
+============================================
+
+char *the_string;
+const char **the_strings;
+int const * const restrict x;
+
+---
+
+(translation_unit
+  (declaration
+    type: (primitive_type)
+    declarator: (pointer_declarator
+      declarator: (identifier)))
+  (declaration
+    (type_qualifier)
+    type: (primitive_type)
+    declarator: (pointer_declarator
+      declarator: (pointer_declarator
+        declarator: (identifier))))
+  (declaration
+    type: (primitive_type)
+    (type_qualifier)
+    declarator: (pointer_declarator
+      (type_qualifier)
+      (type_qualifier)
+      declarator: (identifier))))
+
+============================================
+Typedefs
+============================================
+
+typedef int my_int;
+
+typedef struct {
+  int x;
+} *a;
+
+typedef void my_callback(void *, size_t);
+
+typedef struct A {
+  int i;
+} a, b;
+
+---
+
+(translation_unit
+  (type_definition
+    type: (primitive_type)
+    declarator: (type_identifier))
+  (type_definition
+    type: (struct_specifier
+      body: (field_declaration_list
+        (field_declaration
+          type: (primitive_type)
+          declarator: (field_identifier))))
+    declarator: (pointer_declarator
+      declarator: (type_identifier)))
+  (type_definition
+    type: (primitive_type)
+    declarator: (function_declarator
+      declarator: (type_identifier)
+      parameters: (parameter_list
+        (parameter_declaration
+          type: (primitive_type)
+          declarator: (abstract_pointer_declarator))
+        (parameter_declaration
+          type: (primitive_type)))))
+  (type_definition
+    type: (struct_specifier
+      name: (type_identifier)
+      body: (field_declaration_list
+        (field_declaration
+          type: (primitive_type)
+          declarator: (field_identifier))))
+    declarator: (type_identifier)
+    declarator: (type_identifier)))
+
+============================================
+Function declarations
+============================================
+
+int main(int argc, const char **argv);
+static foo bar();
+static baz quux(...);
+
+---
+
+(translation_unit
+  (declaration
+    (primitive_type)
+    (function_declarator
+      (identifier)
+      (parameter_list
+        (parameter_declaration
+          (primitive_type)
+          (identifier))
+        (parameter_declaration
+          (type_qualifier)
+          (primitive_type)
+          (pointer_declarator (pointer_declarator (identifier)))))))
+
+  (declaration
+    (storage_class_specifier)
+    (type_identifier)
+    (function_declarator (identifier) (parameter_list)))
+
+  (declaration
+    (storage_class_specifier)
+    (type_identifier)
+    (function_declarator (identifier) (parameter_list (variadic_parameter)))))
+
+============================================
+Function definitions
+============================================
+
+void * do_stuff(int arg1) {
+  return 5;
+}
+
+---
+
+(translation_unit
+  (function_definition
+    type: (primitive_type)
+    declarator: (pointer_declarator
+      declarator: (function_declarator
+        declarator: (identifier)
+        parameters: (parameter_list
+          (parameter_declaration
+            type: (primitive_type)
+            declarator: (identifier)))))
+    body: (compound_statement
+      (return_statement (number_literal)))))
+
+============================================
+Function specifiers after types
+============================================
+
+int static inline do_stuff(int arg1) {
+  return 5;
+}
+
+---
+
+(translation_unit
+  (function_definition
+    (primitive_type)
+    (storage_class_specifier)
+    (storage_class_specifier)
+    (function_declarator
+      (identifier)
+      (parameter_list (parameter_declaration (primitive_type) (identifier))))
+    (compound_statement (return_statement (number_literal)))))
+
+============================================
+Linkage specifications
+============================================
+
+extern "C" int foo();
+
+extern "C" int foo() { return 0; }
+
+extern "C" {
+  int bar();
+  int baz();
+}
+
+---
+
+(translation_unit
+  (linkage_specification
+    (string_literal)
+    (declaration
+      (primitive_type)
+      (function_declarator (identifier) (parameter_list))))
+  (linkage_specification
+    (string_literal)
+    (function_definition
+      (primitive_type)
+      (function_declarator (identifier) (parameter_list))
+      (compound_statement (return_statement (number_literal)))))
+  (linkage_specification
+    (string_literal)
+    (declaration_list
+      (declaration
+        (primitive_type)
+        (function_declarator (identifier) (parameter_list)))
+      (declaration
+        (primitive_type)
+        (function_declarator (identifier) (parameter_list))))))
+
+==========================
+Type qualifiers
+==========================
+
+const _Atomic unsigned long int x = 5;
+restrict int y = 6;
+volatile int z = 7;
+
+---
+
+(translation_unit
+  (declaration
+    (type_qualifier)
+    (type_qualifier)
+    (sized_type_specifier (primitive_type))
+    (init_declarator (identifier) (number_literal)))
+  (declaration
+    (type_qualifier)
+    (primitive_type)
+    (init_declarator (identifier) (number_literal)))
+  (declaration
+    (type_qualifier)
+    (primitive_type)
+    (init_declarator (identifier) (number_literal))))
+
+================================
+Local array declarations
+================================
+
+int main() {
+  char the_buffer[the_size];
+  char the_other_buffer[*];
+}
+
+---
+
+(translation_unit
+  (function_definition
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list))
+    (compound_statement
+      (declaration (primitive_type) (array_declarator (identifier) (identifier)))
+      (declaration (primitive_type) (array_declarator (identifier))))))
+
+================================
+Attributes
+================================
+
+extern __attribute__((visibility("hidden"))) int foo();
+extern int bar() __attribute__((const));
+void die(const char *format, ...) __attribute__((noreturn))
+                                  __attribute__((format(printf,1,2)));
+extern __attribute__((visibility("default"), weak)) int print_status();
+
+int f([[a::b(c), d]] int x) {}
+
+[[gnu::always_inline]] [[gnu::hot]] [[gnu::const]] [[nodiscard]]
+int g(void);
+
+[[gnu::always_inline, gnu::hot, gnu::const, nodiscard]]
+int g(void);
+
+int i [[maybe_unused]];
+void f[[gnu::always_inline]]();
+
+[[nodiscard("reason")]] int foo;
+
+[[fallthrough]];
+
+struct S {
+  int a [[deprecated]];
+};
+
+typedef int MyInt [[deprecated]];
+
+---
+
+(translation_unit
+  (declaration
+    (storage_class_specifier)
+    (attribute_specifier
+      (argument_list
+        (call_expression
+          (identifier) (argument_list (string_literal)))))
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list)))
+  (declaration
+    (storage_class_specifier)
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list) (attribute_specifier (argument_list (identifier)))))
+  (declaration
+    (primitive_type)
+    (function_declarator (identifier)
+      (parameter_list (parameter_declaration (type_qualifier) (primitive_type) (pointer_declarator (identifier))) (variadic_parameter))
+      (attribute_specifier (argument_list (identifier)))
+      (attribute_specifier
+        (argument_list (call_expression (identifier) (argument_list (identifier) (number_literal) (number_literal)))))))
+  (declaration
+    (storage_class_specifier)
+    (attribute_specifier
+      (argument_list (call_expression (identifier) (argument_list (string_literal))) (identifier)))
+    (primitive_type) (function_declarator (identifier) (parameter_list)))
+  (function_definition (primitive_type)
+    (function_declarator (identifier) (parameter_list (parameter_declaration
+      (attribute_declaration
+        (attribute (identifier) (identifier) (argument_list (identifier)))
+        (attribute (identifier)))
+      (primitive_type) (identifier)))) (compound_statement))
+  (declaration
+    (attribute_declaration (attribute (identifier) (identifier)))
+    (attribute_declaration (attribute (identifier) (identifier)))
+    (attribute_declaration (attribute (identifier) (identifier)))
+    (attribute_declaration (attribute (identifier)))
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list (parameter_declaration (primitive_type)))))
+  (declaration
+    (attribute_declaration
+      (attribute (identifier) (identifier))
+      (attribute (identifier) (identifier))
+      (attribute (identifier) (identifier))
+      (attribute (identifier)))
+    (primitive_type)
+    (function_declarator (identifier) (parameter_list (parameter_declaration (primitive_type)))))
+  (declaration
+    (primitive_type)
+    (attributed_declarator
+      (identifier)
+      (attribute_declaration (attribute (identifier)))))
+  (declaration
+    (primitive_type)
+    (function_declarator
+      (attributed_declarator
+        (identifier)
+        (attribute_declaration (attribute (identifier) (identifier))))
+      (parameter_list)))
+  (declaration
+    (attribute_declaration (attribute (identifier) (argument_list (string_literal))))
+    (primitive_type) (identifier))
+  (attributed_statement
+    (attribute_declaration (attribute (identifier)))
+    (expression_statement))
+  (struct_specifier
+    (type_identifier)
+    (field_declaration_list (field_declaration (primitive_type)
+      (attributed_declarator
+        (field_identifier)
+        (attribute_declaration (attribute (identifier)))))))
+  (type_definition (primitive_type)
+    (attributed_declarator
+      (type_identifier)
+      (attribute_declaration (attribute (identifier))))))
