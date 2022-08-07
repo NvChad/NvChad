@@ -4,19 +4,7 @@ local plugins = {
 
   ["nvim-lua/plenary.nvim"] = { module = "plenary" },
   ["wbthomason/packer.nvim"] = {
-    cmd = {
-      "PackerSnapshot",
-      "PackerSnapshotRollback",
-      "PackerSnapshotDelete",
-      "PackerInstall",
-      "PackerUpdate",
-      "PackerSync",
-      "PackerClean",
-      "PackerCompile",
-      "PackerStatus",
-      "PackerProfile",
-      "PackerLoad",
-    },
+    cmd = require("core.lazy_load").packer_cmds,
     config = function()
       require "plugins"
     end,
