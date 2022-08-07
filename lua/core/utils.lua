@@ -22,8 +22,8 @@ M.load_config = function()
   if chadrc_exists then
     -- merge user config if it exists and is a table; otherwise display an error
     if type(chadrc) == "table" then
-      config.mappings = M.remove_default_keys(chadrc.mappings.disabled or nil, config.mappings)
-      config = merge_tb("force", config, chadrc) or {}
+      M.remove_default_keys(chadrc.mappings or {})
+      config = merge_tb("force", config, chadrc)
     else
       error "chadrc must return a table!"
     end
@@ -33,38 +33,43 @@ M.load_config = function()
   return config
 end
 
-M.remove_default_keys = function(disabled_mappings, default_mappings)
-  if not disabled_mappings then
-    return default_mappings
+-- store mapping section names which have plugin key = true
+local lazyload_mappings_list = {}
+
+M.remove_default_keys = function(user_mappings)
+  local user_keys = {}
+  local user_sections = vim.tbl_keys(user_mappings)
+
+  -- push user_map keys in user_keys table
+  for _, section in ipairs(user_sections) do
+    user_keys = vim.tbl_deep_extend("force", user_keys, user_mappings[section])
   end
 
-  -- store keys in a array with true value to compare
-  local keys_to_disable = {}
-  for _, section_keys in pairs(disabled_mappings) do
-    if type(section_keys) == "table" then
-      for k, _ in pairs(section_keys) do
-        keys_to_disable[k] = true
-      end
+  local function disable_key(mode, keybind, mode_mapping)
+    if user_keys[mode] and user_keys[mode][keybind] then
+      mode_mapping[keybind] = nil
     end
   end
 
-  -- make a copy as we need to modify default_mappings
+  local default_mappings = require("core.default_config").mappings
+
+  -- remove user_maps from default mapping table
   for section_name, section_mappings in pairs(default_mappings) do
-    section_mappings.plugin = nil
+    -- store mapping section name into a table
+    if section_mappings.plugin then
+      lazyload_mappings_list[section_name] = true
+      section_mappings.plugin = nil
+    end
+
     for mode, mode_mapping in pairs(section_mappings) do
-      for k, _ in pairs(mode_mapping) do
-        -- if key if found then remove from default_mappings
-        if keys_to_disable[k] then
-          default_mappings[section_name][mode][k] = nil
-        end
+      for keybind, _ in pairs(mode_mapping) do
+        disable_key(mode, keybind, mode_mapping)
       end
     end
   end
-
-  return default_mappings
 end
 
-M.load_mappings = function(section, mapping_opt)
+M.load_mappings = function(mappings, mapping_opt)
   -- set mapping function with/without whichkey
   local set_maps
   local whichkey_exists, wk = pcall(require, "which-key")
@@ -81,34 +86,33 @@ M.load_mappings = function(section, mapping_opt)
     end
   end
 
-  local set_section_map = function(section_values)
-    section_values.plugin = nil
-    for mode, mode_values in pairs(section_values) do
-      for keybind, mapping_info in pairs(mode_values) do
-        -- merge default + user opts
-        local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
-        local opts = merge_tb("force", default_opts, mapping_info.opts or {})
+  local mappings_tb = M.load_config().mappings
+  mappings = vim.deepcopy(type(mappings) == "string" and { mappings_tb[mappings] } or mappings_tb)
 
-        if mapping_info.opts then
-          mapping_info.opts = nil
+  local function set_mappings()
+    for name, section in pairs(mappings) do
+      -- skip mapping section with plugin=true
+      if not lazyload_mappings_list[name] then
+        for mode, mode_values in pairs(section) do
+          for keybind, mapping_info in pairs(mode_values) do
+            -- merge default + user opts
+            local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
+            local opts = merge_tb("force", default_opts, mapping_info.opts or {})
+
+            if mapping_info.opts then
+              mapping_info.opts = nil
+            end
+
+            set_maps(keybind, mapping_info, opts)
+          end
         end
-
-        set_maps(keybind, mapping_info, opts)
       end
     end
   end
 
-  local mappings = require("core.utils").load_config().mappings
-
-  if type(section) == "string" then
-    set_section_map(mappings[section])
-  else
-    for _, sect in pairs(mappings) do
-      if sect.plugin == nil or sect.plugin == false then
-        set_section_map(sect)
-      end
-    end
-  end
+  vim.defer_fn(function()
+    set_mappings()
+  end, 0)
 end
 
 -- remove plugins defined in chadrc
@@ -129,7 +133,7 @@ M.merge_plugins = function(default_plugins)
   local user_plugins = M.load_config().plugins.user
 
   -- merge default + user plugin table
-  default_plugins = merge_tb("force", default_plugins, user_plugins) or {}
+  default_plugins = merge_tb("force", default_plugins, user_plugins)
 
   local final_table = {}
 
@@ -143,8 +147,8 @@ end
 
 M.load_override = function(default_table, plugin_name)
   local user_table = M.load_config().plugins.override[plugin_name] or {}
-  user_table = type(user_table) == "function" and user_table() or user_table
-  return merge_tb("force", default_table, user_table or {}) or {}
+  user_table = type(user_table) == "table" and user_table or user_table()
+  return merge_tb("force", default_table, user_table)
 end
 
 M.packer_sync = function(...)
