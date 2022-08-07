@@ -10,7 +10,7 @@ M.lazy_load = function(tb)
     callback = function()
       if tb.condition() then
         vim.api.nvim_del_augroup_by_name(tb.augroup_name)
-        require "impatient"
+        pcall(require, "impatient")
 
         -- dont defer for treesitter as it will show slow highlighting
         -- This deferring only happens only when we do "nvim filename"

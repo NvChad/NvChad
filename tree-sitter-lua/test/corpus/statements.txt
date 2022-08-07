@@ -1,0 +1,459 @@
+================================================================================
+empty_statement
+================================================================================
+
+;
+;;
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (empty_statement)
+  (empty_statement)
+  (empty_statement))
+
+================================================================================
+assignment_statement
+================================================================================
+
+i = 1
+j, tbl[k()] = 2, i + 1
+x, y = y, x
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (assignment_statement
+    (variable_list
+      name: (identifier))
+    (expression_list
+      value: (number)))
+  (assignment_statement
+    (variable_list
+      name: (identifier)
+      name: (bracket_index_expression
+        table: (identifier)
+        field: (function_call
+          name: (identifier)
+          arguments: (arguments))))
+    (expression_list
+      value: (number)
+      value: (binary_expression
+        left: (identifier)
+        right: (number))))
+  (assignment_statement
+    (variable_list
+      name: (identifier)
+      name: (identifier))
+    (expression_list
+      value: (identifier)
+      value: (identifier))))
+
+================================================================================
+function_call
+================================================================================
+
+f1()
+
+tbl.f2()
+
+tbl["f2"]()
+
+tbl.k1:f3()
+
+f4(a1)("a2") { a3 = "a3" }
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (function_call
+    name: (identifier)
+    arguments: (arguments))
+  (function_call
+    name: (dot_index_expression
+      table: (identifier)
+      field: (identifier))
+    arguments: (arguments))
+  (function_call
+    name: (bracket_index_expression
+      table: (identifier)
+      field: (string))
+    arguments: (arguments))
+  (function_call
+    name: (method_index_expression
+      table: (dot_index_expression
+        table: (identifier)
+        field: (identifier))
+      method: (identifier))
+    arguments: (arguments))
+  (function_call
+    name: (function_call
+      name: (function_call
+        name: (identifier)
+        arguments: (arguments
+          (identifier)))
+      arguments: (arguments
+        (string)))
+    arguments: (arguments
+      (table_constructor
+        (field
+          name: (identifier)
+          value: (string))))))
+
+================================================================================
+label_statement
+================================================================================
+
+:: label_name ::
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (label_statement
+    (identifier)))
+
+================================================================================
+break_statement
+================================================================================
+
+for k, v in pairs(kv) do
+  if not v then
+    break
+  end
+end
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (for_statement
+    clause: (for_generic_clause
+      (variable_list
+        name: (identifier)
+        name: (identifier))
+      (expression_list
+        (function_call
+          name: (identifier)
+          arguments: (arguments
+            (identifier)))))
+    body: (block
+      (if_statement
+        condition: (unary_expression
+          operand: (identifier))
+        consequence: (block
+          (break_statement))))))
+
+================================================================================
+goto_statement
+================================================================================
+
+goto label_name
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (goto_statement
+    (identifier)))
+
+================================================================================
+do_statement
+================================================================================
+
+do
+  f1()
+  return f2()
+end
+
+do end
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (do_statement
+    body: (block
+      (function_call
+        name: (identifier)
+        arguments: (arguments))
+      (return_statement
+        (expression_list
+          (function_call
+            name: (identifier)
+            arguments: (arguments))))))
+  (do_statement))
+
+================================================================================
+while_statement
+================================================================================
+
+while i < 9 do
+  i = i + 1
+end
+
+while false do end
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (while_statement
+    condition: (binary_expression
+      left: (identifier)
+      right: (number))
+    body: (block
+      (assignment_statement
+        (variable_list
+          name: (identifier))
+        (expression_list
+          value: (binary_expression
+            left: (identifier)
+            right: (number))))))
+  (while_statement
+    condition: (false)))
+
+================================================================================
+repeat_statement
+================================================================================
+
+repeat
+  f1()
+  i = i - 1
+until i == 0
+
+repeat until false
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (repeat_statement
+    body: (block
+      (function_call
+        name: (identifier)
+        arguments: (arguments))
+      (assignment_statement
+        (variable_list
+          name: (identifier))
+        (expression_list
+          value: (binary_expression
+            left: (identifier)
+            right: (number)))))
+    condition: (binary_expression
+      left: (identifier)
+      right: (number)))
+  (repeat_statement
+    condition: (false)))
+
+================================================================================
+if_statement
+================================================================================
+
+if num % 2 == 0 then
+  print("even")
+elseif num % 2 ~= 0 then
+  print("odd")
+else
+  error("!")
+end
+
+if c1 then end
+
+if c1 then else end
+
+if c1 then elseif c2 then else end
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (if_statement
+    condition: (binary_expression
+      left: (binary_expression
+        left: (identifier)
+        right: (number))
+      right: (number))
+    consequence: (block
+      (function_call
+        name: (identifier)
+        arguments: (arguments
+          (string))))
+    alternative: (elseif_statement
+      condition: (binary_expression
+        left: (binary_expression
+          left: (identifier)
+          right: (number))
+        right: (number))
+      consequence: (block
+        (function_call
+          name: (identifier)
+          arguments: (arguments
+            (string)))))
+    alternative: (else_statement
+      body: (block
+        (function_call
+          name: (identifier)
+          arguments: (arguments
+            (string))))))
+  (if_statement
+    condition: (identifier))
+  (if_statement
+    condition: (identifier)
+    alternative: (else_statement))
+  (if_statement
+    condition: (identifier)
+    alternative: (elseif_statement
+      condition: (identifier))
+    alternative: (else_statement)))
+
+================================================================================
+for_statement ::: for_generic_clause
+================================================================================
+
+for k, v in pairs(kv) do
+  print(k, v)
+end
+
+for i in ipairs(iv) do end
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (for_statement
+    clause: (for_generic_clause
+      (variable_list
+        name: (identifier)
+        name: (identifier))
+      (expression_list
+        (function_call
+          name: (identifier)
+          arguments: (arguments
+            (identifier)))))
+    body: (block
+      (function_call
+        name: (identifier)
+        arguments: (arguments
+          (identifier)
+          (identifier)))))
+  (for_statement
+    clause: (for_generic_clause
+      (variable_list
+        name: (identifier))
+      (expression_list
+        (function_call
+          name: (identifier)
+          arguments: (arguments
+            (identifier)))))))
+
+================================================================================
+for_statement ::: for_numeric_clause
+================================================================================
+
+for n = 1, 10 do
+  print(n)
+end
+
+for n = 1, 10, 2 do end
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (for_statement
+    clause: (for_numeric_clause
+      name: (identifier)
+      start: (number)
+      end: (number))
+    body: (block
+      (function_call
+        name: (identifier)
+        arguments: (arguments
+          (identifier)))))
+  (for_statement
+    clause: (for_numeric_clause
+      name: (identifier)
+      start: (number)
+      end: (number)
+      step: (number))))
+
+================================================================================
+function_declaration
+================================================================================
+
+function tbl.f1() end
+
+function tbl:f2() end
+
+function tbl.k1:f3() end
+
+function f4()
+  print('f4')
+end
+
+local function f5() end
+
+--------------------------------------------------------------------------------
+
+(chunk
+  (function_declaration
+    name: (dot_index_expression
+      table: (identifier)
+      field: (identifier))
+    parameters: (parameters))
+  (function_declaration
+    name: (method_index_expression
+      table: (identifier)
+      method: (identifier))
+    parameters: (parameters))
+  (function_declaration
+    name: (method_index_expression
+      table: (dot_index_expression
+        table: (identifier)
+        field: (identifier))
+      method: (identifier))
+    parameters: (parameters))
+  (function_declaration
+    name: (identifier)
+    parameters: (parameters)
+    body: (block
+      (function_call
+        name: (identifier)
+        arguments: (arguments
+          (string)))))
+  local_declaration: (function_declaration
+    name: (identifier)
+    parameters: (parameters)))
+
+================================================================================
+variable_declaration
+================================================================================
+
+local v1 = 1
+local v2, v3 = 2, 3
+
+local v4, v4 = f1(), tbl:f2()
+
+--------------------------------------------------------------------------------
+
+(chunk
+  local_declaration: (variable_declaration
+    (assignment_statement
+      (variable_list
+        name: (identifier))
+      (expression_list
+        value: (number))))
+  local_declaration: (variable_declaration
+    (assignment_statement
+      (variable_list
+        name: (identifier)
+        name: (identifier))
+      (expression_list
+        value: (number)
+        value: (number))))
+  local_declaration: (variable_declaration
+    (assignment_statement
+      (variable_list
+        name: (identifier)
+        name: (identifier))
+      (expression_list
+        value: (function_call
+          name: (identifier)
+          arguments: (arguments))
+        value: (function_call
+          name: (method_index_expression
+            table: (identifier)
+            method: (identifier))
+          arguments: (arguments))))))
