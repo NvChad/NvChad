@@ -213,9 +213,7 @@ local plugins = {
   },
 
   -- Speed up deffered plugins
-  ["lewis6991/impatient.nvim"] = {
-    module = "impatient",
-  },
+  ["lewis6991/impatient.nvim"] = { module = "impatient" },
 }
 
 require("core.packer").run(plugins)
