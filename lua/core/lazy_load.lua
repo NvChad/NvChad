@@ -45,6 +45,20 @@ M.on_file_open = function(plugin_name)
   }
 end
 
+M.packer_cmds = {
+  "PackerSnapshot",
+  "PackerSnapshotRollback",
+  "PackerSnapshotDelete",
+  "PackerInstall",
+  "PackerUpdate",
+  "PackerSync",
+  "PackerClean",
+  "PackerCompile",
+  "PackerStatus",
+  "PackerProfile",
+  "PackerLoad",
+}
+
 M.treesitter_cmds = {
   "TSInstall",
   "TSBufEnable",
