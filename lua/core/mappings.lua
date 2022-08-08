@@ -188,7 +188,7 @@ M.lspconfig = {
 
     ["gr"] = {
       function()
-        vim.lsp.buf.references {}
+        vim.lsp.buf.references()
       end,
       "   lsp references",
     },
