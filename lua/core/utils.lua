@@ -45,6 +45,7 @@ M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
       if not keys_to_disable[mode] then
         keys_to_disable[mode] = {}
       end
+      section_keys = (type(section_keys) == "table" and section_keys) or {}
       for k, _ in pairs(section_keys) do
         keys_to_disable[mode][k] = true
       end
