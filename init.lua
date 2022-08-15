@@ -5,8 +5,6 @@ end, 0)
 require "core"
 require "core.options"
 
-require("core.utils").load_mappings()
-
 -- setup packer + plugins
 local fn = vim.fn
 local install_path = fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
@@ -23,3 +21,5 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 pcall(require, "custom")
+
+require("core.utils").load_mappings()
