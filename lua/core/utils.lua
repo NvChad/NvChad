@@ -6,12 +6,10 @@ local merge_tb = vim.tbl_deep_extend
 M.close_buffer = function(bufnr)
   if vim.bo.buftype == "terminal" then
     vim.cmd(vim.bo.buflisted and "set nobl | enew" or "hide")
-  elseif vim.bo.modified then
-    print "save the file bruh"
   else
     bufnr = bufnr or api.nvim_get_current_buf()
     require("core.utils").tabuflinePrev()
-    vim.cmd("bd" .. bufnr)
+    vim.cmd("silent! confirm bd" .. bufnr)
   end
 end
 
