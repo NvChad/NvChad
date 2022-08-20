@@ -6,7 +6,7 @@ end
 
 vim.api.nvim_create_augroup("_mason", { clear = true })
 vim.api.nvim_create_autocmd("Filetype", {
-  pattern = "mason.nvim",
+  pattern = "mason",
   callback = function()
     require("base46").load_highlight "mason"
   end,
