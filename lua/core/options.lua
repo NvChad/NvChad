@@ -55,6 +55,9 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 
+-- auto-wrap comments, don't auto insert comment on o/O and enter
+opt.formatoptions:remove "cro"
+
 g.mapleader = " "
 
 -- disable some builtin vim plugins
