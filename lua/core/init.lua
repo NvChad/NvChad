@@ -42,12 +42,6 @@ autocmd("BufUnload", {
   end,
 })
 
--- Don't auto commenting new lines
-autocmd("BufEnter", {
-  pattern = "*",
-  command = "set fo-=c fo-=r fo-=o",
-})
-
 -- store listed buffers in tab local var
 vim.t.bufs = vim.api.nvim_list_bufs()
 
