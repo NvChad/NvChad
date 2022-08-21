@@ -27,21 +27,6 @@ autocmd("VimEnter", {
   end,
 })
 
--- Disable statusline in dashboard
-autocmd("FileType", {
-  pattern = "alpha",
-  callback = function()
-    vim.opt.laststatus = 0
-  end,
-})
-
-autocmd("BufUnload", {
-  buffer = 0,
-  callback = function()
-    vim.opt.laststatus = 3
-  end,
-})
-
 -- store listed buffers in tab local var
 vim.t.bufs = vim.api.nvim_list_bufs()
 
