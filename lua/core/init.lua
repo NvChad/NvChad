@@ -85,9 +85,3 @@ autocmd("BufDelete", {
     end
   end,
 })
-
--- Auto resize panes
-autocmd("VimResized", {
-  pattern = "*",
-  command = "tabdo wincmd =",
-})
