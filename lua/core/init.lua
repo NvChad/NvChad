@@ -10,7 +10,6 @@ vim.cmd "silent! command! NvChadSnapshotCheckout lua require('nvchad').snap_chec
 
 -- autocmds
 local autocmd = vim.api.nvim_create_autocmd
-local api = vim.api
 
 -- dont list quickfix buffers
 autocmd("FileType", {
@@ -24,43 +23,5 @@ autocmd("FileType", {
 autocmd("VimEnter", {
   callback = function()
     vim.cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerSync lua require('plugins') require('core.utils').packer_sync(<f-args>)"
-  end,
-})
-
--- store listed buffers in tab local var
-vim.t.bufs = vim.api.nvim_list_bufs()
-
--- autocmds for tabufline -> store bufnrs on bufadd, bufenter events
--- thx to https://github.com/ii14 & stores buffer per tab -> table
-autocmd({ "BufAdd", "BufEnter" }, {
-  callback = function(args)
-    if vim.t.bufs == nil then
-      vim.t.bufs = { args.buf }
-    else
-      local bufs = vim.t.bufs
-
-      -- check for duplicates
-      if not vim.tbl_contains(bufs, args.buf) and (args.event == "BufAdd" or vim.bo[args.buf].buflisted) then
-        table.insert(bufs, args.buf)
-        vim.t.bufs = bufs
-      end
-    end
-  end,
-})
-
-autocmd("BufDelete", {
-  callback = function(args)
-    for _, tab in ipairs(api.nvim_list_tabpages()) do
-      local bufs = vim.t[tab].bufs
-      if bufs then
-        for i, bufnr in ipairs(bufs) do
-          if bufnr == args.buf then
-            table.remove(bufs, i)
-            vim.t[tab].bufs = bufs
-            break
-          end
-        end
-      end
-    end
   end,
 })
