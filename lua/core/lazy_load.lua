@@ -79,7 +79,7 @@ M.mason_cmds = {
 M.gitsigns = function()
   autocmd({ "BufRead" }, {
     callback = function()
-      vim.fn.system("git rev-parse " .. vim.fn.expand "%:p:h")
+      vim.fn.system("git rev-parse" .. vim.fn.expand "%:p:h")
       if vim.v.shell_error == 0 then
         vim.schedule(function()
           require("packer").loader "gitsigns.nvim"

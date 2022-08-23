@@ -58,7 +58,7 @@ M.general = {
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
 
     -- new buffer
-    ["<S-b>"] = { "<cmd> enew <CR>", "new buffer" },
+    ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
 
     -- close buffer + hide terminal buffer
     ["<leader>x"] = {
@@ -383,7 +383,7 @@ M.blankline = {
   plugin = true,
 
   n = {
-    ["<leader>bc"] = {
+    ["<leader>cc"] = {
       function()
         local ok, start = require("indent_blankline.utils").get_current_context(
           vim.g.indent_blankline_context_patterns,
