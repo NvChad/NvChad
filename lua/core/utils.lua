@@ -9,7 +9,7 @@ M.close_buffer = function(bufnr)
   else
     bufnr = bufnr or api.nvim_get_current_buf()
     require("core.utils").tabuflinePrev()
-    vim.cmd("silent! confirm bd" .. bufnr)
+    vim.cmd("confirm bd" .. bufnr)
   end
 end
 
