@@ -19,7 +19,7 @@ opt.showmode = false
 
 opt.title = true
 opt.clipboard = "unnamedplus"
-opt.cul = true -- cursor line
+opt.cursorline = true
 
 -- Indenting
 opt.expandtab = true
