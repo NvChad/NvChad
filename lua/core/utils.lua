@@ -99,40 +99,33 @@ M.load_mappings = function(section, mapping_opt)
   end
 end
 
--- remove plugins defined in chadrc
-M.remove_default_plugins = function(plugins)
-  local removals = M.load_config().plugins.remove or {}
-
-  if not vim.tbl_isempty(removals) then
-    for _, plugin in pairs(removals) do
-      plugins[plugin] = nil
-    end
-  end
-
-  return plugins
-end
-
 -- merge default/user plugin tables
 M.merge_plugins = function(default_plugins)
-  local user_plugins = M.load_config().plugins.user
-
-  -- merge default + user plugin table
-  default_plugins = merge_tb("force", default_plugins, user_plugins)
+  default_plugins = merge_tb("force", default_plugins, M.load_config().plugins)
 
   local final_table = {}
 
-  for key, _ in pairs(default_plugins) do
-    default_plugins[key][1] = key
-    final_table[#final_table + 1] = default_plugins[key]
+  for key, val in pairs(default_plugins) do
+    if val then
+      default_plugins[key][1] = key
+      final_table[#final_table + 1] = default_plugins[key]
+    end
   end
 
   return final_table
 end
 
-M.load_override = function(default_table, plugin_name)
-  local user_table = M.load_config().plugins.override[plugin_name] or {}
-  user_table = type(user_table) == "table" and user_table or user_table()
-  return merge_tb("force", default_table, user_table) or {}
+-- override plugin options table with custom ones
+M.load_override = function(options_table, name)
+  local user_plugins = M.load_config().plugins
+  local plugin_options = {}
+
+  if user_plugins[name] then
+    plugin_options = user_plugins[name].override_options or {}
+    plugin_options = type(plugin_options) == "table" and plugin_options or plugin_options()
+  end
+
+  return merge_tb("force", options_table, plugin_options)
 end
 
 M.packer_sync = function(...)
