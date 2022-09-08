@@ -101,11 +101,11 @@ end
 
 -- merge default/user plugin tables
 M.merge_plugins = function(default_plugins)
-	if M.load_config().plugins.remove then
-		for _, v in pairs(M.load_config().plugins.remove) do
-			default_plugins[v] = nil
-		end
-	end
+  if M.load_config().plugins.remove then
+    for _, v in pairs(M.load_config().plugins.remove) do
+      default_plugins[v] = nil
+    end
+  end
 
   local user_plugins = M.load_config().plugins.user and M.load_config().plugins.user or M.load_config().plugins
   default_plugins = merge_tb("force", default_plugins, user_plugins)
