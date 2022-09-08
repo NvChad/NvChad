@@ -219,9 +219,7 @@ if present then
   init_options = require("core.utils").load_override(init_options, "wbthomason/packer.nvim")
   packer.init(init_options)
 
-  packer.startup(function(use)
-    for _, v in pairs(plugins) do
-      use(v)
-    end
-  end)
+  for _, v in pairs(plugins) do
+    packer.use(v)
+  end
 end
