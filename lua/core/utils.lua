@@ -101,7 +101,8 @@ end
 
 -- merge default/user plugin tables
 M.merge_plugins = function(default_plugins)
-  default_plugins = merge_tb("force", default_plugins, M.load_config().plugins)
+  local user_plugins = M.load_config().plugins.user and M.load_config().plugins.user or M.load_config().plugins
+  default_plugins = merge_tb("force", default_plugins, user_plugins)
 
   local final_table = {}
 
@@ -118,11 +119,16 @@ end
 -- override plugin options table with custom ones
 M.load_override = function(options_table, name)
   local user_plugins = M.load_config().plugins
+  -- support old plugin syntax
+  user_plugins = M.load_config().plugins.user and M.load_config().plugins.user or user_plugins
+
   local plugin_options = {}
 
   if user_plugins[name] then
     plugin_options = user_plugins[name].override_options or {}
     plugin_options = type(plugin_options) == "table" and plugin_options or plugin_options()
+  else
+    plugin_options = M.load_config().plugins.override and M.load_config().plugins.override[name] or {}
   end
 
   return merge_tb("force", options_table, plugin_options)
@@ -160,6 +166,10 @@ M.packer_sync = function(...)
 
   if packer_exists then
     packer.sync(...)
+
+    if M.load_config().plugins.user then
+      print "This plugin syntax is depreceated, check the new plugin syntax"
+    end
   else
     error "Packer could not be loaded!"
   end
