@@ -193,7 +193,7 @@ M.packer_sync = function(...)
     local plugins = M.load_config().plugins
     local old_style_options = plugins.user or plugins.override or plugins.remove
     if old_style_options then
-      vim.notify_once({ "NvChad: This plugin syntax is deprecated, use new style config." }, "Error")
+      vim.notify_once("NvChad: This plugin syntax is deprecated, use new style config.", "Error")
     end
   else
     error "Packer could not be loaded!"
