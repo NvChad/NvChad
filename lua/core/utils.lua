@@ -136,7 +136,7 @@ M.load_override = function(options_table, name)
   local plugin_configs, plugin_options = M.load_config().plugins, nil
 
   -- support old plugin syntax for override
-  local user_override = plugin_configs.override and plugin_configs.override[name]
+  local user_override = plugin_configs.user and plugin_configs.user.override and plugin_configs.user.override[name]
   if user_override and type(user_override) == "table" then
     plugin_options = user_override
   end
