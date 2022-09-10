@@ -19,11 +19,7 @@ M.ui = {
   transparency = false,
 }
 
-M.plugins = {
-  override = {},
-  remove = {},
-  user = {},
-}
+M.plugins = {}
 
 -- check core.mappings for table structure
 M.mappings = require "core.mappings"

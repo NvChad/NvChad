@@ -1,14 +1,16 @@
-vim.cmd "packadd packer.nvim"
-
 local plugins = {
 
   ["nvim-lua/plenary.nvim"] = { module = "plenary" },
+
+  ["lewis6991/impatient.nvim"] = {},
+
   ["wbthomason/packer.nvim"] = {
     cmd = require("core.lazy_load").packer_cmds,
     config = function()
       require "plugins"
     end,
   },
+
   ["NvChad/extensions"] = { module = { "telescope", "nvchad" } },
 
   ["NvChad/base46"] = {
@@ -24,7 +26,11 @@ local plugins = {
   ["NvChad/ui"] = {
     after = "base46",
     config = function()
-      require("plugins.configs.others").nvchad_ui()
+      local present, nvchad_ui = pcall(require, "nvchad_ui")
+
+      if present then
+        nvchad_ui.setup()
+      end
     end,
   },
 
@@ -91,7 +97,6 @@ local plugins = {
   },
 
   -- lsp stuff
-
   ["williamboman/mason.nvim"] = {
     cmd = require("core.lazy_load").mason_cmds,
     config = function()
@@ -131,25 +136,11 @@ local plugins = {
     end,
   },
 
-  ["saadparwaiz1/cmp_luasnip"] = {
-    after = "LuaSnip",
-  },
-
-  ["hrsh7th/cmp-nvim-lua"] = {
-    after = "cmp_luasnip",
-  },
-
-  ["hrsh7th/cmp-nvim-lsp"] = {
-    after = "cmp-nvim-lua",
-  },
-
-  ["hrsh7th/cmp-buffer"] = {
-    after = "cmp-nvim-lsp",
-  },
-
-  ["hrsh7th/cmp-path"] = {
-    after = "cmp-buffer",
-  },
+  ["saadparwaiz1/cmp_luasnip"] = { after = "LuaSnip" },
+  ["hrsh7th/cmp-nvim-lua"] = { after = "cmp_luasnip" },
+  ["hrsh7th/cmp-nvim-lsp"] = { after = "cmp-nvim-lua" },
+  ["hrsh7th/cmp-buffer"] = { after = "cmp-nvim-lsp" },
+  ["hrsh7th/cmp-path"] = { after = "cmp-buffer" },
 
   -- misc plugins
   ["windwp/nvim-autopairs"] = {
@@ -212,9 +203,23 @@ local plugins = {
       require("core.utils").load_mappings "whichkey"
     end,
   },
-
-  -- Speed up deffered plugins
-  ["lewis6991/impatient.nvim"] = {},
 }
 
-require("core.packer").run(plugins)
+-- Load all plugins
+local present, packer = pcall(require, "packer")
+
+if present then
+  vim.cmd "packadd packer.nvim"
+
+  -- Override with default plugins with user ones
+  plugins = require("core.utils").merge_plugins(plugins)
+
+  -- load packer init options
+  local init_options = require("plugins.configs.others").packer_init()
+  init_options = require("core.utils").load_override(init_options, "wbthomason/packer.nvim")
+  packer.init(init_options)
+
+  for _, v in pairs(plugins) do
+    packer.use(v)
+  end
+end

@@ -99,40 +99,62 @@ M.load_mappings = function(section, mapping_opt)
   end
 end
 
--- remove plugins defined in chadrc
-M.remove_default_plugins = function(plugins)
-  local removals = M.load_config().plugins.remove or {}
+-- merge default/user plugin tables
+M.merge_plugins = function(default_plugins)
+  local plugin_configs = M.load_config().plugins
+  local user_plugins = plugin_configs
 
-  if not vim.tbl_isempty(removals) then
-    for _, plugin in pairs(removals) do
-      plugins[plugin] = nil
+  -- old plugin syntax for adding plugins
+  if plugin_configs.user and type(plugin_configs.user) == "table" then
+    user_plugins = plugin_configs.user
+  end
+
+  -- support old plugin removal syntax
+  local remove_plugins = plugin_configs.remove
+  if type(remove_plugins) == "table" then
+    for _, v in ipairs(remove_plugins) do
+      default_plugins[v] = nil
     end
   end
 
-  return plugins
-end
-
--- merge default/user plugin tables
-M.merge_plugins = function(default_plugins)
-  local user_plugins = M.load_config().plugins.user
-
-  -- merge default + user plugin table
   default_plugins = merge_tb("force", default_plugins, user_plugins)
 
   local final_table = {}
 
-  for key, _ in pairs(default_plugins) do
-    default_plugins[key][1] = key
-    final_table[#final_table + 1] = default_plugins[key]
+  for key, val in pairs(default_plugins) do
+    if val and type(val) == "table" then
+      default_plugins[key][1] = key
+      final_table[#final_table + 1] = default_plugins[key]
+    end
   end
 
   return final_table
 end
 
-M.load_override = function(default_table, plugin_name)
-  local user_table = M.load_config().plugins.override[plugin_name] or {}
-  user_table = type(user_table) == "table" and user_table or user_table()
-  return merge_tb("force", default_table, user_table) or {}
+-- override plugin options table with custom ones
+M.load_override = function(options_table, name)
+  local plugin_configs, plugin_options = M.load_config().plugins, nil
+
+  -- support old plugin syntax for override
+  local user_override = plugin_configs.user and plugin_configs.user.override and plugin_configs.user.override[name]
+  if user_override and type(user_override) == "table" then
+    plugin_options = user_override
+  end
+
+  -- if no old style plugin override is found, then use the new syntax
+  if not plugin_options and plugin_configs[name] then
+    local override_options = plugin_configs[name].override_options or {}
+    if type(override_options) == "table" then
+      plugin_options = override_options
+    elseif type(override_options) == "function" then
+      plugin_options = override_options()
+    end
+  end
+
+  -- make sure the plugin options are a table
+  plugin_options = type(plugin_options) == "table" and plugin_options or {}
+
+  return merge_tb("force", options_table, plugin_options)
 end
 
 M.packer_sync = function(...)
@@ -167,6 +189,12 @@ M.packer_sync = function(...)
 
   if packer_exists then
     packer.sync(...)
+
+    local plugins = M.load_config().plugins
+    local old_style_options = plugins.user or plugins.override or plugins.remove
+    if old_style_options then
+      vim.notify_once("NvChad: This plugin syntax is deprecated, use new style config.", "Error")
+    end
   else
     error "Packer could not be loaded!"
   end
