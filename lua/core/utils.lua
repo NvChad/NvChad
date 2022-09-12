@@ -100,7 +100,7 @@ M.load_mappings = function(section, mapping_opt)
 end
 
 -- merge default/user plugin tables
-M.merge_plugins = function(default_plugins)
+M.merge_plugins = function(plugins)
   local plugin_configs = M.load_config().plugins
   local user_plugins = plugin_configs
 
@@ -113,18 +113,19 @@ M.merge_plugins = function(default_plugins)
   local remove_plugins = plugin_configs.remove
   if type(remove_plugins) == "table" then
     for _, v in ipairs(remove_plugins) do
-      default_plugins[v] = nil
+      plugins[v] = nil
     end
   end
 
-  default_plugins = merge_tb("force", default_plugins, user_plugins)
+  plugins = merge_tb("force", plugins, user_plugins)
 
   local final_table = {}
 
-  for key, val in pairs(default_plugins) do
+  for key, val in pairs(plugins) do
     if val and type(val) == "table" then
-      default_plugins[key][1] = key
-      final_table[#final_table + 1] = default_plugins[key]
+      plugins[key] = val.rm_default_opts and user_plugins[key] or plugins[key]
+      plugins[key][1] = key
+      final_table[#final_table + 1] = plugins[key]
     end
   end
 
