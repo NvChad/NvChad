@@ -59,14 +59,6 @@ M.general = {
 
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
-
-    -- close buffer + hide terminal buffer
-    ["<leader>x"] = {
-      function()
-        require("core.utils").close_buffer()
-      end,
-      "close buffer",
-    },
   },
 
   t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
@@ -92,20 +84,28 @@ M.tabufline = {
     -- cycle through buffers
     ["<TAB>"] = {
       function()
-        require("core.utils").tabuflineNext()
+        require("nvchad_ui.tabufline").tabuflineNext()
       end,
       "goto next buffer",
     },
 
     ["<S-Tab>"] = {
       function()
-        require("core.utils").tabuflinePrev()
+        require("nvchad_ui.tabufline").tabuflinePrev()
       end,
       "goto prev buffer",
     },
 
     -- pick buffers via numbers
     ["<Bslash>"] = { "<cmd> TbufPick <CR>", "Pick buffer" },
+
+    -- close buffer + hide terminal buffer
+    ["<leader>x"] = {
+      function()
+        require("nvchad_ui.tabufline").close_buffer()
+      end,
+      "close buffer",
+    },
   },
 }
 
