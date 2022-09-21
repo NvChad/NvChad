@@ -1,17 +1,5 @@
 local M = {}
-local api = vim.api
-
 local merge_tb = vim.tbl_deep_extend
-
-M.close_buffer = function(bufnr)
-  if vim.bo.buftype == "terminal" then
-    vim.cmd(vim.bo.buflisted and "set nobl | enew" or "hide")
-  else
-    bufnr = bufnr or api.nvim_get_current_buf()
-    require("core.utils").tabuflinePrev()
-    vim.cmd("confirm bd" .. bufnr)
-  end
-end
 
 M.load_config = function()
   local config = require "core.default_config"
@@ -100,7 +88,7 @@ M.load_mappings = function(section, mapping_opt)
 end
 
 -- merge default/user plugin tables
-M.merge_plugins = function(default_plugins)
+M.merge_plugins = function(plugins)
   local plugin_configs = M.load_config().plugins
   local user_plugins = plugin_configs
 
@@ -113,18 +101,19 @@ M.merge_plugins = function(default_plugins)
   local remove_plugins = plugin_configs.remove
   if type(remove_plugins) == "table" then
     for _, v in ipairs(remove_plugins) do
-      default_plugins[v] = nil
+      plugins[v] = nil
     end
   end
 
-  default_plugins = merge_tb("force", default_plugins, user_plugins)
+  plugins = merge_tb("force", plugins, user_plugins)
 
   local final_table = {}
 
-  for key, val in pairs(default_plugins) do
+  for key, val in pairs(plugins) do
     if val and type(val) == "table" then
-      default_plugins[key][1] = key
-      final_table[#final_table + 1] = default_plugins[key]
+      plugins[key] = val.rm_default_opts and user_plugins[key] or plugins[key]
+      plugins[key][1] = key
+      final_table[#final_table + 1] = plugins[key]
     end
   end
 
@@ -136,7 +125,7 @@ M.load_override = function(options_table, name)
   local plugin_configs, plugin_options = M.load_config().plugins, nil
 
   -- support old plugin syntax for override
-  local user_override = plugin_configs.user and plugin_configs.user.override and plugin_configs.user.override[name]
+  local user_override = plugin_configs.override and plugin_configs.override[name]
   if user_override and type(user_override) == "table" then
     plugin_options = user_override
   end
@@ -197,61 +186,6 @@ M.packer_sync = function(...)
     end
   else
     error "Packer could not be loaded!"
-  end
-end
-
-M.bufilter = function()
-  local bufs = vim.t.bufs or nil
-
-  if not bufs then
-    return {}
-  end
-
-  for i = #bufs, 1, -1 do
-    if not vim.api.nvim_buf_is_valid(bufs[i]) then
-      table.remove(bufs, i)
-    end
-  end
-
-  return bufs
-end
-
-M.tabuflineNext = function()
-  local bufs = M.bufilter() or {}
-
-  for i, v in ipairs(bufs) do
-    if api.nvim_get_current_buf() == v then
-      vim.cmd(i == #bufs and "b" .. bufs[1] or "b" .. bufs[i + 1])
-      break
-    end
-  end
-end
-
-M.tabuflinePrev = function()
-  local bufs = M.bufilter() or {}
-
-  for i, v in ipairs(bufs) do
-    if api.nvim_get_current_buf() == v then
-      vim.cmd(i == 1 and "b" .. bufs[#bufs] or "b" .. bufs[i - 1])
-      break
-    end
-  end
-end
-
--- closes tab + all of its buffers
-M.closeAllBufs = function(action)
-  local bufs = vim.t.bufs
-
-  if action == "closeTab" then
-    vim.cmd "tabclose"
-  end
-
-  for _, buf in ipairs(bufs) do
-    M.close_buffer(buf)
-  end
-
-  if action ~= "closeTab" then
-    vim.cmd "enew"
   end
 end
 
