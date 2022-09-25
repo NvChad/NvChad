@@ -16,6 +16,7 @@ M.plugins = {
       require "custom.plugins.lspconfig"
     end,
     },
+    ["sbdchd/neoformat"] = {},
   }
 }
 

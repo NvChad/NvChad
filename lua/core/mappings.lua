@@ -227,12 +227,7 @@ M.lspconfig = {
       "diagnostic setloclist",
     },
 
-    ["<leader>fm"] = {
-      function()
-        vim.lsp.buf.format{async = true}
-      end,
-      "lsp formatting",
-    },
+    ["<leader>fm"] = {"<cmd> :Neoformat<CR>","Format all files"},
 
     ["<leader>wa"] = {
       function()
