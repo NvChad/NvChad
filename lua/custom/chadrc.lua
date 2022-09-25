@@ -3,8 +3,20 @@
 local M = {}
 
 M.ui = {
-  theme = "ayu-dark",
+  theme = "nightfox",
   transparency = true,
+}
+
+M.plugins = {
+
+  user = {
+   ["neovim/nvim-lspconfig"] = {
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.plugins.lspconfig"
+    end,
+    },
+  }
 }
 
 return M
