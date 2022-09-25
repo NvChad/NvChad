@@ -3,7 +3,7 @@
 local M = {}
 
 M.ui = {
-  theme = "nightfox",
+  theme = "nord",
   transparency = true,
 }
 
