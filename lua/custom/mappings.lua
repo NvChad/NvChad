@@ -4,6 +4,8 @@ local M = {}
 M.general = {
   n = {
     [";"] = { ":", "command mode", opts = { nowait = true } },
+    ["<S-h>"] = {"<cmd> bprevious <CR>", "previous buffer"},
+    ["<S-l>"] = {"<cmd> bnext <CR>", "next buffer"},
   },
 
   i = {
