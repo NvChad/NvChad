@@ -7,7 +7,7 @@ local sources = {
   -- b.formatting.prettierd.with { filetypes = { "html", "markdown", "css" } },
   -- b.formatting.deno_fmt,
 
-  b.formatting.autopep8, -- python
+  b.formatting.black, -- python
   b.formatting.lua_format, -- lua
   b.formatting.shfmt, -- shell
   -- b.diagnostics.shellcheck.with {diagnostics_format = "#{m} [#{c}]"}, -- shell
