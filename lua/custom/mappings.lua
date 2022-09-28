@@ -10,13 +10,8 @@ M.general = {
 }
 M.comment = {
   -- toggle comment in both modes
-  n = {["<C-_>"] = {function() require("Comment.api").toggle_current_linewise() end, "蘒  toggle comment"}},
-
-  v = {
-    ["<C-_>"] = {
-      "<ESC><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "蘒  toggle comment"
-    }
-  }
+  n = {["<C-_>"] = {function() require("Comment.api").toggle.linewise.current() end, "toggle comment"}},
+  v = {["<C-_>"] = {"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", "toggle comment"}}
 }
 
 M.gitsigns = {
@@ -111,6 +106,5 @@ M.jupyter = {
   },
   v = {["<leader><leader>e"] = {"<Plug>JupyterRunVisual", "jupyter run visual"}}
 }
-
 
 return M
