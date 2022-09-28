@@ -43,14 +43,14 @@ local schemas = {
 local M = {}
 
 local local_capabilities = {}
-M.create_config = function(attach, capabilities)
+M.create_config = function(injected_attach, injected_capabilities)
   return {
     on_attach = function(client, bufnr)
-      attach(client, bufnr)
+      injected_attach(client, bufnr)
       client.resolved_capabilities.document_formatting = true
       client.resolved_capabilities.document_range_formatting = true
     end,
-    capabilities = vim.tbl_deep_extend("force", capabilities, local_capabilities),
+    capabilities = vim.tbl_deep_extend("force", injected_capabilities, local_capabilities),
     settings = {json = {schemas = schemas}},
     setup = {commands = {Format = {function() vim.lsp.buf.range_formatting({}, {0, 0}, {vim.fn.line "$", 0}) end}}}
   }
