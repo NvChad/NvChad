@@ -26,7 +26,15 @@ M.additional_plugins = {
   ["jpalardy/vim-slime"] = {},
   ["editorconfig/editorconfig-vim"] = {},
   ["alvan/vim-closetag"] = {},
-  ["jupyter-vim/jupyter-vim"] = {}
+  ["jupyter-vim/jupyter-vim"] = {},
+
+  -- list of supported competitive porgramming web sites
+  -- https://github.com/jmerle/competitive-companion
+  ["MunifTanjim/nui.nvim"] = {},
+  ["xeluxee/competitest.nvim"] = {
+    requires = 'MunifTanjim/nui.nvim',
+    config = function() require'competitest'.setup() end
+  }
 }
 
 return M
