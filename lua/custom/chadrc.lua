@@ -16,6 +16,12 @@ M.plugins = {
       require "custom.plugins.lspconfig"
     end,
     },
+    ["simrat39/rust-tools.nvim"] = {
+    after = "nvim-lspconfig",
+    config = function()
+      require "custom.plugins.rust-tools"
+    end,
+  },
     ["sbdchd/neoformat"] = {},
     ["kyazdani42/nvim-tree.lua"] = {
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
