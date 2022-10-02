@@ -3,8 +3,8 @@
 local M = {}
 
 M.ui = {
-  theme = "doomchad",
-  transparency = true,
+  theme = "gruvchad",
+  transparency = false,
 }
 
 M.plugins = require "custom.plugins"
