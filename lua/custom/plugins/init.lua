@@ -11,6 +11,11 @@ return {
       require "custom.plugins.rust-tools"
     end,
   },
+  ["wbthomason/packer.nvim"] = {
+    options = {
+      ensure_install = {  "lua-language-server" , "pyright", "clangd", "rust-analyzer"}
+    }
+  },
     ["sbdchd/neoformat"] = {},
     ["kyazdani42/nvim-tree.lua"] = {
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
