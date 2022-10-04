@@ -229,7 +229,7 @@ M.lspconfig = {
 
     ["<leader>fm"] = {
       function()
-        vim.lsp.buf.formatting {}
+        vim.lsp.buf.format { async = true }
       end,
       "lsp formatting",
     },
@@ -408,7 +408,7 @@ M.gitsigns = {
   plugin = true,
 
   n = {
-    -- Navigation
+    -- Navigation through hunks
     ["]c"] = {
       function()
         if vim.wo.diff then
@@ -422,6 +422,7 @@ M.gitsigns = {
       "Jump to next hunk",
       opts = { expr = true },
     },
+
     ["[c"] = {
       function()
         if vim.wo.diff then
@@ -437,102 +438,32 @@ M.gitsigns = {
     },
 
     -- Actions
-    ["<leader>hs"] = {
-      function()
-        require("gitsigns").stage_hunk()
-      end,
-    "Stage hunk",
-    },
-    ["<leader>hr"] = {
+    ["<leader>rh"] = {
       function()
         require("gitsigns").reset_hunk()
       end,
       "Reset hunk",
     },
-    ["<leader>hS"] = {
-      function()
-        require("gitsigns").stage_buffer()
-      end,
-      "Stage buffer",
-    },
-    ["<leader>hu"] = {
-      function()
-        require("gitsigns").undo_stage_hunk()
-      end,
-      "Undo stage hunk",
-    },
-    ["<leader>hR"] = {
-      function()
-        require("gitsigns").reset_buffer()
-      end,
-      "Reset buffer",
-    },
-    ["<leader>hp"] = {
+
+    ["<leader>ph"] = {
       function()
         require("gitsigns").preview_hunk()
       end,
       "Preview hunk",
     },
-    ["<leader>hb"] = {
+
+    ["<leader>gb"] = {
       function()
-        package.loaded.gitsigns.blame_line { full = true }
+        package.loaded.gitsigns.blame_line()
       end,
       "Blame line",
     },
-    ["<leader>tb"] = {
-      function()
-        require("gitsigns").toggle_current_line_blame()
-      end,
-      "Toggle current line blame",
-    },
+
     ["<leader>td"] = {
       function()
         require("gitsigns").toggle_deleted()
       end,
       "Toggle deleted",
-    },
-    ["<leader>hd"] = {
-      function()
-        require("gitsigns").diffthis()
-      end,
-      "Diff against the index",
-    },
-    ["<leader>hD"] = {
-      function()
-        require("gitsigns").diffthis "~"
-      end,
-      "Diff against the last commit",
-    },
-  },
-  v = {
-    -- Actions
-    ["<leader>hs"] = {
-      function()
-        require("gitsigns").stage_hunk()
-      end,
-      "Stage hunk",
-    },
-    ["<leader>hr"] = {
-      function ()
-        require("gitsigns").reset_hunk()
-      end,
-      "Reset hunk",
-    },
-  },
-  x = {
-    ["ih"] = {
-      function ()
-        require("gitsigns").select_hunk()
-      end,
-      "Reset hunk",
-    },
-  },
-  o = {
-    ["ih"] = {
-      function ()
-        require("gitsigns").select_hunk()
-      end,
-      "Reset hunk",
     },
   },
 }
