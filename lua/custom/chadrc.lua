@@ -3,7 +3,7 @@
 local M = {}
 
 M.ui = {
-  theme = "gruvchad",
+  theme = "radium",
   transparency = false,
 }
 

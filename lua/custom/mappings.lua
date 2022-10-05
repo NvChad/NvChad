@@ -12,6 +12,22 @@ M.general = {
     ["jk"] = { "<ESC>", "escape vim" },
   },
 }
+
+M.rust = {
+
+  n = {
+    ["<leader>rr"] = {
+      function ()
+        require('rust-tools').runnables.runnables()
+      end,
+    },
+    ["<leader>rc"] = {
+      function ()
+        require'rust-tools'.open_cargo_toml.open_cargo_toml()
+      end,
+    },
+  },
+};
 M.gitsigns = {
   n = {
 
