@@ -1,3 +1,4 @@
+local button = require("core.utils").alpha_button
 local present, alpha = pcall(require, "alpha")
 
 if not present then
@@ -5,34 +6,6 @@ if not present then
 end
 
 require("base46").load_highlight "alpha"
-
-local function button(sc, txt, keybind)
-  local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
-
-  local opts = {
-    position = "center",
-    text = txt,
-    shortcut = sc,
-    cursor = 5,
-    width = 36,
-    align_shortcut = "right",
-    hl = "AlphaButtons",
-  }
-
-  if keybind then
-    opts.keymap = { "n", sc_, keybind, { noremap = true, silent = true } }
-  end
-
-  return {
-    type = "button",
-    val = txt,
-    on_press = function()
-      local key = vim.api.nvim_replace_termcodes(sc_, true, false, true) or ""
-      vim.api.nvim_feedkeys(key, "normal", false)
-    end,
-    opts = opts,
-  }
-end
 
 -- dynamic header padding
 local fn = vim.fn
