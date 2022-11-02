@@ -65,7 +65,7 @@ M.gitsigns = function()
   autocmd({ "BufRead" }, {
     group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
     callback = function()
-      vim.fn.system("git rev-parse " .. vim.fn.expand "%:p:h")
+      vim.fn.system("git -C " .. vim.fn.expand "%:p:h" .. " status")
       if vim.v.shell_error == 0 then
         vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
         vim.schedule(function()
