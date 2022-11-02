@@ -8,3 +8,6 @@ mason
 undo
 telescope_history
 rplugin.vim
+ftplugin
+coc-settings.json
+.luarc.json

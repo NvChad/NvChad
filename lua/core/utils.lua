@@ -1,19 +1,5 @@
 local M = {}
-local api = vim.api
-
 local merge_tb = vim.tbl_deep_extend
-
-M.close_buffer = function(bufnr)
-  if vim.bo.buftype == "terminal" then
-    vim.cmd(vim.bo.buflisted and "set nobl | enew" or "hide")
-  elseif vim.bo.modified then
-    print "save the file bruh"
-  else
-    bufnr = bufnr or api.nvim_get_current_buf()
-    require("core.utils").tabuflinePrev()
-    vim.cmd("bd" .. bufnr)
-  end
-end
 
 M.load_config = function()
   local config = require "core.default_config"
@@ -22,8 +8,8 @@ M.load_config = function()
   if chadrc_exists then
     -- merge user config if it exists and is a table; otherwise display an error
     if type(chadrc) == "table" then
-      M.remove_default_keys()
-      config = merge_tb("force", config, chadrc)
+      config.mappings = M.remove_disabled_keys(chadrc.mappings, config.mappings)
+      config = merge_tb("force", config, chadrc) or {}
     else
       error "chadrc must return a table!"
     end
@@ -33,108 +19,131 @@ M.load_config = function()
   return config
 end
 
-M.remove_default_keys = function()
-  local chadrc = require "custom.chadrc"
-  local user_mappings = chadrc.mappings or {}
-  local user_keys = {}
-  local user_sections = vim.tbl_keys(user_mappings)
-
-  -- push user_map keys in user_keys table
-  for _, section in ipairs(user_sections) do
-    user_keys = vim.tbl_deep_extend("force", user_keys, user_mappings[section])
+M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
+  if not chadrc_mappings then
+    return default_mappings
   end
 
-  local function disable_key(mode, keybind, mode_mapping)
-    local keys_in_mode = vim.tbl_keys(user_keys[mode] or {})
-
-    if vim.tbl_contains(keys_in_mode, keybind) then
-      mode_mapping[keybind] = nil
-    end
-  end
-
-  local default_mappings = require("core.default_config").mappings
-
-  -- remove user_maps from default mapping table
-  for _, section_mappings in pairs(default_mappings) do
-    for mode, mode_mapping in pairs(section_mappings) do
-      for keybind, _ in pairs(mode_mapping) do
-        disable_key(mode, keybind, mode_mapping)
+  -- store keys in a array with true value to compare
+  local keys_to_disable = {}
+  for _, mappings in pairs(chadrc_mappings) do
+    for mode, section_keys in pairs(mappings) do
+      if not keys_to_disable[mode] then
+        keys_to_disable[mode] = {}
+      end
+      section_keys = (type(section_keys) == "table" and section_keys) or {}
+      for k, _ in pairs(section_keys) do
+        keys_to_disable[mode][k] = true
       end
     end
   end
-end
 
-M.load_mappings = function(mappings, mapping_opt)
-  -- set mapping function with/without whichkey
-  local set_maps
-  local whichkey_exists, wk = pcall(require, "which-key")
-
-  if whichkey_exists then
-    set_maps = function(keybind, mapping_info, opts)
-      wk.register({ [keybind] = mapping_info }, opts)
-    end
-  else
-    set_maps = function(keybind, mapping_info, opts)
-      local mode = opts.mode
-      opts.mode = nil
-      vim.keymap.set(mode, keybind, mapping_info[1], opts)
+  -- make a copy as we need to modify default_mappings
+  for section_name, section_mappings in pairs(default_mappings) do
+    for mode, mode_mappings in pairs(section_mappings) do
+      mode_mappings = (type(mode_mappings) == "table" and mode_mappings) or {}
+      for k, _ in pairs(mode_mappings) do
+        -- if key if found then remove from default_mappings
+        if keys_to_disable[mode] and keys_to_disable[mode][k] then
+          default_mappings[section_name][mode][k] = nil
+        end
+      end
     end
   end
 
-  mappings = mappings or vim.deepcopy(M.load_config().mappings)
-  mappings.lspconfig = nil
+  return default_mappings
+end
 
-  for _, section in pairs(mappings) do
-    for mode, mode_values in pairs(section) do
+M.load_mappings = function(section, mapping_opt)
+  local function set_section_map(section_values)
+    if section_values.plugin then
+      return
+    end
+    section_values.plugin = nil
+
+    for mode, mode_values in pairs(section_values) do
+      local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
       for keybind, mapping_info in pairs(mode_values) do
         -- merge default + user opts
-        local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
         local opts = merge_tb("force", default_opts, mapping_info.opts or {})
 
-        if mapping_info.opts then
-          mapping_info.opts = nil
-        end
+        mapping_info.opts, opts.mode = nil, nil
+        opts.desc = mapping_info[2]
 
-        set_maps(keybind, mapping_info, opts)
+        vim.keymap.set(mode, keybind, mapping_info[1], opts)
       end
     end
   end
-end
 
--- remove plugins defined in chadrc
-M.remove_default_plugins = function(plugins)
-  local removals = M.load_config().plugins.remove or {}
+  local mappings = require("core.utils").load_config().mappings
 
-  if not vim.tbl_isempty(removals) then
-    for _, plugin in pairs(removals) do
-      plugins[plugin] = nil
-    end
+  if type(section) == "string" then
+    mappings[section]["plugin"] = nil
+    mappings = { mappings[section] }
   end
 
-  return plugins
+  for _, sect in pairs(mappings) do
+    set_section_map(sect)
+  end
 end
 
 -- merge default/user plugin tables
-M.merge_plugins = function(default_plugins)
-  local user_plugins = M.load_config().plugins.user
+M.merge_plugins = function(plugins)
+  local plugin_configs = M.load_config().plugins
+  local user_plugins = plugin_configs
 
-  -- merge default + user plugin table
-  default_plugins = merge_tb("force", default_plugins, user_plugins)
+  -- old plugin syntax for adding plugins
+  if plugin_configs.user and type(plugin_configs.user) == "table" then
+    user_plugins = plugin_configs.user
+  end
+
+  -- support old plugin removal syntax
+  local remove_plugins = plugin_configs.remove
+  if type(remove_plugins) == "table" then
+    for _, v in ipairs(remove_plugins) do
+      plugins[v] = nil
+    end
+  end
+
+  plugins = merge_tb("force", plugins, user_plugins)
 
   local final_table = {}
 
-  for key, _ in pairs(default_plugins) do
-    default_plugins[key][1] = key
-    final_table[#final_table + 1] = default_plugins[key]
+  for key, val in pairs(plugins) do
+    if val and type(val) == "table" then
+      plugins[key] = val.rm_default_opts and user_plugins[key] or plugins[key]
+      plugins[key][1] = key
+      final_table[#final_table + 1] = plugins[key]
+    end
   end
 
   return final_table
 end
 
-M.load_override = function(default_table, plugin_name)
-  local user_table = M.load_config().plugins.override[plugin_name] or {}
-  user_table = type(user_table) == "table" and user_table or user_table()
-  return merge_tb("force", default_table, user_table)
+-- override plugin options table with custom ones
+M.load_override = function(options_table, name)
+  local plugin_configs, plugin_options = M.load_config().plugins, nil
+
+  -- support old plugin syntax for override
+  local user_override = plugin_configs.override and plugin_configs.override[name]
+  if user_override and type(user_override) == "table" then
+    plugin_options = user_override
+  end
+
+  -- if no old style plugin override is found, then use the new syntax
+  if not plugin_options and plugin_configs[name] then
+    local override_options = plugin_configs[name].override_options or {}
+    if type(override_options) == "table" then
+      plugin_options = override_options
+    elseif type(override_options) == "function" then
+      plugin_options = override_options()
+    end
+  end
+
+  -- make sure the plugin options are a table
+  plugin_options = type(plugin_options) == "table" and plugin_options or {}
+
+  return merge_tb("force", options_table, plugin_options)
 end
 
 M.packer_sync = function(...)
@@ -169,59 +178,14 @@ M.packer_sync = function(...)
 
   if packer_exists then
     packer.sync(...)
+
+    local plugins = M.load_config().plugins
+    local old_style_options = plugins.user or plugins.override or plugins.remove
+    if old_style_options then
+      vim.notify_once("NvChad: This plugin syntax is deprecated, use new style config.", "Error")
+    end
   else
     error "Packer could not be loaded!"
-  end
-end
-
-M.bufilter = function()
-  local bufs = vim.t.bufs
-
-  for i = #bufs, 1, -1 do
-    if not vim.api.nvim_buf_is_valid(bufs[i]) then
-      table.remove(bufs, i)
-    end
-  end
-
-  return bufs
-end
-
-M.tabuflineNext = function()
-  local bufs = M.bufilter() or {}
-
-  for i, v in ipairs(bufs) do
-    if api.nvim_get_current_buf() == v then
-      vim.cmd(i == #bufs and "b" .. bufs[1] or "b" .. bufs[i + 1])
-      break
-    end
-  end
-end
-
-M.tabuflinePrev = function()
-  local bufs = M.bufilter() or {}
-
-  for i, v in ipairs(bufs) do
-    if api.nvim_get_current_buf() == v then
-      vim.cmd(i == 1 and "b" .. bufs[#bufs] or "b" .. bufs[i - 1])
-      break
-    end
-  end
-end
-
--- closes tab + all of its buffers
-M.closeAllBufs = function(action)
-  local bufs = vim.t.bufs
-
-  if action == "closeTab" then
-    vim.cmd "tabclose"
-  end
-
-  for _, buf in ipairs(bufs) do
-    M.close_buffer(buf)
-  end
-
-  if action ~= "closeTab" then
-    vim.cmd "enew"
   end
 end
 
