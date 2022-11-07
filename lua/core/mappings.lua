@@ -21,6 +21,8 @@ M.general = {
 
   n = {
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
+    -- split vertically
+    ["<C-Bslash>"] = { "<cmd> vsplit <CR>", "split vertically" },
 
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "window left" },
@@ -112,9 +114,9 @@ M.tabufline = {
 M.comment = {
   plugin = true,
 
-  -- toggle comment in both modes
+  -- toggle comment in both modes using Ctrl-/
   n = {
-    ["<leader>/"] = {
+    ["<C-_>"] = {
       function()
         require("Comment.api").toggle.linewise.current()
       end,
@@ -123,7 +125,7 @@ M.comment = {
   },
 
   v = {
-    ["<leader>/"] = {
+    ["<C-_>"] = {
       "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
       "toggle comment",
     },
