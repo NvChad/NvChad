@@ -37,7 +37,6 @@ M.blankline = function()
     filetype_exclude = {
       "help",
       "terminal",
-      "alpha",
       "packer",
       "lspinfo",
       "TelescopePrompt",

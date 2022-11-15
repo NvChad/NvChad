@@ -150,14 +150,6 @@ local plugins = {
     end,
   },
 
-  ["goolord/alpha-nvim"] = {
-    after = "base46",
-    disable = true,
-    config = function()
-      require "plugins.configs.alpha"
-    end,
-  },
-
   ["numToStr/Comment.nvim"] = {
     module = "Comment",
     keys = { "gc", "gb" },
@@ -171,7 +163,6 @@ local plugins = {
 
   -- file managing , picker etc
   ["kyazdani42/nvim-tree.lua"] = {
-    ft = "alpha",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     config = function()
       require "plugins.configs.nvimtree"
