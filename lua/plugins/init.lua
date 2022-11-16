@@ -14,6 +14,7 @@ local plugins = {
   ["NvChad/extensions"] = { module = { "telescope", "nvchad" } },
 
   ["NvChad/base46"] = {
+    branch = "dev",
     config = function()
       local ok, base46 = pcall(require, "base46")
 
@@ -25,6 +26,7 @@ local plugins = {
 
   ["NvChad/ui"] = {
     after = "base46",
+    branch = "dev",
     config = function()
       local present, nvchad_ui = pcall(require, "nvchad_ui")
 
