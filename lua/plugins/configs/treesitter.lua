@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-require("base46").load_highlight "treesitter"
+require "base46_cache.treesitter"
 
 local options = {
   ensure_installed = {

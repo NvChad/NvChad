@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-require("base46").load_highlight "whichkey"
+require "base46_cache.whichkey"
 
 local options = {
 

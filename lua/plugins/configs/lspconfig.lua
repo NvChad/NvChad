@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-require("base46").load_highlight "lsp"
+require "base46_cache.lsp"
 require "nvchad_ui.lsp"
 
 local M = {}

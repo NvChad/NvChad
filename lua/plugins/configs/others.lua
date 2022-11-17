@@ -30,7 +30,7 @@ M.blankline = function()
     return
   end
 
-  require("base46").load_highlight "blankline"
+  require "base46_cache.blankline"
 
   local options = {
     indentLine_enabled = 1,
@@ -135,7 +135,7 @@ M.gitsigns = function()
     return
   end
 
-  require("base46").load_highlight "git"
+  require "base46_cache.git"
 
   local options = {
     signs = {
@@ -159,7 +159,7 @@ M.devicons = function()
   local present, devicons = pcall(require, "nvim-web-devicons")
 
   if present then
-    require("base46").load_highlight "devicons"
+    require "base46_cache.devicons"
 
     local options = { override = require("nvchad_ui.icons").devicons }
     options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons")
