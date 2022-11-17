@@ -29,7 +29,7 @@ local plugins = {
   ["NvChad/base46"] = {
     branch = "dev",
     config = function()
-      require "base46_cache.defaults"
+      pcall(require, "base46_cache.defaults")
     end,
   },
 

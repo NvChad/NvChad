@@ -16,10 +16,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
 
   os.execute("mkdir -p " .. vim.fn.stdpath "data" .. "/site/pack/base46_cache/start/compiled_themes/lua/base46_cache/")
 
-  require("base46").compile()
-
   -- install plugins + compile their configs
   vim.cmd "packadd packer.nvim"
+
   require "plugins"
   vim.cmd "PackerSync"
 
@@ -27,6 +26,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.api.nvim_create_autocmd("User", {
     pattern = "PackerComplete",
     callback = function()
+      require("base46").compile()
+      require("base46").load_all_highlights()
+
       vim.cmd "bw | silent! MasonInstallAll" -- close packer window
       require("packer").loader "nvim-treesitter"
     end,
