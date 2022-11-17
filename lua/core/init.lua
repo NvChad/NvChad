@@ -25,3 +25,9 @@ autocmd("VimEnter", {
     vim.cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerSync lua require('plugins') require('core.utils').packer_sync(<f-args>)"
   end,
 })
+
+local new_cmd = vim.api.nvim_create_user_command
+
+new_cmd("CompileNvTheme", function()
+  require("base46").compile()
+end, {})
