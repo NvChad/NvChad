@@ -29,7 +29,9 @@ local plugins = {
   ["NvChad/base46"] = {
     branch = "dev",
     config = function()
-      loadfile(vim.g.base46_cache .. "defaults")()
+      pcall(function()
+        loadfile(vim.g.base46_cache .. "defaults")()
+      end)
     end,
   },
 
