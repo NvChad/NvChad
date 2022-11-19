@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-require "base46_cache.treesitter"
+loadfile(vim.g.base46_cache .. "treesitter")()
 
 local options = {
   ensure_installed = {

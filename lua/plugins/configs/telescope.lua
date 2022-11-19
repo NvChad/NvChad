@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-require "base46_cache.telescope"
+loadfile(vim.g.base46_cache .. "telescope")()
 
 local options = {
   defaults = {

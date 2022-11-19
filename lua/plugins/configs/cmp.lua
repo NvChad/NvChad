@@ -4,7 +4,7 @@ if not present then
   return
 end
 
-require "base46_cache.cmp"
+loadfile(vim.g.base46_cache .. "cmp")()
 
 vim.o.completeopt = "menu,menuone,noselect"
 

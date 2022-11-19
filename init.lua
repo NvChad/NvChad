@@ -14,7 +14,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   print "Cloning packer .."
   fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
 
-  os.execute("mkdir -p " .. vim.fn.stdpath "data" .. "/site/pack/base46_cache/start/compiled_themes/lua/base46_cache/")
+  os.execute("mkdir -p " .. vim.g.base46_cache)
 
   -- install plugins + compile their configs
   vim.cmd "packadd packer.nvim"
