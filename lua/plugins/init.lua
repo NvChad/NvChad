@@ -225,8 +225,6 @@ local plugins = {
 local present, packer = pcall(require, "packer")
 
 if present then
-  vim.cmd "packadd packer.nvim"
-
   -- Override with default plugins with user ones
   plugins = require("core.utils").merge_plugins(plugins)
 
