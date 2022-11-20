@@ -4,6 +4,7 @@ if not present then
   return
 end
 
+loadfile(vim.g.base46_cache .. "syntax")()
 loadfile(vim.g.base46_cache .. "treesitter")()
 
 local options = {
