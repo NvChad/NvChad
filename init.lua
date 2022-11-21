@@ -26,7 +26,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.api.nvim_create_autocmd("User", {
     pattern = "PackerComplete",
     callback = function()
-      require("base46").compile()
       require("base46").load_all_highlights()
 
       vim.cmd "bw | silent! MasonInstallAll" -- close packer window

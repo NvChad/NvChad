@@ -29,5 +29,5 @@ autocmd("VimEnter", {
 local new_cmd = vim.api.nvim_create_user_command
 
 new_cmd("CompileNvTheme", function()
-  require("base46").compile()
+  require("base46").load_all_highlights()
 end, {})
