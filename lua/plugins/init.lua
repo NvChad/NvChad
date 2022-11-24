@@ -39,11 +39,7 @@ local plugins = {
     after = "base46",
     branch = "dev",
     config = function()
-      local present, nvchad_ui = pcall(require, "nvchad_ui")
-
-      if present then
-        nvchad_ui.setup()
-      end
+      pcall(require, "nvchad_ui")
     end,
   },
 
