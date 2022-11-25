@@ -32,6 +32,7 @@ M.ui = {
 
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
+    theme = "default",
     separator_style = "default", -- default/round/block/arrow
     overriden_modules = nil,
   },
