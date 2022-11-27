@@ -32,8 +32,10 @@ M.ui = {
 
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
-    theme = "default",
-    separator_style = "default", -- default/round/block/arrow
+    theme = "default", -- default/vscode/vscode_colored/minimal
+    -- default/round/block/arrow separators work only for default statusline theme
+    -- round and block will work for minimal theme only
+    separator_style = "default",
     overriden_modules = nil,
   },
 
