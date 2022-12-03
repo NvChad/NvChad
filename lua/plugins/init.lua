@@ -27,16 +27,11 @@ local plugins = {
   ["NvChad/extensions"] = { module = { "telescope", "nvchad" } },
 
   ["NvChad/base46"] = {
+    module = "base46",
     branch = "dev",
-    config = function()
-      pcall(function()
-        loadfile(vim.g.base46_cache .. "defaults")()
-      end)
-    end,
   },
 
   ["NvChad/ui"] = {
-    after = "base46",
     branch = "dev",
     config = function()
       pcall(require, "nvchad_ui")
