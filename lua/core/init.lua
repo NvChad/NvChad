@@ -2,11 +2,31 @@
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "data" .. "/mason/bin"
 
--- commands
-vim.cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
-vim.cmd "silent! command! NvChadSnapshotCreate lua require('nvchad').snap_create()"
-vim.cmd "silent! command! NvChadSnapshotDelete lua require('nvchad').snap_delete()"
-vim.cmd "silent! command! NvChadSnapshotCheckout lua require('nvchad').snap_checkout()"
+local new_cmd = vim.api.nvim_create_user_command
+
+new_cmd("CompileNvTheme", function()
+  require("base46").load_all_highlights()
+end, {})
+
+new_cmd("NvChadUpdate", function()
+  require("nvchad").update_nvchad()
+end, {})
+
+new_cmd("NvChadSnapshotCreate", function()
+  require("nvchad").snap_create()
+end, {})
+
+new_cmd("NvChadSnapshotDelete", function()
+  require("nvchad").snap_delete()
+end, {})
+
+new_cmd("NvChadSnapshotCheckout", function()
+  require("nvchad").snap_checkout()
+end, {})
+
+new_cmd("NvChadUpdate", function()
+  require("nvchad").update_nvchad()
+end, {})
 
 -- autocmds
 local autocmd = vim.api.nvim_create_autocmd
@@ -25,9 +45,3 @@ autocmd("VimEnter", {
     vim.cmd "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerSync lua require('plugins') require('core.utils').packer_sync(<f-args>)"
   end,
 })
-
-local new_cmd = vim.api.nvim_create_user_command
-
-new_cmd("CompileNvTheme", function()
-  require("base46").load_all_highlights()
-end, {})

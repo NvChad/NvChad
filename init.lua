@@ -34,6 +34,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
 
       vim.cmd "bw | silent! MasonInstallAll" -- close packer window
       require("packer").loader "nvim-treesitter"
+
+      local statusline_theme = require("core.utils").load_config().ui.statusline.theme
+      vim.opt.statusline = "%!v:lua.require('nvchad_ui.statusline." .. statusline_theme .. "').run()"
     end,
   })
 end
