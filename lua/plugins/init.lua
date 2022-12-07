@@ -24,7 +24,7 @@ local plugins = {
     end,
   },
 
-  ["NvChad/extensions"] = { module = { "telescope", "nvchad" } },
+  ["NvChad/extensions"] = { branch = "dev", module = { "telescope", "nvchad" } },
 
   ["NvChad/base46"] = {
     module = "base46",
