@@ -1,0 +1,3 @@
+[submodule "lua/custom"]
+	path = lua/custom
+	url = https://github.com/a5420bc/custom.git
