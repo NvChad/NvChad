@@ -50,20 +50,12 @@ local function border(hl_name)
   }
 end
 
-local cmp_window = require "cmp.utils.window"
-
-cmp_window.info_ = cmp_window.info
-cmp_window.info = function(self)
-  local info = self:info_()
-  info.scrollable = false
-  return info
-end
-
 local options = {
   window = {
     completion = {
       side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
       winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+      scrollbar = false,
     },
     documentation = {
       border = border "CmpDocBorder",
