@@ -66,6 +66,10 @@ M.buf = {
 
 M.telescope = {
   n = {
+    ["<A-f>"] = {
+      ":Telescope grep_string search=",
+      "search word"
+    },
     ["<leader>fc"] = {
       "<cmd>Telescope lsp_document_symbols symbols={'function','method'}<CR>",
       "find function",
