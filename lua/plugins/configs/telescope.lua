@@ -94,6 +94,8 @@ local options = {
   },
 }
 
+vim.keymap.set("n", "<leader>fa", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+
 -- check for any override
 options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
 telescope.setup(options)
