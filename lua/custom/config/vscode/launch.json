@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type" : "go",
+      "name" : "Debug",
+      "request" : "launch",
+      "program" : "${workspaceFolder}"
+    },
+    {
+      "type" : "goremote",
+      "name" : "RemoteDebug",
+      "request" : "launch",
+      "mode":"debug",
+      "port":38697,
+      "host": "127.0.0.1",
+      "program" : "${workspaceFolder}"
+    }
+  ]
+}
