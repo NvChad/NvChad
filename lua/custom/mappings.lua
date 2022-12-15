@@ -67,7 +67,7 @@ M.buf = {
 M.telescope = {
   n = {
     ["<A-f>"] = {
-      ":Telescope grep_string search=",
+      ":Telescope live_grep default_text=",
       "search word"
     },
     ["<leader>fc"] = {
@@ -76,7 +76,7 @@ M.telescope = {
     },
     ["<leader>fs"] = {
       function()
-        vim.cmd("Telescope grep_string")
+        vim.cmd("Telescope live_grep default_text=" .. vim.fn.expand "<cword>")
       end,
       "find string under the cursor",
     },
