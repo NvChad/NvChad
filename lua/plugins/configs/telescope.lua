@@ -76,7 +76,7 @@ local options = {
     },
   },
 
-  extensions_list = { "themes", "terms" },
+  extensions_list = { "themes", "terms", "yank_history"},
   extensions = {
     xray23 = {
       -- location to store session files, default is vim.fn.stdpath("data") .. "/vimSession"

@@ -43,7 +43,7 @@ M.nvimtree = {
 
 M.telescope = {
   -- module = "telescope",
-  extensions_list = { "themes", "terms", "xray23", "fzf"},
+  extensions_list = { "themes", "terms", "xray23", "fzf", "yank_history"},
   -- extensions= {
   --   projects = {
   --     projects = {},

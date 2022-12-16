@@ -68,7 +68,7 @@ M.telescope = {
   n = {
     ["<A-f>"] = {
       ":Telescope live_grep default_text=",
-      "search word"
+      "search word",
     },
     ["<leader>fc"] = {
       "<cmd>Telescope lsp_document_symbols symbols={'function','method'}<CR>",
@@ -238,25 +238,33 @@ M.hop = {
 
 M.yank = {
   n = {
-    ["<A-n>"] = {
-      "<Plug>(YoinkPostPasteSwapBack)",
-      "yank cycle",
-    },
-    ["<A-p>"] = {
-      "<Plug>(YoinkPostPasteSwapForward)",
-      "yank cycle",
-    },
     ["p"] = {
-      "<Plug>(YoinkPaste_p)",
+      "<Plug>(YankyPutAfter)",
       "paste",
     },
     ["P"] = {
-      "<Plug>(YoinkPaste_P)",
+      "<Plug>(YankyPutBefore)",
       "paste before",
+    },
+    ["gp"] = {
+      "<Plug>(YankyGPutAfter)",
+      "g paste after",
+    },
+    ["gP"] = {
+      "<Plug>(YankyGPutBefore)",
+      "g paste before",
+    },
+    ["<A-n>"] = {
+      "<Plug>(YankyCycleForward)",
+      "yank cycle forward"
+    },
+    ["<A-p>"] = {
+      "<Plug>(YankyCycleBackward)",
+      "yank cycle back"
     },
   },
 }
 
--- more keybinds!
+vim.keymap.set("n", "<A-y>", "<cmd>lua require('telescope').extensions.yank_history.yank_history({layout_strategy='bottom_pane',layout_config={height=0.3}})<CR>")
 
 return M

@@ -5,16 +5,15 @@ return {
   -- ["goolord/alpha-nvim"] = { disable = false }, -- enables dashboard
 
   -- session manager
-  ["mhinz/vim-startify"] = {
-  },
+  ["mhinz/vim-startify"] = {},
   ["xolox/vim-session"] = {
     requires = "xolox/vim-misc",
     config = function()
-      require("custom.plugins.session")
+      require "custom.plugins.session"
     end,
   },
   ["HUAHUAI23/telescope-session.nvim"] = {
-    after = "telescope.nvim"
+    after = "telescope.nvim",
   },
   -- Override plugin definition options
   ["neovim/nvim-lspconfig"] = {
@@ -94,7 +93,7 @@ return {
     config = function()
       require("lualine").setup {
         sections = {
-          lualine_b = {{"%{fnamemodify(v:this_session,':t')}"}, 'branch', 'diff', 'diagnostics'},
+          lualine_b = { { "%{fnamemodify(v:this_session,':t')}" }, "branch", "diff", "diagnostics" },
           lualine_c = { { "filename", path = 1 } },
         },
       }
@@ -179,7 +178,6 @@ return {
       require("hop").setup {}
     end,
   },
-  ["svermeulen/vim-yoink"] = {},
   ["skywind3000/asyncrun.vim"] = {},
   ["skywind3000/asynctasks.vim"] = {
     config = function()
@@ -190,7 +188,17 @@ return {
     after = "asynctasks.vim",
   },
   ["nvim-telescope/telescope-fzf-native.nvim"] = {
-    run = 'make'
+    run = "make",
   },
   ["nvim-telescope/telescope-live-grep-args.nvim"] = {},
+  ["gbprod/yanky.nvim"] = {
+    after = "telescope.nvim",
+    config = function()
+      require("yanky").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end,
+  },
 }
