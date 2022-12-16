@@ -95,6 +95,11 @@ M.telescope = {
       end,
       "open telescope trouble",
     },
+    -- 单纯是想不到设置什么快捷键合适
+    ["<leader>cc"] = {
+      "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>",
+      "find symbols in current workspace",
+    },
   },
 }
 
