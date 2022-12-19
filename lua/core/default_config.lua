@@ -70,6 +70,10 @@ M.ui = {
       { "  Themes", "Spc t f", "Telescope themes" },
     },
   },
+
+  cheatsheet = {
+    theme = "grid", -- simple/grid
+  },
 }
 
 M.plugins = {}
