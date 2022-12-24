@@ -14,6 +14,7 @@ local fn = vim.fn
 local install_path = fn.stdpath "data" .. "/site/pack/packer/opt/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
+  require("core.bootstrap").chadrc_template()
   require("core.bootstrap").packer(install_path)
 end
 

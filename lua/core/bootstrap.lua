@@ -14,19 +14,22 @@ M.packer = function(install_path)
   vim.cmd "PackerSync"
 end
 
-M.install_template = function()
+M.chadrc_template = function()
   if not vim.api.nvim_get_runtime_file("lua/custom/chadrc.lua", false)[1] then
     local input = vim.fn.input "Do you want to install chadrc template? (y/n) : "
+    vim.cmd "redraw|echo ''"
 
     if input == "y" then
       -- clone example_config repo
       local example_config_url = "https://github.com/NvChad/example_config"
       print "cloning chadrc starter template repo...."
       vim.fn.system { "git", "clone", "--depth", "1", example_config_url, vim.fn.stdpath "config" .. "/lua/custom" }
+      vim.cmd "redraw|echo ''"
 
       -- delete .git from that repo
       vim.loop.fs_rmdir(vim.fn.stdpath "config" .. "/lua/custom/.git")
       vim.notify "successfully installed chadrc template!"
+      vim.cmd "redraw|echo ''"
     end
   end
 end
@@ -35,7 +38,6 @@ end
 vim.api.nvim_create_autocmd("User", {
   pattern = "PackerComplete",
   callback = function()
-    M.install_template()
     require("base46").load_all_highlights()
 
     vim.cmd "bw | silent! MasonInstallAll" -- close packer window
