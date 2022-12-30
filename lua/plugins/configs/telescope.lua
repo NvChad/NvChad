@@ -61,7 +61,7 @@ local options = {
         ["<c-f>"] = require("telescope.actions").results_scrolling_down,
         ["<c-b>"] = require("telescope.actions").results_scrolling_up,
         ["<c-c>"] = require("telescope.actions").close,
-        ["<Tab>"] = { "i", type = "command" },
+        ["<Tab>"] = { "a", type = "command" },
         ["<C-j>"] = require("telescope.actions").toggle_selection + require("telescope.actions").move_selection_worse,
         ["<C-k>"] = require("telescope.actions").toggle_selection + require("telescope.actions").move_selection_better,
       },

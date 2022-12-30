@@ -66,6 +66,7 @@ return {
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
         respect_buf_cwd = true,
+        detection_methods = { "pattern", "lsp" },
         update_focused_file = {
           enable = true,
           update_root = true,
