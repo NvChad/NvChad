@@ -193,13 +193,9 @@ return {
   },
   ["nvim-telescope/telescope-live-grep-args.nvim"] = {},
   ["gbprod/yanky.nvim"] = {
-    after = "telescope.nvim",
     config = function()
-      require("yanky").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require("yanky").setup({
+      })
     end,
   },
 }

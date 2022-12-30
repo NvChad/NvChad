@@ -22,6 +22,10 @@ local sources = {
   -- cpp
   b.formatting.clang_format,
   b.formatting.rustfmt,
+
+  -- go
+  b.formatting.gofmt,
+  b.formatting.goimports,
 }
 
 null_ls.setup {
