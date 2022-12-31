@@ -40,15 +40,14 @@ autocmd("FileType", {
 })
 
 -- wrap the PackerSync command to warn people before using it in NvChadSnapshots
-autocmd("VimEnter", {
-  callback = function()
-    vim.api.nvim_create_user_command("PackerSync", function(opts)
-      require "plugins"
-      require("core.utils").packer_sync(opts.fargs)
-    end, {
-      bang = true,
-      nargs = "*",
-      complete = require("packer").plugin_complete,
-    })
-  end,
+new_cmd("PackerSync", function(opts)
+  require "plugins"
+  require("core.utils").packer_sync(opts.fargs)
+end, {
+  bang = true,
+  nargs = "*",
+  force = true,
+  complete = function(arglead, cmdline, cursorpos)
+    return require("packer").plugin_complete(arglead, cmdline, cursorpos)
+  end
 })
