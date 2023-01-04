@@ -212,6 +212,12 @@ return {
             mode = "remote",
             request = "attach",
           },
+          {
+            type = "go",
+            name = "DebugFolder",
+            request = "launch",
+            program = "${workspaceFolder}",
+          },
         },
         -- delve configurations
         delve = {

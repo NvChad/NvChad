@@ -6,9 +6,11 @@ dap.listeners.after.event_initialized["dapui_config"] = function()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
   dapui.close()
+  dap.repl.close()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
+  dap.repl.close()
 end
 
 
@@ -19,3 +21,10 @@ dap.adapters.goremote = {
 }
 
 -- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
+-- https://github.com/microsoft/vscode-go/issues/318
+-- https://code.visualstudio.com/docs/editor/variables-reference#_configuration-variables
+-- https://github.com/golang/vscode-go/blob/master/docs/debugging.md
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointCondition", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointReject", { text = "", texthl = "DiagnosticSignHint", linehl = "", numhl = "" })
