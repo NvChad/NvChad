@@ -189,7 +189,7 @@ M.lspconfig = {
     ["gi"] = { "<cmd>TroubleToggle lsp_implementations<CR>", "lsp implementation" },
     ["<leader>D"] = { "<cmd>TroubleToggle lsp_type_definitions<CR>", "lsp type definition" },
     ["<leader>ld"] = { "<cmd>TroubleToggle document_diagnostics<CR>", "lsp document diagnostics" },
-    ["<leader>tt"] = { "<cmd>Trouble Close<CR>", "Trouble Close" },
+    ["<leader>tt"] = { "<cmd>TroubleClose<CR>", "Trouble Close" },
   },
 }
 
