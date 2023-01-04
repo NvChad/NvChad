@@ -232,4 +232,5 @@ return {
       }
     end,
   },
+  ["sebdah/vim-delve"] = {},
 }

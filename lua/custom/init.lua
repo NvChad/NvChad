@@ -12,7 +12,10 @@ autocmd("BufEnter", {
   end
 })
 
-vim.cmd("set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1")
+vim.opt.fileencodings="ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1"
+
+-- 设置新打开的窗口在左边 
+vim.opt.splitright=false
 
 -- Auto resize panes when resizing nvim window
 -- autocmd("VimResized", {
