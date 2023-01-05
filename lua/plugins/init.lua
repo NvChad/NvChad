@@ -136,7 +136,8 @@ local plugins = {
   ["rafamadriz/friendly-snippets"] = { },
 
   ["hrsh7th/nvim-cmp"] = {
-    event = "InsertEnter",
+    module = { "cmp", "cmp_nvim_lsp" },
+    event = { "InsertEnter", "CmdlineEnter" }, -- for users that may use nvim-cmp-cmdline
     config = function()
       require "plugins.configs.cmp"
     end,
