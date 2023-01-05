@@ -98,7 +98,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "alpha",
   callback = function()
     -- store initial statusline value to be used later
-    if type(vim.g.nvchad_vim_laststatus) == "nil" then
+    if not vim.g.nvchad_vim_laststatus then
       vim.g.nvchad_vim_laststatus = vim.opt.laststatus._value
     end
 
