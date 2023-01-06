@@ -92,31 +92,3 @@ alpha.setup {
   },
   opts = {},
 }
-
--- Disable statusline in dashboard
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "alpha",
-  callback = function()
-    -- store initial statusline value to be used later
-    if not vim.g.nvchad_vim_laststatus then
-      vim.g.nvchad_vim_laststatus = vim.opt.laststatus._value
-    end
-
-    -- Remove statusline since we have just loaded into an "alpha" filetype (i.e. dashboard)
-    vim.opt.laststatus = 0
-
-    vim.api.nvim_create_autocmd({ "TabEnter", "BufLeave" }, {
-      callback = function()
-        local current_type = vim.bo.filetype
-        if current_type == "alpha" or #current_type == 0 then
-          -- Switched to alpha or unknown filetype
-          vim.opt.laststatus = 0
-        else
-          -- Switched to any other filetype
-          vim.opt.laststatus = vim.g.nvchad_vim_laststatus
-        end
-      end
-    })
-
-  end,
-})
