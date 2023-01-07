@@ -37,7 +37,7 @@ M.blankline = function()
     filetype_exclude = {
       "help",
       "terminal",
-      "packer",
+      "lazy",
       "lspinfo",
       "TelescopePrompt",
       "TelescopeResults",
@@ -76,6 +76,7 @@ M.colorizer = function()
       css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
       css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
       mode = "background", -- Set the display mode.
+      tailwind = true, -- Enable tailwind colors
     },
   }
 
@@ -166,24 +167,6 @@ M.devicons = function()
 
     devicons.setup(options)
   end
-end
-
-M.packer_init = function()
-  return {
-    auto_clean = true,
-    compile_on_sync = true,
-    git = { clone_timeout = 6000 },
-    display = {
-      working_sym = "ﲊ",
-      error_sym = "✗ ",
-      done_sym = " ",
-      removed_sym = " ",
-      moved_sym = "",
-      open_fn = function()
-        return require("packer.util").float { border = "single" }
-      end,
-    },
-  }
 end
 
 return M

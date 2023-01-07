@@ -4,14 +4,7 @@ if not present then
   return
 end
 
-vim.api.nvim_create_augroup("_mason", { clear = true })
-vim.api.nvim_create_autocmd("Filetype", {
-  pattern = "mason",
-  callback = function()
-    loadfile(vim.g.base46_cache .. "mason")()
-  end,
-  group = "_mason",
-})
+loadfile(vim.g.base46_cache .. "mason")()
 
 local options = {
   ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim

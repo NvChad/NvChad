@@ -1,20 +1,33 @@
 local M = {}
 
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#1e222a" })
+M.lazy = function(install_path)
+  print "Bootstrapping lazy.nvim .."
 
-M.packer = function(install_path)
-  print "Cloning packer .."
-  vim.fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    install_path,
+  }
 
-  vim.fn.mkdir(vim.g.base46_cache, "p")
+  vim.opt.rtp:prepend(install_path)
 
   -- install plugins + compile their configs
-  vim.cmd "packadd packer.nvim"
   require "plugins"
-  vim.cmd "PackerSync"
+
+  vim.fn.mkdir(vim.g.base46_cache, "p")
+  vim.cmd "CompileNvTheme"
+  require("lazy").load { plugins = "nvim-treesitter" }
+
+  -- install binaries from mason.nvim & tsparsers on LazySync
+  vim.schedule(function()
+    vim.cmd "bw | silent! MasonInstallAll" -- close lazy window
+  end, 0)
 end
 
-M.chadrc_template = function()
+M.gen_chadrc_template = function()
   if not vim.api.nvim_get_runtime_file("lua/custom/chadrc.lua", false)[1] then
     local input = vim.fn.input "Do you want to install chadrc template? (y/n) : "
     vim.cmd "redraw|echo ''"
@@ -33,19 +46,5 @@ M.chadrc_template = function()
     end
   end
 end
-
--- install binaries from mason.nvim & tsparsers on PackerComplete
-vim.api.nvim_create_autocmd("User", {
-  pattern = "PackerComplete",
-  callback = function()
-    require("base46").load_all_highlights()
-
-    vim.cmd "bw | silent! MasonInstallAll" -- close packer window
-    require("packer").loader "nvim-treesitter"
-
-    local statusline_theme = require("core.utils").load_config().ui.statusline.theme
-    vim.opt.statusline = "%!v:lua.require('nvchad_ui.statusline." .. statusline_theme .. "').run()"
-  end,
-})
 
 return M
