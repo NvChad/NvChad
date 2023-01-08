@@ -5,7 +5,7 @@ local M = {}
 M.options = {
   nvChad = {
     update_url = "https://github.com/NvChad/NvChad",
-    update_branch = "lazy",
+    update_branch = "v2.0",
   },
 }
 

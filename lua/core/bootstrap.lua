@@ -1,6 +1,14 @@
 local M = {}
 
 M.lazy = function(install_path)
+  print "Downloading lazy-lock.json file..."
+
+  local config_branch = require("core.utils").load_config().options.nvChad.update_branch
+
+ vim.cmd(
+    "!curl -o lazy-lock.json https://raw.githubusercontent.com/NvChad/extensions/lazy-lock/" .. config_branch .. ".json "
+  )
+
   print "Bootstrapping lazy.nvim .."
 
   vim.fn.system {

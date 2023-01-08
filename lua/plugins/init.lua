@@ -4,14 +4,14 @@ local plugins = {
 
   ["nvim-lua/plenary.nvim"] = {},
 
-  ["NvChad/extensions"] = { branch = "lazy" },
+  ["NvChad/extensions"] = { branch = "v2.0" },
 
   ["NvChad/base46"] = {
-    branch = "lazy",
+    branch = "v2.0",
   },
 
   ["NvChad/ui"] = {
-    branch = "lazy",
+    branch = "v2.0",
     lazy = false,
     config = function()
       require "nvchad_ui"
@@ -182,6 +182,11 @@ local plugins = {
     end,
   },
 }
+
+-- pin commits for all default plugins
+for _, value in pairs(plugins) do
+  value.pin = true
+end
 
 plugins = require("core.utils").merge_plugins(plugins)
 
