@@ -12,22 +12,6 @@ new_cmd("NvChadUpdate", function()
   require("nvchad").update_nvchad()
 end, {})
 
-new_cmd("NvChadSnapshotCreate", function()
-  require("nvchad").snap_create()
-end, {})
-
-new_cmd("NvChadSnapshotDelete", function()
-  require("nvchad").snap_delete()
-end, {})
-
-new_cmd("NvChadSnapshotCheckout", function()
-  require("nvchad").snap_checkout()
-end, {})
-
-new_cmd("NvChadUpdate", function()
-  require("nvchad").update_nvchad()
-end, {})
-
 -- autocmds
 local autocmd = vim.api.nvim_create_autocmd
 
