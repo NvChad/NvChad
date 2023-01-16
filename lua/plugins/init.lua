@@ -27,7 +27,7 @@ local plugins = {
     end,
   },
 
-  ["kyazdani42/nvim-web-devicons"] = {
+  ["nvim-tree/nvim-web-devicons"] = {
     config = function()
       require("plugins.configs.others").devicons()
     end,
@@ -150,7 +150,7 @@ local plugins = {
   },
 
   -- file managing , picker etc
-  ["kyazdani42/nvim-tree.lua"] = {
+  ["nvim-tree/nvim-tree.lua"] = {
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     config = function()
       require "plugins.configs.nvimtree"
