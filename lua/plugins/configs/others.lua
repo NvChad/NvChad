@@ -163,7 +163,7 @@ M.devicons = function()
     loadfile(vim.g.base46_cache .. "devicons")()
 
     local options = { override = require("nvchad_ui.icons").devicons }
-    options = require("core.utils").load_override(options, "kyazdani42/nvim-web-devicons")
+    options = require("core.utils").load_override(options, "nvim-tree/nvim-web-devicons")
 
     devicons.setup(options)
   end
