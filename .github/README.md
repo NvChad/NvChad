@@ -125,6 +125,14 @@ NeoVim Treesitter configurations and abstraction layer. We mostly use this for s
 - Useful snippets with [friendly snippets](https://github.com/rafamadriz/friendly-snippets) + [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
 - Popup mappings keysheet [whichkey.nvim](https://github.com/folke/which-key.nvim)
 
+## Example Configs
+
+Getting started can be hard if there's something you're struggling to understand. Here are some of our users's configs you can look through for help/inspiration:
+
+- [@siduck](https://github.com/siduck/dotfiles/tree/master/nvchad/custom)
+- [@Akianonymus](https://github.com/Akianonymus/dotfiles/tree/master/src/.config/nvim/lua/custom)
+- [@peterpme](https://github.com/peterpme/dotfiles/tree/master/nvim-custom)
+
 ## History
 
 - I (@siduck i.e creator of NvChad) in my initial days of learning to program wanted a lightweight IDE for writing code, but I had a very low end system. I was into web dev stuff so many suggested I used VS Code but it was very heavy on my system, It used a significant amount of my ram so I never used it again, Sublime Text was nice but the fear of using proprietary software as a Linux user bugged me a lot. Then I tried Doom-emacs which looked pretty but it was slow and I was lost within its docs, I tried Lunarvim but I was too lazy to read the docs. Doom-emacs and Lunarvim inspired me to make a config which is the most pretty, very fast and simple.
