@@ -1,9 +1,3 @@
-local present, nvterm = pcall(require, "nvterm")
-
-if not present then
-  return
-end
-
 require "base46.term"
 
 local options = {
@@ -30,5 +24,4 @@ local options = {
 }
 
 options = require("core.utils").load_override(options, "NvChad/nvterm")
-
-nvterm.setup(options)
+require("nvterm").setup(options)

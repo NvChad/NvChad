@@ -1,9 +1,3 @@
-local present, wk = pcall(require, "which-key")
-
-if not present then
-  return
-end
-
 loadfile(vim.g.base46_cache .. "whichkey")()
 
 local options = {
@@ -38,4 +32,4 @@ local options = {
 
 options = require("core.utils").load_override(options, "folke/which-key.nvim")
 
-wk.setup(options)
+require("which-key").setup(options)

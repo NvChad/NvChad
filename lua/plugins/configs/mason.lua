@@ -1,9 +1,3 @@
-local present, mason = pcall(require, "mason")
-
-if not present then
-  return
-end
-
 loadfile(vim.g.base46_cache .. "mason")()
 
 local options = {
@@ -39,4 +33,4 @@ vim.api.nvim_create_user_command("MasonInstallAll", function()
   vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
 end, {})
 
-mason.setup(options)
+require("mason").setup(options)

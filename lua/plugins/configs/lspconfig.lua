@@ -1,9 +1,3 @@
-local present, lspconfig = pcall(require, "lspconfig")
-
-if not present then
-  return
-end
-
 loadfile(vim.g.base46_cache .. "lsp")()
 require "nvchad_ui.lsp"
 
@@ -43,7 +37,7 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-lspconfig.sumneko_lua.setup {
+require("lspconfig").sumneko_lua.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 

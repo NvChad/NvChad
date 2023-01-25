@@ -1,9 +1,3 @@
-local present, nvimtree = pcall(require, "nvim-tree")
-
-if not present then
-  return
-end
-
 loadfile(vim.g.base46_cache .. "nvimtree")()
 
 local options = {
@@ -86,4 +80,4 @@ local options = {
 options = require("core.utils").load_override(options, "nvim-tree/nvim-tree.lua")
 vim.g.nvimtree_side = options.view.side
 
-nvimtree.setup(options)
+require("nvim-tree").setup(options)

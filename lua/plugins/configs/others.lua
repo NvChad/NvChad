@@ -4,32 +4,20 @@ local load_override = require("core.utils").load_override
 local utils = require "core.utils"
 
 M.autopairs = function()
-  local present1, autopairs = pcall(require, "nvim-autopairs")
-  local present2, cmp = pcall(require, "cmp")
-
-  if not (present1 and present2) then
-    return
-  end
-
   local options = {
     fast_wrap = {},
     disable_filetype = { "TelescopePrompt", "vim" },
   }
 
   options = load_override(options, "windwp/nvim-autopairs")
-  autopairs.setup(options)
+  require("nvim-autopairs").setup(options)
 
+  -- setup cmp for autopairs
   local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+  require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 M.blankline = function()
-  local present, blankline = pcall(require, "indent_blankline")
-
-  if not present then
-    return
-  end
-
   loadfile(vim.g.base46_cache .. "blankline")()
 
   local options = {
@@ -52,36 +40,14 @@ M.blankline = function()
   }
 
   options = load_override(options, "lukas-reineke/indent-blankline.nvim")
-  blankline.setup(options)
+  require("indent_blankline").setup(options)
 end
 
 M.colorizer = function()
-  local present, colorizer = pcall(require, "colorizer")
-
-  if not present then
-    return
-  end
-
-  local options = {
-    filetypes = {
-      "*",
-    },
-    user_default_options = {
-      RGB = true, -- #RGB hex codes
-      RRGGBB = true, -- #RRGGBB hex codes
-      names = false, -- "Name" codes like Blue
-      RRGGBBAA = false, -- #RRGGBBAA hex codes
-      rgb_fn = false, -- CSS rgb() and rgba() functions
-      hsl_fn = false, -- CSS hsl() and hsla() functions
-      css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-      css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      mode = "background", -- Set the display mode.
-      tailwind = true, -- Enable tailwind colors
-    },
-  }
-
+  local options = {}
   options = load_override(options, "NvChad/nvim-colorizer.lua")
-  colorizer.setup(options)
+  require("colorizer").setup(options)
+
   -- execute colorizer as soon as possible
   vim.defer_fn(function()
     require("colorizer").attach_to_buffer(0)
@@ -89,31 +55,18 @@ M.colorizer = function()
 end
 
 M.comment = function()
-  local present, nvim_comment = pcall(require, "Comment")
-
-  if not present then
-    return
-  end
-
-  local options = {}
-  options = load_override(options, "numToStr/Comment.nvim")
-  nvim_comment.setup(options)
+  require("Comment").setup(load_override({}, "numToStr/Comment.nvim"))
 end
 
 M.luasnip = function()
-  local present, luasnip = pcall(require, "luasnip")
-
-  if not present then
-    return
-  end
-
   local options = {
     history = true,
     updateevents = "TextChanged,TextChangedI",
   }
 
   options = load_override(options, "L3MON4D3/LuaSnip")
-  luasnip.config.set_config(options)
+  require("luasnip").config.set_config(options)
+
   require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.luasnippets_path or "" }
   require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -130,12 +83,6 @@ M.luasnip = function()
 end
 
 M.gitsigns = function()
-  local present, gitsigns = pcall(require, "gitsigns")
-
-  if not present then
-    return
-  end
-
   loadfile(vim.g.base46_cache .. "git")()
 
   local options = {
@@ -153,20 +100,16 @@ M.gitsigns = function()
   }
 
   options = load_override(options, "lewis6991/gitsigns.nvim")
-  gitsigns.setup(options)
+  require("gitsigns").setup(options)
 end
 
 M.devicons = function()
-  local present, devicons = pcall(require, "nvim-web-devicons")
+  loadfile(vim.g.base46_cache .. "devicons")()
 
-  if present then
-    loadfile(vim.g.base46_cache .. "devicons")()
+  local options = { override = require("nvchad_ui.icons").devicons }
+  options = require("core.utils").load_override(options, "nvim-tree/nvim-web-devicons")
 
-    local options = { override = require("nvchad_ui.icons").devicons }
-    options = require("core.utils").load_override(options, "nvim-tree/nvim-web-devicons")
-
-    devicons.setup(options)
-  end
+  require("nvim-web-devicons").setup(options)
 end
 
 return M
