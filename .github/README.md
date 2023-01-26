@@ -15,7 +15,7 @@
 
 <div align="center">
  
-[![Super Linter](https://img.shields.io/github/workflow/status/NvChad/NvChad/Super-Linter/main?style=flat-square&logo=github&label=Build&color=8DBBE9)]()
+ 
 <a href="https://github.com/NvChad/NvChad/blob/main/LICENSE"
         ><img
             src="https://img.shields.io/github/license/NvChad/NvChad?style=flat-square&logo=GNU&label=License&color=df967f"
