@@ -118,7 +118,7 @@ M.spectre = {
 
 M.osc = {
   x = {
-    ["<leader>Y"] = {
+    ["<leader>y"] = {
       "<cmd>lua require('osc52').copy_visual()<CR>",
       "remote copy",
     },

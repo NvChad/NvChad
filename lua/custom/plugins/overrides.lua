@@ -30,7 +30,16 @@ M.nvimtree = {
   git = {
     enable = true,
   },
-
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+  },
+  view = {
+    adaptive_size = true,
+    side = "left",
+    width = 25,
+    hide_root_folder = false,
+  },
   renderer = {
     highlight_git = true,
     icons = {
