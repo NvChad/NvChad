@@ -18,7 +18,7 @@ M.autopairs = function()
 end
 
 M.blankline = function()
-  loadfile(vim.g.base46_cache .. "blankline")()
+  dofile(vim.g.base46_cache .. "blankline")
 
   local options = {
     indentLine_enabled = 1,
@@ -83,7 +83,7 @@ M.luasnip = function()
 end
 
 M.gitsigns = function()
-  loadfile(vim.g.base46_cache .. "git")()
+  dofile(vim.g.base46_cache .. "git")
 
   local options = {
     signs = {
@@ -104,7 +104,7 @@ M.gitsigns = function()
 end
 
 M.devicons = function()
-  loadfile(vim.g.base46_cache .. "devicons")()
+  dofile(vim.g.base46_cache .. "devicons")
 
   local options = { override = require("nvchad_ui.icons").devicons }
   options = require("core.utils").load_override(options, "nvim-tree/nvim-web-devicons")

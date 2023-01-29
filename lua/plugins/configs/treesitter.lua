@@ -1,5 +1,4 @@
-loadfile(vim.g.base46_cache .. "syntax")()
-loadfile(vim.g.base46_cache .. "treesitter")()
+dofile(vim.g.base46_cache .. "syntax")
 
 local options = {
   ensure_installed = {

@@ -1,4 +1,4 @@
-loadfile(vim.g.base46_cache .. "telescope")()
+dofile(vim.g.base46_cache .. "telescope")
 
 local options = {
   defaults = {

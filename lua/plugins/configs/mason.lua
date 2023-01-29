@@ -1,4 +1,4 @@
-loadfile(vim.g.base46_cache .. "mason")()
+dofile(vim.g.base46_cache .. "mason")
 
 local options = {
   ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim

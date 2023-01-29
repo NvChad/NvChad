@@ -1,4 +1,4 @@
-loadfile(vim.g.base46_cache .. "nvimtree")()
+dofile(vim.g.base46_cache .. "nvimtree")
 
 local options = {
   filters = {

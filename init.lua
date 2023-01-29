@@ -19,4 +19,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 require "plugins"
 
-loadfile(vim.g.base46_cache .. "defaults")()
+dofile(vim.g.base46_cache .. "defaults")

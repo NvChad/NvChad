@@ -1,6 +1,6 @@
 local cmp = require "cmp"
 
-loadfile(vim.g.base46_cache .. "cmp")()
+dofile(vim.g.base46_cache .. "cmp")
 
 vim.o.completeopt = "menu,menuone,noselect"
 
