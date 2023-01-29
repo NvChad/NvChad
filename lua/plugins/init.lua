@@ -20,7 +20,9 @@ local plugins = {
 
   ["NvChad/nvterm"] = {
     config = function()
-      require "plugins.configs.nvterm"
+      require "base46.term"
+      local options = require("core.utils").load_override({}, "NvChad/nvterm")
+      require("nvterm").setup(options)
     end,
     init = function()
       require("core.utils").load_mappings "nvterm"

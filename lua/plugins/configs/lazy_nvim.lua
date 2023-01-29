@@ -1,12 +1,6 @@
 return {
-  defaults = {
-    lazy = true,
-  },
-
-  install = {
-    -- try to load one of these colorschemes when starting an installation during startup
-    colorscheme = { "nvchad" },
-  },
+  defaults = { lazy = true },
+  install = { colorscheme = { "nvchad" } },
 
   ui = {
     icons = {
