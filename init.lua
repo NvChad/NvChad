@@ -19,7 +19,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 require "plugins"
 
--- load compiled base46 themes
-loadfile(vim.g.base46_cache .. "bg")()
 loadfile(vim.g.base46_cache .. "defaults")()
-loadfile(vim.g.base46_cache .. "statusline")()
