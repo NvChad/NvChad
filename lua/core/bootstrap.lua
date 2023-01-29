@@ -43,7 +43,7 @@ M.gen_chadrc_template = function()
       -- clone example_config repo
       local example_config_url = "https://github.com/NvChad/example_config"
       print "cloning chadrc starter template repo...."
-      vim.fn.system { "git", "clone", "--depth", "1", example_config_url, vim.fn.stdpath "config" .. "/lua/custom" }
+      vim.fn.system { "git", "clone", "--depth", "1", "-b", "v2.0", example_config_url, vim.fn.stdpath "config" .. "/lua/custom" }
       vim.cmd "redraw|echo ''"
 
       -- delete .git from that repo
