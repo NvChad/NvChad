@@ -26,6 +26,10 @@ local sources = {
   -- go
   b.formatting.gofmt,
   b.formatting.goimports,
+
+  -- php
+  b.diagnostics.phpcs,
+  b.diagnostics.php,
 }
 
 null_ls.setup {
