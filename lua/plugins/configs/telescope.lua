@@ -76,7 +76,11 @@ local options = {
       },
     },
   },
-
+  pickers = {
+    buffers = {
+      sort_lastused = true,
+    },
+  },
   extensions_list = { "themes", "terms", "yank_history"},
   extensions = {
     xray23 = {
