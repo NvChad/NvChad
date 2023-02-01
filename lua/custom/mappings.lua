@@ -184,7 +184,7 @@ M.dap = {
 
 M.lspconfig = {
   n = {
-    ["gr"] = { "<cmd>TroubleToggle lsp_references<CR>", "lsp references" },
+    ["gr"] = { "<cmd>Trouble lsp_references<CR>", "lsp references" },
     ["gd"] = { "<cmd>TroubleToggle lsp_definitions<CR>", "lsp definition" },
     ["gi"] = { "<cmd>TroubleToggle lsp_implementations<CR>", "lsp implementation" },
     ["<leader>D"] = { "<cmd>TroubleToggle lsp_type_definitions<CR>", "lsp type definition" },
