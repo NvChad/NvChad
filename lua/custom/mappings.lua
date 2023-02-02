@@ -270,6 +270,26 @@ M.yank = {
   },
 }
 
+M.dbui = {
+  n = {
+    ["<leader>tn"] = {
+      ":tabnext<CR>",
+      "go to next tab",
+    },
+    ["<leader>m"] = {
+      ":tab DBUI<CR>",
+      "open database ui",
+    },
+    ["<leader>mc"] = {
+      function()
+        vim.api.nvim_command("DBUIToggle")
+        vim.api.nvim_command("bd!")
+      end,
+      "close db ui"
+    }
+  },
+}
+
 vim.keymap.set("n", "<A-y>", "<cmd>lua require('telescope').extensions.yank_history.yank_history({layout_strategy='bottom_pane',layout_config={height=0.3}})<CR>")
 
 return M

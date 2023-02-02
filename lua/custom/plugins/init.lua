@@ -233,4 +233,12 @@ return {
     end,
   },
   ["sebdah/vim-delve"] = {},
+  ["kristijanhusak/vim-dadbod-ui"] = {},
+  ["kristijanhusak/vim-dadbod-completion"] = {
+    after = "nvim-cmp",
+    config = function()
+      require "custom.plugins.dadcmp"
+    end
+  },
+  ["tpope/vim-dadbod"] = {},
 }

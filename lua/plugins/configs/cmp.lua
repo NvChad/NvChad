@@ -108,3 +108,5 @@ local options = {
 options = require("core.utils").load_override(options, "hrsh7th/nvim-cmp")
 
 cmp.setup(options)
+
+vim.cmd("autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })")
