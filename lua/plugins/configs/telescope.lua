@@ -78,7 +78,7 @@ local options = {
   },
   pickers = {
     buffers = {
-      sort_lastused = true,
+      sort_mru = true,
     },
   },
   extensions_list = { "themes", "terms", "yank_history"},
