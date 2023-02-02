@@ -282,8 +282,8 @@ M.dbui = {
     },
     ["<leader>mc"] = {
       function()
-        vim.api.nvim_command("DBUIToggle")
-        vim.api.nvim_command("bd!")
+        vim.api.nvim_command("%bd!")
+        vim.api.nvim_command("tabc")
       end,
       "close db ui"
     }
