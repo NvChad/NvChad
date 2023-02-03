@@ -233,11 +233,23 @@ return {
     end,
   },
   ["sebdah/vim-delve"] = {},
-  ["kristijanhusak/vim-dadbod-ui"] = {},
+  ["kristijanhusak/vim-dadbod-ui"] = {
+    config = function()
+      vim.api.nvim_exec(
+        [[
+        let g:db_ui_execute_on_save = 0
+        let g:db_ui_show_database_icon = 1
+        let g:db_ui_use_nerd_fonts = 1
+        autocmd FileType sql,mysql nmap <buffer> <M-w> <Plug>(DBUI_ExecuteQuery)
+        ]]
+        , true
+      )
+    end
+  },
   ["kristijanhusak/vim-dadbod-completion"] = {
     after = "nvim-cmp",
     config = function()
-      require "custom.plugins.dadcmp"
+      require "custom.plugins.dad"
     end
   },
   ["tpope/vim-dadbod"] = {},

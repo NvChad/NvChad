@@ -282,8 +282,10 @@ M.dbui = {
     },
     ["<leader>mc"] = {
       function()
-        vim.api.nvim_command("%bd!")
-        vim.api.nvim_command("tabc")
+        for _, buf in ipairs(vim.t.bufs) do
+            vim.cmd("bd!" .. buf)
+        end
+        vim.cmd "tabc"
       end,
       "close db ui"
     }
