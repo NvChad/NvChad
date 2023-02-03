@@ -287,7 +287,7 @@ M.dbui = {
         end
         vim.cmd "tabc"
       end,
-      "close db ui"
+      "close db ui(in fact close all buffers in tab and tab itself)"
     }
   },
 }
