@@ -1,0 +1,14 @@
+snippet "_tech(.*)$" "Technology Template"
+---
+title: ${1:`!p snip.rv = match.group(1)`}
+author: ${2:Your Name}
+date: ${3:`!v strftime("%Y-%m-%d %H:%M %Z")`}
+draft: ${4:true}
+tags: [notes,tech,${5:tag}]
+categories: [Technology]
+---
+# ${6:`!p snip.rv = match.group(1)`}
+$0
+endsnippet
+
+# vim:ft=snippets:

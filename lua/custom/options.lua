@@ -30,7 +30,8 @@ vim.cmd([[
     let g:vimwiki_ext2syntax = {}
 ]])
 -- g.vimwiki_ext2syntax = {[".md"] = "markdown"}
-g.vimwiki_list = {{path = "~/vimwiki/general"}, {path="~/vimwiki/vocabulary"}}
+g.vimwiki_global_ext = 0
+g.vimwiki_list = {{path = "~/vimwiki/general"}, {path = "~/vimwiki/vocabulary"}}
 
 -- [[ Plugin: slime ]] --
 g.slime_no_mappings = 1
@@ -62,3 +63,6 @@ for _, plugin in pairs(enable_providers) do
   vim.g["loaded_" .. plugin] = nil
   vim.cmd("runtime " .. plugin)
 end
+
+
+

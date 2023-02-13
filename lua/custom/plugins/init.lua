@@ -34,7 +34,7 @@ M.additional_plugins = {
   ["xeluxee/competitest.nvim"] = {
     requires = 'MunifTanjim/nui.nvim',
     config = function() require'competitest'.setup() end
-  }
+  },
 }
 
 return M
