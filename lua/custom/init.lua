@@ -44,8 +44,6 @@ vim.opt.fileencodings = "ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1"
 -- 设置新打开的窗口在左边
 vim.opt.splitright = false
 
-vim.cmd("let g:python3_host_prog = 'python3'")
-
 -- Auto resize panes when resizing nvim window
 -- autocmd("VimResized", {
 --   pattern = "*",

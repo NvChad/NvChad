@@ -253,9 +253,4 @@ return {
     end,
   },
   ["tpope/vim-dadbod"] = {},
-  ["Yggdroot/LeaderF"] = {
-    config = function()
-      require "custom.plugins.leaderf"
-    end,
-  },
 }
