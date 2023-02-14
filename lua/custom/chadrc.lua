@@ -3,13 +3,13 @@ local M = {}
 
 -- make sure you maintain the structure of `core/default_config.lua` here,
 -- safe load plugins
-local plugins_configs_ok, plugins_configs = pcall(require, "custom.plugins")
-if not plugins_configs_ok then
-  print(plugins_configs)
-  return {}
-end
+-- local plugins_configs_ok, plugins_configs = pcall(require, "custom.plugins")
+-- if not plugins_configs_ok then
+--   print(plugins_configs)
+--   return {}
+-- end
 
-M.plugins = plugins_configs.configurations
+M.plugins = require "custom.plugins"
 -- installing new plugins
 -- M.plugins = vim.tbl_deep_extend("force", M.plugins, plugins_configs.additional_plugins)
 

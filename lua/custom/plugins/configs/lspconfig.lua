@@ -8,7 +8,7 @@ local lsp_settings = require "custom.lsp"
 -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
 
 -- local servers = {"sumneko_lua", "html", "cssls", "clangd", "pyright", "vuels"}
-local servers = {"sumneko_lua", "html", "cssls", "clangd", "pyright", "tsserver", "jsonls", "vuels", "bashls"}
+local servers = {"lua_ls", "html", "cssls", "clangd", "pyright", "tsserver", "jsonls", "vuels", "bashls"}
 for _, lsp in ipairs(servers) do
   -- default config
   local config = {on_attach = on_attach, capabilities = capabilities}

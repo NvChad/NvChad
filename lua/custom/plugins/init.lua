@@ -1,6 +1,4 @@
-local M = {}
-
-M.configurations = {
+return  {
   -- what is the point of calling require "plugins.configs.lspconfig"? in this file it returns M (also some calls)
   -- and then we not catch the returned value of that! we catch (some kind) the return value in "custom.plugins.configs.lspconfig"
   -- another question is why we override the "config" key completely? Do not we need to override it with "override_options"?
@@ -37,19 +35,18 @@ M.configurations = {
   -- remove plugins
   ["NvChad/nvterm"] = false,
 
-  -- override plugins
-  ["kyazdani42/nvim-tree.lua"] = {override_options = require("custom.plugins.options.nvimtree")},
-  ["lewis6991/gitsigns.nvim"] = {override_options = require("custom.plugins.options.gitsigns")},
-  ["nvim-treesitter/nvim-treesitter"] = {override_options = require("custom.plugins.options.treesitter")},
-  ["nvim-telescope/telescope.nvim"] = {override_options = require("custom.plugins.options.telescope")},
-  ["folke/which-key.nvim"] = {override_options = require("custom.plugins.options.whichkey")},
-  ["NvChad/ui"] = {override_options = require("custom.plugins.options.ui")},
+-- override plugins
+ ["nvim-tree/nvim-tree.lua"] = {override_options = require("custom.plugins.options.nvimtree")},
+ -- ["lewis6991/gitsigns.nvim"] = {override_options = require("custom.plugins.options.gitsigns")},
+ ["nvim-treesitter/nvim-treesitter"] = {override_options = require("custom.plugins.options.treesitter")},
+ -- ["nvim-telescope/telescope.nvim"] = {override_options = require("custom.plugins.options.telescope")},
+ ["folke/which-key.nvim"] = {override_options = require("custom.plugins.options.whichkey")},
+ ["NvChad/ui"] = {override_options = require("custom.plugins.options.ui")},
 
   ["williamboman/mason.nvim"] = {
     override_options = {
       ensure_installed = {"lua-language-server", "css-lsp", "html-lsp", "typescript-language-server", "pyright"}
     }
   }
-}
 
-return M
+}
