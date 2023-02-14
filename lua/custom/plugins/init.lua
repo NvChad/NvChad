@@ -241,16 +241,21 @@ return {
         let g:db_ui_show_database_icon = 1
         let g:db_ui_use_nerd_fonts = 1
         autocmd FileType sql,mysql nmap <buffer> <M-w> <Plug>(DBUI_ExecuteQuery)
-        ]]
-        , true
+        ]],
+        true
       )
-    end
+    end,
   },
   ["kristijanhusak/vim-dadbod-completion"] = {
     after = "nvim-cmp",
     config = function()
       require "custom.plugins.dad"
-    end
+    end,
   },
   ["tpope/vim-dadbod"] = {},
+  ["Yggdroot/LeaderF"] = {
+    config = function()
+      require "custom.plugins.leaderf"
+    end,
+  },
 }

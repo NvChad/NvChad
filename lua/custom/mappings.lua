@@ -66,9 +66,13 @@ M.buf = {
 
 M.telescope = {
   n = {
-    ["<A-f>"] = {
+    ["<A-F>"] = {
       ":Telescope live_grep default_text=",
       "search word",
+    },
+    ["<A-f>"] = {
+      ":Leaderf rg -F -S --match-path -e ",
+      "supper search word",
     },
     ["<leader>fc"] = {
       "<cmd>Telescope lsp_document_symbols symbols={'function','method'}<CR>",
