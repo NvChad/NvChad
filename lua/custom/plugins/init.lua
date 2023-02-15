@@ -258,4 +258,9 @@ return {
       require "custom.plugins.qf"
     end,
   },
+  ["junegunn/fzf"] = {
+    run = function()
+      vim.fn["fzf#install"]()
+    end,
+  },
 }
