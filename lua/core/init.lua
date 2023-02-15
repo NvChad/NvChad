@@ -19,14 +19,37 @@ autocmd("FileType", {
   end,
 })
 
-autocmd("BufWritePost", {
-  pattern = "*lua",
-  callback = function()
-    local bufname = vim.api.nvim_buf_get_name(0)
+local sep = vim.loop.os_uname().sysname:find "windows" and "\\" or "/"
 
-    if string.find(bufname, "custom") and string.find(bufname, "lua") then
-      require("plenary.reload").reload_module "base46"
-      require("base46").load_all_highlights()
-    end
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = vim.fn.glob(
+    table.concat({
+      vim.fn.stdpath "config",
+      "lua",
+      "custom",
+      "**",
+      "*.lua",
+    }, sep),
+    true,
+    true,
+    true
+  ),
+
+  group = vim.api.nvim_create_augroup("ReloadNvChad", {}),
+
+  callback = function(opts)
+    require("plenary.reload").reload_module "base46"
+    local file = string
+      .gsub(vim.fn.fnamemodify(opts.file, ":r"), vim.fn.stdpath "config" .. sep .. "lua" .. sep, "")
+      :gsub(sep, ".")
+    require("plenary.reload").reload_module(file)
+    require("plenary.reload").reload_module "custom.chadrc"
+
+    local config = require("core.utils").load_config().ui
+
+    vim.opt.statusline = "%!v:lua.require('nvchad_ui.statusline." .. config.statusline.theme .. "').run()"
+
+    require("base46").load_all_highlights()
+    -- vim.cmd("redraw!")
   end,
 })

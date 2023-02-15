@@ -25,7 +25,7 @@ M.lazy = function(install_path)
   require "plugins"
 
   vim.fn.mkdir(vim.g.base46_cache, "p")
-  vim.cmd "CompileNvTheme"
+  require("base46").load_all_highlights()
   require("lazy").load { plugins = "nvim-treesitter" }
 
   -- install binaries from mason.nvim & tsparsers on LazySync
