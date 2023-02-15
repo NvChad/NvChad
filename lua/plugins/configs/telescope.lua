@@ -65,6 +65,7 @@ local options = {
         ["<Tab>"] = { "a", type = "command" },
         ["<C-j>"] = require("telescope.actions").toggle_selection + require("telescope.actions").move_selection_worse,
         ["<C-k>"] = require("telescope.actions").toggle_selection + require("telescope.actions").move_selection_better,
+        ["<C-q>"] = require("telescope.actions").send_to_qflist + require("telescope.actions").open_qflist,
       },
       i = {
         ["<c-u>"] = false,

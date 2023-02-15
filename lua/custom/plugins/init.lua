@@ -253,4 +253,9 @@ return {
     end,
   },
   ["tpope/vim-dadbod"] = {},
+  ["kevinhwang91/nvim-bqf"] = {
+    config = function()
+      require "custom.plugins.qf"
+    end,
+  },
 }
