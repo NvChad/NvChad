@@ -29,6 +29,8 @@
 
   </div>
 
+**NOTICE** : v2.0 is going to be released in this month. It uses lazy.nvim instead of packer and many new features have been added & performance improvements! working on the [docs](https://github.com/NvChad/nvchad.github.io/pull/118) currently and they will be more welcoming to newbies & would make you understand how nvchad works visually. To test v2.0 do a fresh clone of v2.0 branch ( do know that some of the lazy.nvim options are different from packer, [check](https://github.com/folke/lazy.nvim#packernvim) so you have to update the plugin options in your custom plugins table. )
+
 ## Showcase
 
 <img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/dashboard.png">
