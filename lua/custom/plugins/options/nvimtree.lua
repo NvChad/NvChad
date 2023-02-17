@@ -31,20 +31,13 @@ return {
       custom_only = false,
       list = {
         -- user mappings go here
-      },
+      }
     },
     float = {
       enable = false,
       quit_on_focus_loss = true,
-      open_win_config = {
-        relative = "editor",
-        border = "rounded",
-        width = 30,
-        height = 30,
-        row = 1,
-        col = 1,
-      },
-    },
+      open_win_config = {relative = "editor", border = "rounded", width = 30, height = 30, row = 1, col = 1}
+    }
   },
   renderer = {
     add_trailing = false,
@@ -58,13 +51,7 @@ return {
     indent_markers = {
       enable = false,
       inline_arrows = true,
-      icons = {
-        corner = "└",
-        edge = "│",
-        item = "│",
-        bottom = "─",
-        none = " ",
-      },
+      icons = {corner = "└", edge = "│", item = "│", bottom = "─", none = " "}
     },
     icons = {
       webdev_colors = true,
@@ -72,13 +59,7 @@ return {
       modified_placement = "before", -- @! "after" -> "before"
       padding = " ",
       symlink_arrow = " ➛ ",
-      show = {
-        file = true,
-        folder = true,
-        folder_arrow = true,
-        git = true,
-        modified = true,
-      },
+      show = {file = true, folder = true, folder_arrow = true, git = true, modified = true},
       glyphs = {
         default = "",
         symlink = "",
@@ -92,7 +73,7 @@ return {
           empty = "",
           empty_open = "",
           symlink = "",
-          symlink_open = "",
+          symlink_open = ""
         },
         -- git = {
         --   unstaged = "✗",
@@ -122,85 +103,32 @@ return {
           -- ignored = "◌",
           ignored = ""
         }
-      },
+      }
     },
-    special_files = { "pyproject.toml", "Cargo.toml", "Makefile", "README.md", "readme.md" }, -- @! add pyproject.toml
-    symlink_destination = true,
+    special_files = {"pyproject.toml", "Cargo.toml", "Makefile", "README.md", "readme.md"}, -- @! add pyproject.toml
+    symlink_destination = true
   },
-  hijack_directories = {
-    enable = true,
-    auto_open = true,
-  },
-  update_focused_file = {
-    enable = false,
-    update_root = false,
-    ignore_list = {},
-  },
+  hijack_directories = {enable = true, auto_open = true},
+  update_focused_file = {enable = false, update_root = false, ignore_list = {}},
   ignore_ft_on_setup = {},
-  system_open = {
-    cmd = "",
-    args = {},
-  },
+  system_open = {cmd = "", args = {}},
   diagnostics = {
     enable = false,
     show_on_dirs = false,
     show_on_open_dirs = true,
     debounce_delay = 50,
-    severity = {
-      min = vim.diagnostic.severity.HINT,
-      max = vim.diagnostic.severity.ERROR,
-    },
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    },
+    severity = {min = vim.diagnostic.severity.HINT, max = vim.diagnostic.severity.ERROR},
+    icons = {hint = "", info = "", warning = "", error = ""}
   },
-  filters = {
-    dotfiles = false,
-    git_clean = false,
-    no_buffer = false,
-    custom = {},
-    exclude = {},
-  },
-  filesystem_watchers = {
-    enable = true,
-    debounce_delay = 50,
-    ignore_dirs = {},
-  },
-  git = {
-    enable = true,
-    ignore = true,
-    show_on_dirs = true,
-    show_on_open_dirs = true,
-    timeout = 400,
-  },
-  modified = {
-    enable = false,
-    show_on_dirs = true,
-    show_on_open_dirs = true,
-  },
+  filters = {dotfiles = false, git_clean = false, no_buffer = false, custom = {}, exclude = {}},
+  filesystem_watchers = {enable = true, debounce_delay = 50, ignore_dirs = {}},
+  git = {enable = true, ignore = true, show_on_dirs = true, show_on_open_dirs = true, timeout = 400},
+  modified = {enable = false, show_on_dirs = true, show_on_open_dirs = true},
   actions = {
     use_system_clipboard = true,
-    change_dir = {
-      enable = true,
-      global = false,
-      restrict_above_cwd = false,
-    },
-    expand_all = {
-      max_folder_discovery = 300,
-      exclude = {},
-    },
-    file_popup = {
-      open_win_config = {
-        col = 1,
-        row = 1,
-        relative = "cursor",
-        border = "shadow",
-        style = "minimal",
-      },
-    },
+    change_dir = {enable = true, global = false, restrict_above_cwd = false},
+    expand_all = {max_folder_discovery = 300, exclude = {}},
+    file_popup = {open_win_config = {col = 1, row = 1, relative = "cursor", border = "shadow", style = "minimal"}},
     open_file = {
       quit_on_open = false,
       resize_window = true,
@@ -209,38 +137,18 @@ return {
         picker = "default",
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
         exclude = {
-          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
-          buftype = { "nofile", "terminal", "help" },
-        },
-      },
+          filetype = {"notify", "packer", "qf", "diff", "fugitive", "fugitiveblame"},
+          buftype = {"nofile", "terminal", "help"}
+        }
+      }
     },
-    remove_file = {
-      close_window = true,
-    },
+    remove_file = {close_window = true}
   },
-  trash = {
-    cmd = "gio trash",
-  },
-  live_filter = {
-    prefix = "[FILTER]: ",
-    always_show_folders = true,
-  },
-  tab = {
-    sync = {
-      open = false,
-      close = false,
-      ignore = {},
-    },
-  },
-  notify = {
-    threshold = vim.log.levels.INFO,
-  },
-  ui = {
-    confirm = {
-      remove = true,
-      trash = true,
-    },
-  },
+  trash = {cmd = "gio trash"},
+  live_filter = {prefix = "[FILTER]: ", always_show_folders = true},
+  tab = {sync = {open = false, close = false, ignore = {}}},
+  notify = {threshold = vim.log.levels.INFO},
+  ui = {confirm = {remove = true, trash = true}},
   log = {
     enable = false,
     truncate = false,
@@ -252,7 +160,7 @@ return {
       diagnostics = false,
       git = false,
       profile = false,
-      watcher = false,
-    },
-  },
+      watcher = false
+    }
+  }
 }

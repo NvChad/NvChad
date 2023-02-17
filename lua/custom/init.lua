@@ -47,26 +47,20 @@ vim.api.nvim_set_keymap('n', '<space>ur', ':CommandRegister !', {expr = false, n
 local options_ok, options = pcall(require, "custom.options")
 if not options_ok then print(vim.inspect(options)) end
 
-
 -- overriding nvchad_ui/lsp.lua
 -- TODO: there is not better place to do it?
 vim.diagnostic.config {
-   virtual_text = false,
-   float = {
-       source = "always",
-       border = "rounded",
-   },
-   signs = false,
-   underline = true,
-   update_in_insert = false,
+  virtual_text = false,
+  float = {source = "always", border = "rounded"},
+  signs = false,
+  underline = true,
+  update_in_insert = false
 }
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-   border = "rounded",
-})
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {border = "rounded"})
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-   border = "rounded",
-   focusable = false,
-   relative = "cursor",
+  border = "rounded",
+  focusable = false,
+  relative = "cursor"
 })
 
 -- local win = require "lspconfig.ui.windows"

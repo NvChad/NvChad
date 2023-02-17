@@ -1,4 +1,4 @@
-return  {
+return {
   -- TODO:
   -- what is the point of calling require "plugins.configs.lspconfig"? in this file it returns M (also some calls)
   -- and then we not catch the returned value of that! we catch (some kind) the return value in "custom.plugins.configs.lspconfig"
@@ -36,31 +36,26 @@ return  {
   -- remove plugins
   ["NvChad/nvterm"] = false, -- TODO: checkout this
 
--- override plugins
- ["nvim-tree/nvim-tree.lua"] = {override_options = require("custom.plugins.options.nvimtree")},
- ["lewis6991/gitsigns.nvim"] = {override_options = require("custom.plugins.options.gitsigns")},
- ["nvim-treesitter/nvim-treesitter"] = {override_options = require("custom.plugins.options.treesitter")},
- ["nvim-telescope/telescope.nvim"] = {
+  -- override plugins
+  ["nvim-tree/nvim-tree.lua"] = {override_options = require("custom.plugins.options.nvimtree")},
+  ["lewis6991/gitsigns.nvim"] = {override_options = require("custom.plugins.options.gitsigns")},
+  ["nvim-treesitter/nvim-treesitter"] = {override_options = require("custom.plugins.options.treesitter")},
+  ["nvim-telescope/telescope.nvim"] = {
     override_options = function()
       local actions = require('telescope.actions')
       return {
         defaults = { -- TODO: why this needs default but the example in nvchad docs for "cmp" does not?
-          mappings = {
-            i = {
-              ["<Esc>"] = actions.close,
-            },
-          }
+          mappings = {i = {["<Esc>"] = actions.close}}
         }
       }
     end
   },
- ["folke/which-key.nvim"] = {override_options = require("custom.plugins.options.whichkey")}, -- TODO: how enable which-key? it is disabled by default.
- ["NvChad/ui"] = {override_options = require("custom.plugins.options.ui")},
+  ["folke/which-key.nvim"] = {override_options = require("custom.plugins.options.whichkey")}, -- TODO: how enable which-key? it is disabled by default.
+  ["NvChad/ui"] = {override_options = require("custom.plugins.options.ui")},
 
   ["williamboman/mason.nvim"] = {
     override_options = {
       ensure_installed = {"lua-language-server", "css-lsp", "html-lsp", "typescript-language-server", "pyright"}
     }
   }
-
 }

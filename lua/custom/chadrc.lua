@@ -13,7 +13,6 @@ M.plugins = require "custom.plugins"
 -- installing new plugins
 -- M.plugins = vim.tbl_deep_extend("force", M.plugins, plugins_configs.additional_plugins)
 
-
 -- safe load highlights
 local highlights_add_ok, highlights_add = pcall(require, "custom.highlights.highlights_add")
 if not highlights_add_ok then
