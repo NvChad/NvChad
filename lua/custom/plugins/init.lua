@@ -30,7 +30,7 @@ return {
   ["MunifTanjim/nui.nvim"] = {},
   ["xeluxee/competitest.nvim"] = {
     requires = 'MunifTanjim/nui.nvim',
-    config = function() require'competitest'.setup() end
+    config = function() require'custom.plugins.configs.competitest'.setup() end
   },
 
   -- remove plugins
@@ -52,7 +52,6 @@ return {
   },
   ["folke/which-key.nvim"] = {override_options = require("custom.plugins.options.whichkey")}, -- TODO: how enable which-key? it is disabled by default.
   ["NvChad/ui"] = {override_options = require("custom.plugins.options.ui")},
-
   ["williamboman/mason.nvim"] = {
     override_options = {
       ensure_installed = {"lua-language-server", "css-lsp", "html-lsp", "typescript-language-server", "pyright"}

@@ -1,5 +1,5 @@
 column_limit: 120
-column_table_limit: 120
+column_table_limit: 80
 indent_width: 2
 use_tab: false
 tab_width: 2
@@ -19,7 +19,7 @@ break_before_functiondef_rp: false
 align_table_field: true
 break_after_table_lb: true
 break_before_table_rb: true
-chop_down_table: false
+chop_down_table: true
 chop_down_kv_table: true
 table_sep: ","
 extra_sep_at_table_end: false

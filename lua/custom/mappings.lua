@@ -107,4 +107,11 @@ M.jupyter = {
   v = {["<leader><leader>e"] = {"<Plug>JupyterRunVisual", "jupyter run visual"}}
 }
 
+M.competitest = {
+  n = {
+    ["<leader>tr"] = {":CompetiTestRun <CR>", "competitest test cases run"},
+    ["<leader>ts"] = {":CompetiTestRunNE <CR>", "competitest test cases show"},
+  }
+}
+
 return M
