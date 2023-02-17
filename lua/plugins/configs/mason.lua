@@ -27,10 +27,4 @@ local options = {
   max_concurrent_installers = 10,
 }
 
-options = require("core.utils").load_override(options, "williamboman/mason.nvim")
-
-vim.api.nvim_create_user_command("MasonInstallAll", function()
-  vim.cmd("MasonInstall " .. table.concat(options.ensure_installed, " "))
-end, {})
-
-require("mason").setup(options)
+return options

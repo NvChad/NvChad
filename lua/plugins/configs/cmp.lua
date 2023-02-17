@@ -115,7 +115,4 @@ if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
   options.window.completion.border = border "CmpBorder"
 end
 
--- check for any override
-options = require("core.utils").load_override(options, "hrsh7th/nvim-cmp")
-
-cmp.setup(options)
+return options
