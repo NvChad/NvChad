@@ -221,11 +221,15 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
-
-  { import = require("core.utils").load_config().plugins },
 }
 
--- load lazy.nvim _,opts
-local lazy_config = require "plugins.configs.lazy_nvim"
+local config = require("core.utils").load_config()
+
+if #config.plugins > 0 then
+  table.insert(default_plugins, { import = config.plugins })
+end
+
+-- lazy_nvim startup opts
+local lazy_config = vim.tbl_deep_extend("force", require "plugins.configs.lazy_nvim", config.lazy_nvim)
 
 require("lazy").setup(default_plugins, lazy_config)
