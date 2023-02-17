@@ -11,7 +11,4 @@ local options = {
   indent = { enable = true },
 }
 
--- check for any override
-options = require("core.utils").load_override(options, "nvim-treesitter/nvim-treesitter")
-
-require("nvim-treesitter.configs").setup(options)
+return options
