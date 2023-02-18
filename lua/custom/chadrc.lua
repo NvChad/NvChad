@@ -28,6 +28,8 @@ end
 
 -- what is the difference between this M.ui and the ui plugin ("NvChad/ui")? why there are two things about ui?
 M.ui = {theme = "darker_one", hl_override = highlights_override, hl_add = highlights_add}
+
+-- TODO: check why comment mappings does not work!
 M.mappings = require("custom.mappings")
 
 return M

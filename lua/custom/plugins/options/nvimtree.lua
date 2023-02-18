@@ -21,7 +21,7 @@ return {
     cursorline = true,
     debounce_delay = 15,
     width = 30,
-    hide_root_folder = false,
+    hide_root_folder = true, --@! false-true
     side = "left",
     preserve_window_proportions = false,
     number = false,
@@ -105,7 +105,8 @@ return {
         }
       }
     },
-    special_files = {"pyproject.toml", "Cargo.toml", "Makefile", "README.md", "readme.md"}, -- @! add pyproject.toml
+    -- special_files = {"pyproject.toml", "Cargo.toml", "Makefile", "README.md", "readme.md"}, -- @! add pyproject.toml
+    special_files = {}, -- @! no special file
     symlink_destination = true
   },
   hijack_directories = {enable = true, auto_open = true},
