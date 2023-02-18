@@ -75,8 +75,6 @@ local options = {
   },
 }
 
--- check for any override
-options = require("core.utils").load_override(options, "nvim-tree/nvim-tree.lua")
 vim.g.nvimtree_side = options.view.side
 
-require("nvim-tree").setup(options)
+return options

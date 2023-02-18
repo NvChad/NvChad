@@ -30,6 +30,4 @@ local options = {
   },
 }
 
-options = require("core.utils").load_override(options, "folke/which-key.nvim")
-
-require("which-key").setup(options)
+return options

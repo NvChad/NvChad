@@ -85,37 +85,6 @@ M.load_mappings = function(section, mapping_opt)
   end
 end
 
--- merge default/user plugin tables
-M.merge_plugins = function(plugins)
-  local user_plugins = M.load_config().plugins
-  plugins = merge_tb("force", plugins, M.load_config().plugins)
-
-  local final_table = {}
-
-  for key, val in pairs(plugins) do
-    if val then
-      plugins[key] = (val.rm_default_opts and user_plugins[key]) or plugins[key]
-      plugins[key][1] = key
-      final_table[#final_table + 1] = plugins[key]
-    end
-  end
-
-  return final_table
-end
-
--- override plugin options table with custom ones
-M.load_override = function(options_table, name)
-  local user_plugins = M.load_config().plugins
-  local plugin_options = {}
-
-  if user_plugins[name] then
-    plugin_options = user_plugins[name].override_options or {}
-    plugin_options = type(plugin_options) == "table" and plugin_options or plugin_options()
-  end
-
-  return merge_tb("force", options_table, plugin_options)
-end
-
 M.lazy_load = function(plugin)
   vim.api.nvim_create_autocmd({ "BufRead", "BufWinEnter", "BufNewFile" }, {
     group = vim.api.nvim_create_augroup("BeLazyOnFileOpen" .. plugin, {}),

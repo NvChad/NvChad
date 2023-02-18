@@ -1,16 +1,15 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
-local plugins = {
+local default_plugins = {
 
-  ["nvim-lua/plenary.nvim"] = {},
+  "nvim-lua/plenary.nvim",
 
-  ["NvChad/extensions"] = { branch = "v2.0" },
+  -- nvchad plugins
+  { "NvChad/extensions", branch = "v2.0" },
+  { "NvChad/base46", branch = "v2.0" },
 
-  ["NvChad/base46"] = {
-    branch = "v2.0",
-  },
-
-  ["NvChad/ui"] = {
+  {
+    "NvChad/ui",
     branch = "v2.0",
     lazy = false,
     config = function()
@@ -18,55 +17,67 @@ local plugins = {
     end,
   },
 
-  ["NvChad/nvterm"] = {
-    config = function()
+  {
+    "NvChad/nvterm",
+    init = require("core.utils").load_mappings "nvterm",
+    opts = {},
+    config = function(_, opts)
       require "base46.term"
-      local options = require("core.utils").load_override({}, "NvChad/nvterm")
-      require("nvterm").setup(options)
-    end,
-    init = function()
-      require("core.utils").load_mappings "nvterm"
+      require("nvterm").setup(opts)
     end,
   },
 
-  ["nvim-tree/nvim-web-devicons"] = {
+  {
+    "NvChad/nvim-colorizer.lua",
+    init = require("core.utils").lazy_load "nvim-colorizer.lua",
     config = function()
-      require("plugins.configs.others").devicons()
+      require("colorizer").setup()
+
+      -- execute colorizer as soon as possible
+      vim.defer_fn(function()
+        require("colorizer").attach_to_buffer(0)
+      end, 0)
     end,
   },
 
-  ["lukas-reineke/indent-blankline.nvim"] = {
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      return { override = require("nvchad_ui.icons").devicons }
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "devicons")
+      require("nvim-web-devicons").setup(opts)
+    end,
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
     init = function()
       require("core.utils").lazy_load "indent-blankline.nvim"
       require("core.utils").load_mappings "blankline"
     end,
-    config = function()
-      require("plugins.configs.others").blankline()
+    opts = require("plugins.configs.others").blankline,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "blankline")
+      require("indent_blankline").setup(opts)
     end,
   },
 
-  ["NvChad/nvim-colorizer.lua"] = {
-    init = function()
-      require("core.utils").lazy_load "nvim-colorizer.lua"
-    end,
-    config = function()
-      require("plugins.configs.others").colorizer()
-    end,
-  },
-
-  ["nvim-treesitter/nvim-treesitter"] = {
-    init = function()
-      require("core.utils").lazy_load "nvim-treesitter"
-    end,
-    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    init = require("core.utils").lazy_load "nvim-treesitter",
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
-    config = function()
-      require "plugins.configs.treesitter"
+    opts = require "plugins.configs.treesitter",
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
     end,
   },
 
   -- git stuff
-  ["lewis6991/gitsigns.nvim"] = {
+  {
+    "lewis6991/gitsigns.nvim",
     ft = "gitcommit",
     init = function()
       -- load gitsigns only when a git file is opened
@@ -83,30 +94,37 @@ local plugins = {
         end,
       })
     end,
-    config = function()
-      require("plugins.configs.others").gitsigns()
+    opts = require("plugins.configs.others").gitsigns,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "git")
+      require("gitsigns").setup(opts)
     end,
   },
 
   -- lsp stuff
-  ["williamboman/mason.nvim"] = {
+  {
+    "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
-    config = function()
-      require "plugins.configs.mason"
+    config = function(_, opts)
+      require("mason").setup(opts)
+      -- custom nvchad cmd to install all mason binaries listed
+      vim.api.nvim_create_user_command("MasonInstallAll", function()
+        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+      end, {})
     end,
   },
 
-  ["neovim/nvim-lspconfig"] = {
-    init = function()
-      require("core.utils").lazy_load "nvim-lspconfig"
-    end,
+  {
+    "neovim/nvim-lspconfig",
+    init = require("core.utils").lazy_load "nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"
     end,
   },
 
   -- load luasnips + cmp related in insert mode only
-  ["hrsh7th/nvim-cmp"] = {
+  {
+    "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
       {
@@ -121,8 +139,16 @@ local plugins = {
       -- autopairing of (){}[] etc
       {
         "windwp/nvim-autopairs",
-        config = function()
-          require("plugins.configs.others").autopairs()
+        opts = {
+          fast_wrap = {},
+          disable_filetype = { "TelescopePrompt", "vim" },
+        },
+        config = function(_, opts)
+          require("nvim-autopairs").setup(opts)
+
+          -- setup cmp for autopairs
+          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
       },
 
@@ -136,64 +162,74 @@ local plugins = {
       },
     },
 
-    config = function()
-      require "plugins.configs.cmp"
+    opts = function()
+      return require "plugins.configs.cmp"
+    end,
+    config = function(_, opts)
+      require("cmp").setup(opts)
     end,
   },
 
-  ["numToStr/Comment.nvim"] = {
+  {
+    "numToStr/Comment.nvim",
     -- keys = { "gc", "gb" },
+    init = require("core.utils").load_mappings "comment",
     config = function()
-      require("plugins.configs.others").comment()
-    end,
-    init = function()
-      require("core.utils").load_mappings "comment"
+      require("Comment").setup()
     end,
   },
 
   -- file managing , picker etc
-  ["nvim-tree/nvim-tree.lua"] = {
+  {
+    "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    config = function()
-      require "plugins.configs.nvimtree"
-    end,
-    init = function()
-      require("core.utils").load_mappings "nvimtree"
+    init = require("core.utils").load_mappings "nvimtree",
+    opts = require "plugins.configs.nvimtree",
+    config = function(_, opts)
+      require("nvim-tree").setup(opts)
     end,
   },
 
-  ["nvim-telescope/telescope.nvim"] = {
+  {
+    "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    config = function()
-      require "plugins.configs.telescope"
+    init = require("core.utils").load_mappings "telescope",
+
+    opts = function()
+      return require "plugins.configs.telescope"
     end,
-    init = function()
-      require("core.utils").load_mappings "telescope"
+
+    config = function(_, opts)
+      local telescope = require "telescope"
+      telescope.setup(opts)
+
+      -- load extensions
+      for _, ext in ipairs(opts.extensions_list) do
+        telescope.load_extension(ext)
+      end
     end,
   },
 
   -- Only load whichkey after all the gui
-  ["folke/which-key.nvim"] = {
+  {
+    "folke/which-key.nvim",
     enabled = false,
     keys = { "<leader>", '"', "'", "`" },
-    config = function()
-      require "plugins.configs.whichkey"
-    end,
-    init = function()
-      require("core.utils").load_mappings "whichkey"
+    init = require("core.utils").load_mappings "whichkey",
+    opts = require "plugins.configs.whichkey",
+    config = function(_, opts)
+      require("which-key").setup(opts)
     end,
   },
 }
 
--- pin commits for all default plugins
-for _, value in pairs(plugins) do
-  value.pin = true
+local config = require("core.utils").load_config()
+
+if #config.plugins > 0 then
+  table.insert(default_plugins, { import = config.plugins })
 end
 
-plugins = require("core.utils").merge_plugins(plugins)
+-- lazy_nvim startup opts
+local lazy_config = vim.tbl_deep_extend("force", require "plugins.configs.lazy_nvim", config.lazy_nvim)
 
--- load lazy.nvim options
-local lazy_config = require "plugins.configs.lazy_nvim"
-lazy_config = require("core.utils").load_override(lazy_config, "folke/lazy.nvim")
-
-require("lazy").setup(plugins, lazy_config)
+require("lazy").setup(default_plugins, lazy_config)
