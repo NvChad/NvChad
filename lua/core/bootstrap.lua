@@ -1,13 +1,6 @@
 local M = {}
 
 M.lazy = function(install_path)
-  print "Downloading lazy-lock.json file..."
-
-  local config_branch = require("core.utils").load_config().options.nvChad.update_branch
-  local lazy_local_url = "https://raw.githubusercontent.com/NvChad/extensions/lazy-lock/" .. config_branch .. ".json"
-
-  vim.fn.system { "curl", "-o", "lazy-lock.json", lazy_local_url }
-
   print "Bootstrapping lazy.nvim .."
 
   vim.fn.system {
@@ -30,7 +23,8 @@ M.lazy = function(install_path)
 
   -- install binaries from mason.nvim & tsparsers on LazySync
   vim.schedule(function()
-    vim.cmd "bw | silent! MasonInstallAll" -- close lazy window
+    vim.cmd "silent! MasonInstallAll"
+    -- print success message
   end, 0)
 end
 
@@ -41,9 +35,18 @@ M.gen_chadrc_template = function()
 
     if input == "y" then
       -- clone example_config repo
-      local example_config_url = "https://github.com/NvChad/example_config"
       print "cloning chadrc starter template repo...."
-      vim.fn.system { "git", "clone", "--depth", "1", "-b", "v2.0", example_config_url, vim.fn.stdpath "config" .. "/lua/custom" }
+
+      vim.fn.system {
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "-b",
+        "v2.0",
+        "https://github.com/NvChad/example_config",
+        vim.fn.stdpath "config" .. "/lua/custom",
+      }
       vim.cmd "redraw|echo ''"
 
       -- delete .git from that repo

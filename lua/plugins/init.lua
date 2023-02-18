@@ -71,6 +71,7 @@ local default_plugins = {
     build = ":TSUpdate",
     opts = require "plugins.configs.treesitter",
     config = function(_, opts)
+      dofile(vim.g.base46_cache .. "syntax")
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
@@ -105,8 +106,11 @@ local default_plugins = {
   {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    opts = require "plugins.configs.mason",
     config = function(_, opts)
+      dofile(vim.g.base46_cache .. "mason")
       require("mason").setup(opts)
+
       -- custom nvchad cmd to install all mason binaries listed
       vim.api.nvim_create_user_command("MasonInstallAll", function()
         vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
@@ -186,6 +190,7 @@ local default_plugins = {
     init = require("core.utils").load_mappings "nvimtree",
     opts = require "plugins.configs.nvimtree",
     config = function(_, opts)
+      dofile(vim.g.base46_cache .. "nvimtree")
       require("nvim-tree").setup(opts)
     end,
   },
@@ -200,6 +205,7 @@ local default_plugins = {
     end,
 
     config = function(_, opts)
+      dofile(vim.g.base46_cache .. "telescope")
       local telescope = require "telescope"
       telescope.setup(opts)
 
@@ -218,6 +224,7 @@ local default_plugins = {
     init = require("core.utils").load_mappings "whichkey",
     opts = require "plugins.configs.whichkey",
     config = function(_, opts)
+      dofile(vim.g.base46_cache .. "whichkey")
       require("which-key").setup(opts)
     end,
   },

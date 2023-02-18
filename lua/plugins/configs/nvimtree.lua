@@ -1,5 +1,3 @@
-dofile(vim.g.base46_cache .. "nvimtree")
-
 local options = {
   filters = {
     dotfiles = false,
