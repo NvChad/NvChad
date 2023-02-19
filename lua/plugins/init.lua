@@ -20,7 +20,6 @@ local default_plugins = {
   {
     "NvChad/nvterm",
     init = require("core.utils").load_mappings "nvterm",
-    opts = {},
     config = function(_, opts)
       require "base46.term"
       require("nvterm").setup(opts)
@@ -30,8 +29,8 @@ local default_plugins = {
   {
     "NvChad/nvim-colorizer.lua",
     init = require("core.utils").lazy_load "nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup()
+    config = function(_, opts)
+      require("colorizer").setup(opts)
 
       -- execute colorizer as soon as possible
       vim.defer_fn(function()
@@ -57,7 +56,9 @@ local default_plugins = {
       require("core.utils").lazy_load "indent-blankline.nvim"
       require("core.utils").load_mappings "blankline"
     end,
-    opts = require("plugins.configs.others").blankline,
+    opts = function()
+      return require("plugins.configs.others").blankline
+    end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "blankline")
       require("indent_blankline").setup(opts)
@@ -69,7 +70,9 @@ local default_plugins = {
     init = require("core.utils").lazy_load "nvim-treesitter",
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
-    opts = require "plugins.configs.treesitter",
+    opts = function()
+      return require "plugins.configs.treesitter"
+    end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "syntax")
       require("nvim-treesitter.configs").setup(opts)
@@ -95,7 +98,9 @@ local default_plugins = {
         end,
       })
     end,
-    opts = require("plugins.configs.others").gitsigns,
+    opts = function()
+      return require("plugins.configs.others").gitsigns
+    end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "git")
       require("gitsigns").setup(opts)
@@ -106,7 +111,9 @@ local default_plugins = {
   {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
-    opts = require "plugins.configs.mason",
+    opts = function()
+      return require "plugins.configs.mason"
+    end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "mason")
       require("mason").setup(opts)
@@ -188,7 +195,9 @@ local default_plugins = {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     init = require("core.utils").load_mappings "nvimtree",
-    opts = require "plugins.configs.nvimtree",
+    opts = function()
+      return require "plugins.configs.nvimtree"
+    end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "nvimtree")
       require("nvim-tree").setup(opts)
@@ -222,7 +231,9 @@ local default_plugins = {
     enabled = false,
     keys = { "<leader>", '"', "'", "`" },
     init = require("core.utils").load_mappings "whichkey",
-    opts = require "plugins.configs.whichkey",
+    opts = function()
+      return require "plugins.configs.whichkey"
+    end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "whichkey")
       require("which-key").setup(opts)
