@@ -19,8 +19,7 @@ M.lazy = function(install_path)
 
   vim.fn.mkdir(vim.g.base46_cache, "p")
   require("base46").load_all_highlights()
-
-  vim.cmd "silent! lua require('lazy').load { plugins = 'nvim-treesitter' }"
+  require("lazy").load { plugins = "nvim-treesitter" }
 
   -- install binaries from mason.nvim & tsparsers on LazySync
   vim.schedule(function()
