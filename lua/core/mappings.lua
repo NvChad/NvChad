@@ -8,6 +8,8 @@ local M = {}
 
 M.general = {
   i = {
+    ["<C-BS>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
+    ["<C-H>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "beginning of line" },
     ["<C-e>"] = { "<End>", "end of line" },
