@@ -1,4 +1,6 @@
 local plugins = {
+  ["terryma/vim-multiple-cursors"] = {},
+
   ["kdheepak/lazygit.nvim"] = {},
 
   ["akinsho/toggleterm.nvim"] = {
