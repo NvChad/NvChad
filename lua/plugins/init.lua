@@ -1,4 +1,6 @@
 local plugins = {
+  ["kdheepak/lazygit.nvim"] = {},
+
   ["akinsho/toggleterm.nvim"] = {
     config = function()
       require("toggleterm").setup({
