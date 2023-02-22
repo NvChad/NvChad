@@ -3,6 +3,7 @@ vim.defer_fn(function()
 end, 0)
 
 require "core"
+require "core.base"
 require "core.options"
 
 -- setup packer + plugins
