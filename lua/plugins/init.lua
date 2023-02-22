@@ -1,4 +1,13 @@
 local plugins = {
+  ["akinsho/toggleterm.nvim"] = {
+    config = function()
+      require("toggleterm").setup({
+        open_mapping = [[<c-\>]],
+        direction = 'float',
+        shade_terminals = true,
+      })
+    end
+  },
 
   ["nvim-lua/plenary.nvim"] = { module = "plenary" },
 
@@ -152,7 +161,7 @@ local plugins = {
 
   ["goolord/alpha-nvim"] = {
     after = "base46",
-    disable = true,
+    disable = false,
     config = function()
       require "plugins.configs.alpha"
     end,
