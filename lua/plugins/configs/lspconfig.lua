@@ -9,6 +9,8 @@ require "nvchad_ui.lsp"
 
 local M = {}
 local utils = require "core.utils"
+local util = require "lspconfig/util"
+local pid = vim.fn.getpid()
 
 -- export on_attach & capabilities for custom lspconfigs
 
@@ -44,6 +46,12 @@ M.capabilities.textDocument.completion.completionItem = {
 }
 
 lspconfig.tsserver.setup({ })
+
+
+lspconfig.omnisharp.setup({
+   cmd = { "C:\\Users\\Admin\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\OmniSharp", "--languageserver" , "--hostPID", tostring(pid) },
+   root_dir = util.root_pattern("*.csproj", "*.sln")
+})
 
 lspconfig.lua_ls.setup {
   on_attach = M.on_attach,
