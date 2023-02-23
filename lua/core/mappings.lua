@@ -275,6 +275,9 @@ M.telescope = {
   plugin = true,
 
   n = {
+    -- Open project
+    ["<C-r>"] = { "<cmd> Telescope project <CR>", "Project" },
+
     -- find
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "find files" },
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
