@@ -1,4 +1,12 @@
 local plugins = {
+  ["johmsalas/text-case.nvim"] = {},
+
+  ["OmniSharp/omnisharp-vim"] = {},
+
+  ["realprogrammersusevim/md-to-html.nvim"] = {},
+
+  ["memgraph/cypher.vim"] = {},
+
   ["terryma/vim-multiple-cursors"] = {},
 
   ["kdheepak/lazygit.nvim"] = {},
