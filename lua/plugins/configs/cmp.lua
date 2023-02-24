@@ -63,6 +63,22 @@ local options = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     },
+    ["<C-y>"] = cmp.mapping({
+      i = function()
+        if cmp.visible() then
+          cmp.abort()
+        else
+          cmp.complete()
+        end
+      end,
+      c = function()
+        if cmp.visible() then
+          cmp.close()
+        else
+          cmp.complete()
+        end
+      end,
+    }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -99,5 +115,12 @@ local options = {
 
 -- check for any override
 options = require("core.utils").load_override(options, "hrsh7th/nvim-cmp")
+
+cmp.setup.cmdline({'/', '?'}, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
 
 cmp.setup(options)
