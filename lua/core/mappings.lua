@@ -5,6 +5,10 @@ local function termcodes(str)
 end
 
 local M = {}
+ -- Enable completion triggered by <c-x><c-o>
+local bufnr = 0
+vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+local bufopts = { noremap=true, silent=true }
 
 M.general = {
   i = {
@@ -23,6 +27,23 @@ M.general = {
 
   n = {
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
+
+    -- LSPConfig
+    -- ["gD"] = {vim.lsp.buf.declaration, "[LSP] Go to declaration", bufopts},
+    -- ["gd"] = {vim.lsp.buf.definition, "[LSP] Go to definition", bufopts},
+    -- ["gi"] = {vim.lsp.buf.implementation, "[LSP] Go to implementation", bufopts},
+    -- ["gr"] = {vim.lsp.buf.references, "[LSP] Go to references", bufopts},
+    ["gD"] = { function() vim.lsp.buf.declaration() end, "lsp declaration", bufopts },
+    ["gd"] = { function() vim.lsp.buf.definition() end, "lsp definition", bufopts },
+    ["K"] = { function() vim.lsp.buf.hover() end, "lsp hover", },
+    ["gi"] = { function() vim.lsp.buf.implementation() end, "lsp implementation", bufopts },
+    ["gr"] = { function() vim.lsp.buf.references() end, "lsp references", bufopts},
+    ["<leader>ra"] = {
+      function()
+        require("nvchad_ui.renamer").open()
+      end,
+      "lsp rename",
+    },
 
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "window left" },
@@ -138,32 +159,11 @@ M.lspconfig = {
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
   n = {
-    ["gD"] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
-      "lsp declaration",
-    },
-
-    ["gd"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
-      "lsp definition",
-    },
-
     ["K"] = {
       function()
         vim.lsp.buf.hover()
       end,
       "lsp hover",
-    },
-
-    ["gi"] = {
-      function()
-        vim.lsp.buf.implementation()
-      end,
-      "lsp implementation",
     },
 
     ["<leader>ls"] = {
@@ -178,13 +178,6 @@ M.lspconfig = {
         vim.lsp.buf.type_definition()
       end,
       "lsp definition type",
-    },
-
-    ["<leader>ra"] = {
-      function()
-        require("nvchad_ui.renamer").open()
-      end,
-      "lsp rename",
     },
 
     ["<leader>ca"] = {
