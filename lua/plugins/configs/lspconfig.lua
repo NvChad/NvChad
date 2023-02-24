@@ -45,8 +45,11 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-lspconfig.tsserver.setup({ })
+lspconfig.jsonls.setup({
+  single_file_support = true
+})
 
+lspconfig.tsserver.setup({ })
 
 lspconfig.omnisharp.setup({
    cmd = { "C:\\Users\\Admin\\AppData\\Local\\nvim-data\\mason\\packages\\omnisharp\\OmniSharp", "--languageserver" , "--hostPID", tostring(pid) },
