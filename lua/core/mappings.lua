@@ -29,15 +29,12 @@ M.general = {
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
 
     -- LSPConfig
-    -- ["gD"] = {vim.lsp.buf.declaration, "[LSP] Go to declaration", bufopts},
-    -- ["gd"] = {vim.lsp.buf.definition, "[LSP] Go to definition", bufopts},
-    -- ["gi"] = {vim.lsp.buf.implementation, "[LSP] Go to implementation", bufopts},
-    -- ["gr"] = {vim.lsp.buf.references, "[LSP] Go to references", bufopts},
     ["gD"] = { function() vim.lsp.buf.declaration() end, "lsp declaration", bufopts },
     ["gd"] = { function() vim.lsp.buf.definition() end, "lsp definition", bufopts },
     ["K"] = { function() vim.lsp.buf.hover() end, "lsp hover", },
     ["gi"] = { function() vim.lsp.buf.implementation() end, "lsp implementation", bufopts },
-    ["gr"] = { function() vim.lsp.buf.references() end, "lsp references", bufopts},
+    ["gr"] = { function() require("telescope.builtin").lsp_references() end, "lsp references", bufopts},
+
     ["<leader>ra"] = {
       function()
         require("nvchad_ui.renamer").open()
