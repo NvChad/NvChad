@@ -32,8 +32,9 @@ M.general = {
     ["gD"] = { function() vim.lsp.buf.declaration() end, "lsp declaration", bufopts },
     ["gd"] = { function() vim.lsp.buf.definition() end, "lsp definition", bufopts },
     ["K"] = { function() vim.lsp.buf.hover() end, "lsp hover", },
-    ["gi"] = { function() vim.lsp.buf.implementation() end, "lsp implementation", bufopts },
+    ["gi"] = { function() require("telescope.builtin").lsp_implementations() end, "lsp implementation", bufopts },
     ["gr"] = { function() require("telescope.builtin").lsp_references() end, "lsp references", bufopts},
+    ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
 
     ["<leader>ra"] = {
       function()
@@ -84,6 +85,7 @@ M.general = {
   t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
 
   v = {
+    ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
   },
