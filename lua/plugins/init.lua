@@ -1,4 +1,6 @@
 local plugins = {
+  ["tpope/vim-surround"] = { },
+
   ["johmsalas/text-case.nvim"] = {},
 
   ["OmniSharp/omnisharp-vim"] = {},
