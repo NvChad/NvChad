@@ -11,7 +11,8 @@ local options = {
     "lua",
     "json",
     "typescript",
-    "c_sharp"
+    "c_sharp",
+    "dockerfile"
   },
 
   highlight = {
