@@ -2,8 +2,6 @@ local cmp = require "cmp"
 
 dofile(vim.g.base46_cache .. "cmp")
 
-vim.o.completeopt = "menu,menuone,noselect"
-
 local cmp_ui = require("core.utils").load_config().ui.cmp
 local cmp_style = cmp_ui.style
 
@@ -47,6 +45,10 @@ local function border(hl_name)
 end
 
 local options = {
+  completion = {
+    completeopt = "menu,menuone",
+  },
+
   window = {
     completion = {
       side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
