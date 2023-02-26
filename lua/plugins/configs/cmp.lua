@@ -31,6 +31,9 @@ cmp_window.info = function(self)
 end
 
 local options = {
+  experimental = {
+    ghost_text = true
+  },
   window = {
     completion = {
       border = border "CmpBorder",
