@@ -11,6 +11,8 @@ local plugins = {
     end,
   },
 
+  ["alanfortlink/blackjack.nvim"] = { },
+
   ["tpope/vim-surround"] = { },
 
   ["johmsalas/text-case.nvim"] = {},
