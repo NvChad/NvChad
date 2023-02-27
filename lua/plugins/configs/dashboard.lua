@@ -7,8 +7,13 @@ end
 local options = {
     theme = 'hyper',
     shortcut_type = 'number',
+    path = "local recent_project = require('project_nvim').get_recent_projects() return recent_project",
     config = {
-      path = 'C:\\Users\\Admin\\telescope-projects.txt',
+      path = "local recent_project = require('project_nvim').get_recent_projects() return recent_project",
+      project = {
+        enable = true,
+        path = "local recent_project = require('project_nvim').get_recent_projects() return recent_project",
+      },
       week_header = {
        enable = true,
       },
