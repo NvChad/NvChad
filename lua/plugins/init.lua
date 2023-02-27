@@ -1,4 +1,10 @@
 local plugins = {
+  ["glepnir/dashboard-nvim"] = {
+    config = function()
+      require "plugins.configs.dashboard"
+    end,
+  },
+
   ["ahmedkhalf/project.nvim"] = {
     config = function()
       require "plugins.configs.projects"
@@ -9,7 +15,7 @@ local plugins = {
 
   ["johmsalas/text-case.nvim"] = {},
 
-  ["OmniSharp/omnisharp-vim"] = {},
+  -- ["OmniSharp/omnisharp-vim"] = {},
 
   ["realprogrammersusevim/md-to-html.nvim"] = {},
 
@@ -181,7 +187,7 @@ local plugins = {
 
   ["goolord/alpha-nvim"] = {
     after = "base46",
-    disable = false,
+    disable = true,
     config = function()
       require "plugins.configs.alpha"
     end,
