@@ -259,7 +259,7 @@ M.telescope = {
 
   n = {
     -- Open project
-    ["<C-r>"] = { "<cmd> Telescope project <CR>", "Project" },
+    ["<C-r>"] = { "<cmd> Telescope projects <CR>", "Project" },
 
     -- find
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "find files" },

@@ -1,4 +1,10 @@
 local plugins = {
+  ["ahmedkhalf/project.nvim"] = {
+    config = function()
+      require "plugins.configs.projects"
+    end,
+  },
+
   ["tpope/vim-surround"] = { },
 
   ["johmsalas/text-case.nvim"] = {},
