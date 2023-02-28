@@ -1,5 +1,5 @@
 local plugins = {
-  ["glepnir/dashboard-nvim"] = {
+  ["lpl212757/dashboard-nvim"] = {
     config = function()
       require "plugins.configs.dashboard"
     end,
