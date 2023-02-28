@@ -240,6 +240,18 @@ local plugins = {
       require("core.utils").load_mappings "whichkey"
     end,
   },
+
+  ["jackMort/ChatGPT.nvim"] = {
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    },
+    config = function()
+      require "plugins.configs.chatGPT"
+    end,
+  },
+
 }
 
 -- Load all plugins
