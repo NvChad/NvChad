@@ -1,4 +1,29 @@
 local plugins = {
+
+  ["MunifTanjim/nui.nvim"] = {
+      module = {"nui.layout", "nui.popup"},
+      module_pattern = {"nui.*"}
+  },
+
+  ["lpl212757/ChatGPT.nvim"] = {
+      cmd = "ChatGPT",
+      opt = true,
+      keys = {"<leader>gpt"},
+      module_pattern = {"chatgpt*"},
+      after = {"nui.nvim", "telescope.nvim"},
+      setup = function()
+          require("plugins.configs.chatGPT").load_api_key()
+      end,
+      config = function()
+        require('chatgpt').setup()
+      end,
+      requires = {
+          "MunifTanjim/nui.nvim",
+          "nvim-lua/plenary.nvim",
+          "nvim-telescope/telescope.nvim"
+      }
+  },
+
   ["lpl212757/dashboard-nvim"] = {
     config = function()
       require "plugins.configs.dashboard"
@@ -240,18 +265,6 @@ local plugins = {
       require("core.utils").load_mappings "whichkey"
     end,
   },
-
-  -- ["jackMort/ChatGPT.nvim"] = {
-  --   requires = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim"
-  --   },
-  --   config = function()
-  --     require "plugins.configs.chatGPT"
-  --   end,
-  -- },
-
 }
 
 -- Load all plugins
