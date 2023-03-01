@@ -10,12 +10,9 @@ local plugins = {
       opt = true,
       keys = {"<leader>gpt"},
       module_pattern = {"chatgpt*"},
-      after = {"nui.nvim", "telescope.nvim"},
-      setup = function()
-          require("plugins.configs.chatGPT").load_api_key()
-      end,
+      after = {"nui.nvim", "telescope.nvim", "plenary.nvim"},
       config = function()
-        require('chatgpt').setup()
+        require('plugins.configs.chatGPT').setup()
       end,
       requires = {
           "MunifTanjim/nui.nvim",
@@ -282,5 +279,6 @@ if present then
 
   packer.init(init_options)
   packer.startup { plugins }
+  packer.loader("telescope.nvim")
   require("nvim-treesitter.install").prefer_git = true
 end
