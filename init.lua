@@ -1,6 +1,5 @@
 require "core"
 require "core.options"
-require("core.utils").load_mappings()
 
 local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
@@ -8,9 +7,11 @@ if custom_init_path then
   dofile(custom_init_path)
 end
 
--- bootstrap lazy.nvim!
+require("core.utils").load_mappings()
+
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
+-- bootstrap lazy.nvim!
 if not vim.loop.fs_stat(lazypath) then
   require("core.bootstrap").gen_chadrc_template()
   require("core.bootstrap").lazy(lazypath)
