@@ -13,7 +13,7 @@ local bufopts = { noremap=true, silent=true }
 M.general = {
   i = {
     -- Lspconfig Code action
-    ["<C-.>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
+    -- ["<leader>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
 
     ["<C-BS>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
     ["<C-H>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
@@ -38,7 +38,7 @@ M.general = {
     ["gi"] = { function() require("telescope.builtin").lsp_implementations() end, "lsp implementation", bufopts },
     ["gr"] = { function() require("telescope.builtin").lsp_references() end, "lsp references", bufopts},
     ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
-    ["<C-.>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
+    ["<leader>fn"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
     ["<leader>ra"] = { function() require("nvchad_ui.renamer").open() end, "lsp rename", },
 
     -- switch between windows
