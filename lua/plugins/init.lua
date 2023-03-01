@@ -241,16 +241,16 @@ local plugins = {
     end,
   },
 
-  ["jackMort/ChatGPT.nvim"] = {
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    },
-    config = function()
-      require "plugins.configs.chatGPT"
-    end,
-  },
+  -- ["jackMort/ChatGPT.nvim"] = {
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim"
+  --   },
+  --   config = function()
+  --     require "plugins.configs.chatGPT"
+  --   end,
+  -- },
 
 }
 
@@ -269,4 +269,5 @@ if present then
 
   packer.init(init_options)
   packer.startup { plugins }
+  require("nvim-treesitter.install").prefer_git = true
 end
