@@ -155,25 +155,25 @@ M.slime = {
 --   -- all standard key binding opts are supported
 -- }
 
-M.jupyter = {
-  plugin = true,
-  n = {
-    ["<leader><leader>R"] = {":JupyterRunFile <CR>", "jupyter run file"},
-    ["<leader><leader>I"] = {
-      ":PythonImportThisFile <CR>",
-      "jupyter import this file"
-    },
-    ["<leader><leader>d"] = {
-      ":JupyterCd %:p:h <CR>",
-      "change dir to current file"
-    },
-    ["<leader><leader>s"] = {":JupyterSendCell <CR>", "jupyter send cell"},
-    ["<leader><leader>E"] = {":JupyterSendRange <CR>", "jupyter send range"},
-    ["<leader><leader>b"] = {":PythonSetBreak <CR>", "juyter set break"},
-    ["<leader><leader>e"] = {"<Plug>JupyterRunTextObj", "jupyter run textObj"}
-  },
-  v = {["<leader><leader>e"] = {"<Plug>JupyterRunVisual", "jupyter run visual"}}
-}
+-- M.jupyter = {
+--   plugin = true,
+--   n = {
+--     ["<leader><leader>R"] = {":JupyterRunFile <CR>", "jupyter run file"},
+--     ["<leader><leader>I"] = {
+--       ":PythonImportThisFile <CR>",
+--       "jupyter import this file"
+--     },
+--     ["<leader><leader>d"] = {
+--       ":JupyterCd %:p:h <CR>",
+--       "change dir to current file"
+--     },
+--     ["<leader><leader>s"] = {":JupyterSendCell <CR>", "jupyter send cell"},
+--     ["<leader><leader>E"] = {":JupyterSendRange <CR>", "jupyter send range"},
+--     ["<leader><leader>b"] = {":PythonSetBreak <CR>", "juyter set break"},
+--     ["<leader><leader>e"] = {"<Plug>JupyterRunTextObj", "jupyter run textObj"}
+--   },
+--   v = {["<leader><leader>e"] = {"<Plug>JupyterRunVisual", "jupyter run visual"}}
+-- }
 
 M.competitest = {
   plugin = true,
@@ -200,6 +200,25 @@ M.comment = {
       "toggle comment"
     }
   }
+}
+
+M.magma = {
+  -- plugin = true,
+  n = {
+    ["<leader>rr"] = {":MagmaEvaluateLine<CR>", "Magma evaluate line"},
+    ["<leader>rc"] = {":MagmaReevaluateCell<CR>", "Magma reevaluate cell"},
+    ["<leader>rd"] = {":MagmaDelete<CR>", "Magma delete"},
+    ["<leader>ro"] = {":MagmaShowOutput<CR>", "Magma show output"},
+  },
+  v = {
+    ["<leader>r"] = {":<C-u>MagmaEvaluateVisual<CR>", "Magma evaluate visual"}
+  }
+-- nnoremap <silent><expr> <LocalLeader>r  :MagmaEvaluateOperator<CR>
+-- nnoremap <silent>       <LocalLeader>rr :MagmaEvaluateLine<CR>
+-- xnoremap <silent>       <LocalLeader>r  :<C-u>MagmaEvaluateVisual<CR>
+-- nnoremap <silent>       <LocalLeader>rc :MagmaReevaluateCell<CR>
+-- nnoremap <silent>       <LocalLeader>rd :MagmaDelete<CR>
+-- nnoremap <silent>       <LocalLeader>ro :MagmaShowOutput<CR>
 }
 
 return M

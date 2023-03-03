@@ -34,7 +34,7 @@ return {
   },
 
   -- remove plugins
-  ["NvChad/nvterm"] = false, -- TODO: checkout this
+  ["NvChad/nvterm"] = false,
 
   -- override plugins
   ["nvim-tree/nvim-tree.lua"] = {override_options = require("custom.plugins.options.nvimtree")},
@@ -56,5 +56,6 @@ return {
     override_options = {
       ensure_installed = {"lua-language-server", "css-lsp", "html-lsp", "typescript-language-server", "pyright"}
     }
-  }
+  },
+  ["dccsillag/magma-nvim"] = {}
 }

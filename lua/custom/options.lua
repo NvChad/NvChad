@@ -2,7 +2,6 @@
 local opt = vim.opt
 local g = vim.g
 
-g.python3_host_prog = '/fast-home/mehdi/.pyenv/versions/py3nvim/bin/python'
 
 opt.encoding = "UTF-8"
 opt.fileformat = "unix"
@@ -35,7 +34,8 @@ g.vimwiki_list = {{path = "~/vimwiki/general"}, {path = "~/vimwiki/vocabulary"}}
 
 -- [[ Plugin: slime ]] --
 g.slime_no_mappings = 1
-g.slime_target = "neovim"
+g.slime_python_ipython = 1
+g.slime_target = "tmux"
 g.slime_cell_delimiter = "#%%"
 -- g.slime_target = "tmux"
 -- g.slime_default_config = {socket_name = "default", target_pane= "{last}"}
@@ -50,6 +50,10 @@ g.closetag_regions = {
   ['javascriptreact'] = 'jsxRegion'
 }
 
+-- [[ Plugin: Magma ]]
+g.magma_automatically_open_output = false
+g.magma_image_provider = "kitty"
+
 -- [[ Plugin: juypter-vim ]] --
 g.jupyter_mapkeys = 0
 
@@ -57,6 +61,7 @@ g.jupyter_mapkeys = 0
 -- see: https://neovim.io/doc/user/provider.html
 -- https://github.com/NvChad/NvChad/pull/1282
 -- https://github.com/NvChad/NvChad/issues/1230
+-- g.python3_host_prog = '/fast-home/mehdi/.pyenv/versions/py3nvim/bin/python'
 
 local enable_providers = {"python3_provider", "node_provider"}
 for _, plugin in pairs(enable_providers) do

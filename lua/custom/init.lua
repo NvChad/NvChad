@@ -72,3 +72,40 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 --    return opts
 -- end
 -- end of UI customization
+--
+
+-- create_extmark function to create a new extmark
+-- function create_extmark(bufnr, line, col, virt_text, virt_text_pos)
+--   local ns_id = vim.api.nvim_create_namespace("my_extmarks")
+--   local mark_id = vim.api.nvim_buf_set_extmark(bufnr, ns_id, line, col, { virt_text = virt_text, virt_text_pos = virt_text_pos })
+--   return ns_id, mark_id
+-- end
+
+function create_extmark()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local bufname = vim.api.nvim_buf_get_name(bufnr)
+    if bufname == '' then
+        print('Cannot create extmark: buffer is empty')
+        return
+    end
+    local ns_id = vim.api.nvim_create_namespace('my_extmark_ns')
+    local cursor_pos = vim.api.nvim_win_get_cursor(0)
+    -- vim_buf_set_extmark({buffer}, {ns_id}, {line}, {col}, {*opts})
+    local mark_id = vim.api.nvim_buf_set_extmark(bufnr, ns_id, cursor_pos[1], cursor_pos[2], {ui_watched=true})
+    print('Created extmark with ID:', mark_id)
+end
+
+-- list_extmarks function to list all extmarks in the current buffer
+function list_extmarks()
+  local ns_id = vim.api.nvim_create_namespace("my_extmark_ns")
+  local bufnr = vim.api.nvim_get_current_buf()
+  local extmarks = vim.api.nvim_buf_get_extmarks(bufnr, ns_id, 0, -1, {})
+
+  for _, extmark in ipairs(extmarks) do
+    local extmark_id = extmark[1]
+    local extmark_row = extmark[2]
+    local extmark_col = extmark[3]
+    print("ID: " .. extmark_id .. " line: " .. extmark_row .. " col: " .. extmark_col)
+  end
+end
+
