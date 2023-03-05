@@ -5,7 +5,7 @@ vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "da
 local new_cmd = vim.api.nvim_create_user_command
 
 new_cmd("NvChadUpdate", function()
-  require("nvchad").update_nvchad()
+  require "nvchad.update"()
 end, {})
 
 -- autocmds
