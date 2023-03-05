@@ -45,7 +45,14 @@ M.general = {
     ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
   },
 
-  t = { ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "escape terminal mode" } },
+  t = {
+    ["<C-x>"] = {
+      function()
+        vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true)
+      end,
+      "escape terminal mode",
+    },
+  },
 
   v = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move up", opts = { expr = true } },
