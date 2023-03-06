@@ -50,6 +50,21 @@ M.gen_chadrc_template = function()
       vim.loop.fs_rmdir(vim.fn.stdpath "config" .. "/lua/custom/.git")
       vim.notify "successfully installed chadrc template!"
       vim.cmd "redraw|echo ''"
+    else
+      local custom_dir = vim.fn.stdpath "config" .. "/lua/custom/"
+      vim.fn.mkdir(custom_dir, "p")
+
+      local str = [[
+              local M = {}
+                M.ui = {
+                  theme = "onedark",
+               }
+              return M
+           ]]
+
+      local file = io.open(custom_dir .. "chadrc.lua", "w")
+      file:write(str)
+      file:close()
     end
   end
 end
