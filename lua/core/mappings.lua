@@ -46,12 +46,7 @@ M.general = {
   },
 
   t = {
-    ["<C-x>"] = {
-      function()
-        vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true)
-      end,
-      "escape terminal mode",
-    },
+    ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "escape terminal mode" },
   },
 
   v = {
