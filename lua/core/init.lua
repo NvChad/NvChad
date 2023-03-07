@@ -45,10 +45,12 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     require("plenary.reload").reload_module(file)
     require("plenary.reload").reload_module "custom.chadrc"
 
-    local config = require("core.utils").load_config().ui
+    local config = require("core.utils").load_config()
 
-    vim.opt.statusline = "%!v:lua.require('nvchad_ui.statusline." .. config.statusline.theme .. "').run()"
+    vim.opt.statusline = "%!v:lua.require('nvchad_ui.statusline." .. config.ui.statusline.theme .. "').run()"
 
+    vim.g.nvchad_theme = config.ui.theme
+    vim.g.transparency = config.ui.transparency
     require("base46").load_all_highlights()
     -- vim.cmd("redraw!")
   end,
