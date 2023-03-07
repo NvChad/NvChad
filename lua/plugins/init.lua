@@ -1,11 +1,5 @@
 local plugins = {
-  ["f-person/git-blame.nvim"] = {
-    config = function()
-      require('git-blame.nvim').setup({
-        gitblame_date_format = "%r"
-      })
-    end
-  },
+  ["f-person/git-blame.nvim"] = { },
 
   ["alvan/vim-closetag"] = { },
 
