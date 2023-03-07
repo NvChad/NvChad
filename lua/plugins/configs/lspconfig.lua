@@ -45,7 +45,36 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-lspconfig.angularls.setup({ })
+local cmd = {"node", "C:/Users/Admin/AppData/Local/nvim-data/mason/packages/angular-language-server/node_modules/@angular/language-server/index.js", "--stdio", "--tsProbeLocations", "C:/Users/Admin/AppData/Local/nvim-data/mason/packages/angular-language-server/node_modules" , "--ngProbeLocations", "C:/Data/Stable_Diffusion/redbubble-automation-tool/node_modules", "--logFile", "C:/Users/Admin/AppData/Local/nvim-data/mason/packages/angular-language-server/node_modules/@angular/language-server/log.txt"}
+
+lspconfig.angularls.setup({
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  cmd = cmd,
+  on_new_config = function(new_config,new_root_dir)
+    new_config.cmd = cmd
+  end,
+  root_dir = util.root_pattern("angular.json"),
+  single_file_support = false
+})
+
+lspconfig.emmet_ls.setup({
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+  init_options = {
+    html = {
+      options = {
+        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        ["bem.enabled"] = true,
+      },
+    },
+  }
+})
+
+lspconfig.html.setup({
+  single_file_support = true
+})
 
 lspconfig.docker_compose_language_service.setup({
   single_file_support = true
