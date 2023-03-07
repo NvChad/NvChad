@@ -39,7 +39,7 @@ M.general = {
     ["gr"] = { function() require("telescope.builtin").lsp_references() end, "lsp references", bufopts},
     ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
     ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
-    ["<leader>ra"] = { function() require("nvchad_ui.renamer").open() end, "lsp rename", },
+    ["<F2>"] = { function() require("nvchad_ui.renamer").open() end, "lsp rename", },
 
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "window left" },
