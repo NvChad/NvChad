@@ -1,4 +1,5 @@
 local plugins = {
+  ["alvan/vim-closetag"] = { },
 
   ["MunifTanjim/nui.nvim"] = {
       module = {"nui.layout", "nui.popup"},
