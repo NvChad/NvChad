@@ -12,7 +12,17 @@ M.options = {
 M.ui = {
   -- hl = highlights
   hl_add = {},
-  hl_override = {},
+  hl_override = {
+    CursorLine = {
+      bg = "one_bg"
+    },
+    CursorWord0 = {
+      gui = "bold"
+    },
+    CursorWord1 = {
+      gui = "bold"
+    },
+  },
   changed_themes = {},
   theme_toggle = { "onedark", "one_light" },
   theme = "onedark", -- default theme
