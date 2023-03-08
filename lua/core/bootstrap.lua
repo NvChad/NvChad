@@ -16,12 +16,11 @@ M.lazy = function(install_path)
 
   -- install plugins + compile their configs
   require "plugins"
-  require("lazy").load { plugins = { "nvim-treesitter" } }
 
-  -- install binaries from mason.nvim & tsparsers on LazySync
-  vim.schedule(function()
+  vim.api.nvim_buf_delete(0, { force = true }) -- close lazy window
+
+  vim.defer_fn(function()
     vim.cmd "silent! MasonInstallAll"
-    -- print success message
   end, 0)
 end
 
