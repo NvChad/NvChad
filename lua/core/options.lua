@@ -6,6 +6,7 @@ g.nvchad_theme = config.ui.theme
 g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
 g.theme_switcher_loaded = false
+g.gitblame_enabled = false
 
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
