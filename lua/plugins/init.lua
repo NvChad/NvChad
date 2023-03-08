@@ -1,4 +1,6 @@
 local plugins = {
+  ["easymotion/vim-easymotion"] = { },
+
   ["echasnovski/mini.nvim"] = { 
     config = function()
       require('mini.cursorword').setup({  })
