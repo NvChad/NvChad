@@ -7,6 +7,7 @@ vim.cmd "silent! command! NvChadUpdate lua require('nvchad').update_nvchad()"
 vim.cmd "silent! command! NvChadSnapshotCreate lua require('nvchad').snap_create()"
 vim.cmd "silent! command! NvChadSnapshotDelete lua require('nvchad').snap_delete()"
 vim.cmd "silent! command! NvChadSnapshotCheckout lua require('nvchad').snap_checkout()"
+vim.cmd "hi MiniCursorwordCurrent guibg=#4b5263 gui=bold"
 
 -- autocmds
 local autocmd = vim.api.nvim_create_autocmd

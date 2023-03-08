@@ -1,4 +1,10 @@
 local plugins = {
+  ["echasnovski/mini.nvim"] = { 
+    config = function()
+      require('mini.cursorword').setup({  })
+    end,
+  },
+
   ["f-person/git-blame.nvim"] = { },
 
   ["alvan/vim-closetag"] = { },
