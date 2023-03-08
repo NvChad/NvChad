@@ -30,7 +30,6 @@ M.gen_chadrc_template = function()
     vim.cmd "redraw|echo ''"
 
     if input == "y" then
-      -- clone example_config repo
       print "cloning chadrc starter template repo...."
 
       vim.fn.system {
