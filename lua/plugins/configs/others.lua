@@ -11,6 +11,8 @@ M.blankline = {
     "TelescopePrompt",
     "TelescopeResults",
     "mason",
+    "nvdash",
+    "nvcheatsheet",
     "",
   },
   buftype_exclude = { "terminal" },
