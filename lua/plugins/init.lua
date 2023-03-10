@@ -1,4 +1,6 @@
 local plugins = {
+  ["mechatroner/rainbow_csv"] = { },
+
   ["easymotion/vim-easymotion"] = { },
 
   ["echasnovski/mini.nvim"] = { 
