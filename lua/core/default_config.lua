@@ -28,6 +28,10 @@ M.ui = {
     selected_item_bg = "colored", -- colored / simple
   },
 
+  telescope = {
+    style = "borderless", -- borderless / bordered
+  },
+
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {
     theme = "default", -- default/vscode/vscode_colored/minimal
