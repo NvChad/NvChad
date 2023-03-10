@@ -7,6 +7,8 @@ g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
 g.theme_switcher_loaded = false
 g.gitblame_enabled = false
+g.gitblame_date_format = '%r'
+g.gitblame_highlight_group = 'GitBlameMessage'
 
 opt.laststatus = 3 -- global statusline
 opt.showmode = false
