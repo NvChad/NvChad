@@ -71,22 +71,39 @@ autocmd("FileType", {
   end,
 })
 
-autocmd("BufWritePost", {
-  pattern = "chadrc.lua",
+local sep = vim.loop.os_uname().sysname:find "windows" and "\\" or "/"
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = vim.fn.glob(
+    table.concat({
+      vim.fn.stdpath "config",
+      "lua",
+      "custom",
+      "**",
+      "*.lua",
+    }, sep),
+    true,
+    true,
+    true
+  ),
+
   group = vim.api.nvim_create_augroup("ReloadNvChad", {}),
 
-  callback = function()
+  callback = function(opts)
     require("plenary.reload").reload_module "base46"
+    local file = string
+      .gsub(vim.fn.fnamemodify(opts.file, ":r"), vim.fn.stdpath "config" .. sep .. "lua" .. sep, "")
+      :gsub(sep, ".")
+    require("plenary.reload").reload_module(file)
+    require("plenary.reload").reload_module "custom.chadrc"
 
-    vim.opt.statusline = "%!v:lua.require('nvchad_ui.statusline." .. config.ui.statusline.theme .. "').run()"
     vim.g.nvchad_theme = config.ui.theme
     vim.g.transparency = config.ui.transparency
 
-    -- reload cmp  stuff
-    require("plenary.reload").reload_module "plugins.configs.cmp"
-    require("cmp").setup(require "plugins.configs.cmp")
+    vim.opt.statusline = "%!v:lua.require('nvchad_ui.statusline." .. config.ui.statusline.theme .. "').run()"
 
     require("base46").load_all_highlights()
+    -- vim.cmd("redraw!")
   end,
 })
 
