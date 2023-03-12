@@ -37,8 +37,6 @@ M.gen_chadrc_template = function()
         "clone",
         "--depth",
         "1",
-        "-b",
-        "v2.0",
         "https://github.com/NvChad/example_config",
         vim.fn.stdpath "config" .. "/lua/custom",
       }
