@@ -1,15 +1,15 @@
 <h1 align="center">NvChad</h1>
 
 <div align="center">
-	<a href="https://nvchad.github.io/">Home</a>
+	<a href="https://nvchad.com/">Home</a>
   <span> • </span>
-    	<a href="https://nvchad.github.io/quickstart/install">Install</a>
+    	<a href="https://nvchad.com/#/docs/quickstart/install">Install</a>
   <span> • </span>
-       	<a href="https://nvchad.github.io/contribute">Contribute</a>
+       	<a href="https://nvchad.com/#/docs/contribute">Contribute</a>
   <span> • </span>
 	<a href="https://github.com/NvChad/NvChad#gift_heart-support">Support</a>
   <span> • </span>
-        <a href="https://nvchad.github.io/Features">Features</a>
+        <a href="https://nvchad.com/#/docs/features">Features</a>
   <p></p>
 </div> 
 
