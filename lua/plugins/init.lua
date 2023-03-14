@@ -235,7 +235,6 @@ local default_plugins = {
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
-    enabled = false,
     keys = { "<leader>", '"', "'", "`" },
     init = require("core.utils").load_mappings "whichkey",
     opts = function()
