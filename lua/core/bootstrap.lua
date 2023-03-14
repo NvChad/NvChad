@@ -40,6 +40,7 @@ M.gen_chadrc_template = function()
         "https://github.com/NvChad/example_config",
         vim.fn.stdpath "config" .. "/lua/custom",
       }
+      print "dont forget to read docs from nvchad.com!"
       vim.cmd "redraw|echo ''"
 
       -- delete .git from that repo
