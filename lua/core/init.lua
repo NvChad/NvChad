@@ -73,6 +73,7 @@ autocmd("FileType", {
 
 local sep = vim.loop.os_uname().sysname:find "windows" and "\\" or "/"
 
+-- reload some chadrc options on-save
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = vim.fn.glob(
     table.concat({
@@ -102,6 +103,8 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     vim.g.nvchad_theme = config.ui.theme
     vim.g.transparency = config.ui.transparency
 
+    -- statusline
+    require("plenary.reload").reload_module("nvchad_ui.statusline." .. config.ui.statusline.theme)
     vim.opt.statusline = "%!v:lua.require('nvchad_ui.statusline." .. config.ui.statusline.theme .. "').run()"
 
     require("base46").load_all_highlights()
