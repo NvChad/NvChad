@@ -72,24 +72,24 @@ autocmd("FileType", {
 })
 
 -- reload some chadrc options on-save
-local sep = vim.loop.os_uname().sysname:find "windows" and "\\" or "/"
+local sep = is_windows and "\\" or "/"
 
 vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = vim.fn.glob(
-    vim.fs.normalize(vim.fn.stdpath("config") .. "/lua/custom/**/*.lua"),
+  pattern = vim.tbl_map(vim.fs.normalize, vim.fn.glob(
+    vim.fn.stdpath("config") .. "/lua/custom/**/*.lua",
     true,
     true,
     true
-  ),
-
+  )),
   group = vim.api.nvim_create_augroup("ReloadNvChad", {}),
 
   callback = function(opts)
+    -- print("smadge")
+    local fp = vim.fn.fnamemodify(vim.fs.normalize(opts.file), ":r") --[[@as string]]
+    local app_name = vim.env.NVIM_APPNAME or "nvim"
+    local module = string.gsub(fp, ".*/" .. app_name .. "/lua/", ""):gsub("/", ".")
     require("plenary.reload").reload_module "base46"
-    local file = string
-      .gsub(vim.fn.fnamemodify(opts.file, ":r"), vim.fn.stdpath "config" .. sep .. "lua" .. sep, "")
-      :gsub(sep, ".")
-    require("plenary.reload").reload_module(file)
+    require("plenary.reload").reload_module(module)
     require("plenary.reload").reload_module "custom.chadrc"
 
     config = require("core.utils").load_config()
