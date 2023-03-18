@@ -82,10 +82,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   group = vim.api.nvim_create_augroup("ReloadNvChad", {}),
 
   callback = function(opts)
-    -- print("smadge")
-    local fp = vim.fn.fnamemodify(vim.fs.normalize(opts.file), ":r") --[[@as string]]
-    local app_name = vim.env.NVIM_APPNAME or "nvim"
-    local module = string.gsub(fp, ".*/" .. app_name .. "/lua/", ""):gsub("/", ".")
+    local fp = vim.fn.fnamemodify(vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf)), ":r") --[[@as string]]
+    local app_name = vim.env.NVIM_APPNAME and vim.env.NVIM_APPNAME or "nvim"
+    local module = string.gsub(fp, "^.*/" .. app_name .. "/lua/", ""):gsub("/", ".")
     require("plenary.reload").reload_module "base46"
     require("plenary.reload").reload_module(module)
     require("plenary.reload").reload_module "custom.chadrc"
