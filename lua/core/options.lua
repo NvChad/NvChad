@@ -1,6 +1,15 @@
 local opt = vim.opt
 local g = vim.g
+local o = vim.o
+
 local config = require("core.utils").load_config()
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  float = { border = "single" },
+})
+o.incommand = "split"
 
 g.nvchad_theme = config.ui.theme
 g.toggle_theme_icon = "   "
