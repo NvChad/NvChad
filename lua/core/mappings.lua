@@ -29,6 +29,11 @@ M.general = {
   },
 
   n = {
+    -- Search - Replace 
+    ["<leader>rs"] = { "<cmd> :SearchReplaceSingleBufferSelections <CR>", "Search Replace Single Buffer Selections" },
+    ["<leader>ro"] = { "<cmd> :SearchReplaceSingleBufferOpen <CR>", "Search Replace Single Buffer Open" },
+    ["<leader>rw"] = { "<cmd> :SearchReplaceSingleBufferCWord <CR>", "Search Replace Single Buffer CWord"},
+
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
 
     -- LSPConfig
@@ -40,6 +45,11 @@ M.general = {
     ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
     ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
     ["<F2>"] = { function() require("nvchad_ui.renamer").open() end, "lsp rename", },
+
+    ["[d"] = { function() vim.diagnostic.goto_prev() end, "goto prev", },
+    ["d]"] = { function() vim.diagnostic.goto_next() end, "goto_next", },
+    ["<leader>q"] = { function() vim.diagnostic.setloclist() end, "diagnostic setloclist", },
+    ["<leader>f"] = { function() vim.diagnostic.open_float() end, "floating diagnostic", },
 
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "window left" },
@@ -86,6 +96,9 @@ M.general = {
     ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
+    ["<C-r>"] = {"<CMD> :SearchReplaceSingleBufferVisualSelection<CR>", "Search Replace Single Buffer Visual Selection"},
+    ["<C-s>"] = {"<CMD> :SearchReplaceWithinVisualSelection<CR>", "Search Replace Within Visual Selection"},
+    ["<C-b>"] = {"<CMD> :SearchReplaceWithinVisualSelectionCWord<CR>", "Search Replace Within Visual Selection CWord"},
   },
 
   x = {
