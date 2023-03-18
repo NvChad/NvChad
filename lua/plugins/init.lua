@@ -1,4 +1,6 @@
 local plugins = {
+  ["erietz/vim-terminator"] = { },
+
   ["mechatroner/rainbow_csv"] = { },
 
   ["easymotion/vim-easymotion"] = { },
