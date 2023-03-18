@@ -10,6 +10,7 @@ vim.diagnostic.config({
   float = { border = "single" },
 })
 o.incommand = "split"
+vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
 
 g.nvchad_theme = config.ui.theme
 g.toggle_theme_icon = "   "

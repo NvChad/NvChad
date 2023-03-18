@@ -29,6 +29,18 @@ M.general = {
   },
 
   n = {
+    -- DAP
+    ['<F5>'] = { function() require('dap').continue() end, "continue"},
+    ['<F9>'] = { function() require('dap').toggle_breakpoint() end, "toggle_breakpoint"},
+    ['<F10>'] = { function() require('dap').step_over() end, "step_over"},
+    ['<F11>'] = { function() require('dap').step_into() end, "step_into"},
+    ['<F12>'] = { function() require('dap').step_out() end, "step_out"},
+
+    ['<Leader>dh'] = { function() require('dap.ui.widgets').hover() end },
+    ['<Leader>dp'] = { function() require('dap.ui.widgets').preview() end },
+    ['<Leader>df'] = { function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.frames) end },
+    ['<Leader>ds'] = { function() local widgets = require('dap.ui.widgets') widgets.centered_float(widgets.scopes) end },
+
     -- Search - Replace 
     ["<leader>rs"] = { "<cmd> :SearchReplaceSingleBufferSelections <CR>", "Search Replace Single Buffer Selections" },
     ["<leader>ro"] = { "<cmd> :SearchReplaceSingleBufferOpen <CR>", "Search Replace Single Buffer Open" },

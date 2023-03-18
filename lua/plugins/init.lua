@@ -1,4 +1,10 @@
 local plugins = {
+  ["mfussenegger/nvim-dap"] = {
+    config = function()
+      require "plugins.configs.dap"
+    end,
+  },
+
   ["roobert/search-replace.nvim"] = {
     config = function()
       require('search-replace').setup({
