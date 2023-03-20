@@ -86,7 +86,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 ## Plugins list
 
-- Many beautiful themes, theme toggler by [our base46 plugin](https://github.com/NvChad/base46)
+- Many beautiful themes, theme toggler by our [base46 plugin](https://github.com/NvChad/base46)
 - Inbuilt terminal toggling & management with [Nvterm](https://github.com/NvChad/nvterm)
 - NvChad updater, hide & unhide terminal buffers with [NvChad extensions](https://github.com/NvChad/extensions)
 - Lightweight & performant ui plugin with [NvChad UI](https://github.com/NvChad/ui)
