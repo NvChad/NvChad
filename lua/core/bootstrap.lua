@@ -16,12 +16,29 @@ M.lazy = function(install_path)
 
   -- install plugins + compile their configs
   require "plugins"
-
   vim.api.nvim_buf_delete(0, { force = true }) -- close lazy window
 
-  vim.defer_fn(function()
-    vim.cmd "silent! MasonInstallAll"
-  end, 0)
+  -- install mason packages
+  vim.schedule(function()
+    vim.cmd "Mason"
+    local packages = {}
+
+    for _, pkg_name in ipairs(vim.g.mason_binaries_list) do
+        packages[pkg_name] = true
+        vim.cmd("MasonInstall " .. pkg_name)
+    end
+
+    require("mason-registry"):on("package:install:success", function(pkg)
+      packages[pkg.name] = nil
+
+      if vim.tbl_count(packages) == 0 then
+        vim.schedule(function()
+          vim.api.nvim_buf_delete(0, { force = true })
+          vim.notify("Now please read the docs at nvchad.com!") -- WIP, show a nice screen after it
+        end)
+      end
+    end)
+  end)
 end
 
 M.gen_chadrc_template = function()
@@ -40,7 +57,7 @@ M.gen_chadrc_template = function()
         "https://github.com/NvChad/example_config",
         vim.fn.stdpath "config" .. "/lua/custom",
       }
-      print "dont forget to read docs from nvchad.com!"
+
       vim.cmd "redraw|echo ''"
 
       -- delete .git from that repo
@@ -51,16 +68,8 @@ M.gen_chadrc_template = function()
       local custom_dir = vim.fn.stdpath "config" .. "/lua/custom/"
       vim.fn.mkdir(custom_dir, "p")
 
-      local str = [[
-              local M = {}
-                M.ui = {
-                  theme = "onedark",
-               }
-              return M
-           ]]
-
       local file = io.open(custom_dir .. "chadrc.lua", "w")
-      file:write(str)
+      file:write("local M = {} \n M.ui = { theme = 'onedark' } \n return M")
       file:close()
     end
   end
