@@ -3,14 +3,8 @@ local M = {}
 M.lazy = function(install_path)
   print "Bootstrapping lazy.nvim .."
 
-  vim.fn.system {
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    install_path,
-  }
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", "--branch=stable", repo, install_path }
 
   vim.opt.rtp:prepend(install_path)
 
@@ -20,21 +14,16 @@ M.lazy = function(install_path)
 
   -- install mason packages
   vim.schedule(function()
-    vim.cmd "Mason"
-    local packages = {}
-
-    for _, pkg_name in ipairs(vim.g.mason_binaries_list) do
-        packages[pkg_name] = true
-        vim.cmd("MasonInstall " .. pkg_name)
-    end
+    vim.cmd "MasonInstallAll"
+    local packages = table.concat(vim.g.mason_binaries_list, " ")
 
     require("mason-registry"):on("package:install:success", function(pkg)
-      packages[pkg.name] = nil
+      packages = string.gsub(packages, pkg.name:gsub("%-", "%%-"), "") -- rm package name
 
-      if vim.tbl_count(packages) == 0 then
+      if packages:match "%S" == nil then
         vim.schedule(function()
           vim.api.nvim_buf_delete(0, { force = true })
-          vim.notify("Now please read the docs at nvchad.com!") -- WIP, show a nice screen after it
+          vim.notify "Now please read the docs at nvchad.com!" -- WIP, show a nice screen after it
         end)
       end
     end)
@@ -49,14 +38,9 @@ M.gen_chadrc_template = function()
     if input == "y" then
       print "cloning chadrc starter template repo...."
 
-      vim.fn.system {
-        "git",
-        "clone",
-        "--depth",
-        "1",
-        "https://github.com/NvChad/example_config",
-        vim.fn.stdpath "config" .. "/lua/custom",
-      }
+      local repo = "https://github.com/NvChad/example_config"
+      local install_path = vim.fn.stdpath "config" .. "/lua/custom"
+      vim.fn.system { "git", "clone", "--depth", "1", repo, install_path }
 
       vim.cmd "redraw|echo ''"
 
@@ -69,7 +53,7 @@ M.gen_chadrc_template = function()
       vim.fn.mkdir(custom_dir, "p")
 
       local file = io.open(custom_dir .. "chadrc.lua", "w")
-      file:write("local M = {} \n M.ui = { theme = 'onedark' } \n return M")
+      file:write "local M = {} \n M.ui = { theme = 'onedark' } \n return M"
       file:close()
     end
   end
