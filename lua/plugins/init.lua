@@ -19,8 +19,10 @@ local default_plugins = {
     "NvChad/ui",
     branch = "v2.0",
     lazy = false,
+    priority = 1000,
     config = function()
       require "nvchad_ui"
+      dofile(vim.g.base46_cache .. "defaults")
     end,
   },
 
