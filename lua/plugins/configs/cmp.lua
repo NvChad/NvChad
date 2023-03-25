@@ -1,4 +1,5 @@
 local cmp = require "cmp"
+local compare = require('cmp.config.compare')
 
 dofile(vim.g.base46_cache .. "cmp")
 
@@ -14,7 +15,7 @@ local formatting_style = {
   -- default fields order i.e completion word + item.kind + item.kind icons
   fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
 
-  format = function(_, item)
+  format = function(entry, item)
     local icons = require("nvchad_ui.icons").lspkind
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
@@ -26,6 +27,20 @@ local formatting_style = {
       icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
       item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
     end
+
+    if entry.source.name == "cmp_tabnine" then
+      local detail = (entry.completion_item.data or {}).detail
+      item.kind = "TN"
+      if detail and detail:find('.*%%.*') then
+        item.kind = item.kind .. ' ' .. detail
+      end
+
+      if (entry.completion_item.data or {}).multiline then
+        item.kind = item.kind .. ' ' .. '[ML]'
+      end
+    end
+    local maxwidth = 80
+    item.abbr = string.sub(item.abbr, 1, maxwidth)
 
     return item
   end,
@@ -110,6 +125,23 @@ local options = {
     { name = "buffer" },
     { name = "nvim_lua" },
     { name = "path" },
+    { name = 'copilot'},
+    { name = 'cmp_tabnine'},
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      require("copilot_cmp.comparators").prioritize,
+      require('cmp_tabnine.compare'),
+      compare.offset,
+      compare.exact,
+      compare.score,
+      compare.recently_used,
+      compare.kind,
+      compare.sort_text,
+      compare.length,
+      compare.order,
+    },
   },
 }
 

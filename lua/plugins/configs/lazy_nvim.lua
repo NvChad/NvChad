@@ -10,6 +10,7 @@ return {
       not_loaded = "",
     },
   },
+  { import = "lazyvim.plugins.extras.coding.copilot" },
 
   performance = {
     rtp = {
