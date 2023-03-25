@@ -8,6 +8,8 @@ end
 
 require("core.utils").load_mappings()
 
+dofile(vim.g.base46_cache .. "defaults")
+
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 -- bootstrap lazy.nvim!
