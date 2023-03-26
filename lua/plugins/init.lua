@@ -81,7 +81,7 @@ local default_plugins = {
       return require "plugins.configs.treesitter"
     end,
     config = function(_, opts)
-      pcall(dofile, vim.g.base46_cache .. "syntax")
+      dofile(vim.g.base46_cache .. "syntax")
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
