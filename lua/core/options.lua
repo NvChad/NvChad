@@ -34,7 +34,7 @@ opt.ruler = false
 opt.shortmess:append "sI"
 
 opt.signcolumn = "yes"
-opt.splitbelow = true
+opt.splitbelow = false
 opt.splitright = true
 opt.termguicolors = true
 opt.timeoutlen = 400
