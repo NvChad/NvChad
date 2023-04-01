@@ -26,7 +26,9 @@ local default_plugins = {
 
   {
     "NvChad/nvterm",
-    init = require("core.utils").load_mappings "nvterm",
+    init = function()
+      require("core.utils").load_mappings "nvterm"
+    end,
     config = function(_, opts)
       require "base46.term"
       require("nvterm").setup(opts)
@@ -35,7 +37,9 @@ local default_plugins = {
 
   {
     "NvChad/nvim-colorizer.lua",
-    init = require("core.utils").lazy_load "nvim-colorizer.lua",
+    init = function()
+      require("core.utils").lazy_load "nvim-colorizer.lua"
+    end,
     config = function(_, opts)
       require("colorizer").setup(opts)
 
@@ -74,7 +78,9 @@ local default_plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    init = require("core.utils").lazy_load "nvim-treesitter",
+    init = function()
+      require("core.utils").lazy_load "nvim-treesitter"
+    end,
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function()
@@ -136,7 +142,9 @@ local default_plugins = {
 
   {
     "neovim/nvim-lspconfig",
-    init = require("core.utils").lazy_load "nvim-lspconfig",
+    init = function()
+      require("core.utils").lazy_load "nvim-lspconfig"
+    end,
     config = function()
       require "plugins.configs.lspconfig"
     end,
@@ -194,7 +202,9 @@ local default_plugins = {
   {
     "numToStr/Comment.nvim",
     -- keys = { "gc", "gb" },
-    init = require("core.utils").load_mappings "comment",
+    init = function()
+      require("core.utils").load_mappings "comment"
+    end,
     config = function()
       require("Comment").setup()
     end,
@@ -204,7 +214,9 @@ local default_plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    init = require("core.utils").load_mappings "nvimtree",
+    init = function()
+      require("core.utils").load_mappings "nvimtree"
+    end,
     opts = function()
       return require "plugins.configs.nvimtree"
     end,
@@ -218,7 +230,9 @@ local default_plugins = {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    init = require("core.utils").load_mappings "telescope",
+    init = function()
+      require("core.utils").load_mappings "telescope"
+    end,
 
     opts = function()
       return require "plugins.configs.telescope"
@@ -240,7 +254,9 @@ local default_plugins = {
   {
     "folke/which-key.nvim",
     keys = { "<leader>", '"', "'", "`" },
-    init = require("core.utils").load_mappings "whichkey",
+    init = function()
+      require("core.utils").load_mappings "whichkey"
+    end,
     opts = function()
       return require "plugins.configs.whichkey"
     end,
