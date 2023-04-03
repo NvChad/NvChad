@@ -249,6 +249,11 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+
+  -- yuck language support for eww
+  {
+    "elkowar/yuck.vim",
+  },
 }
 
 local config = require("core.utils").load_config()
