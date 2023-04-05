@@ -11,9 +11,10 @@ local plugins = {
     end,
   },
 
-  ["NvChad/extensions"] = { module = { "telescope", "nvchad" } },
+  ["NvChad/extensions"] = { branch = "main", module = { "telescope", "nvchad" } },
 
   ["NvChad/base46"] = {
+    branch = "master",
     config = function()
       local ok, base46 = pcall(require, "base46")
 
@@ -24,6 +25,7 @@ local plugins = {
   },
 
   ["NvChad/ui"] = {
+    branch = "main",
     after = "base46",
     config = function()
       local present, nvchad_ui = pcall(require, "nvchad_ui")
@@ -47,6 +49,7 @@ local plugins = {
   ["nvim-tree/nvim-web-devicons"] = {
     after = "ui",
     module = "nvim-web-devicons",
+    commit = "dd468f6991a4e447607097dfc89d47ae97d14dea",
     config = function()
       require("plugins.configs.others").devicons()
     end,
