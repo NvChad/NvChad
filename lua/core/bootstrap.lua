@@ -25,24 +25,9 @@ M.lazy = function(install_path)
 
   -- install plugins
   require "plugins"
-  vim.api.nvim_buf_delete(0, { force = true }) -- close lazy window
 
-  ---------- mason packages -------------
-  vim.schedule(function()
-    vim.cmd "MasonInstallAll"
-    local packages = table.concat(vim.g.mason_binaries_list, " ")
-
-    require("mason-registry"):on("package:install:success", function(pkg)
-      packages = string.gsub(packages, pkg.name:gsub("%-", "%%-"), "") -- rm package name
-
-      if packages:match "%S" == nil then
-        vim.schedule(function()
-          vim.api.nvim_buf_delete(0, { force = true })
-          M.echo "Now please read the docs at nvchad.com!! 󰕹 󰱬"
-        end)
-      end
-    end)
-  end)
+  -- mason packages & show post_boostrap screen
+  require "nvchad.post_bootstrap"()
 end
 
 M.gen_chadrc_template = function()
@@ -60,7 +45,7 @@ M.gen_chadrc_template = function()
       vim.fn.mkdir(path, "p")
 
       local file = io.open(path .. "chadrc.lua", "w")
-      file:write "local M = {}\n M.ui = {theme = 'onedark'}\n return M"
+      file:write "---@type ChadrcConfig \n local M = {}\n M.ui = {theme = 'onedark'}\n return M"
       file:close()
     end
   end
