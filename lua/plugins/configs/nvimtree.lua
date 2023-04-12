@@ -16,7 +16,6 @@ local options = {
     adaptive_size = false,
     side = "left",
     width = 30,
-    hide_root_folder = true,
     preserve_window_proportions = true,
   },
   git = {
@@ -32,6 +31,7 @@ local options = {
     },
   },
   renderer = {
+    root_folder_label = false,
     highlight_git = false,
     highlight_opened_files = "none",
 
