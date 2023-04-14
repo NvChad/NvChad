@@ -266,7 +266,7 @@ local default_plugins = {
     end,
   },
 
-  {"numToStr/Comment.nvim", lazy = false}
+  {"numToStr/Comment.nvim", lazy = false},
 }
 
 local config = require("core.utils").load_config()
