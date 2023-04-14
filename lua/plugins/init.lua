@@ -1,4 +1,6 @@
 local plugins = {
+  ["psliwka/vim-smoothie"] = {},
+
   ["mfussenegger/nvim-dap"] = {
     config = function()
       require "plugins.configs.dap"
