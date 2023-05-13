@@ -174,7 +174,7 @@ M.lspconfig = {
       function()
         vim.lsp.buf.code_action()
       end,
-      "LSP code_action",
+      "LSP code action",
     },
 
     ["gr"] = {
@@ -383,7 +383,7 @@ M.blankline = {
         end
       end,
 
-      "Jump to current_context",
+      "Jump to current context",
     },
   },
 }
