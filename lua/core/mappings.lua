@@ -125,63 +125,63 @@ M.lspconfig = {
       function()
         vim.lsp.buf.declaration()
       end,
-      "lsp declaration",
+      "LSP declaration",
     },
 
     ["gd"] = {
       function()
         vim.lsp.buf.definition()
       end,
-      "lsp definition",
+      "LSP definition",
     },
 
     ["K"] = {
       function()
         vim.lsp.buf.hover()
       end,
-      "lsp hover",
+      "LSP hover",
     },
 
     ["gi"] = {
       function()
         vim.lsp.buf.implementation()
       end,
-      "lsp implementation",
+      "LSP implementation",
     },
 
     ["<leader>ls"] = {
       function()
         vim.lsp.buf.signature_help()
       end,
-      "lsp signature_help",
+      "LSP signature_help",
     },
 
     ["<leader>D"] = {
       function()
         vim.lsp.buf.type_definition()
       end,
-      "lsp definition type",
+      "LSP definition type",
     },
 
     ["<leader>ra"] = {
       function()
         require("nvchad_ui.renamer").open()
       end,
-      "lsp rename",
+      "LSP rename",
     },
 
     ["<leader>ca"] = {
       function()
         vim.lsp.buf.code_action()
       end,
-      "lsp code_action",
+      "LSP code_action",
     },
 
     ["gr"] = {
       function()
         vim.lsp.buf.references()
       end,
-      "lsp references",
+      "LSP references",
     },
 
     ["<leader>f"] = {
@@ -216,7 +216,7 @@ M.lspconfig = {
       function()
         vim.lsp.buf.format { async = true }
       end,
-      "lsp formatting",
+      "LSP formatting",
     },
 
     ["<leader>wa"] = {
