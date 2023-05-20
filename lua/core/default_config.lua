@@ -72,7 +72,10 @@ M.ui = {
     },
   },
 
-  cheatsheet = { theme = "grid" }, -- simple/grid
+  cheatsheet = {
+    theme = "grid", -- simple/grid
+    load_on_startup = false
+  },
 
   lsp = {
     -- show function signatures i.e args as you type
