@@ -204,8 +204,8 @@ local default_plugins = {
     init = function()
       require("core.utils").load_mappings "comment"
     end,
-    config = function()
-      require("Comment").setup()
+    config = function(_, opts)
+      require("Comment").setup(opts)
     end,
   },
 
