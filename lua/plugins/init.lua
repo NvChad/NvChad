@@ -92,6 +92,14 @@ local default_plugins = {
     end,
   },
 
+  {
+    "ojroques/nvim-osc52",
+	 lazy = false,
+    config = function()
+      require "plugins.configs.osc52"
+    end,
+  },
+
   -- git stuff
   {
     "lewis6991/gitsigns.nvim",
