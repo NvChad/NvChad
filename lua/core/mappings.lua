@@ -40,7 +40,7 @@ M.general = {
     -- open standard input file
     ["<F4>"] = { ":w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
 
-    -- save
+    -- save and exit
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
     ["<C-q>"] = { "<cmd> qa! <CR>", "Exit" },
 

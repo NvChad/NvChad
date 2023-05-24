@@ -15,7 +15,7 @@ local options = {
   view = {
     adaptive_size = false,
     side = "right",
-    auto_resize = true -- auto close
+    auto_resize = true, -- auto close
     width = 32,
     preserve_window_proportions = true,
   },
