@@ -1,4 +1,4 @@
-<h1 align="center">Config NvChad by josuerom</h1>
+<h1 align="center">NvChad Configuration By Josuerom</h1>
 
 <div align="center">
 	<a href="https://nvchad.com/">Home</a>
@@ -33,8 +33,14 @@
 
 ## If you want clone my settings
 
+### Linux or MacOS
 ```bash
-git clone https://github.com/josuerom/nvchad-config ~/.config/nvim --depth 1 && nvim
+git clone https://github.com/josuerom/nvchad-config ~/.config/nvim --depth 1 && cd ~/.config/nvim && nvim && ls
+```
+
+### Windows
+```cmd
+git clone https://github.com/josuerom/nvchad-config %HOMEPATH%\AppData\Local\nvim --depth 1 && cd %HOMEPATH%\AppData\Local\nvim && nvim && dir
 ```
 
 ## What is it?
