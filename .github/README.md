@@ -40,7 +40,7 @@ git clone https://github.com/josuerom/nvchad-config ~/.config/nvim --depth 1 && 
 
 ### Windows (PowerShell)
 ```cmd
-git clone https://github.com/josuerom/nvchad-config ~\AppData\Local\nvim --depth 1 && cd ~\AppData\Local\nvim && nvim && ls
+cd ~\AppData\Local\ && git clone https://github.com/josuerom/nvchad-config --depth 1 && move nvchad-config nvim && cd nvim && nvim && ls
 ```
 
 ## Uninstall NvChad
