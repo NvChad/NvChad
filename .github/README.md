@@ -38,9 +38,21 @@
 git clone https://github.com/josuerom/nvchad-config ~/.config/nvim --depth 1 && cd ~/.config/nvim && nvim && ls
 ```
 
-### Windows
+### Windows (PowerShell)
 ```cmd
-git clone https://github.com/josuerom/nvchad-config %HOMEPATH%\AppData\Local\nvim --depth 1 && cd %HOMEPATH%\AppData\Local\nvim && nvim && dir
+git clone https://github.com/josuerom/nvchad-config ~\AppData\Local\nvim --depth 1 && cd ~\AppData\Local\nvim && nvim && ls
+```
+
+## Uninstall NvChad
+
+### Linux or MacOS
+```bash
+rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim
+```
+
+### Windows (PowerShell)
+```cmd
+rd -r ~\AppData\Local\nvim && rd -r ~\AppData\Local\nvim-data
 ```
 
 ## What is it?
