@@ -17,10 +17,10 @@ opt.cursorline = true
 
 -- Indenting
 opt.expandtab = true
-opt.shiftwidth = 2
+opt.shiftwidth = 3
 opt.smartindent = true
-opt.tabstop = 2
-opt.softtabstop = 2
+opt.tabstop = 3
+opt.softtabstop = 3
 
 opt.fillchars = { eob = " " }
 opt.ignorecase = true

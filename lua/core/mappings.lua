@@ -1,5 +1,3 @@
--- n, v, i, t = mode names
-
 local M = {}
 
 M.general = {
@@ -13,6 +11,14 @@ M.general = {
     ["<C-l>"] = { "<Right>", "Move right" },
     ["<C-j>"] = { "<Down>", "Move down" },
     ["<C-k>"] = { "<Up>", "Move up" },
+
+    -- compile program cpp and run java
+    -- ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.out -std=c++11 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+    ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+    ["<F3>"] = {"<Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input"},
+
+    -- open standard input file
+    ["<F4>"] = { "<Esc> :w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
   },
 
   n = {
@@ -23,11 +29,23 @@ M.general = {
     ["<C-j>"] = { "<C-w>j", "Window down" },
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
+    -- compile program cpp  --
+    -- ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.out -std=c++11 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+    ["<F1>"] = {":w<CR> :!g++ % -o ~/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+
+    -- run programs cpp and java
+    ["<F2>"] = {":!~/sol.out < ~/workspace/sample/input<CR>", "Run sol.out file with input"},
+    ["<F3>"] = {":w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input"},
+
+    -- open standard input file
+    ["<F4>"] = { ":w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
+
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
+    ["<C-q>"] = { "<cmd> qa! <CR>", "Exit" },
 
     -- Copy all
-    ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
+    ["<C-a>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
