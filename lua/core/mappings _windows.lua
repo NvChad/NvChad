@@ -14,8 +14,8 @@ M.general = {
     ["<C-k>"] = { "<Up>", "Move up" },
 
     -- compile program cpp and run java
-    -- ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.out -std=c++11 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
-    ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+    -- ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.exe -std=c++11 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+    ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.exe -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
     ["<F3>"] = {"<Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input"},
 
     -- open standard input file
@@ -31,11 +31,11 @@ M.general = {
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
     -- compile program cpp  --
-    -- ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.out -std=c++11 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
-    ["<F1>"] = {":w<CR> :!g++ % -o ~/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+    -- ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.exe -std=c++11 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+    ["<F1>"] = {":w<CR> :!g++ % -o ~/sol.exe -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
 
     -- run programs cpp and java
-    ["<F2>"] = {":!~/sol.out < ~/workspace/sample/input<CR>", "Run sol.out file with input"},
+    ["<F2>"] = {":!~/sol.exe < ~/workspace/sample/input<CR>", "Run sol.exe file with input"},
     ["<F3>"] = {":w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input"},
 
     -- open standard input file
