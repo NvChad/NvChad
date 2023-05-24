@@ -33,24 +33,24 @@
 
 ## If you want clone my settings
 
-### Linux or MacOS
+#### Linux or MacOS
 ```bash
 git clone https://github.com/josuerom/nvchad-config ~/.config/nvim --depth 1 && cd ~/.config/nvim && nvim && ls
 ```
 
-### Windows (PowerShell)
+#### Windows (PowerShell)
 ```cmd
 cd ~\AppData\Local\ && git clone https://github.com/josuerom/nvchad-config --depth 1 && move nvchad-config nvim && cd nvim && nvim && ls
 ```
 
 ## Uninstall NvChad
 
-### Linux or MacOS
+#### Linux or MacOS
 ```bash
 rm -rf ~/.config/nvim && rm -rf ~/.local/share/nvim
 ```
 
-### Windows (PowerShell)
+#### Windows (PowerShell)
 ```cmd
 rd -r ~\AppData\Local\nvim && rd -r ~\AppData\Local\nvim-data
 ```
