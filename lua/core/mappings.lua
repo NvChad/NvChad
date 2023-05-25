@@ -14,6 +14,7 @@ M.general = {
     ["<C-j>"] = { "<Down>", "Move down" },
     ["<C-k>"] = { "<Up>", "Move up" },
 
+    -- --[[
     -- compile program cpp and run java
     ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>", "Compile cpp file"},
 
@@ -24,6 +25,7 @@ M.general = {
 
     -- open standard input file
     ["<F4>"] = { "<Esc> :w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
+    -- --]]
 
     --[[
     -- command section for windows in insert mode
@@ -44,6 +46,7 @@ M.general = {
     ["<C-j>"] = { "<C-w>j", "Window down" },
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
+    -- --[[
     -- compile program cpp  --
     ["<F1>"] = {":w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>", "Compile cpp file"},
 
@@ -54,6 +57,7 @@ M.general = {
 
     -- open standard input file
     ["<F4>"] = { ":w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
+    -- --]]
 
     --[[
     -- command section for windows in normal mode
