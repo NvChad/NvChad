@@ -1,3 +1,4 @@
+-- Configuration for Linux by josuerom
 local M = {}
 
 M.general = {
@@ -15,13 +16,13 @@ M.general = {
     ["<C-k>"] = { "<Up>", "Move up" },
 
     -- compile program cpp
-    ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>", "Compile cpp file"},
+    ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>", "Compile cpp file"},
 
     -- compile and run program cpp
-    ["<F2>"] = {"<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>", "Compile and run cpp file with input"},
+    ["<F2>"] = { "<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>", "Compile and run cpp with input" },
 
     -- compile and run program java
-    ["<F3>"] = {"<Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input"},
+    ["<F3>"] = { "<Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input" },
 
     -- open standard input file
     ["<F4>"] = { "<Esc> :w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
@@ -36,10 +37,10 @@ M.general = {
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
     -- compile program cpp
-    ["<F1>"] = {":w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>", "Compile cpp file"},
+    ["<F1>"] = {":w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>", "Compile cpp file"},
 
     -- run program cpp
-    ["<F2>"] = {":!~/workspace/build/sol.out < ~/workspace/sample/input<CR>", "Run sol.out file with input"},
+    ["<F2>"] = {":!~/workspace/build/sol.out < ~/workspace/sample/input<CR>", "Run cpp file with input"},
 
     -- run program java
     ["<F3>"] = {":w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input"},
@@ -73,7 +74,7 @@ M.general = {
   },
 
   t = {
-    ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "Escape terminal mode" },
+    ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-/><C-N>", true, true, true), "Escape terminal mode" },
   },
 
   v = {
