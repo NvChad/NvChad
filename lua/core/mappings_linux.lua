@@ -6,6 +6,7 @@ M.general = {
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
     ["<C-s>"] = { "<Esc> <cmd> :w<CR>", "Save file insert mode" },
+    ["<C-q>"] = { "<Esc> <cmd> :qa!<CR>", "Exit nvchad" },
 
     -- navigate within insert mode
     ["<C-h>"] = { "<Left>", "Move left" },
@@ -15,7 +16,9 @@ M.general = {
 
     -- compile program cpp and run java
     -- ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.out -std=c++11 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+
     ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wpedantic -Weffc++ -Djosuerom -Wno-unused-result -Wno-char-subscripts -Wfloat-equal -Wconversion -Wformat=2 -Wvla -Wduplicated-cond -Wlogical-op -Wredundant-decls -ggdb3<CR>", "Compile cpp file"},
+
     ["<F3>"] = {"<Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input"},
 
     -- open standard input file
@@ -36,6 +39,7 @@ M.general = {
 
     -- run programs cpp and java
     ["<F2>"] = {":!~/sol.out < ~/workspace/sample/input<CR>", "Run sol.out file with input"},
+
     ["<F3>"] = {":w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input"},
 
     -- open standard input file
@@ -43,7 +47,7 @@ M.general = {
 
     -- save and exit
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
-    ["<C-q>"] = { "<cmd> qa! <CR>", "Exit" },
+    ["<C-q>"] = { "<cmd> qa! <CR>", "Exit nvchad" },
 
     -- Copy all
     ["<C-a>"] = { "<cmd> %y+ <CR>", "Copy whole file" },

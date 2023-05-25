@@ -1,3 +1,5 @@
+-- this file import "core.mappings_linux" line 13
+
 local M = {}
 local merge_tb = vim.tbl_deep_extend
 
@@ -8,7 +10,7 @@ M.load_config = function()
   if chadrc_path then
     local chadrc = dofile(chadrc_path)
 
-    config.mappings = M.remove_disabled_keys(chadrc.mappings, require "core.mappings")
+    config.mappings = M.remove_disabled_keys(chadrc.mappings, require "core.mappings_linux")
     config = merge_tb("force", config, chadrc)
   end
 

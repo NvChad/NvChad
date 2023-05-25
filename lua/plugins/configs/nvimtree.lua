@@ -15,7 +15,6 @@ local options = {
   view = {
     adaptive_size = false,
     side = "right",
-    hide_root_folder = false, -- auto close
     width = 32,
     preserve_window_proportions = true,
   },

@@ -63,7 +63,7 @@ vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "da
 -------------------------------------- autocmds ------------------------------------------
 local autocmd = vim.api.nvim_create_autocmd
 
--- dont list quickfix buffers
+-- check neovim version 0.9+
 autocmd("FileType", {
   pattern = "qf",
   callback = function()

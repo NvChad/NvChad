@@ -1,4 +1,5 @@
 local M = {}
+
 local utils = require "core.utils"
 
 M.blankline = {
