@@ -15,16 +15,8 @@ M.general = {
     ["<C-j>"] = { "<Down>", "Move down" },
     ["<C-k>"] = { "<Up>", "Move up" },
 
-    -- compile program cpp
-    ["<F1>"] = {"<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>", "Compile cpp file"},
-
-    -- compile and run program cpp
-    ["<F2>"] = { "<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>", "Compile and run cpp with input" },
-
-    -- compile and run program java
-    ["<F3>"] = { "<Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input" },
-
     -- open standard input file
+    -- ["<F4>"] = { "<Esc> :w<CR> :e ~/sample/input<CR>", "Open standard input file" },
     ["<F4>"] = { "<Esc> :w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
   },
 
@@ -36,16 +28,8 @@ M.general = {
     ["<C-j>"] = { "<C-w>j", "Window down" },
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
-    -- compile program cpp
-    ["<F1>"] = {":w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>", "Compile cpp file"},
-
-    -- run program cpp
-    ["<F2>"] = {":!~/workspace/build/sol.out < ~/workspace/sample/input<CR>", "Run cpp file with input"},
-
-    -- run program java
-    ["<F3>"] = {":w<CR> :!java % < ~/workspace/sample/input<CR>", "Compile and run java file with input"},
-
     -- open standard input file
+    -- ["<F4>"] = { "<Esc> :w<CR> :e ~/sample/input<CR>", "Open standard input file" },
     ["<F4>"] = { ":w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
 
     -- save and exit
