@@ -35,7 +35,7 @@ function RunJava()
     vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd ~/workspace/build<CR> :terminal<CR>ijava %:t:r<CR>', {noremap = true})
     --]]
 
-    -- special section for java > 8
+    -- for java versions greater than 8
     vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!java % < ~/workspace/sample/input<CR>', {noremap = true})
 
@@ -44,10 +44,10 @@ function RunJava()
 end
 
 function RunCpp()
-    vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F1>', ':w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F1>', ':w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls -ggdb3 -D_GLIBCXX_DEBUG<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>', {noremap = true})
 
     vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd ~/workspace/build<CR> :terminal<CR>isol.out<CR>', {noremap = true})
@@ -58,23 +58,24 @@ function RunPython()
     vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!python3 % < ~/workspace/sample/input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!python3 % < ~/workspace/sample/input<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>ipython3 %:t:r<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>ipython3 %:t:r<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>ipython3 %:r<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>ipython3 %:r<CR>', {noremap = true})
 end
 
 function RunJsAndTs()
     vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!node %<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!node %<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>inode %:t:r<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>inode %:t:r<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>inode %:t:r.js<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>inode %:t:r.js<CR>', {noremap = true})
 end
 
 -- if you are editing any of these files you can press the keys F1 to compile, F2 to run with input file and F3 to run it manually from the terminal
 vim.api.nvim_command('autocmd FileType java lua RunJava()')
 vim.api.nvim_command('autocmd FileType cpp lua RunCpp()')
-vim.api.nvim_command('autocmd FileType py lua RunPython()')
-vim.api.nvim_command('autocmd FileType js lua RunJsAndTs()')
+vim.api.nvim_command('autocmd FileType python lua RunPython()')
+vim.api.nvim_command('autocmd FileType javascript lua RunJsAndTs()')
+vim.api.nvim_command('autocmd FileType typescript lua RunJsAndTs()')
 
 -- create your own method to compile your language
 -- vim.api.nvim_command('autocmd FileType <name-file> lua <name-method>')
