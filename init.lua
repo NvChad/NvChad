@@ -1,4 +1,6 @@
 require "core"
+-- so you can run your programs
+require("core.compiler").run_programs()
 
 local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
@@ -7,8 +9,6 @@ if custom_init_path then
 end
 
 require("core.utils").load_mappings()
--- so you can run your programs
-require("core.compiler").run_programs()
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
