@@ -44,10 +44,10 @@ function RunJava()
 end
 
 function RunCpp()
-    vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F1>', ':w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F1>', ':w<CR> :!g++ % -o ~/workspace/build/sol.out -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>', {noremap = true})
 
     vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd ~/workspace/build<CR> :terminal<CR>isol.out<CR>', {noremap = true})

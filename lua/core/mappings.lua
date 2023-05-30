@@ -1,4 +1,3 @@
--- Configuration for Linux by josuerom
 local M = {}
 
 M.general = {
@@ -16,7 +15,7 @@ M.general = {
     ["<C-k>"] = { "<Up>", "Move up" },
 
     -- open standard input file
-    -- ["<F4>"] = { "<Esc> :w<CR> :e ~/sample/input<CR>", "Open standard input file" },
+    --["<F4>"] = { "<Esc> :w<CR> :e d:\\workspace\\sample\\input<CR>", "Open standard input file" },
     ["<F4>"] = { "<Esc> :w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
   },
 
@@ -29,7 +28,7 @@ M.general = {
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
     -- open standard input file
-    -- ["<F4>"] = { "<Esc> :w<CR> :e ~/sample/input<CR>", "Open standard input file" },
+    --["<F4>"] = { "<Esc> :w<CR> :e d:\\workspace\\sample\\input<CR>", "Open standard input file" },
     ["<F4>"] = { ":w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
 
     -- save and exit
