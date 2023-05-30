@@ -38,7 +38,7 @@ function RunJava()
     -- :!%:h --> retorna la ubicación del archivo sin el nombre ni extension
     --]]
 
-    -- special section for java > 8
+    -- section for versions java greater than 8
     vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!java % < d:\\workspace\\sample\\input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!java % < d:\\workspace\\sample\\input<CR>', {noremap = true})
 
@@ -47,10 +47,10 @@ function RunJava()
 end
 
 function RunCpp()
-    vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!g++ % -o d:\\workspace\\build\\sol.exe -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F1>', ':w<CR> :!g++ % -o d:\\workspace\\build/sol.exe -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!g++ % -o d:\\workspace\\build\\sol.exe -std=c++20 -march=native -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F1>', ':w<CR> :!g++ % -o d:\\workspace\\build/sol.exe -std=c++20 -march=native -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!g++ % -o d:\\workspace\\build\\sol.exe -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla<CR> :!d:\\workspace\\build/sol.exe < d:\\workspace\\sample/input<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!g++ % -o d:\\workspace\\build\\sol.exe -std=c++20 -march=native -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR> :!d:\\workspace\\build\\sol.exe < d:\\workspace\\sample\\input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!d:\\workspace\\build\\sol.exe < d:\\workspace\\sample\\input<CR>', {noremap = true})
 
     vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd d:\\workspace\\build<CR> :terminal<CR>isol.exe<CR>', {noremap = true})

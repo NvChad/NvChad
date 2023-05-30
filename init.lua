@@ -31,23 +31,23 @@ function RunJava()
     vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :cd ~/workspace/build<CR> :!java %:t:r < ~/workspace/sample/input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :cd ~/workspace/build<CR> :!java %:t:r < ~/workspace/sample/input<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd ~/workspace/build<CR> :terminal<CR>ijava %:t:r<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd ~/workspace/build<CR> :terminal<CR>ijava %:t:r<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd ~/workspace/build<CR> :terminal<CR>ijava ', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd ~/workspace/build<CR> :terminal<CR>ijava ', {noremap = true})
     --]]
 
     -- for java versions greater than 8
     vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!java % < ~/workspace/sample/input<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>ijava %:t:r<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>ijava %:t:r<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>ijava ', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>ijava ', {noremap = true})
 end
 
 function RunCpp()
-    vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla -Wduplicated-cond -Wredundant-decls<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F1>', ':w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F1>', ':w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -march=native -Wall -Wextra -Wpedantic -Wshadow -Weffc++ -Wfloat-equal -Wconversion -Djosuerom -Wformat=2 -Wvla<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!g++ % -o ~/workspace/build/sol.out -std=c++20 -Wall -Wextra -Wshadow -Wvla -Djosuerom<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!~/workspace/build/sol.out < ~/workspace/sample/input<CR>', {noremap = true})
 
     vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd ~/workspace/build<CR> :terminal<CR>isol.out<CR>', {noremap = true})
@@ -58,16 +58,16 @@ function RunPython()
     vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!python3 % < ~/workspace/sample/input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!python3 % < ~/workspace/sample/input<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>ipython3 %:r<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>ipython3 %:r<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>ipython3 ', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>ipython3 ', {noremap = true})
 end
 
 function RunJsAndTs()
     vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!node %<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!node %<CR>', {noremap = true})
 
-    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>inode %:t:r.js<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>inode %:t:r.js<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd %:h<CR> :terminal<CR>inode ', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>inode ', {noremap = true})
 end
 
 -- if you are editing any of these files you can press the keys F1 to compile, F2 to run with input file and F3 to run it manually from the terminal
