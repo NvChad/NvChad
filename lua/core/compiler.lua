@@ -1,6 +1,7 @@
 -- Configuration for Linux
 -- With this nvchad reaches the limit of an ide
 -- functions to compile and run different program languages --> by josuerom
+
 function RunJava()
     --[[ -- special section for java 8
     vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!javac % -d ~/workspace/build<CR>', {noremap = true})
@@ -48,12 +49,22 @@ function RunJsAndTs()
     vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd %:h<CR> :terminal<CR>inode ', {noremap = true})
 end
 
--- if you are editing any of these files you can press the keys F1 to compile, F2 to run with input file and F3 to run it manually from the terminal
-vim.api.nvim_command('autocmd FileType java lua RunJava()')
-vim.api.nvim_command('autocmd FileType cpp lua RunCpp()')
---vim.api.nvim_command('autocmd FileType python lua RunPython()')
---vim.api.nvim_command('autocmd FileType javascript lua RunJsAndTs()')
---vim.api.nvim_command('autocmd FileType typescript lua RunJsAndTs()')
+local M = {}
 
--- create your own method to compile your language
--- vim.api.nvim_command('autocmd FileType <name-file> lua <name-method>')
+M.run_programs = function()
+    -- if you are editing any of these files you can press the keys:
+    -- F1 to compile
+    -- F2 to run with input file and
+    -- F3 to run it manually from the terminal
+
+    vim.api.nvim_command('autocmd FileType java lua RunJava()')
+    vim.api.nvim_command('autocmd FileType cpp lua RunCpp()')
+    --vim.api.nvim_command('autocmd FileType python lua RunPython()')
+    --vim.api.nvim_command('autocmd FileType javascript lua RunJsAndTs()')
+    --vim.api.nvim_command('autocmd FileType typescript lua RunJsAndTs()')
+
+    -- create your own method to compile your language
+    -- vim.api.nvim_command('autocmd FileType <name-file> lua <name-method>')
+end
+
+return M
