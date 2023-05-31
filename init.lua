@@ -1,7 +1,9 @@
 require "core"
 
--- so you can run your programs
+-- additional settings are imported to run programs without leaving NvChad
 require("core.compiler").run_programs()
+-- comment out line 4 and uncomment line 6 if you are using the Windows OS
+--require("core.compiler_win").run_programs()
 
 local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
