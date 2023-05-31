@@ -1,19 +1,10 @@
--- Configuration for Linux and MacOS
--- With this nvchad reaches the limit of an ide
--- functions to compile and run different program languages --> by josuerom
+--[[
+    Configuration for Linux and MacOS
+    With this nvchad reaches the limit of an ide
+    functions to compile and run different program languages --> by josuerom
+--]]
 
 function RunJava()
-    --[[ -- special section for java 8
-    vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!javac % -d ~/workspace/build<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F1>', ':w<CR> :!javac % -d ~/workspace/build<CR>', {noremap = true})
-
-    vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :cd ~/workspace/build<CR> :!java %:t:r < ~/workspace/sample/input<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :cd ~/workspace/build<CR> :!java %:t:r < ~/workspace/sample/input<CR>', {noremap = true})
-
-    vim.api.nvim_set_keymap('i', '<F3>', '<Esc> :w<CR> :cd ~/workspace/build<CR> :terminal<CR>ijava ', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<F3>', ':w<CR> :cd ~/workspace/build<CR> :terminal<CR>ijava ', {noremap = true})
-    --]]
-
     -- for java versions greater than 8
     vim.api.nvim_set_keymap('i', '<F2>', '<Esc> :w<CR> :!java % < ~/workspace/sample/input<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<F2>', ':w<CR> :!java % < ~/workspace/sample/input<CR>', {noremap = true})

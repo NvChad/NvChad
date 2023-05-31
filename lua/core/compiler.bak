@@ -1,6 +1,9 @@
--- Configuration for Windows
--- With this nvchad reaches the limit of an ide
--- functions to compile and run different program languages --> by josuerom
+--[[
+    Configuration for Windows
+    With this nvchad reaches the limit of an ide
+    functions to compile and run different program languages --> by josuerom
+--]]
+
 function RunJava()
     --[[ -- special section for java 8
     vim.api.nvim_set_keymap('i', '<F1>', '<Esc> :w<CR> :!javac % -d d:\\workspace\\build<CR>', {noremap = true})

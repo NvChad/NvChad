@@ -1,4 +1,5 @@
 require "core"
+
 -- so you can run your programs
 require("core.compiler").run_programs()
 
