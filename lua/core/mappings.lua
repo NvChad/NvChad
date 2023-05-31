@@ -13,10 +13,6 @@ M.general = {
     ["<C-l>"] = { "<Right>", "Move right" },
     ["<C-j>"] = { "<Down>", "Move down" },
     ["<C-k>"] = { "<Up>", "Move up" },
-
-    -- open standard input file
-    --["<F4>"] = { "<Esc> :w<CR> :e d:\\workspace\\sample\\input<CR>", "Open standard input file" },
-    ["<F4>"] = { "<Esc> :w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
   },
 
   n = {
@@ -27,16 +23,12 @@ M.general = {
     ["<C-j>"] = { "<C-w>j", "Window down" },
     ["<C-k>"] = { "<C-w>k", "Window up" },
 
-    -- open standard input file
-    --["<F4>"] = { "<Esc> :w<CR> :e d:\\workspace\\sample\\input<CR>", "Open standard input file" },
-    ["<F4>"] = { ":w<CR> :e ~/workspace/sample/input<CR>", "Open standard input file" },
-
     -- save and exit
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
     ["<C-q>"] = { "<cmd> qa! <CR>", "Exit nvchad" },
 
     -- Copy all
-    ["<C-a>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
+    ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
