@@ -1,4 +1,4 @@
--- Configuration for Linux
+-- Configuration for Linux and MacOS
 -- With this nvchad reaches the limit of an ide
 -- functions to compile and run different program languages --> by josuerom
 
