@@ -292,6 +292,15 @@ M.dbui = {
   },
 }
 
+M.lazygit = {
+  n = {
+    ["<leader>g"] = {
+      ":LazyGit<CR>",
+      "open lazygit"
+    }
+  }
+}
+
 vim.keymap.set("n", "<A-y>", "<cmd>lua require('telescope').extensions.yank_history.yank_history({layout_strategy='bottom_pane',layout_config={height=0.3}})<CR>")
 
 return M
