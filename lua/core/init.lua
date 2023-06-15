@@ -75,7 +75,7 @@ autocmd("FileType", {
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = vim.tbl_map(
     vim.fs.normalize,
-    vim.fn.glob(vim.fn.stdpath "config" .. "/lua/custom/**/*.lua", true, true, true)
+    vim.fn.glob(vim.loop.fs_realpath(vim.fn.stdpath "config" .. "/lua/custom/**/*.lua"), true, true, true)
   ),
   group = vim.api.nvim_create_augroup("ReloadNvChad", {}),
 
