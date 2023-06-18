@@ -34,6 +34,7 @@ M.gen_chadrc_template = function()
   if not vim.api.nvim_get_runtime_file("lua/custom/chadrc.lua", false)[1] then
     local path = vim.fn.stdpath "config" .. "/lua/custom/"
     local input = "N"
+
     if next(vim.api.nvim_list_uis()) then
       input = vim.fn.input "Do you want to install example custom config? (y/N) : "
     end
