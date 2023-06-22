@@ -201,10 +201,10 @@ local default_plugins = {
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gcc", mode = "n" },
-      { "gc", mode = "v" },
-      { "gbc", mode = "n" },
-      { "gb", mode = "v" },
+      { "gcc", mode = "n" , desc = "Toggles the current line using linewise comment"},
+      { "gc", mode = {"n","o","x"} , desc = "Toggles the region using linewise comment"},
+      { "gbc", mode = "n" , desc = "Toggles the current line using blockwise comment"},
+      { "gb", mode = {"n","o","x"} , desc = "Toggles the region using blockwise comment"},
     },
     init = function()
       require("core.utils").load_mappings "comment"
