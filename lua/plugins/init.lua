@@ -123,6 +123,7 @@ local default_plugins = {
   -- lsp stuff
   {
     "williamboman/mason.nvim",
+    lazy=false,
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     opts = function()
       return require "plugins.configs.mason"
