@@ -83,6 +83,13 @@ M.ui = {
   },
 }
 
+-- Where NvChad should put mason.nvim bin location in your PATH. Can be one of:
+-- - "prepend" (default, Mason's bin location is put first in PATH)
+-- - "append" (Mason's bin location is put at the end of PATH)
+-- - "skip" (doesn't modify PATH)
+---@type '"prepend"' | '"append"' | '"skip"'
+M.mason_path = "prepend"
+
 M.plugins = "" -- path i.e "custom.plugins", so make custom/plugins.lua file
 
 M.lazy_nvim = require "plugins.configs.lazy_nvim" -- config for lazy.nvim startup options
