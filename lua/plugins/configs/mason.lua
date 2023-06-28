@@ -1,6 +1,10 @@
 local options = {
   ensure_installed = { "lua-language-server" }, -- not an option from mason.nvim
 
+-- Note: Avoid setting `PATH="prepend"|"append"` here.
+-- To change the location of the mason/bin directory, update the 'place_mason_bin' option
+-- in 'custom/chadrc.lua'. If you must set it here, ensure 'place_mason_bin' in 'custom/chadrc.lua'
+-- is set to 'skip' to prevent duplicate mason/bin paths.
   PATH = "skip",
 
   ui = {

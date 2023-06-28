@@ -57,11 +57,15 @@ for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
 end
 
 -- add binaries installed by mason.nvim to path
+-- based on the selected 'place_mason_bin' option
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-if config.mason_path == "prepend" then
-  vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
-elseif config.mason_path == "append" then
-  vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "data" .. "/mason/bin"
+local path_separator = is_windows and ";" or ":"
+local mason_bin_path = vim.fn.stdpath "data" .. "/mason/bin"
+
+if config.place_mason_bin == "prepend" then
+  vim.env.PATH = mason_bin_path .. path_separator .. vim.env.PATH
+elseif config.place_mason_bin == "append" then
+  vim.env.PATH = vim.env.PATH .. path_separator .. mason_bin_path
 end
 
 -------------------------------------- autocmds ------------------------------------------

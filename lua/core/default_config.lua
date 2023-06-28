@@ -83,12 +83,9 @@ M.ui = {
   },
 }
 
--- Where NvChad should put mason.nvim bin location in your PATH. Can be one of:
--- - "prepend" (default, Mason's bin location is put first in PATH)
--- - "append" (Mason's bin location is put at the end of PATH)
--- - "skip" (doesn't modify PATH)
+-- Determines the preferred placement of the mason.nvim bin directory in your PATH.
 ---@type '"prepend"' | '"append"' | '"skip"'
-M.mason_path = "prepend"
+M.place_mason_bin = "prepend"
 
 M.plugins = "" -- path i.e "custom.plugins", so make custom/plugins.lua file
 
