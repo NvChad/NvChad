@@ -45,6 +45,13 @@ M.general = {
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
     ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
+
+    ["<leader>fm"] = {
+      function()
+        vim.lsp.buf.format { async = true }
+      end,
+      "LSP formatting",
+    },
   },
 
   t = {
@@ -193,14 +200,14 @@ M.lspconfig = {
 
     ["[d"] = {
       function()
-        vim.diagnostic.goto_prev({ float = { border = "rounded" }})
+        vim.diagnostic.goto_prev { float = { border = "rounded" } }
       end,
       "Goto prev",
     },
 
     ["]d"] = {
       function()
-        vim.diagnostic.goto_next({ float = { border = "rounded" }})
+        vim.diagnostic.goto_next { float = { border = "rounded" } }
       end,
       "Goto next",
     },
@@ -210,13 +217,6 @@ M.lspconfig = {
         vim.diagnostic.setloclist()
       end,
       "Diagnostic setloclist",
-    },
-
-    ["<leader>fm"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "LSP formatting",
     },
 
     ["<leader>wa"] = {
