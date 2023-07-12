@@ -149,6 +149,15 @@ local default_plugins = {
       require "plugins.configs.lspconfig"
     end,
   },
+    -- Copilot 
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+        require("copilot").setup({})
+        end,
+    },
 
   -- load luasnips + cmp related in insert mode only
   {
@@ -164,7 +173,14 @@ local default_plugins = {
           require("plugins.configs.others").luasnip(opts)
         end,
       },
+      -- Copilot
 
+        {
+            "zbirenbaum/copilot-cmp",
+            config = function()
+                require("copilot_cmp").setup()
+            end,
+        },
       -- autopairing of (){}[] etc
       {
         "windwp/nvim-autopairs",
@@ -265,6 +281,9 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    "jay-babu/mason-nvim-dap.nvim"
 }
 
 local config = require("core.utils").load_config()
@@ -274,3 +293,5 @@ if #config.plugins > 0 then
 end
 
 require("lazy").setup(default_plugins, config.lazy_nvim)
+require("custom.configs.dapconfig")
+require("custom.configs.dapcpp")

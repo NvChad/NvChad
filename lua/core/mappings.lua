@@ -14,15 +14,11 @@ M.general = {
     ["<C-j>"] = { "<Down>", "move down" },
     ["<C-k>"] = { "<Up>", "move up" },
   },
-
   n = {
-    ["<Esc>"] = { ":noh <CR>", "clear highlights" },
-    -- switch between windows
-    ["<C-h>"] = { "<C-w>h", "window left" },
-    ["<C-l>"] = { "<C-w>l", "window right" },
-    ["<C-j>"] = { "<C-w>j", "window down" },
-    ["<C-k>"] = { "<C-w>k", "window up" },
-
+    ["<C-h"] = { "<cmd> TmuxNavigateLeft<CR>", "window left" },
+    ["<C-l"] = { "<cmd> TmuxNavigateRight<CR>", "window right" },
+    ["<C-j"] = { "<cmd> TmuxNavigateDown<CR>", "window down" },
+    ["<C-k"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "save file" },
 
