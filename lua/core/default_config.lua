@@ -27,7 +27,13 @@ M.ui = {
     selected_item_bg = "colored", -- colored / simple
   },
 
-  telescope = { style = "borderless" }, -- borderless / bordered
+  telescope = {
+    style = "borderless", -- borderless / bordered
+    --  see https://github.com/NvChad/NvChad/blob/v2.0/lua/plugins/configs/telescope.lua
+    --  and telescope.nvim docs to customize it
+    -- nil / table
+    options = nil,
+  },
 
   ------------------------------- nvchad_ui modules -----------------------------
   statusline = {

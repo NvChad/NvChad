@@ -242,7 +242,12 @@ local default_plugins = {
       require("core.utils").load_mappings "telescope"
     end,
     opts = function()
-      return require "plugins.configs.telescope"
+      local options = require("core.utils").load_config().ui.telescope.options
+      local default_options = require "plugins.configs.telescope"
+      if options then
+        return vim.tbl_deep_extend("force", default_options, options)
+      end
+      return default_options
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "telescope")
