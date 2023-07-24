@@ -6,3 +6,4 @@ syntax
 coc-settings.json
 .luarc.json
 lazy-lock.json
+after
