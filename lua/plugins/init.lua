@@ -4,6 +4,9 @@ local default_plugins = {
 
   "nvim-lua/plenary.nvim",
 
+  -- Glow ingesumadre
+  {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+
   -- nvchad plugins
   { "NvChad/extensions", branch = "v2.0" },
 
