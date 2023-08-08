@@ -24,7 +24,7 @@
   </div>
 
 ## Dive in commands
-Welcome, I'm Cris, this is my current nvim configuratio for my workspace. In order tobe able of using the same configuration is as simple to clone the git into your ~/.config/nvim.
+Welcome, I'm Cris, this is my current nvim configuration for my workspace. In order to use the same configuration, you can simply clone the git repository into your ~/.config/nvim.
 
 ```console
 git clone https://github.com/Cristian104/NvChad.git ~/.config/nvim
