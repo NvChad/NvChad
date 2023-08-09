@@ -13,7 +13,7 @@ local bufopts = { noremap=true, silent=true }
 M.general = {
   i = {
     -- Lspconfig Code action
-    ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
+    ["<C-Space>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
 
     ["<C-BS>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
     ["<C-H>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
@@ -284,7 +284,7 @@ M.telescope = {
 
   n = {
     -- Open project
-    ["<C-r>"] = { "<cmd> Telescope projects <CR>", "Project" },
+    ["<C-y>"] = { "<cmd> Telescope projects <CR>", "Project" },
 
     -- find
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "find files" },
