@@ -1,4 +1,6 @@
 local plugins = {
+  ["hrsh7th/cmp-cmdline"] = {},
+
   ["psliwka/vim-smoothie"] = {},
 
   ["mfussenegger/nvim-dap"] = {
