@@ -13,7 +13,7 @@ local bufopts = { noremap=true, silent=true }
 M.general = {
   i = {
     -- Lspconfig Code action
-    ["<C-Space>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
+    ["<C-y>"] = { function() require("actions-preview").code_actions() end, "lsp code_action", },
 
     ["<C-BS>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
     ["<C-H>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
@@ -54,8 +54,9 @@ M.general = {
     ["K"] = { function() vim.lsp.buf.hover() end, "lsp hover", },
     ["gi"] = { function() require("telescope.builtin").lsp_implementations() end, "lsp implementation", bufopts },
     ["gr"] = { function() require("telescope.builtin").lsp_references() end, "lsp references", bufopts},
+    ["go"] = { function() require("telescope.builtin").lsp_document_symbols() end, "lsp document symbols", bufopts},
     ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
-    ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
+    ["<C-y>"] = { function() require("actions-preview").code_actions() end, "lsp code_action", },
     ["<F2>"] = { function() require("nvchad_ui.renamer").open() end, "lsp rename", },
 
     ["[d"] = { function() vim.diagnostic.goto_prev() end, "goto prev", },
@@ -111,6 +112,7 @@ M.general = {
     ["<C-r>"] = {"<CMD> :SearchReplaceSingleBufferVisualSelection<CR>", "Search Replace Single Buffer Visual Selection"},
     ["<C-s>"] = {"<CMD> :SearchReplaceWithinVisualSelection<CR>", "Search Replace Within Visual Selection"},
     ["<C-b>"] = {"<CMD> :SearchReplaceWithinVisualSelectionCWord<CR>", "Search Replace Within Visual Selection CWord"},
+    ["<C-y>"] = { function() require("actions-preview").code_actions() end, "lsp code_action", },
   },
 
   x = {
@@ -284,7 +286,7 @@ M.telescope = {
 
   n = {
     -- Open project
-    ["<C-y>"] = { "<cmd> Telescope projects <CR>", "Project" },
+    ["<C-g>"] = { "<cmd> Telescope projects <CR>", "Project" },
 
     -- find
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "find files" },
