@@ -4,6 +4,8 @@ local o = vim.o
 
 local config = require("core.utils").load_config()
 
+vim.highlight.priorities.semantic_tokens = 95
+
 vim.diagnostic.config({
   virtual_text = false,
   signs = true,
