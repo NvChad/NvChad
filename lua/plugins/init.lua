@@ -1,4 +1,16 @@
 local plugins = {
+  ["aznhe21/actions-preview.nvim"] = {
+    config = function()
+      require("actions-preview").setup({})
+    end,
+  },
+
+  ["AckslD/muren.nvim"] = {
+    config = function()
+      require('muren').setup()
+    end,
+  },
+
   ["hrsh7th/cmp-cmdline"] = {},
 
   ["psliwka/vim-smoothie"] = {},
@@ -29,8 +41,6 @@ local plugins = {
 
   ["mechatroner/rainbow_csv"] = { },
 
-  ["easymotion/vim-easymotion"] = { },
-
   ["echasnovski/mini.nvim"] = { 
     config = function()
       require('mini.cursorword').setup({  })
@@ -46,22 +56,6 @@ local plugins = {
       module_pattern = {"nui.*"}
   },
 
-  ["lpl212757/ChatGPT.nvim"] = {
-      cmd = "ChatGPT",
-      opt = true,
-      keys = {"<leader>gpt"},
-      module_pattern = {"chatgpt*"},
-      after = {"nui.nvim", "telescope.nvim", "plenary.nvim"},
-      config = function()
-        require('plugins.configs.chatGPT').setup()
-      end,
-      requires = {
-          "MunifTanjim/nui.nvim",
-          "nvim-lua/plenary.nvim",
-          "nvim-telescope/telescope.nvim"
-      }
-  },
-
   ["lpl212757/dashboard-nvim"] = {
     config = function()
       require "plugins.configs.dashboard"
@@ -73,8 +67,6 @@ local plugins = {
       require "plugins.configs.projects"
     end,
   },
-
-  ["alanfortlink/blackjack.nvim"] = { },
 
   ["tpope/vim-surround"] = { },
 
