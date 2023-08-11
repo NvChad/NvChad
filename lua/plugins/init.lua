@@ -1,4 +1,8 @@
 local plugins = {
+  ["iamcco/markdown-preview.nvim"] = {
+    run = function() vim.fn["mkdp#util#install"]() end,
+  },
+
   ["aznhe21/actions-preview.nvim"] = {
     config = function()
       require("actions-preview").setup({})
