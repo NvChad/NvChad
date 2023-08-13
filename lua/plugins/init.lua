@@ -1,4 +1,18 @@
 local plugins = {
+  ["zbirenbaum/copilot-cmp"] = {
+     after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  },
+  ["zbirenbaum/copilot.lua"] = {
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end,
+  },
+
   ["iamcco/markdown-preview.nvim"] = {
     run = function() vim.fn["mkdp#util#install"]() end,
   },
