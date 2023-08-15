@@ -16,6 +16,7 @@ local default_plugins = {
     "NvChad/ui",
     branch = "v2.0",
     lazy = false,
+    submodules = true,
   },
 
   {
