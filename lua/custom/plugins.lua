@@ -67,6 +67,13 @@ local plugins = {
     end,
   },
 
+  {
+    "iamcco/markdown-preview.nvim",
+    lazy = false,
+    config = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
