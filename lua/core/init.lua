@@ -15,6 +15,12 @@ g.transparency = config.ui.transparency
 g.gitblame_enabled = false
 g.gitblame_date_format = '%r'
 g.gitblame_highlight_group = 'GitBlameMessage'
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  float = { border = "single" },
+})
 -- End user config
 
 -------------------------------------- options ------------------------------------------
