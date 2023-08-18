@@ -45,6 +45,9 @@ local function border(hl_name)
 end
 
 local options = {
+  experimental = {
+    ghost_text = true
+  },
   completion = {
     completeopt = "menu,menuone",
   },
@@ -105,6 +108,9 @@ local options = {
     }),
   },
   sources = {
+    -- Copilot Source
+    { name = "copilot"},
+    -- Default source
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
@@ -116,5 +122,32 @@ local options = {
 if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
   options.window.completion.border = border "CmpBorder"
 end
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
+end
+cmp.setup({
+  mapping = {
+    ["<Tab>"] = vim.schedule_wrap(function(fallback)
+      if cmp.visible() and has_words_before() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      else
+        fallback()
+      end
+    end),
+  },
+})
 
 return options

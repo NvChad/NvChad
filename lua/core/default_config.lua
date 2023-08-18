@@ -8,7 +8,17 @@ M.ui = {
   ------------------------------- base46 -------------------------------------
   -- hl = highlights
   hl_add = {},
-  hl_override = {},
+  hl_override = {
+    CursorLine = {
+      bg = "one_bg"
+    },
+    CursorWord0 = {
+      gui = "bold"
+    },
+    CursorWord1 = {
+      gui = "bold"
+    },
+  },
   changed_themes = {},
   theme_toggle = { "onedark", "one_light" },
   theme = "onedark", -- default theme
@@ -40,7 +50,7 @@ M.ui = {
 
   -- lazyload it when there are 1+ buffers
   tabufline = {
-    show_numbers = false,
+    show_numbers = true,
     enabled = true,
     lazyload = true,
     overriden_modules = nil,

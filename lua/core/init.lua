@@ -2,11 +2,20 @@ local opt = vim.opt
 local g = vim.g
 local config = require("core.utils").load_config()
 
+vim.cmd "hi MiniCursorwordCurrent guibg=#4b5263 gui=bold"
+vim.cmd "hi GitBlameMessage guifg=#565c64 guibg=#282c34"
+
 -------------------------------------- globals -----------------------------------------
 g.nvchad_theme = config.ui.theme
 g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
+
+-- User config
+g.gitblame_enabled = false
+g.gitblame_date_format = '%r'
+g.gitblame_highlight_group = 'GitBlameMessage'
+-- End user config
 
 -------------------------------------- options ------------------------------------------
 opt.laststatus = 3 -- global statusline
@@ -29,6 +38,7 @@ opt.mouse = "a"
 
 -- Numbers
 opt.number = true
+opt.relativenumber = true
 opt.numberwidth = 2
 opt.ruler = false
 

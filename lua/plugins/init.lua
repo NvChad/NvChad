@@ -1,6 +1,120 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
+  {"zbirenbaum/copilot-cmp",
+    event = "BufEnter",
+    after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  },
+
+  {"zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({})
+    end,
+  },
+
+  {"iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  {"aznhe21/actions-preview.nvim",
+    config = function()
+      require("actions-preview").setup({})
+    end,
+  },
+
+  {"AckslD/muren.nvim",
+    event = "BufEnter",
+    config = function()
+      require('muren').setup()
+    end,
+  },
+
+  {
+    "psliwka/vim-smoothie",
+    event = "BufEnter",
+  },
+
+  {"mfussenegger/nvim-dap",
+    config = function()
+      require "plugins.configs.dap"
+    end,
+  },
+
+  {"roobert/search-replace.nvim",
+    config = function()
+      require('search-replace').setup({
+      -- optionally override defaults
+      default_replace_single_buffer_options = "gcI",
+      default_replace_multi_buffer_options = "egcI",
+    })
+    end,
+  },
+
+  {
+    "s1n7ax/nvim-search-and-replace",
+    config = function()
+      require('nvim-search-and-replace').setup({  })
+    end,
+  },
+
+  { "erietz/vim-terminator" },
+
+  { "mechatroner/rainbow_csv"},
+
+  { "echasnovski/mini.nvim",
+    event = "BufEnter",
+    config = function()
+      require('mini.cursorword').setup({  })
+    end,
+  },
+
+  {
+    "f-person/git-blame.nvim",
+    event = "BufEnter",
+  },
+
+  {"alvan/vim-closetag"},
+
+  { "ahmedkhalf/project.nvim",
+    lazy = false,
+    config = function()
+      require("project_nvim").setup({ })
+    end,
+  },
+
+  { "akinsho/toggleterm.nvim",
+    lazy = false,
+    config = function()
+      require("toggleterm").setup({
+        open_mapping = [[<c-\>]],
+        direction = 'float',
+        shade_terminals = true,
+      })
+    end
+  },
+
+  {"realprogrammersusevim/md-to-html.nvim"},
+
+  {"memgraph/cypher.vim"},
+
+  {"terryma/vim-multiple-cursors"},
+
+  {"kdheepak/lazygit.nvim", lazy = false},
+
+  {
+    'lpl212757/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require "plugins.configs.dashboard"
+    end,
+    dependencies = { {'nvim-tree/nvim-web-devicons'}}
+  },
+
 
   "nvim-lua/plenary.nvim",
 
@@ -183,6 +297,7 @@ local default_plugins = {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline"
       },
     },
     opts = function()
