@@ -3,19 +3,16 @@ local merge_tb = vim.tbl_deep_extend
 
 M.load_config = function()
   local config = require "core.default_config"
-  local chadrc_exists, chadrc = pcall(require, "custom.chadrc")
+  local chadrc_path = vim.api.nvim_get_runtime_file("lua/custom/chadrc.lua", false)[1]
 
-  if chadrc_exists then
-    -- merge user config if it exists and is a table; otherwise display an error
-    if type(chadrc) == "table" then
-      config.mappings = M.remove_disabled_keys(chadrc.mappings, config.mappings)
-      config = merge_tb("force", config, chadrc) or {}
-    else
-      error "chadrc must return a table!"
-    end
+  if chadrc_path then
+    local chadrc = dofile(chadrc_path)
+
+    config.mappings = M.remove_disabled_keys(chadrc.mappings, config.mappings)
+    config = merge_tb("force", config, chadrc)
+    config.mappings.disabled = nil
   end
 
-  config.mappings.disabled = nil
   return config
 end
 
@@ -55,138 +52,67 @@ M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
 end
 
 M.load_mappings = function(section, mapping_opt)
-  local function set_section_map(section_values)
-    if section_values.plugin then
-      return
-    end
-    section_values.plugin = nil
-
-    for mode, mode_values in pairs(section_values) do
-      local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
-      for keybind, mapping_info in pairs(mode_values) do
-        -- merge default + user opts
-        local opts = merge_tb("force", default_opts, mapping_info.opts or {})
-
-        mapping_info.opts, opts.mode = nil, nil
-        opts.desc = mapping_info[2]
-
-        vim.keymap.set(mode, keybind, mapping_info[1], opts)
-      end
-    end
-  end
-
-  local mappings = require("core.utils").load_config().mappings
-
-  if type(section) == "string" then
-    mappings[section]["plugin"] = nil
-    mappings = { mappings[section] }
-  end
-
-  for _, sect in pairs(mappings) do
-    set_section_map(sect)
-  end
-end
-
--- merge default/user plugin tables
-M.merge_plugins = function(plugins)
-  local plugin_configs = M.load_config().plugins
-  local user_plugins = plugin_configs
-
-  -- old plugin syntax for adding plugins
-  if plugin_configs.user and type(plugin_configs.user) == "table" then
-    user_plugins = plugin_configs.user
-  end
-
-  -- support old plugin removal syntax
-  local remove_plugins = plugin_configs.remove
-  if type(remove_plugins) == "table" then
-    for _, v in ipairs(remove_plugins) do
-      plugins[v] = nil
-    end
-  end
-
-  plugins = merge_tb("force", plugins, user_plugins)
-
-  local final_table = {}
-
-  for key, val in pairs(plugins) do
-    if val and type(val) == "table" then
-      plugins[key] = val.rm_default_opts and user_plugins[key] or plugins[key]
-      plugins[key][1] = key
-      final_table[#final_table + 1] = plugins[key]
-    end
-  end
-
-  return final_table
-end
-
--- override plugin options table with custom ones
-M.load_override = function(options_table, name)
-  local plugin_configs, plugin_options = M.load_config().plugins, nil
-
-  -- support old plugin syntax for override
-  local user_override = plugin_configs.override and plugin_configs.override[name]
-  if user_override and type(user_override) == "table" then
-    plugin_options = user_override
-  end
-
-  -- if no old style plugin override is found, then use the new syntax
-  if not plugin_options and plugin_configs[name] then
-    local override_options = plugin_configs[name].override_options or {}
-    if type(override_options) == "table" then
-      plugin_options = override_options
-    elseif type(override_options) == "function" then
-      plugin_options = override_options()
-    end
-  end
-
-  -- make sure the plugin options are a table
-  plugin_options = type(plugin_options) == "table" and plugin_options or {}
-
-  return merge_tb("force", options_table, plugin_options)
-end
-
-M.packer_sync = function(...)
-  local git_exists, git = pcall(require, "nvchad.utils.git")
-  local defaults_exists, defaults = pcall(require, "nvchad.utils.config")
-  local packer_exists, packer = pcall(require, "packer")
-
-  if git_exists and defaults_exists then
-    local current_branch_name = git.get_current_branch_name()
-
-    -- warn the user if we are on a snapshot branch
-    if current_branch_name:match(defaults.snaps.base_snap_branch_name .. "(.+)" .. "$") then
-      vim.api.nvim_echo({
-        { "WARNING: You are trying to use ", "WarningMsg" },
-        { "PackerSync" },
-        {
-          " on a NvChadSnapshot. This will cause issues if NvChad dependencies contain "
-            .. "any breaking changes! Plugin updates will not be included in this "
-            .. "snapshot, so they will be lost after switching between snapshots! Would "
-            .. "you still like to continue? [y/N]\n",
-          "WarningMsg",
-        },
-      }, false, {})
-
-      local ans = vim.trim(string.lower(vim.fn.input "-> "))
-
-      if ans ~= "y" then
+  vim.schedule(function()
+    local function set_section_map(section_values)
+      if section_values.plugin then
         return
       end
-    end
-  end
 
-  if packer_exists then
-    packer.sync(...)
+      section_values.plugin = nil
 
-    local plugins = M.load_config().plugins
-    local old_style_options = plugins.user or plugins.override or plugins.remove
-    if old_style_options then
-      vim.notify_once("NvChad: This plugin syntax is deprecated, use new style config.", "Error")
+      for mode, mode_values in pairs(section_values) do
+        local default_opts = merge_tb("force", { mode = mode }, mapping_opt or {})
+        for keybind, mapping_info in pairs(mode_values) do
+          -- merge default + user opts
+          local opts = merge_tb("force", default_opts, mapping_info.opts or {})
+
+          mapping_info.opts, opts.mode = nil, nil
+          opts.desc = mapping_info[2]
+
+          vim.keymap.set(mode, keybind, mapping_info[1], opts)
+        end
+      end
     end
-  else
-    error "Packer could not be loaded!"
-  end
+
+    local mappings = require("core.utils").load_config().mappings
+
+    if type(section) == "string" then
+      mappings[section]["plugin"] = nil
+      mappings = { mappings[section] }
+    end
+
+    for _, sect in pairs(mappings) do
+      set_section_map(sect)
+    end
+  end)
+end
+
+M.lazy_load = function(plugin)
+  vim.api.nvim_create_autocmd({ "BufRead", "BufWinEnter", "BufNewFile" }, {
+    group = vim.api.nvim_create_augroup("BeLazyOnFileOpen" .. plugin, {}),
+    callback = function()
+      local file = vim.fn.expand "%"
+      local condition = file ~= "NvimTree_1" and file ~= "[lazy]" and file ~= ""
+
+      if condition then
+        vim.api.nvim_del_augroup_by_name("BeLazyOnFileOpen" .. plugin)
+
+        -- dont defer for treesitter as it will show slow highlighting
+        -- This deferring only happens only when we do "nvim filename"
+        if plugin ~= "nvim-treesitter" then
+          vim.schedule(function()
+            require("lazy").load { plugins = plugin }
+
+            if plugin == "nvim-lspconfig" then
+              vim.cmd "silent! do FileType"
+            end
+          end, 0)
+        else
+          require("lazy").load { plugins = plugin }
+        end
+      end
+    end,
+  })
 end
 
 return M

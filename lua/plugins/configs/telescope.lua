@@ -1,13 +1,3 @@
-local present, telescope = pcall(require, "telescope")
-
-if not present then
-  return
-end
-
-vim.g.theme_switcher_loaded = true
-
-require("base46").load_highlight "telescope"
-
 local options = {
   defaults = {
     vimgrep_arguments = {
@@ -41,7 +31,7 @@ local options = {
       preview_cutoff = 120,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
-    file_ignore_patterns = { "node_modules", "bin", "obj" },
+    file_ignore_patterns = { "node_modules" },
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     path_display = { "truncate" },
     winblend = 0,
@@ -59,16 +49,7 @@ local options = {
     },
   },
 
-  extensions_list = { "themes", "terms", "projects" },
+  extensions_list = { "themes", "terms" },
 }
 
--- check for any override
-options = require("core.utils").load_override(options, "nvim-telescope/telescope.nvim")
-telescope.setup(options)
-
--- load extensions
-pcall(function()
-  for _, ext in ipairs(options.extensions_list) do
-    telescope.load_extension(ext)
-  end
-end)
+return options
