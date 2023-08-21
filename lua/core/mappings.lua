@@ -41,7 +41,7 @@ M.general = {
     ["gr"] = { function() require("telescope.builtin").lsp_references() end, "lsp references", bufopts},
     ["go"] = { function() require("telescope.builtin").lsp_document_symbols() end, "lsp document symbols", bufopts},
     ["<C-y>"] = { function() require("actions-preview").code_actions() end, "lsp code_action", },
-    ["<F2>"] = { function() require("nvchad_ui.renamer").open() end, "lsp rename", },
+    ["<F2>"] = { function() vim.lsp.buf.rename() end, "lsp rename", },
 
     ["[d"] = { function() vim.diagnostic.goto_prev() end, "goto prev", },
     ["d]"] = { function() vim.diagnostic.goto_next() end, "goto_next", },
