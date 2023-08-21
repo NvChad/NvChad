@@ -7,19 +7,20 @@ local options = {
   hijack_netrw = true,
   hijack_cursor = true,
   hijack_unnamed_buffer_when_opening = false,
-  sync_root_with_cwd = true,
+  sync_root_with_cwd = false,
+  update_cwd = false,
   update_focused_file = {
     enable = true,
     update_root = false,
   },
   view = {
-    adaptive_size = false,
+    adaptive_size = true,
     side = "left",
     width = 30,
     preserve_window_proportions = true,
   },
   git = {
-    enable = false,
+    enable = true,
     ignore = true,
   },
   filesystem_watchers = {
@@ -32,7 +33,7 @@ local options = {
   },
   renderer = {
     root_folder_label = false,
-    highlight_git = false,
+    highlight_git = true,
     highlight_opened_files = "none",
 
     indent_markers = {
@@ -44,7 +45,7 @@ local options = {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = false,
+        git = true,
       },
 
       glyphs = {
