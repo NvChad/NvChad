@@ -80,7 +80,7 @@ local default_plugins = {
 
   {"alvan/vim-closetag"},
 
-  { "ahmedkhalf/project.nvim",
+  { "lpl212757/project.nvim",
     lazy = false,
     config = function()
       require("project_nvim").setup({ })
