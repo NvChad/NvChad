@@ -87,6 +87,33 @@ M.load_mappings = function(section, mapping_opt)
   end)
 end
 
+M.remove_mappings = function(section)
+  vim.schedule(function()
+    local function remove_section_map(section_values)
+      if section_values.plugin then
+        return
+      end
+
+      for mode, mode_values in pairs(section_values) do
+        for keybind, _ in pairs(mode_values) do
+          local _, _ = pcall(vim.api.nvim_del_keymap, mode, keybind)
+        end
+      end
+    end
+
+    local mappings = require("core.utils").load_config().mappings
+
+    if type(section) == "string" then
+      mappings[section]["plugin"] = nil
+      mappings = { mappings[section] }
+    end
+
+    for _, sect in pairs(mappings) do
+      remove_section_map(sect)
+    end
+  end)
+end
+
 M.lazy_load = function(plugin)
   vim.api.nvim_create_autocmd({ "BufRead", "BufWinEnter", "BufNewFile" }, {
     group = vim.api.nvim_create_augroup("BeLazyOnFileOpen" .. plugin, {}),
