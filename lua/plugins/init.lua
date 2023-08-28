@@ -1,22 +1,6 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-  {"zbirenbaum/copilot-cmp",
-    event = "BufEnter",
-    after = { "copilot.lua" },
-    config = function ()
-      require("copilot_cmp").setup()
-    end
-  },
-
-  {"zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({})
-    end,
-  },
-
   {"iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   },
@@ -80,7 +64,7 @@ local default_plugins = {
 
   {"alvan/vim-closetag"},
 
-  { "lpl212757/project.nvim",
+  { "ahmedkhalf/project.nvim",
     lazy = false,
     config = function()
       require("project_nvim").setup({ })

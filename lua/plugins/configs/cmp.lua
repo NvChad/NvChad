@@ -109,7 +109,7 @@ local options = {
   },
   sources = {
     -- Copilot Source
-    { name = "copilot"},
+    -- { name = "copilot"},
     -- Default source
     { name = "nvim_lsp" },
     { name = "luasnip" },
