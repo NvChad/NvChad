@@ -258,6 +258,9 @@ M.telescope = {
   plugin = true,
 
   n = {
+     -- find
+    ["<leader>pp"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "List projects" },  
+      
     -- find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
