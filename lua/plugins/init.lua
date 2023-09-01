@@ -1,5 +1,6 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
+
 local default_plugins = {
 
   "nvim-lua/plenary.nvim",
@@ -137,11 +138,20 @@ local default_plugins = {
 
   {
     "neovim/nvim-lspconfig",
+
+    dependencies = {
+      "jose-elias-alvarez/null-ls.nvim",
+      config = function()
+        require "custom.configs.null-ls"
+      end,
+    },
+
     init = function()
       require("core.utils").lazy_load "nvim-lspconfig"
     end,
     config = function()
       require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
     end,
   },
 
