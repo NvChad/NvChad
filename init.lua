@@ -19,3 +19,7 @@ end
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
 require "plugins"
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = function()
+  require("nvim-tree.api").tree.open()
+end })
