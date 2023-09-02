@@ -10,13 +10,16 @@ local default_plugins = {
     branch = "v2.0",
     build = function()
       require("base46").load_all_highlights()
-    end,
+    end
   },
 
   {
     "NvChad/ui",
     branch = "v2.0",
     lazy = false,
+    init = function()
+      require "custom.ui"
+    end
   },
 
   {

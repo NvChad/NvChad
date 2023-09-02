@@ -5,5 +5,3 @@
 --   pattern = "*",
 --   command = "tabdo wincmd =",
 -- })
-
-require "./commands"
