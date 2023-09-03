@@ -80,6 +80,9 @@ local default_plugins = {
     init = function()
       require("core.utils").lazy_load "nvim-treesitter"
     end,
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+    },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     opts = function()
@@ -87,6 +90,7 @@ local default_plugins = {
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "syntax")
+      require('nvim-treesitter.install').compilers = { 'zig' }
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
@@ -219,8 +223,10 @@ local default_plugins = {
     init = function()
       require("core.utils").load_mappings "comment"
     end,
-    config = function(_, opts)
-      require("Comment").setup(opts)
+    config = function(_, _opts)
+      require("Comment").setup({
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      })
     end,
   },
 

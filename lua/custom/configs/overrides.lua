@@ -4,20 +4,44 @@ M.treesitter = {
   ensure_installed = {
     "vim",
     "lua",
+    "luau",
+    "luap",
     "html",
     "css",
     "javascript",
     "typescript",
     "tsx",
     "c",
+    "cpp",
+    "c_sharp",
     "markdown",
     "markdown_inline",
+    "vue",
+    "scss",
+    "tsx",
+    "json",
+    "make",
+    "rust",
+    "svelte",
+    "yaml",
+    "xml",
+    "zig",
+    "toml",
+    "sql",
+    "gitignore",
+    "gitcommit",
+    "gitattributes",
+    "dockerfile",
   },
   indent = {
     enable = true,
     -- disable = {
     --   "python"
     -- },
+  },
+
+  context_commentstring = {
+    enable = true,
   },
 }
 

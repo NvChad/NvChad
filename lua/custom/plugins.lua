@@ -49,14 +49,6 @@ local plugins = {
     config = function() end,
   },
 
-  {
-    "numToStr/Comment.nvim",
-    opts = {
-      -- add any options here
-    },
-    lazy = false,
-  },
-
   -- override plugin configs
   {
     "williamboman/mason.nvim",
