@@ -22,7 +22,6 @@ M.treesitter = {
     "json",
     "make",
     "rust",
-    "svelte",
     "yaml",
     "xml",
     "zig",
