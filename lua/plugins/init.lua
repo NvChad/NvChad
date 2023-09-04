@@ -264,7 +264,7 @@ local default_plugins = {
   },
 }
 
-local config = require("core.utils").load_config()
+local config = require("core.utils").config
 
 if #config.plugins > 0 then
   table.insert(default_plugins, { import = config.plugins })
