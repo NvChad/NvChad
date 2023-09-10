@@ -48,7 +48,10 @@ require("lspconfig").lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim", "MySQL", "QBCore", "ESX" },
+        globals = {
+          "vim",
+          "MySQL", "QBCore", "ESX"
+        },
       },
       workspace = {
         library = {
@@ -59,7 +62,7 @@ require("lspconfig").lua_ls.setup({
           vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/runtime",
           vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/natives/CFX-NATIVE",
           vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/natives/RDR3",
-          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/natives/GTAV"
+          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/natives/GTAV",
         },
         maxPreload = 100000,
         preloadFileSize = 10000,
