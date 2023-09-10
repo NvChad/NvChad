@@ -61,6 +61,7 @@ require("lspconfig").lua_ls.setup({
           vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy",
           vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua",
           vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/esx/Lua",
+          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/qbcore/Lua",
         },
         maxPreload = 100000,
         preloadFileSize = 10000,
