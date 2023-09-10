@@ -23,31 +23,6 @@ local default_plugins = {
     event = "BufEnter",
   },
 
-  {"mfussenegger/nvim-dap",
-    config = function()
-      require "plugins.configs.dap"
-    end,
-  },
-
-  {"roobert/search-replace.nvim",
-    config = function()
-      require('search-replace').setup({
-      -- optionally override defaults
-      default_replace_single_buffer_options = "gcI",
-      default_replace_multi_buffer_options = "egcI",
-    })
-    end,
-  },
-
-  {
-    "s1n7ax/nvim-search-and-replace",
-    config = function()
-      require('nvim-search-and-replace').setup({  })
-    end,
-  },
-
-  { "erietz/vim-terminator" },
-
   { "mechatroner/rainbow_csv"},
 
   { "echasnovski/mini.nvim",
@@ -61,8 +36,6 @@ local default_plugins = {
     "f-person/git-blame.nvim",
     event = "BufEnter",
   },
-
-  {"alvan/vim-closetag"},
 
   { "ahmedkhalf/project.nvim",
     lazy = false,
