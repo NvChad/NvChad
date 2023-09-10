@@ -58,8 +58,8 @@ require("lspconfig").lua_ls.setup({
           vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy",
           vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/runtime",
           vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/natives/CFX-NATIVE",
-          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/natives/GTAV",
-          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/library",
+          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/natives/RDR3",
+          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua/natives/GTAV"
         },
         maxPreload = 100000,
         preloadFileSize = 10000,
