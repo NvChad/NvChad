@@ -18,7 +18,6 @@ M.treesitter = {
     "markdown_inline",
     "vue",
     "scss",
-    "tsx",
     "json",
     "make",
     "rust",

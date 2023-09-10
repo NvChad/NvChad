@@ -1,0 +1,101 @@
+{
+	"name": "fivem2vscode",
+	"displayName": "CfxLua Code (FiveM/RedM IntelliSense)",
+	"description": "IntelliSense support for the Lua Script runtime used by FiveM and RedM",
+	"version": "2.0.20",
+	"publisher": "HeyyCzer",
+	"contributors": [
+		{
+			"name": "Overextended",
+			"github": "https://github.com/Overextended"
+		}
+	],
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/HeyyCzer/cfxlua-vscode"
+	},
+	"engines": {
+		"vscode": "^1.71.0"
+	},
+	"categories": [
+		"Linters",
+		"Programming Languages"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "cfxlua.game.rdr3",
+				"title": "Use RDR3 natives",
+				"category": "CfxLua"
+			},
+			{
+				"command": "cfxlua.game.gtav",
+				"title": "Use GTAV natives",
+				"category": "CfxLua"
+			}
+		],
+		"configuration": {
+			"title": "CfxLua",
+			"properties": {
+				"cfxlua.game": {
+					"default": "gtav",
+					"enum": [
+						"gtav",
+						"rdr3"
+					]
+				}
+			}
+		}
+	},
+	"keywords": [
+		"Lua",
+		"FiveM",
+		"IntelliSense"
+	],
+	"icon": "logo.png",
+	"activationEvents": [
+		"onLanguage:lua"
+	],
+	"main": "./dist/extension.js",
+	"scripts": {
+		"build": "node buildNatives.js && yarn package",
+		"package": "webpack --mode production --devtool hidden-source-map && vsce package --no-git-tag-version -o cfxlua-vscode.vsix",
+		"watch": "webpack --watch",
+		"compile-tests": "tsc -p . --outDir out",
+		"watch-tests": "tsc -p . -w --outDir out",
+		"pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.71.0",
+		"@typescript-eslint/eslint-plugin": "^5.31.0",
+		"@typescript-eslint/parser": "^5.31.0",
+		"@vscode/test-electron": "^2.1.5",
+		"axios": "^1.4.0",
+		"eslint": "^8.20.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"ts-loader": "^9.3.1",
+		"typescript": "^4.7.4",
+		"webpack": "^5.74.0",
+		"webpack-cli": "^4.10.0"
+	},
+	"extensionDependencies": [
+		"sumneko.lua"
+	],
+	"__metadata": {
+		"id": "cbc7f39d-12ad-4be5-8140-1b53cd04ae7d",
+		"publisherId": "c8ee172e-0631-42a5-b5be-11299593526a",
+		"publisherDisplayName": "HeyyCzer",
+		"targetPlatform": "undefined",
+		"updated": false,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1686827708566,
+		"preRelease": false
+	}
+}
