@@ -28,9 +28,6 @@ M.general = {
   n = {
     -- User config
     -- Search - Replace 
-    ["<leader>rs"] = { "<cmd> :SearchReplaceSingleBufferSelections <CR>", "Search Replace Single Buffer Selections" },
-    ["<leader>ro"] = { "<cmd> :SearchReplaceSingleBufferOpen <CR>", "Search Replace Single Buffer Open" },
-    ["<leader>rw"] = { "<cmd> :SearchReplaceSingleBufferCWord <CR>", "Search Replace Single Buffer CWord"},
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
     --
     -- LSPConfig
@@ -92,9 +89,6 @@ M.general = {
 
   v = {
     ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
-    ["<C-r>"] = {"<CMD> :SearchReplaceSingleBufferVisualSelection<CR>", "Search Replace Single Buffer Visual Selection"},
-    ["<C-s>"] = {"<CMD> :SearchReplaceWithinVisualSelection<CR>", "Search Replace Within Visual Selection"},
-    ["<C-b>"] = {"<CMD> :SearchReplaceWithinVisualSelectionCWord<CR>", "Search Replace Within Visual Selection CWord"},
     ["<C-y>"] = { function() require("actions-preview").code_actions() end, "lsp code_action", },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
