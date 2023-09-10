@@ -64,6 +64,12 @@ local plugins = {
   },
 
   {
+    "Z3rio/NvChad-customdata",
+    
+    lazy = false
+  },
+
+  {
     "andweeb/presence.nvim",
 
     lazy = false,
