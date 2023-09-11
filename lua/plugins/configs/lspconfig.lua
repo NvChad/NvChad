@@ -52,10 +52,6 @@ function CombineTable(table1, table2)
     table.insert(retVal, table2[i])
   end
 
-  for i = 1, #retVal do
-    print("retVal", i, retVal[i])
-  end
-
   return retVal
 end
 
