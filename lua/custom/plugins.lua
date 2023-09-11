@@ -76,6 +76,19 @@ local plugins = {
   },
 
   {
+    "Z3rio/spotify.nvim",
+
+    config = function()
+      require("spotify").setup({
+        debug = true
+      })
+    end,
+
+    lazy = false,
+    dev = true,
+  },
+
+  {
     "andweeb/presence.nvim",
 
     lazy = false,

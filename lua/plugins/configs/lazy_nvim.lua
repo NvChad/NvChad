@@ -10,6 +10,11 @@ return {
       not_loaded = "",
     },
   },
+  
+  dev = {
+    path = "G:/Github Projects",
+    fallback = false
+  },
 
   performance = {
     rtp = {
