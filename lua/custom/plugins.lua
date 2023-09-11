@@ -69,6 +69,9 @@ local plugins = {
     build = function()
       os.execute("cd " .. vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem && npm install && npm run build")
     end,
+    update = function()
+      os.execute("cd " .. vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem && npm install && npm run build")
+    end,
     lazy = false
   },
 
