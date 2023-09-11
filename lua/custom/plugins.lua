@@ -80,12 +80,14 @@ local plugins = {
 
     config = function()
       require("spotify").setup({
-        debug = true
+        debug = true,
+        clientId = ""
       })
     end,
 
     lazy = false,
     dev = true,
+    enabled = false
   },
 
   {
