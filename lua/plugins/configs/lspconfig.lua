@@ -41,6 +41,24 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
+function CombineTable(table1, table2)
+  local retVal = {}
+
+  for i = 1, #table1 do
+    table.insert(retVal, table1[i])
+  end
+
+  for i = 1, #table2 do
+    table.insert(retVal, table2[i])
+  end
+
+  for i = 1, #retVal do
+    print("retVal", i, retVal[i])
+  end
+
+  return retVal
+end
+
 require("lspconfig").lua_ls.setup({
   on_attach = M.on_attach,
   capabilities = M.capabilities,
@@ -54,15 +72,12 @@ require("lspconfig").lua_ls.setup({
         },
       },
       workspace = {
-        library = {
+        library = CombineTable({
           vim.fn.expand("$VIMRUNTIME/lua"),
           vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
           vim.fn.stdpath("data") .. "/lazy/ui/nvchad_types",
           vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy",
-          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem/Lua",
-          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/esx/Lua",
-          vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/qbcore/Lua",
-        },
+        }, require("nvchad_customdata").getPaths()),
         maxPreload = 100000,
         preloadFileSize = 10000,
       },
