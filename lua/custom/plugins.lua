@@ -91,6 +91,41 @@ local plugins = {
   },
 
   {
+    "Z3rio/FiveM.nvim",
+
+    config = function()
+      require("fivem").setup({
+        debug = true
+      })
+    end,
+
+    dependencies = {
+      "rcarriga/nvim-notify", 'stevearc/dressing.nvim', 'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim'
+    },
+
+    lazy = false,
+    dev = true
+  },
+
+  {
+    "MunifTanjim/nui.nvim",
+    lazy = false,
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    lazy = false
+  },
+
+  {
+    'stevearc/dressing.nvim',
+    config = function()
+      require "custom.configs.dressing"
+    end,
+    lazy = false,
+  },
+
+  {
     "andweeb/presence.nvim",
 
     lazy = false,
