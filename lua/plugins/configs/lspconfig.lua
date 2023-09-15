@@ -64,7 +64,7 @@ require("lspconfig").lua_ls.setup({
       diagnostics = {
         globals = {
           "vim",
-          "MySQL", "QBCore", "ESX"
+          "MySQL", "QBCore", "ESX", "MySQL.Async", "MySQL.Sync"
         },
       },
       workspace = {

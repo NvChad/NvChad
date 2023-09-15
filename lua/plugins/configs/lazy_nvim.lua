@@ -12,7 +12,7 @@ return {
   },
   
   dev = {
-    path = "G:/Github Projects",
+    path = "G:/Github Projects/nvim_dev",
     fallback = false
   },
 
