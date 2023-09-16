@@ -1,6 +1,16 @@
 local M = {}
 local merge_tb = vim.tbl_deep_extend
 
+local key_exists = function(mappings, section, mode, key)
+  if not mappings[section] then
+    return false
+  elseif not mappings[section][mode] then
+    return false
+  else
+    return mappings[section][mode][key]
+  end
+end
+
 M.load_config = function()
   local config = require "core.default_config"
   local chadrc_path = vim.api.nvim_get_runtime_file("lua/custom/chadrc.lua", false)[1]
@@ -23,32 +33,45 @@ M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
 
   -- store keys in a array with true value to compare
   local keys_to_disable = {}
-  for _, mappings in pairs(chadrc_mappings) do
+  for section, mappings in pairs(chadrc_mappings) do
     for mode, section_keys in pairs(mappings) do
       if not keys_to_disable[mode] then
         keys_to_disable[mode] = {}
       end
       section_keys = (type(section_keys) == "table" and section_keys) or {}
-      for k, _ in pairs(section_keys) do
-        keys_to_disable[mode][k] = true
-      end
-    end
-  end
-
-  -- make a copy as we need to modify default_mappings
-  for section_name, section_mappings in pairs(default_mappings) do
-    for mode, mode_mappings in pairs(section_mappings) do
-      mode_mappings = (type(mode_mappings) == "table" and mode_mappings) or {}
-      for k, _ in pairs(mode_mappings) do
-        -- if key if found then remove from default_mappings
-        if keys_to_disable[mode] and keys_to_disable[mode][k] then
-          default_mappings[section_name][mode][k] = nil
+      for k, v in pairs(section_keys) do
+        if #v == 0 then -- i.e. an empty table
+          keys_to_disable[mode][k] = true
+          chadrc_mappings[section][mode][k] = nil
         end
       end
     end
   end
 
-  return default_mappings
+  local mappings = {}
+  -- make a copy as we need to modify default_mappings
+  for section_name, section_mappings in pairs(default_mappings) do
+    if not mappings[section_name] then
+      mappings[section_name] = {}
+    end
+    for mode, mode_mappings in pairs(section_mappings) do
+      mode_mappings = (type(mode_mappings) == "table" and mode_mappings) or {}
+      if not mappings[section_name][mode] then
+        mappings[section_name][mode] = {}
+      end
+      for k, v in pairs(mode_mappings) do
+        if keys_to_disable[mode] and not keys_to_disable[mode][k] then
+          if key_exists(chadrc_mappings, section_name, mode, k) then -- override it
+            mappings[section_name][mode][k] = chadrc_mappings[section_name][mode][k]
+          else -- use default
+            mappings[section_name][mode][k] = v
+          end
+        end
+      end
+    end
+  end
+
+  return mappings
 end
 
 M.load_mappings = function(section, mapping_opt)
