@@ -5,6 +5,17 @@ local M = {}
 local utils = require "core.utils"
 
 -- export on_attach & capabilities for custom lspconfigs
+require'lspconfig'.gopls.setup{}
+M.setup_lsp = function(attach, capabilities)
+  local lsp_config = require "lspconfig"
+  local servers = { "gopls", "rust-analyzer", "html", "cssls", "bashls", "emmet_ls", "tsserver", "clangd" }
+  for _, lsp in ipairs(servers) do
+    lsp_config[lsp].setup {
+      on_attach = attach,
+      capabilities = capabilities,
+    }
+  end
+end
 
 M.on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = false
