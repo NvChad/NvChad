@@ -75,11 +75,14 @@ M.ui = {
   cheatsheet = { theme = "grid" }, -- simple/grid
 
   lsp = {
-    -- show function signatures i.e args as you type
     signature = {
       disabled = false,
-      silent = true, -- silences 'no signature help available' message from appearing
+      silent = true, -- silences 'no signature help available' message
     },
+  },
+
+  term = {
+    sizes = { sp = 0.3, vsp = 0.2 },
   },
 }
 
