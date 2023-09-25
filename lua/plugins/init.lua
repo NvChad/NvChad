@@ -19,17 +19,6 @@ local default_plugins = {
   },
 
   {
-    "NvChad/nvterm",
-    init = function()
-      require("core.utils").load_mappings "nvterm"
-    end,
-    config = function(_, opts)
-      require "base46.term"
-      require("nvterm").setup(opts)
-    end,
-  },
-
-  {
     "NvChad/nvim-colorizer.lua",
     init = function()
       require("core.utils").lazy_load "nvim-colorizer.lua"
