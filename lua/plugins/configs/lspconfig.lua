@@ -12,11 +12,15 @@ M.on_attach = function(client, bufnr)
 
   utils.load_mappings("lspconfig", { buffer = bufnr })
 
-  if client.server_capabilities.signatureHelpProvider then
+  -- signature stuff
+  local conf = utils.load_config().ui.lsp
+
+  if conf.signature and client.server_capabilities.signatureHelpProvider then
     require("nvchad.signature").setup(client)
   end
 
-  if not utils.load_config().ui.lsp_semantic_tokens and client.supports_method "textDocument/semanticTokens" then
+  -- semanticTokens
+  if not conf.semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
 end
