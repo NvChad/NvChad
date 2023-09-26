@@ -74,11 +74,7 @@ M.ui = {
   cheatsheet = { theme = "grid" }, -- simple/grid
 
   lsp = {
-    signature = {
-      disabled = false,
-      silent = true, -- silences 'no signature help available' message
-    },
-
+    signature = true,
     semantic_tokens = false,
   },
 
