@@ -133,7 +133,7 @@ local default_plugins = {
       require("core.utils").lazy_load "nvim-lspconfig"
     end,
     config = function()
-      require "plugins.configs.lspconfig"
+      require("plugins.configs.lspconfig").defaults()
     end,
   },
 
