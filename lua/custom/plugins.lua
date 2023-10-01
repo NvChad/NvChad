@@ -1,4 +1,4 @@
-local overrides = require "custom.configs.overrides"
+local overrides = require("custom.configs.overrides")
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -11,13 +11,13 @@ local plugins = {
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
-          require "custom.configs.null-ls"
+          require("custom.configs.null-ls")
         end,
       },
     },
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require("plugins.configs.lspconfig")
+      require("custom.configs.lspconfig")
     end, -- Override to setup mason-lspconfig
   },
 
@@ -65,14 +65,14 @@ local plugins = {
 
   {
     "Z3rio/NvChad-customdata",
-    
+
     build = function()
       os.execute("cd " .. vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem && npm install && npm run build")
     end,
     update = function()
       os.execute("cd " .. vim.fn.stdpath("data") .. "/lazy/NvChad-customdata/fivem && npm install && npm run build")
     end,
-    lazy = false
+    lazy = false,
   },
 
   {
@@ -81,13 +81,13 @@ local plugins = {
     config = function()
       require("spotify").setup({
         debug = true,
-        clientId = ""
+        clientId = "",
       })
     end,
 
     lazy = false,
     dev = true,
-    enabled = false
+    enabled = false,
   },
 
   {
@@ -95,16 +95,18 @@ local plugins = {
 
     config = function()
       require("fivem").setup({
-        debug = true
+        debug = true,
       })
     end,
 
     dependencies = {
-      "rcarriga/nvim-notify", 'stevearc/dressing.nvim', 'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim'
+      "rcarriga/nvim-notify",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
     },
 
     lazy = false,
-    dev = true
   },
 
   {
@@ -114,13 +116,18 @@ local plugins = {
 
   {
     "rcarriga/nvim-notify",
-    lazy = false
+    lazy = false,
+    config = function()
+      require("notify").setup({
+        background_colour = "#000000",
+      })
+    end,
   },
 
   {
-    'stevearc/dressing.nvim',
+    "stevearc/dressing.nvim",
     config = function()
-      require "custom.configs.dressing"
+      require("custom.configs.dressing")
     end,
     lazy = false,
   },
@@ -131,7 +138,7 @@ local plugins = {
     lazy = false,
 
     config = function()
-      require "custom.configs.presence"
+      require("custom.configs.presence")
     end,
   },
 
