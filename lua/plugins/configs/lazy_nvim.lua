@@ -10,10 +10,10 @@ return {
       not_loaded = "",
     },
   },
-  
+
   dev = {
-    path = "G:/Github Projects/nvim_dev",
-    fallback = false
+    path = vim.fn.stdpath("data") .. "/dev",
+    fallback = false,
   },
 
   performance = {
