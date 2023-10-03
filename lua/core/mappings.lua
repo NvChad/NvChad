@@ -9,7 +9,7 @@ local bufopts = { noremap=true, silent=true }
 M.general = {
   i = {
     -- Lspconfig Code action
-    ["<C-y>"] = { function() require("actions-preview").code_actions() end, "lsp code_action", },
+    ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
 
     ["<C-BS>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
     ["<C-H>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
@@ -37,7 +37,7 @@ M.general = {
     ["gi"] = { function() require("telescope.builtin").lsp_implementations() end, "lsp implementation", bufopts },
     ["gr"] = { function() require("telescope.builtin").lsp_references() end, "lsp references", bufopts},
     ["go"] = { function() require("telescope.builtin").lsp_document_symbols() end, "lsp document symbols", bufopts},
-    ["<C-y>"] = { function() require("actions-preview").code_actions() end, "lsp code_action", },
+    ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
     ["<F2>"] = { function() vim.lsp.buf.rename() end, "lsp rename", },
 
     ["[d"] = { function() vim.diagnostic.goto_prev() end, "goto prev", },
@@ -89,7 +89,7 @@ M.general = {
 
   v = {
     ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
-    ["<C-y>"] = { function() require("actions-preview").code_actions() end, "lsp code_action", },
+    ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
   },
