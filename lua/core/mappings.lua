@@ -291,7 +291,7 @@ M.telescope = {
   n = {
     -- User cofig
     -- Open project
-    ["<C-g>"] = { "<cmd> Telescope projects <CR>", "Project" },
+    ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "Project" },
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "find files" },
     -- End User cofig
 
