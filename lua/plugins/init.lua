@@ -18,11 +18,6 @@ local default_plugins = {
     end,
   },
 
-  {
-    "psliwka/vim-smoothie",
-    event = "BufEnter",
-  },
-
   { "mechatroner/rainbow_csv"},
 
   { "echasnovski/mini.nvim",
@@ -50,7 +45,7 @@ local default_plugins = {
       require("toggleterm").setup({
         open_mapping = [[<c-\>]],
         direction = 'float',
-        shade_terminals = true,
+        shade_terminals = true
       })
     end
   },
