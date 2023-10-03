@@ -1,10 +1,6 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-  {"iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  },
-
   {"AckslD/muren.nvim",
     event = "BufEnter",
     config = function()
