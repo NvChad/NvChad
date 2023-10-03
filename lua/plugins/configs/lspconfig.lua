@@ -55,6 +55,10 @@ function CombineTable(table1, table2)
   return retVal
 end
 
+require('lspconfig').cssls.setup({
+  on_attach = M.on_attach,
+  capabilities = M.capabilities
+})
 require("lspconfig").lua_ls.setup({
   on_attach = M.on_attach,
   capabilities = M.capabilities,

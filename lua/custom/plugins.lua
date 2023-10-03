@@ -94,9 +94,7 @@ local plugins = {
     "Z3rio/FiveM.nvim",
 
     config = function()
-      require("fivem").setup({
-        debug = true,
-      })
+      require("fivem").setup({})
     end,
 
     dependencies = {
