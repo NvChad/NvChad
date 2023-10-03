@@ -5,20 +5,12 @@ local default_plugins = {
     run = function() vim.fn["mkdp#util#install"]() end,
   },
 
-  {"aznhe21/actions-preview.nvim",
-    config = function()
-      require("actions-preview").setup({})
-    end,
-  },
-
   {"AckslD/muren.nvim",
     event = "BufEnter",
     config = function()
       require('muren').setup()
     end,
   },
-
-  { "mechatroner/rainbow_csv"},
 
   { "echasnovski/mini.nvim",
     event = "BufEnter",
@@ -49,10 +41,6 @@ local default_plugins = {
       })
     end
   },
-
-  {"realprogrammersusevim/md-to-html.nvim"},
-
-  {"memgraph/cypher.vim"},
 
   {"terryma/vim-multiple-cursors"},
 
