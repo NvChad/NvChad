@@ -3,6 +3,7 @@ local M = {}
 M.ui = {
   theme = "chadracula",
   extended_integrations = { "trouble", "dap" },
+  telescope = { style = "bordered" },
 }
 
 -- custom plugin configs

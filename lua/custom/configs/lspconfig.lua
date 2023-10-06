@@ -14,6 +14,14 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "rounded",
+})
+
 -- Without the loop, you would have to manually set up each LSP
 --
 -- lspconfig.html.setup {
