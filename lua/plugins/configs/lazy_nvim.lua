@@ -13,7 +13,7 @@ return {
 
   dev = {
     path = vim.fn.stdpath("data") .. "/dev",
-    fallback = false,
+    fallback = true,
   },
 
   performance = {
