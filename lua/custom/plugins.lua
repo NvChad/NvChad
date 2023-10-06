@@ -14,6 +14,8 @@ local plugins = {
         "html-lsp",
         "prettier",
         "stylua",
+        "svelte-language-server",
+        "codelldb",
       },
     },
   },
@@ -87,6 +89,24 @@ local plugins = {
       vim.g.copilot_tab_fallback = ""
       -- The mapping is set to other key, see custom/lua/mappings
       -- or run <leader>ch to see copilot mapping section
+    end,
+  },
+  { -- cinnamon is a smooth scrolling plugin
+    "declancm/cinnamon.nvim",
+    event = { "BufReadPre", "BufNewFile", "BufEnter" },
+    config = function()
+      require("cinnamon").setup()
+    end,
+  },
+  { -- debugger
+    "mfussenegger/nvim-dap",
+  },
+  { -- terminal
+    "akinsho/toggleterm.nvim",
+    lazy = false, -- TODO: To get things rolling, load it right away
+    version = "*",
+    config = function()
+      require "custom.configs.toggleterm"
     end,
   },
 }
