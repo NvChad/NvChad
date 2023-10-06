@@ -17,6 +17,7 @@ local plugins = {
         "stylua",
         "svelte-language-server",
         "codelldb",
+        "tailwindcss-language-server",
       },
     },
   },
