@@ -1,4 +1,4 @@
--- command :Lazy 
+-- command :Lazy
 -- U for Update
 
 local plugins = {
@@ -36,7 +36,7 @@ local plugins = {
     ft = "rust", -- so Lazyvim knows when to load it
     after = "nvim-lspconfig",
     config = function()
-      require("rust-tools").setup {}
+      require "custom.configs.rust_tools"
     end,
   },
   { -- text syntax highlighting per language
@@ -65,6 +65,14 @@ local plugins = {
         enable = true,
       },
     },
+  },
+  { -- Aggregated Trouble list
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    config = function()
+      dofile(vim.g.base46_cache .. "trouble") -- theme using chadrd.ui.extended_integrations in custom/chadrc.lua
+      require("trouble").setup()
+    end,
   },
 }
 

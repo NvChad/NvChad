@@ -1,7 +1,8 @@
 local M = {}
 
 M.ui = {
-  theme = "chadracula"
+  theme = "chadracula",
+  extended_integrations = { "trouble", "dap" },
 }
 
 -- custom plugin configs
