@@ -30,6 +30,7 @@ local plugins = {
   },
   { -- rust tools
     "simrat39/rust-tools.nvim",
+    ft = "rust", -- so Lazyvim knows when to load it
     after = "nvim-lspconfig",
     config = function()
       require("rust-tools").setup {}
