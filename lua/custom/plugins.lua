@@ -66,6 +66,7 @@ local plugins = {
       },
       highlight = {
         enable = true,
+        additional_vim_regex_highlighting = false,
       },
     },
   },
@@ -110,7 +111,7 @@ local plugins = {
       require "custom.configs.toggleterm"
     end,
   },
-  { -- intgrate crate.io into completion
+  { -- integrate crate.io into completion
     "hrsh7th/nvim-cmp",
     dependencies = {
       {
@@ -120,7 +121,6 @@ local plugins = {
       },
     },
     opts = {
-      -- name = "crates",
       window = {
         -- https://rsdlt.github.io/posts/rust-nvim-ide-guide-walkthrough-development-debug/
         completion = cmp.config.window.bordered(),
