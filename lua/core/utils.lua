@@ -7,10 +7,11 @@ M.load_config = function()
 
   if chadrc_path then
     local chadrc = dofile(chadrc_path)
-
-    config.mappings = M.remove_disabled_keys(chadrc.mappings, config.mappings)
-    config = merge_tb("force", config, chadrc)
-    config.mappings.disabled = nil
+    if chadrc then
+      config.mappings = M.remove_disabled_keys(chadrc.mappings, config.mappings)
+      config = merge_tb("force", config, chadrc)
+      config.mappings.disabled = nil
+    end
   end
 
   return config
@@ -51,6 +52,8 @@ M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
   return default_mappings
 end
 
+M.config = M.load_config()
+
 M.load_mappings = function(section, mapping_opt)
   vim.schedule(function()
     local function set_section_map(section_values)
@@ -74,7 +77,7 @@ M.load_mappings = function(section, mapping_opt)
       end
     end
 
-    local mappings = require("core.utils").load_config().mappings
+    local mappings = require("core.utils").config.mappings
 
     if type(section) == "string" then
       mappings[section]["plugin"] = nil

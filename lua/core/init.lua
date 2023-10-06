@@ -1,6 +1,6 @@
 local opt = vim.opt
 local g = vim.g
-local config = require("core.utils").load_config()
+local config = require("core.utils").config
 
 -------------------------------------- globals -----------------------------------------
 g.nvchad_theme = config.ui.theme
