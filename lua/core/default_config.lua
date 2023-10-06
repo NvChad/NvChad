@@ -1,7 +1,7 @@
 local M = {}
 
 M.options = {
-  nvchad_branch = "v2.0",
+  nvchad_branch = "v3.0",
 }
 
 M.ui = {
@@ -13,7 +13,6 @@ M.ui = {
   theme_toggle = { "onedark", "one_light" },
   theme = "onedark", -- default theme
   transparency = false,
-  lsp_semantic_tokens = false, -- needs nvim v0.9, just adds highlight groups for lsp semantic tokens
 
   -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
   extended_integrations = {}, -- these aren't compiled by default, ex: "alpha", "notify"
@@ -75,10 +74,14 @@ M.ui = {
   cheatsheet = { theme = "grid" }, -- simple/grid
 
   lsp = {
-    -- show function signatures i.e args as you type
-    signature = {
-      disabled = false,
-      silent = true, -- silences 'no signature help available' message from appearing
+    signature = true,
+    semantic_tokens = false,
+  },
+
+  term = {
+    sizes = { sp = 0.3, vsp = 0.2 },
+    behavior = {
+      auto_insert = true,
     },
   },
 }

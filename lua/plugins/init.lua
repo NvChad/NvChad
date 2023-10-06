@@ -6,7 +6,7 @@ local default_plugins = {
 
   {
     "NvChad/base46",
-    branch = "v2.0",
+    branch = "v3.0",
     build = function()
       require("base46").load_all_highlights()
     end,
@@ -14,18 +14,10 @@ local default_plugins = {
 
   {
     "NvChad/ui",
-    branch = "v2.0",
+    branch = "v3.0",
     lazy = false,
-  },
-
-  {
-    "NvChad/nvterm",
-    init = function()
-      require("core.utils").load_mappings "nvterm"
-    end,
-    config = function(_, opts)
-      require "base46.term"
-      require("nvterm").setup(opts)
+    config = function()
+      require "nvchad"
     end,
   },
 
@@ -57,7 +49,6 @@ local default_plugins = {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    version = "2.20.7",
     init = function()
       require("core.utils").lazy_load "indent-blankline.nvim"
     end,
@@ -67,7 +58,10 @@ local default_plugins = {
     config = function(_, opts)
       require("core.utils").load_mappings "blankline"
       dofile(vim.g.base46_cache .. "blankline")
-      require("indent_blankline").setup(opts)
+
+      local hooks = require "ibl.hooks"
+      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+      require("ibl").setup(opts)
     end,
   },
 
@@ -141,7 +135,7 @@ local default_plugins = {
       require("core.utils").lazy_load "nvim-lspconfig"
     end,
     config = function()
-      require "plugins.configs.lspconfig"
+      require("plugins.configs.lspconfig").defaults()
     end,
   },
 
