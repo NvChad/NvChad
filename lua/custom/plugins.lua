@@ -1,5 +1,6 @@
 -- command :Lazy
 -- U for Update
+local cmp = require "cmp"
 
 local plugins = {
   -- Override plugin definition options
@@ -108,6 +109,24 @@ local plugins = {
     config = function()
       require "custom.configs.toggleterm"
     end,
+  },
+  { -- intgrate crate.io into completion
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      {
+        "Saecki/crates.nvim",
+        event = { "BufRead Cargo.toml" },
+        config = true,
+      },
+    },
+    opts = {
+      -- name = "crates",
+      window = {
+        -- https://rsdlt.github.io/posts/rust-nvim-ide-guide-walkthrough-development-debug/
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(), -- for docs
+      },
+    },
   },
 }
 
