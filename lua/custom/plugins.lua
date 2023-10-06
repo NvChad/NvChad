@@ -1,3 +1,6 @@
+-- command :Lazy 
+-- U for Update
+
 local plugins = {
   -- Override plugin definition options
   -- Add additional plugins
@@ -18,7 +21,7 @@ local plugins = {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- formatting & linting
-      "jose-elias-alvarez/null-ls.nvim",
+      "mskelton/null-ls.nvim",
       config = function()
         require "custom.configs.null-ls"
       end,
@@ -35,6 +38,33 @@ local plugins = {
     config = function()
       require("rust-tools").setup {}
     end,
+  },
+  { -- text syntax highlighting per language
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        -- defaults
+        "vim",
+        "lua",
+
+        -- web dev
+        "html",
+        "css",
+        "javascript",
+        "typescript",
+        "json",
+        "svelte",
+        "toml",
+        "ron", -- rust object notation
+
+        -- low level
+        "rust",
+        "markdown",
+      },
+      highlight = {
+        enable = true,
+      },
+    },
   },
 }
 
