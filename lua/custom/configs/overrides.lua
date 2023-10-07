@@ -33,4 +33,39 @@ if cmp_ok then
   }
 end
 
+-- :help nvim-tree
+M.nvimtree = {
+  git = {
+    enable = true,
+    ignore = false,
+    show_on_dirs = true,
+    show_on_open_dirs = true,
+  },
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    },
+  },
+  renderer = {
+    highlight_git = true,
+    highlight_opened_files = "all", -- default is "none"
+    highlight_diagnostics = true,
+    icons = {
+      show = {
+        git = true,
+      },
+    },
+  },
+  view = {
+    signcolumn = "yes", -- default is "yes"
+  },
+  update_focused_file = {
+    enable = true,
+  },
+}
+
 return M

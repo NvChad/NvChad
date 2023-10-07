@@ -1,6 +1,5 @@
 -- command :Lazy
 -- U for Update
-local cmp = require "cmp"
 local overrides = require "custom.configs.overrides"
 
 local plugins = {
@@ -123,6 +122,10 @@ local plugins = {
       },
     },
     opts = overrides.cmp,
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = overrides.nvimtree,
   },
 }
 
