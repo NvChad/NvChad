@@ -9,6 +9,7 @@ Features:
    - YAML
  - Autocompletion and suggestions for:
    - Go
+   - Python
  - Autoformatting on save for:
    - Go
  - Inline git blame

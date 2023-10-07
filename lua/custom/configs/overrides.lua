@@ -34,9 +34,11 @@ M.treesitter = {
   },
 }
 
+-- LSPs
 M.mason = {
   ensure_installed = {
     "gopls",
+    "pyright",
   },
 }
 
