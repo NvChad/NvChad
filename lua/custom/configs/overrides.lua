@@ -27,6 +27,7 @@ M.treesitter = {
     "go",
     "gosum",
     "gomod",
+    "markdown",
     "yaml",
   },
 }
