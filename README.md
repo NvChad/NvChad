@@ -2,6 +2,7 @@ Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0)
 
 Features:
  - Syntaxt highlight for:
+   - Bash
    - Go
    - JSON
    - Markdown
