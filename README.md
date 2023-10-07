@@ -1,7 +1,9 @@
 Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0), started from a vanilla [NvChad](https://nvchad.com/) installation.
 
 Features:
- - Syntaxt highlight for
+ - Syntaxt highlight for:
+   - Go
+ - Autocompletion and suggestions for:
    - Go
  - Inline git blame
  - Accelerated jk movement

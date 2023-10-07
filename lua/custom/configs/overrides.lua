@@ -30,4 +30,11 @@ M.treesitter = {
   },
 }
 
+
+M.mason = {
+  ensure_installed = {
+    "gopls",
+  },
+}
+
 return M
