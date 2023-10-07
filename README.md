@@ -5,6 +5,8 @@ Features:
    - Go
  - Autocompletion and suggestions for:
    - Go
+ - Autoformatting on save for:
+   - Go
  - Inline git blame
  - Accelerated jk movement
 
