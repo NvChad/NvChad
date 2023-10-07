@@ -30,6 +30,7 @@ M.treesitter = {
     "gomod",
     "json",
     "markdown",
+    "python",
     "yaml",
   },
 }

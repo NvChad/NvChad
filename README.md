@@ -6,6 +6,7 @@ Features:
    - Go
    - JSON
    - Markdown
+   - Python
    - YAML
  - Autocompletion and suggestions for:
    - Go
