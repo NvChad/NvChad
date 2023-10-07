@@ -37,6 +37,7 @@ M.treesitter = {
 -- LSPs
 M.mason = {
   ensure_installed = {
+    "black",
     "gopls",
     "pyright",
   },

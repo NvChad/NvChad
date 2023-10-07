@@ -12,6 +12,7 @@ Features:
    - Python
  - Autoformatting on save for:
    - Go
+   - Python
  - Inline git blame
  - Accelerated jk movement
 
