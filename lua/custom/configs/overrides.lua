@@ -27,9 +27,9 @@ M.treesitter = {
     "go",
     "gosum",
     "gomod",
+    "yaml",
   },
 }
-
 
 M.mason = {
   ensure_installed = {

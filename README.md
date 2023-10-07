@@ -3,6 +3,7 @@ Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0)
 Features:
  - Syntaxt highlight for:
    - Go
+   - YAML
  - Autocompletion and suggestions for:
    - Go
  - Autoformatting on save for:
