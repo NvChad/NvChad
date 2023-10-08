@@ -28,6 +28,7 @@ M.treesitter = {
     "go",
     "gosum",
     "gomod",
+    "html",
     "json",
     "markdown",
     "python",

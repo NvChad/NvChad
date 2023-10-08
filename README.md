@@ -11,6 +11,7 @@ Language Support:
  - Syntaxt highlight for:
    - Bash
    - Go
+   - HTML
    - JSON
    - Lua
    - Markdown
