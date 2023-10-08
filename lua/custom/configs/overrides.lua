@@ -30,6 +30,7 @@ M.treesitter = {
     "gosum",
     "gomod",
     "html",
+    "javascript",
     "json",
     "markdown",
     "python",

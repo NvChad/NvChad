@@ -13,6 +13,7 @@ Language Support:
    - CSS
    - Go
    - HTML
+   - Javascript
    - JSON
    - Lua
    - Markdown
