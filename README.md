@@ -23,6 +23,7 @@ NvChad Editor Updates:
  - Inline git blame
  - Accelerated jk movement
  - Hidden theme toggle
+ - Ruler at the 80th character
 
 Install by running:
 
