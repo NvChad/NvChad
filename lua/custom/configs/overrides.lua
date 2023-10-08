@@ -25,6 +25,7 @@ M.gitsigns = {
 M.treesitter = {
   ensure_installed = {
     "bash",
+    "css",
     "go",
     "gosum",
     "gomod",

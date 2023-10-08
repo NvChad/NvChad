@@ -10,6 +10,7 @@ Language Support:
    - Python
  - Syntaxt highlight for:
    - Bash
+   - CSS
    - Go
    - HTML
    - JSON
