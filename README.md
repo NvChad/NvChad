@@ -1,6 +1,13 @@
 Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0), started from a vanilla [NvChad](https://nvchad.com/) installation.
 
-Features:
+Language Support:
+ - Autocompletion and suggestions for:
+   - Go
+   - Lua
+   - Python
+ - Autoformatting on save for:
+   - Go
+   - Python
  - Syntaxt highlight for:
    - Bash
    - Go
@@ -8,14 +15,13 @@ Features:
    - Markdown
    - Python
    - YAML
- - Autocompletion and suggestions for:
-   - Go
-   - Python
- - Autoformatting on save for:
-   - Go
-   - Python
+ 
+NvChad Editor Updates:
+ - NvimTree open by default
+ - NvimTree git support
  - Inline git blame
  - Accelerated jk movement
+ - Hidden theme toggle
 
 Install by running:
 
