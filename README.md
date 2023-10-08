@@ -18,6 +18,7 @@ Language Support:
    - Lua
    - Markdown
    - Python
+   - Typescript
    - YAML
  
 NvChad Editor Updates:
