@@ -3,8 +3,8 @@ local M = {}
 
 M.accelerated_jk = {
   n = {
-    j = { "<Plug>(accelerated_jk_gj)", "accelerated gj movement" },
-    k = { "<Plug>(accelerated_jk_gk)", "accelerated gk movement" },
+    j = { "<Plug>(accelerated_jk_j)", "accelerated j movement" },
+    k = { "<Plug>(accelerated_jk_k)", "accelerated k movement" },
   },
 }
 
