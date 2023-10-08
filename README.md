@@ -18,6 +18,7 @@ Language Support:
    - Lua
    - Markdown
    - Python
+   - TOML  
    - Typescript
    - YAML
  

@@ -34,6 +34,7 @@ M.treesitter = {
     "json",
     "markdown",
     "python",
+    "toml",
     "tsx",
     "yaml",
   },
