@@ -1,6 +1,6 @@
 local M = {}
 
--- git support in nvimtree
+-- NvimTree git support
 M.nvimtree = {
   git = {
     enable = true,
@@ -35,7 +35,7 @@ M.treesitter = {
   },
 }
 
--- LSPs
+-- LSPs, Linters and Formatters
 M.mason = {
   ensure_installed = {
     "black",
