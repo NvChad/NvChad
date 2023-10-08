@@ -12,6 +12,7 @@ Language Support:
    - Bash
    - Go
    - JSON
+   - Lua
    - Markdown
    - Python
    - YAML
