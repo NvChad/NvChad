@@ -21,12 +21,38 @@ rt.setup {
       vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
       -- more keymaps:
       local opts = { noremap = true, silent = true, buffer = bufnr }
+      vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
       vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- already in core/mappings.lua
       vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
       vim.keymap.set("n", "<leader>ra", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
       vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
       vim.keymap.set("n", "<leader>cd", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+      -- whether to higlight semantics or not, see https://neovim.io/doc/user/lsp.html#vim.lsp.semantic_tokens.start%28%29
+      client.server_capabilities.semanticTokensProvider = nil
     end,
+    settings = {
+      ["rust-analyzer"] = {
+        cargo = {
+          allFeatures = true,
+          loadOutDirsFromCheck = true,
+          runBuildScripts = true,
+        },
+        -- Add clippy lints for Rust.
+        checkOnSave = {
+          allFeatures = true,
+          command = "clippy",
+          extraArgs = { "--no-deps" },
+        },
+        procMacro = {
+          enable = true,
+          ignored = {
+            ["async-trait"] = { "async_trait" },
+            ["napi-derive"] = { "napi" },
+            ["async-recursion"] = { "async_recursion" },
+          },
+        },
+      },
+    },
   },
   dap = {
     -- debug adapter protocol
