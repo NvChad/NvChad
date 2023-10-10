@@ -26,3 +26,15 @@ lspconfig.pyright.setup({
   capabilities = capabilities,
   filetypes = {"python"},
 })
+
+lspconfig.yamlls.setup({
+    on_attach=on_attach,
+    capabilities = capabilities,
+    settings = {
+        yaml = {
+            schemas = {
+                ["https://panther-community-us-east-1.s3.amazonaws.com/latest/logschema/schema.json"] = "internal/log_analysis/yamlschemas/schemas/**",
+            }
+        }
+    }
+})

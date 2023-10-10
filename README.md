@@ -5,7 +5,8 @@ Language Support:
    - Go
    - Lua
    - Python
- - Autoformatting on save for:
+   - YAML
+- Autoformatting on save for:
    - Go
    - Python
  - Syntaxt highlight for:
