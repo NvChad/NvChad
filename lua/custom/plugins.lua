@@ -30,7 +30,7 @@ local plugins = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"go", "python"},
+    ft = {"go", "python", "yaml"},
     opts = function()
       return require "custom.configs.null-ls"
     end,

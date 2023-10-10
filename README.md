@@ -9,7 +9,8 @@ Language Support:
 - Autoformatting on save for:
    - Go
    - Python
- - Syntaxt highlight for:
+   - YAML
+- Syntaxt highlight for:
    - Bash
    - CSS
    - Go

@@ -47,6 +47,7 @@ M.mason = {
     "black",
     "gopls",
     "pyright",
+    "yamlfmt",
     "yaml-language-server",
   },
 }
