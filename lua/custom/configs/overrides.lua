@@ -29,6 +29,7 @@ M.treesitter = {
     "go",
     "gosum",
     "gomod",
+    "graphql",
     "html",
     "javascript",
     "json",

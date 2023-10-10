@@ -12,6 +12,7 @@ Language Support:
    - Bash
    - CSS
    - Go
+   - GraphQL
    - HTML
    - Javascript
    - JSON
