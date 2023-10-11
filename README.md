@@ -1,4 +1,4 @@
-Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0), started from a vanilla [NvChad](https://nvchad.com/) installation.
+Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0), based on an [NvChad](https://nvchad.com/) installation.
 
 Language Support:
  - Autocompletion and suggestions for:
@@ -29,7 +29,6 @@ NvChad Editor Updates:
  - NvimTree open by default
  - NvimTree git support
  - Inline git blame
- - Accelerated jk movement
  - Hidden theme toggle
  - Ruler at the 80th character
 

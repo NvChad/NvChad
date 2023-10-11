@@ -2,11 +2,7 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-  {
-    "rainbowhxch/accelerated-jk.nvim",
-    event = "BufWinEnter",
-  },
-  {
+ {
     "lewis6991/gitsigns.nvim",
     opts = overrides.gitsigns,
   },
