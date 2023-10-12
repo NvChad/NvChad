@@ -6,6 +6,7 @@ local utils = require "core.utils"
 
 -- export on_attach & capabilities for custom lspconfigs
 require'lspconfig'.gopls.setup{}
+require'lspconfig'.tsserver.setup{}
 M.setup_lsp = function(attach, capabilities)
   local lsp_config = require "lspconfig"
   local servers = { "gopls", "rust-analyzer", "html", "cssls", "bashls", "emmet_ls", "tsserver", "clangd" }
