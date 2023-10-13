@@ -31,7 +31,7 @@ NvChad Editor Updates:
  - Inline git blame
  - Hidden theme toggle
  - Ruler at the 80th character
-
+ - Show by default relative line numbers
 Install by running:
 
 ```bash
