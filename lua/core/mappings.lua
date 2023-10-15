@@ -12,7 +12,7 @@ M.general = {
     ["<C-h>"] = { "<Left>", "Move left" },
     ["<C-l>"] = { "<Right>", "Move right" },
     ["<C-j>"] = { "<Down>", "Move down" },
-    ["<C-k>"] = { "<Up>", "Move upj" },
+    ["<C-k>"] = { "<Up>", "Move up" },
   },
 
   n = {
