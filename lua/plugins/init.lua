@@ -6,7 +6,7 @@ local default_plugins = {
 
   {
     "NvChad/base46",
-    branch = "v3.0",
+    branch = "test",
     build = function()
       require("base46").load_all_highlights()
     end,
@@ -14,7 +14,7 @@ local default_plugins = {
 
   {
     "NvChad/ui",
-    branch = "v3.0",
+    branch = "test",
     lazy = false,
     config = function()
       require "nvchad"
@@ -258,7 +258,7 @@ local default_plugins = {
   },
 }
 
-local config = require("core.utils").config
+local config = require "nvconfig"
 
 if #config.plugins > 0 then
   table.insert(default_plugins, { import = config.plugins })

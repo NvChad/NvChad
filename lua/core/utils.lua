@@ -52,8 +52,6 @@ M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
   return default_mappings
 end
 
-M.config = M.load_config()
-
 M.load_mappings = function(section, mapping_opt)
   vim.schedule(function()
     local function set_section_map(section_values)
@@ -77,7 +75,7 @@ M.load_mappings = function(section, mapping_opt)
       end
     end
 
-    local mappings = require("core.utils").config.mappings
+    local mappings = require("nvconfig").mappings
 
     if type(section) == "string" then
       mappings[section]["plugin"] = nil
