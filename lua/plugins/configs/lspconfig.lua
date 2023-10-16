@@ -3,14 +3,13 @@ local M = {}
 -- export on_attach & capabilities for custom lspconfigs
 M.on_attach = function(client, bufnr)
   local utils = require "core.utils"
-  local conf = utils.load_config().ui.lsp
+  local conf = require "nvconfig"
 
   -- semanticTokens
   if not conf.semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
 
-  -- signature
   if conf.signature and client.server_capabilities.signatureHelpProvider then
     require("nvchad.signature").setup(client, bufnr)
   end

@@ -7,7 +7,7 @@ M.load_config = function()
 
   if chadrc_path then
     local chadrc = dofile(chadrc_path)
-
+    
     config.mappings = M.remove_disabled_keys(chadrc.mappings, config.mappings)
     config = merge_tb("force", config, chadrc)
     config.mappings.disabled = nil
@@ -74,7 +74,7 @@ M.load_mappings = function(section, mapping_opt)
       end
     end
 
-    local mappings = require("core.utils").load_config().mappings
+    local mappings = require("nvconfig").mappings
 
     if type(section) == "string" then
       mappings[section]["plugin"] = nil
