@@ -67,14 +67,6 @@ M.dap = {
       "<cmd> DapTerminate <CR>",
       "Terminate"
     },
-    ["<leader>dus"] = {
-      function ()
-        local widgets = require('dap.ui.widgets');
-        local sidebar = widgets.sidebar(widgets.scopes);
-        sidebar.open();
-      end,
-      "Open debugging sidebar"
-    }
   }
 }
 
@@ -85,14 +77,26 @@ M.dap_go = {
       function()
         require('dap-go').debug_test()
       end,
-      "Debug go test"
+      "Debug Go test"
     },
     ["<leader>dgl"] = {
       function()
         require('dap-go').debug_last()
       end,
-      "Debug last go test"
-    }
+      "Debug last Go test"
+    },
+  }
+}
+
+M.dap_python = {
+  plugin = true,
+  n = {
+    ["<leader>dpt"] = {
+      function()
+        require('dap-python').test_method()
+      end,
+      "Debug Python test"
+    },
   }
 }
 

@@ -12,6 +12,7 @@ Language Support:
     - YAML
 - Debugging for:
     - Go 
+    - Python
 - Syntaxt highlight for:
     - Bash
     - CSS

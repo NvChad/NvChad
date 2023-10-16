@@ -41,10 +41,11 @@ M.treesitter = {
   },
 }
 
--- LSPs, Linters and Formatters
+-- LSPs, Linters, Debuggers and Formatters
 M.mason = {
   ensure_installed = {
     "black",
+    "debugpy",
     "delve",
     "gopls",
     "pyright",
