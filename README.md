@@ -2,36 +2,38 @@ Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0)
 
 Language Support:
  - Autocompletion and suggestions for:
-   - Go
-   - Lua
-   - Python
-   - YAML
+    - Go
+    - Lua
+    - Python
+    - YAML
 - Autoformatting on save for:
-   - Go
-   - Python
-   - YAML
+    - Go
+    - Python
+    - YAML
+- Debugging for:
+    - Go 
 - Syntaxt highlight for:
-   - Bash
-   - CSS
-   - Go
-   - GraphQL
-   - HTML
-   - Javascript
-   - JSON
-   - Lua
-   - Markdown
-   - Python
-   - TOML  
-   - Typescript
-   - YAML
- 
+    - Bash
+    - CSS
+    - Go
+    - GraphQL
+    - HTML
+    - Javascript
+    - JSON
+    - Lua
+    - Markdown
+    - Python
+    - TOML  
+    - Typescript
+    - YAML
+
 NvChad Editor Updates:
- - NvimTree open by default
- - NvimTree git support
- - Inline git blame
- - Hidden theme toggle
- - Ruler at the 80th character
- - Show by default relative line numbers
+     - NvimTree open by default
+     - NvimTree git support
+     - Inline git blame
+     - Hidden theme toggle
+     - Ruler at the 80th character
+     - Show by default relative line numbers
 Install by running:
 
 ```bash

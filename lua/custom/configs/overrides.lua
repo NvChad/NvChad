@@ -45,6 +45,7 @@ M.treesitter = {
 M.mason = {
   ensure_installed = {
     "black",
+    "delve",
     "gopls",
     "pyright",
     "yamlfmt",
