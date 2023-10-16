@@ -7,11 +7,10 @@ M.load_config = function()
 
   if chadrc_path then
     local chadrc = dofile(chadrc_path)
-    if chadrc then
-      config.mappings = M.remove_disabled_keys(chadrc.mappings, config.mappings)
-      config = merge_tb("force", config, chadrc)
-      config.mappings.disabled = nil
-    end
+    
+    config.mappings = M.remove_disabled_keys(chadrc.mappings, config.mappings)
+    config = merge_tb("force", config, chadrc)
+    config.mappings.disabled = nil
   end
 
   return config
