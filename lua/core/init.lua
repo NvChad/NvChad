@@ -87,7 +87,6 @@ autocmd("BufWritePost", {
     local config = require "nvconfig"
 
     vim.g.nvchad_theme = config.ui.theme
-    vim.g.transparency = config.ui.transparency
 
     -- statusline
     require("plenary.reload").reload_module("nvchad.statusline." .. config.ui.statusline.theme)
