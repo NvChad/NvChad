@@ -3,7 +3,7 @@ local M = {}
 -- export on_attach & capabilities for custom lspconfigs
 M.on_attach = function(client, bufnr)
   local utils = require "core.utils"
-  local conf = require "nvconfig"
+  local conf = require("nvconfig").ui.lsp
 
   -- semanticTokens
   if not conf.semantic_tokens and client.supports_method "textDocument/semanticTokens" then
