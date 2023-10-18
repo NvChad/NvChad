@@ -16,6 +16,7 @@ M.disabled = {
   },
 
   n = {
+    ["<C-s>"] = "",
     ["<Up>"] = "",
     ["<Down>"] = "",
     ["<leader>fh"] = "",
@@ -39,6 +40,9 @@ M.disabled = {
 }
 
 M.general = {
+  n = {
+    ["<leader>s"] = { "<cmd> w <CR>", "Save file" },
+  },
   t = {
     ["<ESC>"] = { "<C-\\><C-n>", "escape terminal mode", opts = { nowait = true } },
   },
