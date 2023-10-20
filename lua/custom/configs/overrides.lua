@@ -48,6 +48,7 @@ M.mason = {
     "debugpy",
     "delve",
     "gopls",
+    "markdownlint",
     "marksman",
     "pyright",
     "yamlfmt",

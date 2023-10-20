@@ -6,6 +6,7 @@ local opts = {
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.goimports,
+    null_ls.builtins.formatting.markdownlint,
     null_ls.builtins.formatting.yamlfmt,
   },
   on_attach = function(client, bufnr)

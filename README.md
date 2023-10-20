@@ -9,6 +9,7 @@ Language Support:
     - YAML
 - Autoformatting on save for:
     - Go
+    - Markdown
     - Python
     - YAML
 - Debugging for:
