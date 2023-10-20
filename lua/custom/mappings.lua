@@ -51,6 +51,9 @@ M.general = {
   t = {
     ["<ESC>"] = { "<C-\\><C-n>", "escape terminal mode", opts = { nowait = true } },
   },
+  i = {
+    ["jk"] = { "<ESC>", "escape insert mode" , opts = { nowait = true }},
+  },
 }
 
 M.dap = {
