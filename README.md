@@ -35,12 +35,15 @@ Language Support:
   - YAML
 
 NvChad Editor Updates:
-     - NvimTree open by default
-     - NvimTree git support
-     - Inline git blame
-     - Hidden theme toggle
-     - Ruler at the 80th character
-     - Show by default relative line numbers
+
+- NvimTree open by default
+- NvimTree git support
+- Hide dot files by default for nvim tree
+- Inline git blame
+- Hidden theme toggle
+- Ruler at the 80th character
+- Show by default relative line numbers
+
 Install by running:
 
 ```bash

@@ -6,6 +6,10 @@ M.nvimtree = {
     enable = true,
   },
 
+  filters = {
+    dotfiles = true,
+  },
+
   renderer = {
     highlight_git = true,
     icons = {
