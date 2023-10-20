@@ -21,6 +21,12 @@ lspconfig.gopls.setup {
   },
 }
 
+lspconfig.marksman.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"markdown"},
+})
+
 lspconfig.pyright.setup({
   on_attach = on_attach,
   capabilities = capabilities,

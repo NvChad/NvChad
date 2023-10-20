@@ -4,6 +4,7 @@ Language Support:
  - Autocompletion and suggestions for:
     - Go
     - Lua
+    - Markdown
     - Python
     - YAML
 - Autoformatting on save for:
