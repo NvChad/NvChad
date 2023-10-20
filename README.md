@@ -1,34 +1,38 @@
 Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0), based on an [NvChad](https://nvchad.com/) installation.
 
 Language Support:
- - Autocompletion and suggestions for:
-    - Go
-    - Lua
-    - Markdown
-    - Python
-    - YAML
+
+- Autocompletion and suggestions for:
+  - C/C++
+  - Go
+  - Lua
+  - Markdown
+  - Python
+  - YAML
 - Autoformatting on save for:
-    - Go
-    - Markdown
-    - Python
-    - YAML
+  - C/C++
+  - Go
+  - Markdown
+  - Python
+  - YAML
 - Debugging for:
-    - Go 
-    - Python
+  - Go
+  - Python
 - Syntaxt highlight for:
-    - Bash
-    - CSS
-    - Go
-    - GraphQL
-    - HTML
-    - Javascript
-    - JSON
-    - Lua
-    - Markdown
-    - Python
-    - TOML  
-    - Typescript
-    - YAML
+  - Bash
+  - C/C++
+  - CSS
+  - Go
+  - GraphQL
+  - HTML
+  - Javascript
+  - JSON
+  - Lua
+  - Markdown
+  - Python
+  - TOML  
+  - Typescript
+  - YAML
 
 NvChad Editor Updates:
      - NvimTree open by default

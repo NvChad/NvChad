@@ -25,6 +25,7 @@ M.gitsigns = {
 M.treesitter = {
   ensure_installed = {
     "bash",
+    "cpp",
     "css",
     "go",
     "gosum",
@@ -45,6 +46,8 @@ M.treesitter = {
 M.mason = {
   ensure_installed = {
     "black",
+    "clangd",
+    "clang-format",
     "debugpy",
     "delve",
     "gopls",
