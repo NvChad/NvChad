@@ -3,6 +3,11 @@ local M = {}
 
 -- Disabled NvChad core mappings
 M.disabled = {
+  i = {
+    ["<C-b>"] = "",
+    ["<C-e>"] = "",
+  },
+
   t = {
     ["<C-x>"] = "",
     ["<A-i>"] = "",
