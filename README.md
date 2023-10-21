@@ -22,9 +22,10 @@ Language Support:
   - Bash
   - C/C++
   - CSS
-  - Diff
+  - diff
   - Dockerfile
   - Go
+  - gitconfig
   - GraphQL
   - HTML
   - Javascript
