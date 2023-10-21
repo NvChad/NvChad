@@ -26,7 +26,8 @@ Language Support:
   - Diff
   - Dockerfile
   - Go
-  - Gitconfig
+  - gitconfig
+  - gitignore
   - GraphQL
   - HTML
   - Javascript
@@ -35,6 +36,7 @@ Language Support:
   - Make
   - Markdown
   - Python
+  - SCSS
   - TOML  
   - Typescript
   - YAML
