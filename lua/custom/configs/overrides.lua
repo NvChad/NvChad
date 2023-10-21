@@ -44,6 +44,7 @@ M.treesitter = {
     "html",
     "javascript",
     "json",
+    "make",
     "markdown",
     "python",
     "toml",

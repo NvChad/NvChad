@@ -22,15 +22,16 @@ Language Support:
   - Bash
   - C/C++
   - CSS
-  - diff
+  - Diff
   - Dockerfile
   - Go
-  - gitconfig
+  - Gitconfig
   - GraphQL
   - HTML
   - Javascript
   - JSON
   - Lua
+  - Make
   - Markdown
   - Python
   - TOML  
