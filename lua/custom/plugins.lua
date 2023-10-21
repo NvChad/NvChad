@@ -2,22 +2,22 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
- {
+  {
     "lewis6991/gitsigns.nvim",
     opts = overrides.gitsigns,
   },
   {
     "mfussenegger/nvim-dap",
     init = function()
-      require("core.utils").load_mappings("dap")
-    end
+      require("core.utils").load_mappings "dap"
+    end,
   },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = "mfussenegger/nvim-dap",
     config = function()
-      local dap = require("dap")
-      local dapui = require("dapui")
+      local dap = require "dap"
+      local dapui = require "dapui"
       dapui.setup()
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
@@ -28,7 +28,7 @@ local plugins = {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close()
       end
-    end
+    end,
   },
   {
     "leoluz/nvim-dap-go",
@@ -39,8 +39,8 @@ local plugins = {
     },
     config = function(_, opts)
       require("dap-go").setup(opts)
-      require("core.utils").load_mappings("dap_go")
-    end
+      require("core.utils").load_mappings "dap_go"
+    end,
   },
   {
     "mfussenegger/nvim-dap-python",
@@ -49,11 +49,11 @@ local plugins = {
       "mfussenegger/nvim-dap",
       "rcarriga/nvim-dap-ui",
     },
-    config = function (_, _)
+    config = function(_, _)
       local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
       require("dap-python").setup(path)
-      require("core.utils").load_mappings("dap_python")
-    end
+      require("core.utils").load_mappings "dap_python"
+    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -75,7 +75,7 @@ local plugins = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"c", "cpp", "go", "markdown", "python", "yaml"},
+    ft = { "c", "cpp", "go", "lua", "markdown", "python", "yaml" },
     opts = function()
       return require "custom.configs.null-ls"
     end,

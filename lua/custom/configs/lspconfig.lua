@@ -5,7 +5,7 @@ local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
 lspconfig.clangd.setup {
-  on_attach = function (client, bufnr)
+  on_attach = function(client, bufnr)
     client.server_capabilities.signatureHelperProvider = false
     on_attach(client, bufnr)
   end,
@@ -15,7 +15,7 @@ lspconfig.clangd.setup {
 lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = {"gopls"},
+  cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
@@ -29,26 +29,26 @@ lspconfig.gopls.setup {
   },
 }
 
-lspconfig.marksman.setup({
+lspconfig.marksman.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {"markdown"},
-})
+  filetypes = { "markdown" },
+}
 
-lspconfig.pyright.setup({
+lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {"python"},
-})
+  filetypes = { "python" },
+}
 
-lspconfig.yamlls.setup({
-    on_attach=on_attach,
-    capabilities = capabilities,
-    settings = {
-        yaml = {
-            schemas = {
-                ["https://panther-community-us-east-1.s3.amazonaws.com/latest/logschema/schema.json"] = "internal/log_analysis/yamlschemas/schemas/**",
-            }
-        }
-    }
-})
+lspconfig.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://panther-community-us-east-1.s3.amazonaws.com/latest/logschema/schema.json"] = "internal/log_analysis/yamlschemas/schemas/**",
+      },
+    },
+  },
+}

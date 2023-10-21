@@ -2,6 +2,7 @@ local M = {}
 
 -- NvimTree git support
 M.nvimtree = {
+
   filters = {
     dotfiles = true,
   },
@@ -15,7 +16,7 @@ M.nvimtree = {
     indent_markers = {
       enable = true,
     },
-   icons = {
+    icons = {
       show = {
         git = true,
       },
@@ -66,6 +67,7 @@ M.mason = {
     "debugpy",
     "delve",
     "gopls",
+    "stylua",
     "markdownlint",
     "marksman",
     "pyright",

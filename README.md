@@ -12,6 +12,7 @@ Language Support:
 - Autoformatting on save for:
   - C/C++
   - Go
+  - Lua
   - Markdown
   - Python
   - YAML

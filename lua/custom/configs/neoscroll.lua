@@ -10,4 +10,3 @@ neoscroll.setup {
     "<C-f>",
   },
 }
-

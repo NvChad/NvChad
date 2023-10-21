@@ -52,7 +52,7 @@ M.general = {
     ["<ESC>"] = { "<C-\\><C-n>", "escape terminal mode", opts = { nowait = true } },
   },
   i = {
-    ["jk"] = { "<ESC>", "escape insert mode" , opts = { nowait = true }},
+    ["jk"] = { "<ESC>", "escape insert mode", opts = { nowait = true } },
   },
 }
 
@@ -61,25 +61,25 @@ M.dap = {
   n = {
     ["<leader>db"] = {
       "<cmd> DapToggleBreakpoint <CR>",
-      "Add breakpoint at line"
+      "Add breakpoint at line",
     },
-     ["<leader>dso"] = {
+    ["<leader>dso"] = {
       "<cmd> DapStepOver <CR>",
-      "Step Over"
+      "Step Over",
     },
     ["<leader>dsi"] = {
       "<cmd> DapStepIn <CR>",
-      "Step In"
+      "Step In",
     },
     ["<leader>dc"] = {
       "<cmd> DapContinue <CR>",
-      "Continue"
+      "Continue",
     },
     ["<leader>dt"] = {
       "<cmd> DapTerminate <CR>",
-      "Terminate"
+      "Terminate",
     },
-  }
+  },
 }
 
 M.dap_go = {
@@ -87,17 +87,17 @@ M.dap_go = {
   n = {
     ["<leader>dgt"] = {
       function()
-        require('dap-go').debug_test()
+        require("dap-go").debug_test()
       end,
-      "Debug Go test"
+      "Debug Go test",
     },
     ["<leader>dgl"] = {
       function()
-        require('dap-go').debug_last()
+        require("dap-go").debug_last()
       end,
-      "Debug last Go test"
+      "Debug last Go test",
     },
-  }
+  },
 }
 
 M.dap_python = {
@@ -105,11 +105,11 @@ M.dap_python = {
   n = {
     ["<leader>dpt"] = {
       function()
-        require('dap-python').test_method()
+        require("dap-python").test_method()
       end,
-      "Debug Python test"
+      "Debug Python test",
     },
-  }
+  },
 }
 
 return M
