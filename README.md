@@ -38,7 +38,7 @@ NvChad Editor Updates:
 
 - NvimTree open by default
 - NvimTree git support
-- Hide dot files by default for nvim tree
+- Hide dot files by default for NVimTree 
 - Inline git blame
 - Hidden theme toggle
 - Ruler at the 80th character

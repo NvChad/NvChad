@@ -2,16 +2,20 @@ local M = {}
 
 -- NvimTree git support
 M.nvimtree = {
-  git = {
-    enable = true,
-  },
-
   filters = {
     dotfiles = true,
   },
 
   renderer = {
-    highlight_git = true,
+    indent_markers = {
+      enable = true,
+  },
+
+  git = {
+    enable = true,
+  },
+
+  highlight_git = true,
     icons = {
       show = {
         git = true,
