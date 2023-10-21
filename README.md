@@ -22,6 +22,7 @@ Language Support:
   - Bash
   - C/C++
   - CSS
+  - CSV
   - Diff
   - Dockerfile
   - Go

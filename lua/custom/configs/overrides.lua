@@ -34,6 +34,7 @@ M.treesitter = {
     "bash",
     "cpp",
     "css",
+    "csv",
     "diff",
     "dockerfile",
     "go",
