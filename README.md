@@ -37,6 +37,7 @@ Language Support:
   - Markdown
   - Python
   - SCSS
+  - Terraform
   - TOML  
   - Typescript
   - YAML

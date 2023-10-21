@@ -50,6 +50,7 @@ M.treesitter = {
     "markdown",
     "python",
     "scss",
+    "terraform",
     "toml",
     "tsx",
     "yaml",
