@@ -35,6 +35,7 @@ M.treesitter = {
     "bash",
     "cpp",
     "css",
+    "dockerfile",
     "go",
     "gosum",
     "gomod",

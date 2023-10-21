@@ -22,6 +22,7 @@ Language Support:
   - Bash
   - C/C++
   - CSS
+  - Dockerfile
   - Go
   - GraphQL
   - HTML
