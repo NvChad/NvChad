@@ -6,17 +6,16 @@ M.nvimtree = {
     dotfiles = true,
   },
 
-  renderer = {
-    indent_markers = {
-      enable = true,
-  },
-
   git = {
     enable = true,
   },
 
-  highlight_git = true,
-    icons = {
+  renderer = {
+    highlight_git = true,
+    indent_markers = {
+      enable = true,
+    },
+   icons = {
       show = {
         git = true,
       },
@@ -35,6 +34,7 @@ M.treesitter = {
     "bash",
     "cpp",
     "css",
+    "diff",
     "dockerfile",
     "go",
     "gosum",
