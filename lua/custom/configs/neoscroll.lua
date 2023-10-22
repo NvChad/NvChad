@@ -6,7 +6,7 @@ end
 
 neoscroll.setup {
   mappings = {
-    "<C-b>",
-    "<C-f>",
+    "<C-u>",
+    "<C-d>",
   },
 }
