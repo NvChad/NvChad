@@ -67,13 +67,6 @@ local plugins = {
     opts = overrides.mason,
   },
   {
-    "karb94/neoscroll.nvim",
-    event = "BufReadPost",
-    config = function()
-      require("neoscroll").setup()
-    end,
-  },
-  {
     "jose-elias-alvarez/null-ls.nvim",
     ft = { "c", "cpp", "go", "lua", "markdown", "python", "yaml" },
     opts = function()
