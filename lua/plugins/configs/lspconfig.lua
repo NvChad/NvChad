@@ -4,7 +4,7 @@ local M = {}
 M.on_attach = function(client, bufnr)
   local utils = require "core.utils"
   local conf = require("nvconfig").ui.lsp
-
+ 
   -- semanticTokens
   if not conf.semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
