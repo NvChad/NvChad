@@ -14,9 +14,6 @@ M.ui = {
   theme = "onedark", -- default theme
   transparency = false,
 
-  -- https://github.com/NvChad/base46/tree/v2.0/lua/base46/extended_integrations
-  extended_integrations = {}, -- these aren't compiled by default, ex: "alpha", "notify"
-
   -- cmp themeing
   cmp = {
     icons = true,
@@ -91,5 +88,26 @@ M.plugins = "" -- path i.e "custom.plugins", so make custom/plugins.lua file
 M.lazy_nvim = require "plugins.configs.lazy_nvim" -- config for lazy.nvim startup options
 
 M.mappings = require "core.mappings"
+
+M.base46 = {
+  integrations = {
+    "blankline",
+    "cmp",
+    "defaults",
+    "devicons",
+    "git",
+    "lsp",
+    "mason",
+    "nvchad_updater",
+    "nvcheatsheet",
+    "nvdash",
+    "nvimtree",
+    "statusline",
+    "syntax",
+    "tbline",
+    "telescope",
+    "whichkey",
+  },
+}
 
 return M
