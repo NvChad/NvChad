@@ -53,6 +53,7 @@ NvChad Editor Updates:
 - Hidden theme toggle
 - Ruler at the 80th character
 - Show by default relative line numbers
+- Horizontal terminal heigth at 50%
 
 Install by running:
 

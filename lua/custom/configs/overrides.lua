@@ -1,5 +1,16 @@
 local M = {}
 
+-- Horizontal terminal height at 50%
+M.nvterm = {
+  terminals = {
+    type_opts = {
+      horizontal = {
+        split_ratio = 0.5,
+      },
+    },
+  },
+}
+
 -- NvimTree git support
 M.nvimtree = {
 
