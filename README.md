@@ -1,5 +1,7 @@
 Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0), based on an [NvChad](https://nvchad.com/) installation.
 
+## Features
+
 Language Support:
 
 - Autocompletion and suggestions for:
@@ -55,10 +57,24 @@ NvChad Editor Updates:
 - Show by default relative line numbers
 - Horizontal terminal heigth at 50%
 
+## Installation
+
+### Pre-requisites
+
+- [Neovim 0.9.0](https://github.com/neovim/neovim/releases/tag/v0.9.0)
+- [Nerd Font](https://www.nerdfonts.com/)
+- [Ripgrep](https://github.com/BurntSushi/ripgrep)
+
 Install by running:
 
 ```bash
+# remove existing configs
 rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim 
-git clone git@github.com:le4ker/nvim-config.git ~/.config/nvim --depth 1 && nvim
+
+# install NvChad
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+# install custom nvim configuration
+git clone https://github.com/le4ker/nvim-config ~/.config/nvim/lua/custom
+nvim
 ```
