@@ -56,6 +56,11 @@ local plugins = {
     end,
   },
   {
+    "ellisonleao/glow.nvim",
+    config = true,
+    cmd = "Glow",
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"

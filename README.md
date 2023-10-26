@@ -46,7 +46,7 @@ Language Support:
   - Typescript
   - YAML
 
-NvChad Editor Updates:
+Editor Updates:
 
 - NvimTree open by default
 - NvimTree git support
@@ -56,6 +56,7 @@ NvChad Editor Updates:
 - Ruler at the 80th character
 - Show by default relative line numbers
 - Horizontal terminal height at 50%
+- Markdown Preview
 
 ## Installation
 
@@ -64,6 +65,7 @@ NvChad Editor Updates:
 - [Neovim 0.9.0](https://github.com/neovim/neovim/releases/tag/v0.9.0)
 - [Nerd Font](https://www.nerdfonts.com/)
 - [Ripgrep](https://github.com/BurntSushi/ripgrep)
+- [Glow](https://github.com/charmbracelet/glow)
 
 Install by running:
 

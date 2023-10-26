@@ -51,6 +51,7 @@ M.general = {
     ["<C-u>"] = { "<C-u>zz", "Move half page up", opts = { noremap = true } },
     ["<C-f>"] = { "<C-f>zz", "Move one page down", opts = { noremap = true } },
     ["<C-b>"] = { "<C-b>zz", "Move one page up", opts = { noremap = true } },
+    ["<leader>pr"] = { "<cmd> Glow <CR>", "Preview Markdown file" },
   },
   t = {
     ["<ESC>"] = { "<C-\\><C-n>", "escape terminal mode", opts = { nowait = true } },
