@@ -10,6 +10,7 @@ Language Support:
   - Lua
   - Markdown
   - Python
+  - Terraform
   - YAML
 - Autoformatting on save for:
   - Bash/Zsh

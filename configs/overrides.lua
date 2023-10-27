@@ -82,6 +82,7 @@ M.mason = {
     "delve",
     "gopls",
     "stylua",
+    "terraform-ls",
     "lua-language-server",
     "markdownlint",
     "marksman",
