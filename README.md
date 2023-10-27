@@ -12,6 +12,7 @@ Language Support:
   - Python
   - YAML
 - Autoformatting on save for:
+  - Bash/Zsh
   - C/C++
   - Go
   - Lua

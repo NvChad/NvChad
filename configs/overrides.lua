@@ -74,6 +74,7 @@ M.treesitter = {
 -- LSPs, Linters, Debuggers and Formatters
 M.mason = {
   ensure_installed = {
+    "beautysh",
     "black",
     "clangd",
     "clang-format",
