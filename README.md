@@ -19,6 +19,7 @@ Language Support:
   - Lua
   - Markdown
   - Python
+  - Terraform
   - YAML
 - Debugging for:
   - Go
@@ -68,6 +69,7 @@ Editor Updates:
 - [Nerd Font](https://www.nerdfonts.com/)
 - [Ripgrep](https://github.com/BurntSushi/ripgrep)
 - [Glow](https://github.com/charmbracelet/glow)
+- [Terraform](https://www.terraform.io/)
 
 Install by running:
 

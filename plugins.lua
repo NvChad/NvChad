@@ -82,6 +82,7 @@ local plugins = {
       "markdown",
       "python",
       "sh",
+      "terraform",
       "yaml",
       "zsh",
     },
