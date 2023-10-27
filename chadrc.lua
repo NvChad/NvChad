@@ -4,7 +4,8 @@ local M = {}
 M.ui = {
   theme = "everforest_light",
   statusline = {
-    theme = "vscode_colored",
+    theme = "default",
+    separator_style = "block",
   },
 }
 M.plugins = "custom.plugins"
