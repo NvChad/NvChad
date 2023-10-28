@@ -104,6 +104,7 @@ M.base46 = {
     "nvimtree",
     "statusline",
     "syntax",
+    "treesitter",
     "tbline",
     "telescope",
     "whichkey",
