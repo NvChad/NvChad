@@ -58,9 +58,8 @@ NvimTree:
 Editor:
 
 - Inline git blame
-- Ruler at the 80th character
+- Ruler at 80th character
 - Show by default relative line numbers
-- Horizontal terminal height at 50%
 - Identation guides
 
 Other:
