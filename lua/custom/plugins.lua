@@ -18,6 +18,7 @@ local plugins = {
         "svelte-language-server",
         "codelldb",
         "tailwindcss-language-server",
+        "dot-language-server",
       },
     },
   },
@@ -66,7 +67,7 @@ local plugins = {
         "markdown",
       },
       highlight = {
-        enable = true,
+        -- enable = false, -- true,
         additional_vim_regex_highlighting = false,
       },
     },
@@ -126,6 +127,19 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function()
+      local conf = require "plugins.configs.telescope"
+      conf.defaults.mappings.i = {
+        ["<C-j>"] = require("telescope.actions").move_selection_next,
+        ["<Esc>"] = require("telescope.actions").close,
+      }
+      conf.defaults.file_ignore_patterns = { "node_modules", ".git", "docs/" }
+
+      return conf
+    end,
   },
 }
 
