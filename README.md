@@ -49,17 +49,25 @@ Language Support:
   - Typescript
   - YAML
 
-Editor Updates:
+NvimTree:
 
 - NvimTree open by default
 - NvimTree git support
 - Hide dot files by default for NVimTree
+
+Editor:
+
 - Inline git blame
-- Hidden theme toggle
 - Ruler at the 80th character
 - Show by default relative line numbers
 - Horizontal terminal height at 50%
+- Identation guides
+
+Other:
+
 - Markdown Preview
+- Horizontal terminal height at 50%
+- Hidden theme toggle
 
 ## Installation
 
