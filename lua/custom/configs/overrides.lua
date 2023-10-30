@@ -9,7 +9,7 @@ local cmp_ok, cmp = pcall(require, "cmp")
 if cmp_ok then
   M.cmp = {
     completion = {
-      completeopt = "menu,menuone,noselect,noinsert",
+      completeopt = "menu,menuone,noselect",
     },
     mapping = {
       ["<CR>"] = cmp.mapping.confirm { select = false },
