@@ -59,6 +59,7 @@ local plugins = {
     "ellisonleao/glow.nvim",
     config = true,
     cmd = "Glow",
+    opts = overrides.glow,
   },
   {
     "lukas-reineke/indent-blankline.nvim",

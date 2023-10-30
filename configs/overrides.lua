@@ -40,6 +40,9 @@ M.gitsigns = {
   current_line_blame = true,
 }
 
+M.glow = {
+  height_ratio = 1,
+}
 -- syntax highlight
 M.treesitter = {
   ensure_installed = {
