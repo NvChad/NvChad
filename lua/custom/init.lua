@@ -10,7 +10,7 @@ vim.diagnostic.config {
 vim.cmd [[
   augroup autoread
     autocmd!
-    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+    autocmd FocusGained,BufEnter,CursorHold * if mode() != 'c' | checktime | endif
   augroup END
 ]]
 
