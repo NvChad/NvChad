@@ -19,6 +19,10 @@ M.exxtras = {
     -- toggle line numbers with <leader>ln (leader is space)
     ["<leader>ln"] = { ":set number<CR>", "Toggle line numbers" },
     ["<C-s>"] = { ":wa<CR>", "Quick save all" },
+    -- Shift down arrow to select line (<ESC>V)
+    ["<S-Down>"] = { "<ESC>V", "Select line" },
+    -- :Telescope grep_string
+    ["<leader>fg"] = { "<cmd>Telescope grep_string<CR>", "Grep string under cursor" },
   },
   -- insert mode
   i = {
