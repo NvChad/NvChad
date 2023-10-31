@@ -77,6 +77,7 @@ M.treesitter = {
 -- LSPs, Linters, Debuggers and Formatters
 M.mason = {
   ensure_installed = {
+    "bash-language-server",
     "beautysh",
     "black",
     "clangd",

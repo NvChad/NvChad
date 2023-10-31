@@ -4,6 +4,12 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
+lspconfig.bashls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "bash", "sh", "zsh" },
+}
+
 lspconfig.clangd.setup {
   on_attach = function(client, bufnr)
     client.server_capabilities.signatureHelperProvider = false
@@ -29,12 +35,6 @@ lspconfig.gopls.setup {
   },
 }
 
-lspconfig.terraformls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "terraform" },
-}
-
 lspconfig.marksman.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -45,6 +45,12 @@ lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "python" },
+}
+
+lspconfig.terraformls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "terraform" },
 }
 
 lspconfig.yamlls.setup {

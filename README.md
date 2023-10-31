@@ -5,6 +5,7 @@ Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0)
 Language Support:
 
 - Autocompletion and suggestions for:
+  - Bash/Zsh
   - C/C++
   - Go
   - Lua
@@ -25,7 +26,7 @@ Language Support:
   - Go
   - Python
 - Syntaxt highlight for:
-  - Bash
+  - Bash/Zsh
   - C/C++
   - CSS
   - CSV
