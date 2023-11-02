@@ -19,6 +19,7 @@ local plugins = {
         "codelldb",
         "tailwindcss-language-server",
         "dot-language-server",
+        "pest-language-server",
       },
     },
   },
@@ -140,6 +141,11 @@ local plugins = {
 
       return conf
     end,
+  },
+  -- pest syntax highlighting
+  {
+    "pest-parser/pest.vim",
+    ft = "pest",
   },
 }
 
