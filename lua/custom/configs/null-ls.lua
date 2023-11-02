@@ -6,7 +6,21 @@ local formatting = null_ls.builtins.formatting
 local lint = null_ls.builtins.diagnostics
 
 local sources = {
-  formatting.prettier,
+  formatting.prettier.with {
+    filetypes = {
+      "html",
+      "json",
+      "svelte",
+      "markdown",
+      "css",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "yaml",
+    },
+    extra_filetypes = { "svelte" },
+  },
   formatting.stylua,
 
   -- Rust
