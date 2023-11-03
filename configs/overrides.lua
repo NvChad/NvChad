@@ -58,6 +58,7 @@ M.treesitter = {
     "git_config",
     "gitignore",
     "graphql",
+    "hcl",
     "html",
     "javascript",
     "json",

@@ -36,6 +36,7 @@ Language Support:
   - gitconfig
   - gitignore
   - GraphQL
+  - HCL
   - HTML
   - Javascript
   - JSON
