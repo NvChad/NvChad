@@ -44,6 +44,7 @@ Language Support:
   - Make
   - Markdown
   - Python
+  - Ruby
   - SCSS
   - SQL
   - Terraform

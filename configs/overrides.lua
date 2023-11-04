@@ -66,6 +66,7 @@ M.treesitter = {
     "make",
     "markdown",
     "python",
+    "ruby",
     "scss",
     "sql",
     "terraform",
