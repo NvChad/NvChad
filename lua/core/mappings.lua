@@ -2,6 +2,35 @@
 
 local M = {}
 
+M.misc = {
+   i = {
+   --  ["jk"] = { "<ESC>", "escape insert mode" , opts = { nowait = true }},
+    ["ол"] = { "<ESC>", "escape insert mode" , opts = { nowait = true }},
+   },
+  n = {
+    ["<leader>tf"] = {":vsp <CR>", "Vertical separator"},
+    ["<leader>tv"] = {":sp <CR>", "Horizontal separator"},
+    ["<leader>+"] = {":CMakeRun<CR>"},
+    ["м"] = {"v"},
+    ["М"] = {"V"},
+    ["н"] = {"y"},
+    ["ш"] = {"i"},
+    ["ф"] = {"a"},
+    ["Ф"] = {"A"},
+    ["в"] = {"d"},
+    ["вв"] = {"dd"},
+    ["г"] = {"u"},
+    ["ч"] = {"x"},
+    ["з"] = {"p"},
+  },
+  v = {
+    ["в"] = {"d"},
+    ["н"] = {"y"},
+    ["ч"] = {"x"},
+    ["з"] = {"p"},
+  },
+}
+
 M.general = {
   i = {
     -- go to  beginning and end
@@ -16,7 +45,13 @@ M.general = {
   },
 
   n = {
-    ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
+    ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
+    ["<leader>q"] = {":q <CR>", "Exit"},
+    ["<leader>wq"] = {":wqa <CR>", "Exit and save all"},
+    ["<leader>w"] = {":w <CR>", "Save file"},
+    ["<leader>wa"] = {":wa <CR>", "Save all"},
+    ["<leader>й"] = {":q <CR>", "Exit"},
+    ["<leader>ц"] = {":w <CR>", "Save file"},
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
@@ -31,7 +66,7 @@ M.general = {
 
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
-    ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
+    ["<leader>nr"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -41,6 +76,8 @@ M.general = {
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+    ["о"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+    ["л"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
 
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
@@ -61,13 +98,13 @@ M.general = {
   v = {
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
-    ["<"] = { "<gv", "Indent line" },
-    [">"] = { ">gv", "Indent line" },
   },
 
   x = {
     ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
     ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
+    ["о"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+    ["л"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
     -- Don't copy the replaced text after pasting in visual mode
     -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
     ["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', "Dont copy replaced text", opts = { silent = true } },
@@ -193,7 +230,7 @@ M.lspconfig = {
       "LSP references",
     },
 
-    ["<leader>lf"] = {
+    ["<leader>f"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
@@ -214,7 +251,7 @@ M.lspconfig = {
       "Goto next",
     },
 
-    ["<leader>q"] = {
+    ["<leader>z"] = {
       function()
         vim.diagnostic.setloclist()
       end,
@@ -242,15 +279,6 @@ M.lspconfig = {
       "List workspace folders",
     },
   },
-
-  v = {
-    ["<leader>ca"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      "LSP code action",
-    },
-  },
 }
 
 M.nvimtree = {
@@ -258,10 +286,10 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-
+    ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<leader>у"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
     -- focus
-    ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
+    ["<leader>ew"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
   },
 }
 
@@ -297,7 +325,7 @@ M.nvterm = {
 
   t = {
     -- toggle in terminal mode
-    ["<A-i>"] = {
+    ["<C-`>"] = {
       function()
         require("nvterm.terminal").toggle "float"
       end,
