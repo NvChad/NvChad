@@ -32,6 +32,11 @@ local plugins = {
   },
 
   {
+    "wakatime/vim-wakatime",
+    lazy = false
+  },
+
+  {
     "mattn/emmet-vim",
     opts = {},
     lazy = false,
