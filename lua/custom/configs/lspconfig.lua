@@ -13,6 +13,14 @@ lspconfig.clangd.setup {
   capabilities = capabilities,
 }
 
+lspconfig.tsserver.setup {
+  on_attach = function(client, bufnr)
+    client.server_capabilities.signatureHelpProvider = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+}
+
 
 lspconfig.omnisharp.setup {
   on_attach = function(client, bufnr)
