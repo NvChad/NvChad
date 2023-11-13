@@ -52,7 +52,7 @@ local options = {
   window = {
     completion = {
       side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
-      winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel,Search:None,IncSearch:None,CurSearch:None",
+      winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None,IncSearch:None,CurSearch:None",
       scrollbar = false,
     },
     documentation = {
