@@ -16,10 +16,14 @@ Language Support:
 - Autoformatting on save for:
   - Bash/Zsh
   - C/C++
+  - CSS
   - Go
+  - HTML
+  - Javascript
   - Lua
   - Markdown
   - Python
+  - SCSS
   - Terraform
   - YAML
 - Debugging for:
