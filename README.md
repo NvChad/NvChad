@@ -18,6 +18,7 @@ Language Support:
   - C/C++
   - CSS
   - Go
+  - GraphQL
   - HTML
   - Javascript
   - Lua
@@ -52,7 +53,7 @@ Language Support:
   - SCSS
   - SQL
   - Terraform
-  - TOML  
+  - TOML
   - Typescript
   - YAML
 
@@ -90,7 +91,7 @@ Install by running:
 ```bash
 # remove existing configs
 rm -rf ~/.config/nvim
-rm -rf ~/.local/share/nvim 
+rm -rf ~/.local/share/nvim
 
 # install NvChad
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
