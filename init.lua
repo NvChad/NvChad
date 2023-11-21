@@ -25,3 +25,5 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
     require("nvim-tree.api").tree.open()
   end,
 })
+
+vim.g.dap_virtual_text = true
