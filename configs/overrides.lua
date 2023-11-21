@@ -87,6 +87,7 @@ M.mason = {
     "debugpy",
     "delve",
     "gopls",
+    "ruby_fmt",
     "stylua",
     "terraform-ls",
     "lua-language-server",

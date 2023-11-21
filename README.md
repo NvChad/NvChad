@@ -24,6 +24,7 @@ Language Support:
   - Lua
   - Markdown
   - Python
+  - Ruby
   - SCSS
   - Terraform
   - YAML

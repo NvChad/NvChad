@@ -89,6 +89,7 @@ local plugins = {
       "lua",
       "markdown",
       "python",
+      "ruby",
       "scss",
       "sh",
       "terraform",
