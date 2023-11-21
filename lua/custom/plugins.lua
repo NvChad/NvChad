@@ -31,26 +31,26 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = overrides.treesitter,
-    {
-      ensure_installed = {
-        -- defaults 
-        "vim",
-        "lua",
-
-        -- web dev 
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
-        "json",
-        -- "vue", "svelte",
-
-       -- low level
-        "c",
-        "zig"
-      },
-    },
+    -- {
+    --   ensure_installed = {
+    --     -- defaults 
+    --     "vim",
+    --     "lua",
+    --
+    --     -- web dev 
+    --     "html",
+    --     "css",
+    --     "javascript",
+    --     "typescript",
+    --     "tsx",
+    --     "json",
+    --     -- "vue", "svelte",
+    --
+    --    -- low level
+    --     "c",
+    --     "zig"
+    --   },
+    -- },
   },
 
   {
@@ -67,6 +67,11 @@ local plugins = {
     end,
   },
 
+  -- harpoon for file navigations and marking 
+  {
+    "ThePrimeagen/harpoon",
+    cmd = "Harpoon",
+  },
   -- for golang 
   -- generate the boiler plate go code 
   {
