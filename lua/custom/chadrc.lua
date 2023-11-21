@@ -10,7 +10,7 @@ M.ui = {
   hl_add = highlights.add,
   transparency = true,
   statusline = {
-    theme = "default"
+    theme = "vscode_colored"
   }
 }
 

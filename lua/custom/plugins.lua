@@ -72,6 +72,22 @@ local plugins = {
     "ThePrimeagen/harpoon",
     cmd = "Harpoon",
   },
+
+  -- project management
+  {
+    "charludo/projectmgr.nvim",
+    lazy = false, -- important!
+    config = function()
+        require("projectmgr").setup({
+            -- autogit = {
+            --     enabled = true,
+            --     command = "git pull --ff-only > .git/fastforward.log 2>&1",
+            -- },
+            session = { enabled = true, file = ".git/Session.vim" },
+        })
+    end,
+  },
+
   -- for golang 
   -- generate the boiler plate go code 
   {

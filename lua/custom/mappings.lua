@@ -54,4 +54,12 @@ M.harpoon = {
     },
   },
 }
+
+
+-- project Manager
+M.projects = {
+  n = {
+    ["<leader>fp"] = { "<cmd> ProjectMgr<CR>", "Open Projects"}
+    },
+}
 return M
