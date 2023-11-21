@@ -79,6 +79,7 @@ local plugins = {
     lazy = false, -- important!
     config = function()
         require("projectmgr").setup({
+        -- for syncing the project
             -- autogit = {
             --     enabled = true,
             --     command = "git pull --ff-only > .git/fastforward.log 2>&1",
