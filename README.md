@@ -27,6 +27,7 @@ Language Support:
   - Ruby
   - SCSS
   - Terraform
+  - Typescript
   - YAML
 - Debugging for:
   - Go

@@ -93,6 +93,7 @@ local plugins = {
       "scss",
       "sh",
       "terraform",
+      "typescriptreact",
       "yaml",
       "zsh",
     },
