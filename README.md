@@ -74,6 +74,7 @@ Editor:
 
 Other:
 
+- Github Copilot
 - Markdown Preview
 - Horizontal terminal height at 50%
 - Hidden theme toggle

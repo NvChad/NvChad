@@ -1,5 +1,23 @@
 local M = {}
 
+M.copilot = {
+  suggestion = {
+    enabled = true,
+    auto_trigger = true,
+    keymap = {
+      accept = "<Tab>",
+      close = "<Esc>",
+      next = "<C-J>",
+      prev = "<C-K>",
+      select = "<CR>",
+      dismiss = "<C-X>",
+    },
+  },
+  panel = {
+    enabled = false,
+  },
+}
+
 -- Horizontal terminal height at 50%
 M.nvterm = {
   terminals = {
@@ -87,7 +105,7 @@ M.mason = {
     "debugpy",
     "delve",
     "gopls",
-    "ruby_fmt",
+
     "stylua",
     "terraform-ls",
     "lua-language-server",

@@ -3,6 +3,21 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
   {
+    "zbirenbaum/copilot.lua",
+    event = "InsertEnter",
+    build = ":Copilot auth",
+    config = function()
+      require("copilot").setup(overrides.copilot)
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    dependencies = {
+      "hrsh7th/nvim-cmp",
+    },
+    config = true,
+  },
+  {
     "lewis6991/gitsigns.nvim",
     opts = overrides.gitsigns,
   },

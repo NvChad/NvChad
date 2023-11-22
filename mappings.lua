@@ -1,11 +1,32 @@
 ---@type MappingsTable
 local M = {}
 
+M.copilot = {
+  n = {
+    ["<leader>ce"] = {
+      function()
+        require("copilot.command").enable()
+      end,
+      "Enable Copilot",
+    },
+    ["<leader>cd"] = {
+      function()
+        require("copilot.command").disable()
+      end,
+      "Disable Copilot",
+    },
+  },
+}
+
 -- Disabled NvChad core mappings
 M.disabled = {
   i = {
     ["<C-b>"] = "",
     ["<C-e>"] = "",
+    ["<C-h"] = "",
+    ["<C-j"] = "",
+    ["<C-k"] = "",
+    ["<C-l"] = "",
   },
 
   t = {
