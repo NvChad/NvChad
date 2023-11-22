@@ -105,9 +105,9 @@ M.mason = {
     "debugpy",
     "delve",
     "gopls",
-
     "stylua",
     "terraform-ls",
+    "tflint",
     "lua-language-server",
     "markdownlint",
     "marksman",

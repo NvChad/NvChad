@@ -53,6 +53,12 @@ lspconfig.terraformls.setup {
   filetypes = { "terraform" },
 }
 
+lspconfig.tflint.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "terraform" },
+}
+
 lspconfig.yamlls.setup {
   on_attach = on_attach,
   capabilities = capabilities,

@@ -29,6 +29,9 @@ Language Support:
   - Terraform
   - Typescript
   - YAML
+- Linting
+  - Markdown
+  - Terraform
 - Debugging for:
   - Go
   - Python
