@@ -21,6 +21,19 @@ local sources = {
     b.formatting.goimports_reviser,
     b.formatting.golines,
 
+
+   -- Shell
+   b.formatting.shfmt,
+   b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
+
+   -- terraform
+   b.formatting.terraform_fmt,
+}
+
+null_ls.setup {
+  debug = true,
+  sources = sources,
+
   -- auto format on save 
     on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
@@ -37,16 +50,4 @@ local sources = {
       })
     end
   end,
-
-   -- Shell
-   b.formatting.shfmt,
-   b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
-
-   -- terraform
-   b.formatting.terraform_fmt,
-}
-
-null_ls.setup {
-  debug = true,
-  sources = sources,
 }

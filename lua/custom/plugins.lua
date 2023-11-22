@@ -120,6 +120,17 @@ local plugins = {
       },
   },
 
+  -- diff view and much more in git 
+
+{
+  "lewis6991/gitsigns.nvim",
+  dependencies = {
+    {
+      "sindrets/diffview.nvim",
+      config = true,
+    },
+  }
+},
 
   -- To make a plugin not be loaded
   -- {
