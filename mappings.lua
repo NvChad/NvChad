@@ -1,24 +1,8 @@
 ---@type MappingsTable
 local M = {}
 
-M.copilot = {
-  n = {
-    ["<leader>ce"] = {
-      function()
-        require("copilot.command").enable()
-      end,
-      "Enable Copilot",
-    },
-    ["<leader>cd"] = {
-      function()
-        require("copilot.command").disable()
-      end,
-      "Disable Copilot",
-    },
-  },
-}
-
 -- Disabled NvChad core mappings
+
 M.disabled = {
   i = {
     ["<C-b>"] = "",
@@ -77,6 +61,61 @@ M.general = {
   },
   i = {
     ["jk"] = { "<ESC>", "escape insert mode", opts = { nowait = true } },
+  },
+}
+
+M.copilot = {
+  n = {
+    ["<leader>ce"] = {
+      function()
+        require("copilot.command").enable()
+      end,
+      "Enable Copilot",
+    },
+    ["<leader>cd"] = {
+      function()
+        require("copilot.command").disable()
+      end,
+      "Disable Copilot",
+    },
+  },
+  i = {
+    ["<C-n>"] = {
+      function()
+        local copilot_suggestion = require "copilot.suggestion"
+        if copilot_suggestion then
+          copilot_suggestion.accept()
+        end
+      end,
+      "Accept Suggestion",
+    },
+    ["<C-,>"] = {
+      function()
+        local copilot_suggestion = require "copilot.suggestion"
+        if copilot_suggestion then
+          copilot_suggestion.next()
+        end
+      end,
+      "Next Suggestion",
+    },
+    ["<C-m>"] = {
+      function()
+        local copilot_suggestion = require "copilot.suggestion"
+        if copilot_suggestion then
+          copilot_suggestion.prev()
+        end
+      end,
+      "Previous Suggestion",
+    },
+    ["<C-X>"] = {
+      function()
+        local copilot_suggestion = require "copilot.suggestion"
+        if copilot_suggestion then
+          copilot_suggestion.dismiss()
+        end
+      end,
+      "Dismiss Suggestion",
+    },
   },
 }
 

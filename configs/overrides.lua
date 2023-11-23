@@ -4,14 +4,7 @@ M.copilot = {
   suggestion = {
     enabled = true,
     auto_trigger = true,
-    keymap = {
-      accept = "<Tab>",
-      close = "<Esc>",
-      next = "<C-,>",
-      prev = "<C-m>",
-      select = "<CR>",
-      dismiss = "<C-X>",
-    },
+    keymap = {},
   },
   panel = {
     enabled = false,
