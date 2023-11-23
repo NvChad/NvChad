@@ -7,8 +7,8 @@ M.copilot = {
     keymap = {
       accept = "<Tab>",
       close = "<Esc>",
-      next = "<C-J>",
-      prev = "<C-K>",
+      next = "<C-,>",
+      prev = "<C-m>",
       select = "<CR>",
       dismiss = "<C-X>",
     },
