@@ -65,6 +65,7 @@ M.general = {
 }
 
 M.copilot = {
+  plugin = true,
   n = {
     ["<leader>ce"] = {
       function()

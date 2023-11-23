@@ -1,4 +1,35 @@
-Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0), based on an [NvChad](https://nvchad.com/) installation.
+Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0),
+based on the [NvChad](https://nvchad.com/) distribution.
+
+## Preview
+
+### Editor
+
+![editor](./.img/editor.png)
+
+### Debugger
+
+![debugger](./.img/debugger.png)
+
+### Github Copilot
+
+![copilot](./.img/copilot.png)
+
+### Search
+
+![search](./.img/search.png)
+
+### Git commits
+
+![git-commits](./.img/git-commits.png)
+
+### Markdown Preview
+
+![md-preview](./.img/md-preview.png)
+
+### Cheatsheet
+
+![cheatsheet](./.img/cheatsheet.png)
 
 ## Features
 
