@@ -8,6 +8,7 @@ local opts = {
     null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.goimports,
+    null_ls.builtins.diagnostics.markdownlint,
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.rubyfmt,
     null_ls.builtins.formatting.stylua,

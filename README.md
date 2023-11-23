@@ -1,3 +1,5 @@
+# nvim config
+
 Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0),
 based on the [NvChad](https://nvchad.com/) distribution.
 
