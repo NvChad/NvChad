@@ -1,4 +1,4 @@
-<h1 align="center">NvChad</h1>
+<h1 align="center">NvChad (zerio edition)</h1>
 
 <div align="center">
 	<a href="https://nvchad.com/">Home</a>
