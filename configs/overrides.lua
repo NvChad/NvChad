@@ -9,6 +9,9 @@ M.colorizer = {
 }
 
 M.copilot = {
+  filetypes = {
+    ["*"] = true,
+  },
   suggestion = {
     enabled = false,
   },
