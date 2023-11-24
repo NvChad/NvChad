@@ -1,5 +1,13 @@
 local M = {}
 
+M.colorizer = {
+  filetypes = {
+    "html",
+    "css",
+    "scss",
+  },
+}
+
 M.copilot = {
   suggestion = {
     enabled = false,

@@ -3,6 +3,10 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
   {
+    "NvChad/nvim-colorizer.lua",
+    opts = overrides.colorizer,
+  },
+  {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     build = ":Copilot auth",
