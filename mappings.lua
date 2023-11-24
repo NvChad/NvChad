@@ -80,44 +80,6 @@ M.copilot = {
       "Disable Copilot",
     },
   },
-  i = {
-    ["<C-n>"] = {
-      function()
-        local copilot_suggestion = require "copilot.suggestion"
-        if copilot_suggestion then
-          copilot_suggestion.accept()
-        end
-      end,
-      "Accept Suggestion",
-    },
-    ["<C-,>"] = {
-      function()
-        local copilot_suggestion = require "copilot.suggestion"
-        if copilot_suggestion then
-          copilot_suggestion.next()
-        end
-      end,
-      "Next Suggestion",
-    },
-    ["<C-m>"] = {
-      function()
-        local copilot_suggestion = require "copilot.suggestion"
-        if copilot_suggestion then
-          copilot_suggestion.prev()
-        end
-      end,
-      "Previous Suggestion",
-    },
-    ["<C-X>"] = {
-      function()
-        local copilot_suggestion = require "copilot.suggestion"
-        if copilot_suggestion then
-          copilot_suggestion.dismiss()
-        end
-      end,
-      "Dismiss Suggestion",
-    },
-  },
 }
 
 M.dap = {

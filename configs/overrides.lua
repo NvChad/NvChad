@@ -2,12 +2,21 @@ local M = {}
 
 M.copilot = {
   suggestion = {
-    enabled = true,
-    auto_trigger = true,
-    keymap = {},
+    enabled = false,
   },
   panel = {
     enabled = false,
+  },
+}
+
+M.cmp = {
+  sources = {
+    { name = "copilot" },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "buffer" },
+    { name = "nvim_lua" },
+    { name = "path" },
   },
 }
 
