@@ -45,6 +45,7 @@ Language Support:
   - Markdown
   - Python
   - Terraform
+  - Typescript
   - YAML
 - Autoformatting on save for:
   - Bash/Zsh
