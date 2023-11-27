@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -33,11 +33,11 @@ local plugins = {
     opts = overrides.treesitter,
     -- {
     --   ensure_installed = {
-    --     -- defaults 
+    --     -- defaults
     --     "vim",
     --     "lua",
     --
-    --     -- web dev 
+    --     -- web dev
     --     "html",
     --     "css",
     --     "javascript",
@@ -67,7 +67,7 @@ local plugins = {
     end,
   },
 
-  -- harpoon for file navigations and marking 
+  -- harpoon for file navigations and marking
   {
     "ThePrimeagen/harpoon",
     cmd = "Harpoon",
@@ -78,59 +78,70 @@ local plugins = {
     "charludo/projectmgr.nvim",
     lazy = false, -- important!
     config = function()
-        require("projectmgr").setup({
+      require("projectmgr").setup {
         -- for syncing the project
-            -- autogit = {
-            --     enabled = true,
-            --     command = "git pull --ff-only > .git/fastforward.log 2>&1",
-            -- },
-            session = { enabled = true, file = ".git/Session.vim" },
-        })
+        -- autogit = {
+        --     enabled = true,
+        --     command = "git pull --ff-only > .git/fastforward.log 2>&1",
+        -- },
+        session = { enabled = true, file = ".git/Session.vim" },
+      }
     end,
   },
 
-  -- for golang 
-  -- generate the boiler plate go code 
+  -- for golang
+  -- generate the boiler plate go code
   {
     "olexsmir/gopher.nvim",
     ft = "go",
     config = function(_, opts)
       require("gopher").setup(opts)
-      require("core.utils").load_mappings("gopher")
+      require("core.utils").load_mappings "gopher"
     end,
     build = function()
       vim.cmd [[silent! GoInstallDeps]]
     end,
   },
 
-  -- codeium the AI 
-    {
-      "hrsh7th/nvim-cmp",
-      config = function(_, opts)
-          table.insert(opts.sources, { name = "codeium" })
-          require("cmp").setup(opts)
-      end,
-      dependencies = {
-          {
-              "jcdickinson/codeium.nvim",
-              config = function()
-                  require("codeium").setup({})
-              end,
-          },
+  -- codeium the AI
+  {
+    "hrsh7th/nvim-cmp",
+    config = function(_, opts)
+      table.insert(opts.sources, { name = "codeium" })
+      require("cmp").setup(opts)
+    end,
+    dependencies = {
+      {
+        "jcdickinson/codeium.nvim",
+        config = function()
+          require("codeium").setup {}
+        end,
       },
+    },
   },
 
-  -- diff view and much more in git 
+  -- diff view and much more in git
 
-{
-  "lewis6991/gitsigns.nvim",
-  dependencies = {
-    {
-      "sindrets/diffview.nvim",
-      config = true,
+  {
+    "lewis6991/gitsigns.nvim",
+    dependencies = {
+      {
+        "sindrets/diffview.nvim",
+        config = true,
+      },
     },
-  }
-},
+  },
+
+  -- -- nvim dap for debugging
+  {
+    "dreamsofcode-io/nvim-dap-go",
+    ft = "go",
+    dependencies = "mfussenegger/nvim-dap",
+    config = function(_, opts)
+      require("dap-go").setup(opts)
+      require("core.utils").load_mappings "dap_go"
+    end,
+  },
 
   -- To make a plugin not be loaded
   -- {
