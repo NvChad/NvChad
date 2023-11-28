@@ -119,7 +119,7 @@ M.dap_go = {
     },
     ["<leader>dgl"] = {
       function()
-        require("dap-go").debug_last()
+        require("dap-go").debug_last_test()
       end,
       "Debug last Go test",
     },
