@@ -45,6 +45,15 @@ lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "python" },
+  settings = {
+    python = {
+      analysis = {
+        extraPaths = {
+          "global_helpers",
+        },
+      },
+    },
+  },
 }
 
 lspconfig.terraformls.setup {
