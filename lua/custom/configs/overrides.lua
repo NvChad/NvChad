@@ -121,7 +121,7 @@ M.mason = {
     "stylua",
     "terraform-ls",
     "tflint",
-    "tsserver",
+    "typescript-language-server",
     "lua-language-server",
     "markdownlint",
     "marksman",
