@@ -14,7 +14,12 @@ local opts = {
     null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.gofmt,
     null_ls.builtins.formatting.goimports,
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettier.with {
+      extra_args = {
+        "--config",
+        vim.fn.expand "~/.config/nvim/configs/prettier.yaml",
+      },
+    },
     null_ls.builtins.formatting.rubyfmt,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.terraform_fmt,

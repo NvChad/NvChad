@@ -125,7 +125,7 @@ M.mason = {
     "lua-language-server",
     "markdownlint",
     "marksman",
-    "prettierd",
+    "prettier",
     "pyright",
     "yamlfmt",
     "yaml-language-server",
