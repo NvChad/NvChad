@@ -64,24 +64,6 @@ M.general = {
   },
 }
 
-M.copilot = {
-  plugin = true,
-  n = {
-    ["<leader>ce"] = {
-      function()
-        require("copilot.command").enable()
-      end,
-      "Enable Copilot",
-    },
-    ["<leader>cd"] = {
-      function()
-        require("copilot.command").disable()
-      end,
-      "Disable Copilot",
-    },
-  },
-}
-
 M.dap = {
   plugin = true,
   n = {
