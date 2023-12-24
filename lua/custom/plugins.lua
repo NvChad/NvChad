@@ -1,17 +1,25 @@
-local overrides = require "custom.configs.overrides"
+local colorizer = require "custom.configs.colorizer"
+local copilot = require "custom.configs.copilot"
+local cmp = require "custom.configs.cmp"
+local gitsigns = require "custom.configs.gitsigns"
+local glow = require "custom.configs.glow"
+local mason = require "custom.configs.mason"
+local nvimtree = require "custom.configs.nvimtree"
+local nvterm = require "custom.configs.nvterm"
+local treesitter = require "custom.configs.treesitter"
 
 ---@type NvPluginSpec[]
 local plugins = {
   {
     "NvChad/nvim-colorizer.lua",
-    opts = overrides.colorizer,
+    opts = colorizer.opts,
   },
   {
     "zbirenbaum/copilot.lua",
     event = "InsertEnter",
     build = ":Copilot auth",
     config = function()
-      require("copilot").setup(overrides.copilot)
+      require("copilot").setup(copilot.opts)
     end,
   },
   {
@@ -27,11 +35,11 @@ local plugins = {
   },
   {
     "hrsh7th/nvim-cmp",
-    opts = overrides.cmp,
+    opts = cmp.opts,
   },
   {
     "lewis6991/gitsigns.nvim",
-    opts = overrides.gitsigns,
+    opts = gitsigns.opts,
   },
   {
     "mfussenegger/nvim-dap",
@@ -86,7 +94,7 @@ local plugins = {
     "ellisonleao/glow.nvim",
     config = true,
     cmd = "Glow",
-    opts = overrides.glow,
+    opts = glow.opts,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -102,7 +110,7 @@ local plugins = {
   },
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason,
+    opts = mason.opts,
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -130,16 +138,16 @@ local plugins = {
   },
   {
     "NvChad/nvterm",
-    opts = overrides.nvterm,
+    opts = nvterm.opts,
   },
   {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
-    opts = overrides.nvimtree,
+    opts = nvimtree.opts,
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
+    opts = treesitter.opts,
   },
 }
 
