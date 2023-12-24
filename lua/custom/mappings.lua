@@ -111,13 +111,13 @@ M.dap = {
 M.dap_go = {
   plugin = true,
   n = {
-    ["<leader>dgt"] = {
+    ["<leader>dtg"] = {
       function()
         require("dap-go").debug_test()
       end,
       "Debug Go test",
     },
-    ["<leader>dgl"] = {
+    ["<leader>dtl"] = {
       function()
         require("dap-go").debug_last_test()
       end,
@@ -129,7 +129,7 @@ M.dap_go = {
 M.dap_python = {
   plugin = true,
   n = {
-    ["<leader>dpt"] = {
+    ["<leader>dtp"] = {
       function()
         require("dap-python").test_method()
       end,
