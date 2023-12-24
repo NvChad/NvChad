@@ -19,6 +19,7 @@ M.opts = {
     "html",
     "javascript",
     "json",
+    "jsonc",
     "lua",
     "make",
     "markdown",
