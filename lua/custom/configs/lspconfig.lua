@@ -7,23 +7,16 @@ local util = require "lspconfig/util"
 lspconfig.bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "bash", "sh", "zsh" },
 }
 
 lspconfig.clangd.setup {
-  on_attach = function(client, bufnr)
-    client.server_capabilities.signatureHelperProvider = false
-    on_attach(client, bufnr)
-  end,
+  on_attach = on_attach,
   capabilities = capabilities,
 }
 
 lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { "gopls" },
-  filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
       completeUnimported = true,
@@ -38,13 +31,11 @@ lspconfig.gopls.setup {
 lspconfig.marksman.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "markdown" },
 }
 
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "python" },
   settings = {
     python = {
       analysis = {
@@ -59,19 +50,16 @@ lspconfig.pyright.setup {
 lspconfig.terraformls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "terraform" },
 }
 
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "javascript", "typescript", "typescriptreact" },
 }
 
 lspconfig.tflint.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "terraform" },
 }
 
 lspconfig.yamlls.setup {
