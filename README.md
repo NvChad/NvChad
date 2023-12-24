@@ -52,6 +52,7 @@ nvim
 
 - Bash/Zsh
 - C/C++
+- Dockerfile
 - Go
 - Lua
 - Markdown

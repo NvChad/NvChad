@@ -10,6 +10,7 @@ M.opts = {
     "clang-format",
     "debugpy",
     "delve",
+    "dockerfile-language-server",
     "gopls",
     "stylua",
     "terraform-ls",
