@@ -2,8 +2,8 @@ local M = {}
 
 M.colorizer = {
   filetypes = {
-    "html",
     "css",
+    "html",
     "scss",
   },
 }
@@ -31,7 +31,6 @@ M.cmp = {
   },
 }
 
--- Horizontal terminal height at 50%
 M.nvterm = {
   terminals = {
     type_opts = {
@@ -44,15 +43,12 @@ M.nvterm = {
 
 -- NvimTree git support
 M.nvimtree = {
-
   filters = {
     dotfiles = true,
   },
-
   git = {
     enable = true,
   },
-
   renderer = {
     highlight_git = true,
     indent_markers = {
@@ -66,7 +62,6 @@ M.nvimtree = {
   },
 }
 
--- inline git blame
 M.gitsigns = {
   current_line_blame = true,
 }
@@ -74,7 +69,8 @@ M.gitsigns = {
 M.glow = {
   height_ratio = 1,
 }
--- syntax highlight
+
+-- Parsers
 M.treesitter = {
   ensure_installed = {
     "bash",

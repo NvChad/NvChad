@@ -62,7 +62,6 @@ lspconfig.terraformls.setup {
   filetypes = { "terraform" },
 }
 
--- typescript language sercer
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
