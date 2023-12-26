@@ -55,6 +55,7 @@ nvim
 - Pyright
 - Terraform Language Server
 - Typescript Language Server
+- VimScript Language Server
 - YAML Language Server
 
 ## Formatters

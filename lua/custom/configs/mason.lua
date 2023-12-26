@@ -23,6 +23,7 @@ M.opts = {
     "prettier",
     "pyright",
     "rubocop",
+    "vim-language-server",
     "yamlfmt",
     "yaml-language-server",
   },

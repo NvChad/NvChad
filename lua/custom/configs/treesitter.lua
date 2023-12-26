@@ -30,6 +30,7 @@ M.opts = {
     "terraform",
     "toml",
     "tsx",
+    "vim",
     "yaml",
   },
 }
