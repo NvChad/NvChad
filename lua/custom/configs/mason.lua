@@ -22,6 +22,7 @@ M.opts = {
     "marksman",
     "prettier",
     "pyright",
+    "rubyfmt",
     "yamlfmt",
     "yaml-language-server",
   },

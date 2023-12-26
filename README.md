@@ -50,44 +50,39 @@ nvim
 
 ## Language Servers
 
-- Bash/Zsh
-- C/C++
-- Dockerfile
-- Go
-- Lua
-- Markdown
-- Python
-- Terraform
-- Typescript
-- YAML
+- Bash Language Server
+- Clangd
+- Dockerfile Language Server
+- gopls
+- Lua Language Server
+- Marksman
+- Pyright
+- Terraform Language Server
+- Typescript Language Server
+- YAML Language Server
 
 ## Formatters
 
-- Bash/Zsh
-- C/C++
-- CSS
-- Go
-- GraphQL
-- HTML
-- Javascript
-- Lua
-- Markdown
-- Python
-- Ruby
-- SCSS
-- Terraform
-- Typescript
-- YAML
+- beautysh
+- black
+- clang-format
+- gofmt
+- prettier
+- rubyfmt
+- stylua
+- terraform_fmt
+- yamlfmt
 
 ## Linters
 
-- Markdown
-- Terraform
+- golangci-lint
+- markdownlint
+- tflint
 
 ## Debuggers
 
-- Go
-- Python
+- Delve
+- DebugPy
 
 ## Preview
 
