@@ -68,7 +68,7 @@ nvim
 - clang-format
 - gofmt
 - prettier
-- rubyfmt
+- rubocop
 - stylua
 - terraform_fmt
 - yamlfmt
@@ -77,6 +77,7 @@ nvim
 
 - golangci-lint
 - markdownlint
+- rubocop
 - tflint
 
 ## Debuggers
