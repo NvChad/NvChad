@@ -3,6 +3,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
   sources = {
+    null_ls.builtins.diagnostics.golangci_lint,
     null_ls.builtins.diagnostics.markdownlint.with {
       extra_args = {
         "--config",

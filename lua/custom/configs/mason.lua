@@ -11,6 +11,7 @@ M.opts = {
     "debugpy",
     "delve",
     "dockerfile-language-server",
+    "golangci-lint",
     "gopls",
     "stylua",
     "terraform-ls",
