@@ -1,9 +1,5 @@
 # Neovim Config
 
-<a href="https://dotfyle.com/le4ker/nvim-config"><img src="https://dotfyle.com/le4ker/nvim-config/badges/plugins?style=flat" /></a>
-<a href="https://dotfyle.com/le4ker/nvim-config"><img src="https://dotfyle.com/le4ker/nvim-config/badges/leaderkey?style=flat" /></a>
-<a href="https://dotfyle.com/le4ker/nvim-config"><img src="https://dotfyle.com/le4ker/nvim-config/badges/plugin-manager?style=flat" /></a>
-
 Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0),
 based on the [NvChad](https://nvchad.com/) distribution.
 
@@ -106,73 +102,3 @@ nvim
 ### Cheatsheet
 
 ![cheatsheet](./.img/cheatsheet.png)
-
-## Plugins
-
-### color
-
-- [NvChad/nvim-colorizer.lua](https://dotfyle.com/plugins/NvChad/nvim-colorizer.lua)
-
-### comment
-
-- [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
-
-### completion
-
-- [zbirenbaum/copilot.lua](https://dotfyle.com/plugins/zbirenbaum/copilot.lua)
-- [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
-
-### debugging
-
-- [rcarriga/nvim-dap-ui](https://dotfyle.com/plugins/rcarriga/nvim-dap-ui)
-- [mfussenegger/nvim-dap](https://dotfyle.com/plugins/mfussenegger/nvim-dap)
-
-### editing-support
-
-- [windwp/nvim-autopairs](https://dotfyle.com/plugins/windwp/nvim-autopairs)
-
-### fuzzy-finder
-
-- [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
-
-### git
-
-- [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
-
-### indent
-
-- [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
-
-### keybinding
-
-- [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
-
-### lsp
-
-- [jose-elias-alvarez/null-ls.nvim](https://dotfyle.com/plugins/jose-elias-alvarez/null-ls.nvim)
-- [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
-
-### lsp-installer
-
-- [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
-
-### markdown-and-latex
-
-- [ellisonleao/glow.nvim](https://dotfyle.com/plugins/ellisonleao/glow.nvim)
-
-### nvim-dev
-
-- [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
-
-### plugin-manager
-
-- [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
-
-### snippet
-
-- [L3MON4D3/LuaSnip](https://dotfyle.com/plugins/L3MON4D3/LuaSnip)
-- [rafamadriz/friendly-snippets](https://dotfyle.com/plugins/rafamadriz/friendly-snippets)
-
-### syntax
-
-- [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
