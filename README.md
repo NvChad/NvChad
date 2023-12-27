@@ -74,7 +74,6 @@ nvim
 
 - golangci-lint
 - markdownlint
-- rubocop
 - tflint
 
 ## Debuggers
