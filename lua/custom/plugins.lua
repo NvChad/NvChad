@@ -113,7 +113,7 @@ local plugins = {
     opts = mason.opts,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     ft = {
       "bash",
       "c",
