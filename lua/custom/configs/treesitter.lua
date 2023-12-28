@@ -1,6 +1,5 @@
 local M = {}
 
--- Parsers
 M.opts = {
   ensure_installed = {
     "bash",
@@ -33,6 +32,7 @@ M.opts = {
     "vim",
     "yaml",
   },
+  auto_install = "true",
 }
 
 return M
