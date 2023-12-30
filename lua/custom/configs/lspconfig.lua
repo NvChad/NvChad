@@ -13,6 +13,11 @@ lspconfig.clangd.setup {
   capabilities = capabilities,
 }
 
+lspconfig.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 lspconfig.dockerls.setup {
   on_attach = on_attach,
   capabilities = capabilities,

@@ -1,6 +1,5 @@
 local M = {}
 
--- LSPs, Linters, Debuggers and Formatters
 M.opts = {
   ensure_installed = {
     "bash-language-server",
@@ -8,6 +7,7 @@ M.opts = {
     "black",
     "clangd",
     "clang-format",
+    "css-lsp",
     "debugpy",
     "delve",
     "dockerfile-language-server",

@@ -50,6 +50,7 @@ nvim
 
 - Bash Language Server
 - Clangd
+- CSS Language Server
 - Dockerfile Language Server
 - gopls
 - HTML Language Server
