@@ -26,8 +26,9 @@ in
     customConfig =
       mkOption
         {
-          type = types.path;
+          type = types.nullOr types.path;
           example = "./config";
+          default = null;
           description = ''
             Folder with chadrc.lua and other custom configuration
           '';
@@ -37,6 +38,11 @@ in
   config = mkIf cfg.enable {
     programs.neovim.enable = true;
     programs.neovim.defaultEditor = mkIf cfg.defaultEditor true;
+    
+    home.file.".config/nvim/lua/custom" = mkIf (cfg.customConfig != null) {
+      source = cfg.customConfig; 
+      recursive = true;
+    };
 
     home.file.".config/nvim/lua" = {
       source = ./lua;
