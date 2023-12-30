@@ -30,6 +30,7 @@ M.opts = {
     "toml",
     "tsx",
     "vim",
+    "xml",
     "yaml",
   },
   auto_install = "true",
