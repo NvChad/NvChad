@@ -13,6 +13,7 @@ M.opts = {
     "dockerfile-language-server",
     "golangci-lint",
     "gopls",
+    "html-lsp",
     "stylua",
     "terraform-ls",
     "tflint",

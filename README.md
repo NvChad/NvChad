@@ -1,7 +1,8 @@
 # Neovim Config
 
-Configuration for [Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0),
-based on the [NvChad](https://nvchad.com/) distribution.
+Configuration for
+[Neovim](https://github.com/neovim/neovim/releases/tag/v0.9.0), based on the
+[NvChad](https://nvchad.com/) distribution.
 
 ## Pre-requisites
 
@@ -13,7 +14,8 @@ based on the [NvChad](https://nvchad.com/) distribution.
 
 ## Preview Instructions
 
-> Install requires Neovim 0.9+. Always review the code before installing a configuration.
+> Install requires Neovim 0.9+. Always review the code before installing a
+> configuration.
 
 Clone the repository and install the plugins:
 
@@ -50,6 +52,7 @@ nvim
 - Clangd
 - Dockerfile Language Server
 - gopls
+- HTML Language Server
 - Lua Language Server
 - Marksman
 - Pyright
