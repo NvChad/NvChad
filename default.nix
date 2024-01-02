@@ -38,18 +38,18 @@ in
   config = mkIf cfg.enable {
     programs.neovim.enable = true;
     programs.neovim.defaultEditor = mkIf cfg.defaultEditor true;
-    
-    home.file.".config/nvim/lua/custom" = mkIf (cfg.customConfig != null) {
-      source = cfg.customConfig; 
+
+    xdg.configFile."nvim/lua/custom" = mkIf (cfg.customConfig != null) {
+      source = cfg.customConfig;
       recursive = true;
     };
 
-    home.file.".config/nvim/lua" = {
+    xdg.configFile."nvim/lua" = {
       source = ./lua;
       recursive = true;
     };
 
-    home.file.".config/nvim/init.lua" = {
+    xdg.configFile."nvim/init.lua" = {
       source = ./init.lua;
     };
   };
