@@ -1,5 +1,5 @@
 local options = {
-  ensure_installed = { "lua" },
+  auto_install = true,
 
   highlight = {
     enable = true,
