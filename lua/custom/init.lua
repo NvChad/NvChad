@@ -6,5 +6,5 @@
 --   command = "tabdo wincmd =",
 -- })
 
-vim.opt.colorcolumn = "120"
+vim.opt.colorcolumn = "80"
 
