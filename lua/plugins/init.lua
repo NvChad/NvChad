@@ -1,6 +1,25 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
+  {
+    "zbirenbaum/copilot-cmp",
+    event = { "InsertEnter", "LspAttach" },
+    fix_pairs = true,
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  },
   {"AckslD/muren.nvim",
     event = "BufEnter",
     config = function()
