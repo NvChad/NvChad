@@ -45,7 +45,8 @@ M.general = {
     -- new buffer
     ["<leader>b"] = { "<cmd> enew <CR>", "New buffer" },
     ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
-
+    ["<leader>cu"] = { "<cmd> NvChadUpdate <CR>", "Update NvChad" },
+    
     ["<leader>fm"] = {
       function()
         vim.lsp.buf.format { async = true }
