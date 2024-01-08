@@ -47,13 +47,14 @@ M.disabled = {
 
 M.general = {
   n = {
-    ["<leader>s"] = { "<cmd> w <CR>", "Save file" },
+    ["<S-u>"] = { "<C-r>", "Redo" },
     ["<C-d>"] = { "<C-d>zz", "Move half page down", opts = { noremap = true } },
     ["<C-u>"] = { "<C-u>zz", "Move half page up", opts = { noremap = true } },
     ["<C-f>"] = { "<C-f>zz", "Move one page down", opts = { noremap = true } },
     ["<C-b>"] = { "<C-b>zz", "Move one page up", opts = { noremap = true } },
+    ["<leader>s"] = { "<cmd> w <CR>", "Save file" },
     ["<leader>pr"] = { "<cmd> Glow <CR>", "Preview Markdown file" },
-    ["<S-u>"] = { "<C-r>", "Redo" },
+    ["<leader>cu"] = { "<cmd> NvChadUpdate <CR>", "Update NvChad" },
   },
   t = {
     ["<ESC>"] = { "<C-\\><C-n>", "escape terminal mode", opts = { nowait = true } },
