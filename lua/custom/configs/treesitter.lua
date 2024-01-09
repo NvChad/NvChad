@@ -26,6 +26,7 @@ M.opts = {
     "ruby",
     "scss",
     "sql",
+    "starlark",
     "terraform",
     "toml",
     "tsx",
