@@ -20,11 +20,10 @@ local get_theme_tb = function(type)
 end
 
 -- Check to see if a Wasm Interface Type (WIT) project is being built
--- This is donw by seeing if there are any 'wit' directories or sub-directories with any files ending in .wit
+-- This is done by seeing if there are any files ending in .wit
 local is_wit_project = function()
-  local wit_dirs = vim.fn.globpath(vim.fn.getcwd(), "wit", 1, 1)
   local wit_files = vim.fn.globpath(vim.fn.getcwd(), "**/*.wit", 1, 1)
-  return #wit_dirs > 0 or #wit_files > 0
+  return #wit_files > 0
 end
 
 local checkOnSave = function()
@@ -129,7 +128,15 @@ rt.setup {
           allFeatures = true,
           loadOutDirsFromCheck = true,
           runBuildScripts = true,
-          cfgs = { "web_sys_unstable_apis", "doctest" },
+          extraEnv = {
+            ["RUSTFLAGS"] = "--cfg rust_analyzer",
+          },
+          cfgs = {
+            "web_sys_unstable_apis",
+            "doctest",
+            "wasm32",
+            'target_arch = "wasm32"',
+          },
         },
         -- if `is_wit_project` true, then also add
         -- "rust-analyzer.check.overrideCommand": ["cargo", "component", "check", "--message-format=json"]
