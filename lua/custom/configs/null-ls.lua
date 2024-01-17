@@ -36,7 +36,9 @@ local opts = {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format { bufnr = bufnr }
+          if vim.g.format_on_save then
+            vim.lsp.buf.format { bufnr = bufnr }
+          end
         end,
       })
     end

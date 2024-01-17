@@ -6,3 +6,5 @@ opt.colorcolumn = "100"
 opt.relativenumber = true
 opt.list = true
 opt.listchars = "tab:➝ ,lead:·,space:·,trail:·,nbsp:+,eol:¬"
+
+vim.g.format_on_save = true

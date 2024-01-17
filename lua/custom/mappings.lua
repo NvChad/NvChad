@@ -55,6 +55,16 @@ M.general = {
     ["<leader>s"] = { "<cmd> w <CR>", "Save file" },
     ["<leader>pr"] = { "<cmd> Glow <CR>", "Preview Markdown file" },
     ["<leader>cu"] = { "<cmd> NvChadUpdate <CR>", "Update NvChad" },
+    ["<leader>fmt"] = {
+      function()
+        vim.g.format_on_save = not vim.g.format_on_save
+        if vim.g.format_on_save then
+          print "Format on save enabled"
+        else
+          print "Format on save disabled"
+        end
+      end,
+    },
   },
   t = {
     ["<ESC>"] = { "<C-\\><C-n>", "escape terminal mode", opts = { nowait = true } },
