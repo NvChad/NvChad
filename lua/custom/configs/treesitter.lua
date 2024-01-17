@@ -16,6 +16,7 @@ M.opts = {
     "graphql",
     "hcl",
     "html",
+    "ini",
     "javascript",
     "json",
     "jsonc",
