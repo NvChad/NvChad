@@ -20,6 +20,7 @@ local plugins = {
         "tailwindcss-language-server",
         "dot-language-server",
         "pest-language-server",
+        "yaml-language-server",
       },
     },
   },
@@ -66,12 +67,42 @@ local plugins = {
         -- low level
         "rust",
         "markdown",
+
+        -- custom parser
+        -- "wit",
       },
       highlight = {
-        -- enable = false, -- true,
+        enable = true,
         additional_vim_regex_highlighting = false,
       },
     },
+    -- from https://github.com/NvChad/NvChad/discussions/2426
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "syntax")
+      -- install a wit parser for wit files. This is a local parser
+      -- does not seem to work:
+      -- require("nvim-treesitter.parsers").get_parser_configs().wit = {
+      --   install_info = {
+      --     url = "~/code/clones/tree-sitter-wit", -- local path or git repo
+      --     files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+      --     -- optional entries:
+      --     -- branch = "main", -- default branch in case of git repo if different from master
+      --     -- generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+      --     requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+      --   },
+      --   -- filetype = "wit", -- if filetype does not match the parser name
+      -- }
+      require("nvim-treesitter.parsers").get_parser_configs().just = {
+        install_info = {
+          url = "https://github.com/IndianBoy42/tree-sitter-just", -- local path or git repo
+          files = { "src/parser.c", "src/scanner.c" },
+          branch = "main",
+          -- use_makefile = true -- this may be necessary on MacOS (try if you see compiler errors)
+        },
+        maintainers = { "@IndianBoy42" },
+      }
+      require("nvim-treesitter.configs").setup(opts)
+    end,
   },
   { -- Aggregated Trouble list
     "folke/trouble.nvim",
@@ -137,7 +168,7 @@ local plugins = {
         ["<C-j>"] = require("telescope.actions").move_selection_next,
         ["<Esc>"] = require("telescope.actions").close,
       }
-      conf.defaults.file_ignore_patterns = { "node_modules", ".git", "docs/" }
+      conf.defaults.file_ignore_patterns = { "node_modules/", ".git", "docs/", "target/", "package-lock.json" }
 
       return conf
     end,
@@ -146,6 +177,10 @@ local plugins = {
   {
     "pest-parser/pest.vim",
     ft = "pest",
+  },
+  {
+    "NoahTheDuke/vim-just",
+    ft = { "just" },
   },
 }
 
