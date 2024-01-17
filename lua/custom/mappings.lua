@@ -39,11 +39,15 @@ M.exxtras = {
   v = {
     -- Ctrl-x to cut
     ["<C-x>"] = { "x", "Cut" },
+    -- Ctrl-z to undo (like in terminal)
+    ["<C-z>"] = { "<ESC>ua", "Undo" },
   },
   t = {
     -- Map Esc to Ctrl-\ Ctrl=n
     ["<Esc>"] = { "<C-\\><C-n>", "Exit terminal" },
     ["<C-t>"] = { ":TroubleToggle<CR>", "Trouble Sidebar" },
+    -- Ctrl-z to undo (like in terminal)
+    ["<C-z>"] = { "<ESC>ua", "Undo" },
   },
 }
 
