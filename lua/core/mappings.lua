@@ -25,6 +25,7 @@ M.general = {
 
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
+    ["<C-q>"] = { "<cmd> q <CR>", "Close buffer" },
 
     -- Copy all
     ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
