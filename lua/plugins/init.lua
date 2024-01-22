@@ -1,14 +1,14 @@
 -- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
 -- List of all default plugins & their definitions
 local default_plugins = {
-  {
-    dir = "D:\\Coding\\sonarlint.nvim",
-    event = { "LspAttach" },
-  },
-  {
-    "mfussenegger/nvim-jdtls",
-    event = { "LspAttach" },
-  },
+  -- {
+  --   dir = "D:\\Coding\\sonarlint.nvim",
+  --   event = { "LspAttach" },
+  -- },
+  -- {
+  --   "mfussenegger/nvim-jdtls",
+  --   event = { "LspAttach" },
+  -- },
   {
     "zbirenbaum/copilot-cmp",
     event = { "InsertEnter", "LspAttach" },

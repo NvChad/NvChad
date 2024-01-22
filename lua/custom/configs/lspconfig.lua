@@ -55,22 +55,22 @@ lspconfig.clangd.setup {
   },
 }
 
-require("sonarlint").setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  server = {
-    cmd = {
-      "C:\\Users\\Admin\\AppData\\Local\\nvim-data\\mason\\packages\\sonarlint-language-server\\sonarlint-language-server.cmd",
-      "-stdio",
-      "-analyzers",
-       "C:\\Users\\Admin\\AppData\\Local\\nvim-data\\mason\\share\\sonarlint-analyzers\\sonarpython.jar",
-       "C:\\Users\\Admin\\AppData\\Local\\nvim-data\\mason\\share\\sonarlint-analyzers\\sonarlintomnisharp.jar"
-    },
-
-  },
-  filetypes = {
-    'python',
-    'cs'
-  },
-}
--- End user config
+-- require("sonarlint").setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   server = {
+--     cmd = {
+--       "C:\\Users\\Admin\\AppData\\Local\\nvim-data\\mason\\packages\\sonarlint-language-server\\sonarlint-language-server.cmd",
+--       "-stdio",
+--       "-analyzers",
+--        "C:\\Users\\Admin\\AppData\\Local\\nvim-data\\mason\\share\\sonarlint-analyzers\\sonarpython.jar",
+--        "C:\\Users\\Admin\\AppData\\Local\\nvim-data\\mason\\share\\sonarlint-analyzers\\sonarlintomnisharp.jar"
+--     },
+--
+--   },
+--   filetypes = {
+--     'python',
+--     'cs'
+--   },
+-- }
+-- -- End user config
