@@ -28,13 +28,6 @@ local default_plugins = {
       })
     end,
   },
-  {"AckslD/muren.nvim",
-    event = "BufEnter",
-    config = function()
-      require('muren').setup()
-    end,
-  },
-
   { "echasnovski/mini.nvim",
     event = "BufEnter",
     config = function()
