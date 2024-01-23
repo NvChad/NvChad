@@ -10,28 +10,36 @@ local default_plugins = {
   --   event = { "LspAttach" },
   -- },
   {
+    "nvim-pack/nvim-spectre",
+    event = { "BufEnter" },
+    config = function()
+      require("spectre").setup()
+    end,
+  },
+  {
     "zbirenbaum/copilot-cmp",
     event = { "InsertEnter", "LspAttach" },
     fix_pairs = true,
-    config = function ()
+    config = function()
       require("copilot_cmp").setup()
-    end
+    end,
   },
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup({
+      require("copilot").setup {
         suggestion = { enabled = false },
         panel = { enabled = false },
-      })
+      }
     end,
   },
-  { "echasnovski/mini.nvim",
+  {
+    "echasnovski/mini.nvim",
     event = "BufEnter",
     config = function()
-      require('mini.cursorword').setup({  })
+      require("mini.cursorword").setup {}
     end,
   },
 
@@ -40,42 +48,43 @@ local default_plugins = {
     event = "BufEnter",
   },
 
-  { "ahmedkhalf/project.nvim",
+  {
+    "ahmedkhalf/project.nvim",
     lazy = false,
     config = function()
-      require("project_nvim").setup({ })
+      require("project_nvim").setup {}
     end,
   },
 
-  { "akinsho/toggleterm.nvim",
+  {
+    "akinsho/toggleterm.nvim",
     lazy = false,
     config = function()
-      require("toggleterm").setup({
+      require("toggleterm").setup {
         open_mapping = [[<c-\>]],
-        direction = 'float',
-        shade_terminals = true
-      })
-    end
+        direction = "float",
+        shade_terminals = true,
+      }
+    end,
   },
 
-  {"terryma/vim-multiple-cursors"},
+  { "terryma/vim-multiple-cursors" },
 
-  {"kdheepak/lazygit.nvim", lazy = false},
+  { "kdheepak/lazygit.nvim", lazy = false },
 
   {
-    'lpl212757/dashboard-nvim',
-    event = 'VimEnter',
+    "lpl212757/dashboard-nvim",
+    event = "VimEnter",
     config = function()
       require "plugins.configs.dashboard"
     end,
-    dependencies = { {'nvim-tree/nvim-web-devicons'}}
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
   },
-
 
   "nvim-lua/plenary.nvim",
 
   {
-    "NvChad/base46",
+    "lpl212757/base46",
     branch = "v2.0",
     build = function()
       require("base46").load_all_highlights()
@@ -253,7 +262,7 @@ local default_plugins = {
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline"
+        "hrsh7th/cmp-cmdline",
       },
     },
     opts = function()

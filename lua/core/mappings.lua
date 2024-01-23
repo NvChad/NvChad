@@ -81,6 +81,9 @@ M.general = {
       end,
       "LSP formatting",
     },
+
+    -- search and replace
+    ["<leader>h"] = { ":Spectre <CR>", "Search and replace" },
   },
 
   t = {
@@ -369,12 +372,12 @@ M.nvterm = {
     },
 
     -- new
-    ["<leader>h"] = {
-      function()
-        require("nvterm.terminal").new "horizontal"
-      end,
-      "New horizontal term",
-    },
+    -- ["<leader>h"] = {
+    --   function()
+    --     require("nvterm.terminal").new "horizontal"
+    --   end,
+    --   "New horizontal term",
+    -- },
 
     ["<leader>v"] = {
       function()
