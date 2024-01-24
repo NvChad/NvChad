@@ -8,12 +8,14 @@ end
 
 local function shell_call(args)
   local output = fn.system(args)
+
   assert(vim.v.shell_error == 0, "External call failed with error code: " .. vim.v.shell_error .. "\n" .. output)
 end
 
 M.lazy = function(install_path)
   ------------- base46 ---------------
   local lazy_path = fn.stdpath "data" .. "/lazy/base46"
+
 
   M.echo "  Compiling base46 theme to bytecode ..."
 
@@ -33,6 +35,7 @@ M.lazy = function(install_path)
   require "plugins"
 
   -- mason packages & show post_bootstrap screen
+
   require "nvchad.post_install"()
 end
 
@@ -55,6 +58,7 @@ M.gen_chadrc_template = function()
         file:write "---@type ChadrcConfig\nlocal M = {}\n\nM.ui = { theme = 'onedark' }\n\nreturn M"
         file:close()
       end
+
     end
   end
 end

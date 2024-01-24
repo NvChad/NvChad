@@ -33,6 +33,58 @@ local default_plugins = {
     "NvChad/nvim-colorizer.lua",
     init = function()
       require("core.utils").lazy_load "nvim-colorizer.lua"
+  -- {
+  --   dir = "D:\\Coding\\sonarlint.nvim",
+  --   event = { "LspAttach" },
+  -- },
+  -- {
+  --   "mfussenegger/nvim-jdtls",
+  --   event = { "LspAttach" },
+  -- },
+  --
+  {
+    "stevearc/dressing.nvim",
+    lazy = false,
+    config = function()
+      require("dressing").setup {}
+    end,
+  },
+  {
+    "nvim-pack/nvim-spectre",
+    event = { "BufEnter" },
+    config = function()
+      require("spectre").setup()
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    event = { "InsertEnter", "LspAttach" },
+    fix_pairs = true,
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      }
+    end,
+  },
+  {
+    "tpope/vim-surround",
+    event = "BufEnter",
+  },
+  { "neo4j-contrib/cypher-vim-syntax", event = "BufEnter" },
+  {
+    "echasnovski/mini.nvim",
+    event = "BufEnter",
+    config = function()
+      require("mini.cursorword").setup {}
     end,
     config = function(_, opts)
       require("colorizer").setup(opts)
@@ -41,6 +93,16 @@ local default_plugins = {
       vim.defer_fn(function()
         require("colorizer").attach_to_buffer(0)
       end, 0)
+  {
+    "f-person/git-blame.nvim",
+    event = "BufEnter",
+  },
+
+  {
+    "ahmedkhalf/project.nvim",
+    lazy = false,
+    config = function()
+      require("project_nvim").setup {}
     end,
   },
 
@@ -68,7 +130,28 @@ local default_plugins = {
       require("core.utils").load_mappings "blankline"
       dofile(vim.g.base46_cache .. "blankline")
       require("indent_blankline").setup(opts)
+    "akinsho/toggleterm.nvim",
+    lazy = false,
+    config = function()
+      require("toggleterm").setup {
+        open_mapping = [[<c-\>]],
+        direction = "float",
+        shade_terminals = true,
+      }
     end,
+  },
+
+  { "terryma/vim-multiple-cursors" },
+
+  { "kdheepak/lazygit.nvim", lazy = false },
+
+  {
+    "lpl212757/dashboard-nvim",
+    event = "VimEnter",
+    config = function()
+      require "plugins.configs.dashboard"
+    end,
+    dependencies = { { "nvim-tree/nvim-web-devicons" } },
   },
 
   {
@@ -140,6 +223,45 @@ local default_plugins = {
       end, {})
 
       vim.g.mason_binaries_list = opts.ensure_installed
+  "nvim-lua/plenary.nvim",
+
+  {
+    "NvChad/base46",
+    branch = "v2.0",
+    build = function()
+      require("base46").load_all_highlights()
+    end,
+  },
+
+  {
+    "NvChad/ui",
+    branch = "v2.0",
+    lazy = false,
+  },
+
+  {
+    "NvChad/nvterm",
+    init = function()
+      require("core.utils").load_mappings "nvterm"
+    end,
+    config = function(_, opts)
+      require "base46.term"
+      require("nvterm").setup(opts)
+    end,
+  },
+
+  {
+    "NvChad/nvim-colorizer.lua",
+    init = function()
+      require("core.utils").lazy_load "nvim-colorizer.lua"
+    end,
+    config = function(_, opts)
+      require("colorizer").setup(opts)
+
+      -- execute colorizer as soon as possible
+      vim.defer_fn(function()
+        require("colorizer").attach_to_buffer(0)
+      end, 0)
     end,
   },
 
@@ -147,9 +269,13 @@ local default_plugins = {
     "neovim/nvim-lspconfig",
     init = function()
       require("core.utils").lazy_load "nvim-lspconfig"
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      return { override = require "nvchad.icons.devicons" }
     end,
-    config = function()
-      require "plugins.configs.lspconfig"
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "devicons")
+      require("nvim-web-devicons").setup(opts)
     end,
   },
 
@@ -198,6 +324,83 @@ local default_plugins = {
     end,
     config = function(_, opts)
       require("cmp").setup(opts)
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    version = "2.20.7",
+    init = function()
+      require("core.utils").lazy_load "indent-blankline.nvim"
+    end,
+    opts = function()
+      return require("plugins.configs.others").blankline
+    end,
+    config = function(_, opts)
+      require("core.utils").load_mappings "blankline"
+      dofile(vim.g.base46_cache .. "blankline")
+      require("indent_blankline").setup(opts)
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    init = function()
+      require("core.utils").lazy_load "nvim-treesitter"
+    end,
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate",
+    opts = function()
+      return require "plugins.configs.treesitter"
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "syntax")
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+  },
+
+  -- git stuff
+  {
+    "lewis6991/gitsigns.nvim",
+    ft = { "gitcommit", "diff" },
+    init = function()
+      -- load gitsigns only when a git file is opened
+      vim.api.nvim_create_autocmd({ "BufRead" }, {
+        group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
+        callback = function()
+          vim.fn.system("git -C " .. '"' .. vim.fn.expand "%:p:h" .. '"' .. " rev-parse")
+          if vim.v.shell_error == 0 then
+            vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
+            vim.schedule(function()
+              require("lazy").load { plugins = { "gitsigns.nvim" } }
+            end)
+          end
+        end,
+      })
+    end,
+    opts = function()
+      return require("plugins.configs.others").gitsigns
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "git")
+      require("gitsigns").setup(opts)
+    end,
+  },
+
+  -- lsp stuff
+  {
+    "williamboman/mason.nvim",
+    cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+    opts = function()
+      return require "plugins.configs.mason"
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "mason")
+      require("mason").setup(opts)
+
+      -- custom nvchad cmd to install all mason binaries listed
+      vim.api.nvim_create_user_command("MasonInstallAll", function()
+        vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+      end, {})
+
+      vim.g.mason_binaries_list = opts.ensure_installed
     end,
   },
 
@@ -238,6 +441,7 @@ local default_plugins = {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+
     cmd = "Telescope",
     init = function()
       require("core.utils").load_mappings "telescope"
@@ -265,6 +469,7 @@ local default_plugins = {
       require("core.utils").load_mappings "whichkey"
     end,
     cmd = "WhichKey",
+
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "whichkey")
       require("which-key").setup(opts)

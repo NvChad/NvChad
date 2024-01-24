@@ -16,7 +16,7 @@ local options = {
     initial_mode = "insert",
     selection_strategy = "reset",
     sorting_strategy = "ascending",
-    layout_strategy = "horizontal",
+    layout_strategy = "vertical",
     layout_config = {
       horizontal = {
         prompt_position = "top",
@@ -49,7 +49,7 @@ local options = {
     },
   },
 
-  extensions_list = { "themes", "terms" },
+  extensions_list = { "themes", "terms", "projects" },
 }
 
 return options

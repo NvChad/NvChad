@@ -18,6 +18,7 @@ local formatting_style = {
     local icons = require "nvchad.icons.lspkind"
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
+
     if cmp_style == "atom" or cmp_style == "atom_colored" then
       icon = " " .. icon .. " "
       item.menu = cmp_ui.lspkind_text and "   (" .. item.kind .. ")" or ""
@@ -45,6 +46,10 @@ local function border(hl_name)
 end
 
 local options = {
+
+  experimental = {
+    ghost_text = true
+  },
   completion = {
     completeopt = "menu,menuone",
   },
@@ -53,6 +58,7 @@ local options = {
     completion = {
       side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
       winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
+
       scrollbar = false,
     },
     documentation = {
@@ -64,6 +70,25 @@ local options = {
     expand = function(args)
       require("luasnip").lsp_expand(args.body)
     end,
+  },
+
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      require("copilot_cmp.comparators").prioritize,
+
+      -- Below is the default comparitor list and order for nvim-cmp
+      cmp.config.compare.offset,
+      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
   },
 
   formatting = formatting_style,
@@ -105,6 +130,10 @@ local options = {
     }),
   },
   sources = {
+
+    -- Copilot Source
+    { name = "copilot"},
+    -- Default source
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
@@ -116,5 +145,32 @@ local options = {
 if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
   options.window.completion.border = border "CmpBorder"
 end
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
+end
+cmp.setup({
+  mapping = {
+    ["<Tab>"] = vim.schedule_wrap(function(fallback)
+      if cmp.visible() and has_words_before() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      else
+        fallback()
+      end
+    end),
+  },
+})
 
 return options

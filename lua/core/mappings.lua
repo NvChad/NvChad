@@ -1,9 +1,19 @@
 -- n, v, i, t = mode names
 
 local M = {}
+ -- Enable completion triggered by <c-x><c-o>
+local bufnr = 0
+vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+local bufopts = { noremap=true, silent=true }
 
 M.general = {
   i = {
+    -- Lspconfig Code action
+    ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
+
+    ["<C-BS>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
+    ["<C-H>"] = {"<C-W>", "Control backscape to delete backward", opts = {noremap = true}},
+
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
@@ -17,6 +27,26 @@ M.general = {
 
   n = {
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
+    -- User config
+    -- Search - Replace 
+    ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
+    --
+    -- LSPConfig
+    ["gD"] = { function() vim.lsp.buf.declaration() end, "lsp declaration", bufopts },
+    ["gd"] = { function() vim.lsp.buf.definition() end, "lsp definition", bufopts },
+    ["K"] = { function() vim.lsp.buf.hover() end, "lsp hover", },
+    ["gi"] = { function() require("telescope.builtin").lsp_implementations() end, "lsp implementation", bufopts },
+    ["gr"] = { function() require("telescope.builtin").lsp_references() end, "lsp references", bufopts},
+    ["go"] = { function() require("telescope.builtin").lsp_document_symbols() end, "lsp document symbols", bufopts},
+    ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
+    ["<F2>"] = { function() vim.lsp.buf.rename() end, "lsp rename", },
+
+    ["[d"] = { function() vim.diagnostic.goto_prev() end, "goto prev", },
+    ["d]"] = { function() vim.diagnostic.goto_next() end, "goto_next", },
+    ["<leader>q"] = { function() vim.diagnostic.setloclist() end, "diagnostic setloclist", },
+    ["<leader>f"] = { function() vim.diagnostic.open_float() end, "floating diagnostic", },
+    -- End user config
+
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
     ["<C-l>"] = { "<C-w>l", "Window right" },
@@ -52,6 +82,9 @@ M.general = {
       end,
       "LSP formatting",
     },
+
+    -- search and replace
+    ["<leader>h"] = { ":Spectre <CR>", "Search and replace" },
   },
 
   t = {
@@ -63,6 +96,10 @@ M.general = {
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
     ["<"] = { "<gv", "Indent line" },
     [">"] = { ">gv", "Indent line" },
+    ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
+    ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
+    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
+    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
   },
 
   x = {
@@ -269,6 +306,12 @@ M.telescope = {
   plugin = true,
 
   n = {
+    -- User cofig
+    -- Open project
+    ["<leader>fp"] = { "<cmd> Telescope projects <CR>", "Project" },
+    ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "find files" },
+    -- End User cofig
+
     -- find
     ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
@@ -343,12 +386,13 @@ M.nvterm = {
     },
 
     -- new
-    ["<leader>h"] = {
-      function()
-        require("nvterm.terminal").new "horizontal"
-      end,
-      "New horizontal term",
-    },
+
+    -- ["<leader>h"] = {
+    --   function()
+    --     require("nvterm.terminal").new "horizontal"
+    --   end,
+    --   "New horizontal term",
+    -- },
 
     ["<leader>v"] = {
       function()
