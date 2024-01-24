@@ -1,27 +1,21 @@
 <h1 align="center">NvChad</h1>
 
 <div align="center">
-	<a href="https://nvchad.github.io/">Home</a>
+	<a href="https://nvchad.com/">Home</a>
   <span> • </span>
-    	<a href="https://nvchad.github.io/quickstart/install">Install</a>
+    	<a href="https://nvchad.com/docs/quickstart/install">Install</a>
   <span> • </span>
-       	<a href="https://nvchad.github.io/contribute">Contribute</a>
+       	<a href="https://nvchad.com/docs/contribute">Contribute</a>
   <span> • </span>
 	<a href="https://github.com/NvChad/NvChad#gift_heart-support">Support</a>
   <span> • </span>
-        <a href="https://nvchad.github.io/Features">Features</a>
+        <a href="https://nvchad.com/docs/features">Features</a>
   <p></p>
 </div> 
 
 <div align="center">
  
- 
-<a href="https://github.com/NvChad/NvChad/blob/main/LICENSE"
-        ><img
-            src="https://img.shields.io/github/license/NvChad/NvChad?style=flat-square&logo=GNU&label=License&color=df967f"
-            alt="License"
-    />
-[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.8.0-blueviolet.svg?style=flat-square&logo=Neovim&color=90E59A&logoColor=white)](https://github.com/neovim/neovim)
+[![Neovim Minimum Version](https://img.shields.io/badge/Neovim-0.9.0-blueviolet.svg?style=flat-square&logo=Neovim&color=90E59A&logoColor=white)](https://github.com/neovim/neovim)
 [![GitHub Issues](https://img.shields.io/github/issues/NvChad/NvChad.svg?style=flat-square&label=Issues&color=d77982)](https://github.com/NvChad/NvChad/issues)
 [![Discord](https://img.shields.io/discord/869557815780470834?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/gADmkJb9Fb)
 [![Matrix](https://img.shields.io/badge/Matrix-40aa8b.svg?style=flat-square&logo=Matrix&logoColor=white)](https://matrix.to/#/#nvchad:matrix.org)
@@ -33,13 +27,11 @@
 
 ## Showcase
 
-<img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/dashboard.png">
-<img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/main2.png">
+<img src="https://nvchad.com/features/nvdash.webp">
+<img src="https://nvchad.com/banner.webp">
 
-( Zoom in the screenshot )
-
-<img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/main.png"> 
-<img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/rxyhn1.png">
+<img src="https://nvchad.com/screenshots/onedark.webp">
+<img src="https://nvchad.com/screenshots/rxyhn1.webp">
 
 ## What is it?
 
@@ -47,18 +39,20 @@
 
 - Lazy loading is done 93% of the time, meaning that plugins will not be loaded by default, they will be loaded only when required also at specific commands, events etc. This lowers the startuptime.
 
-- NvChad isn't a framework! It's supposed to be used as a "base" config, so users can tweak the defaults well, can also remove the things they don't like in the default config and build their config on top of it. Users can tweak the entire default config while staying in their custom config (lua/custom dir). This is the control center of the user's config and gitignored so the users can stay update to-date with NvChad's latest config (main branch) while still controlling it with their chadrc (file that controls entire custom dir)
+- NvChad isn't a framework! It's supposed to be used as a "base" config, so users can tweak the defaults well, and also remove the things they don't like in the default config and build their config on top of it. Users can tweak the entire default config while staying in their custom config (lua/custom dir). This is the control center of the user's config and gitignored so the users can stay up-to-date with NvChad's latest config (main branch) while still controlling it with their chadrc (file that controls entire custom dir).
+
 
 ## Theme Showcase
 
 <details><summary> <b>Images (Click to expand!)</b></summary>
 
-![main themes](https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/four_Themes.png)
-![radium](https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/radium1.png)
-![radium](https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/radium2.png)
-![radium](https://github.com/NvChad/nvchad.github.io/blob/src/static/img/screenshots/radium3.png)
+![4 themes](https://nvchad.com/screenshots/four_Themes.webp)
+![radium 1](https://nvchad.com/screenshots/radium1.webp)
+![radium 2](https://nvchad.com/screenshots/radium2.webp)
+![radium 3](https://nvchad.com/screenshots/radium3.webp)
 
-(Note: these are just 4-5 themes, NvChad has around 27+ themes)
+
+(Note: these are just 4-5 themes, NvChad has around 56 themes)
 </details>
 
 ## UI related plugins used
@@ -69,53 +63,36 @@
 
 Fast file tree:
 
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/nvimtree.png"></kbd><hr>
+<kbd><img src="https://nvchad.com/features/nvimtree.webp"></kbd>
 
 <h3> Telescope-nvim </h3>
 
 A fuzzy file finder, picker, sorter, previewer and much more:
 
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/tel.png"></kbd><hr>
-
-<h3> Indent-blankline.nvim </h3>
-
-Adds indentline:
-
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/blanklineNvim.png"></kbd><hr>
+<kbd><img src="https://nvchad.com/features/telescope.webp"></kbd>
 
 <h3> Our own statusline written from scratch  </h3>
 
 [NvChad UI](https://github.com/NvChad/ui)
 
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/statusline.png"></kbd><hr>
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/statusline_modes.png"></kbd><hr>
+<kbd><img src="https://nvchad.com/features/statuslines.webp"></kbd>
 
 <h3> Tabufline (our own pertab bufferline) </h3>
 
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/tabufline1.png"></kbd><hr>
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/tabufline2.png"></kbd><hr>
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/tabufline3.png"></kbd><hr>
+<kbd><img src="https://nvchad.com/features/tabufline.webp"></kbd>
+- Here's a [video](https://www.youtube.com/watch?v=V_9iJ96U_k8&ab_channel=siduck) that showcases it.
 
-<h3> Nvim-web-devicons </h3>
-
-Lua fork of Vim Devicons which offers more file icon customisability:
-
-<kbd><img src="https://github.com/NvChad/nvchad.github.io/blob/src/static/img/features/devicons.png"></kbd><hr>
-
-<h3> Nvim-treesitter </h3
-
-NeoVim Treesitter configurations and abstraction layer. We mostly use this for syntax highlighting. The pretty syntax highlighting you see in all of our screenshots has gotten possible due to treesitter
+<h3> NvCheatsheet ( our UI Plugin ) </h3>
+<kbd> <img src="https://nvchad.com/features/nvcheatsheet.webp"/></kbd>
 
 </details>
 
 ## Plugins list
 
-- Many beautiful themes, theme toggler by [our base46 plugin](https://github.com/NvChad/base46)
+- Many beautiful themes, theme toggler by our [base46 plugin](https://github.com/NvChad/base46)
 - Inbuilt terminal toggling & management with [Nvterm](https://github.com/NvChad/nvterm)
-- NvChad updater, hide & unhide terminal buffers with [NvChad extensions](https://github.com/NvChad/extensions)
-- Lightweight & performant ui plugin with [NvChad UI](https://github.com/NvChad/ui)
+- Lightweight & performant ui plugin with [NvChad UI](https://github.com/NvChad/ui) It provides statusline modules, tabufline ( tabs + buffer manager) , beautiful cheatsheets, NvChad updater, hide & unhide terminal buffers, theme switcher and much more!
 - File navigation with [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
-- Managing tabs, buffers with [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 - Beautiful and configurable icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons)
 - Git diffs and more with [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) 
 - NeoVim Lsp configuration with [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) and [mason.nvim](https://github.com/williamboman/mason.nvim)
@@ -135,7 +112,7 @@ NeoVim Treesitter configurations and abstraction layer. We mostly use this for s
  
 ## :gift_heart: Support
 
-I'm (@siduck) really very sorry to remove the previous charity links but I had to do it for various reasons. A lot has been going here regarding financial issues and I do need some support if it's possible from your end. I haven't graduated yet and it would be great to earn some stuff as that'd help me with daily minor expenses. If you like NvChad and would like to support & appreciate it via donation then I'll gladly accept it. Dont worry! NvChad will still stay alive & active without your donations! I will remove the sponsor button and re-add the charity links once I get a job, probably a year or two.   
+If you like NvChad and would like to support & appreciate it via donation then I'll gladly accept it. 
 
 [![kofi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/siduck)
 [![paypal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/siduck13)

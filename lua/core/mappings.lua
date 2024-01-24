@@ -26,6 +26,7 @@ M.general = {
   },
 
   n = {
+    ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- User config
     -- Search - Replace 
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
@@ -91,6 +92,10 @@ M.general = {
   },
 
   v = {
+    ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
+    ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "Move down", opts = { expr = true } },
+    ["<"] = { "<gv", "Indent line" },
+    [">"] = { ">gv", "Indent line" },
     ["<leader>fm"] = { function() vim.lsp.buf.format { async = true } end, "lsp formatting", },
     ["<C-y>"] = { function() vim.lsp.buf.code_action() end, "lsp code_action", },
     ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "Move up", opts = { expr = true } },
@@ -225,7 +230,7 @@ M.lspconfig = {
       "LSP references",
     },
 
-    ["<leader>f"] = {
+    ["<leader>lf"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
@@ -272,6 +277,15 @@ M.lspconfig = {
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
       "List workspace folders",
+    },
+  },
+
+  v = {
+    ["<leader>ca"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP code action",
     },
   },
 }
@@ -372,6 +386,7 @@ M.nvterm = {
     },
 
     -- new
+
     -- ["<leader>h"] = {
     --   function()
     --     require("nvterm.terminal").new "horizontal"

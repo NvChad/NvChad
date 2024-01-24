@@ -18,6 +18,7 @@ local formatting_style = {
     local icons = require "nvchad.icons.lspkind"
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
 
+
     if cmp_style == "atom" or cmp_style == "atom_colored" then
       icon = " " .. icon .. " "
       item.menu = cmp_ui.lspkind_text and "   (" .. item.kind .. ")" or ""
@@ -45,6 +46,7 @@ local function border(hl_name)
 end
 
 local options = {
+
   experimental = {
     ghost_text = true
   },
@@ -55,7 +57,8 @@ local options = {
   window = {
     completion = {
       side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
-      winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+      winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:None",
+
       scrollbar = false,
     },
     documentation = {
@@ -127,6 +130,7 @@ local options = {
     }),
   },
   sources = {
+
     -- Copilot Source
     { name = "copilot"},
     -- Default source
