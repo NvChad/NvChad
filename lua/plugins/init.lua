@@ -33,15 +33,8 @@ local default_plugins = {
     "NvChad/nvim-colorizer.lua",
     init = function()
       require("core.utils").lazy_load "nvim-colorizer.lua"
-  -- {
-  --   dir = "D:\\Coding\\sonarlint.nvim",
-  --   event = { "LspAttach" },
-  -- },
-  -- {
-  --   "mfussenegger/nvim-jdtls",
-  --   event = { "LspAttach" },
-  -- },
-  --
+    end
+  },
   {
     "stevearc/dressing.nvim",
     lazy = false,
@@ -93,6 +86,8 @@ local default_plugins = {
       vim.defer_fn(function()
         require("colorizer").attach_to_buffer(0)
       end, 0)
+    end
+  },
   {
     "f-person/git-blame.nvim",
     event = "BufEnter",
@@ -130,6 +125,9 @@ local default_plugins = {
       require("core.utils").load_mappings "blankline"
       dofile(vim.g.base46_cache .. "blankline")
       require("indent_blankline").setup(opts)
+    end
+  },
+  {
     "akinsho/toggleterm.nvim",
     lazy = false,
     config = function()
@@ -222,9 +220,13 @@ local default_plugins = {
         end
       end, {})
 
-      vim.g.mason_binaries_list = opts.ensure_installed
-  "nvim-lua/plenary.nvim",
 
+      vim.g.mason_binaries_list = opts.ensure_installed
+  end
+  },
+  {
+    "nvim-lua/plenary.nvim",
+  },
   {
     "NvChad/base46",
     branch = "v2.0",
@@ -269,6 +271,9 @@ local default_plugins = {
     "neovim/nvim-lspconfig",
     init = function()
       require("core.utils").lazy_load "nvim-lspconfig"
+      end
+  },
+  {
     "nvim-tree/nvim-web-devicons",
     opts = function()
       return { override = require "nvchad.icons.devicons" }
@@ -324,6 +329,8 @@ local default_plugins = {
     end,
     config = function(_, opts)
       require("cmp").setup(opts)
+    end
+  },
   {
     "lukas-reineke/indent-blankline.nvim",
     version = "2.20.7",
