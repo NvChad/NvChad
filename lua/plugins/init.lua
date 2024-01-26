@@ -270,6 +270,11 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
+  {
+    "Pocco81/auto-save.nvim",
+    enabled = true,
+    trigger_events = {"InsertLeave", "TextChanged"},
+  }
 }
 
 local config = require("core.utils").load_config()
