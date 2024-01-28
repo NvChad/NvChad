@@ -16,7 +16,24 @@ M.load_config = function()
   return config
 end
 
-M.remove_disabled_keys = function(chadrc_mappings, default_mappings)
+-- Copied from http://lua-users.org/wiki/CopyTable
+M.deepcopy = function(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[M.deepcopy(orig_key)] = M.deepcopy(orig_value)
+        end
+        setmetatable(copy, M.deepcopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
+
+M.remove_disabled_keys = function(chadrc_mappings, default_mappings_orig)
+  local default_mappings = M.deepcopy(default_mappings_orig)
   if not chadrc_mappings then
     return default_mappings
   end
