@@ -4,7 +4,7 @@ local M = {}
 M.on_attach = function(client, bufnr)
   local utils = require "core.utils"
   local conf = require("nvconfig").ui.lsp
- 
+
   -- semanticTokens
   if not conf.semantic_tokens and client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
@@ -13,9 +13,6 @@ M.on_attach = function(client, bufnr)
   if conf.signature and client.server_capabilities.signatureHelpProvider then
     require("nvchad.signature").setup(client, bufnr)
   end
-
-  client.server_capabilities.documentFormattingProvider = false
-  client.server_capabilities.documentRangeFormattingProvider = false
 
   utils.load_mappings("lspconfig", { buffer = bufnr })
 end
