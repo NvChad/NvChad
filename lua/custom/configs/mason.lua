@@ -14,6 +14,7 @@ M.opts = {
     "golangci-lint",
     "gopls",
     "html-lsp",
+    "isort",
     "stylua",
     "terraform-ls",
     "tflint",

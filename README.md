@@ -68,6 +68,7 @@ nvim
 - black
 - clang-format
 - gofmt
+- isort
 - prettier
 - rubocop
 - stylua
