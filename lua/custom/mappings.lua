@@ -2,14 +2,18 @@ local M = {}
 
 M.abc = {
   n = {
-    ["<leader>n"] = {":set relativenumber! <CR>", "Toggle Relativenumber"},
-
-
     -- Window rezising
     ["<A-h>"] = {":vertical resize -5<CR>"},
     ["<A-j>"] = {":horizontal resize -5<CR>"},
     ["<A-k>"] = {":horizontal resize +5<CR>"},
     ["<A-l>"] = {":vertical resize +5<CR>"},
+
+    -- ["<leader>fm"] = {
+    --   function()
+    --     require("conform").format { async = true }
+    --   end,
+    --   "LSP formatting",
+    -- },
   },
 
   i = {
