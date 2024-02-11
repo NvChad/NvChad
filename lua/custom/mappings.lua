@@ -11,6 +11,14 @@ M.general = {
         require("conform").format()
       end,
       "formatting",
+    },
+
+    -- zen mode toggle TODO: why doesn't this binding work 
+    ["<leader>zz"] = {
+      function()
+        require("zen-mode").toggle()
+      end,
+      "zenmode"
     }
 
   },

@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -13,10 +13,89 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
+  -- cloak
+  {
+    "laytan/cloak.nvim",
+    config = function()
+      require "custom.configs.cloak"
+    end,
+  },
+
+  -- zen mode
+  {
+    "folke/zen-mode.nvim",
+    cmd = "ZenMode",
+    config = function()
+      require "custom.configs.zenmode"
+    end,
+  },
+
+  -- undotree
+  {
+    "mbbill/undotree",
+    config = function()
+      require "custom.configs.undotree"
+    end,
+  },
+
+  -- trouble
+  {
+    "folke/trouble.nvim",
+    config = function()
+      require "custom.configs.trouble"
+    end,
+  },
+
+  -- dim inactive windwos
+  {
+    "andreadev-it/shade.nvim",
+    config = function()
+      require "custom.configs.shade"
+    end,
+  },
+
+  -- fugitive
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      require "custom.configs.fugitive"
+    end,
+  },
+
+  -- neogen
+  {
+    "danymat/neogen",
+    config = function()
+      require "custom.configs.neogen"
+    end,
+  },
+
+  -- neotest
+  {
+    "nvim-neotest/neotest",
+    config = function()
+      require "custom.configs.neotest"
+    end,
+  },
+
+  -- snippets
+
+  {},
+
+  -- incremental rename
+  {
+    "smjones/inc-rename.nvim",
+    config = function()
+      require "custom.configs.increname"
+    end,
+  },
+
+  --
+
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
