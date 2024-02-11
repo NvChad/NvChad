@@ -54,17 +54,25 @@ local plugins = {
     end,
   },
 
+  -- instead of dim, twlight?
+  {},
+
   -- fugitive
   {
     "tpope/vim-fugitive",
-    config = function()
-      require "custom.configs.fugitive"
-    end,
+    lazy = false,
+    --    config = function()
+    ---    require "custom.configs.fugitive"
+    -- end,
   },
 
   -- neogen
   {
     "danymat/neogen",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "L3MON4D3/LuaSnip"
+    },
     config = function()
       require "custom.configs.neogen"
     end,
@@ -78,15 +86,27 @@ local plugins = {
     end,
   },
 
+  -- refactoring
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      config = function()
+        require "custom.config.refactoring"
+      end,
+    },
+  },
+
   -- snippets
 
   {},
 
   -- incremental rename
   {
-    "smjones/inc-rename.nvim",
+    "smjonas/inc-rename.nvim",
     config = function()
-      require "custom.configs.increname"
+      require "custom.configs.inc-rename"
     end,
   },
 
