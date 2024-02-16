@@ -5,3 +5,11 @@
 --   pattern = "*",
 --   command = "tabdo wincmd =",
 -- })
+--
+vim.opt.list = true
+vim.opt.listchars:append({ space = '⋅' }) -- Customize the representation of spaces if desired
+
+-- Add relative line numbering by default 
+vim.opt.relativenumber = true
+
+

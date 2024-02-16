@@ -4,6 +4,22 @@ local overrides = require "custom.configs.overrides"
 local plugins = {
   -- lightspeed
   { "editorconfig/editorconfig-vim" },
+  { 'wakatime/vim-wakatime', lazy = false },
+  { 'chrisbra/NrrwRgn' },
+  {
+    "kshenoy/vim-signature",
+    config = function()
+      -- Here you would set up any vim-signature specific configurations
+      -- For vim-signature, most configurations are done via Vimscript options
+      -- If you need to execute Vimscript, use vim.cmd[[ ... ]] blocks
+
+      vim.cmd [[
+      " Example Vimscript configuration for vim-signature
+      let g:SignatureMarkText = '✓'
+      let g:SignatureMarkerTextHL = 'Question'
+    ]]
+    end,
+  },
   {
     "justinmk/vim-sneak",
     event = "BufRead",
