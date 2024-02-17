@@ -124,7 +124,10 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
 
       vim.schedule(function()
         vim.api.nvim_exec_autocmds("FileType", {})
-        require("editorconfig").config(args.buf)
+
+        if vim.g.editorconfig then
+          require("editorconfig").config(args.buf)
+        end
       end, 0)
     end
   end,
