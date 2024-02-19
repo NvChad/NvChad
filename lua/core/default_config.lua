@@ -19,8 +19,6 @@ M.ui = {
     icons = true,
     lspkind_text = true,
     style = "default", -- default/flat_light/flat_dark/atom/atom_colored
-    border_color = "grey_fg", -- only applicable for "default" style, use color names from base30 variables
-    selected_item_bg = "colored", -- colored / simple
   },
 
   telescope = { style = "borderless" }, -- borderless / bordered
@@ -76,6 +74,7 @@ M.ui = {
   },
 
   term = {
+    hl = "Normal:term,WinSeparator:WinSeparator",
     sizes = { sp = 0.3, vsp = 0.2 },
     float = {
       relative = "editor",
