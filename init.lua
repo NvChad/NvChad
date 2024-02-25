@@ -6,8 +6,6 @@ if custom_init_path then
   dofile(custom_init_path)
 end
 
-require("core.utils").load_mappings()
-
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 -- bootstrap lazy.nvim!
@@ -19,3 +17,7 @@ end
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
 require "plugins"
+
+vim.schedule(function()
+  require "core.mappings"
+end, 0)
