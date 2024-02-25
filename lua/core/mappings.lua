@@ -149,4 +149,4 @@ if vim.g.blankline_maps then
   end, { desc = "Jump to current context | blankline" })
 end
 
-require "custom.mappings"
+pcall(require, "custom.mappings")
