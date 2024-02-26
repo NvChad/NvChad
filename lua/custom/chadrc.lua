@@ -1,6 +1,8 @@
 ---@type ChadrcConfig
-local M = {}
+local M={};
 
-M.ui = { theme = 'onedark' }
+M.ui={ theme="catppuccin" };
+M.plugins="custom.plugins";
 
-return M
+
+return M;

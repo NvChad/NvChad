@@ -1,3 +1,4 @@
 !#/usr/bin/sh
 
+rm -rf ~/.config/nvim
 git clone $(dirname $0) ~/.config/nvim
