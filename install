@@ -1,4 +1,6 @@
 !#/usr/bin/sh
 
+
+git commit -am ".."
 rm -rf ~/.config/nvim
 git clone $(dirname $0) ~/.config/nvim

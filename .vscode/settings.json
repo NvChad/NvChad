@@ -1,0 +1,10 @@
+{
+  "Lua.diagnostics.globals": [
+    "vim"
+  ],
+  "Lua.diagnostics.disable": [
+    "different-requires",
+    "undefined-doc-name",
+    "inject-field"
+  ]
+}
