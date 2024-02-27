@@ -52,6 +52,10 @@ local plugins={
       table.insert(M.sources,{ name="crates" });
       return M;
     end
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    run=":TSUpdate"
   }
 };
 
