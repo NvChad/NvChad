@@ -1,111 +1,122 @@
 local map = vim.keymap.set
 
-map("i", "<C-b>", "<ESC>^i", { desc = "Beginning of line | general" })
-map("i", "<C-e>", "<End>", { desc = "End of line | general" })
-map("i", "<C-h>", "<Left>", { desc = "Move left | general" })
-map("i", "<C-l>", "<Right>", { desc = "Move right | general" })
-map("i", "<C-j>", "<Down>", { desc = "Move down | general" })
-map("i", "<C-k>", "<Up>", { desc = "Move up | general" })
-map("n", "<Esc>", "<cmd>noh<CR>", { desc = "Clear highlights | general" })
-map("n", "<C-h>", "<C-w>h", { desc = "Window left | general" })
-map("n", "<C-l>", "<C-w>l", { desc = "Window right | general" })
-map("n", "<C-j>", "<C-w>j", { desc = "Window down | general" })
-map("n", "<C-k>", "<C-w>k", { desc = "Window up | general" })
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file | general" })
-map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "Copy whole file | general" })
-map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "Toggle line number | general" })
-map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "Toggle relative number | general" })
-map("n", "<leader>b", "<cmd>enew<CR>", { desc = "New buffer | general" })
-map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "Mapping cheatsheet | general" })
+map("i", "<C-b>", "<ESC>^i", { desc = "Move Beginning of line" })
+map("i", "<C-e>", "<End>", { desc = "Move End of line" })
+map("i", "<C-h>", "<Left>", { desc = "Move Left" })
+map("i", "<C-l>", "<Right>", { desc = "Move Right" })
+map("i", "<C-j>", "<Down>", { desc = "Move Down" })
+map("i", "<C-k>", "<Up>", { desc = "Move Up" })
+
+map("n", "<Esc>", "<cmd>noh<CR>", { desc = "General Clear highlights" })
+
+map("n", "<C-h>", "<C-w>h", { desc = "Switch Window left" })
+map("n", "<C-l>", "<C-w>l", { desc = "Switch Window right" })
+map("n", "<C-j>", "<C-w>j", { desc = "Switch Window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Switch Window up" })
+
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "File Save" })
+map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "File Copy whole" })
+
+map("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "Toggle Line number" })
+map("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "Toggle Relative number" })
+map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "Toggle NvCheatsheet" })
 
 -- global lsp mappings
 map("n", "<leader>fm", function()
   vim.lsp.buf.format { async = true }
-end, { desc = "LSP formatting | lsp" })
+end, { desc = "Lsp formatting" })
 
-map("n", "<leader>lf", vim.diagnostic.open_float, { desc = "floating diagnostics | lsp" })
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "prev diagnostic | lsp" })
-map("n", "]d", vim.diagnostic.goto_next, { desc = "next diagnostic | lsp" })
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "diagnostic loclist | lsp" })
+map("n", "<leader>lf", vim.diagnostic.open_float, { desc = "Lsp floating diagnostics" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Lsp prev diagnostic" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Lsp next diagnostic" })
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Lsp diagnostic loclist" })
 
 -- tabufline
+map("n", "<leader>b", "<cmd>enew<CR>", { desc = "Buffer New" })
+
 map("n", "<tab>", function()
   require("nvchad.tabufline").tabuflineNext()
-end, { desc = "Goto next buffer | tabufline" })
+end, { desc = "Buffer Goto next" })
 
 map("n", "<S-tab>", function()
   require("nvchad.tabufline").tabuflinePrev()
-end, { desc = "Goto prev buffer | tabufline" })
+end, { desc = "Buffer Goto prev" })
 
 map("n", "<leader>x", function()
   require("nvchad.tabufline").close_buffer()
-end, { desc = "Close buffer | tabufline" })
+end, { desc = "Buffer Close" })
 
+-- Comment
 map("n", "<leader>/", function()
   require("Comment.api").toggle.linewise.current()
-end, { desc = "Toggle comment | comment" })
+end, { desc = "Comment Toggle" })
 
 map(
   "v",
   "<leader>/",
   "<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-  { desc = "Toggle comment | comment" }
+  { desc = "Comment Toggle" }
 )
 
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle nvimtree | nvimtree" })
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Focus nvimtree | nvimtree" })
+-- nvimtree
+map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Nvimtree Toggle window" })
+map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Nvimtree Focus window" })
 
-map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Live grep | telescope" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers | telescope" })
-map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Help page | telescope" })
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Find oldfiles | telescope" })
-map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Find in current buffer | telescope" })
-map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "Git commits | telescope" })
-map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Git status | telescope" })
-map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "Pick hidden term | telescope" })
-map("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Nvchad themes | telescope" })
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files | telescope" })
+-- telescope
+map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Telescope Live grep" })
+map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Telescope Find buffers" })
+map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Telescope Help page" })
 
+map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope Find oldfiles" })
+map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope Find in current buffer" })
+map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "Telescope Git commits" })
+map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Telescope Git status" })
+map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "Telescope Pick hidden term" })
+map("n", "<leader>th", "<cmd>Telescope themes<CR>", { desc = "Telescope Nvchad themes" })
+map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope Find files" })
 map(
   "n",
   "<leader>fa",
   "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-  { desc = "Find all | telescope" }
+  { desc = "Telescope Find all files" }
 )
 
 -- terminal
-map("t", "<C-x>", "<C-\\><C-N>", { desc = "Escape terminal mode | terminal" })
+map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal Escape terminal mode" })
+
 map("n", "<leader>h", function()
   require("nvchad.term").new { pos = "sp", size = 0.3 }
-end, { desc = "New horizontal term | terminal" })
+end, { desc = "Terminal New horizontal term" })
 
 map("n", "<leader>v", function()
   require("nvchad.term").new { pos = "vsp", size = 0.3 }
-end, { desc = "New vertical term | terminal" })
+end, { desc = "Terminal New vertical term" })
 
 map({ "n", "t" }, "<A-v>", function()
   require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm", size = 0.3 }
-end, { desc = "Toggleable vertical term | terminal" })
+end, { desc = "Terminal Toggleable vertical term" })
 
 map({ "n", "t" }, "<A-h>", function()
   require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm", size = 0.2 }
-end, { desc = "New horizontal term | terminal" })
+end, { desc = "Terminal New horizontal term" })
 
 map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
-end, { desc = "Toggleable Floating term | terminal" })
+end, { desc = "Terminal Toggle Floating term" })
 
 map("t", "<ESC>", function()
   local win = vim.api.nvim_get_current_win()
   vim.api.nvim_win_close(win, true)
-end, { desc = "Close term in terminal mode | terminal" })
+end, { desc = "Terminal Close term in terminal mode" })
 
 -- whichkey
-map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "Which-key all keymaps | whichkey" })
+map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "Whichkey all keymaps" })
+
 map("n", "<leader>wk", function()
   vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
-end, { desc = "Which-key query lookup | whichkey" })
+end, { desc = "Whichkey query lookup" })
 
+-- blankline
 map("n", "<leader>cc", function()
   local config = { scope = {} }
   config.scope.exclude = { language = {}, node_type = {} }
@@ -119,6 +130,6 @@ map("n", "<leader>cc", function()
       vim.api.nvim_feedkeys("_", "n", true)
     end
   end
-end, { desc = "Jump to current context | blankline" })
+end, { desc = "Blankline Jump to current context" })
 
 pcall(require, "custom.mappings")
