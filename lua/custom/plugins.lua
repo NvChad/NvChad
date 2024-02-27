@@ -52,8 +52,22 @@ local plugins={
       table.insert(M.sources,{ name="crates" });
       return M;
     end
-  }
+  },
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons'
+  },
+  {
+    "askfiy/visual_studio_code",
+    priority=100,
+    lazy=false,
+    config=function()
+      vim.cmd([[colorscheme visual_studio_code]])
+    end,
+  },
 };
+
 
 
 
