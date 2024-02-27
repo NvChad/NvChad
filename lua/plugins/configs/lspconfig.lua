@@ -31,7 +31,11 @@ M.on_attach = function(client, bufnr)
   end, opts "List workspace folders | lsp")
 
   map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Go to type definition | lsp")
-  map("n", "<leader>rn", vim.lsp.buf.rename, opts "Rename symbol | lsp")
+
+  map("n", "<leader>ra", function()
+    require "nvchad.renamer"()
+  end, opts "NvRename symbol | lsp")
+
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action | lsp")
   map("n", "gr", vim.lsp.buf.references, opts "Show references | lsp")
 end

@@ -81,7 +81,7 @@ local default_plugins = {
     "lewis6991/gitsigns.nvim",
     event = "User FilePost",
     opts = function()
-      return require("plugins.configs.gitsigns")
+      return require "plugins.configs.gitsigns"
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "git")

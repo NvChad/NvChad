@@ -136,12 +136,3 @@ local new_cmd = vim.api.nvim_create_user_command
 new_cmd("NvChadUpdate", function()
   require "nvchad.updater"()
 end, {})
-
---------------------------------------- globals -------------------------------------------
-vim.g.whichkey_maps = true
-vim.g.blankline_maps = true
-vim.g.terminal_maps = true
-vim.g.telescope_maps = true
-vim.g.nvimtree_maps = true
-vim.g.comment_maps = true
-vim.g.tabufline_maps = true
