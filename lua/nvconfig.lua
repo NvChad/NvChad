@@ -1,9 +1,5 @@
 local M = {}
 
-M.options = {
-  nvchad_branch = "v3.0",
-}
-
 M.ui = {
   ------------------------------- base46 -------------------------------------
   -- hl = highlights
@@ -91,8 +87,6 @@ M.ui = {
 }
 
 M.plugins = "" -- path i.e "custom.plugins", so make custom/plugins.lua file
-
-M.lazy_nvim = require "plugins.configs.lazy_nvim" -- config for lazy.nvim startup options
 
 M.base46 = {
   integrations = {
