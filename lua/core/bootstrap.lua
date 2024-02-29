@@ -33,7 +33,15 @@ M.lazy = function(install_path)
   require "plugins"
 
   -- mason packages & show post_bootstrap screen
-  require "nvchad.post_install"()
+  vim.cmd "MasonInstallAll"
+  local lastpkg = vim.g.mason_binaries_list[#vim.g.mason_binaries_list]
+
+  -- Keep track of which mason pkgs get installed
+  require("mason-registry"):on("package:install:success", function(pkg)
+    if tostring(pkg) == "Package(name=" .. lastpkg .. ")" then
+      print "All done! Now read nvchad.com "
+    end
+  end)
 end
 
 M.gen_chadrc_template = function()
