@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "generate": "./scripts/generate ./colors/vscode.yml > ./colors/vscode",
+    "install": "deno run --allow-write=~/.config/nvim scripts/install.ts"
+  }
+}
