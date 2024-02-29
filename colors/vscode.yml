@@ -57,7 +57,7 @@ highlights:
   Statement: "purple"
   Conditional: "purple"
   Repeat: "purple"
-  Label: "light_blue"
+  Label: "cyan"
   Operator: "fg"
   Keyword: "blue"
   Exception: "purple"
