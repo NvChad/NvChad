@@ -14,7 +14,7 @@ local default_plugins = {
 
   {
     "NvChad/ui",
-    branch = "v3.0",
+    branch = "clean",
     lazy = false,
     config = function()
       require "nvchad"
