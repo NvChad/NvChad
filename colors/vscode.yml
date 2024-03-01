@@ -45,8 +45,8 @@ palette:
 highlights:
   Normal: "fg bg"
 
-  Comment: "green - i"
-  Constant: "yellow"
+  Comment: "green"
+  Constant: "light_blue"
   String: "orange"
   Character: "orange"
   Number: "light_green"
@@ -58,7 +58,7 @@ highlights:
   Conditional: "purple"
   Repeat: "purple"
   Label: "cyan"
-  Operator: "fg"
+  Operator: "white"
   Keyword: "blue"
   Exception: "purple"
   PreProc: "yellow"
@@ -71,7 +71,7 @@ highlights:
   StorageClass: "cyan"
   Structure: "cyan"
   Typedef: "cyan"
-  Special: "blue - i"
+  Special: "blue"
   SpecialComment: "green"
   Error: "error_red - br"
   Todo: "red - bi"
@@ -154,7 +154,7 @@ highlights:
   TSMethod: "yellow"
   TSField: "light_blue"
   TSProperty: "light_blue"
-  TSConstructor: "blue"
+  TSConstructor: "cyan"
   # Keywords
   TSConditional: "purple"
   TSRepeat: "purple"
