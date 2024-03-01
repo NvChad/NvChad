@@ -9,3 +9,5 @@
 # after
 # **/.DS_Store
 .vscode/
+colorschemes/
+generate.ts
