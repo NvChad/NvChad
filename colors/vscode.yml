@@ -166,7 +166,7 @@ highlights:
   TSOperator: "white"
   TSException: "purple"
   TSType: "cyan"
-  TSTypeBuiltin: "blue"
+  TSTypeBuiltin: "cyan"
   TSStructure: "cyan"
   TSInclude: "purple"
   # Variable
