@@ -1,4 +1,5 @@
----@diagnostic disable: undefined-global
+
+
 
 local c={
   vscNone="NONE",
@@ -102,16 +103,16 @@ hl(0, "CursorLineNr", { fg=c.vscPopupFront, bg=c.vscBack });
 hl(0, "MatchParen", { fg=c.vscNone, bg=c.vscDimHighlight });
 hl(0, "ModeMsg", { fg=c.vscFront, bg=c.vscLeftDark });
 hl(0, "MoreMsg", { fg=c.vscFront, bg=c.vscLeftDark });
-hl(0, "NonText", { fg=(isDark and c.vscLineNumber or c.vscTabOther), bg=c.vscNone });
+hl(0, "NonText", { fg=c.vscLineNumber, bg=c.vscNone });
 hl(0, "Pmenu", { fg=c.vscPopupFront, bg=c.vscPopupBack });
-hl(0, "PmenuSel", { fg=isDark and c.vscPopupFront or c.vscBack, bg=c.vscPopupHighlightBlue });
+hl(0, "PmenuSel", { fg=c.vscPopupFront, bg=c.vscPopupHighlightBlue });
 hl(0, "PmenuSbar", { fg="NONE", bg=c.vscPopupHighlightGray });
 hl(0, "PmenuThumb", { fg="NONE", bg=c.vscPopupFront });
 hl(0, "Question", { fg=c.vscBlue, bg=c.vscBack });
 hl(0, "Search", { fg=c.vscNone, bg=c.vscSearch });
 hl(0, "SpecialKey", { fg=c.vscBlue, bg=c.vscNone });
 hl(0, "StatusLine", { fg=c.vscFront, bg=c.vscLeftMid });
-hl(0, "StatusLineNC", { fg=c.vscFront, bg=opts.transparent and c.vscBack or c.vscLeftDark });
+hl(0, "StatusLineNC", { fg=c.vscFront, bg=c.vscLeftDark });
 hl(0, "TabLine", { fg=c.vscFront, bg=c.vscTabOther });
 hl(0, "TabLineFill", { fg=c.vscFront, bg=c.vscTabOutside });
 hl(0, "TabLineSel", { fg=c.vscFront, bg=c.vscTabCurrent });
@@ -121,7 +122,7 @@ hl(0, "VisualNOS", { fg=c.vscNone, bg=c.vscSelection });
 hl(0, "WarningMsg", { fg=c.vscRed, bg=c.vscBack, bold=true });
 hl(0, "WildMenu", { fg=c.vscNone, bg=c.vscSelection });
 
-hl(0, "Comment", { fg=c.vscGreen, bg="NONE", italic=opts.italic_comments });
+hl(0, "Comment", { fg=c.vscGreen, bg="NONE" });
 hl(0, "Constant", { fg=c.vscBlue, bg="NONE" });
 hl(0, "String", { fg=c.vscOrange, bg="NONE" });
 hl(0, "Character", { fg=c.vscOrange, bg="NONE" });
@@ -160,7 +161,7 @@ hl(0, "SpellBad", { fg=c.vscRed, bg=c.vscBack, undercurl=true, sp=c.vscRed });
 hl(0, "SpellCap", { fg=c.vscRed, bg=c.vscBack, undercurl=true, sp=c.vscRed });
 hl(0, "SpellRare", { fg=c.vscRed, bg=c.vscBack, undercurl=true, sp=c.vscRed });
 hl(0, "SpellLocal", { fg=c.vscRed, bg=c.vscBack, undercurl=true, sp=c.vscRed });
-hl(0, "Whitespace", { fg=isDark and c.vscLineNumber or c.vscTabOther });
+hl(0, "Whitespace", { fg=c.vscLineNumber });
 hl(0, "NormalFloat", { bg=c.vscPopupBack });
 hl(0, "WinBar", { fg=c.vscFront, bg=c.vscBack, bold=true });
 hl(0, "WinBarNc", { fg=c.vscFront, bg=c.vscBack });
@@ -170,7 +171,7 @@ hl(0, "@error", { fg=c.vscRed, bg="NONE" }); -- Legacy
 hl(0, "@punctuation.bracket", { fg=c.vscFront, bg="NONE" });
 hl(0, "@punctuation.special", { fg=c.vscFront, bg="NONE" });
 hl(0, "@punctuation.delimiter", { fg=c.vscFront, bg="NONE" });
-hl(0, "@comment", { fg=c.vscGreen, bg="NONE", italic=opts.italic_comments });
+hl(0, "@comment", { fg=c.vscGreen, bg="NONE" });
 hl(0, "@comment.note", { fg=c.vscBlueGreen, bg="NONE", bold=true });
 hl(0, "@comment.warning", { fg=c.vscYellowOrange, bg="NONE", bold=true });
 hl(0, "@comment.error", { fg=c.vscRed, bg="NONE", bold=true });
@@ -217,20 +218,20 @@ hl(0, "@tag.delimiter", { fg=c.vscGray, bg="NONE" });
 hl(0, "@tag.attribute", { fg=c.vscLightBlue, bg="NONE" });
 
 hl(0, "@text", { fg=c.vscFront, bg="NONE" }); -- Legacy
-hl(0, "@markup.strong", { fg=isDark and c.vscBlue or c.vscViolet, bold=true });
+hl(0, "@markup.strong", { fg=c.vscBlue, bold=true });
 hl(0, "@markup.italic", { fg=c.vscFront, bg="NONE", italic=true });
 hl(0, "@markup.underline", { fg=c.vscYellowOrange, bg="NONE", underline=true });
 hl(0, "@markup.strikethrough", { fg=c.vscFront, bg="NONE", strikethrough=true });
-hl(0, "@markup.heading", { fg=isDark and c.vscBlue or c.vscYellowOrange, bold=true });
+hl(0, "@markup.heading", { fg=c.vscBlue, bold=true });
 hl(0, "@markup.raw", { fg=c.vscFront, bg="NONE" });
 hl(0, "@markup.raw.markdown", { fg=c.vscOrange, bg="NONE" });
 hl(0, "@markup.raw.markdown_inline", { fg=c.vscOrange, bg="NONE" });
-hl(0, "@markup.link.label", { fg=c.vscLightBlue, bg="NONE", underline=opts.underline_links });
-hl(0, "@markup.link.url", { fg=c.vscFront, bg="NONE", underline=opts.underline_links });
+hl(0, "@markup.link.label", { fg=c.vscLightBlue, bg="NONE" });
+hl(0, "@markup.link.url", { fg=c.vscFront, bg="NONE", underline=true });
 hl(0, "@markup.list.checked", { link="Todo" });
 hl(0, "@markup.list.unchecked", { link="Todo" });
-hl(0, "@textReference", { fg=isDark and c.vscOrange or c.vscYellowOrange });
-hl(0, "@stringEscape", { fg=isDark and c.vscOrange or c.vscYellowOrange, bold=true });
+hl(0, "@textReference", { fg=c.vscOrange });
+hl(0, "@stringEscape", { fg=c.vscOrange, bold=true });
 
 hl(0, "@diff.plus", { link="DiffAdd" });
 hl(0, "@diff.minus", { link="DiffDelete" });
@@ -249,16 +250,16 @@ hl(0, "@regexp", { fg=c.vscRed, bg="NONE" });
 hl(0, "@decorator", { link="Identifier" });
 
 -- Markdown
-hl(0, "markdownBold", { fg=isDark and c.vscBlue or c.vscYellowOrange, bold=true });
+hl(0, "markdownBold", { fg=c.vscBlue, bold=true });
 hl(0, "markdownCode", { fg=c.vscOrange, bg="NONE" });
-hl(0, "markdownRule", { fg=isDark and c.vscBlue or c.vscYellowOrange, bold=true });
+hl(0, "markdownRule", { fg=c.vscBlue, bold=true });
 hl(0, "markdownCodeDelimiter", { fg=c.vscFront, bg="NONE" });
-hl(0, "markdownHeadingDelimiter", { fg=isDark and c.vscBlue or c.vscYellowOrange, bg="NONE" });
-hl(0, "markdownFootnote", { fg=isDark and c.vscOrange or c.vscYellowOrange, bg="NONE" });
-hl(0, "markdownFootnoteDefinition", { fg=isDark and c.vscOrange or c.vscYellowOrange });
+hl(0, "markdownHeadingDelimiter", { fg=c.vscBlue, bg="NONE" });
+hl(0, "markdownFootnote", { fg=c.vscOrange, bg="NONE" });
+hl(0, "markdownFootnoteDefinition", { fg=c.vscOrange });
 hl(0, "markdownUrl", { fg=c.vscFront, bg="NONE", underline=true });
-hl(0, "markdownLinkText", { fg=isDark and c.vscOrange or c.vscYellowOrange });
-hl(0, "markdownEscape", { fg=isDark and c.vscOrange or c.vscYellowOrange });
+hl(0, "markdownLinkText", { fg=c.vscOrange });
+hl(0, "markdownEscape", { fg=c.vscOrange });
 
 -- Asciidoc
 hl(0, "asciidocAttributeEntry", { fg=c.vscYellowOrange });
@@ -532,15 +533,11 @@ hl(0, "NvimTreeImageFile", { fg=c.vscViolet, bg="NONE" });
 hl(0, "NvimTreeEmptyFolderName", { fg=c.vscGray, bg="NONE" });
 hl(0, "NvimTreeFolderName", { fg=c.vscFront, bg="NONE" });
 hl(0, "NvimTreeSpecialFile", { fg=c.vscPink, bg="NONE", underline=true });
-hl(0, "NvimTreeNormal", { fg=c.vscFront, bg=opts.disable_nvimtree_bg and c.vscBack or c.vscLeftDark });
-hl(0, "NvimTreeCursorLine", { fg="NONE", bg=opts.disable_nvimtree_bg and c.vscCursorDarkDark or c.vscLeftMid });
-hl(0, "NvimTreeVertSplit", { fg=opts.disable_nvimtree_bg and c.vscSplitDark or c.vscBack, bg=c.vscBack });
-hl(0, "NvimTreeEndOfBuffer", { fg=opts.disable_nvimtree_bg and c.vscCursorDarkDark or c.vscLeftDark });
-hl(
-    0,
-    "NvimTreeOpenedFolderName",
-    { fg="NONE", bg=opts.disable_nvimtree_bg and c.vscCursorDarkDark or c.vscLeftDark }
-)
+hl(0, "NvimTreeNormal", { fg=c.vscFront, bg=c.vscLeftDark });
+hl(0, "NvimTreeCursorLine", { fg="NONE", bg=c.vscLeftMid });
+hl(0, "NvimTreeVertSplit", { fg=c.vscBack, bg=c.vscBack });
+hl(0, "NvimTreeEndOfBuffer", { fg=c.vscLeftDark });
+hl(0, "NvimTreeOpenedFolderName",{ fg="NONE", bg=c.vscLeftDark });
 hl(0, "NvimTreeGitRenamed", { fg=c.vscGitRenamed, bg="NONE" });
 hl(0, "NvimTreeGitIgnored", { fg=c.vscGitIgnored, bg="NONE" });
 hl(0, "NvimTreeGitDeleted", { fg=c.vscGitDeleted, bg="NONE" });
@@ -551,7 +548,7 @@ hl(0, "NvimTreeGitNew", { fg=c.vscGitAdded, bg="NONE" });
 
 -- Bufferline
 hl(0, "BufferLineIndicatorSelected", { fg=c.vscLeftDark, bg="NONE" });
-hl(0, "BufferLineFill", { fg="NONE", bg=opts.transparent and c.vscBack or c.vscLeftDark });
+hl(0, "BufferLineFill", { fg="NONE", bg=c.vscLeftDark });
 
 -- BarBar
 hl(0, "BufferCurrent", { fg=c.vscFront, bg=c.vscTabCurrent });
@@ -608,14 +605,14 @@ hl(0, "DiagnosticUnderlineError", { fg="NONE", bg="NONE", undercurl=true, sp=c.v
 hl(0, "DiagnosticUnderlineWarn", { fg="NONE", bg="NONE", undercurl=true, sp=c.vscYellow });
 hl(0, "DiagnosticUnderlineInfo", { fg="NONE", bg="NONE", undercurl=true, sp=c.vscBlue });
 hl(0, "DiagnosticUnderlineHint", { fg="NONE", bg="NONE", undercurl=true, sp=c.vscBlue });
-hl(0, "LspReferenceText", { fg="NONE", bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
-hl(0, "LspReferenceRead", { fg="NONE", bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
-hl(0, "LspReferenceWrite", { fg="NONE", bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
+hl(0, "LspReferenceText", { fg="NONE", bg=c.vscPopupHighlightGray });
+hl(0, "LspReferenceRead", { fg="NONE", bg=c.vscPopupHighlightGray });
+hl(0, "LspReferenceWrite", { fg="NONE", bg=c.vscPopupHighlightGray });
 
 -- COC.nvim
-hl(0, "CocHighlightText", { fg="NONE", bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
-hl(0, "CocHighlightRead", { fg="NONE", bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
-hl(0, "CocHighlightWrite", { fg="NONE", bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
+hl(0, "CocHighlightText", { fg="NONE", bg=c.vscPopupHighlightGray });
+hl(0, "CocHighlightRead", { fg="NONE", bg=c.vscPopupHighlightGray });
+hl(0, "CocHighlightWrite", { fg="NONE", bg=c.vscPopupHighlightGray });
 
 -- Nvim compe
 hl(0, "CmpItemKindVariable", { fg=c.vscLightBlue, bg="NONE" });
@@ -630,8 +627,8 @@ hl(0, "CmpItemKindConstructor", { fg=c.vscUiOrange, bg="NONE" });
 hl(0, "CmpItemMenu", { fg=c.vscPopupFront, bg="NONE" });
 hl(0, "CmpItemAbbr", { fg=c.vscFront, bg="NONE" });
 hl(0, "CmpItemAbbrDeprecated", { fg=c.vscCursorDark, bg=c.vscPopupBack, strikethrough=true });
-hl(0, "CmpItemAbbrMatch", { fg=isDark and c.vscMediumBlue or c.vscDarkBlue, bg="NONE", bold=true });
-hl(0, "CmpItemAbbrMatchFuzzy", { fg=isDark and c.vscMediumBlue or c.vscDarkBlue, bg="NONE", bold=true });
+hl(0, "CmpItemAbbrMatch", { fg=c.vscMediumBlue, bg="NONE", bold=true });
+hl(0, "CmpItemAbbrMatchFuzzy", { fg=c.vscMediumBlue, bg="NONE", bold=true });
 
 -- rcarriga/nvim-dap-ui
 -- Source: https://github.com/rcarriga/nvim-dap-ui/blob/master/lua/dapui/config/highlights.lua
@@ -680,11 +677,11 @@ hl(0, "DashboardKey", { fg=c.vscWhite, bg="NONE" });
 hl(0, "DashboardFooter", { fg=c.vscBlue, bg="NONE", italic=true });
 
 -- Illuminate
-hl(0, "illuminatedWord", { bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
-hl(0, "illuminatedCurWord", { bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
-hl(0, "IlluminatedWordText", { bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
-hl(0, "IlluminatedWordRead", { bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
-hl(0, "IlluminatedWordWrite", { bg=isDark and c.vscPopupHighlightGray or c.vscPopupHighlightLightBlue });
+hl(0, "illuminatedWord", { bg=c.vscPopupHighlightGray });
+hl(0, "illuminatedCurWord", { bg=c.vscPopupHighlightGray });
+hl(0, "IlluminatedWordText", { bg=c.vscPopupHighlightGray });
+hl(0, "IlluminatedWordRead", { bg=c.vscPopupHighlightGray });
+hl(0, "IlluminatedWordWrite", { bg=c.vscPopupHighlightGray });
 
 -- NeogitOrg/neogit
 hl(0, "NeogitDiffAdd", { fg=c.vscGitAdded, bg=c.vscDiffGreenDark });
