@@ -57,7 +57,7 @@ highlights:
   Statement: "purple"
   Conditional: "purple"
   Repeat: "purple"
-  Label: "cyan"
+  Label: "purple"
   Operator: "white"
   Keyword: "blue"
   Exception: "purple"
@@ -71,12 +71,13 @@ highlights:
   StorageClass: "cyan"
   Structure: "cyan"
   Typedef: "cyan"
-  Special: "blue"
+  # Special: "dark_yellow"
   SpecialComment: "green"
   Error: "error_red - br"
   Todo: "red - bi"
   Underlined: "light_blue . u"
   Cursor: "cursor_fg cursor_bg"
+  ConstructorIdentifier: "cyan"
 
   ColorColumn: "- cursor_grey"
   CursorLineNr: "white - b"
@@ -131,7 +132,7 @@ highlights:
   TSPunctBracket: "white"
   TSPunctSpecial: "white"
   # Constants
-  TSConstant: "light_blue"
+  TSConstant: "vivid_blue"
   TSConstBuiltin: "light_blue"
   # Not sure about this guy
   TSConstMacro: "blue"
@@ -140,11 +141,12 @@ highlights:
   TSStringEscape: "dark_yellow"
   TSCharacter: "orange"
   TSNumber: "light_green"
-  TSBoolean: "light_green"
+  TSBoolean: "blue"
   TSFloat: "light_green"
   TSAnnotation: "yellow"
-  TSAttribute: "cyan"
+  TSAttribute: "yellow"
   TSNamespace: "cyan"
+  TSModule: "cyan"
   # Functions
   TSFuncBuiltin: "yellow"
   TSFunction: "yellow"
@@ -181,8 +183,9 @@ highlights:
   TSLiteral: "orange"
   TSURI: "- - u"
   # Tags
-  TSTag: "blue"
-  TSTagDelimiter: "line_grey"
+  TSTag: "white"
+  TSTagDelimiter: "white"
+  TSTagArrribute: "white"
   TSQueryLinterError: "warning_orange"
   # -- END Treesitter --
 
@@ -314,9 +317,9 @@ highlights:
   QuickScopeSecondary: "#eF5F70 - u"
 
   MatchWord: "- - u"
-  MatchParen: "- - u"
+  MatchParen: "white"
   MatchWordCur: "- - u"
-  MatchParenCur: "- - u"
+  MatchParenCur: "white"
 
   NvimTreeImageFile: "purple"
   NvimTreeGitDirty: "git_green"
