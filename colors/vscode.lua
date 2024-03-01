@@ -1,18 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 local hl=vim.api.nvim_set_hl;
 
 hl(0, "Normal", { fg="#D4D4D4", bg="#1E1E1E" });
@@ -28,7 +13,7 @@ hl(0, "DiffText", { fg="NONE", bg="#6F1313" });
 hl(0, "EndOfBuffer", { fg="#1E1E1E", bg="NONE" });
 hl(0, "ErrorMsg", { fg="#F44747", bg="#1E1E1E" });
 hl(0, "VertSplit", { fg="#444444", bg="#1E1E1E" });
-hl(0, "WinSeparator", { link="undefined" });
+hl(0, "WinSeparator", { link="VertSplit" });
 hl(0, "Folded", { fg="NONE", bg="#202d39" });
 hl(0, "FoldColumn", { fg="#5A5A5A", bg="#1E1E1E" });
 hl(0, "SignColumn", { fg="NONE", bg="#1E1E1E" });
@@ -123,7 +108,7 @@ hl(0, "@attribute.builtin", { fg="#4EC9B0", bg="NONE" });
 hl(0, "@module", { fg="#4EC9B0", bg="NONE" });
 hl(0, "@function", { fg="#DCDCAA", bg="NONE" });
 hl(0, "@function.builtin", { fg="#DCDCAA", bg="NONE" });
-hl(0, "@function.macro", { fg="#DCDCAA", bg="NONE" });
+hl(0, "@function.macro", { fg="#569CD6", bg="NONE" });
 hl(0, "@function.method", { fg="#DCDCAA", bg="NONE" });
 hl(0, "@variable", { fg="#9CDCFE", bg="NONE" });
 hl(0, "@variable.builtin", { fg="#9CDCFE", bg="NONE" });
@@ -160,26 +145,27 @@ hl(0, "@markup.raw.markdown", { fg="#CE9178", bg="NONE" });
 hl(0, "@markup.raw.markdown_inline", { fg="#CE9178", bg="NONE" });
 hl(0, "@markup.link.label", { fg="#9CDCFE", bg="NONE" });
 hl(0, "@markup.link.url", { fg="#D4D4D4", bg="NONE", underline=true });
-hl(0, "@markup.list.checked", { link="undefined" });
-hl(0, "@markup.list.unchecked", { link="undefined" });
+hl(0, "@markup.list.checked", { link="Todo" });
+hl(0, "@markup.list.unchecked", { link="Todo" });
 hl(0, "@textReference", { fg="#CE9178" });
 hl(0, "@stringEscape", { fg="#CE9178", bold=true });
 
-hl(0, "@diff.plus", { link="undefined" });
-hl(0, "@diff.minus", { link="undefined" });
-hl(0, "@diff.delta", { link="undefined" });
+hl(0, "@diff.plus", { link="DiffAdd" });
+hl(0, "@diff.minus", { link="DiffDelete" });
+hl(0, "@diff.delta", { link="diffChange" });
 
 hl(0, "@lsp.typemod.type.defaultLibrary", { link="@type.builtin" });
 hl(0, "@lsp.type.type", { link="@type" });
 hl(0, "@lsp.type.typeParameter", { link="@type" });
 hl(0, "@lsp.type.macro", { link="@constant" });
 hl(0, "@lsp.type.enumMember", { link="@constant" });
-hl(0, "@event", { link="undefined" });
-hl(0, "@interface", { link="undefined" });
-hl(0, "@modifier", { link="undefined" });
+hl(0, "@event", { link="Identifier" });
+hl(0, "@interface", { link="Identifier" });
+hl(0, "@modifier", { link="Identifier" });
 hl(0, "@regexp", { fg="#F44747", bg="NONE" });
-hl(0, "@decorator", { link="undefined" });
+hl(0, "@decorator", { link="Identifier" });
 
+-- MD
 hl(0, "markdownBold", { fg="#569CD6", bold=true });
 hl(0, "markdownCode", { fg="#CE9178", bg="NONE" });
 hl(0, "markdownRule", { fg="#569CD6", bold=true });
@@ -191,6 +177,7 @@ hl(0, "markdownUrl", { fg="#D4D4D4", bg="NONE", underline=true });
 hl(0, "markdownLinkText", { fg="#CE9178" });
 hl(0, "markdownEscape", { fg="#CE9178" });
 
+-- ASCCI
 hl(0, "asciidocAttributeEntry", { fg="#D7BA7D" });
 hl(0, "asciidocAttributeList", { fg="#C586C0" });
 hl(0, "asciidocAttributeRef", { fg="#D7BA7D" });
@@ -206,24 +193,27 @@ hl(0, "asciidocAdmonition", { fg="#CE9178" });
 hl(0, "asciidocQuotedEmphasized", { fg="#569CD6", italic=true });
 hl(0, "asciidocQuotedEmphasized2", { fg="#569CD6", italic=true });
 hl(0, "asciidocQuotedEmphasizedItalic", { fg="#569CD6", italic=true });
-hl(0, "asciidocBackslash", { link="undefined" });
-hl(0, "asciidocQuotedBold", { link="undefined" });
-hl(0, "asciidocQuotedMonospaced2", { link="undefined" });
-hl(0, "asciidocQuotedUnconstrainedBold", { link="undefined" });
-hl(0, "asciidocQuotedUnconstrainedEmphasized", { link="undefined" });
-hl(0, "asciidocURL", { link="undefined" });
+hl(0, "asciidocBackslash", { link="Keyword" });
+hl(0, "asciidocQuotedBold", { link="markdownBold" });
+hl(0, "asciidocQuotedMonospaced2", { link="asciidocQuotedMonospaced" });
+hl(0, "asciidocQuotedUnconstrainedBold", { link="asciidocQuotedBold" });
+hl(0, "asciidocQuotedUnconstrainedEmphasized", { link="asciidocQuotedEmphasized" });
+hl(0, "asciidocURL", { link="markdownUrl" });
 
+-- JSON
 hl(0, "jsonKeyword", { fg="#9CDCFE", bg="NONE" });
 hl(0, "jsonEscape", { fg="#D7BA7D", bg="NONE" });
 hl(0, "jsonNull", { fg="#569CD6", bg="NONE" });
 hl(0, "jsonBoolean", { fg="#569CD6", bg="NONE" });
 
+-- HTML
 hl(0, "htmlTag", { fg="#808080", bg="NONE" });
 hl(0, "htmlEndTag", { fg="#808080", bg="NONE" });
 hl(0, "htmlTagName", { fg="#569CD6", bg="NONE" });
 hl(0, "htmlSpecialTagName", { fg="#569CD6", bg="NONE" });
 hl(0, "htmlArg", { fg="#9CDCFE", bg="NONE" });
 
+-- PHP
 hl(0, "phpStaticClasses", { fg="#4EC9B0", bg="NONE" });
 hl(0, "phpMethod", { fg="#DCDCAA", bg="NONE" });
 hl(0, "phpClass", { fg="#4EC9B0", bg="NONE" });
@@ -233,6 +223,7 @@ hl(0, "phpUseClass", { fg="#4EC9B0", bg="NONE" });
 hl(0, "phpRegion", { fg="#4EC9B0", bg="NONE" });
 hl(0, "phpMethodsVar", { fg="#9CDCFE", bg="NONE" });
 
+-- CSS
 hl(0, "cssBraces", { fg="#D4D4D4", bg="NONE" });
 hl(0, "cssInclude", { fg="#C586C0", bg="NONE" });
 hl(0, "cssTagName", { fg="#D7BA7D", bg="NONE" });
@@ -255,6 +246,7 @@ hl(0, "cssUnitDecorators", { fg="#CE9178", bg="NONE" });
 hl(0, "cssStyle", { fg="#9CDCFE", bg="NONE" });
 hl(0, "cssImportant", { fg="#569CD6", bg="NONE" });
 
+-- Javascript
 hl(0, "jsVariableDef", { fg="#9CDCFE", bg="NONE" });
 hl(0, "jsFuncArgs", { fg="#9CDCFE", bg="NONE" });
 hl(0, "jsFuncBlock", { fg="#9CDCFE", bg="NONE" });
@@ -278,6 +270,7 @@ hl(0, "jsParenIfElse", { fg="#9CDCFE", bg="NONE" });
 hl(0, "jsSpreadOperator", { fg="#569CD6", bg="NONE" });
 hl(0, "jsSpreadExpression", { fg="#9CDCFE", bg="NONE" });
 
+-- Typescript
 hl(0, "typescriptLabel", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptExceptions", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptBraces", { fg="#D4D4D4", bg="NONE" });
@@ -289,7 +282,7 @@ hl(0, "typescriptLogicSymbols", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptImport", { fg="#C586C0", bg="NONE" });
 hl(0, "typescriptBOM", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptVariableDeclaration", { fg="#9CDCFE", bg="NONE" });
-hl(0, "typescriptVariable", { fg="#569CD6", bg="NONE" });
+hl(0, "typescriptVariable", { fg="#4FC1FE", bg="NONE" });
 hl(0, "typescriptExport", { fg="#C586C0", bg="NONE" });
 hl(0, "typescriptAliasDeclaration", { fg="#4EC9B0", bg="NONE" });
 hl(0, "typescriptAliasKeyword", { fg="#569CD6", bg="NONE" });
@@ -298,17 +291,17 @@ hl(0, "typescriptAccessibilityModifier", { fg="#569CD6", bg="NONE" });
 hl(0, "typescriptOperator", { fg="#569CD6", bg="NONE" });
 hl(0, "typescriptArrowFunc", { fg="#569CD6", bg="NONE" });
 hl(0, "typescriptMethodAccessor", { fg="#569CD6", bg="NONE" });
-hl(0, "typescriptMember", { fg="#DCDCAA", bg="NONE" });
+hl(0, "typescriptMember", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptTypeReference", { fg="#4EC9B0", bg="NONE" });
 hl(0, "typescriptTemplateSB", { fg="#D7BA7D", bg="NONE" });
 hl(0, "typescriptArrowFuncArg", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptParamImpl", { fg="#9CDCFE", bg="NONE" });
-hl(0, "typescriptFuncComma", { fg="#9CDCFE", bg="NONE" });
-hl(0, "typescriptCastKeyword", { fg="#9CDCFE", bg="NONE" });
+hl(0, "typescriptFuncComma", { fg="#D4D4D4", bg="NONE" });
+hl(0, "typescriptCastKeyword", { fg="#D4D4D4", bg="NONE" });
 hl(0, "typescriptCall", { fg="#569CD6", bg="NONE" });
 hl(0, "typescriptCase", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptReserved", { fg="#C586C0", bg="NONE" });
-hl(0, "typescriptDefault", { fg="#9CDCFE", bg="NONE" });
+hl(0, "typescriptDefault", { fg="#C586C0", bg="NONE" });
 hl(0, "typescriptDecorator", { fg="#DCDCAA", bg="NONE" });
 hl(0, "typescriptPredefinedType", { fg="#4EC9B0", bg="NONE" });
 hl(0, "typescriptClassHeritage", { fg="#4EC9B0", bg="NONE" });
@@ -321,7 +314,7 @@ hl(0, "typescriptClassBlock", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptFuncCallArg", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptIndexExpr", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptConditionalParen", { fg="#9CDCFE", bg="NONE" });
-hl(0, "typescriptArray", { fg="#DCDCAA", bg="NONE" });
+hl(0, "typescriptArray", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptES6SetProp", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptObjectLiteral", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptTypeParameter", { fg="#4EC9B0", bg="NONE" });
@@ -329,7 +322,7 @@ hl(0, "typescriptEnumKeyword", { fg="#569CD6", bg="NONE" });
 hl(0, "typescriptEnum", { fg="#4EC9B0", bg="NONE" });
 hl(0, "typescriptLoopParen", { fg="#9CDCFE", bg="NONE" });
 hl(0, "typescriptParenExp", { fg="#9CDCFE", bg="NONE" });
-hl(0, "typescriptModule", { fg="#9CDCFE", bg="NONE" });
+hl(0, "typescriptModule", { fg="#4EC9B0", bg="NONE" });
 hl(0, "typescriptAmbientDeclaration", { fg="#569CD6", bg="NONE" });
 hl(0, "typescriptFuncTypeArrow", { fg="#569CD6", bg="NONE" });
 hl(0, "typescriptInterfaceHeritage", { fg="#4EC9B0", bg="NONE" });
@@ -389,6 +382,7 @@ hl(0, "pythonTodo", { fg="#569CD6", bg="NONE" });
 hl(0, "pythonClassVar", { fg="#569CD6", bg="NONE" });
 hl(0, "pythonClassDef", { fg="#4EC9B0", bg="NONE" });
 
+-- tex
 hl(0, "texStatement", { fg="#569CD6", bg="NONE" });
 hl(0, "texBeginEnd", { fg="#DCDCAA", bg="NONE" });
 hl(0, "texBeginEndName", { fg="#9CDCFE", bg="NONE" });
@@ -397,6 +391,7 @@ hl(0, "texBeginEndModifier", { fg="#9CDCFE", bg="NONE" });
 hl(0, "texDocType", { fg="#C586C0", bg="NONE" });
 hl(0, "texDocTypeArgs", { fg="#9CDCFE", bg="NONE" });
 
+-- git
 hl(0, "gitcommitHeader", { fg="#808080", bg="NONE" });
 hl(0, "gitcommitOnBranch", { fg="#808080", bg="NONE" });
 hl(0, "gitcommitBranch", { fg="#C586C0", bg="NONE" });
@@ -409,6 +404,7 @@ hl(0, "gitcommitOverflow", { fg="#F44747", bg="NONE" });
 hl(0, "gitcommitSummary", { fg="#C586C0", bg="NONE" });
 hl(0, "gitcommitBlank", { fg="#C586C0", bg="NONE" });
 
+-- lua
 hl(0, "luaFuncCall", { fg="#DCDCAA", bg="NONE" });
 hl(0, "luaFuncArgName", { fg="#9CDCFE", bg="NONE" });
 hl(0, "luaFuncKeyword", { fg="#C586C0", bg="NONE" });
@@ -425,6 +421,7 @@ hl(0, "sqlOperator", { fg="#C586C0", bg="NONE" });
 hl(0, "yamlKey", { fg="#569CD6", bg="NONE" });
 hl(0, "yamlConstant", { fg="#569CD6", bg="NONE" });
 
+-- git
 hl(0, "GitGutterAdd", { fg="#6A9955", bg="NONE" });
 hl(0, "GitGutterChange", { fg="#DCDCAA", bg="NONE" });
 hl(0, "GitGutterDelete", { fg="#F44747", bg="NONE" });
@@ -436,6 +433,7 @@ hl(0, "GitSignsAddLn", { fg="#1E1E1E", bg="#6A9955" });
 hl(0, "GitSignsChangeLn", { fg="#1E1E1E", bg="#DCDCAA" });
 hl(0, "GitSignsDeleteLn", { fg="#1E1E1E", bg="#F44747" });
 
+-- Nvim fs
 hl(0, "NvimTreeRootFolder", { fg="#D4D4D4", bg="NONE", bold=true });
 hl(0, "NvimTreeGitDirty", { fg="#DCDCAA", bg="NONE" });
 hl(0, "NvimTreeGitNew", { fg="#6A9955", bg="NONE" });
@@ -573,7 +571,7 @@ hl(0, "DashboardHeader", { fg="#569CD6", bg="NONE" });
 hl(0, "DashboardDesc", { fg="#D7BA7D", bg="NONE" });
 hl(0, "DashboardIcon", { fg="#D7BA7D", bg="NONE" });
 hl(0, "DashboardShortCut", { fg="#C586C0", bg="NONE" });
-hl(0, "DashboardKey", { fg="undefined", bg="NONE" });
+hl(0, "DashboardKey", { fg="#D4D4D4", bg="NONE" });
 hl(0, "DashboardFooter", { fg="#569CD6", bg="NONE", italic=true });
 
 hl(0, "illuminatedWord", { bg="#343B41" });
@@ -631,10 +629,9 @@ hl(0, "SymbolsOutlineConnector", { fg="#5A5A5A", bg="NONE" });
 
 
 
-
-hl(0, "diffAdded", { link="undefined" });
-hl(0, "diffChanged", { link="undefined" });
-hl(0, "diffRemoved", { link="undefined" });
+hl(0, "diffAdded", { link="DiffAdd" });
+hl(0, "diffChanged", { link="DiffChange" });
+hl(0, "diffRemoved", { link="DiffDelete" });
 hl(0, "@parameter", { link="@variable.parameter" });
 hl(0, "@field", { link="@variable.member" });
 hl(0, "@string.regex", { link="@string.regexp" });
@@ -659,18 +656,18 @@ hl(0, "@text.warning", { link="@comment.warning" });
 hl(0, "@text.danger", { link="@comment.error" });
 hl(0, "@text.diff.add", { link="@diff.plus" });
 hl(0, "@text.diff.delete", { link="@diff.minus" });
-hl(0, "CompeDocumentation", { link="undefined" });
-hl(0, "CompeDocumentationBorder", { link="undefined" });
-hl(0, "CmpItemKind", { link="undefined" });
-hl(0, "CmpItemKindClass", { link="undefined" });
-hl(0, "CmpItemKindModule", { link="undefined" });
+hl(0, "CompeDocumentation", { link="Pmenu" });
+hl(0, "CompeDocumentationBorder", { link="Pmenu" });
+hl(0, "CmpItemKind", { link="Pmenu" });
+hl(0, "CmpItemKindClass", { link="CmpItemKindConstructor" });
+hl(0, "CmpItemKindModule", { link="CmpItemKindKeyword" });
 hl(0, "CmpItemKindOperator", { link="@operator" });
 hl(0, "CmpItemKindReference", { link="@variable.parameter.reference" });
 hl(0, "CmpItemKindValue", { link="@variable.member" });
 hl(0, "CmpItemKindField", { link="@variable.member" });
 hl(0, "CmpItemKindEnum", { link="@variable.member" });
 hl(0, "CmpItemKindSnippet", { link="@text" });
-hl(0, "CmpItemKindColor", { link="undefined" });
+hl(0, "CmpItemKindColor", { link="cssColor" });
 hl(0, "CmpItemKindFile", { link="@text.uri" });
 hl(0, "CmpItemKindFolder", { link="@text.uri" });
 hl(0, "CmpItemKindEvent", { link="@constant" });
