@@ -3,7 +3,7 @@ return {
   event = "InsertEnter",
 
   opts = function()
-    return require "configs.cmp"
+    return require "nvchad.configs.cmp"
   end,
 
   config = function(_, opts)

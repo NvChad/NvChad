@@ -3,8 +3,7 @@ return {
 
   {
     "NvChad/base46",
-    -- branch = "v3.0",
-    dir = "~/projects/base46/",
+    branch = "v3.0",
     build = function()
       require("base46").load_all_highlights()
     end,
@@ -12,8 +11,7 @@ return {
 
   {
     "NvChad/ui",
-    -- branch = "v3.0",
-    dir = "~/projects/ui/",
+    branch = "v3.0",
     lazy = false,
     config = function()
       require "nvchad"

@@ -2,7 +2,7 @@ local opt = vim.opt
 local g = vim.g
 
 -------------------------------------- globals -----------------------------------------
-g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+-- g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 g.toggle_theme_icon = "   "
 
 -------------------------------------- options ------------------------------------------
@@ -47,7 +47,7 @@ opt.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 
-g.mapleader = " "
+-- g.mapleader = " "
 
 -- disable some default providers
 vim.g["loaded_node_provider"] = 0
