@@ -25,15 +25,15 @@ M.ui = {
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
     separator_style = "default",
-    overriden_modules = nil,
+    order=nil,
   },
 
   -- lazyload it when there are 1+ buffers
   tabufline = {
-    show_numbers = false,
     enabled = true,
     lazyload = true,
-    overriden_modules = nil,
+    order= {'treeOffset', 'buffers' , 'tabs', 'btns'},
+    modules = nil,
   },
 
   -- nvdash (dashboard)
@@ -86,8 +86,6 @@ M.ui = {
   },
 }
 
-M.plugins = "" -- path i.e "custom.plugins", so make custom/plugins.lua file
-
 M.base46 = {
   integrations = {
     "blankline",
@@ -110,10 +108,6 @@ M.base46 = {
   },
 }
 
-local chadrc_exists, chadrc = pcall(require, "custom.chadrc")
-
-if chadrc_exists then
-  M = vim.tbl_deep_extend("force", M, chadrc)
-end
+M = vim.tbl_deep_extend("force", M, require('chadrc'))
 
 return M

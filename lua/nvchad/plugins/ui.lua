@@ -10,7 +10,7 @@ return {
 
   {
     "NvChad/ui",
-    branch = "v3.0",
+    branch = "starter",
     lazy = false,
     config = function()
       require "nvchad"
