@@ -1,10 +1,11 @@
 
 local plugins={
   {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
     ops={
       ensure_installed={
-        'rust-analyzer'
+        "rust-analyzer",
+        "clangd"
       }
     }
   },
@@ -12,7 +13,7 @@ local plugins={
     "neovim/nvim-lspconfig",
     config=function ()
       require("plugins.configs.lspconfig")
-      require("plugins.configs.lspconfig")
+      require("custom.configs.lspconfig")
     end
   },
   {
@@ -54,13 +55,13 @@ local plugins={
     end
   },
   {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
   },
   {
-    'romgrk/barbar.nvim',
+    "romgrk/barbar.nvim",
     dependencies={
-      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+      "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+      "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
     },
     init=function()
       vim.g.barbar_auto_setup=false
@@ -71,11 +72,14 @@ local plugins={
       -- insert_at_start=true,
       -- …etc.
     },
-    version='^1.0.0', -- optional: only update when a new 1.x version is released
+    version="^1.0.0", -- optional: only update when a new 1.x version is released
   },
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies={ 'nvim-tree/nvim-web-devicons' }
+    "nvim-lualine/lualine.nvim",
+    dependencies={ "nvim-tree/nvim-web-devicons" }
+  },
+  {
+    "deoplete-plugins/deoplete-clang"
   }
 };
 
