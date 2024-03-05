@@ -54,7 +54,7 @@ end, { desc = "Comment Toggle" })
 map(
   "v",
   "<leader>/",
-  "<ESC>:lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+  "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
   { desc = "Comment Toggle" }
 )
 
@@ -132,4 +132,4 @@ map("n", "<leader>cc", function()
   end
 end, { desc = "Blankline Jump to current context" })
 
-pcall(require, "custom.mappings")
+require "custom.mappings"
