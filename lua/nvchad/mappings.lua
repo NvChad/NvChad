@@ -131,5 +131,3 @@ map("n", "<leader>cc", function()
     end
   end
 end, { desc = "Blankline Jump to current context" })
-
-require "custom.mappings"
