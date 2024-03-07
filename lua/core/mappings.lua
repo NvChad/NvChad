@@ -16,6 +16,9 @@ M.general = {
   },
 
   n = {
+    --C/C++ headers
+    ["<leader>ko"] = {":ClangdSwitchSourceHeader<CR>", "Switch header/source"},
+
     ["<Esc>"] = { "<cmd> noh <CR>", "Clear highlights" },
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "Window left" },
@@ -130,14 +133,14 @@ M.lspconfig = {
   -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
   n = {
-    ["gD"] = {
+    ["<leader>gD"] = {
       function()
         vim.lsp.buf.declaration()
       end,
       "LSP declaration",
     },
 
-    ["gd"] = {
+    ["<leader>gd"] = {
       function()
         vim.lsp.buf.definition()
       end,
@@ -258,7 +261,7 @@ M.nvimtree = {
 
   n = {
     -- toggle
-    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+    ["<leader>pv"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
 
     -- focus
     ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
@@ -270,9 +273,9 @@ M.telescope = {
 
   n = {
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>sf"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
-    ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+    ["<leader>lg"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
