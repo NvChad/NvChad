@@ -23,7 +23,7 @@ M.on_attach = function(client, bufnr)
   map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Lsp Go to type definition")
 
   map("n", "<leader>ra", function()
-    require "nvchad.renamer"()
+    require "nvchad.lsp.renamer"()
   end, opts "Lsp NvRenamer")
 
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Lsp Code action")
@@ -31,7 +31,7 @@ M.on_attach = function(client, bufnr)
 
   -- setup signature popup
   if conf.signature and client.server_capabilities.signatureHelpProvider then
-    require("nvchad.signature").setup(client, bufnr)
+    require("nvchad.lsp.signature").setup(client, bufnr)
   end
 end
 
