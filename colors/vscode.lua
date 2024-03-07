@@ -61,7 +61,7 @@ hl(0, "Exception", { fg="#C586C0", bg="NONE" });
 hl(0, "PreProc", { fg="#C586C0", bg="NONE" });
 hl(0, "Include", { fg="#C586C0", bg="NONE" });
 hl(0, "Define", { fg="#C586C0", bg="NONE" });
-hl(0, "Macro", { fg="#C586C0", bg="NONE" });
+hl(0, "Macro", { fg="#DCDCAA", bg="NONE" });
 hl(0, "Type", { fg="#569CD6", bg="NONE" });
 hl(0, "StorageClass", { fg="#569CD6", bg="NONE" });
 hl(0, "Structure", { fg="#4EC9B0", bg="NONE" });
@@ -94,8 +94,8 @@ hl(0, "@comment.note", { fg="#4EC9B0", bg="NONE", bold=true });
 hl(0, "@comment.warning", { fg="#D7BA7D", bg="NONE", bold=true });
 hl(0, "@comment.error", { fg="#F44747", bg="NONE", bold=true });
 hl(0, "@constant", { fg="#4FC1FE", bg="NONE" });
-hl(0, "@constant.builtin", { fg="#569CD6", bg="NONE" });
-hl(0, "@constant.macro", { fg="#4EC9B0", bg="NONE" });
+hl(0, "@constant.builtin", { fg="#4FC1FE", bg="NONE" });
+hl(0, "@constant.macro", { fg="#569CD6", bg="NONE" });
 hl(0, "@string.regexp", { fg="#CE9178", bg="NONE" });
 hl(0, "@string", { fg="#CE9178", bg="NONE" });
 hl(0, "@character", { fg="#CE9178", bg="NONE" });
@@ -163,7 +163,7 @@ hl(0, "@event", { link="Identifier" });
 hl(0, "@interface", { link="Identifier" });
 hl(0, "@modifier", { link="Identifier" });
 hl(0, "@regexp", { fg="#F44747", bg="NONE" });
-hl(0, "@decorator", { link="Identifier" });
+hl(0, "@decorator", { fg="#D4D4D4", bg="NONE"  });
 
 -- MD
 hl(0, "markdownBold", { fg="#569CD6", bold=true });
@@ -334,6 +334,12 @@ hl(0, "typescriptAsyncFuncKeyword", { fg="#569CD6", bg="NONE" });
 hl(0, "typescriptFuncKeyword", { fg="#569CD6", bg="NONE" });
 hl(0, "typescriptGlobalMethod", { fg="#DCDCAA", bg="NONE" });
 hl(0, "typescriptPromiseMethod", { fg="#DCDCAA", bg="NONE" });
+
+-- rust
+hl(0,"@function.macro.rust", { fg="#DCDCAA", bg="NONE" });
+hl(0,"@include.rust", { fg="#569CD6", bg="NONE" });
+hl(0,"@keyword.coroutine.rust", { fg="#C586C0", bg="NONE" });
+
 
 hl(0, "xmlTag", { fg="#569CD6", bg="NONE" });
 hl(0, "xmlTagName", { fg="#569CD6", bg="NONE" });
