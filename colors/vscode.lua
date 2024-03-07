@@ -70,7 +70,7 @@ hl(0, "Special", { fg="#D7BA7D", bg="NONE" });
 hl(0, "SpecialChar", { fg="#D4D4D4", bg="NONE" });
 hl(0, "Tag", { fg="#D4D4D4", bg="NONE" });
 hl(0, "Delimiter", { fg="#D4D4D4", bg="NONE" });
-hl(0, "SpecialComment", { fg="#6A9955", bg="NONE" });
+hl(0, "SpecialComment", { fg="#5A5A5A", bg="NONE" });
 hl(0, "Debug", { fg="#D4D4D4", bg="NONE" });
 hl(0, "Underlined", { fg="NONE", bg="NONE", underline=true });
 hl(0, "Conceal", { fg="#D4D4D4", bg="#1E1E1E" });
@@ -338,7 +338,7 @@ hl(0, "typescriptPromiseMethod", { fg="#DCDCAA", bg="NONE" });
 -- rust
 hl(0,"@function.macro.rust", { fg="#DCDCAA", bg="NONE" });
 hl(0,"@include.rust", { fg="#569CD6", bg="NONE" });
-hl(0,"@keyword.coroutine.rust", { fg="#C586C0", bg="NONE" });
+hl(0,"@keyword.coroutine.await", { fg="#C586C0", bg="NONE" });
 
 
 hl(0, "xmlTag", { fg="#569CD6", bg="NONE" });
