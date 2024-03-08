@@ -25,14 +25,14 @@ M.ui = {
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
     separator_style = "default",
-    order=nil,
+    order = nil,
   },
 
   -- lazyload it when there are 1+ buffers
   tabufline = {
     enabled = true,
     lazyload = true,
-    order= {'treeOffset', 'buffers' , 'tabs', 'btns'},
+    order = { "treeOffset", "buffers", "tabs", "btns" },
     modules = nil,
   },
 
@@ -80,9 +80,6 @@ M.ui = {
       height = 0.4,
       border = "single",
     },
-    behavior = {
-      auto_insert = true,
-    },
   },
 }
 
@@ -108,6 +105,4 @@ M.base46 = {
   },
 }
 
-M = vim.tbl_deep_extend("force", M, require('chadrc'))
-
-return M
+return vim.tbl_deep_extend("force", M, require('chadrc'))

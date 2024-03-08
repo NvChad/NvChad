@@ -84,20 +84,22 @@ map(
 -- terminal
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal Escape terminal mode" })
 
+-- new terminals
 map("n", "<leader>h", function()
   require("nvchad.term").new { pos = "sp", size = 0.3 }
 end, { desc = "Terminal New horizontal term" })
 
 map("n", "<leader>v", function()
   require("nvchad.term").new { pos = "vsp", size = 0.3 }
-end, { desc = "Terminal New vertical term" })
+end, { desc = "Terminal New vertical window" })
 
+-- toggleable
 map({ "n", "t" }, "<A-v>", function()
   require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm", size = 0.3 }
 end, { desc = "Terminal Toggleable vertical term" })
 
 map({ "n", "t" }, "<A-h>", function()
-  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm", size = 0.2 }
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm", size = 0.3 }
 end, { desc = "Terminal New horizontal term" })
 
 map({ "n", "t" }, "<A-i>", function()
