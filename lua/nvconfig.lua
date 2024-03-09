@@ -10,7 +10,6 @@ M.ui = {
   theme = "onedark", -- default theme
   transparency = false,
 
-  -- cmp themeing
   cmp = {
     icons = true,
     lspkind_text = true,
@@ -26,6 +25,7 @@ M.ui = {
     -- round and block will work for minimal theme only
     separator_style = "default",
     order = nil,
+    modules = nil,
   },
 
   -- lazyload it when there are 1+ buffers
@@ -36,7 +36,6 @@ M.ui = {
     modules = nil,
   },
 
-  -- nvdash (dashboard)
   nvdash = {
     load_on_startup = false,
 
@@ -70,7 +69,7 @@ M.ui = {
   },
 
   term = {
-    hl = "Normal:term,WinSeparator:WinSeparator",
+    -- hl = "Normal:term,WinSeparator:WinSeparator",
     sizes = { sp = 0.3, vsp = 0.2 },
     float = {
       relative = "editor",
@@ -105,4 +104,4 @@ M.base46 = {
   },
 }
 
-return vim.tbl_deep_extend("force", M, require('chadrc'))
+return vim.tbl_deep_extend("force", M, require "chadrc")
