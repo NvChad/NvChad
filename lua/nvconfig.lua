@@ -91,7 +91,6 @@ M.base46 = {
     "git",
     "lsp",
     "mason",
-    "nvchad_updater",
     "nvcheatsheet",
     "nvdash",
     "nvimtree",
