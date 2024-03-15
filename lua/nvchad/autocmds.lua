@@ -27,11 +27,9 @@ autocmd("BufWritePost", {
     local config = require "nvconfig"
 
     -- statusline
-    if config.ui.statusline.theme ~= "custom" then
-      require("plenary.reload").reload_module("nvchad.stl.utils")
-      require("plenary.reload").reload_module("nvchad.stl." .. config.ui.statusline.theme)
-      vim.opt.statusline = "%!v:lua.require('nvchad.stl." .. config.ui.statusline.theme .. "')()"
-    end
+    require("plenary.reload").reload_module "nvchad.stl.utils"
+    require("plenary.reload").reload_module("nvchad.stl." .. config.ui.statusline.theme)
+    vim.opt.statusline = "%!v:lua.require('nvchad.stl." .. config.ui.statusline.theme .. "')()"
 
     -- tabufline
     if config.ui.tabufline.enabled then

@@ -2,7 +2,7 @@ local M = {}
 local map = vim.keymap.set
 local conf = require("nvconfig").ui.lsp
 
--- export on_attach & capabilities for custom lspconfigs
+-- export on_attach & capabilities
 M.on_attach = function(client, bufnr)
   local function opts(desc)
     return { buffer = bufnr, desc = desc }
