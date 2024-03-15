@@ -119,9 +119,6 @@ return {
       { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
       { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
     },
-    init = function()
-      vim.g.comment_maps = true
-    end,
     config = function(_, opts)
       require("Comment").setup(opts)
     end,
