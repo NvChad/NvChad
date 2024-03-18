@@ -2,6 +2,19 @@ return {
 
   "nvim-lua/plenary.nvim",
 
+  -- formatting!
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+      },
+    },
+    config = function(_, opts)
+      require("conform").setup(opts)
+    end,
+  },
+
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
