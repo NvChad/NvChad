@@ -63,10 +63,7 @@ M.ui = {
 
   cheatsheet = { theme = "grid" }, -- simple/grid
 
-  lsp = {
-    signature = true,
-    semantic_tokens = false,
-  },
+  lsp = { signature = true },
 
   term = {
     -- hl = "Normal:term,WinSeparator:WinSeparator",
@@ -83,24 +80,7 @@ M.ui = {
 }
 
 M.base46 = {
-  integrations = {
-    "blankline",
-    "cmp",
-    "defaults",
-    "devicons",
-    "git",
-    "lsp",
-    "mason",
-    "nvcheatsheet",
-    "nvdash",
-    "nvimtree",
-    "statusline",
-    "syntax",
-    "treesitter",
-    "tbline",
-    "telescope",
-    "whichkey",
-  },
+  integrations = {},
 }
 
 return vim.tbl_deep_extend("force", M, require "chadrc")
