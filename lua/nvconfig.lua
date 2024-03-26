@@ -66,7 +66,7 @@ M.ui = {
   lsp = { signature = true },
 
   term = {
-    -- hl = "Normal:term,WinSeparator:WinSeparator",
+    hl = "Normal:term,WinSeparator:WinSeparator",
     sizes = { sp = 0.3, vsp = 0.2 },
     float = {
       relative = "editor",
