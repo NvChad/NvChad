@@ -63,5 +63,12 @@ local plugins = {
         -- lazy = false,
         ft = "fsharp",
     },
+    {
+      "preservim/vim-markdown",
+      ft = "markdown",
+      dependencies = {
+        "godlygeek/tabular"
+      }
+    }
 }
 return plugins
