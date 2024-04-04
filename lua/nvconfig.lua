@@ -31,6 +31,7 @@ M.ui = {
   -- lazyload it when there are 1+ buffers
   tabufline = {
     enabled = true,
+    show_tabs_always = false,
     lazyload = true,
     order = { "treeOffset", "buffers", "tabs", "btns" },
     modules = nil,
