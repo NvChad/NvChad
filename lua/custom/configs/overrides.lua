@@ -37,6 +37,21 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
+
+    --python stff
+    "black",
+    "debugpy",
+    "mypy",
+    "ruff",
+    "pyright",
+
+    --golang stff
+    "gopls",
+    "gofumpt",
+    "delve",
+    "revive",
+    "golines",
+    "goimports-reviser",
   },
 }
 
