@@ -8,26 +8,26 @@ M.on_attach = function(client, bufnr)
     return { buffer = bufnr, desc = desc }
   end
 
-  map("n", "gD", vim.lsp.buf.declaration, opts "Lsp Go to declaration")
-  map("n", "gd", vim.lsp.buf.definition, opts "Lsp Go to definition")
-  map("n", "K", vim.lsp.buf.hover, opts "Lsp hover information")
-  map("n", "gi", vim.lsp.buf.implementation, opts "Lsp Go to implementation")
-  map("n", "<leader>sh", vim.lsp.buf.signature_help, opts "Lsp Show signature help")
-  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Lsp Add workspace folder")
-  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts "Lsp Remove workspace folder")
+  map("n", "gD", vim.lsp.buf.declaration, opts "LSP Go to declaration")
+  map("n", "gd", vim.lsp.buf.definition, opts "LSP Go to definition")
+  map("n", "K", vim.lsp.buf.hover, opts "LSP hover information")
+  map("n", "gi", vim.lsp.buf.implementation, opts "LSP Go to implementation")
+  map("n", "<leader>sh", vim.lsp.buf.signature_help, opts "LSP Show signature help")
+  map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "LSP Add workspace folder")
+  map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts "LSP Remove workspace folder")
 
   map("n", "<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, opts "Lsp List workspace folders")
+  end, opts "LSP List workspace folders")
 
-  map("n", "<leader>D", vim.lsp.buf.type_definition, opts "Lsp Go to type definition")
+  map("n", "<leader>D", vim.lsp.buf.type_definition, opts "LSP Go to type definition")
 
-  map("n", "<leader>ra", function()
+  map("n", "<leader>ra", function()at
     require "nvchad.lsp.renamer"()
-  end, opts "Lsp NvRenamer")
+  end, opts "LSP NvRenamer")
 
-  map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Lsp Code action")
-  map("n", "gr", vim.lsp.buf.references, opts "Lsp Show references")
+  map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "LSP Code action")
+  map("n", "gr", vim.lsp.buf.references, opts "LSP Show references")
 
   -- setup signature popup
   if conf.signature and client.server_capabilities.signatureHelpProvider then
