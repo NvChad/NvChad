@@ -22,7 +22,7 @@ M.on_attach = function(client, bufnr)
 
   map("n", "<leader>D", vim.lsp.buf.type_definition, opts "LSP Go to type definition")
 
-  map("n", "<leader>ra", function()at
+  map("n", "<leader>ra", function()
     require "nvchad.lsp.renamer"()
   end, opts "LSP NvRenamer")
 
