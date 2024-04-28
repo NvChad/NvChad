@@ -61,7 +61,10 @@ M.ui = {
     },
   },
 
-  cheatsheet = { theme = "grid", excluded_groups = {} }, -- simple/grid
+  cheatsheet = {
+    theme = "grid", -- simple/grid
+    excluded_groups = { "terminal (t)", "autopairs", "Nvim" }, -- can add group name or with mode
+  },
 
   lsp = { signature = true },
 
