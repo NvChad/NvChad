@@ -61,7 +61,7 @@ M.ui = {
     },
   },
 
-  cheatsheet = { theme = "grid" }, -- simple/grid
+  cheatsheet = { theme = "grid", excluded_groups = {} }, -- simple/grid
 
   lsp = { signature = true },
 
