@@ -125,12 +125,12 @@ return {
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gcc", mode = "n", desc = "Comment toggle current line" },
-      { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
-      { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
-      { "gbc", mode = "n", desc = "Comment toggle current block" },
-      { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-      { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
+      { "gcc", mode = "n", desc = "comment toggle current line" },
+      { "gc", mode = { "n", "o" }, desc = "comment toggle linewise" },
+      { "gc", mode = "x", desc = "comment toggle linewise (visual)" },
+      { "gbc", mode = "n", desc = "comment toggle current block" },
+      { "gb", mode = { "n", "o" }, desc = "comment toggle blockwise" },
+      { "gb", mode = "x", desc = "comment toggle blockwise (visual)" },
     },
     config = function(_, opts)
       require("Comment").setup(opts)
