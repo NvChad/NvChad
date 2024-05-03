@@ -106,11 +106,6 @@ map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 
-map("t", "<ESC>", function()
-  local win = vim.api.nvim_get_current_win()
-  vim.api.nvim_win_close(win, true)
-end, { desc = "terminal close term in terminal mode" })
-
 -- whichkey
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
 
