@@ -34,6 +34,7 @@ local plugins = {
     {
         "Exafunction/codeium.vim",
         event = "BufEnter",
+        enabled = false,
     },
     {
         "williamboman/mason.nvim",
@@ -44,7 +45,8 @@ local plugins = {
                 "omnisharp",
                 "csharpier",
                 "html-lsp",
-                "jdtls"
+                "jdtls",
+                "powershell-editor-services"
             },
         },
     },
