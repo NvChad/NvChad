@@ -10,7 +10,6 @@ M.on_attach = function(client, bufnr)
 
   map("n", "gD", vim.lsp.buf.declaration, opts "Go to declaration")
   map("n", "gd", vim.lsp.buf.definition, opts "Go to definition")
-  map("n", "K", vim.lsp.buf.hover, opts "hover information")
   map("n", "gi", vim.lsp.buf.implementation, opts "Go to implementation")
   map("n", "<leader>sh", vim.lsp.buf.signature_help, opts "Show signature help")
   map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts "Add workspace folder")
