@@ -45,15 +45,14 @@ end, { desc = "buffer close" })
 
 -- Comment
 map("n", "<leader>/", function()
-  require("Comment.api").toggle.linewise.current()
-end, { desc = "comment toggle" })
+  -- https://github.com/neovim/neovim/blob/efa45832ea02e777ce3f5556ef3cd959c164ec24/runtime/lua/vim/_defaults.lua#L142
+  return require("vim._comment").operator() .. "_"
+end, { desc = "comment toggle", expr = true })
 
-map(
-  "v",
-  "<leader>/",
-  "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-  { desc = "comment toggle" }
-)
+map("v", "<leader>/", function()
+  -- https://github.com/neovim/neovim/blob/efa45832ea02e777ce3f5556ef3cd959c164ec24/runtime/lua/vim/_defaults.lua#L137
+  return require("vim._comment").operator()
+end, { desc = "comment toggle", expr = true })
 
 -- nvimtree
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
