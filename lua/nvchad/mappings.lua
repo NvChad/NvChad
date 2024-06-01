@@ -44,15 +44,8 @@ map("n", "<leader>x", function()
 end, { desc = "buffer close" })
 
 -- Comment
-map("n", "<leader>/", function()
-  -- https://github.com/neovim/neovim/blob/efa45832ea02e777ce3f5556ef3cd959c164ec24/runtime/lua/vim/_defaults.lua#L142
-  return require("vim._comment").operator() .. "_"
-end, { desc = "comment toggle", expr = true })
-
-map("v", "<leader>/", function()
-  -- https://github.com/neovim/neovim/blob/efa45832ea02e777ce3f5556ef3cd959c164ec24/runtime/lua/vim/_defaults.lua#L137
-  return require("vim._comment").operator()
-end, { desc = "comment toggle", expr = true })
+map("n", "<leader>/", "gcc", { desc = "comment toggle", remap = true })
+map("v", "<leader>/", "gc", { desc = "comment toggle", remap = true })
 
 -- nvimtree
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
