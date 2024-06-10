@@ -71,6 +71,7 @@ M.ui = {
   term = {
     hl = "Normal:term,WinSeparator:WinSeparator",
     sizes = { sp = 0.3, vsp = 0.2 },
+    padding = true,
     float = {
       relative = "editor",
       row = 0.3,
