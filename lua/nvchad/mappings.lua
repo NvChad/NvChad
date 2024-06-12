@@ -74,11 +74,11 @@ map(
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 
 -- new terminals
-map("n", "<leader>h", function()
+map("n", "\\", function()
   require("nvchad.term").new { pos = "sp" }
 end, { desc = "terminal new horizontal term" })
 
-map("n", "<leader>v", function()
+map("n", "|", function()
   require("nvchad.term").new { pos = "vsp" }
 end, { desc = "terminal new vertical window" })
 

@@ -15,8 +15,6 @@ map("n", "<C-k>", require("smart-splits").move_cursor_up, { desc = "Move up wind
 map("n", "<C-l>", require("smart-splits").move_cursor_right, { desc = "Move right window" })
 map("n", "<C-[>", require("smart-splits").move_cursor_previous, { desc = "Move preview window" })
 
-map("n", "\\", "<cmd>split<cr>", { desc = "New horizontal split" })
-map("n", "|", "<cmd>vsplit<cr>", { desc = "New vertical split" })
 -- telescope
 map("n", "<leader>fF", function()
   require("telescope.builtin").find_files { hidden = true, no_ignore = true }
@@ -124,3 +122,8 @@ map("n", "<leader>uw", function()
 end, { desc = "Toggle spell" })
 
 map("n", "<leader>q", "<cmd>q!<cr>", { desc = "Quit window" })
+
+map("t", "<esc>", "<C-\\><C-n>")
+
+-- map("n", "\\", "<cmd>split<cr>", { desc = "New horizontal split" })
+-- map("n", "|", "<cmd>vsplit<cr>", { desc = "New vertical split" })
