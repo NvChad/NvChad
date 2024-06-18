@@ -9,12 +9,26 @@ return {
     opts = function()
       local actions = require "diffview.actions"
       return {
+        enhanced_diff_hl = true,
+        hooks = {
+          diff_buf_read = function(bufnr)
+            vim.opt_local.wrap = false
+            vim.opt_local.list = false
+            vim.opt_local.colorcolumn = { 80 }
+          end,
+        },
         keymaps = {
           disable_defaults = true, -- Disable the default keymaps
+          file_panel = {
+            ["<tab>"] = false,
+          },
           view = {
-            -- The `view` bindings are active in the diff buffers, only when the current
-            -- tabpage is a Diffview.
-            { "n", "<tab>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
+            {
+              "n",
+              "<tab>",
+              actions.select_next_entry,
+              { desc = "Open the diff for the next file" },
+            },
             {
               "n",
               "<s-tab>",
@@ -23,13 +37,13 @@ return {
             },
             {
               "n",
-              "[x",
+              "[d",
               actions.prev_conflict,
               { desc = "jump to the prev conflict" },
             },
             {
               "n",
-              "]x",
+              "]d",
               actions.next_conflict,
               { desc = "jump to the next conflict" },
             },

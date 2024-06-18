@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "checkhealth",
     "fugitive*",
+    "dap.log",
     "git",
     "help",
     "lspinfo",

@@ -4,10 +4,10 @@ local map = vim.keymap.set
 local nomap = vim.keymap.del
 
 -- resize windows
-map("n", "<c-left>", require("smart-splits").resize_left)
-map("n", "<c-down>", require("smart-splits").resize_down)
-map("n", "<c-up>", require("smart-splits").resize_up)
-map("n", "<c-right>", require("smart-splits").resize_right)
+map({ "n", "t" }, "<c-left>", require("smart-splits").resize_left)
+map({ "n", "t" }, "<c-down>", require("smart-splits").resize_down)
+map({ "n", "t" }, "<c-up>", require("smart-splits").resize_up)
+map({ "n", "t" }, "<c-right>", require("smart-splits").resize_right)
 -- moving between splits
 map("n", "<C-h>", require("smart-splits").move_cursor_left, { desc = "Move left window" })
 map("n", "<C-j>", require("smart-splits").move_cursor_down, { desc = "Move down window" })
@@ -28,7 +28,7 @@ map("n", "<leader>fa", function()
 end, { desc = "Find config files nvim" })
 
 -- Flash search
-map("n", "s", function()
+map({ "n", "x", "o" }, "s", function()
   require("flash").jump {
     remote_op = {
       restore = true,
@@ -36,40 +36,18 @@ map("n", "s", function()
     },
   }
 end, { desc = "Flash" })
-map("n", "S", function()
-  require("flash").treesitter()
-end, { desc = "Flash" })
-map("x", "s", function()
-  require("flash").jump {
-    remote_op = {
-      restore = true,
-      motion = nil,
-    },
-  }
-end, { desc = "Flash" })
-map("x", "S", function()
-  require("flash").treesitter()
-end, { desc = "Flash" })
-map("o", "s", function()
-  require("flash").jump {
-    remote_op = {
-      restore = true,
-      motion = nil,
-    },
-  }
-end, { desc = "Flash" })
-map("o", "S", function()
+map({ "n", "x", "o" }, "S", function()
   require("flash").treesitter()
 end, { desc = "Flash" })
 map("o", "R", function()
   require("flash").remote()
 end, { desc = "Flash remote" })
-map("x", "r", function()
+map({ "x", "o" }, "r", function()
   require("flash").treesitter_search()
 end, { desc = "Treesitter search" })
-map("o", "r", function()
-  require("flash").treesitter_search()
-end, { desc = "Treesitter search" })
+map({ "c" }, "<c-s>", function()
+  require("flash").toggle()
+end, { desc = "Toggle flash" })
 
 map({ "n", "v" }, "<leader>yy", '"+y', { desc = "Copy to clipboard system" })
 map("n", "<leader>pp", '"+gP', { desc = "Paste from clipboard system" })
@@ -120,6 +98,9 @@ end, { desc = "Toggle spell" })
 map("n", "<leader>uw", function()
   require("toggles").wrap()
 end, { desc = "Toggle spell" })
+map("n", "<leader>up", function()
+  require("toggles").autopairs()
+end, { desc = "Toggle autopair" })
 
 map("n", "<leader>q", "<cmd>q!<cr>", { desc = "Quit window" })
 

@@ -46,19 +46,11 @@ return {
       },
     },
   },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = { { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true } },
-    opts = function()
-      return require "configs.treesitter"
-    end,
-  },
-
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "nvim-telescope/telescope-file-browser.nvim",
     },
     opts = function()
       local config = require "nvchad.configs.telescope"
@@ -76,7 +68,7 @@ return {
         },
       })
 
-      config.extensions_list = vim.list_extend(config.extensions_list, { "fzf" })
+      config.extensions_list = vim.list_extend(config.extensions_list, { "fzf", "file_browser" })
       config.extensions["fzf"] = {
         fuzzy = true, -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
@@ -86,6 +78,39 @@ return {
       }
 
       return config
+    end,
+  },
+  {
+    "stevearc/oil.nvim",
+    cmd = { "Oil" },
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("oil").setup {
+        default_file_explorer = true,
+        delete_to_trash = true,
+        skip_confirm_for_simple_edits = true,
+        view_options = {
+          show_hidden = true,
+          natural_order = true,
+          is_always_hidden = function(name, _)
+            return name == ".." or name == ".git"
+          end,
+        },
+        float = {
+          padding = 2,
+          max_width = 90,
+          max_height = 0,
+        },
+        win_options = {
+          wrap = true,
+          winblend = 0,
+        },
+        keymaps = {
+          ["<C-c>"] = false,
+          ["q"] = "actions.close",
+        },
+      }
     end,
   },
 }

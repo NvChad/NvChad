@@ -9,3 +9,5 @@ o.clipboard = ""
 o.spell = false -- sets vim.opt.spell
 o.spelllang = "es,en_us"
 o.spellsuggest = "fast,5"
+o.relativenumber = true
+o.wrap = true

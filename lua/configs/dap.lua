@@ -67,9 +67,13 @@ local config_js_debug = {
     name = "Launch current with ts-node",
     cwd = "${workspaceFolder}",
     runtimeArgs = {
-      "--loader",
-      "ts-node/esm",
+      "-r",
+      "ts-node/register",
     },
+    -- runtimeArgs = {
+    --   "--loader",
+    --   "ts-node/esm",
+    -- },
     runtimeExecutable = "node",
     args = {
       "${file}",

@@ -17,6 +17,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = { { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true } },
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
@@ -58,7 +59,7 @@ return {
       vim.api.nvim_create_user_command("MasonInstallAll", function()
         if opts.ensure_installed and #opts.ensure_installed > 0 then
           vim.cmd "Mason"
-          local mr = require("mason-registry")
+          local mr = require "mason-registry"
 
           mr.refresh(function()
             for _, tool in ipairs(opts.ensure_installed) do

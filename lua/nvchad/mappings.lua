@@ -39,9 +39,9 @@ map("n", "<S-tab>", function()
   require("nvchad.tabufline").prev()
 end, { desc = "buffer goto prev" })
 
-map("n", "<leader>x", function()
-  require("nvchad.tabufline").close_buffer()
-end, { desc = "buffer close" })
+-- map("n", "<leader>x", function()
+--   require("nvchad.tabufline").close_buffer()
+-- end, { desc = "buffer close" })
 
 -- Comment
 map("n", "<leader>/", "gcc", { desc = "comment toggle", remap = true })
