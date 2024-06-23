@@ -27,6 +27,8 @@ map("n", "<leader>fa", function()
   }
 end, { desc = "Find config files nvim" })
 
+map("n", "<leader>o", "<cmd>Oil --float<cr>", { desc = "Oil" })
+
 -- Flash search
 map({ "n", "x", "o" }, "s", function()
   require("flash").jump {
@@ -70,13 +72,7 @@ map("n", "]t", require("neotest").jump.next, { desc = "Jump next test" })
 map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Git branchs" })
 map("n", "<leader>gp", require("gitsigns").preview_hunk_inline, { desc = "preview hunk inline" })
 map("n", "<leader>gP", require("gitsigns").preview_hunk, { desc = "preview hunk" })
-map("n", "<leader>gd", function()
-  if next(require("diffview.lib").views) == nil then
-    vim.cmd "DiffviewOpen"
-  else
-    vim.cmd "DiffviewClose"
-  end
-end, { desc = "Git diff" })
+map("n", "<leader>gd", "<cmd>Gvdiff<cr>", { desc = "Git diff" })
 
 -- Disable mappings
 nomap("n", "<leader>rn")

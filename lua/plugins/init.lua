@@ -50,7 +50,7 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      "nvim-telescope/telescope-file-browser.nvim",
+      -- "nvim-telescope/telescope-file-browser.nvim",
     },
     opts = function()
       local config = require "nvchad.configs.telescope"
@@ -68,7 +68,7 @@ return {
         },
       })
 
-      config.extensions_list = vim.list_extend(config.extensions_list, { "fzf", "file_browser" })
+      config.extensions_list = vim.list_extend(config.extensions_list, { "fzf" })
       config.extensions["fzf"] = {
         fuzzy = true, -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
@@ -83,6 +83,7 @@ return {
   {
     "stevearc/oil.nvim",
     cmd = { "Oil" },
+    lazy = true,
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
