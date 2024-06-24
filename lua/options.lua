@@ -11,3 +11,7 @@ o.spelllang = "es,en_us"
 o.spellsuggest = "fast,5"
 o.relativenumber = true
 o.wrap = true
+
+vim.filetype.add {
+  filename = { ["docker-compose.yaml"] = "yaml.docker-compose", ["docker-compose.yml"] = "yaml.docker-compose" },
+}

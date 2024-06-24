@@ -1,18 +1,19 @@
 return {
   enabled = false,
   "mfussenegger/nvim-lint",
-  ft = {
-    "typescript",
-    "typescriptreact",
-    "javascript",
-    "javascriptreact",
-  },
+  -- ft = {
+  --   "typescript",
+  --   "typescriptreact",
+  --   "javascript",
+  --   "javascriptreact",
+  -- },
   opts = {
     linters_by_ft = {
       typescript = { "eslint_d" },
       javascript = { "eslint_d" },
       javascriptreact = { "eslint_d" },
       typescriptreact = { "eslint_d" },
+      ["docker-compose"] = { "hadolint" },
     },
   },
   config = function(_, opts)

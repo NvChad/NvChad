@@ -11,10 +11,11 @@ end
 conform.setup {
   formatters_by_ft = {
     lua = { "stylua" },
-    css = { "prettier" },
-    html = { "prettier" },
-    typescript = { "prettier" },
-    javascript = { "prettier" },
+    css = { "prettierd" },
+    html = { "prettierd" },
+    typescript = { "prettierd" },
+    javascript = { "prettierd" },
+    ["yaml.docker-compose"] = { { "prettierd", "prettier" } },
   },
   format_on_save = function(bufnr)
     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then

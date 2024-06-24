@@ -23,6 +23,7 @@ local options = {
     "regex",
     "rust",
     "toml",
+    "dockerfile",
   },
 
   highlight = {
