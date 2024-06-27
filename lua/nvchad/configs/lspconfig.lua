@@ -1,9 +1,8 @@
 local M = {}
 local map = vim.keymap.set
-local conf = require("nvconfig").ui.lsp
 
 -- export on_attach & capabilities
-M.on_attach = function(client, bufnr)
+M.on_attach = function(_, bufnr)
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
@@ -27,11 +26,6 @@ M.on_attach = function(client, bufnr)
 
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action")
   map("n", "gr", vim.lsp.buf.references, opts "Show references")
-
-  -- setup signature popup
-  if conf.signature and client.server_capabilities.signatureHelpProvider then
-    require("nvchad.lsp.signature").setup(client, bufnr)
-  end
 end
 
 -- disable semanticTokens

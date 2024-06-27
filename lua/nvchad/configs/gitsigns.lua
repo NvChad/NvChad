@@ -1,3 +1,5 @@
+dofile(vim.g.base46_cache .. "git")
+
 local options = {
   signs = {
     add = { text = "│" },

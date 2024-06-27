@@ -1,3 +1,5 @@
+dofile(vim.g.base46_cache .. "telescope")
+
 local options = {
   defaults = {
     vimgrep_arguments = {
