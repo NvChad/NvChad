@@ -102,16 +102,18 @@ return {
   {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
-    opts = function()
-      return require "nvchad.configs.mason"
-    end,
-    config = function(_, opts)
-      require("mason").setup(opts)
 
+    opts = function()
+      -- require("mason").setup(opts)
+
+      local opts = require "nvchad.configs.mason"
       vim.api.nvim_create_user_command("MasonInstallAll", function()
         require("nvchad.mason").install_all(opts.ensure_installed)
       end, {})
+      return opts
     end,
+
+    -- config = function(_, opts) end,
   },
 
   {
