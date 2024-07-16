@@ -190,7 +190,7 @@ return {
     "NvChad/nvim-colorizer.lua",
     event = "User FilePost",
     opts = {
-      user_default_options = { names = false }
+      user_default_options = { names = false },
       filetypes = {
         "*",
         "!lazy",
