@@ -12,6 +12,9 @@ return {
     "NvChad/ui",
     branch = "v2.5",
     lazy = false,
+    build = function()
+      dofile(vim.fn.stdpath "data" .. "/lazy/ui/lua/nvchad_feedback.lua")()
+    end,
     config = function()
       require "nvchad"
     end,
