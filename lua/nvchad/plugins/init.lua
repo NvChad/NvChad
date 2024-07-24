@@ -1,6 +1,26 @@
 return {
 
   {
+    "NvChad/NvChad",
+    init = function()
+      local spec = require("lazy.core.config").spec.plugins["NvChad"]
+      if not spec.config then
+        return
+      end
+
+      local config_function = spec.config -- NvChad/starter: requires options.lua
+      spec.config = function(...)
+        config_function(...)
+        local lazy_clipboard = vim.opt.clipboard -- defer setting clipboard
+        vim.opt.clipboard = ""
+        vim.schedule(function()
+          vim.opt.clipboard = lazy_clipboard
+        end)
+      end
+    end,
+  },
+
+  {
     "NvChad/base46",
     branch = "v2.5",
     build = function()
