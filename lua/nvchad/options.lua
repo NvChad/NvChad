@@ -1,3 +1,16 @@
+local group = vim.api.nvim_create_augroup("NvLazyClipboard", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+  group = group,
+  pattern = "LazyDone",
+  callback = function()
+    local lazy_clipboard = vim.opt.clipboard -- could be changed by the user
+    vim.opt.clipboard = ""
+    vim.schedule(function() -- defer setting clipboard
+      vim.opt.clipboard = lazy_clipboard
+    end)
+  end,
+})
+
 local opt = vim.opt
 local o = vim.o
 local g = vim.g
