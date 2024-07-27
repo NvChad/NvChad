@@ -1,8 +1,8 @@
 return {
+  "nvim-lua/plenary.nvim",
 
   {
     "NvChad/base46",
-    branch = "v2.5",
     build = function()
       require("base46").load_all_highlights()
     end,
@@ -10,24 +10,17 @@ return {
 
   {
     "NvChad/ui",
-    branch = "v2.5",
     lazy = false,
     build = function()
       dofile(vim.fn.stdpath "data" .. "/lazy/ui/lua/nvchad_feedback.lua")()
-    end,
-    config = function()
-      require "nvchad"
     end,
   },
 
   {
     "nvim-tree/nvim-web-devicons",
     opts = function()
-      return { override = require "nvchad.icons.devicons" }
-    end,
-    config = function(_, opts)
       dofile(vim.g.base46_cache .. "devicons")
-      require("nvim-web-devicons").setup(opts)
+      return { override = require "nvchad.icons.devicons" }
     end,
   },
 
@@ -56,9 +49,6 @@ return {
     opts = function()
       return require "nvchad.configs.nvimtree"
     end,
-    config = function(_, opts)
-      require("nvim-tree").setup(opts)
-    end,
   },
 
   {
@@ -71,8 +61,6 @@ return {
     end,
   },
 
-  "nvim-lua/plenary.nvim",
-
   -- formatting!
   {
     "stevearc/conform.nvim",
@@ -81,9 +69,6 @@ return {
         lua = { "stylua" },
       },
     },
-    config = function(_, opts)
-      require("conform").setup(opts)
-    end,
   },
 
   -- git stuff
@@ -93,27 +78,15 @@ return {
     opts = function()
       return require "nvchad.configs.gitsigns"
     end,
-    config = function(_, opts)
-      require("gitsigns").setup(opts)
-    end,
   },
 
   -- lsp stuff
   {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
-
     opts = function()
-      -- require("mason").setup(opts)
-
-      local opts = require "nvchad.configs.mason"
-      vim.api.nvim_create_user_command("MasonInstallAll", function()
-        require("nvchad.mason").install_all(opts.ensure_installed)
-      end, {})
-      return opts
+      return require "nvchad.configs.mason"
     end,
-
-    -- config = function(_, opts) end,
   },
 
   {
@@ -168,9 +141,6 @@ return {
     opts = function()
       return require "nvchad.configs.cmp"
     end,
-    config = function(_, opts)
-      require("cmp").setup(opts)
-    end,
   },
 
   {
@@ -218,9 +188,6 @@ return {
     build = ":TSUpdate",
     opts = function()
       return require "nvchad.configs.treesitter"
-    end,
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
     end,
   },
 }
