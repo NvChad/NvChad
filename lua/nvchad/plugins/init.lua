@@ -102,10 +102,6 @@ return {
     end,
     config = function(_, opts)
       require("mason").setup(opts)
-
-      vim.api.nvim_create_user_command("MasonInstallAll", function()
-        require("nvchad.mason").install_all(opts.ensure_installed)
-      end, {})
     end,
   },
 
