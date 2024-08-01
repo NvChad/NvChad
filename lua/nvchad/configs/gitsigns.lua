@@ -2,12 +2,8 @@ dofile(vim.g.base46_cache .. "git")
 
 local options = {
   signs = {
-    add = { text = "│" },
-    change = { text = "│" },
     delete = { text = "󰍵" },
-    topdelete = { text = "‾" },
-    changedelete = { text = "~" },
-    untracked = { text = "│" },
+    changedelete = { text = "󱕖" },
   },
 
   on_attach = function(bufnr)
