@@ -11,9 +11,6 @@ return {
   {
     "NvChad/ui",
     lazy = false,
-    build = function()
-      dofile(vim.fn.stdpath "data" .. "/lazy/ui/lua/nvchad_feedback.lua")()
-    end,
     config = function()
       require "nvchad"
     end,
@@ -58,9 +55,9 @@ return {
     "folke/which-key.nvim",
     keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
     cmd = "WhichKey",
-    config = function(_, opts)
+    opts = function()
       dofile(vim.g.base46_cache .. "whichkey")
-      require("which-key").setup(opts)
+      return {}
     end,
   },
 
@@ -68,9 +65,7 @@ return {
   {
     "stevearc/conform.nvim",
     opts = {
-      formatters_by_ft = {
-        lua = { "stylua" },
-      },
+      formatters_by_ft = { lua = { "stylua" } },
     },
   },
 
@@ -152,15 +147,6 @@ return {
     cmd = "Telescope",
     opts = function()
       return require "nvchad.configs.telescope"
-    end,
-    config = function(_, opts)
-      local telescope = require "telescope"
-      telescope.setup(opts)
-
-      -- load extensions
-      for _, ext in ipairs(opts.extensions_list) do
-        telescope.load_extension(ext)
-      end
     end,
   },
 
