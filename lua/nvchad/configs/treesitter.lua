@@ -3,7 +3,7 @@ pcall(function()
   dofile(vim.g.base46_cache .. "treesitter")
 end)
 
-local options = {
+return {
   ensure_installed = { "lua", "luadoc", "printf", "vim", "vimdoc" },
 
   highlight = {
@@ -13,5 +13,3 @@ local options = {
 
   indent = { enable = true },
 }
-
-return options
