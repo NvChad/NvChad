@@ -11,9 +11,6 @@ return {
   {
     "NvChad/ui",
     lazy = false,
-    build = function()
-      dofile(vim.fn.stdpath "data" .. "/lazy/ui/lua/nvchad_feedback.lua")()
-    end,
   },
 
   {
