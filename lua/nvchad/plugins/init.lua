@@ -11,6 +11,7 @@ return {
   {
     "NvChad/ui",
     lazy = false,
+    branch = "clean",
     config = function()
       require "nvchad"
     end,
