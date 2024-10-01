@@ -2,16 +2,23 @@ return {
   "nvim-lua/plenary.nvim",
 
   {
-    "NvChad/base46",
+    "nvchad/base46",
     build = function()
       require("base46").load_all_highlights()
     end,
   },
 
   {
-    "NvChad/ui",
+    "nvchad/ui",
     lazy = false,
+    config = function()
+      require "nvchad"
+    end,
   },
+
+  "nvchad/volt",
+  "nvchad/minty",
+  "nvchad/menu",
 
   {
     "nvim-tree/nvim-web-devicons",
@@ -52,9 +59,9 @@ return {
     "folke/which-key.nvim",
     keys = { "<leader>", "<c-r>", "<c-w>", '"', "'", "`", "c", "v", "g" },
     cmd = "WhichKey",
-    config = function(_, opts)
+    opts = function()
       dofile(vim.g.base46_cache .. "whichkey")
-      require("which-key").setup(opts)
+      return {}
     end,
   },
 
@@ -62,9 +69,7 @@ return {
   {
     "stevearc/conform.nvim",
     opts = {
-      formatters_by_ft = {
-        lua = { "stylua" },
-      },
+      formatters_by_ft = { lua = { "stylua" } },
     },
   },
 
@@ -162,35 +167,6 @@ return {
     cmd = "Telescope",
     opts = function()
       return require "nvchad.configs.telescope"
-    end,
-    config = function(_, opts)
-      local telescope = require "telescope"
-      telescope.setup(opts)
-
-      -- load extensions
-      for _, ext in ipairs(opts.extensions_list) do
-        telescope.load_extension(ext)
-      end
-    end,
-  },
-
-  {
-    "NvChad/nvim-colorizer.lua",
-    event = "User FilePost",
-    opts = {
-      user_default_options = { names = false },
-      filetypes = {
-        "*",
-        "!lazy",
-      },
-    },
-    config = function(_, opts)
-      require("colorizer").setup(opts)
-
-      -- execute colorizer as soon as possible
-      vim.defer_fn(function()
-        require("colorizer").attach_to_buffer(0)
-      end, 0)
     end,
   },
 
