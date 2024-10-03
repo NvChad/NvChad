@@ -26,7 +26,7 @@
 
 ## Showcase
 
-<img src="https://nvchad.com/features/nvdash.webp">
+![nvdash](https://github.com/user-attachments/assets/0c7e2c8f-8940-42ea-9c18-7456768d2d05)
 <img src="https://nvchad.com/banner.webp">
 
 <img src="https://nvchad.com/screenshots/onedark.webp">
@@ -83,7 +83,11 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 <h3> NvCheatsheet ( our UI Plugin ) </h3>
 <kbd> <img src="https://nvchad.com/features/nvcheatsheet.webp"/></kbd>
 
+<h3> Modern Theme Picker </h3>
+<kbd> <img src="https://github.com/user-attachments/assets/897e46f1-9ae2-4cc2-8fa2-64eff40a90dd" /> </kbd>
 </details>
+
+For detailed info list, check [features page](https://nvchad.com/docs/features)
 
 ## Plugins list
 
