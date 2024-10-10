@@ -26,7 +26,7 @@ map("n", "<leader>fm", function()
 end, { desc = "general format file" })
 
 -- global lsp mappings
-map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "lsp diagnostic loclist" })
+map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
 
 -- tabufline
 map("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
