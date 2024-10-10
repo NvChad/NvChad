@@ -84,7 +84,7 @@ end, { desc = "terminal new horizontal term" })
 
 map("n", "<leader>v", function()
   require("nvchad.term").new { pos = "vsp" }
-end, { desc = "terminal new vertical window" })
+end, { desc = "terminal new vertical term" })
 
 -- toggleable
 map({ "n", "t" }, "<A-v>", function()
