@@ -50,6 +50,17 @@ local options = {
   },
 
   extensions_list = { "themes", "terms" },
+<<<<<<< HEAD:lua/plugins/configs/telescope.lua
+=======
+  extensions = {
+    fzf = {
+      fuzzy = true,
+      override_generic_sorter = true,
+      override_file_sorter = true,
+      case_mode = "smart_case",
+    },
+  },
+>>>>>>> 6fb5c313edc966f187c7483a16affaec0518b641:lua/nvchad/configs/telescope.lua
 }
 
 return options
