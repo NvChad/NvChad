@@ -1,9 +1,10 @@
-local options = {
-<<<<<<< HEAD:lua/plugins/configs/treesitter.lua
-  ensure_installed = { "lua", "python", "c", "vim", "vimdoc"},
-=======
-  ensure_installed = { "lua", "vim", "vimdoc" },
->>>>>>> 6fb5c313edc966f187c7483a16affaec0518b641:lua/nvchad/configs/treesitter.lua
+pcall(function()
+  dofile(vim.g.base46_cache .. "syntax")
+  dofile(vim.g.base46_cache .. "treesitter")
+end)
+
+return {
+  ensure_installed = { "lua", "luadoc", "printf", "vim", "vimdoc" },
 
   highlight = {
     enable = true,
@@ -12,5 +13,3 @@ local options = {
 
   indent = { enable = true },
 }
-
-return options

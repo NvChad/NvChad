@@ -2,9 +2,6 @@ local opt = vim.opt
 local o = vim.o
 local g = vim.g
 
--------------------------------------- globals -----------------------------------------
-g.toggle_theme_icon = "   "
-
 -------------------------------------- options ------------------------------------------
 o.laststatus = 3
 o.showmode = false
@@ -46,14 +43,14 @@ o.updatetime = 250
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 
--- g.mapleader = " "
-
 -- disable some default providers
-vim.g["loaded_node_provider"] = 0
-vim.g["loaded_python3_provider"] = 0
-vim.g["loaded_perl_provider"] = 0
-vim.g["loaded_ruby_provider"] = 0
+g.loaded_node_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
 
 -- add binaries installed by mason.nvim to path
-local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
+local is_windows = vim.fn.has "win32" ~= 0
+local sep = is_windows and "\\" or "/"
+local delim = is_windows and ";" or ":"
+vim.env.PATH = table.concat({ vim.fn.stdpath "data", "mason", "bin" }, sep) .. delim .. vim.env.PATH
