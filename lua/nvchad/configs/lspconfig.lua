@@ -72,7 +72,7 @@ M.defaults = function()
 
   -- Support 0.10 temporarily
 
-  if vim.version().minor == 11 then
+  if vim.lsp.config then
     vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
     vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
     vim.lsp.enable "lua_ls"
