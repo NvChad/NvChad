@@ -76,7 +76,7 @@ return {
   -- git stuff
   {
     "lewis6991/gitsigns.nvim",
-    event = "User FilePost",
+    lazy = false,
     opts = function()
       return require "nvchad.configs.gitsigns"
     end,
