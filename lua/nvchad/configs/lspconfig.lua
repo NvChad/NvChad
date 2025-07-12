@@ -59,9 +59,7 @@ M.defaults = function()
 
   local lua_lsp_settings = {
     Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
+      runtime = { version = "LuaJIT" },
       workspace = {
         library = {
           vim.fn.expand "$VIMRUNTIME/lua",
