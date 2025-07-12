@@ -25,3 +25,12 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
     end
   end,
 })
+
+autocmd("FileType", {
+  callback = function()
+    -- TODO: nvim 0.12 will make error = false the default so we can remove it
+    if vim.treesitter.get_parser(nil, nil, { error = false }) then
+      vim.treesitter.start()
+    end
+  end,
+})

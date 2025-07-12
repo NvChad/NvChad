@@ -137,7 +137,7 @@ return {
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
-       "https://codeberg.org/FelipeLema/cmp-async-path.git",
+        "https://codeberg.org/FelipeLema/cmp-async-path.git",
       },
     },
     opts = function()
@@ -156,15 +156,31 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
     event = { "BufReadPost", "BufNewFile" },
-    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    cmd = { "TSInstall", "TSInstallFromGrammar", "TSUninstall", "TSLog" },
     build = ":TSUpdate",
+    branch = "main",
     opts = function()
       return require "nvchad.configs.treesitter"
     end,
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      -- ensure_installed is no longer part of nvim-treesitter, so we must extract it manually.
+      local ensure_installed = opts.ensure_installed
+      opts.ensure_installed = nil
+
+      local nvim_treesitter = require "nvim-treesitter"
+      nvim_treesitter.setup(opts)
+      nvim_treesitter.install(ensure_installed):await(function(err)
+        if err then
+          vim.notify("Failed to install TreeSitter parsers: " .. err, vim.log.levels.WARN)
+          return
+        end
+        -- start treesitter for all possible buffers
+        -- not all buffers will be possible, so we will pcall this for best effort.
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+          pcall(vim.treesitter.start, buf)
+        end
+      end)
     end,
   },
 }
