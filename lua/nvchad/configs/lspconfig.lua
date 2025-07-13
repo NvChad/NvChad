@@ -46,8 +46,9 @@ M.capabilities.textDocument.completion.completionItem = {
     },
   },
 }
-
-M.defaults = function()
+-- Set defaults for lsp config of lua, vim, nvchad, base46, other useful types
+---@param user_lua_lsp_settings table defaults nil
+M.defaults = function(user_lua_lsp_settings)
   dofile(vim.g.base46_cache .. "lsp")
   require("nvchad.lsp").diagnostic_config()
 
@@ -57,7 +58,7 @@ M.defaults = function()
     end,
   })
 
-  local lua_lsp_settings = {
+  local lua_lsp_settings = user_lua_lsp_settings or {
     Lua = {
       runtime = { version = "LuaJIT" },
       workspace = {
