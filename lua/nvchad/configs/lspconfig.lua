@@ -77,19 +77,10 @@ M.defaults = function()
     },
   }
 
-  -- Support 0.10 temporarily
-
-  if vim.lsp.config then
-    vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
-    vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
-    vim.lsp.enable "lua_ls"
-  else
-    require("lspconfig").lua_ls.setup {
-      capabilities = M.capabilities,
-      on_init = M.on_init,
-      settings = lua_lsp_settings,
-    }
-  end
+  -- Use new vim.lsp.config API for Neovim 0.11+
+  vim.lsp.config("*", { capabilities = M.capabilities, on_init = M.on_init })
+  vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
+  vim.lsp.enable "lua_ls"
 end
 
 return M
