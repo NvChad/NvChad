@@ -156,7 +156,6 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    lazy = false,
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
@@ -173,20 +172,17 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("treesitter.setup", {}),
         callback = function(args)
-          local buf = args.buf
-          local filetype = args.match
-
           -- checks if a parser exists for the current language
-          local language = vim.treesitter.language.get_lang(filetype) or filetype
+          local language = vim.treesitter.language.get_lang(args.match) or args.match
           if not vim.treesitter.language.add(language) then
             return
           end
 
           -- replicate `highlight = { enable = true }`
-          vim.treesitter.start(buf, language)
+          vim.treesitter.start(args.buf, language)
 
           -- replicate `indent = { enable = true }`
-          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
       })
     end,
