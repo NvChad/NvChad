@@ -39,7 +39,36 @@
 
 - NvChad is supposed to be used with its [starter config](https://github.com/nvchad/starter), so nvchad main repo ( this repo ) can be imported as a plugin via lazy's import feature and then you can easily use this repo's modules like autocmds etc.
 
-## Install
+## Install NVIM
+
+```bash
+# First step
+sudo apt update
+
+# Second step
+sudo apt upgrade
+
+# Run the following commands
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage
+
+# Run the following commands if the ./nvim.appimage command fails, try:
+./nvim.appimage --appimage-extract
+./squashfs-root/AppRun --version
+
+# Optional: exposing nvim globally.
+sudo mv squashfs-root /
+sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+nvim
+
+# If we got errors for existing or this file /usr/bin/nvim
+sudo rm /usr/bin/nvim
+sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+nvim
+```
+
+## Install NvChad
 
 Type in a terminal:
 
