@@ -26,11 +26,17 @@ autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
   end,
 })
 
-autocmd("FileType", {
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
   callback = function()
-    -- TODO: nvim 0.12 will make error = false the default so we can remove it
-    if vim.treesitter.get_parser(nil, nil, { error = false }) then
-      vim.treesitter.start()
-    end
+    pcall(vim.treesitter.start)
   end,
 })
+
+local create_cmd = vim.api.nvim_create_user_command
+
+create_cmd("TSInstallAll", function()
+  local spec = require("lazy.core.config").plugins["nvim-treesitter"]
+  local opts = type(spec.opts) == "table" and spec.opts or {}
+  require("nvim-treesitter").install(opts.ensure_installed)
+end, {})
