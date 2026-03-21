@@ -1,17 +1,17 @@
 <div align="center" markdown="1">
-   <sup>Special thanks to:</sup>
-   <br>
-   <br>
-   <a href="https://go.warp.dev/NvChad">
-      <img alt="Warp sponsorship" width="400" src="https://github.com/user-attachments/assets/c21102f7-bab9-4344-a731-0cf6b341cab2">
-   </a>
+  <sup>Special thanks to:</sup>
+  <br>
+  <br>
+  <a href="https://go.warp.dev/NvChad">
+    <img alt="Warp sponsorship" width="400" src="https://github.com/user-attachments/assets/c21102f7-bab9-4344-a731-0cf6b341cab2">
+  </a>
 
 ### [Warp, built for coding with multiple AI agents](https://go.warp.dev/NvChad)
 [Available for MacOS, Linux, & Windows](https://go.warp.dev/NvChad) 
 
 </div>
 
- <br/>
+<br/>
 
 <h1 align="center">NvChad</h1>
 
@@ -64,7 +64,7 @@
 ![radium 3](https://nvchad.com/screenshots/radium3.webp)
 
 
-(Note: these are just 4-5 themes, NvChad has around 56 themes)
+(Note: these are just 4-5 themes, NvChad has around [56 themes](https://nvchad.com/themes))
 </details>
 
 ## UI related plugins used
@@ -121,7 +121,7 @@ For detailed info list, check [features page](https://nvchad.com/docs/features)
 
 ## History
 
-- I (@siduck i.e creator of NvChad) in my initial days of learning to program wanted a lightweight IDE for writing code, I had a very low end system which was like 1.4ghz pentium + 4gb ram & HDD. I was into web dev stuff so many suggested me to use vscode but that thing was very heavy on my system, It took more ram than my browser! ( minimal ungoogled chromium ) so I never tried it again, sublime text was nice but the fear of using proprietary software XD for a linux user bugged me a lot. Then I tried doom-emacs which looked pretty but it was slow and I was lost within its docs, I tried lunarvim but too lazy to read the docs. Doom-emacs and lunarvim inspired me to make a config which is the prettiest + very fast and simple.
+- I ([@siduck](https://github.com/siduck) i.e creator of NvChad) in my initial days of learning to program wanted a lightweight IDE for writing code, I had a very low end system which was like 1.4ghz pentium + 4gb ram & HDD. I was into web dev stuff so many suggested me to use vscode but that thing was very heavy on my system, It took more ram than my browser! ( minimal ungoogled chromium ) so I never tried it again, sublime text was nice but the fear of using proprietary software XD for a linux user bugged me a lot. Then I tried doom-emacs which looked pretty but it was slow and I was lost within its docs, I tried lunarvim but too lazy to read the docs. Doom-emacs and lunarvim inspired me to make a config which is the prettiest + very fast and simple.
 
 - I'm decent at ricing i.e customizing system and making it look pretty so I posted my neovim rice on [neovim subreddit](https://www.reddit.com/r/neovim/comments/m3xl4f/neovim_rice/), my neovim-dotfiles github repo blew up and then I had to come up with a name, I was amazed by the chad meme lol so I put NvChad as the name, the chad word in here doesn't literally mean the chad guy but in the sense such as chad linux vs windows i.e meaning superior, best etc. NvChad was made for my personal use but it gained some popularity which inspired me to make a public config i.e config usable by many and less hassle to update as everyone's going to use the same base config (NvChad) with their custom modifications (which are gitignored so that won't mess up), without the custom config stuff users would have to keep a track of every commit and copy paste git diffs to manually update nvchad.
  
