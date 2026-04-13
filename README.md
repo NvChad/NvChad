@@ -64,7 +64,7 @@
 ![radium 3](https://nvchad.com/screenshots/radium3.webp)
 
 
-(Note: these are just 4-5 themes, NvChad has around [56 themes](https://nvchad.com/themes))
+(Note: these are just 4-5 themes, NvChad has around [90 themes](https://nvchad.com/themes))
 </details>
 
 ## UI related plugins used
