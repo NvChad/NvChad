@@ -50,8 +50,13 @@ map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
 -- nvimtree
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
+map("n", "<C-n>", function()
+  require("nvim-tree.api").tree.toggle {}
+end, { desc = "nvimtree toggle window" })
+
+map("n", "<leader>e", function()
+  require("nvim-tree.api").tree.open()
+end, { desc = "nvimtree focus window" })
 
 -- telescope
 map("n", "<leader>fw", function()
