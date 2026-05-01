@@ -156,11 +156,27 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
-    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
-    build = ":TSUpdate | TSInstallAll",
+    lazy = false,
+    build = function()
+      local ts = require "nvim-treesitter"
+      local spec = require("lazy.core.config").plugins["nvim-treesitter"]
+      local opts = type(spec.opts) == "table" and spec.opts or {}
+
+      if opts.install_dir then
+        ts.setup { install_dir = opts.install_dir }
+      end
+
+      if opts.ensure_installed then
+        ts.install(opts.ensure_installed, { summary = true }):wait(300000)
+      end
+
+      ts.update(nil, { summary = true }):wait(300000)
+    end,
     opts = function()
       return require "nvchad.configs.treesitter"
+    end,
+    config = function(_, opts)
+      require("nvim-treesitter").setup { install_dir = opts.install_dir }
     end,
   },
 }
