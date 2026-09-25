@@ -37,6 +37,6 @@ local create_cmd = vim.api.nvim_create_user_command
 
 create_cmd("TSInstallAll", function()
   local spec = require("lazy.core.config").plugins["nvim-treesitter"]
-  local opts = type(spec.opts) == "table" and spec.opts or {}
+  local opts = require("lazy.core.plugin").values(spec, "opts", true) or {}
   require("nvim-treesitter").install(opts.ensure_installed)
 end, {})
