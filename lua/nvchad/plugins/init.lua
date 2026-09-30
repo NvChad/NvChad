@@ -65,6 +65,21 @@ return {
     end,
   },
 
+  {
+    "brianhuster/live-preview.nvim",
+    cmd = "LivePreview",
+    keys = {
+      {
+        "<leader>mp",
+        function()
+          vim.cmd.LivePreview(require("livepreview").is_running() and "close" or "start")
+        end,
+        ft = "markdown",
+        desc = "markdown toggle browser preview",
+      },
+    },
+  },
+
   -- formatting!
   {
     "stevearc/conform.nvim",
