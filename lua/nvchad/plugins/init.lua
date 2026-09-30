@@ -65,6 +65,15 @@ return {
     end,
   },
 
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = "markdown",
+    opts = function()
+      dofile(vim.g.base46_cache .. "render-markdown")
+      return {}
+    end,
+  },
+
   -- formatting!
   {
     "stevearc/conform.nvim",
