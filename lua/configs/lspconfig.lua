@@ -19,7 +19,7 @@ vim.lsp.config("ruff", {
     general = {
       positionEncodings = { "utf-16" },
     },
-  }
+  },
   on_attach = function(client)
     -- Hover обрабатывает BasedPyright
     client.server_capabilities.hoverProvider = false
