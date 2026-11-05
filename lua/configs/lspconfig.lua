@@ -1,6 +1,33 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls" }
-vim.lsp.enable(servers)
+-- Проверка типов и навигация Python
+vim.lsp.config("basedpyright", {
+  settings = {
+    basedpyright = {
+      analysis = {
+        typeCheckingMode = "standard",
+        autoSearchPaths = true,
+        diagnosticMode = "openFilesOnly",
+      },
+    },
+  },
+})
 
--- read :h vim.lsp.config for changing options of lsp servers 
+-- Линтер Ruff
+vim.lsp.config("ruff", {
+  capabilities = {
+    general = {
+      positionEncodings = { "utf-16" },
+    },
+  }
+  on_attach = function(client)
+    -- Hover обрабатывает BasedPyright
+    client.server_capabilities.hoverProvider = false
+  end,
+})
+
+vim.lsp.enable({
+  "basedpyright",
+  "ruff",
+})
+
