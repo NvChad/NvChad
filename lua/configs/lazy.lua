@@ -1,4 +1,9 @@
 return {
+  -- Отключаем LuaRocks
+  rocks = {
+    enabled = false,
+  },
+
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
 
