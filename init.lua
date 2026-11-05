@@ -14,16 +14,20 @@ vim.opt.rtp:prepend(lazypath)
 local lazy_config = require "configs.lazy"
 
 -- load plugins
-require("lazy").setup({
+require("lazy").setup(
   {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
-
-  { import = "plugins" },
-}, lazy_config)
+    {
+      "NvChad/NvChad",
+      lazy = false,
+      branch = "v2.5",
+      import = "nvchad.plugins",
+    },
+    { 
+      import = "plugins" 
+    },
+  }, 
+  lazy_config
+)
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
